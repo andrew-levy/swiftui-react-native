@@ -10,5 +10,4 @@ const Stack = stack_1.createStackNavigator();
 exports.NavigationStack = ({ views }) => {
     return (react_1.default.createElement(Stack.Navigator, null, views.map((view) => (react_1.default.createElement(Stack.Screen, { name: view.name, component: view.component, options: view.options })))));
 };
-exports.default = exports.NavigationStack;
 //# sourceMappingURL=NavigationStack.js.map

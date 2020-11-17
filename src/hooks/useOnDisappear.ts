@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
 
-export function useOnAppear(perform: () => void) {
+export function useOnDisappear(perform: () => void) {
 	useEffect(() => perform, []);
 }

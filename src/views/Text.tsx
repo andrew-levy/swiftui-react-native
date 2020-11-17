@@ -1,50 +1,50 @@
-import React from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import styled from 'styled-components';
+import { Colors } from '../themes/colors';
+import { Fonts } from '../themes/fonts';
 
 const StyledText = styled.Text`
-	color: ${(props) => {
-		switch (props.color) {
-			case 'systemGrey6':
-				return '#f2f2f2';
-			case 'white':
-				return '#fff';
-			case 'systemBlue':
-				return '#3484F7';
-			default:
-				return '#000';
+	${({ foregroundColor, fontSize, fontWeight, font, alignment }) =>
+		`color: ${
+			foregroundColor
+				? Colors.foreground[foregroundColor] || Colors.foreground.black
+				: Colors.foreground.black
 		}
-	}};
-	font-size: ${(props) => {
-		switch (props.size) {
-			case 'xs':
-				return '12px';
-			case 'sm':
-				return '16px';
-			case 'md':
-				return '24px';
-			case 'lg':
-				return '36px';
-			case 'xl':
-				return '40px';
-			case '2xl':
-				return '50px';
-			default:
-				return '24px';
-		}
-	}};
-	font-weight: ${(props) => (props.bold ? 'bold' : 'normal')};
+		font-size: ${fontSize ? fontSize + 'px' : '16px'}
+		font-weight: ${
+			fontWeight
+				? Fonts.weights[fontWeight] || Fonts.weights.normal
+				: Fonts.weights.normal
+		};
+		font-family: ${
+			font ? Fonts.fonts[font] || Fonts.fonts.system : Fonts.fonts.system
+		};
+		text-align: ${alignment ? alignment : 'center'}
+		`}
 `;
 
-type TextProps = {
-	size?: number;
-	color?: string;
-	bold?: boolean;
+type TextProps = PropsWithChildren<ReactNode> & {
+	fontSize?: number;
+	foregroundColor?: string;
+	fontWeight?: string;
+	alignment?: string;
 };
 
-export const Text: React.FC<TextProps> = (props) => {
+export const Text: React.FC<TextProps> = ({
+	fontSize,
+	foregroundColor,
+	fontWeight,
+	alignment,
+	children,
+}) => {
 	return (
-		<StyledText size={props.size} color={props.color} bold={props.bold}>
-			{props.children}
+		<StyledText
+			fontSize={fontSize}
+			foregroundColor={foregroundColor}
+			fontWeight={fontWeight}
+			alignment={alignment}
+		>
+			{children}
 		</StyledText>
 	);
 };

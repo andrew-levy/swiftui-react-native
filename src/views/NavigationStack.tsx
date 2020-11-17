@@ -25,4 +25,3 @@ export const NavigationStack: React.FC<NavigationStackProps> = ({ views }) => {
 		</Stack.Navigator>
 	);
 };
-export default NavigationStack;

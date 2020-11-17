@@ -7,7 +7,7 @@ type ButtonProps = {
 	disabled?: boolean;
 };
 
-const StyledButton = styled.TouchableOpacity``;
+const StyledButton = styled.Button``;
 
 export const Button: React.FC<ButtonProps> = ({ action, text }) => {
 	return <StyledButton title={text} onPress={action} />;

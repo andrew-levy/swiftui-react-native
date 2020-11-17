@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useOnAppear = void 0;
 const react_1 = require("react");
-function useOnAppear(perfrom) {
-    react_1.useEffect(() => perfrom(), []);
+function useOnAppear(perform) {
+    react_1.useEffect(() => perform(), []);
 }
 exports.useOnAppear = useOnAppear;
 //# sourceMappingURL=useOnAppear.js.map

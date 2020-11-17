@@ -1,20 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Colors } from '../themes/colors';
+import { Fonts } from '../themes/fonts';
 
 type VStackProps = {};
 
 const StyledVStack = styled.View`
-	flex: 1;
-	background-color: ${(props) => {
-		switch (props.backgroundColor) {
-			case 'systemGrey6':
-				return '#f2f2f2';
-			default:
-				return '#fff';
-		}
-	}};
-	align-items: center;
-	justify-content: center;
+	${({ backgroundColor, alignment }) => `
+    flex: 1;
+    background-color: ${
+			backgroundColor
+				? Colors.background[backgroundColor] || Colors.background.white
+				: Colors.background.white
+		};
+    align-items: ${
+			alignment
+				? Fonts.alignment[alignment] || Fonts.alignment.center
+				: Fonts.alignment.center
+		};
+    justify-content: center;
+  `}
 `;
 export const VStack: React.FC<VStackProps> = (props) => {
 	return <StyledVStack {...props}>{props.children}</StyledVStack>;
