@@ -1,10 +1,10 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-type NavigationContainerProps = PropsWithChildren<React.ReactNode>;
+type NavigationContainerProps = {};
 
 export const NavigationView: React.FC<NavigationContainerProps> = ({
-	children,
+  children,
 }) => {
-	return <NavigationContainer>{children}</NavigationContainer>;
+  return <NavigationContainer>{children}</NavigationContainer>;
 };

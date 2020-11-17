@@ -9,7 +9,7 @@ const styled_components_1 = __importDefault(require("styled-components"));
 const colors_1 = require("../themes/colors");
 const fonts_1 = require("../themes/fonts");
 const StyledText = styled_components_1.default.Text `
-	${({ foregroundColor, fontSize, fontWeight, font, alignment }) => `color: ${foregroundColor
+  ${({ foregroundColor, fontSize, fontWeight, font, alignment }) => `color: ${foregroundColor
     ? colors_1.Colors.foreground[foregroundColor] || colors_1.Colors.foreground.black
     : colors_1.Colors.foreground.black}
 		font-size: ${fontSize ? fontSize + 'px' : '16px'}

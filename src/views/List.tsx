@@ -1,8 +1,7 @@
-import React, { Fragment, PropsWithChildren } from 'react';
-import { Button } from './Button';
+import React from 'react';
 
-type ListProps = PropsWithChildren<React.ReactNode> & {};
+type ListProps = {};
 
-export const List = ({ children }: ListProps) => {
-	return <>{children}</>;
+export const List: React.FC<ListProps> = ({ children }) => {
+  return <>{children}</>;
 };

@@ -8,7 +8,7 @@ const react_1 = __importDefault(require("react"));
 const styled_components_1 = __importDefault(require("styled-components"));
 const colors_1 = require("../themes/colors");
 const StyledHStack = styled_components_1.default.View `
-	${({ backgroundColor }) => `
+  ${({ backgroundColor }) => `
     flex: 1;
     flex-direction: row;
     background-color: ${backgroundColor

@@ -6,21 +6,22 @@ import { Fonts } from '../themes/fonts';
 type VStackProps = {};
 
 const StyledVStack = styled.View`
-	${({ backgroundColor, alignment }) => `
+  ${({ backgroundColor, alignment }) => `
     flex: 1;
     background-color: ${
-			backgroundColor
-				? Colors.background[backgroundColor] || Colors.background.white
-				: Colors.background.white
-		};
+      backgroundColor
+        ? Colors.background[backgroundColor] || Colors.background.white
+        : Colors.background.white
+    };
     align-items: ${
-			alignment
-				? Fonts.alignment[alignment] || Fonts.alignment.center
-				: Fonts.alignment.center
-		};
+      alignment
+        ? Fonts.alignment[alignment] || Fonts.alignment.center
+        : Fonts.alignment.center
+    };
     justify-content: center;
   `}
 `;
+
 export const VStack: React.FC<VStackProps> = (props) => {
-	return <StyledVStack {...props}>{props.children}</StyledVStack>;
+  return <StyledVStack {...props}>{props.children}</StyledVStack>;
 };
