@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 
-type VStackProps = {};
+type VStackProps = {
+  backgroundColor?: string;
+  alignment?: string;
+};
 
 const StyledVStack = styled.View`
   ${({ backgroundColor, alignment }) => `

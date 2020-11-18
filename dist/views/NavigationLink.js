@@ -5,8 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NavigationLink = void 0;
 const react_1 = __importDefault(require("react"));
-const react_native_1 = require("react-native");
-exports.NavigationLink = ({ navigation, destination, distinationProps, text, }) => {
-    return (react_1.default.createElement(react_native_1.Button, { title: text, onPress: () => navigation.navigate(destination, distinationProps) }));
+const Button_1 = require("./Button");
+exports.NavigationLink = ({ navigation, destination, distinationProps, children, }) => {
+    return (react_1.default.createElement(Button_1.Button, { action: () => navigation.navigate(destination, distinationProps) }, children));
 };
+/* PROPS:
+ * extends button props
+ */
 //# sourceMappingURL=NavigationLink.js.map

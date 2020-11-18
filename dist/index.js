@@ -11,17 +11,21 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./views/Text"), exports);
+__exportStar(require("./views/Image"), exports);
 __exportStar(require("./views/VStack"), exports);
 __exportStar(require("./views/HStack"), exports);
+__exportStar(require("./views/VStack"), exports);
 __exportStar(require("./views/NavigationView"), exports);
 __exportStar(require("./views/NavigationLink"), exports);
 __exportStar(require("./views/NavigationStack"), exports);
 __exportStar(require("./views/TabView"), exports);
 __exportStar(require("./views/Button"), exports);
+__exportStar(require("./views/Spacer"), exports);
 __exportStar(require("./views/ScrollView"), exports);
 __exportStar(require("./views/List"), exports);
 __exportStar(require("./views/Link"), exports);
 __exportStar(require("./views/TextField"), exports);
+__exportStar(require("./views/Label"), exports);
 __exportStar(require("./hooks/useOnAppear"), exports);
 __exportStar(require("./hooks/useOnDisappear"), exports);
 //# sourceMappingURL=index.js.map

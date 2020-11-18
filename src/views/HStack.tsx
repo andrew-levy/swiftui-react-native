@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 
-type HStackProps = {};
+type HStackProps = { backgroundColor?: string };
 
 const StyledHStack = styled.View`
   ${({ backgroundColor }) => `
@@ -18,6 +18,11 @@ const StyledHStack = styled.View`
   `}
 `;
 
-export const HStack: React.FC<HStackProps> = ({ children }) => {
-  return <StyledHStack>{children}</StyledHStack>;
+export const HStack: React.FC<HStackProps> = ({
+  backgroundColor,
+  children,
+}) => {
+  return (
+    <StyledHStack backgroundColor={backgroundColor}>{children}</StyledHStack>
+  );
 };

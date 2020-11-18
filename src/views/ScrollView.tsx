@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView as RNScrollView } from 'react-native';
 
 type ScrollViewProps = {
-  direction?: string;
+  direction?: 'vertical' | 'horizontal';
 };
 
 export const ScrollView: React.FC<ScrollViewProps> = ({

@@ -22,3 +22,8 @@ export const TextField: React.FC<TextFieldProps> = ({
     />
   );
 };
+
+/* PROPS:
+ * textfield styles: default, plain, underline
+ * + overrides
+ */

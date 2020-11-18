@@ -4,8 +4,8 @@ const Tabs = createBottomTabNavigator();
 
 type Screen = {
   name: string;
-  component: React.FC;
-  options?: object | undefined;
+  component: React.ComponentType<any>;
+  options?: object;
 };
 
 type TabViewProps = {

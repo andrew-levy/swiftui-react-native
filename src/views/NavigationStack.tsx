@@ -5,7 +5,7 @@ const Stack = createStackNavigator();
 type Screen = {
   name: string;
   component: React.FC;
-  options?: object | undefined;
+  options?: object;
 };
 
 type NavigationStackProps = {

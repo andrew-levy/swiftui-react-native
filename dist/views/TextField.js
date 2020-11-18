@@ -10,4 +10,8 @@ const StyledTextField = styled_components_1.default.TextInput ``;
 exports.TextField = ({ placeholder, text, onChangeText, }) => {
     return (react_1.default.createElement(StyledTextField, { placeholder: placeholder, value: text, onChangeText: onChangeText }));
 };
+/* PROPS:
+ * textfield styles: default, plain, underline
+ * + overrides
+ */
 //# sourceMappingURL=TextField.js.map

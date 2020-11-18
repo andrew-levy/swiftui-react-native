@@ -18,7 +18,7 @@ const StyledHStack = styled_components_1.default.View `
     justify-content: center;
   `}
 `;
-exports.HStack = ({ children }) => {
-    return react_1.default.createElement(StyledHStack, null, children);
+exports.HStack = ({ backgroundColor, children, }) => {
+    return (react_1.default.createElement(StyledHStack, { backgroundColor: backgroundColor }, children));
 };
 //# sourceMappingURL=HStack.js.map

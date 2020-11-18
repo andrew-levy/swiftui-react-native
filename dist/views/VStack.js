@@ -9,7 +9,7 @@ const styled_components_1 = __importDefault(require("styled-components"));
 const colors_1 = require("../themes/colors");
 const fonts_1 = require("../themes/fonts");
 const StyledVStack = styled_components_1.default.View `
-	${({ backgroundColor, alignment }) => `
+  ${({ backgroundColor, alignment }) => `
     flex: 1;
     background-color: ${backgroundColor
     ? colors_1.Colors.background[backgroundColor] || colors_1.Colors.background.white
