@@ -30,7 +30,7 @@ const fonts_1 = require("../themes/fonts");
 const Button_1 = require("./Button");
 const StyledText = styled_components_1.default.Text `
   ${({ foregroundColor, fontSize, fontWeight, font, alignment, buttonType }) => `color: ${buttonType
-    ? '#2997ff'
+    ? `${colors_1.Colors.foreground.buttonText}`
     : foregroundColor
         ? colors_1.Colors.foreground[foregroundColor] || colors_1.Colors.foreground.black
         : colors_1.Colors.foreground.black}
@@ -44,7 +44,6 @@ const StyledText = styled_components_1.default.Text `
 `;
 exports.Text = ({ fontSize, foregroundColor, fontWeight, alignment, children, }) => {
     const buttonType = react_1.useContext(Button_1.ButtonWrapperContext);
-    console.log(buttonType);
     return (react_1.default.createElement(StyledText, { fontSize: fontSize, foregroundColor: foregroundColor, fontWeight: fontWeight, alignment: alignment, buttonType: buttonType }, children));
 };
 /* PROPS:

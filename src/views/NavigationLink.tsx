@@ -6,7 +6,7 @@ type NavigationLinkProps = {
   navigation: StackNavigationProp<any, any>;
   destination: string;
   distinationProps?: object;
-  text: string;
+  label?: string;
 };
 
 export const NavigationLink: React.FC<NavigationLinkProps> = ({
@@ -14,9 +14,13 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
   destination,
   distinationProps,
   children,
+  label,
 }) => {
   return (
-    <Button action={() => navigation.navigate(destination, distinationProps)}>
+    <Button
+      label={label}
+      action={() => navigation.navigate(destination, distinationProps)}
+    >
       {children}
     </Button>
   );

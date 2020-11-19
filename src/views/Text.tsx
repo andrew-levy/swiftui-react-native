@@ -8,7 +8,7 @@ const StyledText = styled.Text`
   ${({ foregroundColor, fontSize, fontWeight, font, alignment, buttonType }) =>
     `color: ${
       buttonType
-        ? '#2997ff'
+        ? `${Colors.foreground.buttonText}`
         : foregroundColor
         ? Colors.foreground[foregroundColor] || Colors.foreground.black
         : Colors.foreground.black
@@ -41,7 +41,6 @@ export const Text: React.FC<TextProps> = ({
   children,
 }) => {
   const buttonType = useContext(ButtonWrapperContext);
-  console.log(buttonType);
   return (
     <StyledText
       fontSize={fontSize}

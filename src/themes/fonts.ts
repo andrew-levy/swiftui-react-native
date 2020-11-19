@@ -1,5 +1,5 @@
 export const Fonts = {
-  fonts: { system: 'San Fransisco' },
+  fonts: { system: 'System' },
   weights: {
     normal: 'normal',
     bold: 'bold',
@@ -11,6 +11,8 @@ export const Fonts = {
     leading: 'flex-start',
     center: 'center',
     trailing: 'flex-end',
+    top: 'flex-start',
+    bottom: 'flex-end',
   },
 };
 

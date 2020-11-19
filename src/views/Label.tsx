@@ -5,13 +5,13 @@ import { Image } from './Image';
 
 type LabelProps = {
   text: string;
-  icon: string;
+  image: string;
 };
 
-export const Label: React.FC<LabelProps> = ({ text, icon }) => {
+export const Label: React.FC<LabelProps> = ({ text, image }) => {
   return (
     <HStack>
-      <Image name={icon} />
+      <Image name={image} />
       <Text>{text}</Text>
     </HStack>
   );
