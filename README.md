@@ -46,13 +46,12 @@ return (
     aligment='leading'
     background='systemGray6'
     padding={20}
-   >
-    <Text font='title'> Some cool text </Text>
-    <Button 
-      text='A Cooler Button'
-      action={() => console.log('Button pressed')}
-    />
-  </HStack>
+  >
+    <Text font='title'>Some cool text</Text>
+    <Button action={() => console.log('Button pressed')}>
+      <Text>Click this cool button</Text>
+    </Button>
+  </VStack>
 );
 ```
 
