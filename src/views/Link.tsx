@@ -4,11 +4,11 @@ import { Button } from './Button';
 
 type LinkProps = {
   destination: string;
-  label?: string;
+  text?: string;
 };
 
-export const Link: React.FC<LinkProps> = ({ destination, label, children }) => (
-  <Button label={label} action={() => Linking.openURL(destination)}>
+export const Link: React.FC<LinkProps> = ({ destination, text, children }) => (
+  <Button text={text} action={() => Linking.openURL(destination)}>
     {children}
   </Button>
 );

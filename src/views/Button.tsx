@@ -3,19 +3,19 @@ import styled from 'styled-components';
 
 type ButtonProps = {
   action?: () => void;
-  label?: string;
   disabled?: boolean;
+  text?: string;
 };
 
 export const ButtonWrapperContext = createContext(null);
 const StyledButtonOpacity = styled.TouchableOpacity``;
 const StyledButton = styled.Button``;
 
-export const Button: React.FC<ButtonProps> = ({ action, label, children }) => {
+export const Button: React.FC<ButtonProps> = ({ action, text, children }) => {
   return (
     <ButtonWrapperContext.Provider value='button'>
-      {label ? (
-        <StyledButton title={label} onPress={action} />
+      {text ? (
+        <StyledButton title={text} onPress={action} />
       ) : (
         <StyledButtonOpacity onPress={action}>{children}</StyledButtonOpacity>
       )}
