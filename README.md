@@ -36,7 +36,7 @@ react-native-swiftui can help SwiftUI developers ease their way into React devel
 Import the components you need like this:
 
 ```javascript
-import { VStack, Label, Button } from 'react-native-swiftui';
+import { VStack, Text, Button } from 'react-native-swiftui';
 ```
 
 And display them like this:
