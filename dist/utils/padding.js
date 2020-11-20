@@ -33,10 +33,21 @@ const getPaddingValue = (selector, value, valueArray) => {
             break;
     }
 };
+const formatPaddingStyles = (values) => {
+    if (values && values.length === 4) {
+        return `
+      padding-top: ${values[0]}px;
+      padding-right: ${values[1]}px;
+      padding-bottom: ${values[2]}px;
+      padding-left: ${values[3]}px;
+    `;
+    }
+    return null;
+};
 exports.getPaddingFromProps = (paddingProps) => {
     const values = Array(4).fill(0);
     if (typeof paddingProps === 'number')
-        return Array(4).fill(paddingProps);
+        return formatPaddingStyles(Array(4).fill(paddingProps));
     if (Array.isArray(paddingProps) && paddingProps.length === 2) {
         const [selectors, value] = paddingProps;
         if (Array.isArray(selectors)) {
@@ -52,10 +63,11 @@ exports.getPaddingFromProps = (paddingProps) => {
             }
         }
         else if (typeof selectors === 'string') {
-            getPaddingValue(selectors, value, values);
+            if (typeof value === 'number') {
+                getPaddingValue(selectors, value, values);
+            }
         }
     }
-    console.log('padding values: ', values);
-    return values;
+    return formatPaddingStyles(values);
 };
 //# sourceMappingURL=padding.js.map

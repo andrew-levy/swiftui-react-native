@@ -1,4 +1,10 @@
-const getPaddingValue = (selector, value, valueArray) => {
+import { Padding } from '../types/stylePropTypes';
+
+const getPaddingValue = (
+  selector: string,
+  value: number,
+  valueArray: Array<number>
+) => {
   switch (selector) {
     case 'top':
       valueArray[0] = value;
@@ -31,9 +37,22 @@ const getPaddingValue = (selector, value, valueArray) => {
   }
 };
 
-export const getPaddingFromProps = (paddingProps) => {
+const formatPaddingStyles = (values: Array<number>) => {
+  if (values && values.length === 4) {
+    return `
+      padding-top: ${values[0]}px;
+      padding-right: ${values[1]}px;
+      padding-bottom: ${values[2]}px;
+      padding-left: ${values[3]}px;
+    `;
+  }
+  return null;
+};
+
+export const getPaddingFromProps = (paddingProps: Padding) => {
   const values = Array(4).fill(0);
-  if (typeof paddingProps === 'number') return Array(4).fill(paddingProps);
+  if (typeof paddingProps === 'number')
+    return formatPaddingStyles(Array(4).fill(paddingProps));
   if (Array.isArray(paddingProps) && paddingProps.length === 2) {
     const [selectors, value] = paddingProps;
     if (Array.isArray(selectors)) {
@@ -47,9 +66,10 @@ export const getPaddingFromProps = (paddingProps) => {
         });
       }
     } else if (typeof selectors === 'string') {
-      getPaddingValue(selectors, value, values);
+      if (typeof value === 'number') {
+        getPaddingValue(selectors, value, values);
+      }
     }
   }
-  console.log('padding values: ', values);
-  return values;
+  return formatPaddingStyles(values);
 };

@@ -1,10 +1,19 @@
 import React, { createContext } from 'react';
 import styled from 'styled-components';
+import { Padding, Shadow } from '../types/stylePropTypes';
 
 type ButtonProps = {
   action?: () => void;
   disabled?: boolean;
   text?: string;
+  background?: string;
+  padding?: Padding;
+  cornerRadius?: number;
+  shadow?: Shadow;
+  border?: object;
+  fontSize?: number;
+  fontWeight?: number;
+  foregroundColor?: string;
 };
 
 export const ButtonWrapperContext = createContext(null);

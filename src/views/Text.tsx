@@ -4,6 +4,8 @@ import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { ButtonWrapperContext } from './Button';
 import { getPaddingFromProps } from '../utils/padding';
+import { getShadowFromProps } from '../utils/shadow';
+import { Alignment, Padding, Shadow } from '../types/stylePropTypes';
 
 const StyledText = styled.Text`
   ${({
@@ -14,9 +16,10 @@ const StyledText = styled.Text`
     alignment,
     textType,
     padding,
-  }) => {
-    const [paddingTop, paddingRight, paddingBottom, paddingLeft] = padding;
-    return `color: ${
+    cornerRadius,
+    shadow,
+  }) =>
+    `color: ${
       textType
         ? `${Colors.foreground.buttonText}`
         : foregroundColor
@@ -33,21 +36,20 @@ const StyledText = styled.Text`
       font ? Fonts.fonts[font] || Fonts.fonts.system : Fonts.fonts.system
     };
     text-align: ${alignment ? alignment : 'center'};
-    padding-top: ${paddingTop}px;
-    padding-right: ${paddingRight}px;
-    padding-bottom: ${paddingBottom}px;
-    padding-left: ${paddingLeft}px;
-    text-shaddow-color: ${Colors.foreground.buttonText}
-    `;
-  }}
+    border-radius: ${cornerRadius || 0}px;
+    ${getPaddingFromProps(padding)}
+    ${getShadowFromProps(shadow)}
+    `}
 `;
 
 type TextProps = {
   fontSize?: number;
   foregroundColor?: string;
   fontWeight?: string;
-  alignment?: 'leading' | 'center' | 'trailing';
-  padding?: number | [Array<string>, number];
+  alignment?: Alignment;
+  padding?: Padding;
+  cornerRadius?: number;
+  shadow?: Shadow;
 };
 
 export const Text: React.FC<TextProps> = ({
@@ -56,6 +58,8 @@ export const Text: React.FC<TextProps> = ({
   fontWeight,
   alignment,
   padding,
+  cornerRadius,
+  shadow,
   children,
 }) => {
   const textType = useContext(ButtonWrapperContext);
@@ -66,7 +70,9 @@ export const Text: React.FC<TextProps> = ({
       foregroundColor={foregroundColor}
       fontWeight={fontWeight}
       alignment={alignment}
-      padding={getPaddingFromProps(padding)}
+      padding={padding}
+      cornerRadius={cornerRadius}
+      shadow={shadow}
       textType={textType}
     >
       {children}

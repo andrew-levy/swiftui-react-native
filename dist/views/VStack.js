@@ -27,9 +27,9 @@ const StyledVStack = styled_components_1.default.View `
 exports.VStack = (props) => {
     return (react_1.default.createElement(StyledVStack, Object.assign({}, props), props.spacing || props.spacing !== 0
         ? react_1.default.Children.map(props.children, (child) => (react_1.default.createElement(react_1.default.Fragment, null,
-            react_1.default.createElement(Spacer_1.Spacer, { space: props.spacing || 0 }),
+            react_1.default.createElement(Spacer_1.Spacer, { space: props.spacing }),
             child,
-            react_1.default.createElement(Spacer_1.Spacer, { space: props.spacing || 0 }))))
+            react_1.default.createElement(Spacer_1.Spacer, { space: props.spacing }))))
         : props.children));
 };
 //# sourceMappingURL=VStack.js.map
