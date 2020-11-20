@@ -1,7 +1,5 @@
 # Button
 
-## SwiftUI
-
 ## react-native-swiftui
 
 ```jsx
@@ -15,6 +13,8 @@ or
 ```jsx
 <Button text='Click me' action={doSomething} />
 ```
+
+## SwiftUI
 
 ```swift
   Button(action: doSomething) {
