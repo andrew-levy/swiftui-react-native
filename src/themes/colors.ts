@@ -4,6 +4,6 @@ export const Colors = {
     white: '#fff',
     systemGrey6: '#f2f2f2',
     black: '#000',
-    buttonText: '#06c',
+    buttonText: '#0d7aff',
   },
 };

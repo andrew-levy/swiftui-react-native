@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 
-type HStackProps = { backgroundColor?: string };
+type HStackProps = { background?: string };
 
 const StyledHStack = styled.View`
-  ${({ backgroundColor }) => `
+  ${({ background }) => `
     flex: 1;
     flex-direction: row;
     background-color: ${
-      backgroundColor
-        ? Colors.background[backgroundColor] || Colors.background.white
+      background
+        ? Colors.background[background] || Colors.background.white
         : Colors.background.white
     };
     align-items: center;
@@ -18,11 +18,6 @@ const StyledHStack = styled.View`
   `}
 `;
 
-export const HStack: React.FC<HStackProps> = ({
-  backgroundColor,
-  children,
-}) => {
-  return (
-    <StyledHStack backgroundColor={backgroundColor}>{children}</StyledHStack>
-  );
+export const HStack: React.FC<HStackProps> = ({ background, children }) => {
+  return <StyledHStack background={background}>{children}</StyledHStack>;
 };

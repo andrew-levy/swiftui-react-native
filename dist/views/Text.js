@@ -28,23 +28,32 @@ const styled_components_1 = __importDefault(require("styled-components"));
 const colors_1 = require("../themes/colors");
 const fonts_1 = require("../themes/fonts");
 const Button_1 = require("./Button");
+const padding_1 = require("../utils/padding");
 const StyledText = styled_components_1.default.Text `
-  ${({ foregroundColor, fontSize, fontWeight, font, alignment, buttonType }) => `color: ${buttonType
-    ? `${colors_1.Colors.foreground.buttonText}`
-    : foregroundColor
-        ? colors_1.Colors.foreground[foregroundColor] || colors_1.Colors.foreground.black
-        : colors_1.Colors.foreground.black}
-		font-size: ${fontSize ? fontSize + 'px' : '16px'}
+  ${({ foregroundColor, fontSize, fontWeight, font, alignment, textType, padding, }) => {
+    const [paddingTop, paddingRight, paddingBottom, paddingLeft] = padding;
+    return `color: ${textType
+        ? `${colors_1.Colors.foreground.buttonText}`
+        : foregroundColor
+            ? colors_1.Colors.foreground[foregroundColor] || colors_1.Colors.foreground.black
+            : colors_1.Colors.foreground.black}
+		font-size: ${fontSize ? fontSize + 'px' : '18px'}
 		font-weight: ${fontWeight
-    ? fonts_1.Fonts.weights[fontWeight] || fonts_1.Fonts.weights.normal
-    : fonts_1.Fonts.weights.normal};
+        ? fonts_1.Fonts.weights[fontWeight] || fonts_1.Fonts.weights.normal
+        : fonts_1.Fonts.weights.normal};
 		font-family: ${font ? fonts_1.Fonts.fonts[font] || fonts_1.Fonts.fonts.system : fonts_1.Fonts.fonts.system};
-		text-align: ${alignment ? alignment : 'center'}
-		`}
+    text-align: ${alignment ? alignment : 'center'};
+    padding-top: ${paddingTop}px;
+    padding-right: ${paddingRight}px;
+    padding-bottom: ${paddingBottom}px;
+    padding-left: ${paddingLeft}px;
+    text-shaddow-color: ${colors_1.Colors.foreground.buttonText}
+    `;
+}}
 `;
-exports.Text = ({ fontSize, foregroundColor, fontWeight, alignment, children, }) => {
-    const buttonType = react_1.useContext(Button_1.ButtonWrapperContext);
-    return (react_1.default.createElement(StyledText, { fontSize: fontSize, foregroundColor: foregroundColor, fontWeight: fontWeight, alignment: alignment, buttonType: buttonType }, children));
+exports.Text = ({ fontSize, foregroundColor, fontWeight, alignment, padding, children, }) => {
+    const textType = react_1.useContext(Button_1.ButtonWrapperContext);
+    return (react_1.default.createElement(StyledText, { fontSize: fontSize, foregroundColor: foregroundColor, fontWeight: fontWeight, alignment: alignment, padding: padding_1.getPaddingFromProps(padding), textType: textType }, children));
 };
 /* PROPS:
  * font

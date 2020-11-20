@@ -2,18 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
+import { Spacer } from './Spacer';
 
 type VStackProps = {
-  backgroundColor?: string;
+  background?: string;
   alignment?: string;
+  spacing?: number;
+  children: React.ReactElement<any>;
 };
 
 const StyledVStack = styled.View`
-  ${({ backgroundColor, alignment }) => `
+  ${({ background, alignment, cornerRadius, padding }) => `
     flex: 1;
     background-color: ${
-      backgroundColor
-        ? Colors.background[backgroundColor] || Colors.background.white
+      background
+        ? Colors.background[background] || Colors.background.white
         : Colors.background.white
     };
     align-items: ${
@@ -21,10 +24,25 @@ const StyledVStack = styled.View`
         ? Fonts.alignment[alignment] || Fonts.alignment.center
         : Fonts.alignment.center
     };
-    justify-content: center;
+		justify-content: center;
+		border-radius: ${cornerRadius || 0};
+		padding: ${padding || 0}
+		width: 100%;
   `}
 `;
 
-export const VStack: React.FC<VStackProps> = (props) => {
-  return <StyledVStack {...props}>{props.children}</StyledVStack>;
+export const VStack = (props: VStackProps) => {
+  return (
+    <StyledVStack {...props}>
+      {props.spacing || props.spacing !== 0
+        ? React.Children.map(props.children, (child) => (
+            <>
+              <Spacer space={props.spacing || 0} />
+              {child}
+              <Spacer space={props.spacing || 0} />
+            </>
+          ))
+        : props.children}
+    </StyledVStack>
+  );
 };

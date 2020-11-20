@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 type SpacerProps = {
-  direction: 'veritcal' | 'horizontal';
+  direction?: 'veritcal' | 'horizontal';
   space: number;
 };
 

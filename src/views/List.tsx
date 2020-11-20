@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
 import styled from 'styled-components';
+import { Colors } from '../themes/colors';
 
 type ListProps = {
   children: React.ReactElement<any>;
@@ -12,6 +13,8 @@ const StyledListItem = styled.View`
   padding-top: 10;
   padding-bottom: 10;
   text-align: left;
+  border-bottom-width: ${({ last }) => (last ? '0' : '1')};
+  border-bottom-color: ${Colors.foreground.systemGrey6};
 `;
 
 const StyledListWrapper = styled.View`
@@ -22,7 +25,6 @@ const StyledListWrapper = styled.View`
 export const List = ({ listStyle, children }: ListProps) => {
   const listChildren = [];
   React.Children.forEach(children, (child) => {
-    console.log(child);
     listChildren.push(child);
   });
   return (
@@ -30,7 +32,7 @@ export const List = ({ listStyle, children }: ListProps) => {
       <FlatList
         data={listChildren}
         renderItem={({ item, index }) => (
-          <StyledListItem>
+          <StyledListItem last={index === listChildren.length - 1}>
             {React.cloneElement(item, item.props)}
             {/* divider line ? */}
             {index !== listChildren.length - 1 ? <View></View> : null}
