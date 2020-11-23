@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text, VStack } from 'react-native-swiftui';
+import { Button, Text, VStack } from 'swiftui-react-native';
 
 export const VStackExample = () => {
   return (

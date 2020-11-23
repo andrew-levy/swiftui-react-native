@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Text } from 'react-native-swiftui';
+import { List, Text } from 'swiftui-react-native';
 
 export const StaticListExample = () => {
   return (

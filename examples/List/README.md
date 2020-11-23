@@ -1,6 +1,6 @@
 # List
 
-## react-native-swiftui
+## swiftui-react-native
 
 ```jsx
 <List listStyle='grouped'>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native-swiftui';
+import { Text } from 'swiftui-react-native';
 
 export const TextExample = () => {
   return <Text>Hello World</Text>;

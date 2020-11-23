@@ -1,6 +1,6 @@
 # VStack
 
-## react-native-swiftui
+## swiftui-react-native
 
 ```jsx
 <VStack>

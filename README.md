@@ -1,4 +1,4 @@
-# react-native-swiftui
+# swiftui-react-native
 
 ## What is it?
 
@@ -33,17 +33,18 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 - **NavigationStack:** A collection of naviagble views
 - **NavigationLink:** A link to another view
 - **TabView:** A tab bar view
+- **TabItem:** A tab bar item
 
 ## Who would use this?
 
-**react-native-swiftui** can help SwiftUI developers ease their way into React development, and vice versa.
+**swiftui-react-native** can help SwiftUI developers ease their way into React development, and vice versa.
 
 ## Usage
 
 Import the components you need like this:
 
 ```javascript
-import { VStack, Text, Button } from 'react-native-swiftui';
+import { VStack, Text, Button } from 'swiftui-react-native';
 ```
 
 And display them like this:
@@ -58,7 +59,7 @@ return (
   >
     <Text font='title'>Some cool text</Text>
     <Button action={doSomething}>
-      <Text>Click this cool button</Text>
+      <Text>Click the cool button</Text>
     </Button>
   </VStack>
 );
@@ -71,7 +72,7 @@ var body: some View {
   VStack(alignment: .leading) {
     Text("Some cool text").font(.title)
     Button(action: doSomething) {
-      Text("Click this cool button")
+      Text("Click the cool button")
     }
   }.background(Color(UIColor.systemGray6))
    .cornerRadius(20)

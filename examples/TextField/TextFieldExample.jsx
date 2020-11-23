@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField } from 'react-native-swiftui';
+import { TextField } from 'swiftui-react-native';
 
 export const TextFieldExample = () => {
   const [name, setName] = useState('');

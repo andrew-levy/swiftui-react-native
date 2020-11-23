@@ -19,6 +19,7 @@ __exportStar(require("./views/NavigationView"), exports);
 __exportStar(require("./views/NavigationLink"), exports);
 __exportStar(require("./views/NavigationStack"), exports);
 __exportStar(require("./views/TabView"), exports);
+__exportStar(require("./views/TabItem"), exports);
 __exportStar(require("./views/Button"), exports);
 __exportStar(require("./views/Spacer"), exports);
 __exportStar(require("./views/ScrollView"), exports);

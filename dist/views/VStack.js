@@ -32,4 +32,5 @@ exports.VStack = (props) => {
             react_1.default.createElement(Spacer_1.Spacer, { space: props.spacing }))))
         : props.children));
 };
+// Need to fix issue with flex: 1;
 //# sourceMappingURL=VStack.js.map

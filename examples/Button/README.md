@@ -1,6 +1,6 @@
 # Button
 
-## react-native-swiftui
+## swiftui-react-native
 
 ```jsx
 <Button action={doSomething}>

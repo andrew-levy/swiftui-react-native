@@ -1,6 +1,6 @@
 # HStack
 
-## react-native-swiftui
+## swiftui-react-native
 
 ```jsx
 <HStack>

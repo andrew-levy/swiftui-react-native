@@ -7,6 +7,7 @@ export * from './views/NavigationView';
 export * from './views/NavigationLink';
 export * from './views/NavigationStack';
 export * from './views/TabView';
+export * from './views/TabItem';
 export * from './views/Button';
 export * from './views/Spacer';
 export * from './views/ScrollView';

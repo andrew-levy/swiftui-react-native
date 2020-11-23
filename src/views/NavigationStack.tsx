@@ -12,6 +12,7 @@ type NavigationStackProps = {
   views: Array<Screen>;
 };
 
+// Add stack item component
 export const NavigationStack: React.FC<NavigationStackProps> = ({ views }) => {
   return (
     <Stack.Navigator>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label } from 'react-native-swiftui';
+import { Label } from 'swiftui-react-native';
 
 export const LabelExample = () => {
   return <Label text='Label text' image='path/to/image' />;

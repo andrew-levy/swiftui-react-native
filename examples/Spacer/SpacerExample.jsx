@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack, HStack, Text, Button } from 'react-native-swiftui';
+import { VStack, HStack, Text, Button } from 'swiftui-react-native';
 
 export const SpacerExample = () => {
   return (
