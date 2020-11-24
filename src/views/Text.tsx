@@ -26,7 +26,7 @@ const StyledText = styled.Text`
         ? Colors.foreground[foregroundColor] || Colors.foreground.black
         : Colors.foreground.black
     }
-		font-size: ${fontSize ? fontSize + 'px' : '18px'}
+		font-size: ${fontSize ? fontSize : '18'}px;
 		font-weight: ${
       fontWeight
         ? Fonts.weights[fontWeight] || Fonts.weights.normal
@@ -35,7 +35,7 @@ const StyledText = styled.Text`
 		font-family: ${
       font ? Fonts.fonts[font] || Fonts.fonts.system : Fonts.fonts.system
     };
-    text-align: ${alignment ? alignment : 'center'};
+    text-align: ${alignment === 'leading' ? 'left' : 'center'};
     border-radius: ${cornerRadius || 0}px;
     ${getPaddingFromProps(padding)}
     ${getShadowFromProps(shadow)}

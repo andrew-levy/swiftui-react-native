@@ -1,11 +1,11 @@
 import React from 'react';
 
-export type TabItemProps = {
+export type ScreenProps = {
   name: string;
   component: React.ComponentType<any>;
   options: object;
 };
 
-export const TabItem: React.FC<TabItemProps> = (props) => {
+export const Screen: React.FC<ScreenProps> = (props) => {
   return null;
 };

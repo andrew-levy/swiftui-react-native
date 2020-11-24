@@ -1,17 +1,13 @@
 import React from 'react';
+import { TabItemProps } from './TabItem';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tabs = createBottomTabNavigator();
 
-// duplicate
-type TabItem = {
-  name: string;
-  component: React.ComponentType<any>;
-  options?: object;
-};
-
 type TabViewProps = {
   options?: object;
-  children: React.ReactElement<TabItem> | Array<React.ReactElement<TabItem>>;
+  children:
+    | React.ReactElement<TabItemProps>
+    | Array<React.ReactElement<TabItemProps>>;
 };
 
 export const TabView = ({ options, children }: TabViewProps) => {

@@ -35,11 +35,15 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 - **TabView:** A tab bar view
 - **TabItem:** A tab bar item
 
-## Who would use this?
+## Contribution
 
-**swiftui-react-native** can help SwiftUI developers ease their way into React development, and vice versa.
+Run `npm run build` to generate the `dist/` folder, then run `npm run watch` while developing.
 
 ## Usage
+
+Install the package like this:
+
+`npm i swiftui-react-native`
 
 Import the components you need like this:
 
@@ -54,7 +58,7 @@ return (
   <VStack
     aligment='leading'
     background='systemGray6'
-    padding={30}
+    padding={['leading', 30]}
     cornerRadius={20}
   >
     <Text font='title'>Some cool text</Text>

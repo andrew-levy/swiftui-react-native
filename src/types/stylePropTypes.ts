@@ -12,3 +12,12 @@ export type Shadow = {
   y: number;
   radius: number;
 };
+
+export type Frame = {
+  width?: number | string;
+  height?: number | string;
+  maxWidth?: number | string;
+  maxHeight?: number | string;
+  minWidth?: number | string;
+  minHeight?: number | string;
+};

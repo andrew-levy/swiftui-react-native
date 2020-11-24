@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
-import { Alignment, Padding } from '../types/stylePropTypes';
+import { Alignment, Frame, Padding } from '../types/stylePropTypes';
+import { getFlexFromProps } from '../utils/frame';
 import { Spacer } from './Spacer';
 
 type VStackProps = {
@@ -10,12 +11,14 @@ type VStackProps = {
   alignment?: Alignment;
   padding?: Padding;
   spacing?: number;
-  children: React.ReactElement<any>;
+  width?: number;
+  frame?: Frame;
+  cornerRadius?: number;
+  children: React.ReactElement<any> | React.ReactElement<any>[];
 };
 
 const StyledVStack = styled.View`
-  ${({ background, alignment, cornerRadius, padding }) => `
-    flex: 1;
+  ${({ background, alignment, cornerRadius, padding, frame, width }) => `
     background-color: ${
       background
         ? Colors.background[background] || Colors.background.white
@@ -29,7 +32,8 @@ const StyledVStack = styled.View`
 		justify-content: center;
 		border-radius: ${cornerRadius || 0};
 		padding: ${padding || 0}
-		width: 100%;
+    width: ${width || '100'}%;
+    ${getFlexFromProps(frame)}
   `}
 `;
 
