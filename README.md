@@ -1,5 +1,9 @@
 # swiftui-react-native
 
+:exclamation::exclamation: This project is new and is currently being worked on. Most views aren't complete but will be in time! :exclamation::exclamation:
+
+<img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/settings.jpg?raw=true" width="200">
+
 ## What is it?
 
 SwiftUI is awesome. So is React Native! This library aims to leverage some of the best SwiftUI features in React Native applications.
@@ -21,6 +25,8 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 - **Text:** A text element
 - **TextField:** A text input element
 - **Label:** An element with text and an icon/image
+- **Toggle:** An toggle element to switch something on/off
+- **Picker:** A horizontal picker element
 
 ### Views/Lists
 
@@ -30,8 +36,9 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 ### Navigation
 
 - **NavigationView:** Navigation container
-- **NavigationStack:** A collection of naviagble views
 - **NavigationLink:** A link to another view
+- **ScreenView:** A collection of naviagble views
+- **Screen:** A representation of a screen
 - **TabView:** A tab bar view
 - **TabItem:** A tab bar item
 
