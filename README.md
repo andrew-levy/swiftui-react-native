@@ -2,7 +2,7 @@
 
 :exclamation::exclamation: This project is new and is currently being worked on. Most views aren't complete but will be in time! :exclamation::exclamation:
 
-<img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/settings.jpg?raw=true" width="200">
+<img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/settings.png?raw=true" width="300">
 
 ## What is it?
 
