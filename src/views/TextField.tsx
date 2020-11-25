@@ -13,7 +13,7 @@ const StyledTextField = styled.TextInput`
   border-bottom-width: 1px;
   width: 80%;
   padding-bottom: 10px;
-  font-size: 20px;
+  font-size: 18px;
   padding-top: 10px;
 `;
 

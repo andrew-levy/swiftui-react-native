@@ -16,6 +16,8 @@ export * from './views/List';
 export * from './views/Link';
 export * from './views/TextField';
 export * from './views/Label';
+export * from './views/Toggle';
+export * from './views/Picker';
 
 export * from './hooks/useOnAppear';
 export * from './hooks/useOnDisappear';
