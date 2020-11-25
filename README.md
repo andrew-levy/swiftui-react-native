@@ -2,7 +2,7 @@
 
 :exclamation::exclamation: This project is new and is currently being worked on. Most views aren't complete but will be in time! :exclamation::exclamation:
 
-<img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/settings-example-view.png?raw=true" width="300">
+<img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/example-views.png?raw=true">
 
 ## What is it?
 
@@ -10,13 +10,13 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 
 ## Views
 
-### Stacks
+### Stacks :pancakes: :abcd:
 
 - **VStack:** Vertical stack
 - **HStack:** Horizontal stack
 - **ZStack:** Overlay stack
 
-### UI Elements
+### UI Elements :atom_symbol: :iphone:
 
 - **Button:** A clickable element that performs an action
 - **Image:** An image or icon
@@ -28,12 +28,12 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 - **Toggle:** An toggle element to switch something on/off
 - **Picker:** A horizontal picker element
 
-### Views/Lists
+### Views/Lists :pencil: :scroll:
 
 - **ScrollView:** A scrollable view
 - **List:** A formatted list
 
-### Navigation
+### Navigation :arrow_right: :link:
 
 - **NavigationView:** Navigation container
 - **NavigationLink:** A link to another view
@@ -44,7 +44,7 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 
 ## Contribution
 
-Run `npm run build` to generate the `dist/` folder, then run `npm run watch` while developing.
+Run `npm run build` to generate a `dist/` folder, then run `npm run watch` while developing.
 
 ## Usage
 

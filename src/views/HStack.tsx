@@ -30,7 +30,7 @@ const StyledHStack = styled.View`
         ? Fonts.alignment[alignment] || Fonts.alignment.center
         : Fonts.alignment.center
     };
-    justify-content: center;
+    justify-content: space-between;
     border-radius: ${cornerRadius || 0};
     padding: ${padding || 0}
     width: ${width || '100'}%;

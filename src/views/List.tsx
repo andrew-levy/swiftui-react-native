@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 
 type ListProps = {
   children: React.ReactElement<any>;
-  listStyle?: 'grouped' | 'plain' | 'default' | 'inset';
+  listStyle?: 'insetGrouped' | 'plain' | 'default' | 'inset' | 'grouped';
 };
 
-const groupedListStyleItem = `
+const insetGroupedListStyleItem = `
   background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -18,7 +18,7 @@ const groupedListStyleItem = `
   margin-right: 15px;
 `;
 
-const groupedListStyleWrapper = `
+const insetGroupedListStyleWrapper = `
   background-color: white;
   width: 90%;
   border-radius: 10px;
@@ -42,28 +42,40 @@ const defaultListStyleWrapper = `
 
 const StyledListItem = styled.View`
   ${({ listStyle }) =>
-    listStyle === 'grouped' ? groupedListStyleItem : defaultListStyleItem}
+    listStyle === 'insetGrouped'
+      ? insetGroupedListStyleItem
+      : defaultListStyleItem}
   border-bottom-width: ${({ last }) => (last ? '0' : '1')}px;
 `;
 
 const StyledListWrapper = styled.View`
   ${({ listStyle }) =>
-    listStyle === 'grouped' ? groupedListStyleWrapper : defaultListStyleWrapper}
+    listStyle === 'insetGrouped'
+      ? insetGroupedListStyleWrapper
+      : defaultListStyleWrapper}
 `;
 
-export const List = ({ listStyle, children }: ListProps) => (
-  <StyledListWrapper listStyle={listStyle}>
-    {React.Children.map(children, (child, i) => (
-      <StyledListItem
-        last={i === React.Children.toArray(children).length - 1}
-        listStyle={listStyle}
-        aligment={child.props.aligment}
-      >
-        {child}
-      </StyledListItem>
-    ))}
-  </StyledListWrapper>
-);
+export const ListItemContext = createContext(null);
+
+export const List = ({ listStyle, children }: ListProps) => {
+  return (
+    <ListItemContext.Provider value={true}>
+      <StyledListWrapper listStyle={listStyle}>
+        {React.Children.map(children, (child, i) => {
+          return (
+            <StyledListItem
+              last={i === React.Children.toArray(children).length - 1}
+              listStyle={listStyle}
+              aligment={child.props.aligment}
+            >
+              {child}
+            </StyledListItem>
+          );
+        })}
+      </StyledListWrapper>
+    </ListItemContext.Provider>
+  );
+};
 
 /* PROPS:
  * list style : grouped, plain, default, inset
