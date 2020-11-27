@@ -1,14 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Image as RNImage } from 'react-native';
 
 type ImageProps = {
   name: string;
 };
 
-const StyledImage = styled.Image``;
-
 export const Image: React.FC<ImageProps> = ({ name }) => {
-  return <StyledImage soruce={null} />;
+  return <RNImage soruce={null} />;
 };
 
 /* PROPS:

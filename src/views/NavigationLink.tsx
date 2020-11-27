@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Button } from './Button';
 import { Text } from './Text';
+import { Image } from './Image';
 import { ListItemContext } from './List';
 import styled from 'styled-components';
 
@@ -33,7 +34,7 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
         onPress={() => navigation.navigate(destination, distinationProps)}
       >
         {text ? <Text>{text}</Text> : children}
-        <Text>{'>'}</Text>
+        <Image name='' />
       </StyledListItemNavLink>
     );
   }

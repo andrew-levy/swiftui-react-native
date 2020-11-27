@@ -40,7 +40,7 @@ const StyledVStack = styled.View`
 export const VStack = (props: VStackProps) => {
   return (
     <StyledVStack {...props}>
-      {props.spacing || props.spacing !== 0
+      {props.spacing && props.spacing !== 0
         ? React.Children.map(props.children, (child) => (
             <>
               <Spacer space={props.spacing} />

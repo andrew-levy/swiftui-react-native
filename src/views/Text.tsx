@@ -61,6 +61,7 @@ export const Text: React.FC<TextProps> = ({
   cornerRadius,
   shadow,
   children,
+  ...props
 }) => {
   const textType = useContext(ButtonWrapperContext);
 
@@ -74,6 +75,7 @@ export const Text: React.FC<TextProps> = ({
       cornerRadius={cornerRadius}
       shadow={shadow}
       textType={textType}
+      {...props}
     >
       {children}
     </StyledText>

@@ -10,12 +10,13 @@ type ListProps = {
 
 const insetGroupedListStyleItem = `
   background-color: white;
+  text-align: left;
   padding-top: 10px;
   padding-bottom: 10px;
-  text-align: left;
-  border-bottom-color: ${Colors.foreground.systemGrey6};
   margin-left: 15px;
-  margin-right: 15px;
+  padding-right: 15px;
+  border-radius: 10px;
+  border-bottom-color: ${Colors.foreground.systemGrey6};
 `;
 
 const insetGroupedListStyleWrapper = `
@@ -31,7 +32,7 @@ const defaultListStyleItem = `
   text-align: left;
   border-bottom-color: ${Colors.foreground.systemGrey6};
   margin-left: 15px;
-  margin-right: 15px;
+  padding-right: 15px;
   align-items: ${({ alignment }) => alignment || 'left'}
 `;
 

@@ -41,7 +41,7 @@ const StyledHStack = styled.View`
 export const HStack: React.FC<HStackProps> = (props) => {
   return (
     <StyledHStack {...props}>
-      {props.spacing || props.spacing !== 0
+      {props.spacing && props.spacing !== 0
         ? React.Children.map(props.children, (child) => (
             <>
               <Spacer direction='horizontal' space={props.spacing} />
