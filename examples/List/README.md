@@ -1,6 +1,10 @@
 # List
 
+A formatted list
+
 ## swiftui-react-native
+
+Static
 
 ```jsx
 <List listStyle='grouped'>
@@ -12,7 +16,7 @@
 </List>
 ```
 
-or
+Dynamic
 
 ```jsx
 <List listStyle='grouped'>
@@ -24,6 +28,8 @@ or
 
 ## SwiftUI
 
+Static
+
 ```swift
   List {
     Text("Andrew")
@@ -34,7 +40,7 @@ or
   }.listStyle(.grouped)
 ```
 
-or
+Dynamic
 
 ```swift
   List(names) { name in

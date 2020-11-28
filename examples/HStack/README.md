@@ -1,5 +1,7 @@
 # HStack
 
+A horizontal stack
+
 ## swiftui-react-native
 
 ```jsx

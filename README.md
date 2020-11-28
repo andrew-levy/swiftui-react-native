@@ -2,7 +2,7 @@
 
 :exclamation::exclamation: This project is new and is currently being worked on. Most views aren't complete but will be in time! :exclamation::exclamation:
 
-<img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/example-views.png?raw=true">
+<img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/example-views.png?raw=true" />
 
 ## What is it?
 
@@ -35,10 +35,10 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 
 ### Navigation :arrow_right: :link:
 
-- **NavigationView:** Navigation container
+- **NavigationManager:** Navigation container
+- **NavigationViewManager:** A collection of naviagble views
+- **NavigationView:** A representation of a screen
 - **NavigationLink:** A link to another view
-- **ScreenView:** A collection of naviagble views
-- **Screen:** A representation of a screen
 - **TabView:** A tab bar view
 - **TabItem:** A tab bar item
 

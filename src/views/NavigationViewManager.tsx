@@ -1,15 +1,17 @@
 import React from 'react';
-import { ScreenProps } from './Screen';
+import { NavigationViewProps } from './NavigationView';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
-type NavigationStackProps = {
+type NavigationViewManagerProps = {
   children:
-    | React.ReactElement<ScreenProps>
-    | Array<React.ReactElement<ScreenProps>>;
+    | React.ReactElement<NavigationViewProps>
+    | Array<React.ReactElement<NavigationViewProps>>;
 };
 
-export const ScreenView = ({ children }: NavigationStackProps) => {
+export const NavigationViewManager = ({
+  children,
+}: NavigationViewManagerProps) => {
   return (
     <Stack.Navigator>
       {React.Children.map(children, (child) => (

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { Alignment, Frame, Padding } from '../types/stylePropTypes';
-import { getFlexFromProps } from '../utils/frame';
+import { getFlexFromProps } from '../styleProps/frame';
 import { Spacer } from './Spacer';
 
 type VStackProps = {

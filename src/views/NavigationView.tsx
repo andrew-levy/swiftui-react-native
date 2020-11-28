@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 
-type NavigationContainerProps = {};
+export type NavigationViewProps = {
+  name: string;
+  component: React.ComponentType<any>;
+  options: object;
+};
 
-export const NavigationView: React.FC<NavigationContainerProps> = ({
-  children,
-}) => {
-  return <NavigationContainer>{children}</NavigationContainer>;
+export const NavigationView: React.FC<NavigationViewProps> = (props) => {
+  return null;
 };

@@ -1,6 +1,12 @@
 # Button
 
+A clickable element that performs an action
+
 ## swiftui-react-native
+
+```jsx
+import { Button } from 'swiftui-react-native';
+```
 
 ```jsx
 <Button action={doSomething}>

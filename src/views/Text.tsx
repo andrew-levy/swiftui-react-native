@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { ButtonWrapperContext } from './Button';
-import { getPaddingFromProps } from '../utils/padding';
-import { getShadowFromProps } from '../utils/shadow';
+import { getPaddingFromProps } from '../styleProps/padding';
+import { getShadowFromProps } from '../styleProps/shadow';
 import { Alignment, Padding, Shadow } from '../types/stylePropTypes';
 
 const StyledText = styled.Text`

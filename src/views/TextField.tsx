@@ -6,9 +6,10 @@ type TextFieldProps = {
   placeholder?: string;
   text: string;
   onChangeText: () => void;
+  width: number;
 };
 
-const StyledTextField = styled.TextInput`
+const StyledTextFieldDefault = styled.TextInput`
   border-bottom-color: ${Colors.background.systemGrey6};
   border-bottom-width: 1px;
   width: 80%;
@@ -17,13 +18,31 @@ const StyledTextField = styled.TextInput`
   padding-top: 10px;
 `;
 
+const StyledTextFieldBox = styled.TextInput`
+  background-color: ${Colors.background.systemGrey6};
+  border-radius: 6px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: ${Colors.foreground.black};
+  width: ${({ width }) => width || '80%'};
+`;
+
 export const TextField: React.FC<TextFieldProps> = ({
   placeholder,
   text,
   onChangeText,
 }) => {
+  if (true) {
+    <StyledTextFieldDefault
+      placeholder={placeholder}
+      value={text}
+      onChangeText={onChangeText}
+    />;
+  }
   return (
-    <StyledTextField
+    <StyledTextFieldBox
       placeholder={placeholder}
       value={text}
       onChangeText={onChangeText}
