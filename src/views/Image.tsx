@@ -6,7 +6,7 @@ type ImageProps = {
 };
 
 export const Image: React.FC<ImageProps> = ({ name }) => {
-  return <RNImage soruce={null} />;
+  return <RNImage source={null} />;
 };
 
 /* PROPS:

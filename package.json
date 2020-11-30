@@ -1,6 +1,6 @@
 {
   "name": "swiftui-react-native",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A React Native component library inspired by SwiftUI",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,14 +28,16 @@
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/native": "^5.8.9",
     "@react-navigation/stack": "^5.12.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-native": "^0.63.3",
     "react-native-gesture-handler": "^1.8.0",
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.14.0",
     "styled-components": "^5.2.1"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "react-native": "*"
   },
   "repository": {
     "type": "git",

@@ -60,21 +60,25 @@ export const ListItemContext = createContext(null);
 
 export const List = ({ listStyle, children }: ListProps) => {
   return (
-    <ListItemContext.Provider value={true}>
-      <StyledListWrapper listStyle={listStyle}>
-        {React.Children.map(children, (child, i) => {
-          return (
-            <StyledListItem
-              last={i === React.Children.toArray(children).length - 1}
-              listStyle={listStyle}
-              aligment={child.props.aligment}
-            >
-              {child}
-            </StyledListItem>
-          );
-        })}
-      </StyledListWrapper>
-    </ListItemContext.Provider>
+    <StyledListWrapper listStyle={listStyle}>
+      {React.Children.map(children, (child, i) => {
+        return (
+          <StyledListItem
+            last={
+              listStyle !== 'insetGrouped' &&
+              i === React.Children.toArray(children).length - 1
+            }
+            listStyle={listStyle}
+            aligment={child.props.aligment}
+          >
+            {React.cloneElement(child, {
+              ...child.props,
+              listItem: true,
+            })}
+          </StyledListItem>
+        );
+      })}
+    </StyledListWrapper>
   );
 };
 

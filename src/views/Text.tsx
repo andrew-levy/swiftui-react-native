@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
-import { ButtonWrapperContext } from './Button';
 import { getPaddingFromProps } from '../styleProps/padding';
 import { getShadowFromProps } from '../styleProps/shadow';
 import { Alignment, Padding, Shadow } from '../types/stylePropTypes';
@@ -14,13 +13,13 @@ const StyledText = styled.Text`
     fontWeight,
     font,
     alignment,
-    textType,
+    buttonChild,
     padding,
     cornerRadius,
     shadow,
   }) =>
     `color: ${
-      textType
+      buttonChild
         ? `${Colors.foreground.buttonText}`
         : foregroundColor
         ? Colors.foreground[foregroundColor] || Colors.foreground.black
@@ -50,6 +49,7 @@ type TextProps = {
   padding?: Padding;
   cornerRadius?: number;
   shadow?: Shadow;
+  buttonChild?: boolean;
 };
 
 export const Text: React.FC<TextProps> = ({
@@ -61,10 +61,9 @@ export const Text: React.FC<TextProps> = ({
   cornerRadius,
   shadow,
   children,
+  buttonChild,
   ...props
 }) => {
-  const textType = useContext(ButtonWrapperContext);
-
   return (
     <StyledText
       fontSize={fontSize}
@@ -74,7 +73,7 @@ export const Text: React.FC<TextProps> = ({
       padding={padding}
       cornerRadius={cornerRadius}
       shadow={shadow}
-      textType={textType}
+      buttonChild={buttonChild}
       {...props}
     >
       {children}

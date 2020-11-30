@@ -22,6 +22,8 @@ const StyledPickerItem = styled.TouchableOpacity`
   padding-right: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
+  justify-content: center;
+  flex-basis: ${({ count }) => `${100 / count}%`};
 `;
 // border-right-color: ${Colors.foreground.systemGrey5}
 // border-right-width: ${({ last }) => (last ? '0' : '1')}px;
@@ -47,7 +49,7 @@ export const Picker = ({ items, selected, setSelected }: PickerProps) => {
   };
 
   const sliderStyle = {
-    position: 'absolute',
+    position: 'absolute' as 'absolute',
     backgroundColor: 'white',
     zIndex: -1,
     borderRadius: 6,
@@ -72,6 +74,7 @@ export const Picker = ({ items, selected, setSelected }: PickerProps) => {
             <StyledPickerItem
               onPress={() => setSelected(i)}
               last={i === items.length - 1}
+              count={items.length}
             >
               <Text fontSize={14} fontWeight='bold'>
                 {item}

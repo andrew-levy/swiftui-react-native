@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Button } from './Button';
 import { Text } from './Text';
 import { Image } from './Image';
-import { ListItemContext } from './List';
 import styled from 'styled-components';
 
 type NavigationLinkProps = {
@@ -11,6 +10,8 @@ type NavigationLinkProps = {
   destination: string;
   distinationProps?: object;
   text?: string;
+  listItem?: boolean;
+  children?: React.ReactElement<any>;
 };
 
 const StyledListItemNavLink = styled.TouchableOpacity`
@@ -20,14 +21,14 @@ const StyledListItemNavLink = styled.TouchableOpacity`
   width: 100%;
 `;
 
-export const NavigationLink: React.FC<NavigationLinkProps> = ({
+export const NavigationLink = ({
   navigation,
   destination,
   distinationProps,
   children,
   text,
-}) => {
-  const listItem = useContext(ListItemContext);
+  listItem,
+}: NavigationLinkProps) => {
   if (listItem) {
     return (
       <StyledListItemNavLink

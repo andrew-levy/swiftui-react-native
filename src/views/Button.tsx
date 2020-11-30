@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
@@ -16,6 +16,7 @@ type ButtonProps = {
   fontSize?: number;
   fontWeight?: number;
   foregroundColor?: string;
+  children?: React.ReactElement<any>;
 };
 
 const buttonStyles = `${({
@@ -41,7 +42,7 @@ const buttonStyles = `${({
   padding: ${padding || 0}
   width: ${width || '100'}%;
 `}`;
-export const ButtonWrapperContext = createContext(null);
+
 const StyledButtonOpacity = styled.TouchableOpacity`
   ${buttonStyles}
 `;
@@ -49,15 +50,22 @@ const StyledButton = styled.Button`
   ${buttonStyles}
 `;
 
-export const Button: React.FC<ButtonProps> = ({ action, text, children }) => {
+export const Button = ({ action, text, children }: ButtonProps) => {
   return (
-    <ButtonWrapperContext.Provider value='button'>
+    <>
       {text ? (
-        <StyledButton title={text} onPress={action} />
+        <StyledButton title={text} onPress={action} buttonChild={true} />
       ) : (
-        <StyledButtonOpacity onPress={action}>{children}</StyledButtonOpacity>
+        <StyledButtonOpacity onPress={action}>
+          {React.Children.map(children, (child) =>
+            React.cloneElement(child, {
+              ...child.props,
+              buttonChild: true,
+            })
+          )}
+        </StyledButtonOpacity>
       )}
-    </ButtonWrapperContext.Provider>
+    </>
   );
 };
 
