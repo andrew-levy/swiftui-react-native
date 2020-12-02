@@ -35,9 +35,9 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 
 ### Navigation :arrow_right: :link:
 
-- **NavigationManager:** Navigation container
+- **NavigationManager:** Navigation wrapper
 - **NavigationViewManager:** A collection of naviagble views
-- **NavigationView:** A representation of a screen
+- **NavigationView:** A representation of a navigable screen
 - **NavigationLink:** A link to another view
 - **TabView:** A tab bar view
 - **TabItem:** A tab bar item

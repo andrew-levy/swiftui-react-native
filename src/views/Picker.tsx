@@ -7,7 +7,7 @@ import { Animated, Easing } from 'react-native';
 type PickerProps = {
   items: Array<string>;
   selected?: number;
-  setSelected: (n: number) => void;
+  onSelect: (n: number) => void;
 };
 
 const StyledPickerWrapper = styled.View`
@@ -28,13 +28,15 @@ const StyledPickerItem = styled.TouchableOpacity`
 // border-right-color: ${Colors.foreground.systemGrey5}
 // border-right-width: ${({ last }) => (last ? '0' : '1')}px;
 
-export const Picker = ({ items, selected, setSelected }: PickerProps) => {
+export const Picker = ({ items, selected, onSelect }: PickerProps) => {
   const [dimensions, setDimensions] = useState(null);
   const [translateX, setTranslateX] = useState(new Animated.Value(0));
 
   useEffect(() => {
     if (dimensions) {
-      const start = (dimensions.width / items.length) * selected;
+      let start = (dimensions.width / items.length) * selected;
+      if (selected === 0) start += 2;
+      if (selected === items.length - 1) start -= 2;
       slide(start);
     }
   }, [dimensions, selected]);
@@ -51,12 +53,18 @@ export const Picker = ({ items, selected, setSelected }: PickerProps) => {
   const sliderStyle = {
     position: 'absolute' as 'absolute',
     backgroundColor: 'white',
+    top: 2,
     zIndex: -1,
     borderRadius: 6,
-    borderColor: Colors.background.systemGrey6,
-    borderWidth: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
     width: dimensions ? dimensions.width / items.length : 0,
-    height: dimensions ? dimensions.height : 0,
+    height: dimensions ? dimensions.height - 5 : 0,
     transform: [
       {
         translateX: translateX,
@@ -72,7 +80,7 @@ export const Picker = ({ items, selected, setSelected }: PickerProps) => {
         {items.length &&
           items.map((item, i) => (
             <StyledPickerItem
-              onPress={() => setSelected(i)}
+              onPress={() => onSelect(i)}
               last={i === items.length - 1}
               count={items.length}
             >

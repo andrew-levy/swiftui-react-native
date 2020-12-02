@@ -7,11 +7,13 @@ import {
   Text,
 } from 'swiftui-react-native';
 
-// This defines which views can navigate to which other views. All NavigationViews inside of a NavigationViewManager have the ability to navigate to eachother.
-const Views = () => {
+// This is the root of our app with navigation
+const App = () => {
   <NavigationViewManager>
-    <NavigationView name='Home' component={Home} />
-    <NavigationView name='Details' component={Details} />
+    <NavigationViewManager>
+      <NavigationView name='Home' component={Home} />
+      <NavigationView name='Details' component={Details} />
+    </NavigationViewManager>
   </NavigationViewManager>;
 };
 
@@ -23,10 +25,15 @@ const Details = ({ name }) => (
 );
 
 // The Home View we want to navigate from
-const Home = () => {
+// Be sure to accept navigation as a prop to this component and pass it down to the navigation link
+const Home = ({ navigation }) => {
   return (
     <VStack>
-      <NavigationLink destination='Details' destinationProps={{ name: 'Joe' }}>
+      <NavigationLink
+        destination='Details'
+        destinationProps={{ name: 'Joe' }}
+        navigation={navigation}
+      >
         <Text>Details Page</Text>
       </NavigationLink>
     </VStack>

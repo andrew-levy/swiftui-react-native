@@ -18,6 +18,7 @@ const StyledListItemNavLink = styled.TouchableOpacity`
   background-color: white;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 `;
 

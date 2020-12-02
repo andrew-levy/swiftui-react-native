@@ -1,7 +1,6 @@
 import React, { createContext } from 'react';
 import styled from 'styled-components';
 import { Colors } from '../themes/colors';
-import { Fonts } from '../themes/fonts';
 
 type ListProps = {
   children: React.ReactElement<any>;
@@ -15,7 +14,8 @@ const insetGroupedListStyleItem = `
   padding-bottom: 10px;
   margin-left: 15px;
   padding-right: 15px;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   border-bottom-color: ${Colors.foreground.systemGrey6};
 `;
 
@@ -33,7 +33,6 @@ const defaultListStyleItem = `
   border-bottom-color: ${Colors.foreground.systemGrey6};
   margin-left: 15px;
   padding-right: 15px;
-  align-items: ${({ alignment }) => alignment || 'left'}
 `;
 
 const defaultListStyleWrapper = `
@@ -64,8 +63,9 @@ export const List = ({ listStyle, children }: ListProps) => {
       {React.Children.map(children, (child, i) => {
         return (
           <StyledListItem
+            key={i}
             last={
-              listStyle !== 'insetGrouped' &&
+              listStyle === 'insetGrouped' &&
               i === React.Children.toArray(children).length - 1
             }
             listStyle={listStyle}

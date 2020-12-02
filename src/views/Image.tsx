@@ -6,7 +6,7 @@ type ImageProps = {
 };
 
 export const Image: React.FC<ImageProps> = ({ name }) => {
-  return <RNImage source={null} />;
+  return <RNImage source={require('../assets/right-arrow.png')} />;
 };
 
 /* PROPS:

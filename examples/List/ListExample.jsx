@@ -3,7 +3,7 @@ import { List, Text } from 'swiftui-react-native';
 
 export const StaticListExample = () => {
   return (
-    <List listStyle='grouped'>
+    <List listStyle='insetGrouped'>
       <Text>Andrew</Text>
       <Text>Kendra</Text>
       <Text>Peter</Text>
@@ -16,7 +16,7 @@ export const StaticListExample = () => {
 export const DynamicListExample = () => {
   const names = ['Andrew', 'Kendra', 'Peter', 'Tyler', 'Teddy'];
   return (
-    <List listStyle='grouped'>
+    <List listStyle='insetGrouped'>
       {names.map((name) => (
         <Text>{name}</Text>
       ))}

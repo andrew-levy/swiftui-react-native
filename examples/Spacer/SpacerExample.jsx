@@ -5,7 +5,7 @@ export const SpacerExample = () => {
   return (
     <VStack>
       <Text>Title</Text>
-      <Spacer />
+      <Spacer space={30} />
       <Text> Subtitle</Text>
       <HStack>
         <Button text='Sign In' action={() => console.log('sign in')} />

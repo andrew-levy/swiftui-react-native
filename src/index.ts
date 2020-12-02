@@ -23,3 +23,4 @@ export * from './views/NavigationView';
 
 export * from './hooks/useOnAppear';
 export * from './hooks/useOnDisappear';
+export * from './hooks/useAlert';
