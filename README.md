@@ -50,7 +50,7 @@ Run `npm run build` to generate a `dist/` folder, then run `npm run watch` while
 
 Install the package like this:
 
-`npm i swiftui-react-native`
+`yarn add swiftui-react-native`
 
 Import the components you need like this:
 

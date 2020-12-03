@@ -4,18 +4,18 @@ import { Colors } from '../themes/colors';
 
 type ListProps = {
   children: React.ReactElement<any>;
-  listStyle?: 'insetGrouped' | 'plain' | 'default' | 'inset' | 'grouped';
+  listStyle?: 'insetGrouped' | 'grouped';
 };
 
-const insetGroupedListStyleItem = `
+const insetGroupedListStyleItem = ({ index, total }) => `
   background-color: white;
   text-align: left;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 15px;
   padding-right: 15px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: ${index === 0 ? '10px' : '0px'};
+  border-bottom-right-radius: ${index === total ? '10px' : '0px'};
   border-bottom-color: ${Colors.foreground.systemGrey6};
 `;
 
@@ -25,7 +25,7 @@ const insetGroupedListStyleWrapper = `
   border-radius: 10px;
 `;
 
-const defaultListStyleItem = `
+const defaultListStyleItem = (props) => `
   background-color: white;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -41,10 +41,10 @@ const defaultListStyleWrapper = `
 `;
 
 const StyledListItem = styled.View`
-  ${({ listStyle }) =>
-    listStyle === 'insetGrouped'
-      ? insetGroupedListStyleItem
-      : defaultListStyleItem}
+  ${(props) =>
+    props.listStyle === 'insetGrouped'
+      ? insetGroupedListStyleItem(props)
+      : defaultListStyleItem(props)}
   border-bottom-width: ${({ last }) => (last ? '0' : '1')}px;
 `;
 
@@ -64,6 +64,8 @@ export const List = ({ listStyle, children }: ListProps) => {
         return (
           <StyledListItem
             key={i}
+            index={i}
+            total={React.Children.toArray(children).length - 1}
             last={
               listStyle === 'insetGrouped' &&
               i === React.Children.toArray(children).length - 1

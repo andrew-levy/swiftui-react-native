@@ -36,7 +36,7 @@ export const NavigationLink = ({
         onPress={() => navigation.navigate(destination, distinationProps)}
       >
         {text ? <Text>{text}</Text> : children}
-        <Image name='' />
+        <Image name='right-arrow' />
       </StyledListItemNavLink>
     );
   }

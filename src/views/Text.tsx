@@ -19,10 +19,10 @@ const StyledText = styled.Text`
     shadow,
   }) =>
     `color: ${
-      buttonChild
-        ? `${Colors.foreground.buttonText}`
-        : foregroundColor
+      foregroundColor
         ? Colors.foreground[foregroundColor] || Colors.foreground.black
+        : buttonChild
+        ? `${Colors.foreground.buttonText}`
         : Colors.foreground.black
     }
 		font-size: ${fontSize ? fontSize : '18'}px;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { Padding, Shadow } from '../types/stylePropTypes';
+import { Text } from './Text';
 
 type ButtonProps = {
   action?: () => void;
@@ -46,25 +47,22 @@ const buttonStyles = `${({
 const StyledButtonOpacity = styled.TouchableOpacity`
   ${buttonStyles}
 `;
-const StyledButton = styled.Button`
-  ${buttonStyles}
-`;
 
 export const Button = ({ action, text, children }: ButtonProps) => {
   return (
     <>
-      {text ? (
-        <StyledButton title={text} onPress={action} buttonChild={true} />
-      ) : (
-        <StyledButtonOpacity onPress={action}>
-          {React.Children.map(children, (child) =>
+      <StyledButtonOpacity onPress={action}>
+        {text ? (
+          <Text>{text}</Text>
+        ) : (
+          React.Children.map(children, (child) =>
             React.cloneElement(child, {
               ...child.props,
               buttonChild: true,
             })
-          )}
-        </StyledButtonOpacity>
-      )}
+          )
+        )}
+      </StyledButtonOpacity>
     </>
   );
 };

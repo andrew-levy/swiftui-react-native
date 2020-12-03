@@ -2,7 +2,7 @@ import React from 'react';
 
 export type NavigationViewProps = {
   name: string;
-  component: React.ComponentType<any>;
+  view: React.ComponentType<any>;
   options: object;
 };
 

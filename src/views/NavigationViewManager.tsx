@@ -17,7 +17,7 @@ export const NavigationViewManager = ({
       {React.Children.map(children, (child) => (
         <Stack.Screen
           name={child.props.name}
-          component={child.props.component}
+          component={child.props.view}
           options={child.props.options}
         />
       ))}
