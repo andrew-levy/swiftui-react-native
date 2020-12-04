@@ -1,8 +1,14 @@
 export type Padding =
-  | number
-  | [string, number]
-  | [Array<string>, Array<number>]
-  | [Array<string>, number];
+  | {
+      leading?: number;
+      top?: number;
+      bottom?: number;
+      trailing?: number;
+      horizontal?: number;
+      vertical?: number;
+      all?: number;
+    }
+  | number;
 
 export type Alignment = 'leading' | 'center' | 'trailing' | 'top' | 'bottom';
 

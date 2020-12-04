@@ -18,7 +18,7 @@ export const Spacer: React.FC<SpacerProps> = ({ direction, space }) => {
   return <StyledSpacer direction={direction} space={space} />;
 };
 
-/* PROPS:
- * direction
- * space
- */
+// TODO: Use context from the H/V Stacks to automatically choose direction.
+// const directionFromStack = useContext(SpacerDirectionContext);
+// ...
+// <StyledSpacer direction={direction || directionFromStack || 'vertical'} space={space} />

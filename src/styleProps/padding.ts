@@ -51,25 +51,11 @@ const formatPaddingStyles = (values: Array<number>) => {
 
 export const getPaddingFromProps = (paddingProps: Padding) => {
   const values = Array(4).fill(0);
+  if (!paddingProps) return values;
   if (typeof paddingProps === 'number')
     return formatPaddingStyles(Array(4).fill(paddingProps));
-  if (Array.isArray(paddingProps) && paddingProps.length === 2) {
-    const [selectors, value] = paddingProps;
-    if (Array.isArray(selectors)) {
-      if (Array.isArray(value)) {
-        selectors.forEach((selector, i) => {
-          getPaddingValue(selector, value[i], values);
-        });
-      } else {
-        selectors.forEach((selector) => {
-          getPaddingValue(selector, value, values);
-        });
-      }
-    } else if (typeof selectors === 'string') {
-      if (typeof value === 'number') {
-        getPaddingValue(selectors, value, values);
-      }
-    }
-  }
+  Object.keys(paddingProps).forEach((key) => {
+    getPaddingValue(key, paddingProps[key], values);
+  });
   return formatPaddingStyles(values);
 };

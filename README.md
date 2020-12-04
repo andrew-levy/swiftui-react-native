@@ -44,7 +44,7 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 
 ## Contribution
 
-Run `npm run build` to generate a `dist/` folder, then run `npm run watch` while developing.
+Run `yarn build` to generate a `dist/` folder, then run `yarn watch` while developing.
 
 ## Usage
 
@@ -65,7 +65,7 @@ return (
   <VStack
     aligment='leading'
     background='systemGray6'
-    padding={['leading', 30]}
+    padding={{ leading: 30 }}
     cornerRadius={20}
   >
     <Text font='title'>Some cool text</Text>
@@ -87,7 +87,7 @@ var body: some View {
     }
   }.background(Color(UIColor.systemGray6))
    .cornerRadius(20)
-   .padding(30)
+   .padding(.leading, 30)
 }
 ```
 

@@ -16,7 +16,7 @@ export const TabView = ({ options, children }: TabViewProps) => {
       {React.Children.map(children, (child) => (
         <Tabs.Screen
           name={child.props.name}
-          component={child.props.component}
+          component={child.props.view}
           options={child.props.options}
         />
       ))}
