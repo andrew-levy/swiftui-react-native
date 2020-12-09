@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { Alignment, Frame, Padding } from '../types/stylePropTypes';
 import { getFlexFromProps } from '../styleProps/frame';
 import { Spacer } from './Spacer';
+import { UIColor } from '../themes/colors';
 
 type HStackProps = {
   background?: string;
@@ -21,9 +21,7 @@ const StyledHStack = styled.View`
   ${({ background, alignment, cornerRadius, padding, frame, width }) => `
     flex-direction: row;
     background-color: ${
-      background
-        ? Colors.background[background] || Colors.background.white
-        : Colors.background.white
+      background ? background || UIColor.white : UIColor.white
     };
     align-items: ${
       alignment

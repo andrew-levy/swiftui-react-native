@@ -64,7 +64,7 @@ And display them like this:
 return (
   <VStack
     aligment='leading'
-    background='systemGray6'
+    background={UIColor.systemGray6}
     padding={{ leading: 30 }}
     cornerRadius={20}
   >

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../themes/colors';
+import { UIColor } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { Padding, Shadow } from '../types/stylePropTypes';
 import { Text } from './Text';
@@ -28,11 +28,7 @@ const buttonStyles = `${({
   frame,
   width,
 }) => `
-  background-color: ${
-    background
-      ? Colors.background[background] || Colors.background.white
-      : Colors.background.white
-  };
+  background-color: ${background ? background || UIColor.white : UIColor.white};
   align-items: ${
     alignment
       ? Fonts.alignment[alignment] || Fonts.alignment.center
@@ -53,6 +49,7 @@ export const Button = ({ action, text, children }: ButtonProps) => {
     <>
       <StyledButtonOpacity onPress={action}>
         {text ? (
+          // Send in props from button to text
           <Text>{text}</Text>
         ) : (
           React.Children.map(children, (child) =>

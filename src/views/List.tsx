@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 import styled from 'styled-components';
-import { Colors } from '../themes/colors';
+import { UIColor } from '../themes/colors';
 
 type ListProps = {
   children: React.ReactElement<any>;
@@ -16,7 +16,7 @@ const insetGroupedListStyleItem = ({ index, total }) => `
   padding-right: 15px;
   border-top-right-radius: ${index === 0 ? '10px' : '0px'};
   border-bottom-right-radius: ${index === total ? '10px' : '0px'};
-  border-bottom-color: ${Colors.foreground.systemGrey6};
+  border-bottom-color: ${UIColor.systemGray6};
 `;
 
 const insetGroupedListStyleWrapper = `
@@ -30,7 +30,7 @@ const defaultListStyleItem = (props) => `
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: left;
-  border-bottom-color: ${Colors.foreground.systemGrey6};
+  border-bottom-color: ${UIColor.systemGray6};
   margin-left: 15px;
   padding-right: 15px;
 `;

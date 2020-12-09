@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from './Text';
 import styled from 'styled-components';
-import { Colors } from '../themes/colors';
+import { UIColor } from '../themes/colors';
 import { Animated, Easing } from 'react-native';
 
 type PickerProps = {
@@ -11,7 +11,7 @@ type PickerProps = {
 };
 
 const StyledPickerWrapper = styled.View`
-  background-color: ${Colors.background.systemGrey6};
+  background-color: ${UIColor.systemGray6};
   border-radius: 6px;
   flex-direction: row;
   padding: 3px;
@@ -25,8 +25,6 @@ const StyledPickerItem = styled.TouchableOpacity`
   justify-content: center;
   flex-basis: ${({ count }) => `${100 / count}%`};
 `;
-// border-right-color: ${Colors.foreground.systemGrey5}
-// border-right-width: ${({ last }) => (last ? '0' : '1')}px;
 
 export const Picker = ({ items, selected, onSelect }: PickerProps) => {
   const [dimensions, setDimensions] = useState(null);

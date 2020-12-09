@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../themes/colors';
+import { UIColor } from '../themes/colors';
 
 type TextFieldProps = {
   placeholder?: string;
@@ -10,7 +10,7 @@ type TextFieldProps = {
 };
 
 const StyledTextFieldDefault = styled.TextInput`
-  border-bottom-color: ${Colors.background.systemGrey6};
+  border-bottom-color: ${UIColor.systemGray6};
   border-bottom-width: 1px;
   width: 80%;
   padding-bottom: 10px;
@@ -19,13 +19,13 @@ const StyledTextFieldDefault = styled.TextInput`
 `;
 
 const StyledTextFieldBox = styled.TextInput`
-  background-color: ${Colors.background.systemGrey6};
+  background-color: ${UIColor.systemGray6};
   border-radius: 6px;
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 10px;
   padding-right: 10px;
-  color: ${Colors.foreground.black};
+  color: ${UIColor.black};
   width: ${({ width }) => width || '80%'};
 `;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../themes/colors';
+import { UIColor } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { getPaddingFromProps } from '../styleProps/padding';
 import { getShadowFromProps } from '../styleProps/shadow';
@@ -20,10 +20,10 @@ const StyledText = styled.Text`
   }) =>
     `color: ${
       foregroundColor
-        ? Colors.foreground[foregroundColor] || Colors.foreground.black
+        ? foregroundColor || UIColor.black
         : buttonChild
-        ? `${Colors.foreground.buttonText}`
-        : Colors.foreground.black
+        ? `${UIColor.systemBlue}`
+        : UIColor.black
     }
 		font-size: ${fontSize ? fontSize : '18'}px;
 		font-weight: ${

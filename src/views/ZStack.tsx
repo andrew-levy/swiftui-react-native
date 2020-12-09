@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Colors } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { Alignment, Frame, Padding } from '../types/stylePropTypes';
 import { getFlexFromProps } from '../styleProps/frame';
+import { UIColor } from '../themes/colors';
 
 type ZStackProps = {
   background?: string;
@@ -19,9 +19,7 @@ type ZStackProps = {
 const StyledZStack = styled.View`
   ${({ background, alignment, cornerRadius, padding, frame, width }) => `
     background-color: ${
-      background
-        ? Colors.background[background] || Colors.background.white
-        : Colors.background.white
+      background ? background || UIColor.white : UIColor.white
     };
 		justify-content: center;
 		border-radius: ${cornerRadius || 0};

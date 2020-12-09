@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { Text } from './Text';
 import { Image } from './Image';
 import styled from 'styled-components';
+import { HStack } from './HStack';
 
 type NavigationLinkProps = {
   navigation: StackNavigationProp<any, any>;
@@ -16,8 +17,6 @@ type NavigationLinkProps = {
 
 const StyledListItemNavLink = styled.TouchableOpacity`
   background-color: white;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
 `;
@@ -35,8 +34,10 @@ export const NavigationLink = ({
       <StyledListItemNavLink
         onPress={() => navigation.navigate(destination, distinationProps)}
       >
-        {text ? <Text>{text}</Text> : children}
-        <Image name='right-arrow' />
+        <HStack>
+          {text ? <Text>{text}</Text> : children}
+          <Image name='right-arrow' width={11} height={11} />
+        </HStack>
       </StyledListItemNavLink>
     );
   }
