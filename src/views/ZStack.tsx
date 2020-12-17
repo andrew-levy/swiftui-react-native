@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Fonts } from '../themes/fonts';
 import { Alignment, Frame, Padding } from '../types/stylePropTypes';
-import { getFlexFromProps } from '../styleProps/frame';
+import { getFrameFromProps } from '../styleProps/frame';
 import { UIColor } from '../themes/colors';
 
 type ZStackProps = {
@@ -23,9 +22,8 @@ const StyledZStack = styled.View`
     };
 		justify-content: center;
 		border-radius: ${cornerRadius || 0};
-		padding: ${padding || 0}
-    width: ${width || '100'}%;
-    ${getFlexFromProps(frame)}
+		padding: ${padding || 0};
+    ${getFrameFromProps(frame)}
   `}
 `;
 

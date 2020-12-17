@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { Text } from './Text';
 import styled from 'styled-components';
 import { UIColor } from '../themes/colors';
 import { Animated, Easing } from 'react-native';
+import { List } from './List';
+import { HStack } from './HStack';
+import { Image } from './Image';
+import { Button } from './Button';
 
 type PickerProps = {
   items: Array<string>;
-  selected?: number;
+  selection?: number;
   onSelect: (n: number) => void;
+  pickerStyle: 'grouped' | 'insetGrouped' | 'slide' | 'wheel';
 };
 
 const StyledPickerWrapper = styled.View`
@@ -26,21 +31,28 @@ const StyledPickerItem = styled.TouchableOpacity`
   flex-basis: ${({ count }) => `${100 / count}%`};
 `;
 
-export const Picker = ({ items, selected, onSelect }: PickerProps) => {
+const { Value, timing } = Animated;
+
+export const Picker = ({
+  items,
+  selection,
+  onSelect,
+  pickerStyle,
+}: PickerProps) => {
   const [dimensions, setDimensions] = useState(null);
-  const [translateX, setTranslateX] = useState(new Animated.Value(0));
+  const [translateX, setTranslateX] = useState(new Value(0));
 
   useEffect(() => {
     if (dimensions) {
-      let start = (dimensions.width / items.length) * selected;
-      if (selected === 0) start += 2;
-      if (selected === items.length - 1) start -= 2;
+      let start = (dimensions.width / items.length) * selection;
+      if (selection === 0) start += 2;
+      if (selection === items.length - 1) start -= 2;
       slide(start);
     }
-  }, [dimensions, selected]);
+  }, [dimensions, selection]);
 
   const slide = (slideValue) => {
-    Animated.timing(translateX, {
+    timing(translateX, {
       toValue: slideValue,
       duration: 200,
       easing: Easing.inOut(Easing.ease),
@@ -69,6 +81,27 @@ export const Picker = ({ items, selected, onSelect }: PickerProps) => {
       },
     ],
   };
+
+  if (pickerStyle === 'insetGrouped' || pickerStyle === 'grouped') {
+    const listItems = items.map((item, i) => (
+      <Button action={() => onSelect(i)}>
+        <HStack>
+          <Text>{item}</Text>
+          {selection === i ? (
+            <Image name='check-mark' width={15} height={15} />
+          ) : null}
+        </HStack>
+      </Button>
+    )) as any;
+
+    return (
+      <List
+        listStyle={pickerStyle === 'insetGrouped' ? 'insetGrouped' : 'grouped'}
+      >
+        {listItems}
+      </List>
+    );
+  }
 
   return (
     <>

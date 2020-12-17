@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Fonts } from '../themes/fonts';
 import { Alignment, Frame, Padding } from '../types/stylePropTypes';
-import { getFlexFromProps } from '../styleProps/frame';
+import { getFrameFromProps } from '../styleProps/frame';
 import { Spacer } from './Spacer';
 import { UIColor } from '../themes/colors';
 
@@ -30,9 +30,8 @@ const StyledHStack = styled.View`
     };
     justify-content: space-between;
     border-radius: ${cornerRadius || 0};
-    padding: ${padding || 0}
-    width: ${width || '100'}%;
-    ${getFlexFromProps(frame)}
+    padding: ${padding || 0};
+    ${getFrameFromProps(frame)}
 `}
 `;
 

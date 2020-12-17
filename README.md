@@ -1,6 +1,6 @@
 # swiftui-react-native
 
-:exclamation::exclamation: This project is new and is currently being worked on. Most views aren't complete but will be in time! :exclamation::exclamation:
+:exclamation::exclamation: This project is new and has not reached a stable release yet. Working to complete all features soon! :exclamation::exclamation:
 
 <img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/readme.png?raw=true" />
 
@@ -23,10 +23,11 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 - **Link:** An external link redirecting to the browser
 - **Spacer:** Space in between views (horizontal or vertical)
 - **Text:** A text element
-- **TextField:** A text input element
+- **TextField:** A styled text input element
 - **Label:** An element with text and an icon/image
 - **Toggle:** An toggle element to switch something on/off
-- **Picker:** A horizontal picker element
+- **Picker:** A styled selection element
+- **RoundedRectangle:** You guessed it, a rounded rectangle
 
 ### Views/Lists :pencil: :scroll:
 

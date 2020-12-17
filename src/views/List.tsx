@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { UIColor } from '../themes/colors';
 
@@ -6,7 +6,6 @@ type ListProps = {
   children: React.ReactElement<any>;
   listStyle?: 'insetGrouped' | 'grouped';
 };
-
 const insetGroupedListStyleItem = ({ index, total }) => `
   background-color: white;
   text-align: left;
@@ -54,8 +53,6 @@ const StyledListWrapper = styled.View`
       ? insetGroupedListStyleWrapper
       : defaultListStyleWrapper}
 `;
-
-export const ListItemContext = createContext(null);
 
 export const List = ({ listStyle, children }: ListProps) => {
   return (

@@ -11,6 +11,7 @@ export * from './views/TextField';
 export * from './views/Label';
 export * from './views/Toggle';
 export * from './views/Picker';
+export * from './views/RoundedRectangle';
 
 export * from './views/VStack';
 export * from './views/HStack';
