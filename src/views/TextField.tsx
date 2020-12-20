@@ -48,23 +48,27 @@ export const TextField: React.FC<TextFieldProps> = ({
   const [opacity, setOpacity] = useState(new Value(0));
 
   const animatePlaceholder = () => {
+    const translateYTo = text === '' ? 20 : 0;
+    const opacityTo = text === '' ? 0 : 1;
     timing(translateY, {
-      toValue: text === '' ? 20 : 0,
-      duration: 100,
-      easing: Easing.inOut(Easing.ease),
+      toValue: translateYTo,
+      duration: 200,
+      easing: Easing.ease,
       useNativeDriver: true,
     }).start();
     timing(opacity, {
-      toValue: text === '' ? 0 : 1,
-      duration: 100,
-      easing: Easing.inOut(Easing.ease),
+      toValue: opacityTo,
+      duration: 150,
+      easing: Easing.ease,
       useNativeDriver: true,
     }).start();
   };
 
   useEffect(() => {
-    animatePlaceholder();
-  }, [text]);
+    if (textFieldStyle === 'underline') {
+      animatePlaceholder();
+    }
+  }, [text, textFieldStyle]);
 
   if (textFieldStyle === 'underline') {
     return (
