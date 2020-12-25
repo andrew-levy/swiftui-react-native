@@ -1,7 +1,7 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import { NavigationViewProps } from './NavigationView';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Animated } from 'react-native';
+import { Animated, Dimensions } from 'react-native';
 import { VStack } from './VStack';
 import { Text } from './Text';
 import { UIColor } from '../themes/colors';
@@ -19,6 +19,8 @@ export const NavigationViewManager = ({
   children,
 }: NavigationViewManagerProps) => {
   const scrollValue = new Animated.Value(0);
+  const wWidth = Dimensions.get('window').width;
+  const [textWidth, setTextWidth] = useState(0);
 
   const inlineStyle = {
     // TODO
@@ -32,6 +34,83 @@ export const NavigationViewManager = ({
   const largeStyle = {
     shadowColor: 'transparent',
   };
+  const animatedLargeStyle = {
+    shadowOpacity: scrollValue.interpolate({
+      inputRange: [40, 49.99, 50],
+      outputRange: [0, 0.5, 1],
+    }),
+  };
+
+  const AnimatedLarge = (title, child) => (
+    <Animated.Text
+      onLayout={(e) => setTextWidth(e.nativeEvent.layout.width)}
+      style={{
+        // ...titleStyles,
+        fontWeight: '600',
+        fontSize: 16,
+        transform: [
+          {
+            scale: scrollValue.interpolate({
+              inputRange: [-10, 0, 50],
+              outputRange: [1.65, 1.6, 1],
+              extrapolate: 'clamp',
+            }),
+          },
+          {
+            translateX: scrollValue.interpolate({
+              inputRange: [0, 50],
+              outputRange: [
+                title
+                  ? -wWidth / 3 + textWidth / 2 + 20
+                  : -wWidth / 3 + textWidth / 2 + 20,
+                0,
+              ],
+              extrapolate: 'clamp',
+            }),
+          },
+          {
+            translateY: scrollValue.interpolate({
+              inputRange: [0, 50],
+              outputRange: [30, 0],
+              extrapolate: 'clamp',
+            }),
+          },
+        ],
+      }}
+    >
+      {title || child.props.name}
+    </Animated.Text>
+  );
+
+  const Large = (title, child) => (
+    <VStack background={UIColor.white} alignment='leading'>
+      <Text alignment='leading' fontWeight='bold' fontSize={26}>
+        {title || child.props.name}
+      </Text>
+    </VStack>
+  );
+
+  const AnimatedInline = (title, child) => (
+    <Animated.Text
+      style={{
+        // ...titleStyles,
+        fontWeight: '600',
+        fontSize: 16,
+        opacity: scrollValue.interpolate({
+          inputRange: [57, 59.99, 60],
+          outputRange: [0, 0.5, 1],
+        }),
+      }}
+    >
+      {title || child.props.name}
+    </Animated.Text>
+  );
+
+  const Inline = (title, child) => (
+    <Text fontWeight='bold'>{title || child.props.name}</Text>
+  );
+
+  const Default = (title, child) => <Text>{title || child.props.name}</Text>;
 
   return (
     <HeaderScrollContext.Provider value={scrollValue}>
@@ -67,44 +146,15 @@ export const NavigationViewManager = ({
                         : () => {
                             switch (displayMode) {
                               case 'inline':
-                                return (
-                                  <Text fontWeight='bold'>
-                                    {title || child.props.name}
-                                  </Text>
-                                );
+                                return Inline(title, child);
                               case 'animated-inline':
-                                return (
-                                  <Animated.Text
-                                    style={{
-                                      // ...titleStyles,
-                                      fontWeight: '600',
-                                      fontSize: 16,
-                                      opacity: scrollValue.interpolate({
-                                        inputRange: [57, 59.99, 60],
-                                        outputRange: [0, 0.5, 1],
-                                      }),
-                                    }}
-                                  >
-                                    {title || child.props.name}
-                                  </Animated.Text>
-                                );
+                                return AnimatedInline(title, child);
                               case 'large':
-                                return (
-                                  <VStack
-                                    background={UIColor.white}
-                                    alignment='leading'
-                                  >
-                                    <Text
-                                      alignment='leading'
-                                      fontWeight='bold'
-                                      fontSize={26}
-                                    >
-                                      {title || child.props.name}
-                                    </Text>
-                                  </VStack>
-                                );
+                                return Large(title, child);
+                              case 'animated-large':
+                                return AnimatedLarge(title, child);
                               default:
-                                return <Text>{title}</Text>;
+                                return Default(title, child);
                             }
                           },
                     },
@@ -122,6 +172,8 @@ export const NavigationViewManager = ({
                         ...(displayMode === 'animated-inline' &&
                           animatedInlineStyle),
                         ...(displayMode === 'large' && largeStyle),
+                        ...(displayMode === 'animated-large' &&
+                          animatedLargeStyle),
                       } || null,
                   }
                 );
@@ -133,23 +185,3 @@ export const NavigationViewManager = ({
     </HeaderScrollContext.Provider>
   );
 };
-
-// const forHeaderAnimation: StackHeaderStyleInterpolator = (props) => {
-// const backgrounColor = scrollValue.interpolate({
-//   inputRange: [0, 10],
-//   outputRange: ['transparent', UIColor.systemGray3],
-// });
-
-//   return {
-//     leftButtonStyle: {},
-//     rightButtonStyle: {},
-//     titleStyle: {},
-//     backgroundStyle: { backgrounColor },
-//   };
-// };
-
-// useCode(() => {
-//   return call([scrollValue], (scrollValue) => {
-//     console.log(scrollValue);
-//   });
-// }, [scrollValue]);

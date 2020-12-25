@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { UIColor } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
-import { Padding, Shadow } from '../types/stylePropTypes';
+import { Alignment, Padding, Shadow } from '../types/stylePropTypes';
 import { Text } from './Text';
 
-type ButtonProps = {
+export type ButtonProps = {
   action?: () => void;
   disabled?: boolean;
   text?: string;
@@ -18,36 +18,26 @@ type ButtonProps = {
   fontWeight?: number;
   foregroundColor?: string;
   children?: React.ReactElement<any>;
+  alignment?: Alignment;
 };
 
-const buttonStyles = `${({
-  background,
-  alignment,
-  cornerRadius,
-  padding,
-  frame,
-  width,
-}) => `
-  background-color: ${background ? background || UIColor.white : UIColor.white};
-  align-items: ${
+const StyledButtonOpacity = styled.TouchableOpacity`
+  background-color: ${({ background }) =>
+    background ? background || UIColor.white : UIColor.white};
+  align-items: ${({ alignment }) =>
     alignment
       ? Fonts.alignment[alignment] || Fonts.alignment.center
-      : Fonts.alignment.center
-  };
+      : Fonts.alignment.center};
   justify-content: center;
-  border-radius: ${cornerRadius || 0};
-  padding: ${padding || 0}
-  width: ${width || '100'}%;
-`}`;
-
-const StyledButtonOpacity = styled.TouchableOpacity`
-  ${buttonStyles}
+  border-radius: ${({ cornerRadius }) => cornerRadius || 0};
+  padding: ${({ padding }) => padding || 0}
+  width: ${({ width }) => width || '100'}%;
 `;
 
-export const Button = ({ action, text, children }: ButtonProps) => {
+export const Button = ({ action, text, children, ...props }: ButtonProps) => {
   return (
     <>
-      <StyledButtonOpacity onPress={action}>
+      <StyledButtonOpacity onPress={action} {...props}>
         {text ? (
           // Send in props from button to text
           <Text>{text}</Text>
@@ -55,7 +45,7 @@ export const Button = ({ action, text, children }: ButtonProps) => {
           React.Children.map(children, (child) =>
             React.cloneElement(child, {
               ...child.props,
-              buttonChild: true,
+              ...{ buttonChild: true },
             })
           )
         )}

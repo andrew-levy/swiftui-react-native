@@ -3,14 +3,13 @@ import React from 'react';
 export type NavigationViewProps = {
   name: string;
   view: React.ComponentType<any>;
-  options: object;
   navigationBar?: NavigationBar;
 };
 
-type NavigationBar = {
+export type NavigationBar = {
   disabled?: boolean;
   title?: string;
-  displayMode?: 'inline' | 'large' | 'animated-inline';
+  displayMode?: 'inline' | 'large' | 'animated-inline' | 'animated-large';
   backgroundStyle?: object;
   foregroundColor?: string;
   leading?: () => React.ReactElement<any>;

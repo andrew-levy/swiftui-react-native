@@ -53,6 +53,10 @@ Install the package like this:
 
 `yarn add swiftui-react-native`
 
+and then these if you don't have them installed already:
+
+`yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+
 Import the components you need like this:
 
 ```javascript

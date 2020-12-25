@@ -11,11 +11,11 @@ const insetGroupedListStyleItem = ({ index, total }) => `
   text-align: left;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-left: 15px;
+  margin-left: 20px;
   padding-right: 15px;
   border-top-right-radius: ${index === 0 ? '10px' : '0px'};
   border-bottom-right-radius: ${index === total ? '10px' : '0px'};
-  border-bottom-color: ${UIColor.systemGray6};
+  border-bottom-color: ${UIColor.systemGray5};
 `;
 
 const insetGroupedListStyleWrapper = `
@@ -29,8 +29,8 @@ const defaultListStyleItem = (props) => `
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: left;
-  border-bottom-color: ${UIColor.systemGray6};
-  margin-left: 15px;
+  border-bottom-color: ${UIColor.systemGray5};
+  margin-left: 20px;
   padding-right: 15px;
 `;
 
@@ -44,7 +44,6 @@ const StyledListItem = styled.View`
     props.listStyle === 'insetGrouped'
       ? insetGroupedListStyleItem(props)
       : defaultListStyleItem(props)}
-  border-bottom-width: ${({ last }) => (last ? '0' : '1')}px;
 `;
 
 const StyledListWrapper = styled.View`
@@ -54,27 +53,34 @@ const StyledListWrapper = styled.View`
       : defaultListStyleWrapper}
 `;
 
+const Divider = styled.View`
+  border-bottom-width: 0.8px;
+  border-bottom-color: ${UIColor.systemGray5};
+  margin-left: 20px;
+`;
+
 export const List = ({ listStyle, children }: ListProps) => {
   return (
     <StyledListWrapper listStyle={listStyle}>
       {React.Children.map(children, (child, i) => {
+        const totalChildren = React.Children.toArray(children).length - 1;
         return (
-          <StyledListItem
-            key={i}
-            index={i}
-            total={React.Children.toArray(children).length - 1}
-            last={
-              listStyle === 'insetGrouped' &&
-              i === React.Children.toArray(children).length - 1
-            }
-            listStyle={listStyle}
-            aligment={child.props.aligment}
-          >
-            {React.cloneElement(child, {
-              ...child.props,
-              listItem: true,
-            })}
-          </StyledListItem>
+          <>
+            <StyledListItem
+              key={i}
+              index={i}
+              total={totalChildren}
+              last={listStyle === 'insetGrouped' && i === totalChildren}
+              listStyle={listStyle}
+              aligment={child.props.aligment}
+            >
+              {React.cloneElement(child, {
+                ...child.props,
+                ...{ listItem: true },
+              })}
+            </StyledListItem>
+            {i !== totalChildren && <Divider />}
+          </>
         );
       })}
     </StyledListWrapper>

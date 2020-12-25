@@ -10,8 +10,8 @@ type RoundedRectangleProps = {
 
 const StyledRoundedRectangle = styled.View`
   background-color: ${({ fill }) => fill};
-  width: ${({ frame }) => (frame && frame.width ? frame.width : 20)};
-  height: ${({ frame }) => (frame && frame.height ? frame.height : 20)};
+  width: ${({ frame }) => (frame && frame.width ? frame.width : 20)}px;
+  height: ${({ frame }) => (frame && frame.height ? frame.height : 20)}px;
   border-color: ${UIColor.systemGray5};
   border-radius: 3px;
   border-width: 0.5px;

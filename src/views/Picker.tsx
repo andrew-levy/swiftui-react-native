@@ -9,7 +9,7 @@ import { Image } from './Image';
 import { Button } from './Button';
 
 type PickerProps = {
-  items: Array<string>;
+  items: Array<any>;
   selection?: number;
   onSelect: (n: number) => void;
   pickerStyle: 'grouped' | 'insetGrouped' | 'slide' | 'wheel';
@@ -84,7 +84,7 @@ export const Picker = ({
 
   if (pickerStyle === 'insetGrouped' || pickerStyle === 'grouped') {
     const listItems = items.map((item, i) => (
-      <Button action={() => onSelect(i)}>
+      <Button key={i} action={() => onSelect(i)}>
         <HStack>
           <Text>{item}</Text>
           {selection === i ? (
@@ -114,6 +114,7 @@ export const Picker = ({
               onPress={() => onSelect(i)}
               last={i === items.length - 1}
               count={items.length}
+              key={i}
             >
               <Text fontSize={14} fontWeight='bold'>
                 {item}
