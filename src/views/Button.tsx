@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { UIColor } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
-import { Alignment, Padding, Shadow } from '../types/stylePropTypes';
+import {
+  VerticalAlignment,
+  HorizontalAlignment,
+  Padding,
+  Shadow,
+} from '../types/stylePropTypes';
 import { Text } from './Text';
 
 export type ButtonProps = {
@@ -18,7 +23,7 @@ export type ButtonProps = {
   fontWeight?: number;
   foregroundColor?: string;
   children?: React.ReactElement<any>;
-  alignment?: Alignment;
+  alignment?: HorizontalAlignment | VerticalAlignment;
 };
 
 const StyledButtonOpacity = styled.TouchableOpacity`

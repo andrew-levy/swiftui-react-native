@@ -4,7 +4,12 @@ import { UIColor } from '../themes/colors';
 import { Fonts } from '../themes/fonts';
 import { getPaddingFromProps } from '../styleProps/padding';
 import { getShadowFromProps } from '../styleProps/shadow';
-import { Alignment, Padding, Shadow } from '../types/stylePropTypes';
+import {
+  VerticalAlignment,
+  HorizontalAlignment,
+  Padding,
+  Shadow,
+} from '../types/stylePropTypes';
 
 const StyledText = styled.Text`
   ${({
@@ -45,7 +50,7 @@ type TextProps = {
   fontSize?: number;
   foregroundColor?: string;
   fontWeight?: string;
-  alignment?: Alignment;
+  alignment?: VerticalAlignment | HorizontalAlignment;
   padding?: Padding;
   cornerRadius?: number;
   shadow?: Shadow;

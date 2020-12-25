@@ -47,15 +47,25 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 
 Run `yarn build` to generate a `dist/` folder, then run `yarn watch` while developing.
 
-## Usage
+## Installation
 
-Install the package like this:
+Install the package in your React Native project:
 
 `yarn add swiftui-react-native`
 
-and then these if you don't have them installed already:
+### Navigation Dependencies
+
+If you intend to use any of the navigation components, you will need to install these as well:
 
 `yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+
+Then run,
+
+`cd ios && pod install`
+
+Note: If you run into any error messages regarding RNGesutureHandler, try restarting the bundler and re-running `yarn ios`. Trying to fix this ASAP!
+
+## Usage
 
 Import the components you need like this:
 
@@ -98,7 +108,7 @@ var body: some View {
 
 ## Features
 
-- Components/Views
+- iOS Views
 - Custom Hooks
 - Native iOS themes and colors
 - Pre-styled components (`examples/`)

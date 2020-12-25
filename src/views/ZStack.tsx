@@ -1,12 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Alignment, Frame, Padding } from '../types/stylePropTypes';
+import {
+  VerticalAlignment,
+  HorizontalAlignment,
+  Frame,
+  Padding,
+} from '../types/stylePropTypes';
 import { getFrameFromProps } from '../styleProps/frame';
 import { UIColor } from '../themes/colors';
 
 type ZStackProps = {
   background?: string;
-  alignment?: Alignment;
+  alignment?: HorizontalAlignment | VerticalAlignment;
   padding?: Padding;
   spacing?: number;
   width?: number;
@@ -16,13 +21,13 @@ type ZStackProps = {
 };
 
 const StyledZStack = styled.View`
-  ${({ background, alignment, cornerRadius, padding, frame, width }) => `
+  ${({ background, alignment, cornerRadius, padding, frame }) => `
     background-color: ${
       background ? background || UIColor.white : UIColor.white
     };
 		justify-content: center;
-		border-radius: ${cornerRadius || 0};
-		padding: ${padding || 0};
+		border-radius: ${cornerRadius || 0}px;
+		padding: ${padding || 0}px;
     ${getFrameFromProps(frame)}
   `}
 `;
@@ -30,11 +35,11 @@ const StyledZStack = styled.View`
 export const ZStack = (props: ZStackProps) => {
   return (
     <StyledZStack {...props}>
-      {props.spacing && props.spacing !== 0
-        ? React.Children.map(props.children, (child, i) =>
-            React.cloneElement(child, { zIndex: i })
-          )
-        : props.children}
+      {React.Children.map(props.children, (child, i) =>
+        React.cloneElement(child, {
+          style: { zIndex: i, position: 'absolute' },
+        })
+      )}
     </StyledZStack>
   );
 };
