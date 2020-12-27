@@ -44,8 +44,8 @@ export const TextField: React.FC<TextFieldProps> = ({
   textFieldStyle,
   frame,
 }) => {
-  const [translateY, setTranslateY] = useState(new Value(0));
-  const [opacity, setOpacity] = useState(new Value(0));
+  const translateY = useState(new Value(0))[0];
+  const opacity = useState(new Value(0))[0];
 
   const animatePlaceholder = () => {
     const translateYTo = text === '' ? 20 : 0;
@@ -102,8 +102,3 @@ export const TextField: React.FC<TextFieldProps> = ({
     />
   );
 };
-
-/* PROPS:
- * textfield styles: default, plain, underline
- * + overrides
- */

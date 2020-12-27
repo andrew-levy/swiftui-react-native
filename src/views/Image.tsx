@@ -21,13 +21,3 @@ export const Image: React.FC<ImageProps> = ({ name, width, height }) => {
     />
   );
 };
-
-// TODO: Change this to a styled component for width and height
-/* PROPS:
- * clipShape
- * image
- * margin
- * border
- * hidden
- * shaddow radius
- */

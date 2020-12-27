@@ -58,15 +58,3 @@ export const Button = ({ action, text, children, ...props }: ButtonProps) => {
     </>
   );
 };
-
-/* PROPS:
- * font
- * font weight
- * font size
- * foreground color
- * background color
- * padding
- * margin
- * corner radius
- * shaddow radius
- */

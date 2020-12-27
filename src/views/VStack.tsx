@@ -49,5 +49,3 @@ export const VStack = (props: VStackProps) => {
     </StyledVStack>
   );
 };
-
-// Need to fix issue with flex: 1;

@@ -6,6 +6,7 @@ import { Frame } from '../types/stylePropTypes';
 type RoundedRectangleProps = {
   fill: string;
   frame: Frame;
+  cornerRadius?: number;
 };
 
 const StyledRoundedRectangle = styled.View`
@@ -13,13 +14,20 @@ const StyledRoundedRectangle = styled.View`
   width: ${({ frame }) => (frame && frame.width ? frame.width : 20)}px;
   height: ${({ frame }) => (frame && frame.height ? frame.height : 20)}px;
   border-color: ${UIColor.systemGray5};
-  border-radius: 3px;
+  border-radius: ${({ cornerRadius }) => cornerRadius || 3}px;
   border-width: 0.5px;
 `;
 
 export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
   fill,
   frame,
+  cornerRadius,
 }) => {
-  return <StyledRoundedRectangle fill={fill} frame={frame} />;
+  return (
+    <StyledRoundedRectangle
+      fill={fill}
+      frame={frame}
+      cornerRadius={cornerRadius}
+    />
+  );
 };

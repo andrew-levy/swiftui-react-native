@@ -18,7 +18,7 @@ type HStackProps = {
 };
 
 const StyledHStack = styled.View`
-  ${({ background, alignment, cornerRadius, padding, frame, width }) => `
+  ${({ background, alignment, cornerRadius, padding, frame }) => `
     flex-direction: row;
     background-color: ${
       background ? background || UIColor.white : UIColor.white

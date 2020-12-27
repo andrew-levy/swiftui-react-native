@@ -13,7 +13,3 @@ export const Link = ({ destination, text, children, ...props }: LinkProps) => (
     {children}
   </Button>
 );
-
-/* PROPS:
- * extends button
- */

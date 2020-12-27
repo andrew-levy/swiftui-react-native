@@ -53,7 +53,3 @@ export const NavigationLink = ({
     </Button>
   );
 };
-
-/* PROPS:
- * extends button props
- */

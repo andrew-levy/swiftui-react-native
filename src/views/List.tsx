@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { UIColor } from '../themes/colors';
 
 type ListProps = {
-  children: React.ReactElement<any>;
+  children: React.ReactElement<any> | Array<React.ReactElement<any>>;
   listStyle?: 'insetGrouped' | 'grouped';
 };
 const insetGroupedListStyleItem = ({ index, total }) => `
@@ -86,14 +86,3 @@ export const List = ({ listStyle, children }: ListProps) => {
     </StyledListWrapper>
   );
 };
-
-/* PROPS:
- * list style : grouped, plain, default, inset
- * + any overrides:
- * background
- * padding
- * margin
- * border
- * zindex
- * hidden
- */

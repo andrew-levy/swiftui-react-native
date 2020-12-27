@@ -23,15 +23,3 @@ export const TabView = ({ options, children }: TabViewProps) => {
     </Tabs.Navigator>
   );
 };
-
-{
-  /* <Tabs.Navigator screenOptions={options}>
-{tabs.map((tab) => (
-	<Tabs.Screen
-		name={tab.name}
-		component={tab.component}
-		options={tab.options}
-	/>
-))}
-</Tabs.Navigator> */
-}

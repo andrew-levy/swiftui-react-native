@@ -85,18 +85,3 @@ export const Text: React.FC<TextProps> = ({
     </StyledText>
   );
 };
-
-/* PROPS:
- * font
- * font weight
- * font size
- * foreground color
- * background
- * padding
- * margin
- * border
- * underline
- * italics
- * zindex
- * hidden
- */

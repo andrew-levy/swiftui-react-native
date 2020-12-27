@@ -1,19 +1,11 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { Text } from './Text';
+import React, { useEffect, useState } from 'react';
+import { Text } from '../Text';
 import styled from 'styled-components';
-import { UIColor } from '../themes/colors';
+import { UIColor } from '../../themes/colors';
 import { Animated, Easing } from 'react-native';
-import { List } from './List';
-import { HStack } from './HStack';
-import { Image } from './Image';
-import { Button } from './Button';
+import { PickerProps } from '../Picker';
 
-type PickerProps = {
-  items: Array<any>;
-  selection?: number;
-  onSelect: (n: number) => void;
-  pickerStyle: 'grouped' | 'insetGrouped' | 'slide' | 'wheel';
-};
+const { Value, timing } = Animated;
 
 const StyledPickerWrapper = styled.View`
   background-color: ${UIColor.systemGray6};
@@ -31,16 +23,10 @@ const StyledPickerItem = styled.TouchableOpacity`
   flex-basis: ${({ count }) => `${100 / count}%`};
 `;
 
-const { Value, timing } = Animated;
-
-export const Picker = ({
-  items,
-  selection,
-  onSelect,
-  pickerStyle,
-}: PickerProps) => {
+export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
   const [dimensions, setDimensions] = useState(null);
-  const [translateX, setTranslateX] = useState(new Value(0));
+  const translateX = useState(new Value(0))[0];
+  const opacities = items.map((item) => new Value(0));
 
   useEffect(() => {
     if (dimensions) {
@@ -48,8 +34,17 @@ export const Picker = ({
       if (selection === 0) start += 2;
       if (selection === items.length - 1) start -= 2;
       slide(start);
+      setOpacities();
     }
   }, [dimensions, selection]);
+
+  const setOpacities = () => {
+    items.forEach((item, i) => {
+      if (i === selection || i === selection - 1 || i === items.length - 1)
+        opacities[i].setValue(0);
+      else opacities[i].setValue(1);
+    });
+  };
 
   const slide = (slideValue) => {
     timing(translateX, {
@@ -82,26 +77,18 @@ export const Picker = ({
     ],
   };
 
-  if (pickerStyle === 'insetGrouped' || pickerStyle === 'grouped') {
-    const listItems = items.map((item, i) => (
-      <Button key={i} action={() => onSelect(i)}>
-        <HStack>
-          <Text>{item}</Text>
-          {selection === i ? (
-            <Image name='check-mark' width={15} height={15} />
-          ) : null}
-        </HStack>
-      </Button>
-    )) as any;
-
-    return (
-      <List
-        listStyle={pickerStyle === 'insetGrouped' ? 'insetGrouped' : 'grouped'}
-      >
-        {listItems}
-      </List>
-    );
-  }
+  const Divider = ({ index }) => (
+    <Animated.View
+      style={{
+        top: 5,
+        height: 15,
+        borderRightWidth: 1,
+        width: 0,
+        borderRightColor: UIColor.systemGray4,
+        opacity: opacities[index],
+      }}
+    />
+  );
 
   return (
     <>
@@ -110,16 +97,19 @@ export const Picker = ({
       >
         {items.length &&
           items.map((item, i) => (
-            <StyledPickerItem
-              onPress={() => onSelect(i)}
-              last={i === items.length - 1}
-              count={items.length}
-              key={i}
-            >
-              <Text fontSize={14} fontWeight='bold'>
-                {item}
-              </Text>
-            </StyledPickerItem>
+            <React.Fragment key={i}>
+              <StyledPickerItem
+                onPress={() => onSelect(i)}
+                last={i === items.length - 1}
+                count={items.length}
+                key={i}
+              >
+                <Text fontSize={14} fontWeight='bold'>
+                  {item}
+                </Text>
+              </StyledPickerItem>
+              <Divider index={i} />
+            </React.Fragment>
           ))}
         <Animated.View style={sliderStyle} />
       </StyledPickerWrapper>
