@@ -1,3 +1,8 @@
+/*
+ * Thank you @William Candillon for this awesome example found here:
+ * https://github.com/wcandillon/can-it-be-done-in-react-native/tree/31496696939aa94094e8ec499b113facc4e94e56/the-10-min/src/Picker
+ */
+
 import Animated, {
   Clock,
   Value,

@@ -18,7 +18,7 @@ type VStackProps = {
 };
 
 const StyledVStack = styled.View`
-  ${({ background, alignment, cornerRadius, padding, frame, width }) => `
+  ${({ background, alignment, cornerRadius, padding, frame }) => `
     background-color: ${
       background ? background || UIColor.white : UIColor.white
     };

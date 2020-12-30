@@ -1,5 +1,10 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet, Text, Dimensions } from 'react-native';
+/*
+ * Thank you @William Candillon for this awesome example found here:
+ * https://github.com/wcandillon/can-it-be-done-in-react-native/tree/31496696939aa94094e8ec499b113facc4e94e56/the-10-min/src/Picker
+ */
+
+import React from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 import Animated, {
   interpolate,
   Extrapolate,
@@ -13,7 +18,7 @@ import { useValue, translateZ } from 'react-native-redash/lib/module/v1';
 import MaskedView from '@react-native-community/masked-view';
 
 import GestureHandler from './GestureHandler';
-import { VISIBLE_ITEMS, ITEM_HEIGHT } from './Constants';
+import { VISIBLE_ITEMS, ITEM_HEIGHT, PERSPECTIVE } from './Constants';
 import { UIColor } from '../../themes/colors';
 import { PickerProps } from '.';
 
@@ -34,12 +39,11 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
   },
 });
-const perspective = 600;
+
 const RADIUS_REL = VISIBLE_ITEMS * 0.5;
 const RADIUS = RADIUS_REL * ITEM_HEIGHT;
 
 const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
-  useEffect(() => console.log(selection), [selection]);
   const translateY = useValue(0);
   const maskElement = (
     <Animated.View style={{ transform: [{ translateY }] }}>
@@ -61,9 +65,9 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
               styles.item,
               {
                 transform: [
-                  { perspective },
+                  { perspective: PERSPECTIVE },
                   { rotateX },
-                  translateZ(perspective, z),
+                  translateZ(PERSPECTIVE, z),
                 ],
               },
             ]}

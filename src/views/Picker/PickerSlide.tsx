@@ -26,7 +26,7 @@ const StyledPickerItem = styled.TouchableOpacity`
 export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
   const [dimensions, setDimensions] = useState(null);
   const translateX = useState(new Value(0))[0];
-  const opacities = items.map((item) => new Value(0));
+  const opacities = items.map((_) => new Value(0));
 
   useEffect(() => {
     if (dimensions) {
@@ -39,7 +39,7 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
   }, [dimensions, selection]);
 
   const setOpacities = () => {
-    items.forEach((item, i) => {
+    items.forEach((_, i) => {
       if (i === selection || i === selection - 1 || i === items.length - 1)
         opacities[i].setValue(0);
       else opacities[i].setValue(1);
@@ -77,19 +77,6 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
     ],
   };
 
-  const Divider = ({ index }) => (
-    <Animated.View
-      style={{
-        top: 5,
-        height: 15,
-        borderRightWidth: 1,
-        width: 0,
-        borderRightColor: UIColor.systemGray4,
-        opacity: opacities[index],
-      }}
-    />
-  );
-
   return (
     <>
       <StyledPickerWrapper
@@ -108,7 +95,16 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
                   {item}
                 </Text>
               </StyledPickerItem>
-              <Divider index={i} />
+              <Animated.View
+                style={{
+                  top: 5,
+                  height: 15,
+                  borderRightWidth: 1,
+                  width: 0,
+                  borderRightColor: UIColor.systemGray4,
+                  opacity: opacities[i],
+                }}
+              />
             </React.Fragment>
           ))}
         <Animated.View style={sliderStyle} />

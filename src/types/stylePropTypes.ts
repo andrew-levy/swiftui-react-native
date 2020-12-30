@@ -11,7 +11,7 @@ export type Padding =
   | number;
 
 export type VerticalAlignment = 'leading' | 'center' | 'trailing';
-export type HorizontalAlignment = 'center' | 'top' | 'bottom';
+export type HorizontalAlignment = 'top' | 'center' | 'bottom';
 
 export type Shadow = {
   color: string;

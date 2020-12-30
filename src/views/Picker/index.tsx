@@ -16,29 +16,15 @@ export const Picker = ({
   onSelect,
   pickerStyle,
 }: PickerProps) => {
-  if (pickerStyle === 'insetGrouped' || pickerStyle === 'grouped') {
-    return (
-      <PickerList
-        items={items}
-        onSelect={onSelect}
-        selection={selection}
-        pickerStyle={pickerStyle}
-      />
-    );
-  }
-
-  if (pickerStyle === 'wheel') {
-    return (
-      <PickerWheel
-        items={items}
-        onSelect={onSelect}
-        selection={selection}
-        pickerStyle={pickerStyle}
-      />
-    );
-  }
-
-  return (
+  const wheelPicker = (
+    <PickerWheel
+      items={items}
+      onSelect={onSelect}
+      selection={selection}
+      pickerStyle={pickerStyle}
+    />
+  );
+  const slidePicker = (
     <PickerSlide
       items={items}
       onSelect={onSelect}
@@ -46,4 +32,23 @@ export const Picker = ({
       pickerStyle={pickerStyle}
     />
   );
+  const listPicker = (
+    <PickerList
+      items={items}
+      onSelect={onSelect}
+      selection={selection}
+      pickerStyle={pickerStyle}
+    />
+  );
+  switch (pickerStyle) {
+    case 'insetGrouped':
+    case 'grouped':
+      return listPicker;
+    case 'wheel':
+      return wheelPicker;
+    case 'slide':
+      return slidePicker;
+    default:
+      return listPicker;
+  }
 };
