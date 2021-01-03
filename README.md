@@ -27,12 +27,15 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 - **Label:** An element with text and an icon/image
 - **Toggle:** An toggle element to switch something on/off
 - **Picker:** A styled selection element
+- **Slider:** A slideable value selector
+- **Stepper:** An element to increment and decrement a value
 - **RoundedRectangle:** You guessed it, a rounded rectangle
 
 ### Views/Lists :pencil: :scroll:
 
 - **ScrollView:** A scrollable view
 - **List:** A formatted list
+- **BottomSheet:** An animated bottom sheet
 
 ### Navigation :arrow_right: :link:
 

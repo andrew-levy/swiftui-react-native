@@ -18,12 +18,12 @@ import { usePanGestureHandler } from 'react-native-redash/lib/module/v1';
 import { ITEM_HEIGHT } from './Constants';
 import { withDecay } from './AnimationHelpers';
 
-interface GestureHandlerProps {
+type GestureHandlerProps = {
   value: Animated.Value<number>;
   max: number;
   onSelect: (n: number) => void;
   selection: number;
-}
+};
 
 const GestureHandler = ({
   value,

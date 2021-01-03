@@ -45,6 +45,7 @@ const RADIUS = RADIUS_REL * ITEM_HEIGHT;
 
 const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
   const translateY = useValue(0);
+
   const maskElement = (
     <Animated.View style={{ transform: [{ translateY }] }}>
       {items.map((v, i) => {
@@ -87,7 +88,12 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
             backgroundColor: UIColor.systemGray3,
           }}
         />
-        <View style={{ height: ITEM_HEIGHT, backgroundColor: UIColor.black }} />
+        <View
+          style={{
+            height: ITEM_HEIGHT,
+            backgroundColor: UIColor.black,
+          }}
+        />
         <View
           style={{
             height: ITEM_HEIGHT * 2,

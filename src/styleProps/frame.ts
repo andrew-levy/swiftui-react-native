@@ -6,7 +6,7 @@ export const getFrameFromProps = (frame: Frame) => {
   if (frame) {
     let styles = '';
     Object.keys(frame).forEach((key) => {
-      if (typeof frame[key] === 'number') styles += `${key}: ${frame[key]};`;
+      if (typeof frame[key] === 'number') styles += `${key}: ${frame[key]}px;`;
       else if (typeof frame[key] === 'string')
         styles += frame[key] === 'infinity' ? 'flex: 1;' : '';
     });
