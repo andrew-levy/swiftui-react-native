@@ -35,7 +35,6 @@ export const NavigationLink = ({
         onPress={() => navigation.navigate(destination, distinationProps)}
       >
         <HStack>
-          {/* <Image name='' width={11} height={11} /> */}
           <HStack>
             {text ? <Text>{text}</Text> : children}
             <Image name='right-arrow' width={11} height={11} />

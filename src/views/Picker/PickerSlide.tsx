@@ -3,7 +3,7 @@ import { Text } from '../Text';
 import styled from 'styled-components';
 import { UIColor } from '../../themes/colors';
 import { Animated, Easing } from 'react-native';
-import { PickerProps } from '../Picker';
+import { PickerProps } from './Picker';
 
 const { Value, timing } = Animated;
 
@@ -112,3 +112,5 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
     </>
   );
 };
+
+// TODO: Add pangesturehandler to slide as well as tap

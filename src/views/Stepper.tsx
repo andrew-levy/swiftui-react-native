@@ -13,10 +13,10 @@ const StepperWrapper = styled.View`
   border-radius: 6px;
   flex-direction: row;
   padding: 3px;
+  width: 100px;
 `;
 
 const StepperButton = styled.Button`
-  flex-basis: 50%;
   color: ${UIColor.black};
   justify-content: center;
 `;

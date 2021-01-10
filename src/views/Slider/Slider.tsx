@@ -1,5 +1,5 @@
 import React from 'react';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
+import { State } from 'react-native-gesture-handler';
 import Animated, {
   add,
   call,
@@ -14,28 +14,30 @@ import Animated, {
   useValue,
 } from 'react-native-reanimated';
 import { clamp, onGestureEvent } from 'react-native-redash/lib/module/v1';
-import { UIColor } from '../themes/colors';
+import { UIColor } from '../../themes/colors';
+import { CIRCLE_WIDTH, SLIDER_HEIGHT, SLIDER_WIDTH } from './Constants';
+import { Cursor } from './Cursor';
+import { FillBar } from './FillBar';
 
 type SliderProps = {
-  from: number;
-  through: number;
-  by?: number;
+  range: [number, number];
+  step?: number;
   value: number;
   onSlide: (n: number) => void;
 };
 
 export const Slider: React.FC<SliderProps> = ({
-  from,
-  through,
-  by,
+  range,
+  step,
   value,
   onSlide,
 }) => {
-  const SLIDER_WIDTH = 300;
-  const CIRCLE_WIDTH = 20;
+  // Data from props
+  const [from, through] = range;
   const midPoint = (through + from) / 2;
-  const step = by || 1;
+  const by = step || 1;
 
+  // Animated Values
   const translationX = useValue(0);
   const velocityX = useValue(0);
   const state = useValue(State.UNDETERMINED);
@@ -81,71 +83,37 @@ export const Slider: React.FC<SliderProps> = ({
     SLIDER_WIDTH / 2
   );
 
-  const widthLeft = interpolate(translateX, {
+  const fillWidth = interpolate(translateX, {
     inputRange: [-SLIDER_WIDTH / 2, SLIDER_WIDTH / 2],
     outputRange: [0, SLIDER_WIDTH],
   });
-  const widthRight = sub(SLIDER_WIDTH, widthLeft);
 
   useCode(() => {
     return call([translateX], (translateX) => {
       const slope = (midPoint - from) / (SLIDER_WIDTH / 2);
-      let newValue =
-        Math.round((midPoint + translateX[0] * slope) / step) * step;
-      if (!Number.isInteger(step))
+      let newValue = Math.round((midPoint + translateX[0] * slope) / by) * by;
+      if (!Number.isInteger(by))
         newValue = parseFloat(
-          newValue.toFixed(step.toString().split('.')[1].length)
+          newValue.toFixed(by.toString().split('.')[1].length)
         );
       onSlide(newValue);
     });
-  }, []);
+  }, [translateX]);
 
   return (
-    <PanGestureHandler {...gestureHandler}>
-      <Animated.View
-        style={{
-          flexDirection: 'row',
-          width: SLIDER_WIDTH,
-          marginTop: 10,
-          marginBottom: 10,
-        }}
-      >
-        <Animated.View
-          style={{
-            backgroundColor: UIColor.systemBlue,
-            height: 2,
-            width: widthLeft,
-            borderRadius: 10,
-          }}
-        />
-        <Animated.View
-          style={{
-            backgroundColor: UIColor.systemGray5,
-            height: 2,
-            width: widthRight,
-            borderRadius: 10,
-          }}
-        />
-        <Animated.View
-          style={{
-            position: 'absolute',
-            left: SLIDER_WIDTH / 2 - CIRCLE_WIDTH / 2,
-            top: -10,
-            height: CIRCLE_WIDTH,
-            width: CIRCLE_WIDTH,
-            borderRadius: 100,
-            backgroundColor: UIColor.white,
-            shadowColor: UIColor.black,
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 3,
-            transform: [{ translateX }],
-          }}
-        />
-      </Animated.View>
-    </PanGestureHandler>
+    <Animated.View
+      style={{
+        flexDirection: 'row',
+        width: SLIDER_WIDTH,
+        height: SLIDER_HEIGHT,
+        marginTop: CIRCLE_WIDTH / 2,
+        marginBottom: CIRCLE_WIDTH / 2,
+        backgroundColor: UIColor.systemGray6,
+        borderRadius: 10,
+      }}
+    >
+      <FillBar fillWidth={fillWidth} />
+      <Cursor translateX={translateX} gestureHandler={gestureHandler} />
+    </Animated.View>
   );
 };

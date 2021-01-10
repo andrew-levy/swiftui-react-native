@@ -6,6 +6,7 @@ type ListProps = {
   children: React.ReactElement<any> | Array<React.ReactElement<any>>;
   listStyle?: 'insetGrouped' | 'grouped';
 };
+
 const insetGroupedListStyleItem = ({ index, total }) => `
   background-color: white;
   text-align: left;
@@ -54,9 +55,11 @@ const StyledListWrapper = styled.View`
 `;
 
 const Divider = styled.View`
-  border-bottom-width: 0.8px;
+  border-bottom-width: 1px;
   border-bottom-color: ${UIColor.systemGray5};
   margin-left: 20px;
+  margin-top: 1px;
+  margin-bottom: 1px;
 `;
 
 export const List = ({ listStyle, children }: ListProps) => {

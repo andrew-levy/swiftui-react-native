@@ -17,10 +17,10 @@ import Animated, {
 import { useValue, translateZ } from 'react-native-redash/lib/module/v1';
 import MaskedView from '@react-native-community/masked-view';
 
-import GestureHandler from './GestureHandler';
+import GestureHandler from './WheelGestureHandler';
 import { VISIBLE_ITEMS, ITEM_HEIGHT, PERSPECTIVE } from './Constants';
 import { UIColor } from '../../themes/colors';
-import { PickerProps } from '.';
+import { PickerProps } from './Picker';
 
 const styles = StyleSheet.create({
   container: {
@@ -49,22 +49,29 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
   const maskElement = (
     <Animated.View style={{ transform: [{ translateY }] }}>
       {items.map((v, i) => {
-        const y = interpolate(
-          divide(sub(translateY, ITEM_HEIGHT * 2), -ITEM_HEIGHT),
-          {
-            inputRange: [i - RADIUS_REL, i, i + RADIUS_REL],
-            outputRange: [-1, 0, 1],
-            extrapolate: Extrapolate.CLAMP,
-          }
+        const interpolationValue = divide(
+          sub(translateY, ITEM_HEIGHT * 2),
+          -ITEM_HEIGHT
         );
+        const y = interpolate(interpolationValue, {
+          inputRange: [i - RADIUS_REL, i, i + RADIUS_REL],
+          outputRange: [-1, 0, 1],
+          extrapolate: Extrapolate.CLAMP,
+        });
         const rotateX = asin(y);
         const z = sub(multiply(RADIUS, cos(rotateX)), RADIUS);
+        const opacity = interpolate(interpolationValue, {
+          inputRange: [i - RADIUS_REL, i, i + RADIUS_REL],
+          outputRange: [0.3, 1, 0.3],
+          extrapolate: Extrapolate.CLAMP,
+        });
         return (
           <Animated.View
             key={i}
             style={[
               styles.item,
               {
+                opacity,
                 transform: [
                   { perspective: PERSPECTIVE },
                   { rotateX },
@@ -107,8 +114,11 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
             borderColor: UIColor.systemGray4,
             borderTopWidth: 0.5,
             borderBottomWidth: 0.5,
+            borderRightWidth: 0.5,
+            borderLeftWidth: 0.5,
             top: ITEM_HEIGHT * 2,
             height: ITEM_HEIGHT,
+            borderRadius: 6,
           }}
         />
       </View>
