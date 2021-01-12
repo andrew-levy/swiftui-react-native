@@ -28,8 +28,8 @@ const StyledVStack = styled.View`
         : Fonts.alignment.center
     };
 		justify-content: center;
-		border-radius: ${cornerRadius || 0};
-    padding: ${padding || 0};
+		border-radius: ${cornerRadius || 0}px;
+    padding: ${padding || 0}px;
     ${getFrameFromProps(frame)}
   `}
 `;

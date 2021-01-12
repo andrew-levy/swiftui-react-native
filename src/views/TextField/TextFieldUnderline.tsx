@@ -44,16 +44,18 @@ export const TextFieldUnderline: React.FC<TextFieldProps> = ({
   };
 
   useEffect(() => {
-    animatePlaceholder();
+    if (text.length === 1 || text.length === 0) {
+      animatePlaceholder();
+    }
   }, [text]);
 
   return (
     <>
       <Animated.Text
         style={{
+          position: 'absolute',
           transform: [{ translateY }],
           opacity: opacity,
-          position: 'absolute',
           color: UIColor.systemGray3,
           fontSize: 16,
         }}

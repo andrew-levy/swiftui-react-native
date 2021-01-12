@@ -34,8 +34,8 @@ const StyledButtonOpacity = styled.TouchableOpacity`
       ? Fonts.alignment[alignment] || Fonts.alignment.center
       : Fonts.alignment.center};
   justify-content: center;
-  border-radius: ${({ cornerRadius }) => cornerRadius || 0};
-  padding: ${({ padding }) => padding || 0}
+  border-radius: ${({ cornerRadius }) => cornerRadius || 0}px;
+  padding: ${({ padding }) => padding || 0}px;
   width: ${({ width }) => width || '100'}%;
 `;
 
