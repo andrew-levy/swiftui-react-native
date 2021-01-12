@@ -18,7 +18,11 @@ import { useValue, translateZ } from 'react-native-redash/lib/module/v1';
 import MaskedView from '@react-native-community/masked-view';
 
 import GestureHandler from './WheelGestureHandler';
-import { VISIBLE_ITEMS, ITEM_HEIGHT, PERSPECTIVE } from './Constants';
+import {
+  WHEEL_VISIBLE_ITEMS,
+  WHEEL_ITEM_HEIGHT,
+  WHEEL_PERSPECTIVE,
+} from './Constants';
 import { UIColor } from '../../themes/colors';
 import { PickerProps } from './Picker';
 
@@ -28,20 +32,20 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   item: {
-    height: ITEM_HEIGHT,
+    height: WHEEL_ITEM_HEIGHT,
     justifyContent: 'center',
   },
   label: {
     color: 'white',
     fontSize: 24,
-    lineHeight: ITEM_HEIGHT,
+    lineHeight: WHEEL_ITEM_HEIGHT,
     textAlign: 'center',
     textAlignVertical: 'center',
   },
 });
 
-const RADIUS_REL = VISIBLE_ITEMS * 0.5;
-const RADIUS = RADIUS_REL * ITEM_HEIGHT;
+const RADIUS_REL = WHEEL_VISIBLE_ITEMS * 0.5;
+const RADIUS = RADIUS_REL * WHEEL_ITEM_HEIGHT;
 
 const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
   const translateY = useValue(0);
@@ -50,8 +54,8 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
     <Animated.View style={{ transform: [{ translateY }] }}>
       {items.map((v, i) => {
         const interpolationValue = divide(
-          sub(translateY, ITEM_HEIGHT * 2),
-          -ITEM_HEIGHT
+          sub(translateY, WHEEL_ITEM_HEIGHT * 2),
+          -WHEEL_ITEM_HEIGHT
         );
         const y = interpolate(interpolationValue, {
           inputRange: [i - RADIUS_REL, i, i + RADIUS_REL],
@@ -73,9 +77,9 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
               {
                 opacity,
                 transform: [
-                  { perspective: PERSPECTIVE },
+                  { perspective: WHEEL_PERSPECTIVE },
                   { rotateX },
-                  translateZ(PERSPECTIVE, z),
+                  translateZ(WHEEL_PERSPECTIVE, z),
                 ],
               },
             ]}
@@ -91,19 +95,19 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
       <MaskedView {...{ maskElement }}>
         <View
           style={{
-            height: ITEM_HEIGHT * 2,
+            height: WHEEL_ITEM_HEIGHT * 2,
             backgroundColor: UIColor.systemGray3,
           }}
         />
         <View
           style={{
-            height: ITEM_HEIGHT,
+            height: WHEEL_ITEM_HEIGHT,
             backgroundColor: UIColor.black,
           }}
         />
         <View
           style={{
-            height: ITEM_HEIGHT * 2,
+            height: WHEEL_ITEM_HEIGHT * 2,
             backgroundColor: UIColor.systemGray3,
           }}
         />
@@ -116,8 +120,8 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
             borderBottomWidth: 0.5,
             borderRightWidth: 0.5,
             borderLeftWidth: 0.5,
-            top: ITEM_HEIGHT * 2,
-            height: ITEM_HEIGHT,
+            top: WHEEL_ITEM_HEIGHT * 2,
+            height: WHEEL_ITEM_HEIGHT,
             borderRadius: 6,
           }}
         />

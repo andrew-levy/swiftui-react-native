@@ -2,7 +2,7 @@ import React from 'react';
 import Animated from 'react-native-reanimated';
 import { UIColor } from '../../themes/colors';
 import { Text } from '../Text';
-import { PEAKING_HEIGHT } from './Constants';
+import { HEADER_TOP, PEAKING_HEIGHT } from './Constants';
 
 type HeaderProps = {
   header: string;
@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({
     <Animated.View
       style={{
         position: 'absolute',
-        top: 15,
+        top: HEADER_TOP,
         borderBottomWidth: headerBorderOpacity,
         borderBottomColor: UIColor.systemGray5,
         width: '100%',
@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
       <Text
         alignment='leading'
         fontWeight='bold'
-        padding={{ leading: 15, bottom: 15 }}
+        padding={{ leading: HEADER_TOP, bottom: HEADER_TOP }}
       >
         {header}
       </Text>

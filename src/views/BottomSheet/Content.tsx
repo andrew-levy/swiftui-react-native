@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { PEAKING_HEIGHT } from './Constants';
+import { HEADER_TOP, PEAKING_HEIGHT } from './Constants';
 
 type ContentProps = {
   contentOpacity: Animated.Node<number>;
@@ -16,7 +16,7 @@ export const Content: React.FC<ContentProps> = ({
     <Animated.View
       style={[
         StyleSheet.absoluteFill,
-        { top: PEAKING_HEIGHT + 15, opacity: contentOpacity },
+        { top: PEAKING_HEIGHT + HEADER_TOP, opacity: contentOpacity },
       ]}
     >
       {content}

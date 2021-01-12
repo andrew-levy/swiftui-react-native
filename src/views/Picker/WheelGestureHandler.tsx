@@ -15,7 +15,7 @@ import Animated, {
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import { usePanGestureHandler } from 'react-native-redash/lib/module/v1';
 
-import { ITEM_HEIGHT } from './Constants';
+import { WHEEL_ITEM_HEIGHT } from './Constants';
 import { withDecay } from './AnimationHelpers';
 
 type GestureHandlerProps = {
@@ -37,22 +37,24 @@ const GestureHandler = ({
     velocity,
     state,
   } = usePanGestureHandler();
-  const snapPoints = new Array(max).fill(0).map((_, i) => i * -ITEM_HEIGHT);
+  const snapPoints = new Array(max)
+    .fill(0)
+    .map((_, i) => i * -WHEEL_ITEM_HEIGHT);
   const translateY = withDecay({
     value: translation.y,
     velocity: velocity.y,
     state,
     snapPoints,
-    offset: new Value(selection * -ITEM_HEIGHT),
+    offset: new Value(selection * -WHEEL_ITEM_HEIGHT),
   });
   useCode(() => {
     return [
-      set(value, add(translateY, ITEM_HEIGHT * 2)),
+      set(value, add(translateY, WHEEL_ITEM_HEIGHT * 2)),
       call([value], ([value]) => {
-        if (value % ITEM_HEIGHT === 0) {
+        if (value % WHEEL_ITEM_HEIGHT === 0) {
           // Haptic feedback
           const midPoint = Math.floor(max / 2);
-          const newSelection = max - (value / ITEM_HEIGHT + midPoint) - 1;
+          const newSelection = max - (value / WHEEL_ITEM_HEIGHT + midPoint) - 1;
           onSelect(newSelection);
         }
       }),

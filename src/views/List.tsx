@@ -55,7 +55,7 @@ const StyledListWrapper = styled.View`
 `;
 
 const Divider = styled.View`
-  border-bottom-width: 1px;
+  border-bottom-width: 0.5px;
   border-bottom-color: ${UIColor.systemGray5};
   margin-left: 20px;
   margin-top: 1px;

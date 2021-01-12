@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { UIColor } from '../../themes/colors';
 import { Animated, Easing } from 'react-native';
 import { PickerProps } from './Picker';
+import { SLIDE_TEXT_SIZE } from './Constants';
 
 const { Value, timing } = Animated;
 
@@ -57,11 +58,11 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
 
   const sliderStyle = {
     position: 'absolute' as 'absolute',
-    backgroundColor: 'white',
+    backgroundColor: UIColor.white,
     top: 2,
     zIndex: -1,
     borderRadius: 6,
-    shadowColor: '#000',
+    shadowColor: UIColor.black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -91,7 +92,7 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
                 count={items.length}
                 key={i}
               >
-                <Text fontSize={14} fontWeight='bold'>
+                <Text fontSize={SLIDE_TEXT_SIZE} fontWeight='bold'>
                   {item}
                 </Text>
               </StyledPickerItem>

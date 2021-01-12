@@ -19,7 +19,6 @@ type BottomSheetProps = {
   opacity?: number;
   header?: string;
   snapPoints?: string[];
-  // peakingHeight?: number;
 };
 
 const { width, height } = Dimensions.get('screen');
@@ -27,6 +26,14 @@ const SNAP_THREE_QUARTER = height / 4;
 const SNAP_HALF = height / 2 + PEAKING_HEIGHT;
 const SNAP_QUARTER = (3 * height) / 4;
 const SNAP_BOTTOM = height - PEAKING_HEIGHT;
+
+const snapMap = {
+  bottom: SNAP_BOTTOM,
+  quarter: SNAP_QUARTER,
+  half: SNAP_HALF,
+  'three-quarter': SNAP_THREE_QUARTER,
+  full: PEAKING_HEIGHT,
+};
 
 export const BottomSheet: React.FC<BottomSheetProps> = ({
   background,
@@ -40,14 +47,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
   const state = useValue(State.UNDETERMINED);
   const offset = useValue(SNAP_BOTTOM);
 
-  const snapMap = {
-    bottom: SNAP_BOTTOM,
-    quarter: SNAP_QUARTER,
-    half: SNAP_HALF,
-    'three-quarter': SNAP_THREE_QUARTER,
-    full: PEAKING_HEIGHT,
-  };
-
+  // Defaults to bottom and three-quarters
   const snaps = snapPoints
     ? [...snapPoints.map((s) => snapMap[s]), snapMap.bottom]
     : [snapMap.bottom, snapMap['three-quarter']];
@@ -98,7 +98,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
             width: width,
             backgroundColor: background || UIColor.white,
             opacity: opacity || 1,
-            shadowColor: '#000',
+            shadowColor: UIColor.black,
             shadowOffset: {
               width: 0,
               height: 2,

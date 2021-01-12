@@ -1,24 +1,22 @@
 import React from 'react';
 import { View } from 'react-native';
 import { UIColor } from '../../themes/colors';
+import { HEADER_HEIGHT, HEADER_WIDTH } from './Constants';
 
 type PullLineProps = {
   width: number;
 };
 
-const lineWidth = 38;
-const lineHeight = 6;
-
 export const PullLine = ({ width }: PullLineProps) => {
-  const left = width / 2 - lineWidth / 2;
+  const left = width / 2 - HEADER_WIDTH / 2;
   return (
     <View
       style={{
         position: 'absolute',
-        top: lineHeight,
+        top: HEADER_HEIGHT,
         left,
-        height: lineHeight,
-        width: lineWidth,
+        height: HEADER_HEIGHT,
+        width: HEADER_WIDTH,
         backgroundColor: UIColor.systemGray3,
         borderRadius: 10,
       }}

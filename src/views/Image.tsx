@@ -1,3 +1,9 @@
+/*
+ * Originally, this was supposed to act like the SwiftUI Image view, but images work differently in RN. I wanted to be
+ * able to input a local image as well as something like an SF Symbol. Not sure how I am going to do this, but for now
+ * I can just use these local pngs. This looks promisng for SFSymbols: https://github.com/birkir/react-native-sfsymbols.
+ */
+
 import React from 'react';
 import { Image as RNImage } from 'react-native';
 
