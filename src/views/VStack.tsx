@@ -17,6 +17,7 @@ type VStackProps = {
   children: React.ReactElement<any> | React.ReactElement<any>[];
 };
 
+// Add fillSpace style prop to mimic spacer
 const StyledVStack = styled.View`
   ${({ background, alignment, cornerRadius, padding, frame }) => `
     background-color: ${
@@ -24,8 +25,9 @@ const StyledVStack = styled.View`
     };
     align-items: ${
       alignment
-        ? Fonts.alignment[alignment] || Fonts.alignment.center
-        : Fonts.alignment.center
+        ? Fonts.horizontalAlignment[alignment] ||
+          Fonts.horizontalAlignment.center
+        : Fonts.horizontalAlignment.center
     };
 		justify-content: center;
 		border-radius: ${cornerRadius || 0}px;

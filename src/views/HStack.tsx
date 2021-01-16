@@ -10,7 +10,8 @@ type HStackProps = {
   background?: string;
   alignment?: HorizontalAlignment;
   padding?: Padding;
-  spacing?: number;
+  spacing?: number | 'stretch';
+  fillSpace?: 'left' | 'right';
   width?: number;
   frame?: Frame;
   cornerRadius?: number;
@@ -18,17 +19,33 @@ type HStackProps = {
 };
 
 const StyledHStack = styled.View`
-  ${({ background, alignment, cornerRadius, padding, frame }) => `
+  ${({
+    background,
+    alignment,
+    cornerRadius,
+    padding,
+    frame,
+    spacing,
+    fillSpace,
+  }) => `
     flex-direction: row;
     background-color: ${
       background ? background || UIColor.white : UIColor.white
     };
     align-items: ${
       alignment
-        ? Fonts.alignment[alignment] || Fonts.alignment.center
-        : Fonts.alignment.center
+        ? Fonts.verticalAlignment[alignment] || Fonts.verticalAlignment.center
+        : Fonts.verticalAlignment.center
     };
-    justify-content: space-between;
+    justify-content: ${
+      fillSpace
+        ? fillSpace === 'left'
+          ? 'flex-end'
+          : 'flex-start'
+        : spacing === 'stretch'
+        ? 'space-between'
+        : 'center'
+    };
     border-radius: ${cornerRadius || 0}px;
     padding: ${padding || 0}px;
     ${getFrameFromProps(frame)}
@@ -36,14 +53,18 @@ const StyledHStack = styled.View`
 `;
 
 export const HStack: React.FC<HStackProps> = (props) => {
+  const spacer =
+    props.spacing && typeof props.spacing === 'number' ? (
+      <Spacer direction='horizontal' space={props.spacing} />
+    ) : null;
   return (
     <StyledHStack {...props}>
       {props.spacing && props.spacing !== 0
         ? React.Children.map(props.children, (child) => (
             <>
-              <Spacer direction='horizontal' space={props.spacing} />
+              {spacer}
               {child}
-              <Spacer direction='horizontal' space={props.spacing} />
+              {spacer}
             </>
           ))
         : props.children}

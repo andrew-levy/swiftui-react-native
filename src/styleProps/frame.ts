@@ -1,6 +1,5 @@
 import { Frame } from '../types/stylePropTypes';
 
-// TODO: units
 export const getFrameFromProps = (frame: Frame) => {
   const fullWidth = 'width: 100%;';
   if (frame) {

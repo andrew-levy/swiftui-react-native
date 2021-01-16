@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 import Animated, { interpolate, useValue } from 'react-native-reanimated';
 import {
@@ -76,9 +76,9 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     outputRange: [0.5, 0],
   });
 
-  const headerBorderOpacity = interpolate(translateY, {
+  const headerBorderWidth = interpolate(translateY, {
     inputRange: [SNAP_QUARTER, SNAP_BOTTOM],
-    outputRange: [0.5, 0],
+    outputRange: [0.2, 0],
   });
 
   const contentOpacity = interpolate(translateY, {
@@ -112,7 +112,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
         >
           <PullLine width={width} />
           {header && (
-            <Header header={header} headerBorderOpacity={headerBorderOpacity} />
+            <Header header={header} headerBorderWidth={headerBorderWidth} />
           )}
           <Content content={children} contentOpacity={contentOpacity} />
         </Animated.View>

@@ -23,9 +23,9 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 - **Link:** An external link redirecting to the browser
 - **Spacer:** Space in between views (horizontal or vertical)
 - **Text:** A text element
-- **TextField:** A styled text input element
+- **TextField:** A text input element
 - **Label:** An element with text and an icon/image
-- **Toggle:** An toggle element to switch something on/off
+- **Toggle:** An toggle element to switch a value on/off
 - **Picker:** A styled selection element
 - **Slider:** A slideable value selector
 - **Stepper:** An element to increment and decrement a value
@@ -58,7 +58,7 @@ Install the package in your React Native project:
 
 ### Navigation Dependencies
 
-If you intend to use any of the navigation components, you will need to install these as well:
+If you intend on using any of the navigation components, you will need to install these as well:
 
 `yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
 
@@ -66,7 +66,8 @@ Then run,
 
 `cd ios && pod install`
 
-Note: If you run into any error messages regarding RNGesutureHandler, try restarting the bundler and re-running `yarn ios`. Trying to fix this ASAP!
+Note: These views are based off of React Navigation components https://reactnavigation.org/docs/getting-started/.
+Another Note: If you run into any error messages regarding RNGesutureHandler, try restarting the bundler and re-running `yarn ios`. Trying to fix this ASAP!
 
 ## Usage
 

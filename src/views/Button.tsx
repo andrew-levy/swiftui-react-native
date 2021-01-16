@@ -31,8 +31,8 @@ const StyledButtonOpacity = styled.TouchableOpacity`
     background ? background || UIColor.white : UIColor.white};
   align-items: ${({ alignment }) =>
     alignment
-      ? Fonts.alignment[alignment] || Fonts.alignment.center
-      : Fonts.alignment.center};
+      ? Fonts.horizontalAlignment[alignment] || Fonts.horizontalAlignment.center
+      : Fonts.horizontalAlignment.center};
   justify-content: center;
   border-radius: ${({ cornerRadius }) => cornerRadius || 0}px;
   padding: ${({ padding }) => padding || 0}px;

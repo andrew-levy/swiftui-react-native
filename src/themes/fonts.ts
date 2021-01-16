@@ -7,11 +7,14 @@ export const Fonts = {
     light: '500',
     medium: '600',
   },
-  alignment: {
+  horizontalAlignment: {
     leading: 'flex-start',
     center: 'center',
     trailing: 'flex-end',
+  },
+  verticalAlignment: {
     top: 'flex-start',
+    center: 'center',
     bottom: 'flex-end',
   },
 };

@@ -19,6 +19,8 @@ const StyledListItemNavLink = styled.TouchableOpacity`
   background-color: white;
   align-items: center;
   width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const NavigationLink = ({
@@ -34,12 +36,8 @@ export const NavigationLink = ({
       <StyledListItemNavLink
         onPress={() => navigation.navigate(destination, distinationProps)}
       >
-        <HStack>
-          <HStack>
-            {text ? <Text>{text}</Text> : children}
-            <Image name='right-arrow' width={11} height={11} />
-          </HStack>
-        </HStack>
+        {text ? <Text>{text}</Text> : children}
+        <Image name='right-arrow' width={11} height={11} />
       </StyledListItemNavLink>
     );
   }

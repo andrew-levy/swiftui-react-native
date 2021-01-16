@@ -19,7 +19,7 @@ export const PickerList: React.FC<PickerProps> = ({
     >
       {items.map((item, i) => (
         <Button key={i} action={() => onSelect(i)}>
-          <HStack>
+          <HStack spacing='stretch'>
             <Text>{item}</Text>
             {selection === i ? (
               <Image

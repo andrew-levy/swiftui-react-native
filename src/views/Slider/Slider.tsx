@@ -32,12 +32,10 @@ export const Slider: React.FC<SliderProps> = ({
   value,
   onSlide,
 }) => {
-  // Data from props
   const [from, through] = range;
   const midPoint = (through + from) / 2;
   const by = step || 1;
 
-  // Animated Values
   const translationX = useValue(0);
   const velocityX = useValue(0);
   const state = useValue(State.UNDETERMINED);

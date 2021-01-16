@@ -6,19 +6,19 @@ import { HEADER_TOP, PEAKING_HEIGHT } from './Constants';
 
 type HeaderProps = {
   header: string;
-  headerBorderOpacity: Animated.Node<number>;
+  headerBorderWidth: Animated.Node<number>;
 };
 
 export const Header: React.FC<HeaderProps> = ({
   header,
-  headerBorderOpacity,
+  headerBorderWidth,
 }) => {
   return (
     <Animated.View
       style={{
         position: 'absolute',
         top: HEADER_TOP,
-        borderBottomWidth: headerBorderOpacity,
+        borderBottomWidth: headerBorderWidth,
         borderBottomColor: UIColor.systemGray5,
         width: '100%',
         height: PEAKING_HEIGHT,

@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavigationViewManager, NavigationView } from 'swiftui-react-native';
+import Home from './Home';
+import Details from './Details';
 
 const App = () => {
   <NavigationViewManager>
