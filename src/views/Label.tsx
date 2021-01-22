@@ -7,7 +7,6 @@ type LabelProps = {
   image: React.ReactElement;
 };
 
-// Ideally would work with SFSymbols
 export const Label: React.FC<LabelProps> = ({ text, image }) => {
   const labelText = typeof text === 'string' ? <Text>{text}</Text> : text;
   return (

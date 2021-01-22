@@ -12,7 +12,7 @@
     "clean": "rimraf ./dist/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Andrew Levy",
+  "author": "Andrew Levy <alevy97@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^14.14.10",
@@ -47,5 +47,10 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "react",
+    "native",
+    "swiftui"
   ]
 }

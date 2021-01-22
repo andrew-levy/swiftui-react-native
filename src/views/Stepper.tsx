@@ -1,5 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Button, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import styled from 'styled-components';
 import { UIColor } from '../themes/colors';
 
@@ -16,11 +17,6 @@ const StepperWrapper = styled.View`
   width: 100px;
 `;
 
-const StepperButton = styled.Button`
-  color: ${UIColor.black};
-  justify-content: center;
-`;
-
 // TODO: use tap gesture handler to animate buttons
 export const Stepper: React.FC<StepperProps> = ({
   onIncrement,
@@ -28,7 +24,9 @@ export const Stepper: React.FC<StepperProps> = ({
 }) => {
   return (
     <StepperWrapper>
-      <StepperButton onPress={() => onIncrement} title='+' />
+      <Animated.View style={{ width: '50%' }}>
+        <Button onPress={() => onDecrement} title='-' />
+      </Animated.View>
       <View
         style={{
           top: 5,
@@ -38,7 +36,9 @@ export const Stepper: React.FC<StepperProps> = ({
           borderRightColor: UIColor.systemGray4,
         }}
       />
-      <StepperButton onPress={() => onDecrement} title='-' />
+      <Animated.View style={{ width: '50%' }}>
+        <Button onPress={() => onIncrement} title='+' />
+      </Animated.View>
     </StepperWrapper>
   );
 };
