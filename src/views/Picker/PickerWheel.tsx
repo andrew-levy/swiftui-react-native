@@ -27,6 +27,13 @@ import { UIColor } from '../../themes/colors';
 import { PickerProps } from './Picker';
 
 const styles = StyleSheet.create({
+  selected: {
+    position: 'absolute',
+    height: WHEEL_ITEM_HEIGHT,
+    width: '90%',
+    borderRadius: 6,
+    backgroundColor: UIColor.systemGray6,
+  },
   container: {
     width: '90%',
     overflow: 'hidden',
@@ -91,48 +98,51 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
     </Animated.View>
   );
   return (
-    <View style={styles.container}>
-      <MaskedView {...{ maskElement }}>
-        <View
-          style={{
-            height: WHEEL_ITEM_HEIGHT * 2,
-            backgroundColor: UIColor.systemGray3,
-          }}
-        />
-        <View
-          style={{
-            height: WHEEL_ITEM_HEIGHT,
-            backgroundColor: UIColor.black,
-          }}
-        />
-        <View
-          style={{
-            height: WHEEL_ITEM_HEIGHT * 2,
-            backgroundColor: UIColor.systemGray3,
-          }}
-        />
-      </MaskedView>
-      <View style={StyleSheet.absoluteFill}>
-        <View
-          style={{
-            borderColor: UIColor.systemGray4,
-            borderTopWidth: 0.5,
-            borderBottomWidth: 0.5,
-            borderRightWidth: 0.5,
-            borderLeftWidth: 0.5,
-            top: WHEEL_ITEM_HEIGHT * 2,
-            height: WHEEL_ITEM_HEIGHT,
-            borderRadius: 6,
-          }}
+    <>
+      <View style={styles.selected} />
+      <View style={styles.container}>
+        <MaskedView {...{ maskElement }}>
+          <View
+            style={{
+              height: WHEEL_ITEM_HEIGHT * 2,
+              backgroundColor: UIColor.systemGray3,
+            }}
+          />
+          <View
+            style={{
+              height: WHEEL_ITEM_HEIGHT,
+              backgroundColor: UIColor.black,
+            }}
+          />
+          <View
+            style={{
+              height: WHEEL_ITEM_HEIGHT * 2,
+              backgroundColor: UIColor.systemGray3,
+            }}
+          />
+        </MaskedView>
+        <View style={StyleSheet.absoluteFill}>
+          <View
+            style={{
+              borderColor: UIColor.systemGray4,
+              // borderTopWidth: 0.5,
+              // borderBottomWidth: 0.5,
+              // borderRightWidth: 0.5,
+              // borderLeftWidth: 0.5,
+              top: WHEEL_ITEM_HEIGHT * 2,
+              height: WHEEL_ITEM_HEIGHT,
+              borderRadius: 6,
+            }}
+          />
+        </View>
+        <GestureHandler
+          max={items.length}
+          value={translateY}
+          onSelect={onSelect}
+          selection={selection}
         />
       </View>
-      <GestureHandler
-        max={items.length}
-        value={translateY}
-        onSelect={onSelect}
-        selection={selection}
-      />
-    </View>
+    </>
   );
 };
 

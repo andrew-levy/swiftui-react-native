@@ -22,8 +22,6 @@ export const Image: React.FC<ImageProps> = ({
   width,
   height,
 }) => {
-  // If system name use the SFSymbol Component
-  // Else, use normal image
   return (
     <RNImage
       source={images[name] || source || null}
@@ -31,3 +29,8 @@ export const Image: React.FC<ImageProps> = ({
     />
   );
 };
+
+// If system name use the SFSymbol Component
+// Else, use normal image
+// <SFSymbol name={name} />
+// or Svg for each

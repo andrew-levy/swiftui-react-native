@@ -20,6 +20,7 @@ import { Cursor } from './Cursor';
 import { FillBar } from './FillBar';
 
 type SliderProps = {
+  color?: string;
   range: [number, number];
   step?: number;
   value: number;
@@ -27,6 +28,7 @@ type SliderProps = {
 };
 
 export const Slider: React.FC<SliderProps> = ({
+  color,
   range,
   step,
   value,
@@ -110,7 +112,7 @@ export const Slider: React.FC<SliderProps> = ({
         borderRadius: 10,
       }}
     >
-      <FillBar fillWidth={fillWidth} />
+      <FillBar fillWidth={fillWidth} color={color || UIColor.systemBlue} />
       <Cursor translateX={translateX} gestureHandler={gestureHandler} />
     </Animated.View>
   );

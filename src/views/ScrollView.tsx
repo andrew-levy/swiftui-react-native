@@ -4,11 +4,13 @@ import { HeaderScrollContext } from './NavigationViewManager';
 
 type ScrollViewProps = {
   direction?: 'vertical' | 'horizontal';
+  background?: string;
 };
 
 export const ScrollView: React.FC<ScrollViewProps> = ({
   children,
   direction,
+  background,
 }) => {
   const scrollY = useContext(HeaderScrollContext);
   return (
@@ -21,6 +23,7 @@ export const ScrollView: React.FC<ScrollViewProps> = ({
           useNativeDriver: true,
         }
       )}
+      style={{ backgroundColor: background || 'white' }}
     >
       {children}
     </Animated.ScrollView>
