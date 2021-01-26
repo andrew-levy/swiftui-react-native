@@ -16,26 +16,33 @@ SwiftUI is awesome. So is React Native! This library aims to leverage some of th
 - **HStack:** Horizontal stack
 - **ZStack:** Overlay stack
 
+### Controls :control_knobs: :bulb:
+
+- **Toggle:** An toggle element to switch a value on/off
+- **Picker:** A styled selection element
+- **Slider:** A slideable value selector
+- **Stepper:** An element to increment and decrement a value
+
+### Text :pencil: :abc:
+
+- **Text:** A text element
+- **TextField:** A text input element
+- **Label:** An element with text and an icon/image
+
+### Scroll Views + Sheets :scroll: :arrow_up:
+
+- **ScrollView:** A scrollable view
+- **BottomSheet:** An animated bottom sheet
+
 ### UI Elements :atom_symbol: :iphone:
 
 - **Button:** A clickable element that performs an action
 - **Image:** An image or icon
 - **Link:** An external link redirecting to the browser
 - **Spacer:** Space in between views (horizontal or vertical)
-- **Text:** A text element
-- **TextField:** A text input element
-- **Label:** An element with text and an icon/image
-- **Toggle:** An toggle element to switch a value on/off
-- **Picker:** A styled selection element
-- **Slider:** A slideable value selector
-- **Stepper:** An element to increment and decrement a value
-- **RoundedRectangle:** You guessed it, a rounded rectangle
-
-### Views/Lists :pencil: :scroll:
-
-- **ScrollView:** A scrollable view
 - **List:** A formatted list
-- **BottomSheet:** An animated bottom sheet
+- **RoundedRectangle:** You guessed it, a rounded rectangle
+<!-- ### Views/Lists :pencil: :scroll: -->
 
 ### Navigation :arrow_right: :link:
 
