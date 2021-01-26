@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { UIColor } from '../../themes/colors';
 import { Animated, Easing } from 'react-native';
 import { getFrameFromProps } from '../../styleProps/frame';
-import { TextFieldProps } from './TextField';
+import { TextFieldProps } from '.';
 
 const { timing, Value } = Animated;
 

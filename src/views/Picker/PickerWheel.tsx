@@ -24,7 +24,7 @@ import {
   WHEEL_PERSPECTIVE,
 } from './Constants';
 import { UIColor } from '../../themes/colors';
-import { PickerProps } from './Picker';
+import { PickerProps } from '.';
 
 const styles = StyleSheet.create({
   selected: {

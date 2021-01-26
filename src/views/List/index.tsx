@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UIColor } from '../themes/colors';
+import { UIColor } from '../../themes/colors';
 
 type ListProps = {
   children: React.ReactElement<any> | Array<React.ReactElement<any>>;

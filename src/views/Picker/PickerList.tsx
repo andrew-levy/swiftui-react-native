@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from '../Button';
-import { HStack } from '../Stacks/HStack';
+import { HStack } from '../HStack';
 import { List } from '../List';
 import { Image } from '../Image';
 import { Text } from '../Text';
-import { PickerProps } from './Picker';
+import { PickerProps } from '.';
 import { LIST_ICON_WIDTH } from './Constants';
 
 export const PickerList: React.FC<PickerProps> = ({

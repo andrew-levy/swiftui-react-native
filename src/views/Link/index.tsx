@@ -1,6 +1,6 @@
 import React from 'react';
 import { Linking } from 'react-native';
-import { Button, ButtonProps } from './Button';
+import { Button, ButtonProps } from '../Button';
 
 type LinkProps = {
   destination: string;

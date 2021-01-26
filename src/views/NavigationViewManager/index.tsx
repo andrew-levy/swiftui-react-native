@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react';
-import { NavigationViewProps } from './NavigationView';
+import { NavigationViewProps } from '../NavigationView';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Animated, Dimensions } from 'react-native';
-import { VStack } from '../Stacks/VStack';
+import { VStack } from '../VStack';
 import { Text } from '../Text';
 import { UIColor } from '../../themes/colors';
 

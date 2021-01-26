@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { getFrameFromProps } from '../../styleProps/frame';
 import { UIColor } from '../../themes/colors';
-import { TextFieldProps } from './TextField';
+import { TextFieldProps } from '.';
 
 const StyledTextField = styled.TextInput`
   background-color: ${UIColor.systemGray6};

@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UIColor } from '../themes/colors';
-import { Fonts } from '../themes/fonts';
+import { UIColor } from '../../themes/colors';
+import { Fonts } from '../../themes/fonts';
 import {
   VerticalAlignment,
   HorizontalAlignment,
   Padding,
   Shadow,
-} from '../types/stylePropTypes';
-import { Text } from './Text';
+} from '../../types/stylePropTypes';
+import { Text } from '../Text';
 
 export type ButtonProps = {
   action?: () => void;

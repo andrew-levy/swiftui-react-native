@@ -1,8 +1,6 @@
 // UI Element Views
 export * from './views/Text';
 export * from './views/Image';
-export * from './views/Navigation/TabView';
-export * from './views/Navigation/TabItem';
 export * from './views/Button';
 export * from './views/Spacer';
 export * from './views/ScrollView';
@@ -11,20 +9,22 @@ export * from './views/Link';
 export * from './views/Label';
 export * from './views/Toggle';
 export * from './views/Stepper';
-export * from './views/Slider/Slider';
+export * from './views/Slider';
 export * from './views/RoundedRectangle';
-export * from './views/Picker/Picker';
-export * from './views/TextField/TextField';
-export * from './views/BottomSheet/BottomSheet';
+export * from './views/Picker';
+export * from './views/TextField';
+export * from './views/BottomSheet';
 // Stack Views
-export * from './views/Stacks/VStack';
-export * from './views/Stacks/HStack';
-export * from './views/Stacks/ZStack';
+export * from './views/VStack';
+export * from './views/HStack';
+export * from './views/ZStack';
 // Navigation Views
-export * from './views/Navigation/NavigationManager';
-export * from './views/Navigation/NavigationLink';
-export * from './views/Navigation/NavigationViewManager';
-export * from './views/Navigation/NavigationView';
+export * from './views/NavigationManager';
+export * from './views/NavigationLink';
+export * from './views/NavigationViewManager';
+export * from './views/NavigationView';
+export * from './views/TabView';
+export * from './views/TabItem';
 // Custom Hooks
 export * from './hooks/useOnAppear';
 export * from './hooks/useOnDisappear';

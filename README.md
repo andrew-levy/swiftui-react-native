@@ -127,6 +127,6 @@ var body: some View {
 ## TODO
 
 - [ ] Make package stable and easy to install via npm
-- [ ] (In Progress) Add SFSymbols support (react-native-sfsymbols)
+- [ ] Add SFSymbols support (react-native-sfsymbols)
 - [ ] Make Spacer view work like SwiftUI (fill remaining space)
 - [ ] Add haptic feedback to views like Picker and others

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image as RNImage } from 'react-native';
-import { Frame } from '../types/stylePropTypes';
+import { Frame } from '../../types/stylePropTypes';
 
 type ImageProps = {
   name?: string;

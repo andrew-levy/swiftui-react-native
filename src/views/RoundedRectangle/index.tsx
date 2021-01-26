@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UIColor } from '../themes/colors';
-import { Frame } from '../types/stylePropTypes';
+import { UIColor } from '../../themes/colors';
+import { Frame } from '../../types/stylePropTypes';
 
 type RoundedRectangleProps = {
   fill: string;

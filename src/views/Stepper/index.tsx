@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, View } from 'react-native';
 import Animated from 'react-native-reanimated';
 import styled from 'styled-components';
-import { UIColor } from '../themes/colors';
+import { UIColor } from '../../themes/colors';
 
 type StepperProps = {
   onIncrement: () => void;

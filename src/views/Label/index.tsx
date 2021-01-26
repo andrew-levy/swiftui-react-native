@@ -1,7 +1,7 @@
 import React from 'react';
-import { HStack } from './Stacks/HStack';
-import { Image } from './Image';
-import { Text, TextProps } from './Text';
+import { HStack } from '../HStack';
+import { Image } from '../Image';
+import { Text, TextProps } from '../Text';
 
 type LabelProps = {
   text?: string;

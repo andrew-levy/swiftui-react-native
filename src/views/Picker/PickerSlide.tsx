@@ -3,7 +3,7 @@ import { Text } from '../Text';
 import styled from 'styled-components';
 import { UIColor } from '../../themes/colors';
 import { Animated, Easing } from 'react-native';
-import { PickerProps } from './Picker';
+import { PickerProps } from '.';
 import { SLIDE_TEXT_SIZE } from './Constants';
 
 const { Value, timing } = Animated;

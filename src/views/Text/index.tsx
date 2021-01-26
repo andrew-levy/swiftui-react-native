@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { UIColor } from '../themes/colors';
-import { Fonts } from '../themes/fonts';
-import { getPaddingFromProps } from '../styleProps/padding';
-import { getShadowFromProps } from '../styleProps/shadow';
+import { UIColor } from '../../themes/colors';
+import { Fonts } from '../../themes/fonts';
+import { getPaddingFromProps } from '../../styleProps/padding';
+import { getShadowFromProps } from '../../styleProps/shadow';
 import {
   VerticalAlignment,
   HorizontalAlignment,
   Padding,
   Shadow,
-} from '../types/stylePropTypes';
+} from '../../types/stylePropTypes';
 
 const StyledText = styled.Text`
   ${({
