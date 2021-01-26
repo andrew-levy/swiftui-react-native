@@ -46,7 +46,7 @@ const StyledText = styled.Text`
     `}
 `;
 
-type TextProps = {
+export type TextProps = {
   fontSize?: number;
   foregroundColor?: string;
   fontWeight?: string;

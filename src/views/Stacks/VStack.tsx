@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Fonts } from '../themes/fonts';
-import { VerticalAlignment, Frame, Padding } from '../types/stylePropTypes';
-import { getFrameFromProps } from '../styleProps/frame';
-import { Spacer } from './Spacer';
-import { UIColor } from '../themes/colors';
+import { Fonts } from '../../themes/fonts';
+import { VerticalAlignment, Frame, Padding } from '../../types/stylePropTypes';
+import { getFrameFromProps } from '../../styleProps/frame';
+import { Spacer } from '../Spacer';
+import { UIColor } from '../../themes/colors';
 
 type VStackProps = {
   background?: string;

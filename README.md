@@ -54,20 +54,27 @@ Run `yarn build` to generate a `dist/` folder, then run `yarn watch` while devel
 
 Install the package in your React Native project:
 
-`yarn add swiftui-react-native`
+```console
+yarn add swiftui-react-native
+```
 
 ### Navigation Dependencies
 
 If you intend on using any of the navigation components, you will need to install these as well:
 
-`yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view`
+```console
+yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+```
 
 Then run,
 
-`cd ios && pod install`
+```console
+cd ios && pod install && cd ..
+```
 
-Note: These views are based off of React Navigation components https://reactnavigation.org/docs/getting-started/.
-Another Note: If you run into any error messages regarding RNGesutureHandler, try restarting the bundler and re-running `yarn ios`. Trying to fix this ASAP!
+**Note:** These views are based off of React Navigation components https://reactnavigation.org/docs/getting-started/.
+
+**Another Note:** If you run into any error messages regarding RNGesutureHandler, try restarting the bundler and re-running `yarn ios`. Trying to fix this ASAP!
 
 ## Usage
 
@@ -119,4 +126,7 @@ var body: some View {
 
 ## TODO
 
-- [ ] SFSymbols
+- [ ] Make package stable and easy to install via npm
+- [ ] (In Progress) Add SFSymbols support (react-native-sfsymbols)
+- [ ] Make Spacer view work like SwiftUI (fill remaining space)
+- [ ] Add haptic feedback to views like Picker and others

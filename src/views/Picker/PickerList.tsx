@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../Button';
-import { HStack } from '../HStack';
+import { HStack } from '../Stacks/HStack';
 import { List } from '../List';
 import { Image } from '../Image';
 import { Text } from '../Text';
@@ -24,8 +24,7 @@ export const PickerList: React.FC<PickerProps> = ({
             {selection === i ? (
               <Image
                 name='check-mark'
-                width={LIST_ICON_WIDTH}
-                height={LIST_ICON_WIDTH}
+                frame={{ width: LIST_ICON_WIDTH, height: LIST_ICON_WIDTH }}
               />
             ) : null}
           </HStack>

@@ -1,18 +1,20 @@
 import React from 'react';
-import { HStack } from './HStack';
-import { Text } from './Text';
+import { HStack } from './Stacks/HStack';
+import { Image } from './Image';
+import { Text, TextProps } from './Text';
 
 type LabelProps = {
-  text: React.ReactElement | string;
-  image: React.ReactElement;
+  text?: string;
+  systemName?: string;
+  icon?: React.ReactElement;
+  children?: React.ReactElement<TextProps>;
 };
 
-export const Label: React.FC<LabelProps> = ({ text, image }) => {
-  const labelText = typeof text === 'string' ? <Text>{text}</Text> : text;
+export const Label = ({ text, systemName, icon, children }: LabelProps) => {
   return (
     <HStack>
-      {image}
-      {labelText}
+      {text ? <Text>{text}</Text> : children}
+      {icon ? icon : <Image systemName={systemName} />}
     </HStack>
   );
 };

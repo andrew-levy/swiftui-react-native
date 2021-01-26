@@ -2,9 +2,9 @@ import React, { createContext, useState } from 'react';
 import { NavigationViewProps } from './NavigationView';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Animated, Dimensions } from 'react-native';
-import { VStack } from './VStack';
-import { Text } from './Text';
-import { UIColor } from '../themes/colors';
+import { VStack } from '../Stacks/VStack';
+import { Text } from '../Text';
+import { UIColor } from '../../themes/colors';
 
 const Stack = createStackNavigator();
 export const HeaderScrollContext = createContext(null);

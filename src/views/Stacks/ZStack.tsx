@@ -5,9 +5,9 @@ import {
   HorizontalAlignment,
   Frame,
   Padding,
-} from '../types/stylePropTypes';
-import { getFrameFromProps } from '../styleProps/frame';
-import { UIColor } from '../themes/colors';
+} from '../../types/stylePropTypes';
+import { getFrameFromProps } from '../../styleProps/frame';
+import { UIColor } from '../../themes/colors';
 
 type ZStackProps = {
   background?: string;

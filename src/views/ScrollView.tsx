@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Animated } from 'react-native';
-import { HeaderScrollContext } from './NavigationViewManager';
+import { HeaderScrollContext } from './Navigation/NavigationViewManager';
 
 type ScrollViewProps = {
   direction?: 'vertical' | 'horizontal';

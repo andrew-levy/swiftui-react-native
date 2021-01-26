@@ -1,10 +1,9 @@
 import React from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Button } from './Button';
-import { Text } from './Text';
-import { Image } from './Image';
+import { Button } from '../Button';
+import { Text } from '../Text';
+import { Image } from '../Image';
 import styled from 'styled-components';
-import { HStack } from './HStack';
 
 type NavigationLinkProps = {
   navigation: StackNavigationProp<any, any>;
@@ -37,7 +36,7 @@ export const NavigationLink = ({
         onPress={() => navigation.navigate(destination, distinationProps)}
       >
         {text ? <Text>{text}</Text> : children}
-        <Image name='right-arrow' width={11} height={11} />
+        <Image name='right-arrow' frame={{ width: 11, height: 11 }} />
       </StyledListItemNavLink>
     );
   }
