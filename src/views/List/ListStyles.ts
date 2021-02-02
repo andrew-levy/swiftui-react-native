@@ -29,16 +29,21 @@ export const getItemStyles: (ItemModifiers) => ListStyles = ({
 }) => ({
   grouped: {
     backgroundColor: UIColor.white,
-    paddingVertical: 10,
+    paddingBottom: 12,
+    marginTop: 12,
     paddingRight: 15,
     marginLeft: 20,
     borderBottomColor: UIColor.systemGray5,
+    ...(index !== total && {
+      borderBottomColor: UIColor.systemGray3,
+      borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
+    }),
   },
   insetGrouped: {
     backgroundColor: UIColor.white,
     marginLeft: 20,
-    paddingBottom: 15,
-    marginTop: 15,
+    paddingBottom: 12,
+    marginTop: 12,
     paddingRight: 15,
     borderTopRightRadius: index === 0 ? 10 : 0,
     borderBottomRightRadius: index === total ? 10 : 0,

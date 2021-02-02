@@ -76,11 +76,6 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     outputRange: [0.5, 0],
   });
 
-  const headerBorderWidth = interpolate(translateY, {
-    inputRange: [SNAP_QUARTER, SNAP_BOTTOM],
-    outputRange: [0.2, 0],
-  });
-
   const contentOpacity = interpolate(translateY, {
     inputRange: [SNAP_QUARTER, SNAP_BOTTOM],
     outputRange: [1, 0],
@@ -104,9 +99,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
           ]}
         >
           <PullLine width={width} />
-          {header && (
-            <Header header={header} headerBorderWidth={headerBorderWidth} />
-          )}
+          {header && <Header header={header} />}
           <Content content={children} contentOpacity={contentOpacity} />
         </Animated.View>
       </PanGestureHandler>

@@ -3,7 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Button } from '../Button';
 import { Text } from '../Text';
 import { Image } from '../Image';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 
 type NavigationLinkProps = {
   navigation: StackNavigationProp<any, any>;
