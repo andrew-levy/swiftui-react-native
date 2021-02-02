@@ -1,6 +1,7 @@
 export const UIColor = {
   black: '#000',
   white: '#fff',
+  transparent: 'transparent',
   secondaryLabel: '',
   tertiaryLabel: '',
   quaternaryLabel: '',

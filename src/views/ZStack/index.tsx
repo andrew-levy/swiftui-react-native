@@ -1,13 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
 import {
   VerticalAlignment,
   HorizontalAlignment,
   Frame,
   Padding,
 } from '../../types/stylePropTypes';
-import { getFrameFromProps } from '../../styleProps/frame';
 import { UIColor } from '../../themes/colors';
+import { View } from 'react-native';
+import { getPadding } from '../../utils/getPadding';
+import { getFrame } from '../../utils/getFrame';
 
 type ZStackProps = {
   background?: string;
@@ -20,26 +21,29 @@ type ZStackProps = {
   children: React.ReactElement<any> | React.ReactElement<any>[];
 };
 
-const StyledZStack = styled.View`
-  ${({ background, alignment, cornerRadius, padding, frame }) => `
-    background-color: ${
-      background ? background || UIColor.white : UIColor.white
-    };
-		justify-content: center;
-		border-radius: ${cornerRadius || 0}px;
-		padding: ${padding || 0}px;
-    ${getFrameFromProps(frame)}
-  `}
-`;
-
-export const ZStack = (props: ZStackProps) => {
+export const ZStack = ({
+  background = UIColor.transparent,
+  cornerRadius = 0,
+  padding,
+  frame,
+  children,
+}: ZStackProps) => {
   return (
-    <StyledZStack {...props}>
-      {React.Children.map(props.children, (child, i) =>
+    <View
+      style={{
+        backgroundColor: background,
+        justifyContent: 'center',
+        borderRadius: cornerRadius,
+        ...getFrame(frame),
+        ...getPadding(padding),
+      }}
+    >
+      {React.Children.map(children, (child, i) =>
         React.cloneElement(child, {
+          ...child.props,
           style: { zIndex: i, position: 'absolute' },
         })
       )}
-    </StyledZStack>
+    </View>
   );
 };

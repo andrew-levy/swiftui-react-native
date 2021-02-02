@@ -11,8 +11,8 @@ type ImageProps = {
 };
 
 const images = {
-  'right-arrow': require('../assets/right-arrow.png'),
-  'check-mark': require('../assets/check-mark.png'),
+  'right-arrow': require('../../assets/right-arrow.png'),
+  'check-mark': require('../../assets/check-mark.png'),
 };
 
 const DEFAULT_IMAGE_SIZE = 15;
@@ -21,7 +21,7 @@ export const Image: React.FC<ImageProps> = ({
   name,
   source,
   systemName,
-  frame,
+  frame = { width: DEFAULT_IMAGE_SIZE, height: DEFAULT_IMAGE_SIZE },
 }) => {
   if (systemName) {
     return null;
@@ -32,8 +32,8 @@ export const Image: React.FC<ImageProps> = ({
     <RNImage
       source={images[name] || source || null}
       style={{
-        width: frame ? frame.width : DEFAULT_IMAGE_SIZE,
-        height: frame ? frame.height : DEFAULT_IMAGE_SIZE,
+        width: frame.width,
+        height: frame.height,
       }}
     />
   );

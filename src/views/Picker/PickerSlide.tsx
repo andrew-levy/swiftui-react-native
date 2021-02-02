@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from '../Text';
-import styled from 'styled-components';
 import { UIColor } from '../../themes/colors';
-import { Animated, Easing } from 'react-native';
+import {
+  Animated,
+  Easing,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { PickerProps } from '.';
 import { SLIDE_TEXT_SIZE } from './Constants';
 
 const { Value, timing } = Animated;
-
-const StyledPickerWrapper = styled.View`
-  background-color: ${UIColor.systemGray6};
-  border-radius: 6px;
-  flex-direction: row;
-  padding: 3px;
-`;
-
-const StyledPickerItem = styled.TouchableOpacity`
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  justify-content: center;
-  flex-basis: ${({ count }) => `${100 / count}%`};
-`;
 
 export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
   const [dimensions, setDimensions] = useState(null);
@@ -56,8 +45,67 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
     }).start();
   };
 
-  const sliderStyle = {
-    position: 'absolute' as 'absolute',
+  return (
+    <>
+      <View
+        style={styles.container}
+        onLayout={(e) => setDimensions(e.nativeEvent.layout)}
+      >
+        {items.length &&
+          items.map((item, i) => (
+            <React.Fragment key={i}>
+              <TouchableOpacity
+                style={[
+                  styles.item,
+                  {
+                    flexBasis: `${100 / items.length}%`,
+                  },
+                ]}
+                onPress={() => onSelect(i)}
+                key={i}
+              >
+                <Text fontSize={SLIDE_TEXT_SIZE} fontWeight='bold'>
+                  {item}
+                </Text>
+              </TouchableOpacity>
+              <Animated.View
+                style={[
+                  styles.divider,
+                  {
+                    opacity: opacities[i],
+                  },
+                ]}
+              />
+            </React.Fragment>
+          ))}
+        <Animated.View
+          style={[
+            styles.slider,
+            {
+              width: dimensions ? dimensions.width / items.length : 0,
+              height: dimensions ? dimensions.height - 5 : 0,
+              transform: [
+                {
+                  translateX: translateX,
+                },
+              ],
+            },
+          ]}
+        />
+      </View>
+    </>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: UIColor.systemGray6,
+    borderRadius: 6,
+    flexDirection: 'row',
+    padding: 3,
+  },
+  slider: {
+    position: 'absolute',
     backgroundColor: UIColor.white,
     top: 2,
     zIndex: -1,
@@ -69,49 +117,19 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
     },
     shadowOpacity: 0.1,
     shadowRadius: 3,
-    width: dimensions ? dimensions.width / items.length : 0,
-    height: dimensions ? dimensions.height - 5 : 0,
-    transform: [
-      {
-        translateX: translateX,
-      },
-    ],
-  };
+  },
+  divider: {
+    top: 5,
+    height: 15,
+    borderRightWidth: 1,
+    width: 0,
+    borderRightColor: UIColor.systemGray4,
+  },
+  item: {
+    justifyContent: 'center',
+    paddingVertical: 5,
+    paddingHorizontal: 20,
+  },
+});
 
-  return (
-    <>
-      <StyledPickerWrapper
-        onLayout={(e) => setDimensions(e.nativeEvent.layout)}
-      >
-        {items.length &&
-          items.map((item, i) => (
-            <React.Fragment key={i}>
-              <StyledPickerItem
-                onPress={() => onSelect(i)}
-                last={i === items.length - 1}
-                count={items.length}
-                key={i}
-              >
-                <Text fontSize={SLIDE_TEXT_SIZE} fontWeight='bold'>
-                  {item}
-                </Text>
-              </StyledPickerItem>
-              <Animated.View
-                style={{
-                  top: 5,
-                  height: 15,
-                  borderRightWidth: 1,
-                  width: 0,
-                  borderRightColor: UIColor.systemGray4,
-                  opacity: opacities[i],
-                }}
-              />
-            </React.Fragment>
-          ))}
-        <Animated.View style={sliderStyle} />
-      </StyledPickerWrapper>
-    </>
-  );
-};
-
-// TODO: Add pangesturehandler to slide as well as tap
+// TODO: Refactor with tap and pan gesture handler

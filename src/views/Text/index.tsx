@@ -1,53 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Text as RNText } from 'react-native';
 import { UIColor } from '../../themes/colors';
 import { Fonts } from '../../themes/fonts';
-import { getPaddingFromProps } from '../../styleProps/padding';
-import { getShadowFromProps } from '../../styleProps/shadow';
+import { getPadding } from '../../utils/getPadding';
 import {
   VerticalAlignment,
   HorizontalAlignment,
   Padding,
   Shadow,
 } from '../../types/stylePropTypes';
-
-const StyledText = styled.Text`
-  ${({
-    foregroundColor,
-    fontSize,
-    fontWeight,
-    font,
-    alignment,
-    buttonChild,
-    padding,
-    cornerRadius,
-    shadow,
-  }) =>
-    `color: ${
-      foregroundColor
-        ? foregroundColor || UIColor.black
-        : buttonChild
-        ? `${UIColor.systemBlue}`
-        : UIColor.black
-    }
-		font-size: ${fontSize ? fontSize : '18'}px;
-		font-weight: ${
-      fontWeight
-        ? Fonts.weights[fontWeight] || Fonts.weights.normal
-        : Fonts.weights.normal
-    };
-		font-family: ${
-      font ? Fonts.fonts[font] || Fonts.fonts.system : Fonts.fonts.system
-    };
-    text-align: ${alignment === 'leading' ? 'left' : 'center'};
-    border-radius: ${cornerRadius || 0}px;
-    ${getPaddingFromProps(padding)}
-    ${getShadowFromProps(shadow)}
-    `}
-`;
+import { getShadow } from '../../utils/getShadow';
 
 export type TextProps = {
   fontSize?: number;
+  font?: string;
   foregroundColor?: string;
   fontWeight?: string;
   alignment?: VerticalAlignment | HorizontalAlignment;
@@ -58,30 +24,33 @@ export type TextProps = {
 };
 
 export const Text: React.FC<TextProps> = ({
-  fontSize,
-  foregroundColor,
+  fontSize = 18,
+  font,
+  foregroundColor = UIColor.black,
   fontWeight,
-  alignment,
+  alignment = 'center',
   padding,
-  cornerRadius,
+  cornerRadius = 0,
   shadow,
   children,
   buttonChild,
   ...props
 }) => {
   return (
-    <StyledText
-      fontSize={fontSize}
-      foregroundColor={foregroundColor}
-      fontWeight={fontWeight}
-      alignment={alignment}
-      padding={padding}
-      cornerRadius={cornerRadius}
-      shadow={shadow}
-      buttonChild={buttonChild}
+    <RNText
+      style={{
+        color: buttonChild ? UIColor.systemBlue : foregroundColor,
+        fontSize,
+        fontWeight: Fonts.weights[fontWeight] || Fonts.weights.normal,
+        fontFamily: Fonts.fonts[font] || Fonts.fonts.system,
+        textAlign: alignment === 'leading' ? 'left' : 'center',
+        borderRadius: cornerRadius,
+        ...getShadow(shadow),
+        ...getPadding(padding),
+      }}
       {...props}
     >
       {children}
-    </StyledText>
+    </RNText>
   );
 };

@@ -1,53 +1,70 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Fonts } from '../../themes/fonts';
-import { VerticalAlignment, Frame, Padding } from '../../types/stylePropTypes';
-import { getFrameFromProps } from '../../styleProps/frame';
+import {
+  Frame,
+  Padding,
+  HorizontalAlignment,
+} from '../../types/stylePropTypes';
 import { Spacer } from '../Spacer';
 import { UIColor } from '../../themes/colors';
+import { FlexAlignType, View } from 'react-native';
+import { getPadding } from '../../utils/getPadding';
+import { Alignments } from '../../themes/alignments';
+import { getFrame } from '../../utils/getFrame';
 
 type VStackProps = {
   background?: string;
-  alignment?: VerticalAlignment;
+  alignment?: HorizontalAlignment;
   padding?: Padding;
   spacing?: number;
   width?: number;
   frame?: Frame;
+  fillSpace?: string;
   cornerRadius?: number;
   children: React.ReactElement<any> | React.ReactElement<any>[];
 };
 
-// Add fillSpace style prop to mimic spacer
-const StyledVStack = styled.View`
-  ${({ background, alignment, cornerRadius, padding, frame }) => `
-    background-color: ${
-      background ? background || UIColor.white : UIColor.white
-    };
-    align-items: ${
-      alignment
-        ? Fonts.horizontalAlignment[alignment] ||
-          Fonts.horizontalAlignment.center
-        : Fonts.horizontalAlignment.center
-    };
-		justify-content: center;
-		border-radius: ${cornerRadius || 0}px;
-    padding: ${padding || 0}px;
-    ${getFrameFromProps(frame)}
-  `}
-`;
-
-export const VStack = (props: VStackProps) => {
+export const VStack = ({
+  background = UIColor.transparent,
+  spacing,
+  alignment = Alignments.horizontal.center as HorizontalAlignment,
+  fillSpace,
+  cornerRadius = 0,
+  padding,
+  frame,
+  children,
+}: VStackProps) => {
   return (
-    <StyledVStack {...props}>
-      {props.spacing && props.spacing !== 0
-        ? React.Children.map(props.children, (child) => (
+    <View
+      style={{
+        backgroundColor: background,
+        alignItems: Alignments.horizontal[alignment] as FlexAlignType,
+        justifyContent: 'center',
+        borderRadius: cornerRadius,
+        ...getFrame(frame),
+        ...getPadding(padding),
+      }}
+    >
+      {spacing && spacing !== 0
+        ? React.Children.map(children, (child) => (
             <>
-              <Spacer space={props.spacing} />
+              <Spacer space={spacing} />
               {child}
-              <Spacer space={props.spacing} />
+              <Spacer space={spacing} />
             </>
           ))
-        : props.children}
-    </StyledVStack>
+        : children}
+    </View>
   );
 };
+
+// Spacer version:
+
+// export const ChildPositionContext = createContext(null);
+// ...
+// const [childPositions, setChildPositions] = useState([]);
+// ...
+// <ChildPositionContext.Provider
+//   value={{ childPositions, setChildPositions }}
+// >
+//  <View onLayout={(e) => console.log('height: ', e.nativeEvent.layout.height)}> ... </View>
+// </ChildPositionContext.Provider>

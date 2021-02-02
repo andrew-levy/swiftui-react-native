@@ -10,14 +10,15 @@ export type Padding =
     }
   | number;
 
-export type VerticalAlignment = 'leading' | 'center' | 'trailing';
-export type HorizontalAlignment = 'top' | 'center' | 'bottom';
+export type HorizontalAlignment = 'leading' | 'center' | 'trailing';
+export type VerticalAlignment = 'top' | 'center' | 'bottom';
 
 export type Shadow = {
-  color: string;
-  x: number;
-  y: number;
-  radius: number;
+  color?: string;
+  x?: number;
+  y?: number;
+  radius?: number;
+  opacity?: number;
 };
 
 export type Frame = {

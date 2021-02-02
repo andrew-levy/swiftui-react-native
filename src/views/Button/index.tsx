@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import { TouchableOpacity } from 'react-native';
+import { Alignments } from '../../themes/alignments';
 import { UIColor } from '../../themes/colors';
-import { Fonts } from '../../themes/fonts';
 import {
   VerticalAlignment,
   HorizontalAlignment,
@@ -26,23 +26,28 @@ export type ButtonProps = {
   alignment?: HorizontalAlignment | VerticalAlignment;
 };
 
-const StyledButtonOpacity = styled.TouchableOpacity`
-  background-color: ${({ background }) =>
-    background ? background || UIColor.white : UIColor.white};
-  align-items: ${({ alignment }) =>
-    alignment
-      ? Fonts.horizontalAlignment[alignment] || Fonts.horizontalAlignment.center
-      : Fonts.horizontalAlignment.center};
-  justify-content: center;
-  border-radius: ${({ cornerRadius }) => cornerRadius || 0}px;
-  padding: ${({ padding }) => padding || 0}px;
-  width: ${({ width }) => width || '100'}%;
-`;
-
-export const Button = ({ action, text, children, ...props }: ButtonProps) => {
+export const Button = ({
+  action,
+  text,
+  background = UIColor.transparent,
+  cornerRadius = 0,
+  padding = 0,
+  alignment,
+  children,
+  ...props
+}: ButtonProps) => {
   return (
     <>
-      <StyledButtonOpacity onPress={action} {...props}>
+      <TouchableOpacity
+        onPress={action}
+        style={{
+          backgroundColor: background,
+          justifyContent: 'center',
+          alignItems:
+            Alignments.horizontal[alignment] || Alignments.horizontal.center,
+          borderRadius: cornerRadius,
+        }}
+      >
         {text ? (
           // Send in props from button to text
           <Text>{text}</Text>
@@ -54,7 +59,7 @@ export const Button = ({ action, text, children, ...props }: ButtonProps) => {
             })
           )
         )}
-      </StyledButtonOpacity>
+      </TouchableOpacity>
     </>
   );
 };

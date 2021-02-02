@@ -3,7 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { Button } from '../Button';
 import { Text } from '../Text';
 import { Image } from '../Image';
-import styled from 'styled-components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 type NavigationLinkProps = {
   navigation: StackNavigationProp<any, any>;
@@ -13,14 +13,6 @@ type NavigationLinkProps = {
   listItem?: boolean;
   children?: React.ReactElement<any>;
 };
-
-const StyledListItemNavLink = styled.TouchableOpacity`
-  background-color: white;
-  align-items: center;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-`;
 
 export const NavigationLink = ({
   navigation,
@@ -32,12 +24,18 @@ export const NavigationLink = ({
 }: NavigationLinkProps) => {
   if (listItem) {
     return (
-      <StyledListItemNavLink
+      <TouchableOpacity
         onPress={() => navigation.navigate(destination, distinationProps)}
+        style={{
+          alignItems: 'center',
+          width: '100%',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
       >
         {text ? <Text>{text}</Text> : children}
         <Image name='right-arrow' frame={{ width: 11, height: 11 }} />
-      </StyledListItemNavLink>
+      </TouchableOpacity>
     );
   }
   return (

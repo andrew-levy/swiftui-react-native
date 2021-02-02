@@ -16,7 +16,6 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useValue, translateZ } from 'react-native-redash/lib/module/v1';
 import MaskedView from '@react-native-community/masked-view';
-
 import GestureHandler from './WheelGestureHandler';
 import {
   WHEEL_VISIBLE_ITEMS,
@@ -25,31 +24,6 @@ import {
 } from './Constants';
 import { UIColor } from '../../themes/colors';
 import { PickerProps } from '.';
-
-const styles = StyleSheet.create({
-  selected: {
-    position: 'absolute',
-    height: WHEEL_ITEM_HEIGHT,
-    width: '90%',
-    borderRadius: 6,
-    backgroundColor: UIColor.systemGray6,
-  },
-  container: {
-    width: '90%',
-    overflow: 'hidden',
-  },
-  item: {
-    height: WHEEL_ITEM_HEIGHT,
-    justifyContent: 'center',
-  },
-  label: {
-    color: 'white',
-    fontSize: 24,
-    lineHeight: WHEEL_ITEM_HEIGHT,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-  },
-});
 
 const RADIUS_REL = WHEEL_VISIBLE_ITEMS * 0.5;
 const RADIUS = RADIUS_REL * WHEEL_ITEM_HEIGHT;
@@ -125,10 +99,6 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
           <View
             style={{
               borderColor: UIColor.systemGray4,
-              // borderTopWidth: 0.5,
-              // borderBottomWidth: 0.5,
-              // borderRightWidth: 0.5,
-              // borderLeftWidth: 0.5,
               top: WHEEL_ITEM_HEIGHT * 2,
               height: WHEEL_ITEM_HEIGHT,
               borderRadius: 6,
@@ -145,5 +115,30 @@ const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  selected: {
+    position: 'absolute',
+    height: WHEEL_ITEM_HEIGHT,
+    width: '90%',
+    borderRadius: 6,
+    backgroundColor: UIColor.systemGray6,
+  },
+  container: {
+    width: '90%',
+    overflow: 'hidden',
+  },
+  item: {
+    height: WHEEL_ITEM_HEIGHT,
+    justifyContent: 'center',
+  },
+  label: {
+    color: 'white',
+    fontSize: 24,
+    lineHeight: WHEEL_ITEM_HEIGHT,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+});
 
 export default PickerWheel;

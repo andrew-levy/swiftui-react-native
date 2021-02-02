@@ -1,77 +1,64 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Fonts } from '../../themes/fonts';
-import {
-  HorizontalAlignment,
-  Frame,
-  Padding,
-} from '../../types/stylePropTypes';
-import { getFrameFromProps } from '../../styleProps/frame';
+import { VerticalAlignment, Frame, Padding } from '../../types/stylePropTypes';
 import { Spacer } from '../Spacer';
 import { UIColor } from '../../themes/colors';
+import { FlexAlignType, View } from 'react-native';
+import { getPadding } from '../../utils/getPadding';
+import { Alignments } from '../../themes/alignments';
+import { getFrame } from '../../utils/getFrame';
 
 type HStackProps = {
   background?: string;
-  alignment?: HorizontalAlignment;
+  alignment?: VerticalAlignment;
   padding?: Padding;
   spacing?: number | 'stretch';
   fillSpace?: 'left' | 'right';
-  width?: number;
   frame?: Frame;
   cornerRadius?: number;
   children: React.ReactElement<any> | React.ReactElement<any>[];
 };
 
-const StyledHStack = styled.View`
-  ${({
-    background,
-    alignment,
-    cornerRadius,
-    padding,
-    frame,
-    spacing,
-    fillSpace,
-  }) => `
-    flex-direction: row;
-    background-color: ${
-      background ? background || UIColor.white : UIColor.white
-    };
-    align-items: ${
-      alignment
-        ? Fonts.verticalAlignment[alignment] || Fonts.verticalAlignment.center
-        : Fonts.verticalAlignment.center
-    };
-    justify-content: ${
-      fillSpace
-        ? fillSpace === 'left'
-          ? 'flex-end'
-          : 'flex-start'
-        : spacing === 'stretch'
-        ? 'space-between'
-        : 'center'
-    };
-    border-radius: ${cornerRadius || 0}px;
-    padding: ${padding || 0}px;
-    ${getFrameFromProps(frame)}
-`}
-`;
-
-export const HStack: React.FC<HStackProps> = (props) => {
+export const HStack: React.FC<HStackProps> = ({
+  background = UIColor.transparent,
+  spacing,
+  alignment = Alignments.vertical.center,
+  fillSpace,
+  cornerRadius = 0,
+  padding,
+  frame,
+  children,
+}) => {
   const spacer =
-    props.spacing && typeof props.spacing === 'number' ? (
-      <Spacer direction='horizontal' space={props.spacing} />
+    spacing && typeof spacing === 'number' ? (
+      <Spacer direction='horizontal' space={spacing} />
     ) : null;
   return (
-    <StyledHStack {...props}>
-      {props.spacing && props.spacing !== 0
-        ? React.Children.map(props.children, (child) => (
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: fillSpace
+          ? fillSpace === 'left'
+            ? 'flex-end'
+            : 'flex-start'
+          : spacing === 'stretch'
+          ? 'space-between'
+          : 'center',
+        backgroundColor: background,
+        borderRadius: cornerRadius,
+        alignItems: Alignments.vertical[alignment] as FlexAlignType,
+        ...getFrame(frame),
+        ...getPadding(padding),
+      }}
+    >
+      {spacing && spacing !== 0
+        ? React.Children.map(children, (child) => (
             <>
               {spacer}
               {child}
               {spacer}
             </>
           ))
-        : props.children}
-    </StyledHStack>
+        : children}
+    </View>
   );
 };

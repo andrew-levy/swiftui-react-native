@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { PanGestureHandler, State } from 'react-native-gesture-handler';
 import Animated, { interpolate, useValue } from 'react-native-reanimated';
 import {
@@ -91,24 +91,17 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
       <BackgroundShadow shadowOpacity={shadowOpacity} />
       <PanGestureHandler {...gestureHandler}>
         <Animated.View
-          style={{
-            position: 'absolute',
-            bottom: PEAKING_HEIGHT,
-            height: height,
-            width: width,
-            backgroundColor: background || UIColor.white,
-            opacity: opacity || 1,
-            shadowColor: UIColor.black,
-            shadowOffset: {
-              width: 0,
-              height: 2,
+          style={[
+            styles.bottomSheet,
+            {
+              bottom: PEAKING_HEIGHT,
+              height: height,
+              width: width,
+              backgroundColor: background || UIColor.white,
+              opacity: opacity || 1,
+              transform: [{ translateY }],
             },
-            shadowOpacity: 0.1,
-            shadowRadius: 3,
-            borderTopRightRadius: 10,
-            borderTopLeftRadius: 10,
-            transform: [{ translateY }],
-          }}
+          ]}
         >
           <PullLine width={width} />
           {header && (
@@ -120,3 +113,18 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  bottomSheet: {
+    position: 'absolute',
+    shadowColor: UIColor.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+  },
+});

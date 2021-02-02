@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { State } from 'react-native-gesture-handler';
 import Animated, {
   add,
@@ -21,8 +22,8 @@ import { FillBar } from './FillBar';
 
 type SliderProps = {
   color?: string;
-  range: [number, number];
   step?: number;
+  range: [number, number];
   value: number;
   onSlide: (n: number) => void;
 };
@@ -30,13 +31,12 @@ type SliderProps = {
 export const Slider: React.FC<SliderProps> = ({
   color,
   range,
-  step,
+  step = 1,
   value,
   onSlide,
 }) => {
   const [from, through] = range;
   const midPoint = (through + from) / 2;
-  const by = step || 1;
 
   const translationX = useValue(0);
   const velocityX = useValue(0);
@@ -91,10 +91,11 @@ export const Slider: React.FC<SliderProps> = ({
   useCode(() => {
     return call([translateX], (translateX) => {
       const slope = (midPoint - from) / (SLIDER_WIDTH / 2);
-      let newValue = Math.round((midPoint + translateX[0] * slope) / by) * by;
-      if (!Number.isInteger(by))
+      let newValue =
+        Math.round((midPoint + translateX[0] * slope) / step) * step;
+      if (!Number.isInteger(step))
         newValue = parseFloat(
-          newValue.toFixed(by.toString().split('.')[1].length)
+          newValue.toFixed(step.toString().split('.')[1].length)
         );
       onSlide(newValue);
     });
@@ -102,18 +103,26 @@ export const Slider: React.FC<SliderProps> = ({
 
   return (
     <Animated.View
-      style={{
-        flexDirection: 'row',
-        width: SLIDER_WIDTH,
-        height: SLIDER_HEIGHT,
-        marginTop: CIRCLE_WIDTH / 2,
-        marginBottom: CIRCLE_WIDTH / 2,
-        backgroundColor: UIColor.systemGray6,
-        borderRadius: 10,
-      }}
+      style={[
+        styles.slider,
+        {
+          width: SLIDER_WIDTH,
+          height: SLIDER_HEIGHT,
+          marginTop: CIRCLE_WIDTH / 2,
+          marginBottom: CIRCLE_WIDTH / 2,
+        },
+      ]}
     >
       <FillBar fillWidth={fillWidth} color={color || UIColor.systemBlue} />
       <Cursor translateX={translateX} gestureHandler={gestureHandler} />
     </Animated.View>
   );
 };
+
+const styles = StyleSheet.create({
+  slider: {
+    flexDirection: 'row',
+    backgroundColor: UIColor.systemGray6,
+    borderRadius: 10,
+  },
+});

@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { UIColor } from '../../themes/colors';
-import { Animated, Easing } from 'react-native';
-import { getFrameFromProps } from '../../styleProps/frame';
+import { Animated, Easing, TextInput, StyleSheet } from 'react-native';
 import { TextFieldProps } from '.';
 
 const { timing, Value } = Animated;
-
-const StyledTextField = styled.TextInput`
-  border-bottom-color: ${UIColor.systemGray6};
-  border-bottom-width: 1px;
-  width: 80%;
-  padding-bottom: 10px;
-  font-size: 18px;
-  padding-top: 10px;
-  ${({ frame }) => getFrameFromProps(frame)}
-`;
 
 export const TextFieldUnderline: React.FC<TextFieldProps> = ({
   placeholder,
   text,
   onChangeText,
-  frame,
+  frame = { width: null, height: null },
 }) => {
   const translateY = useState(new Value(0))[0];
   const opacity = useState(new Value(0))[0];
@@ -52,22 +40,43 @@ export const TextFieldUnderline: React.FC<TextFieldProps> = ({
   return (
     <>
       <Animated.Text
-        style={{
-          position: 'absolute',
-          transform: [{ translateY }],
-          opacity: opacity,
-          color: UIColor.systemGray3,
-          fontSize: 16,
-        }}
+        style={[
+          styles.text,
+          {
+            transform: [{ translateY }],
+            opacity: opacity,
+          },
+        ]}
       >
         {placeholder}
       </Animated.Text>
-      <StyledTextField
+      <TextInput
         placeholder={placeholder}
         value={text}
         onChangeText={onChangeText}
-        frame={frame}
+        style={[
+          styles.input,
+          {
+            width: frame.width,
+            height: frame.height,
+          },
+        ]}
       />
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    borderBottomColor: UIColor.systemGray3,
+    borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
+    paddingTop: 20,
+    paddingBottom: 10,
+    fontSize: 18,
+  },
+  text: {
+    position: 'absolute',
+    color: UIColor.systemGray3,
+    fontSize: 16,
+  },
+});

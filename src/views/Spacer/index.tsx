@@ -1,21 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
+import { View } from 'react-native';
 
 type SpacerProps = {
   direction?: 'vertical' | 'horizontal';
   space?: number;
 };
 
-const StyledSpacer = styled.View`
-  ${({ direction, space }) =>
-    direction
-      ? direction === 'horizontal'
-        ? `width: ${space || 10}px;`
-        : `height: ${space || 10}px;`
-      : `height: ${space || 10}px;`}
-`;
-export const Spacer: React.FC<SpacerProps> = ({ direction, space }) => {
-  return <StyledSpacer direction={direction} space={space} />;
+export const Spacer: React.FC<SpacerProps> = ({
+  direction = 'vertical',
+  space = 10,
+}) => {
+  return (
+    <View
+      style={{
+        ...(direction === 'vertical' ? { height: space } : { width: space }),
+      }}
+    />
+  );
 };
 
 // Ideal behavior: spacer fills the remaining space of the parent container

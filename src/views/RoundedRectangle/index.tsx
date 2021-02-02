@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import { StyleSheet, View } from 'react-native';
 import { UIColor } from '../../themes/colors';
 import { Frame } from '../../types/stylePropTypes';
 
@@ -9,25 +9,26 @@ type RoundedRectangleProps = {
   cornerRadius?: number;
 };
 
-const StyledRoundedRectangle = styled.View`
-  background-color: ${({ fill }) => fill};
-  width: ${({ frame }) => (frame && frame.width ? frame.width : 20)}px;
-  height: ${({ frame }) => (frame && frame.height ? frame.height : 20)}px;
-  border-color: ${UIColor.systemGray5};
-  border-radius: ${({ cornerRadius }) => cornerRadius || 3}px;
-  border-width: 0.5px;
-`;
+const DEFAULT_RECT_SIZE = 20;
 
 export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
-  fill,
-  frame,
-  cornerRadius,
+  fill = UIColor.white,
+  frame = { width: DEFAULT_RECT_SIZE, height: DEFAULT_RECT_SIZE },
 }) => {
   return (
-    <StyledRoundedRectangle
-      fill={fill}
-      frame={frame}
-      cornerRadius={cornerRadius}
+    <View
+      style={[
+        styles.rect,
+        {
+          backgroundColor: fill,
+          width: frame.width,
+          height: frame.height,
+        },
+      ]}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  rect: { borderColor: UIColor.systemGray5, borderRadius: 3, borderWidth: 0.5 },
+});

@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { UIColor } from '../../themes/colors';
@@ -19,24 +20,32 @@ export const Cursor: React.FC<CursorProps> = ({
   return (
     <PanGestureHandler {...gestureHandler}>
       <Animated.View
-        style={{
-          position: 'absolute',
-          left: SLIDER_WIDTH / 2 - CIRCLE_WIDTH / 2,
-          top: -CIRCLE_WIDTH / 2,
-          height: CIRCLE_WIDTH,
-          width: CIRCLE_WIDTH,
-          borderRadius: 100,
-          backgroundColor: UIColor.white,
-          shadowColor: UIColor.black,
-          shadowOffset: {
-            width: 0,
-            height: 2,
+        style={[
+          styles.cursor,
+          {
+            left: SLIDER_WIDTH / 2 - CIRCLE_WIDTH / 2,
+            top: -CIRCLE_WIDTH / 2,
+            height: CIRCLE_WIDTH,
+            width: CIRCLE_WIDTH,
+            transform: [{ translateX }],
           },
-          shadowOpacity: 0.2,
-          shadowRadius: 3,
-          transform: [{ translateX }],
-        }}
+        ]}
       />
     </PanGestureHandler>
   );
 };
+
+const styles = StyleSheet.create({
+  cursor: {
+    position: 'absolute',
+    borderRadius: 100,
+    backgroundColor: UIColor.white,
+    shadowColor: UIColor.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+});
