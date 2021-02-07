@@ -9,15 +9,16 @@ type ListProps = {
 
 export const List = ({ listStyle = 'insetGrouped', children }: ListProps) => {
   return (
-    <View style={getContainerStyles()[listStyle]}>
+    <View style={getContainerStyles(listStyle)}>
       {React.Children.map(children, (child, i) => {
         const totalChildren = React.Children.toArray(children).length - 1;
         return (
           <>
             <View
-              style={
-                getItemStyles({ index: i, total: totalChildren })[listStyle]
-              }
+              style={getItemStyles(listStyle, {
+                index: i,
+                total: totalChildren,
+              })}
               key={i}
             >
               {React.cloneElement(child, {

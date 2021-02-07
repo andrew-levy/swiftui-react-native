@@ -5,6 +5,7 @@ import { Animated, Dimensions } from 'react-native';
 import { VStack } from '../VStack';
 import { Text } from '../Text';
 import { UIColor } from '../../themes/colors';
+import { Extrapolate } from 'react-native-reanimated';
 
 const Stack = createStackNavigator();
 export const HeaderScrollContext = createContext(null);
@@ -46,33 +47,28 @@ export const NavigationViewManager = ({
       onLayout={(e) => setTextWidth(e.nativeEvent.layout.width)}
       style={{
         // ...titleStyles,
-        fontWeight: '600',
-        fontSize: 16,
+        fontWeight: '700',
+        fontSize: 32,
         transform: [
           {
             scale: scrollValue.interpolate({
               inputRange: [-10, 0, 50],
-              outputRange: [1.65, 1.6, 1],
-              extrapolate: 'clamp',
+              outputRange: [1, 0.9, 0.5],
+              extrapolate: Extrapolate.CLAMP,
             }),
           },
           {
             translateX: scrollValue.interpolate({
               inputRange: [0, 50],
-              outputRange: [
-                title
-                  ? -wWidth / 3 + textWidth / 2 + 20
-                  : -wWidth / 3 + textWidth / 2 + 20,
-                0,
-              ],
-              extrapolate: 'clamp',
+              outputRange: [-wWidth / 2 + textWidth / 2, 0],
+              extrapolate: Extrapolate.CLAMP,
             }),
           },
           {
             translateY: scrollValue.interpolate({
               inputRange: [0, 50],
-              outputRange: [30, 0],
-              extrapolate: 'clamp',
+              outputRange: [50, 0],
+              extrapolate: Extrapolate.CLAMP,
             }),
           },
         ],
