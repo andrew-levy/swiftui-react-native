@@ -52,7 +52,7 @@ const GestureHandler = ({
       set(value, add(translateY, WHEEL_ITEM_HEIGHT * 2)),
       call([value], ([value]) => {
         if (value % WHEEL_ITEM_HEIGHT === 0) {
-          // Haptic feedback
+          // Haptic feedback goes here
           const midPoint = Math.floor(max / 2);
           const newSelection = max - (value / WHEEL_ITEM_HEIGHT + midPoint) - 1;
           onSelect(newSelection);

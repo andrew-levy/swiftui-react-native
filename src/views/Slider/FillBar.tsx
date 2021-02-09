@@ -1,6 +1,5 @@
 import React from 'react';
 import Animated from 'react-native-reanimated';
-import { UIColor } from '../../themes/colors';
 import { SLIDER_HEIGHT } from './Constants';
 
 type FillBarProps = {

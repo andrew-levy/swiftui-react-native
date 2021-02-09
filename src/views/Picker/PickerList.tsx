@@ -4,7 +4,7 @@ import { HStack } from '../HStack';
 import { List } from '../List';
 import { Image } from '../Image';
 import { Text } from '../Text';
-import { PickerProps } from '.';
+import { PickerProps } from './Picker';
 import { LIST_ICON_WIDTH } from './Constants';
 
 export const PickerList: React.FC<PickerProps> = ({
