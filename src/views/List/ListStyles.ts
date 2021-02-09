@@ -13,6 +13,9 @@ export const getContainerStyles: (listStyle: string) => StyleProp<ViewStyle> = (
     grouped: {
       backgroundColor: UIColor.white,
       width: '100%',
+      borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
+      borderTopWidth: StyleSheet.hairlineWidth * 1.2,
+      borderColor: UIColor.systemGray3,
     },
     insetGrouped: {
       backgroundColor: UIColor.white,

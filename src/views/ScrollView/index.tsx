@@ -6,18 +6,22 @@ import { HeaderScrollContext } from '../NavigationViewManager';
 type ScrollViewProps = {
   direction?: 'vertical' | 'horizontal';
   background?: string;
+  showIndicators?: boolean;
 };
 
 export const ScrollView: React.FC<ScrollViewProps> = ({
   children,
   direction = 'vertical',
   background = UIColor.transparent,
+  showIndicators = true,
 }) => {
   const scrollY = useContext(HeaderScrollContext);
   return (
     <Animated.ScrollView
       horizontal={direction === 'horizontal'}
       scrollEventThrottle={1}
+      showsVerticalScrollIndicator={showIndicators}
+      showsHorizontalScrollIndicator={showIndicators}
       onScroll={
         scrollY
           ? Animated.event(

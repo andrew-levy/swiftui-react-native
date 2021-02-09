@@ -19,6 +19,7 @@ type BottomSheetProps = {
   opacity?: number;
   header?: string;
   snapPoints?: string[];
+  // isPresented?: boolean;
 };
 
 const { width, height } = Dimensions.get('screen');
@@ -40,6 +41,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
   opacity,
   header,
   snapPoints,
+  // isPresented = false,
   children,
 }) => {
   const translationY = useValue(0);
