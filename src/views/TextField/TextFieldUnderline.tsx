@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { UIColor } from '../../themes/colors';
 import { Animated, Easing, TextInput, StyleSheet } from 'react-native';
-import { TextFieldProps } from '.';
+import { TextFieldProps } from './TextField';
 
 const { timing, Value } = Animated;
 
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   },
   text: {
     position: 'absolute',
+    left: 20,
     color: UIColor.systemGray3,
     fontSize: 16,
   },

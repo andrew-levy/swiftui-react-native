@@ -33,28 +33,32 @@ export const getItemStyles: (
   const styles = {
     grouped: {
       backgroundColor: UIColor.white,
-      paddingBottom: 12,
-      marginTop: 12,
-      paddingRight: 15,
-      marginLeft: 20,
-      borderBottomColor: UIColor.systemGray5,
-      ...(index !== total && {
-        borderBottomColor: UIColor.systemGray3,
-        borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
-      }),
+      width: '100%',
+      // paddingBottom: 12,
+      // marginTop: 12,
+      // paddingRight: 15,
+      // marginLeft: 20,
+      // borderBottomColor: UIColor.systemGray5,
+      // ...(index !== total && {
+      //   borderBottomColor: UIColor.systemGray3,
+      //   borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
+      // }),
     },
     insetGrouped: {
       backgroundColor: UIColor.white,
-      marginLeft: 20,
-      paddingBottom: 12,
-      marginTop: 12,
-      paddingRight: 15,
+      width: '100%',
+      // marginLeft: 20,
+      // paddingBottom: 12,
+      // marginTop: 12,
+      // paddingRight: 15,
       borderTopRightRadius: index === 0 ? 10 : 0,
       borderBottomRightRadius: index === total ? 10 : 0,
-      ...(index !== total && {
-        borderBottomColor: UIColor.systemGray3,
-        borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
-      }),
+      borderTopLeftRadius: index === 0 ? 10 : 0,
+      borderBottomLeftRadius: index === total ? 10 : 0,
+      // ...(index !== total && {
+      //   borderBottomColor: UIColor.systemGray3,
+      //   borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
+      // }),
     },
   };
   return styles[listStyle];

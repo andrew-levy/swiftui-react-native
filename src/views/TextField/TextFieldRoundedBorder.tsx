@@ -1,6 +1,6 @@
 import React from 'react';
 import { UIColor } from '../../themes/colors';
-import { TextFieldProps } from '.';
+import { TextFieldProps } from './TextField';
 import { StyleSheet, TextInput } from 'react-native';
 
 export const TextFieldRoundedBorder: React.FC<TextFieldProps> = ({

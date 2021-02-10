@@ -72,6 +72,7 @@ export const useNavigationHeaders = (scrollValue: Animated.Value) => {
   const Large = (title, child) => (
     <VStack background={UIColor.transparent} alignment='leading'>
       <Animated.Text
+        onLayout={(e) => setTextWidth(e.nativeEvent.layout.width)}
         style={{
           fontWeight: '700',
           fontSize: 32,
