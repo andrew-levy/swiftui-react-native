@@ -65,3 +65,6 @@ export const withDecay = (params: WithDecayParams) => {
     state.position,
   ]);
 };
+
+export const clamp = (value: number, lowerBound: number, upperBound: number) =>
+  Math.min(Math.max(lowerBound, value), upperBound);

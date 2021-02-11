@@ -21,14 +21,22 @@ import {
   WHEEL_VISIBLE_ITEMS,
   WHEEL_ITEM_HEIGHT,
   WHEEL_PERSPECTIVE,
-} from './Constants';
-import { UIColor } from '../../themes/colors';
-import { PickerProps } from './Picker';
+} from '../Constants';
+import { UIColor } from '../../../themes/colors';
+import { PickerProps } from '../Picker';
 
 const RADIUS_REL = WHEEL_VISIBLE_ITEMS * 0.5;
 const RADIUS = RADIUS_REL * WHEEL_ITEM_HEIGHT;
 
-const PickerWheel = ({ items, selection, onSelect }: PickerProps) => {
+export type WheelPickerProps = PickerProps & {
+  pickerStyle: 'wheel';
+};
+
+export const WheelPicker = ({
+  items,
+  selection,
+  onSelect,
+}: WheelPickerProps) => {
   const translateY = useValue(0);
 
   const maskElement = (
@@ -140,5 +148,3 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
   },
 });
-
-export default PickerWheel;

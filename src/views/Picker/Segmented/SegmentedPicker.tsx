@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Text } from '../Text';
-import { UIColor } from '../../themes/colors';
+import { Text } from '../../Text';
+import { UIColor } from '../../../themes/colors';
 import {
   Animated,
   Easing,
@@ -8,13 +8,22 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { PickerProps } from '.';
-import { SLIDE_TEXT_SIZE } from './Constants';
+import { PickerProps } from '../Picker';
+import { SLIDE_TEXT_SIZE } from '../Constants';
 import { PanGestureHandler } from 'react-native-gesture-handler';
+import { clamp } from '../AnimationHelpers';
 
 const { Value, timing } = Animated;
 
-export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
+export type SegmentedPickerProps = PickerProps & {
+  pickerStyle: 'segmented';
+};
+
+export const SegmentedPicker = ({
+  items,
+  selection,
+  onSelect,
+}: SegmentedPickerProps) => {
   const [dimensions, setDimensions] = useState(null);
   const translateX = useState(new Value(0))[0];
   const opacities = items.map(() => new Value(0));
@@ -45,9 +54,6 @@ export const PickerSlide = ({ items, selection, onSelect }: PickerProps) => {
       useNativeDriver: true,
     }).start();
   };
-
-  const clamp = (value: number, lowerBound: number, upperBound: number) =>
-    Math.min(Math.max(lowerBound, value), upperBound);
 
   let lastIndex = selection;
   const panGestureHandler = (e) => {

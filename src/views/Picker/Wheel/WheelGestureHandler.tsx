@@ -15,8 +15,8 @@ import Animated, {
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import { usePanGestureHandler } from 'react-native-redash/lib/module/v1';
 
-import { WHEEL_ITEM_HEIGHT } from './Constants';
-import { withDecay } from './AnimationHelpers';
+import { WHEEL_ITEM_HEIGHT } from '../Constants';
+import { withDecay } from '../AnimationHelpers';
 
 type GestureHandlerProps = {
   value: Animated.Value<number>;

@@ -1,25 +1,26 @@
 import React from 'react';
-import PickerWheel from './PickerWheel';
-import { PickerList } from './PickerList';
-import { PickerSlide } from './PickerSlide';
+import { WheelPicker, WheelPickerProps } from './Wheel';
+import { ListPicker, ListPickerProps } from './List';
+import { SegmentedPicker, SegmentedPickerProps } from './Segmented';
 
 export type PickerProps = {
   items: Array<any>;
   selection?: number;
   onSelect: (n: number) => void;
-  pickerStyle: 'grouped' | 'insetGrouped' | 'slide' | 'wheel';
 };
 
-export const Picker = (props: PickerProps) => {
+export const Picker = (
+  props: ListPickerProps | WheelPickerProps | SegmentedPickerProps
+) => {
   switch (props.pickerStyle) {
     case 'insetGrouped':
     case 'grouped':
-      return <PickerList {...props} />;
+      return <ListPicker {...props} />;
     case 'wheel':
-      return <PickerWheel {...props} />;
-    case 'slide':
-      return <PickerSlide {...props} />;
+      return <WheelPicker {...props} />;
+    case 'segmented':
+      return <SegmentedPicker {...props} />;
     default:
-      return <PickerList {...props} />;
+      return <WheelPicker {...props} />;
   }
 };

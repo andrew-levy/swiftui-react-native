@@ -1,22 +1,24 @@
 import React from 'react';
-import { Button } from '../Button';
-import { HStack } from '../HStack';
-import { List } from '../List';
-import { Image } from '../Image';
-import { Text } from '../Text';
-import { PickerProps } from './Picker';
-import { LIST_ICON_WIDTH } from './Constants';
+import { Button } from '../../Button';
+import { HStack } from '../../HStack';
+import { List } from '../../List';
+import { Image } from '../../Image';
+import { Text } from '../../Text';
+import { PickerProps } from '../Picker';
+import { LIST_ICON_WIDTH } from '../Constants';
 
-export const PickerList: React.FC<PickerProps> = ({
+export type ListPickerProps = PickerProps & {
+  pickerStyle: 'insetGrouped' | 'grouped';
+};
+
+export const ListPicker = ({
   items,
   onSelect,
   selection,
   pickerStyle,
-}) => {
+}: ListPickerProps) => {
   return (
-    <List
-      listStyle={pickerStyle === 'insetGrouped' ? 'insetGrouped' : 'grouped'}
-    >
+    <List listStyle={pickerStyle}>
       {items.map((item, i) => (
         <Button key={i} action={() => onSelect(i)}>
           <HStack spacing='stretch'>

@@ -7,15 +7,20 @@ import { SwipeableItem } from './SwipeableItem';
 type ListProps = {
   children: React.ReactElement<any> | Array<React.ReactElement<any>>;
   listStyle?: 'insetGrouped' | 'grouped';
+  onDelete?: { perform: (i: number) => void; list: any[] };
 };
 
-export const List = ({ listStyle = 'insetGrouped', children }: ListProps) => {
+export const List = ({
+  listStyle = 'insetGrouped',
+  onDelete,
+  children,
+}: ListProps) => {
   return (
     <View style={getContainerStyles(listStyle)}>
       {React.Children.map(children, (child, i) => {
         const totalChildren = React.Children.toArray(children).length - 1;
         const listContent = (
-          <>
+          <React.Fragment key={i}>
             <View
               style={[
                 getItemStyles(listStyle, {
@@ -40,12 +45,14 @@ export const List = ({ listStyle = 'insetGrouped', children }: ListProps) => {
                 }}
               />
             )}
-          </>
+          </React.Fragment>
         );
-        return true ? (
-          listContent
+        return onDelete ? (
+          <SwipeableItem onDelete={() => onDelete.perform(i)}>
+            {listContent}
+          </SwipeableItem>
         ) : (
-          <SwipeableItem>{listContent}</SwipeableItem>
+          listContent
         );
       })}
     </View>
