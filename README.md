@@ -59,39 +59,67 @@ Run `yarn build` to generate a `dist/` folder, then run `yarn watch` while devel
 
 ## Installation
 
-Install the package in your React Native project:
+### React Native CLI
+
+**Step 1:** Install the package in your React Native project:
 
 ```console
 yarn add swiftui-react-native
 ```
 
-Then add the following dependencies:
+**Step 2:** Add the following dependencies:
 
 ```console
 yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
 ```
 
-`react-native-gesture-handler` requires you to complete one place the following import at the top of your `index.js` file.
+**Step 3:** The dependency `react-native-gesture-handler` requires you to complete one more step (see <a href='https://docs.swmansion.com/react-native-gesture-handler/docs/'>documentation</a> for more info):
+
+**iOS**
+
+Import the package at the top of your `index.js` file:
 
 ```javascript
 import 'react-native-gesture-handler';
 ```
 
-Then run,
+Then run:
 
 ```console
 cd ios && pod install && cd ..
 ```
 
+**Step 4:**
+
+Finally, run
+
+```console
+react-native run-ios
+```
+
 You should be all set now!
 
-### Navigation Dependencies
+### Navigation
 
-If you intend on using any of the navigation components, you will need to install these as well:
+If you intend on using any of the navigation views, you will need to install these dependencies as well:
+
+```console
+yarn add @react-navigation/bottom-tabs @react-navigation/native @react-navigation/stack
+```
+
+Then run:
+
+```console
+cd ios && pod install && cd ..
+```
+
+Finally, run
+
+```console
+react-native run-ios
+```
 
 **Note:** These views are based off of React Navigation components https://reactnavigation.org/docs/getting-started/.
-
-**Another Note:** If you run into any error messages regarding RNGesutureHandler, try restarting the bundler and re-running `yarn ios`. Trying to fix this ASAP!
 
 ## Usage
 
