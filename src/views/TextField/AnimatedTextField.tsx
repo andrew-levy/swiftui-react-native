@@ -5,7 +5,7 @@ import { TextFieldProps } from './TextField';
 
 const { timing, Value } = Animated;
 
-export const TextFieldUnderline: React.FC<TextFieldProps> = ({
+export const AnimatedTextField: React.FC<TextFieldProps> = ({
   placeholder,
   text,
   onChangeText,

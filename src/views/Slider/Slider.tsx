@@ -29,7 +29,7 @@ type SliderProps = {
 };
 
 export const Slider: React.FC<SliderProps> = ({
-  color,
+  color = UIColor.systemBlue,
   range,
   step = 1,
   value,
@@ -113,7 +113,7 @@ export const Slider: React.FC<SliderProps> = ({
         },
       ]}
     >
-      <FillBar fillWidth={fillWidth} color={color || UIColor.systemBlue} />
+      <FillBar fillWidth={fillWidth} color={color} />
       <Cursor translateX={translateX} gestureHandler={gestureHandler} />
     </Animated.View>
   );

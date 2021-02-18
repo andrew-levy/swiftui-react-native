@@ -3,7 +3,7 @@ import { UIColor } from '../../themes/colors';
 import { TextFieldProps } from './TextField';
 import { StyleSheet, TextInput } from 'react-native';
 
-export const TextFieldRoundedBorder: React.FC<TextFieldProps> = ({
+export const RoundedBorderTextField: React.FC<TextFieldProps> = ({
   placeholder,
   text,
   onChangeText,

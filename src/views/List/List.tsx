@@ -7,7 +7,7 @@ import { SwipeableItem } from './SwipeableItem';
 type ListProps = {
   children: React.ReactElement<any> | Array<React.ReactElement<any>>;
   listStyle?: 'insetGrouped' | 'grouped';
-  onDelete?: { perform: (i: number) => void; list: any[] };
+  onDelete?: (i: number) => void;
 };
 
 export const List = ({
@@ -19,7 +19,7 @@ export const List = ({
     <View style={getContainerStyles(listStyle)}>
       {React.Children.map(children, (child, i) => {
         const totalChildren = React.Children.toArray(children).length - 1;
-        const listContent = (
+        const listItem = (
           <React.Fragment key={i}>
             <View
               style={[
@@ -48,11 +48,11 @@ export const List = ({
           </React.Fragment>
         );
         return onDelete ? (
-          <SwipeableItem onDelete={() => onDelete.perform(i)}>
-            {listContent}
+          <SwipeableItem onDelete={onDelete} index={i}>
+            {listItem}
           </SwipeableItem>
         ) : (
-          listContent
+          listItem
         );
       })}
     </View>

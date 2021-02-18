@@ -65,12 +65,16 @@ Install the package in your React Native project:
 yarn add swiftui-react-native
 ```
 
-### Navigation Dependencies
-
-If you intend on using any of the navigation components, you will need to install these as well:
+Then add the following dependencies:
 
 ```console
 yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+```
+
+`react-native-gesture-handler` requires you to complete one place the following import at the top of your `index.js` file.
+
+```javascript
+import 'react-native-gesture-handler';
 ```
 
 Then run,
@@ -78,6 +82,12 @@ Then run,
 ```console
 cd ios && pod install && cd ..
 ```
+
+You should be all set now!
+
+### Navigation Dependencies
+
+If you intend on using any of the navigation components, you will need to install these as well:
 
 **Note:** These views are based off of React Navigation components https://reactnavigation.org/docs/getting-started/.
 

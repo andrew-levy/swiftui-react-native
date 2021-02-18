@@ -1,29 +1,28 @@
 import React from 'react';
 import { Frame } from '../../types/stylePropTypes';
-import { TextFieldDefault } from './TextFieldDefault';
-import { TextFieldRoundedBorder } from './TextFieldRoundedBorder';
-import { TextFieldUnderline } from './TextFieldUnderline';
+import { PlainTextField } from './PlainTextField';
+import { RoundedBorderTextField } from './RoundedBorderTextField';
+import { AnimatedTextField } from './AnimatedTextField';
 
 export type TextFieldProps = {
   placeholder?: string;
   text: string;
   onChangeText: () => void;
   frame?: Frame;
-  textFieldStyle?: 'underline' | 'default' | 'rounded-border';
-  // background?: string;
+  textFieldStyle?: 'animated' | 'plain' | 'rounded-border';
+  background?: string;
+  foregroundColor?: string;
 };
 
 export const TextField: React.FC<TextFieldProps> = (props) => {
   switch (props.textFieldStyle) {
-    case 'underline':
-      return <TextFieldUnderline {...props} />;
-    case 'default':
-      return <TextFieldDefault {...props} />;
+    case 'animated':
+      return <AnimatedTextField {...props} />;
+    case 'plain':
+      return <PlainTextField {...props} />;
     case 'rounded-border':
-      return <TextFieldRoundedBorder {...props} />;
+      return <RoundedBorderTextField {...props} />;
     default:
-      // return <TextFieldDefault {...props} />;
-      // for now...
-      return <TextFieldRoundedBorder {...props} />;
+      return <PlainTextField {...props} />;
   }
 };
