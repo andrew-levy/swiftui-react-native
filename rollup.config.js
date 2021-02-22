@@ -22,13 +22,11 @@ export default [
       }),
       esbuild()
     ],
-    output: [
-      {
-        file: `${MAIN_BUNDLE}.js`,
-        format: 'cjs',
-        sourcemap: true,
-      },
-    ],
+    output: {
+      file: `${MAIN_BUNDLE}.js`,
+      format: 'cjs',
+      sourcemap: true,
+    },
   }),
   bundle('src/index.ts', {
     plugins: [dts()],
@@ -39,13 +37,11 @@ export default [
   }),
   bundle('src/navigation/index.ts', {
     plugins: [esbuild()],
-    output: [
-      {
-        file: `${NAVIGATION_BUNDLE}.js`,
-        format: 'cjs',
-        sourcemap: true,
-      },
-    ],
+    output: {
+      file: `${NAVIGATION_BUNDLE}.js`,
+      format: 'cjs',
+      sourcemap: true,
+    },
   }),
   bundle('src/navigation/index.ts', {
     plugins: [dts()],
