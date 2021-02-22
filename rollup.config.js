@@ -1,5 +1,5 @@
 
-import replace from '@rollup/plugin-replace';
+import replace from '@rollup/plugin-replace'
 import dts from 'rollup-plugin-dts'
 import esbuild from 'rollup-plugin-esbuild'
 
