@@ -11,7 +11,7 @@
     "dev": "nodemon dist/",
     "clean": "rimraf ./dist/*",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish:custom": "npm run clean-build && cd dist && npm publish --dry-run && cd -"
+    "publish:custom": "npm run clean-build && cd dist && npm publish && cd -"
   },
   "author": "Andrew Levy <alevy97@gmail.com>",
   "license": "ISC",
