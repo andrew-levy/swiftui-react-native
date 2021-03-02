@@ -5,7 +5,7 @@ export const useColorScheme = () => {
   const context = useContext(ColorSchemeContext);
   if (!context)
     throw new Error(
-      'No color scheme was detected. Have your wrapped your components with a ColorSchemeManager?'
+      'No color scheme was detected. Have your wrapped your app in a ColorSchemeManager?'
     );
   return context;
 };

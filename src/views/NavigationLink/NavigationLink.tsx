@@ -1,5 +1,5 @@
 import React from 'react';
-import { NativeStackNavigationProp } from 'react-native-screens/native-Stack';
+import { NativeStackNavigationProp } from 'react-native-screens/native-stack';
 import { Button } from '../Button';
 import { Text } from '../Text';
 import { TouchableOpacity } from 'react-native';
