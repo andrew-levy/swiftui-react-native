@@ -10,3 +10,14 @@ export const Fonts = {
 };
 
 // largeTitle, title, headline, subheadline, body, callout, caption, footnote
+
+export const FontStyles = {
+  title: {},
+  largeTitle: {},
+  headline: {},
+  subHeadline: {},
+  body: {},
+  callout: {},
+  caption: {},
+  footnote: {},
+};

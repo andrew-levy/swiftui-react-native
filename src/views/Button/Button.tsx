@@ -50,7 +50,7 @@ export const Button = ({
       >
         {text ? (
           // Send in props from button to text
-          <Text>{text}</Text>
+          <Text buttonChild={true}>{text}</Text>
         ) : (
           React.Children.map(children, (child) =>
             React.cloneElement(child, {

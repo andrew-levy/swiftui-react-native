@@ -1,41 +1,34 @@
+import dts from 'rollup-plugin-dts';
+import esbuild from 'rollup-plugin-esbuild';
 
-import replace from '@rollup/plugin-replace'
-import dts from 'rollup-plugin-dts'
-import esbuild from 'rollup-plugin-esbuild'
-
-const MAIN_BUNDLE = 'dist/main'
-const NAVIGATION_BUNDLE = 'dist/navigation'
+const MAIN_SRC = 'src/index.ts';
+const NAVIGATION_SRC = 'src/navigation/index.ts';
+const MAIN_BUNDLE = 'dist/main';
+const NAVIGATION_BUNDLE = 'dist/navigation';
 
 const bundle = (input, config) => ({
   ...config,
   input,
-  external: id => !/^[./]/.test(id),
-})
+  external: (id) => !/^[./]/.test(id),
+});
 
 export default [
-  bundle('src/index.ts', {
-    plugins: [
-      replace({
-        preventAssignment: false,
-        delimiters: ['', ''],
-        '../../assets': './assets',
-      }),
-      esbuild()
-    ],
+  bundle(MAIN_SRC, {
+    plugins: [esbuild()],
     output: {
       file: `${MAIN_BUNDLE}.js`,
       format: 'cjs',
       sourcemap: true,
     },
   }),
-  bundle('src/index.ts', {
+  bundle(MAIN_SRC, {
     plugins: [dts()],
     output: {
       file: `${MAIN_BUNDLE}.d.ts`,
       format: 'es',
     },
   }),
-  bundle('src/navigation/index.ts', {
+  bundle(NAVIGATION_SRC, {
     plugins: [esbuild()],
     output: {
       file: `${NAVIGATION_BUNDLE}.js`,
@@ -43,11 +36,11 @@ export default [
       sourcemap: true,
     },
   }),
-  bundle('src/navigation/index.ts', {
+  bundle(NAVIGATION_SRC, {
     plugins: [dts()],
     output: {
       file: `${NAVIGATION_BUNDLE}.d.ts`,
       format: 'es',
     },
-  })
-]
+  }),
+];

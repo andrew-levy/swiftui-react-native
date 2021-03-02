@@ -3,11 +3,10 @@ import {
   NavigationViewManager,
   NavigationView,
   NavigationLink,
-  VStack,
-  Text,
-} from 'swiftui-react-native';
+} from 'swiftui-react-native/navigation';
+import { VStack, Text } from 'swiftui-react-native';
 
-// This is the root of our app with navigation
+// This is the root of our app with navigation enabled
 const App = () => {
   <NavigationViewManager>
     <NavigationViewManager>

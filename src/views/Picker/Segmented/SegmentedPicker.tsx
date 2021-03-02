@@ -8,16 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { PickerProps } from '../Picker';
+import { SegmentedPickerProps } from '../Picker';
 import { SLIDE_TEXT_SIZE } from '../Constants';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import { clamp } from '../AnimationHelpers';
 
 const { Value, timing } = Animated;
-
-export type SegmentedPickerProps = PickerProps & {
-  pickerStyle: 'segmented';
-};
 
 export const SegmentedPicker = ({
   items,

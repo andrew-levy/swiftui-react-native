@@ -10,8 +10,9 @@ export type NavigationBar = {
   disabled?: boolean;
   title?: string;
   displayMode?: 'inline' | 'large' | 'animated-inline' | 'animated-large';
-  backgroundStyle?: object;
+  backgroundColor?: string;
   foregroundColor?: string;
+  hideShadow?: boolean;
   leading?: () => React.ReactElement<any>;
   trailing?: () => React.ReactElement<any>;
 };

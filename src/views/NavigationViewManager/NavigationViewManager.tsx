@@ -1,11 +1,14 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import { NavigationViewProps } from '../NavigationView';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Animated } from 'react-native';
-import { useNavigationHeaders } from './useNavigationHeaders';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationOptions,
+} from 'react-native-screens/native-stack';
+import { enableScreens } from 'react-native-screens';
+import { NavigationBar } from '../../navigation';
 
-const Stack = createStackNavigator();
-export const HeaderScrollContext = createContext(null);
+enableScreens();
+const Stack = createNativeStackNavigator();
 
 type NavigationViewManagerProps = {
   children:
@@ -16,90 +19,59 @@ type NavigationViewManagerProps = {
 export const NavigationViewManager = ({
   children,
 }: NavigationViewManagerProps) => {
-  const scrollValue = new Animated.Value(0);
-
-  const {
-    Inline,
-    AnimatedInline,
-    Large,
-    AnimatedLarge,
-    Default,
-    animatedInlineStyle,
-    inlineStyle,
-    largeStyle,
-    animatedLargeStyle,
-  } = useNavigationHeaders(scrollValue);
-
   return (
-    <HeaderScrollContext.Provider value={scrollValue}>
-      <Stack.Navigator>
-        {React.Children.map(children, (child) => {
-          return (
-            <Stack.Screen
-              name={child.props.name}
-              component={child.props.view}
-              options={() => {
-                if (!child.props.navigationBar) return null;
-                const {
-                  displayMode,
-                  disabled,
-                  title,
-                  trailing,
-                  leading,
-                  backgroundStyle,
-                  foregroundColor,
-                  // titleStyle,
-                } = child.props.navigationBar;
-                return (
-                  child.props.navigationBar && {
-                    ...(disabled && {
-                      header: () => null,
-                    }),
-                    ...(foregroundColor && {
-                      headerTintColor: foregroundColor,
-                    }),
-                    ...{
-                      headerTitle: !displayMode
-                        ? title || child.props.name
-                        : () => {
-                            switch (displayMode) {
-                              case 'inline':
-                                return Inline(title, child);
-                              case 'animated-inline':
-                                return AnimatedInline(title, child);
-                              case 'large':
-                                return Large(title, child);
-                              case 'animated-large':
-                                return AnimatedLarge(title, child);
-                              default:
-                                return Default(title, child);
-                            }
-                          },
-                    },
-                    ...(leading && {
-                      headerLeft: leading,
-                    }),
-                    ...(trailing && {
-                      headerRight: trailing,
-                    }),
+    <Stack.Navigator>
+      {React.Children.map(children, (child) => {
+        return (
+          <Stack.Screen
+            name={child.props.name}
+            component={child.props.view}
+            options={getHeaderOptions(child)}
+          />
+        );
+      })}
+    </Stack.Navigator>
+  );
+};
 
-                    headerStyle:
-                      {
-                        ...backgroundStyle,
-                        ...(displayMode === 'inline' && inlineStyle),
-                        ...(displayMode === 'animated-inline' &&
-                          animatedInlineStyle),
-                        ...(displayMode === 'large' && largeStyle),
-                        ...(displayMode === 'animated-large' &&
-                          animatedLargeStyle),
-                      } || null,
-                  }
-                );
-              }}
-            />
-          );
-        })}
-      </Stack.Navigator>
-    </HeaderScrollContext.Provider>
+const getHeaderOptions = (child: React.ReactElement<NavigationViewProps>) => {
+  if (!child.props.navigationBar) return null;
+  const {
+    displayMode,
+    disabled,
+    title,
+    trailing,
+    leading,
+    backgroundColor,
+    foregroundColor,
+    hideShadow,
+    ...rest
+  }: NavigationBar = child.props.navigationBar;
+  return (
+    child.props.navigationBar &&
+    ({
+      ...(disabled && {
+        headerShown: false,
+      }),
+      ...(foregroundColor && {
+        headerTintColor: foregroundColor,
+      }),
+      ...(leading && {
+        headerLeft: leading,
+      }),
+      ...(trailing && {
+        headerRight: trailing,
+      }),
+      ...(displayMode && {
+        headerLargeTitle: displayMode === 'large',
+      }),
+      ...(backgroundColor && {
+        headerStyle: { backgroundColor: 'white' },
+      }),
+      ...(hideShadow && {
+        headerLargeTitleHideShadow: true,
+      }),
+      ...rest,
+    } as NativeStackNavigationOptions)
   );
 };

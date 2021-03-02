@@ -6,7 +6,7 @@
   "types": "main.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "clean-build": "npm run clean && npm run build && copyfiles assets/*.png dist && copyfiles package.json README.md dist",
+    "clean-build": "npm run clean && npm run build && copyfiles package.json README.md dist",
     "watch": "rollup -c -w",
     "dev": "nodemon dist/",
     "clean": "rimraf ./dist/*",

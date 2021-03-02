@@ -1,9 +1,7 @@
 import React from 'react';
 import { NavigationManager } from 'swiftui-react-native';
 
+/* Wrap your app with the NavigationManager view in order to navigate between screens */
 const App = () => {
-  <NavigationManager>
-    {/* Use this if you want to navigate between views in your app */}
-    {/* The rest of your app goes here */}
-  </NavigationManager>;
+  <NavigationManager>{/* The rest of your app goes here */}</NavigationManager>;
 };

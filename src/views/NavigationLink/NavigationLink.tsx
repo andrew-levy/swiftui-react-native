@@ -2,8 +2,8 @@ import React from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Button } from '../Button';
 import { Text } from '../Text';
-import { Image } from '../Image';
 import { TouchableOpacity } from 'react-native';
+import { RightChevron } from './RightChevron';
 
 type NavigationLinkProps = {
   navigation: StackNavigationProp<any, any>;
@@ -34,7 +34,7 @@ export const NavigationLink = ({
         }}
       >
         {text ? <Text>{text}</Text> : children}
-        <Image name='right-arrow' frame={{ width: 11, height: 11 }} />
+        <RightChevron />
       </TouchableOpacity>
     );
   }

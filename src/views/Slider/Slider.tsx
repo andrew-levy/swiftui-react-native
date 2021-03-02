@@ -23,14 +23,14 @@ import { FillBar } from './FillBar';
 type SliderProps = {
   color?: string;
   step?: number;
-  range: [number, number];
+  range?: [number, number];
   value: number;
   onSlide: (n: number) => void;
 };
 
 export const Slider: React.FC<SliderProps> = ({
   color = UIColor.systemBlue,
-  range,
+  range = [0, 10],
   step = 1,
   value,
   onSlide,

@@ -23,14 +23,10 @@ import {
   WHEEL_PERSPECTIVE,
 } from '../Constants';
 import { UIColor } from '../../../themes/colors';
-import { PickerProps } from '../Picker';
+import { WheelPickerProps } from '../Picker';
 
 const RADIUS_REL = WHEEL_VISIBLE_ITEMS * 0.5;
 const RADIUS = RADIUS_REL * WHEEL_ITEM_HEIGHT;
-
-export type WheelPickerProps = PickerProps & {
-  pickerStyle: 'wheel';
-};
 
 export const WheelPicker = ({
   items,

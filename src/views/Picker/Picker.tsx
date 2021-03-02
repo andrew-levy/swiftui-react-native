@@ -1,12 +1,24 @@
 import React from 'react';
-import { WheelPicker, WheelPickerProps } from './Wheel';
-import { ListPicker, ListPickerProps } from './List';
-import { SegmentedPicker, SegmentedPickerProps } from './Segmented';
+import { WheelPicker } from './Wheel';
+import { ListPicker } from './List';
+import { SegmentedPicker } from './Segmented';
 
-export type PickerProps = {
+type PickerProps = {
   items: Array<any>;
   selection?: number;
   onSelect: (n: number) => void;
+};
+
+export type WheelPickerProps = PickerProps & {
+  pickerStyle: 'wheel';
+};
+
+export type SegmentedPickerProps = PickerProps & {
+  pickerStyle: 'segmented';
+};
+
+export type ListPickerProps = PickerProps & {
+  pickerStyle: 'insetGrouped' | 'grouped';
 };
 
 export const Picker = (
