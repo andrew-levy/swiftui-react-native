@@ -97,12 +97,12 @@ npx react-native run-ios
 
 You should be all set now!
 
-### Navigation Installation
+### Navigation Installation (optional)
 
 If you intend on using any of the navigation views, you will need to install these dependencies as well
 
 ```console
-yarn add @react-navigation/bottom-tabs @react-navigation/native @react-navigation/stack
+yarn add @react-navigation/bottom-tabs @react-navigation/native react-native-screens
 ```
 
 Then, run

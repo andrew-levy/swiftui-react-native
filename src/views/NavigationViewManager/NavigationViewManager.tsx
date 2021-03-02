@@ -42,7 +42,7 @@ const getHeaderOptions = (child: React.ReactElement<NavigationViewProps>) => {
     title,
     trailing,
     leading,
-    backgroundColor,
+    background,
     foregroundColor,
     hideShadow,
     ...rest
@@ -65,12 +65,14 @@ const getHeaderOptions = (child: React.ReactElement<NavigationViewProps>) => {
       ...(displayMode && {
         headerLargeTitle: displayMode === 'large',
       }),
-      ...(backgroundColor && {
-        headerStyle: { backgroundColor: 'white' },
+      ...(background && {
+        headerStyle: { backgroundColor: background },
       }),
-      ...(hideShadow && {
-        headerLargeTitleHideShadow: true,
-      }),
+      ...(hideShadow && displayMode === 'large'
+        ? {
+            headerLargeTitleHideShadow: hideShadow,
+          }
+        : { headerHideShadow: hideShadow }),
       ...rest,
     } as NativeStackNavigationOptions)
   );

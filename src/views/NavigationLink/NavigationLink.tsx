@@ -1,12 +1,12 @@
 import React from 'react';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { NativeStackNavigationProp } from 'react-native-screens/native-Stack';
 import { Button } from '../Button';
 import { Text } from '../Text';
 import { TouchableOpacity } from 'react-native';
 import { RightChevron } from './RightChevron';
 
 type NavigationLinkProps = {
-  navigation: StackNavigationProp<any, any>;
+  navigation: NativeStackNavigationProp<any, any>;
   destination: string;
   distinationProps?: object;
   text?: string;
