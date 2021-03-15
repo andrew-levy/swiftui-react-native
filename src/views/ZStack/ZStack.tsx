@@ -4,11 +4,12 @@ import {
   HorizontalAlignment,
   Frame,
   Padding,
-} from '../../types/stylePropTypes';
-import { UIColor } from '../../themes/colors';
+} from '../../types/propTypes';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { View } from 'react-native';
 import { getPadding } from '../../utils/getPadding';
 import { getFrame } from '../../utils/getFrame';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 type ZStackProps = {
   background?: string;
@@ -28,10 +29,11 @@ export const ZStack = ({
   frame,
   children,
 }: ZStackProps) => {
+  const { colorScheme } = useColorScheme();
   return (
     <View
       style={{
-        backgroundColor: background,
+        backgroundColor: systemColor(background, colorScheme),
         justifyContent: 'center',
         borderRadius: cornerRadius,
         ...getFrame(frame),

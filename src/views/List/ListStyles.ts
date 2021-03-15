@@ -1,24 +1,28 @@
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
-import { UIColor } from '../../themes/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 
 type ItemModifiers = {
-  index: number;
-  total: number;
+  index?: number;
+  total?: number;
+  background?: string;
 };
 
-export const getContainerStyles: (listStyle: string) => StyleProp<ViewStyle> = (
-  listStyle
-) => {
+export const getContainerStyles: (
+  listStyle: string,
+  modifiers?: ItemModifiers
+) => StyleProp<ViewStyle> = (listStyle, { background }) => {
+  const { colorScheme } = useColorScheme();
   const styles = {
     grouped: {
-      backgroundColor: UIColor.white,
+      backgroundColor: systemColor(background, colorScheme),
       width: '100%',
       borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
       borderTopWidth: StyleSheet.hairlineWidth * 1.2,
-      borderColor: UIColor.systemGray3,
+      borderColor: systemColor(UIColor.systemGray3, colorScheme),
     },
     insetGrouped: {
-      backgroundColor: UIColor.white,
+      backgroundColor: systemColor(background, colorScheme),
       width: '90%',
       borderRadius: 10,
       overflow: 'hidden',
@@ -29,15 +33,15 @@ export const getContainerStyles: (listStyle: string) => StyleProp<ViewStyle> = (
 
 export const getItemStyles: (
   listStyle: string,
-  modifiers: ItemModifiers
+  modifiers?: ItemModifiers
 ) => StyleProp<ViewStyle> = (listStyle, { index, total }) => {
   const styles = {
     grouped: {
-      backgroundColor: UIColor.white,
+      backgroundColor: systemColor(UIColor.transparent),
       width: '100%',
     },
     insetGrouped: {
-      backgroundColor: UIColor.white,
+      backgroundColor: systemColor(UIColor.transparent),
       width: '100%',
       borderTopRightRadius: index === 0 ? 10 : 0,
       borderBottomRightRadius: index === total ? 10 : 0,

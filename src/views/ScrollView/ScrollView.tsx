@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView as RNScrollView } from 'react-native';
-import { UIColor } from '../../themes/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 
 type ScrollViewProps = {
   direction?: 'vertical' | 'horizontal';
@@ -14,13 +15,14 @@ export const ScrollView: React.FC<ScrollViewProps> = ({
   background = UIColor.transparent,
   showIndicators = true,
 }) => {
+  const { colorScheme } = useColorScheme();
   return (
     <RNScrollView
       horizontal={direction === 'horizontal'}
       scrollEventThrottle={1}
       showsVerticalScrollIndicator={showIndicators}
       showsHorizontalScrollIndicator={showIndicators}
-      style={{ backgroundColor: background }}
+      style={{ backgroundColor: systemColor(background, colorScheme) }}
     >
       {children}
     </RNScrollView>

@@ -1,22 +1,26 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { UIColor } from '../../themes/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { getContainerStyles, getItemStyles } from './ListStyles';
 import { SwipeableItem } from './SwipeableItem';
 
 type ListProps = {
   children: React.ReactElement<any> | Array<React.ReactElement<any>>;
   listStyle?: 'insetGrouped' | 'grouped';
+  background?: string;
   onDelete?: (i: number) => void;
 };
 
 export const List = ({
   listStyle = 'insetGrouped',
   onDelete,
+  background = UIColor.white,
   children,
 }: ListProps) => {
+  const { colorScheme } = useColorScheme();
   return (
-    <View style={getContainerStyles(listStyle)}>
+    <View style={getContainerStyles(listStyle, { background })}>
       {React.Children.map(children, (child, i) => {
         const totalChildren = React.Children.toArray(children).length - 1;
         const listItem = (
@@ -27,7 +31,11 @@ export const List = ({
                   index: i,
                   total: totalChildren,
                 }),
-                { paddingVertical: 12, paddingHorizontal: 20 },
+                {
+                  paddingVertical: 12,
+                  paddingHorizontal: 20,
+                  backgroundColor: systemColor(background, colorScheme),
+                },
               ]}
               key={i}
             >
@@ -39,7 +47,7 @@ export const List = ({
             {i !== totalChildren && (
               <View
                 style={{
-                  borderColor: UIColor.systemGray3,
+                  borderColor: systemColor(UIColor.systemGray3, colorScheme),
                   borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
                   marginLeft: 20,
                 }}

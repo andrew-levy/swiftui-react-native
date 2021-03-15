@@ -24,4 +24,4 @@ export * from './hooks/useOnDisappear';
 export * from './hooks/useAlert';
 export * from './hooks/useColorScheme';
 
-export * from './themes/colors';
+export * from './utils/colors';

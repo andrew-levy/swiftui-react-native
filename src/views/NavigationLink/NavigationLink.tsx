@@ -1,9 +1,8 @@
 import React from 'react';
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack';
-import { Button } from '../Button';
-import { Text } from '../Text';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Text, Button } from 'react-native';
 import { RightChevron } from './RightChevron';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 
 type NavigationLinkProps = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -11,6 +10,7 @@ type NavigationLinkProps = {
   distinationProps?: object;
   text?: string;
   listItem?: boolean;
+  foregroundColor?: string;
   children?: React.ReactElement<any>;
 };
 
@@ -20,8 +20,12 @@ export const NavigationLink = ({
   distinationProps,
   children,
   text,
+  foregroundColor,
   listItem,
 }: NavigationLinkProps) => {
+  const defaultForegroundColor = listItem
+    ? systemColor(UIColor.black, 'light')
+    : systemColor(UIColor.systemBlue, 'light');
   if (listItem) {
     return (
       <TouchableOpacity
@@ -33,15 +37,27 @@ export const NavigationLink = ({
           justifyContent: 'space-between',
         }}
       >
-        {text ? <Text>{text}</Text> : children}
+        {text ? (
+          <Text
+            style={{
+              color: foregroundColor || defaultForegroundColor,
+              fontSize: 18,
+            }}
+          >
+            {text}
+          </Text>
+        ) : (
+          children
+        )}
         <RightChevron />
       </TouchableOpacity>
     );
   }
   return (
     <Button
-      text={text}
-      action={() => navigation.navigate(destination, distinationProps)}
+      title={text}
+      onPress={() => navigation.navigate(destination, distinationProps)}
+      color={foregroundColor || defaultForegroundColor}
     >
       {children}
     </Button>

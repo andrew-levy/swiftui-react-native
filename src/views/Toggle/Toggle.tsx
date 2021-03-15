@@ -1,5 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-native';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor } from '../../utils/colors/utils';
 
 type ToggleProps = {
   isOn: boolean;
@@ -14,12 +16,13 @@ export const Toggle: React.FC<ToggleProps> = ({
   offColor,
   onToggle,
 }) => {
+  const { colorScheme } = useColorScheme();
   return (
     <Switch
       value={isOn}
       onValueChange={onToggle}
-      trackColor={{ true: onColor, false: null }}
-      ios_backgroundColor={offColor}
+      trackColor={{ true: systemColor(onColor, colorScheme), false: null }}
+      ios_backgroundColor={systemColor(offColor, colorScheme)}
     />
   );
 };

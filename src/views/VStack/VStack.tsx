@@ -1,15 +1,12 @@
 import React from 'react';
-import {
-  Frame,
-  Padding,
-  HorizontalAlignment,
-} from '../../types/stylePropTypes';
+import { Frame, Padding, HorizontalAlignment } from '../../types/propTypes';
 import { Spacer } from '../Spacer';
-import { UIColor } from '../../themes/colors';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { FlexAlignType, View } from 'react-native';
 import { getPadding } from '../../utils/getPadding';
-import { Alignments } from '../../themes/alignments';
+import { Alignments } from '../../utils/alignments';
 import { getFrame } from '../../utils/getFrame';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 type VStackProps = {
   background?: string;
@@ -33,10 +30,11 @@ export const VStack = ({
   frame,
   children,
 }: VStackProps) => {
+  const { colorScheme } = useColorScheme();
   return (
     <View
       style={{
-        backgroundColor: background,
+        backgroundColor: systemColor(background, colorScheme),
         alignItems: Alignments.horizontal[alignment] as FlexAlignType,
         justifyContent: 'center',
         borderRadius: cornerRadius,
@@ -56,15 +54,3 @@ export const VStack = ({
     </View>
   );
 };
-
-// Spacer version:
-
-// export const ChildPositionContext = createContext(null);
-// ...
-// const [childPositions, setChildPositions] = useState([]);
-// ...
-// <ChildPositionContext.Provider
-//   value={{ childPositions, setChildPositions }}
-// >
-//  <View onLayout={(e) => console.log('height: ', e.nativeEvent.layout.height)}> ... </View>
-// </ChildPositionContext.Provider>

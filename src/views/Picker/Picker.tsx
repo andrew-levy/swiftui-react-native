@@ -4,6 +4,7 @@ import { ListPicker } from './List';
 import { SegmentedPicker } from './Segmented';
 
 type PickerProps = {
+  background: string;
   items: Array<any>;
   selection?: number;
   onSelect: (n: number) => void;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NativeStackNavigationOptions } from 'react-native-screens/lib/typescript/types';
+import { ColorScheme } from '../ColorSchemeManager';
 
 export type NavigationViewProps = {
   name: string;
@@ -14,6 +15,7 @@ export type NavigationBar = {
   background?: string;
   foregroundColor?: string;
   hideShadow?: boolean;
+  colorScheme?: ColorScheme;
   leading?: () => React.ReactElement<any>;
   trailing?: () => React.ReactElement<any>;
 } & NativeStackNavigationOptions;

@@ -21,7 +21,8 @@ import {
   usePanGestureHandler,
   minus,
 } from 'react-native-redash/lib/module/v1';
-import { UIColor } from '../../themes/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 
 type SwipeableItemProps = {
   onDelete: (i: number) => void;
@@ -87,8 +88,11 @@ export const SwipeableItem: React.FC<SwipeableItemProps> = ({
     []
   );
 
+  const { colorScheme } = useColorScheme();
   return (
-    <Animated.View style={{ backgroundColor: UIColor.systemRed }}>
+    <Animated.View
+      style={{ backgroundColor: systemColor(UIColor.systemRed, colorScheme) }}
+    >
       <Animated.View
         style={[
           StyleSheet.absoluteFillObject,
@@ -102,7 +106,9 @@ export const SwipeableItem: React.FC<SwipeableItemProps> = ({
         ]}
       >
         <TouchableOpacity onPress={() => shouldRemove.setValue(1)}>
-          <Animated.Text style={{ color: UIColor.white, opacity: textOpacity }}>
+          <Animated.Text
+            style={{ color: systemColor(UIColor.white), opacity: textOpacity }}
+          >
             Delete
           </Animated.Text>
         </TouchableOpacity>

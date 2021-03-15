@@ -15,7 +15,8 @@ import Animated, {
   useValue,
 } from 'react-native-reanimated';
 import { clamp, onGestureEvent } from 'react-native-redash/lib/module/v1';
-import { UIColor } from '../../themes/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { CIRCLE_WIDTH, SLIDER_HEIGHT, SLIDER_WIDTH } from './Constants';
 import { Cursor } from './Cursor';
 import { FillBar } from './FillBar';
@@ -35,6 +36,7 @@ export const Slider: React.FC<SliderProps> = ({
   value,
   onSlide,
 }) => {
+  const { colorScheme } = useColorScheme();
   const [from, through] = range;
   const midPoint = (through + from) / 2;
 
@@ -110,6 +112,7 @@ export const Slider: React.FC<SliderProps> = ({
           height: SLIDER_HEIGHT,
           marginTop: CIRCLE_WIDTH / 2,
           marginBottom: CIRCLE_WIDTH / 2,
+          backgroundColor: systemColor(UIColor.systemGray5, colorScheme),
         },
       ]}
     >
@@ -122,7 +125,6 @@ export const Slider: React.FC<SliderProps> = ({
 const styles = StyleSheet.create({
   slider: {
     flexDirection: 'row',
-    backgroundColor: UIColor.systemGray6,
     borderRadius: 10,
   },
 });

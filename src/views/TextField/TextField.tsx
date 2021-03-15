@@ -1,5 +1,5 @@
 import React from 'react';
-import { Frame } from '../../types/stylePropTypes';
+import { Frame } from '../../types/propTypes';
 import { PlainTextField } from './PlainTextField';
 import { RoundedBorderTextField } from './RoundedBorderTextField';
 import { AnimatedTextField } from './AnimatedTextField';

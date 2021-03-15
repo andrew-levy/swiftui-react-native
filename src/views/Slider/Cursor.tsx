@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
-import { UIColor } from '../../themes/colors';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { CIRCLE_WIDTH, SLIDER_WIDTH } from './Constants';
 
 type CursorProps = {
@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
   cursor: {
     position: 'absolute',
     borderRadius: 100,
-    backgroundColor: UIColor.white,
-    shadowColor: UIColor.black,
+    backgroundColor: systemColor(UIColor.white),
+    shadowColor: systemColor(UIColor.black),
     shadowOffset: {
       width: 0,
       height: 2,

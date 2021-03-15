@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { UIColor } from '../../themes/colors';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 
 type BackgroundShadowProps = {
   shadowOpacity: Animated.Node<number>;
@@ -16,7 +16,10 @@ export const BackgroundShadow: React.FC<BackgroundShadowProps> = ({
       pointerEvents='none'
       style={[
         StyleSheet.absoluteFill,
-        { opacity: shadowOpacity, backgroundColor: UIColor.black },
+        {
+          opacity: shadowOpacity,
+          backgroundColor: systemColor(UIColor.black),
+        },
       ]}
     >
       {children}

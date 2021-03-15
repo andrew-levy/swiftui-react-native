@@ -1,11 +1,12 @@
 import React from 'react';
-import { VerticalAlignment, Frame, Padding } from '../../types/stylePropTypes';
+import { VerticalAlignment, Frame, Padding } from '../../types/propTypes';
 import { Spacer } from '../Spacer';
-import { UIColor } from '../../themes/colors';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { FlexAlignType, View } from 'react-native';
 import { getPadding } from '../../utils/getPadding';
-import { Alignments } from '../../themes/alignments';
+import { Alignments } from '../../utils/alignments';
 import { getFrame } from '../../utils/getFrame';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 type HStackProps = {
   background?: string;
@@ -32,6 +33,7 @@ export const HStack: React.FC<HStackProps> = ({
     spacing && typeof spacing === 'number' ? (
       <Spacer direction='horizontal' space={spacing} />
     ) : null;
+  const { colorScheme } = useColorScheme();
   return (
     <View
       style={{
@@ -43,7 +45,7 @@ export const HStack: React.FC<HStackProps> = ({
           : spacing === 'stretch'
           ? 'space-between'
           : 'center',
-        backgroundColor: background,
+        backgroundColor: systemColor(background, colorScheme),
         borderRadius: cornerRadius,
         alignItems: Alignments.vertical[alignment] as FlexAlignType,
         ...getFrame(frame),

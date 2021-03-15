@@ -1,13 +1,13 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Alignments } from '../../themes/alignments';
-import { UIColor } from '../../themes/colors';
+import { Alignments } from '../../utils/alignments';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import {
   VerticalAlignment,
   HorizontalAlignment,
   Padding,
   Shadow,
-} from '../../types/stylePropTypes';
+} from '../../types/propTypes';
 import { Text } from '../Text';
 
 export type ButtonProps = {
@@ -30,6 +30,7 @@ export const Button = ({
   action,
   text,
   background = UIColor.transparent,
+  foregroundColor = UIColor.systemBlue,
   cornerRadius = 0,
   padding = 0,
   alignment,
@@ -37,29 +38,30 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <>
-      <TouchableOpacity
-        onPress={action}
-        style={{
-          backgroundColor: background,
-          justifyContent: 'center',
-          alignItems:
-            Alignments.horizontal[alignment] || Alignments.horizontal.center,
-          borderRadius: cornerRadius,
-        }}
-      >
-        {text ? (
-          // Send in props from button to text
-          <Text buttonChild={true}>{text}</Text>
-        ) : (
-          React.Children.map(children, (child) =>
-            React.cloneElement(child, {
-              ...child.props,
-              ...{ buttonChild: true },
-            })
-          )
-        )}
-      </TouchableOpacity>
-    </>
+    <TouchableOpacity
+      onPress={action}
+      style={{
+        backgroundColor: background,
+        justifyContent: 'center',
+        alignItems:
+          Alignments.horizontal[alignment] || Alignments.horizontal.center,
+        borderRadius: cornerRadius,
+      }}
+      {...props}
+    >
+      {text ? (
+        // Send in props from button to text
+        <Text buttonChild={!foregroundColor} foregroundColor={foregroundColor}>
+          {text}
+        </Text>
+      ) : (
+        React.Children.map(children, (child) =>
+          React.cloneElement(child, {
+            ...child.props,
+            ...{ buttonChild: !foregroundColor },
+          })
+        )
+      )}
+    </TouchableOpacity>
   );
 };

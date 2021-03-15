@@ -1,7 +1,8 @@
 import React from 'react';
-import { UIColor } from '../../themes/colors';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { TextFieldProps } from './TextField';
 import { StyleSheet, TextInput } from 'react-native';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 export const RoundedBorderTextField: React.FC<TextFieldProps> = ({
   placeholder,
@@ -9,6 +10,7 @@ export const RoundedBorderTextField: React.FC<TextFieldProps> = ({
   onChangeText,
   frame = { width: null, height: null },
 }) => {
+  const { colorScheme } = useColorScheme();
   return (
     <TextInput
       style={[
@@ -16,6 +18,8 @@ export const RoundedBorderTextField: React.FC<TextFieldProps> = ({
         {
           width: frame.width,
           height: frame.height,
+          backgroundColor: systemColor(UIColor.systemGray6, colorScheme),
+          color: systemColor(UIColor.black, colorScheme),
         },
       ]}
       placeholder={placeholder}
@@ -27,10 +31,8 @@ export const RoundedBorderTextField: React.FC<TextFieldProps> = ({
 
 const styles = StyleSheet.create({
   input: {
-    backgroundColor: UIColor.systemGray6,
     borderRadius: 6,
     paddingHorizontal: 10,
     paddingVertical: 7,
-    color: UIColor.black,
   },
 });

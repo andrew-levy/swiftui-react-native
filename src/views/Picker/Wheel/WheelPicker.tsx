@@ -22,18 +22,21 @@ import {
   WHEEL_ITEM_HEIGHT,
   WHEEL_PERSPECTIVE,
 } from '../Constants';
-import { UIColor } from '../../../themes/colors';
+import { systemColor, UIColor } from '../../../utils/colors/utils';
 import { WheelPickerProps } from '../Picker';
+import { useColorScheme } from '../../../hooks/useColorScheme';
 
 const RADIUS_REL = WHEEL_VISIBLE_ITEMS * 0.5;
 const RADIUS = RADIUS_REL * WHEEL_ITEM_HEIGHT;
 
 export const WheelPicker = ({
   items,
+  background,
   selection,
   onSelect,
 }: WheelPickerProps) => {
   const translateY = useValue(0);
+  const { colorScheme } = useColorScheme();
 
   const maskElement = (
     <Animated.View style={{ transform: [{ translateY }] }}>
@@ -77,32 +80,37 @@ export const WheelPicker = ({
   );
   return (
     <>
-      <View style={styles.selected} />
+      <View
+        style={[
+          styles.selected,
+          { backgroundColor: systemColor(UIColor.systemGray6, colorScheme) },
+        ]}
+      />
       <View style={styles.container}>
         <MaskedView {...{ maskElement }}>
           <View
             style={{
               height: WHEEL_ITEM_HEIGHT * 2,
-              backgroundColor: UIColor.systemGray3,
+              backgroundColor: systemColor(UIColor.systemGray3, colorScheme),
             }}
           />
           <View
             style={{
               height: WHEEL_ITEM_HEIGHT,
-              backgroundColor: UIColor.black,
+              backgroundColor: systemColor(UIColor.black, colorScheme),
             }}
           />
           <View
             style={{
               height: WHEEL_ITEM_HEIGHT * 2,
-              backgroundColor: UIColor.systemGray3,
+              backgroundColor: systemColor(UIColor.systemGray3, colorScheme),
             }}
           />
         </MaskedView>
         <View style={StyleSheet.absoluteFill}>
           <View
             style={{
-              borderColor: UIColor.systemGray4,
+              borderColor: systemColor(UIColor.systemGray4, colorScheme),
               top: WHEEL_ITEM_HEIGHT * 2,
               height: WHEEL_ITEM_HEIGHT,
               borderRadius: 6,
@@ -126,7 +134,6 @@ const styles = StyleSheet.create({
     height: WHEEL_ITEM_HEIGHT,
     width: '90%',
     borderRadius: 6,
-    backgroundColor: UIColor.systemGray6,
   },
   container: {
     width: '90%',

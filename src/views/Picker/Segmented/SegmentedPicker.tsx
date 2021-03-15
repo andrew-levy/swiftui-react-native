@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from '../../Text';
-import { UIColor } from '../../../themes/colors';
+import { systemColor, UIColor } from '../../../utils/colors/utils';
 import {
   Animated,
   Easing,
@@ -12,6 +12,7 @@ import { SegmentedPickerProps } from '../Picker';
 import { SLIDE_TEXT_SIZE } from '../Constants';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 import { clamp } from '../AnimationHelpers';
+import { useColorScheme } from '../../../hooks/useColorScheme';
 
 const { Value, timing } = Animated;
 
@@ -67,10 +68,17 @@ export const SegmentedPicker = ({
     }
   };
 
+  const { colorScheme } = useColorScheme();
+  const sliderBackgroundColor =
+    colorScheme === 'light' ? UIColor.white : UIColor.systemGray3;
+
   return (
     <PanGestureHandler onGestureEvent={panGestureHandler}>
       <View
-        style={styles.container}
+        style={[
+          styles.container,
+          { backgroundColor: systemColor(UIColor.systemGray6, colorScheme) },
+        ]}
         onLayout={(e) => setDimensions(e.nativeEvent.layout)}
       >
         {items.length &&
@@ -89,6 +97,7 @@ export const SegmentedPicker = ({
                 <Text
                   fontSize={SLIDE_TEXT_SIZE}
                   fontWeight={selection === i ? 'bold' : 'normal'}
+                  foregroundColor={systemColor(UIColor.black, colorScheme)}
                 >
                   {item}
                 </Text>
@@ -98,6 +107,10 @@ export const SegmentedPicker = ({
                   styles.divider,
                   {
                     opacity: opacities[i],
+                    borderRightColor: systemColor(
+                      UIColor.systemGray4,
+                      colorScheme
+                    ),
                   },
                 ]}
               />
@@ -108,6 +121,7 @@ export const SegmentedPicker = ({
           style={[
             styles.slider,
             {
+              backgroundColor: systemColor(sliderBackgroundColor, colorScheme),
               width: dimensions ? dimensions.width / items.length : 0,
               height: dimensions ? dimensions.height - 5 : 0,
               transform: [
@@ -125,18 +139,17 @@ export const SegmentedPicker = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: UIColor.systemGray6,
+    width: '90%',
     borderRadius: 6,
     flexDirection: 'row',
     padding: 3,
   },
   slider: {
     position: 'absolute',
-    backgroundColor: UIColor.white,
     top: 2,
     zIndex: -1,
     borderRadius: 6,
-    shadowColor: UIColor.black,
+    shadowColor: systemColor(UIColor.black),
     shadowOffset: {
       width: 0,
       height: 2,
@@ -149,7 +162,6 @@ const styles = StyleSheet.create({
     height: 15,
     borderRightWidth: 1,
     width: 0,
-    borderRightColor: UIColor.systemGray4,
   },
   item: {
     justifyContent: 'center',

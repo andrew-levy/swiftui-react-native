@@ -1,15 +1,16 @@
 import React from 'react';
 import { Text as RNText } from 'react-native';
-import { UIColor } from '../../themes/colors';
-import { Fonts } from '../../themes/fonts';
+import { systemColor, UIColor } from '../../utils/colors/utils';
+import { Fonts } from '../../utils/fonts';
 import { getPadding } from '../../utils/getPadding';
 import {
   VerticalAlignment,
   HorizontalAlignment,
   Padding,
   Shadow,
-} from '../../types/stylePropTypes';
+} from '../../types/propTypes';
 import { getShadow } from '../../utils/getShadow';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 export type TextProps = {
   fontSize?: number;
@@ -36,10 +37,13 @@ export const Text: React.FC<TextProps> = ({
   buttonChild,
   ...props
 }) => {
+  const { colorScheme } = useColorScheme();
   return (
     <RNText
       style={{
-        color: buttonChild ? UIColor.systemBlue : foregroundColor,
+        color: buttonChild
+          ? systemColor(UIColor.systemBlue, colorScheme)
+          : systemColor(foregroundColor, colorScheme),
         fontSize,
         fontWeight: Fonts.weights[fontWeight] || Fonts.weights.normal,
         fontFamily: Fonts.fonts[font] || Fonts.fonts.system,

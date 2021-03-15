@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { UIColor } from '../../themes/colors';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { Animated, Easing, TextInput, StyleSheet } from 'react-native';
 import { TextFieldProps } from './TextField';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 const { timing, Value } = Animated;
 
@@ -37,6 +38,8 @@ export const AnimatedTextField: React.FC<TextFieldProps> = ({
     }
   }, [text]);
 
+  const { colorScheme } = useColorScheme();
+
   return (
     <>
       <Animated.Text
@@ -45,6 +48,7 @@ export const AnimatedTextField: React.FC<TextFieldProps> = ({
           {
             transform: [{ translateY }],
             opacity: opacity,
+            color: systemColor(UIColor.systemGray3, colorScheme),
           },
         ]}
       >
@@ -59,6 +63,7 @@ export const AnimatedTextField: React.FC<TextFieldProps> = ({
           {
             width: frame.width,
             height: frame.height,
+            borderBottomColor: systemColor(UIColor.systemGray3, colorScheme),
           },
         ]}
       />
@@ -68,7 +73,6 @@ export const AnimatedTextField: React.FC<TextFieldProps> = ({
 
 const styles = StyleSheet.create({
   input: {
-    borderBottomColor: UIColor.systemGray3,
     borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
     paddingTop: 20,
     paddingBottom: 10,
@@ -77,7 +81,6 @@ const styles = StyleSheet.create({
   text: {
     position: 'absolute',
     left: 20,
-    color: UIColor.systemGray3,
     fontSize: 16,
   },
 });

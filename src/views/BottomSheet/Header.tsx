@@ -1,6 +1,6 @@
 import React from 'react';
 import Animated from 'react-native-reanimated';
-import { UIColor } from '../../themes/colors';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { Text } from '../Text';
 import { HEADER_TOP, PEAKING_HEIGHT } from './Constants';
 
@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ header }) => {
       style={{
         position: 'absolute',
         top: HEADER_TOP,
-        borderBottomColor: UIColor.systemGray5,
+        borderBottomColor: systemColor(UIColor.transparent),
         width: '100%',
         height: PEAKING_HEIGHT,
       }}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { UIColor } from '../../themes/colors';
-import { Frame } from '../../types/stylePropTypes';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor, UIColor } from '../../utils/colors/utils';
+import { Frame } from '../../types/propTypes';
 
 type RoundedRectangleProps = {
   fill: string;
@@ -15,12 +16,14 @@ export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
   fill = UIColor.white,
   frame = { width: DEFAULT_RECT_SIZE, height: DEFAULT_RECT_SIZE },
 }) => {
+  const { colorScheme } = useColorScheme();
   return (
     <View
       style={[
         styles.rect,
         {
-          backgroundColor: fill,
+          backgroundColor: systemColor(fill, colorScheme),
+          borderColor: systemColor(UIColor.systemGray5, colorScheme),
           width: frame.width,
           height: frame.height,
         },
@@ -30,5 +33,8 @@ export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
 };
 
 const styles = StyleSheet.create({
-  rect: { borderColor: UIColor.systemGray5, borderRadius: 3, borderWidth: 0.5 },
+  rect: {
+    borderRadius: 3,
+    borderWidth: 0.5,
+  },
 });

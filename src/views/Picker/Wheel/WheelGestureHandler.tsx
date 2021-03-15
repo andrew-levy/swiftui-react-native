@@ -3,20 +3,20 @@
  * https://github.com/wcandillon/can-it-be-done-in-react-native/tree/31496696939aa94094e8ec499b113facc4e94e56/the-10-min/src/Picker
  */
 
-import React from 'react';
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { StyleSheet } from "react-native";
 import Animated, {
   useCode,
   set,
   Value,
   add,
   call,
-} from 'react-native-reanimated';
-import { PanGestureHandler } from 'react-native-gesture-handler';
-import { usePanGestureHandler } from 'react-native-redash/lib/module/v1';
+} from "react-native-reanimated";
+import { PanGestureHandler } from "react-native-gesture-handler";
+import { usePanGestureHandler } from "react-native-redash/lib/module/v1";
 
-import { WHEEL_ITEM_HEIGHT } from '../Constants';
-import { withDecay } from '../AnimationHelpers';
+import { WHEEL_ITEM_HEIGHT } from "../Constants";
+import { withDecay } from "../AnimationHelpers";
 
 type GestureHandlerProps = {
   value: Animated.Value<number>;

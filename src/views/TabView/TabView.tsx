@@ -1,6 +1,6 @@
-import React from 'react';
-import { TabItemProps } from '../TabItem';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from "react";
+import { TabItemProps } from "../TabItem";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 const Tabs = createBottomTabNavigator();
 
 type TabViewProps = {

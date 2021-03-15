@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 
-type ColorSchemeProviderProps = { defaultMode?: 'light' | 'dark' };
+export type ColorScheme = 'light' | 'dark';
+type ColorSchemeProviderProps = { defaultMode?: ColorScheme };
 
 export const ColorSchemeContext = createContext(null);
 
@@ -9,8 +10,15 @@ export const ColorSchemeManager: React.FC<ColorSchemeProviderProps> = ({
   children,
 }) => {
   const [colorScheme, setColorScheme] = useState(defaultMode);
+  const toggleColorScheme = () => {
+    if (colorScheme === 'light') {
+      setColorScheme('dark');
+    } else {
+      setColorScheme('light');
+    }
+  };
   return (
-    <ColorSchemeContext.Provider value={{ colorScheme, setColorScheme }}>
+    <ColorSchemeContext.Provider value={{ colorScheme, toggleColorScheme }}>
       {children}
     </ColorSchemeContext.Provider>
   );

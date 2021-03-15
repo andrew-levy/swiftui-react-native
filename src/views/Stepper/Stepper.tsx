@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { UIColor } from '../../themes/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 
 type StepperProps = {
   onIncrement: () => void;
@@ -13,12 +14,23 @@ export const Stepper: React.FC<StepperProps> = ({
   onIncrement,
   onDecrement,
 }) => {
+  const { colorScheme } = useColorScheme();
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: systemColor(UIColor.systemGray6, colorScheme) },
+      ]}
+    >
       <Animated.View style={styles.button}>
         <Button onPress={() => onDecrement} title='-' />
       </Animated.View>
-      <View style={styles.divider} />
+      <View
+        style={[
+          styles.divider,
+          { borderRightColor: systemColor(UIColor.systemGray4, colorScheme) },
+        ]}
+      />
       <Animated.View style={styles.button}>
         <Button onPress={() => onIncrement} title='+' />
       </Animated.View>
@@ -28,7 +40,6 @@ export const Stepper: React.FC<StepperProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: UIColor.systemGray6,
     borderRadius: 6,
     flexDirection: 'row',
     padding: 3,
@@ -39,7 +50,6 @@ const styles = StyleSheet.create({
     height: 15,
     borderRightWidth: 1,
     width: 0,
-    borderRightColor: UIColor.systemGray4,
   },
   button: {
     width: '50%',

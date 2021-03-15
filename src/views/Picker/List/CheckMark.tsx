@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { UIColor } from '../../../themes/colors';
+import { systemColor, UIColor } from '../../../utils/colors/utils';
 
 const height = 2.5;
 const shortWidth = 8;
@@ -20,7 +20,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
   },
-  arm: { height, backgroundColor: UIColor.systemBlue, borderRadius },
+  arm: {
+    height,
+    backgroundColor: systemColor(UIColor.systemBlue),
+    borderRadius,
+  },
   short: {
     width: shortWidth,
     transform: [{ translateY: 5 }, { rotate: '45deg' }],

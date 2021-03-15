@@ -7,7 +7,8 @@ import {
   onGestureEvent,
   clamp,
 } from 'react-native-redash/lib/module/v1';
-import { UIColor } from '../../themes/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { systemColor, UIColor } from '../../utils/colors/utils';
 import { BackgroundShadow } from './BackgroundShadow';
 import { PEAKING_HEIGHT, CONFIG } from './Constants';
 import { Content } from './Content';
@@ -37,7 +38,7 @@ const snapMap = {
 };
 
 export const BottomSheet: React.FC<BottomSheetProps> = ({
-  background,
+  background = UIColor.white,
   opacity,
   header,
   snapPoints,
@@ -48,6 +49,8 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
   const velocityY = useValue(0);
   const state = useValue(State.UNDETERMINED);
   const offset = useValue(SNAP_BOTTOM);
+
+  const { colorScheme } = useColorScheme();
 
   // Defaults to bottom and three-quarters
   const snaps = snapPoints
@@ -94,7 +97,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
               bottom: PEAKING_HEIGHT,
               height: height,
               width: width,
-              backgroundColor: background || UIColor.white,
+              backgroundColor: systemColor(background, colorScheme),
               opacity: opacity || 1,
               transform: [{ translateY }],
             },
@@ -112,7 +115,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
 const styles = StyleSheet.create({
   bottomSheet: {
     position: 'absolute',
-    shadowColor: UIColor.black,
+    shadowColor: systemColor(UIColor.black),
     shadowOffset: {
       width: 0,
       height: 2,
