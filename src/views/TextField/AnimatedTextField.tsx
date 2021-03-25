@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { Animated, Easing, TextInput, StyleSheet } from 'react-native';
 import { TextFieldProps } from './TextField';
 import { useColorScheme } from '../../hooks/useColorScheme';

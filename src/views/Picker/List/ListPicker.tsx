@@ -1,5 +1,5 @@
 import React from 'react';
-import { UIColor } from '../../../utils/colors/utils';
+import { UIColor } from '../../../utils/colors';
 import { Button } from '../../Button';
 import { HStack } from '../../HStack';
 import { List } from '../../List';

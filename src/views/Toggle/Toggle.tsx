@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-native';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor } from '../../utils/colors/utils';
+import { systemColor } from '../../utils/colors';
 
 type ToggleProps = {
   isOn: boolean;

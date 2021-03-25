@@ -1,11 +1,10 @@
 import React from 'react';
 import { Frame, Padding, HorizontalAlignment } from '../../types/propTypes';
-import { Spacer } from '../Spacer';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { FlexAlignType, View } from 'react-native';
-import { getPadding } from '../../utils/getPadding';
+import { getPadding } from '../../utils/padding';
 import { Alignments } from '../../utils/alignments';
-import { getFrame } from '../../utils/getFrame';
+import { getFrame } from '../../utils/frame';
 import { useColorScheme } from '../../hooks/useColorScheme';
 
 type VStackProps = {
@@ -24,7 +23,6 @@ export const VStack = ({
   background = UIColor.transparent,
   spacing,
   alignment = Alignments.horizontal.center as HorizontalAlignment,
-  fillSpace,
   cornerRadius = 0,
   padding,
   frame,
@@ -45,9 +43,9 @@ export const VStack = ({
       {spacing && spacing !== 0
         ? React.Children.map(children, (child) => (
             <>
-              <Spacer space={spacing} />
+              <View style={{ height: spacing }} />
               {child}
-              <Spacer space={spacing} />
+              <View style={{ height: spacing }} />
             </>
           ))
         : children}

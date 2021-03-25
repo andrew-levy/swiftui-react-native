@@ -18,6 +18,7 @@ export type NavigationBar = {
   colorScheme?: ColorScheme;
   leading?: () => React.ReactElement<any>;
   trailing?: () => React.ReactElement<any>;
+  presentation: string;
 } & NativeStackNavigationOptions;
 
 export const NavigationView: React.FC<NavigationViewProps> = (props) => {

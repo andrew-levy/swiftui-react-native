@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView as RNScrollView } from 'react-native';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 
 type ScrollViewProps = {
   direction?: 'vertical' | 'horizontal';

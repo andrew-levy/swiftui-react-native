@@ -1,6 +1,6 @@
 import React from 'react';
 import Animated from 'react-native-reanimated';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { Text } from '../Text';
 import { HEADER_TOP, PEAKING_HEIGHT } from './Constants';
 

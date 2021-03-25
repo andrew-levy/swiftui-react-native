@@ -87,9 +87,7 @@ Then, run
 cd ios && pod install && cd ..
 ```
 
-**Step 4:**
-
-Finally, run
+**Step 4:** Finally, run
 
 ```console
 npx react-native run-ios

@@ -22,7 +22,7 @@ import {
   WHEEL_ITEM_HEIGHT,
   WHEEL_PERSPECTIVE,
 } from '../Constants';
-import { systemColor, UIColor } from '../../../utils/colors/utils';
+import { systemColor, UIColor } from '../../../utils/colors';
 import { WheelPickerProps } from '../Picker';
 import { useColorScheme } from '../../../hooks/useColorScheme';
 

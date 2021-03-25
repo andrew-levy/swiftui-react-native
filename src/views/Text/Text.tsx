@@ -1,15 +1,15 @@
 import React from 'react';
 import { Text as RNText } from 'react-native';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { Fonts } from '../../utils/fonts';
-import { getPadding } from '../../utils/getPadding';
+import { getPadding } from '../../utils/padding';
 import {
   VerticalAlignment,
   HorizontalAlignment,
   Padding,
   Shadow,
 } from '../../types/propTypes';
-import { getShadow } from '../../utils/getShadow';
+import { getShadow } from '../../utils/shadow';
 import { useColorScheme } from '../../hooks/useColorScheme';
 
 export type TextProps = {

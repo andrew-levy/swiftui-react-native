@@ -22,7 +22,7 @@ import {
   minus,
 } from 'react-native-redash/lib/module/v1';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 
 type SwipeableItemProps = {
   onDelete: (i: number) => void;

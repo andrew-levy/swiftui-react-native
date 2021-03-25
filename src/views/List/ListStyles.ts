@@ -1,6 +1,6 @@
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 
 type ItemModifiers = {
   index?: number;

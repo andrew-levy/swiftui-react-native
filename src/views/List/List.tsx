@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { getContainerStyles, getItemStyles } from './ListStyles';
 import { SwipeableItem } from './SwipeableItem';
 

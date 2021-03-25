@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { HEADER_HEIGHT, HEADER_WIDTH } from './Constants';
 
 type PullLineProps = {

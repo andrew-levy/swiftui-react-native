@@ -16,7 +16,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { clamp, onGestureEvent } from 'react-native-redash/lib/module/v1';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { CIRCLE_WIDTH, SLIDER_HEIGHT, SLIDER_WIDTH } from './Constants';
 import { Cursor } from './Cursor';
 import { FillBar } from './FillBar';

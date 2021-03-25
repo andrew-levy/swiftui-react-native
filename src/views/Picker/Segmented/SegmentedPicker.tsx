@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Text } from '../../Text';
-import { systemColor, UIColor } from '../../../utils/colors/utils';
+import { systemColor, UIColor } from '../../../utils/colors';
 import {
   Animated,
   Easing,

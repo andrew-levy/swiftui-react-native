@@ -2,7 +2,7 @@ import React from 'react';
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack';
 import { TouchableOpacity, Text, Button } from 'react-native';
 import { RightChevron } from './RightChevron';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 
 type NavigationLinkProps = {
   navigation: NativeStackNavigationProp<any, any>;
@@ -44,7 +44,7 @@ export const NavigationLink = ({
               fontSize: 18,
             }}
           >
-            {text}
+            {text || destination}
           </Text>
         ) : (
           children
@@ -55,7 +55,7 @@ export const NavigationLink = ({
   }
   return (
     <Button
-      title={text}
+      title={text || destination}
       onPress={() => navigation.navigate(destination, distinationProps)}
       color={foregroundColor || defaultForegroundColor}
     >

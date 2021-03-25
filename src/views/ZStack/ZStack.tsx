@@ -5,10 +5,10 @@ import {
   Frame,
   Padding,
 } from '../../types/propTypes';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { View } from 'react-native';
-import { getPadding } from '../../utils/getPadding';
-import { getFrame } from '../../utils/getFrame';
+import { getPadding } from '../../utils/padding';
+import { getFrame } from '../../utils/frame';
 import { useColorScheme } from '../../hooks/useColorScheme';
 
 type ZStackProps = {

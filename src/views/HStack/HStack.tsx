@@ -1,11 +1,10 @@
 import React from 'react';
 import { VerticalAlignment, Frame, Padding } from '../../types/propTypes';
-import { Spacer } from '../Spacer';
-import { systemColor, UIColor } from '../../utils/colors/utils';
+import { systemColor, UIColor } from '../../utils/colors';
 import { FlexAlignType, View } from 'react-native';
-import { getPadding } from '../../utils/getPadding';
+import { getPadding } from '../../utils/padding';
 import { Alignments } from '../../utils/alignments';
-import { getFrame } from '../../utils/getFrame';
+import { getFrame } from '../../utils/frame';
 import { useColorScheme } from '../../hooks/useColorScheme';
 
 type HStackProps = {
@@ -13,7 +12,6 @@ type HStackProps = {
   alignment?: VerticalAlignment;
   padding?: Padding;
   spacing?: number | 'stretch';
-  fillSpace?: 'left' | 'right';
   frame?: Frame;
   cornerRadius?: number;
   children: React.ReactElement<any> | React.ReactElement<any>[];
@@ -23,28 +21,17 @@ export const HStack: React.FC<HStackProps> = ({
   background = UIColor.transparent,
   spacing,
   alignment = Alignments.vertical.center,
-  fillSpace,
   cornerRadius = 0,
   padding,
   frame,
   children,
 }) => {
-  const spacer =
-    spacing && typeof spacing === 'number' ? (
-      <Spacer direction='horizontal' space={spacing} />
-    ) : null;
   const { colorScheme } = useColorScheme();
   return (
     <View
       style={{
         flexDirection: 'row',
-        justifyContent: fillSpace
-          ? fillSpace === 'left'
-            ? 'flex-end'
-            : 'flex-start'
-          : spacing === 'stretch'
-          ? 'space-between'
-          : 'center',
+        justifyContent: 'center',
         backgroundColor: systemColor(background, colorScheme),
         borderRadius: cornerRadius,
         alignItems: Alignments.vertical[alignment] as FlexAlignType,
@@ -55,9 +42,9 @@ export const HStack: React.FC<HStackProps> = ({
       {spacing && spacing !== 0
         ? React.Children.map(children, (child) => (
             <>
-              {spacer}
+              <View style={{ width: spacing }} />
               {child}
-              {spacer}
+              <View style={{ width: spacing }} />
             </>
           ))
         : children}

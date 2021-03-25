@@ -6,7 +6,7 @@ import {
 } from 'react-native-screens/native-stack';
 import { enableScreens } from 'react-native-screens';
 import { NavigationBar } from '../../navigation';
-import { systemColor } from '../../utils/colors/utils';
+import { systemColor } from '../../utils/colors';
 
 enableScreens();
 const Stack = createNativeStackNavigator();
@@ -46,6 +46,7 @@ const getHeaderOptions = (child: React.ReactElement<NavigationViewProps>) => {
     background,
     foregroundColor,
     hideShadow,
+    presentation,
     colorScheme = 'light',
     ...rest
   }: NavigationBar = child.props.navigationBar;
@@ -75,6 +76,9 @@ const getHeaderOptions = (child: React.ReactElement<NavigationViewProps>) => {
             headerLargeTitleHideShadow: hideShadow,
           }
         : { headerHideShadow: hideShadow }),
+      ...(presentation && {
+        stackPresentation: presentation,
+      }),
       ...rest,
     } as NativeStackNavigationOptions)
   );
