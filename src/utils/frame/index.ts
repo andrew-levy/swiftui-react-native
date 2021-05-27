@@ -1,4 +1,4 @@
-import { Frame } from '../types/stylePropTypes';
+import { Frame } from '../../types/propTypes';
 
 export const getFrame = (frame: Frame) => {
   const defaultStyles = { width: '100%' };

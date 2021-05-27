@@ -11,7 +11,7 @@ type HStackProps = {
   background?: string;
   alignment?: VerticalAlignment;
   padding?: Padding;
-  spacing?: number | 'stretch';
+  spacing?: number;
   frame?: Frame;
   cornerRadius?: number;
   children: React.ReactElement<any> | React.ReactElement<any>[];

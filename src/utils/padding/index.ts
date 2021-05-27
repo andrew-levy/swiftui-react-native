@@ -1,4 +1,4 @@
-import { Padding } from '../types/stylePropTypes';
+import { Padding } from '../../types/propTypes';
 
 export const getPadding = (paddingProps: Padding) => {
   if (!paddingProps) return null;

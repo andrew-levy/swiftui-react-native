@@ -10,8 +10,10 @@ export const ColorSchemeManager: React.FC<ColorSchemeProviderProps> = ({
   children,
 }) => {
   const [colorScheme, setColorScheme] = useState(defaultMode);
-  const toggleColorScheme = () => {
-    if (colorScheme === 'light') {
+  const toggleColorScheme = (to: ColorScheme = null) => {
+    if (to) {
+      setColorScheme(to);
+    } else if (colorScheme === 'light') {
       setColorScheme('dark');
     } else {
       setColorScheme('light');

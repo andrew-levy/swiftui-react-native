@@ -1,4 +1,4 @@
-import { Shadow } from '../types/stylePropTypes';
+import { Shadow } from '../../types/propTypes';
 
 export const getShadow = (shadow: Shadow) => {
   if (!shadow) return null;

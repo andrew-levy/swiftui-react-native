@@ -14,7 +14,6 @@ export * from './views/Picker';
 export * from './views/TextField';
 export * from './views/BottomSheet';
 export * from './views/ColorSchemeManager';
-
 export * from './views/VStack';
 export * from './views/HStack';
 export * from './views/ZStack';
@@ -24,4 +23,4 @@ export * from './hooks/useOnDisappear';
 export * from './hooks/useAlert';
 export * from './hooks/useColorScheme';
 
-export * from './utils/colors';
+export * from './utils';
