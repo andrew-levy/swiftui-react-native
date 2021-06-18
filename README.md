@@ -1,5 +1,7 @@
 # swiftui-react-native
 
+::construction:: ::construction:: This library is under construction so some components might now work as expected. Please feel free to contribute if you think you'd like to use this package.
+
 <img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/readme.png?raw=true" />
 
 ## What is it?
