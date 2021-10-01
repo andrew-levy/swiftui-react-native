@@ -1,6 +1,6 @@
 # swiftui-react-native
 
-::construction:: ::construction:: This library is under construction so some components might now work as expected. Please feel free to contribute if you think you'd like to use this package.
+:exclamation::exclamation: This project was a fun experiment to build SwiftUI-like views in React Native. The goal was to use similar naming conventions and syntax where possible (component names, colors, modifiers, etc.) which could help ease the transition for a SwiftUI developer entering the React Native world - plus I just really like how Apple names things. Although many of the components are completed, it's not a production ready library in its current state. Please feel free to contribute if you think you'd like to use this package.
 
 <img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/readme.png?raw=true" />
 
