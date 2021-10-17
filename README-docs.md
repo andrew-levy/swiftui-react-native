@@ -36,11 +36,11 @@ And for any views that deal with text:
 
 A button view that performs an action
 
-| prop       | description                  | type                     | required                   | default     |
-| ---------- | ---------------------------- | ------------------------ | -------------------------- | ----------- | ------ |
-| `text`     | Button text                  | `string`                 | no                         | `undefined` |
-| `action`   | Function to execute on press | `() => void`             | no                         | `undefined` |
-| `children` | Button content               | `React.ReactElement<any> | React.ReactElement<any>[]` | no          | `null` |
+| prop       | description                  | type                                                     | required | default     |
+| ---------- | ---------------------------- | -------------------------------------------------------- | -------- | ----------- |
+| `text`     | Button text                  | `string`                                                 | no       | `undefined` |
+| `action`   | Function to execute on press | `() => void`                                             | no       | `undefined` |
+| `children` | Button content               | `React.ReactElement<any>` or `React.ReactElement<any>[]` | no       | `null`      |
 
 Button inherits all `Modifiers` and `TextModifers` as props.
 
@@ -48,20 +48,20 @@ Button inherits all `Modifiers` and `TextModifers` as props.
 
 Provides context for the current color scheme. Wrap your app in this component to access dynamic color palettes and color scheme functionality.
 
-| prop                   | description          | type              | required | default |
-| ---------------------- | -------------------- | ----------------- | -------- | ------- | --- | ------- |
-| `preferredColorScheme` | Default color scheme | `'light'          | 'dark'   | 'auto'` | no  | `light` |
-| `children`             | Button content       | `React.ReactNode` | yes      | `null`  |
+| prop                   | description          | type                              | required | default |
+| ---------------------- | -------------------- | --------------------------------- | -------- | ------- |
+| `preferredColorScheme` | Default color scheme | `'light'` or `'dark'` or `'auto'` | no       | `light` |
+| `children`             | Button content       | `React.ReactNode`                 | yes      | `null`  |
 
 ### `<HStack />`
 
 A stack that displays items horizontally.
 
-| prop        | description                         | type                     | required                   | default    |
-| ----------- | ----------------------------------- | ------------------------ | -------------------------- | ---------- | ------ | ---------- |
-| `spacing`   | Amount of space between stack items | `number`                 | no                         | `0`        |
-| `alignment` | Vertical alignment                  | `'top'                   | 'bottom'                   | 'center' ` | no     | `'center'` |
-| `children`  | Stack items                         | `React.ReactElement<any> | React.ReactElement<any>[]` | no         | `null` |
+| prop        | description                         | type                                                     | required | default    |
+| ----------- | ----------------------------------- | -------------------------------------------------------- | -------- | ---------- |
+| `spacing`   | Amount of space between stack items | `number`                                                 | no       | `0`        |
+| `alignment` | Vertical alignment                  | `'top'` or `'bottom'` or `'center'`                      | no       | `'center'` |
+| `children`  | Stack items                         | `React.ReactElement<any>` or `React.ReactElement<any>[]` | no       | `null`     |
 
 VStack inherits all `Modifiers` as props.
 
@@ -109,13 +109,13 @@ Label inherits all of `Button`'s props.
 
 A list view
 
-| prop       | description                                                                                                              | type                         | required                       | default |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------- | ------------------------------ | ------- | ----------- |
-| `header`   | List header                                                                                                              | `string                      | ReactElement<any>`             | no      | `undefined` |
-| `footer`   | List footer                                                                                                              | `string                      | ReactElement<any>`             | no      | `undefined` |
-| `inset`    | Gives the list rounded corners and adjusts list width to be inset from the edges of the parent view.                     | `boolean`                    | no                             | `false` |
-| `sideBar`  | If true, the leading component for each Row will display in the left margin of the row item, extending past the divider. | `boolean`                    | no                             | `false` |
-| `children` | List Rows                                                                                                                | `React.ReactElement<ListRow> | React.ReactElement<ListRow>[]` | no      | `null`      |
+| prop       | description                                                                                                              | type                                                             | required | default     |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | -------- | ----------- |
+| `header`   | List header                                                                                                              | `string ` or ` ReactElement<any>`                                | no       | `undefined` |
+| `footer`   | List footer                                                                                                              | `string ` or ` ReactElement<any>`                                | no       | `undefined` |
+| `inset`    | Gives the list rounded corners and adjusts list width to be inset from the edges of the parent view.                     | `boolean`                                                        | no       | `false`     |
+| `sideBar`  | If true, the leading component for each Row will display in the left margin of the row item, extending past the divider. | `boolean`                                                        | no       | `false`     |
+| `children` | List Rows                                                                                                                | `React.ReactElement<ListRow>` or `React.ReactElement<ListRow>[]` | no       | `null`      |
 
 List inherits all `Modifiers` as props.
 
@@ -123,13 +123,13 @@ List inherits all `Modifiers` as props.
 
 A list row
 
-| prop            | description                                     | type                     | required                   | default     |
-| --------------- | ----------------------------------------------- | ------------------------ | -------------------------- | ----------- | ----------- |
-| `leading`       | Leading component (usually an image)            | `ReactElement<any>       | null`                      | no          | `undefined` |
-| `trailing`      | Trailing component (usually a control or image) | `ReactElement<any>       | null`                      | no          | `undefined` |
-| `hideSeparator` | Hides row separator                             | `boolean`                | no                         | `false`     |
-| `action`        | A function to execute on press                  | `() => void`             | no                         | `undefined` |
-| `children`      | List Row content                                | `React.ReactElement<any> | React.ReactElement<any>[]` | no          | `null`      |
+| prop            | description                                     | type                                                     | required | default     |
+| --------------- | ----------------------------------------------- | -------------------------------------------------------- | -------- | ----------- |
+| `leading`       | Leading component (usually an image)            | `ReactElement<any>` or `null`                            | no       | `undefined` |
+| `trailing`      | Trailing component (usually a control or image) | `ReactElement<any>` or ` null`                           | no       | `undefined` |
+| `hideSeparator` | Hides row separator                             | `boolean`                                                | no       | `false`     |
+| `action`        | A function to execute on press                  | `() => void`                                             | no       | `undefined` |
+| `children`      | List Row content                                | `React.ReactElement<any>` or `React.ReactElement<any>[]` | no       | `null`      |
 
 ListRow inherits all `Modifiers` as props.
 
@@ -173,11 +173,11 @@ Stepper inherits all `Modifiers` as props.
 
 A text component
 
-| prop        | description          | type              | required | default       |
-| ----------- | -------------------- | ----------------- | -------- | ------------- | --- | ----------- |
-| `alignment` | Text alignment guide | `'leading'        | 'center' | 'trailing'`   | no  | `'center'`  |
-| `textCase`  | Text case            | `'upper'          | 'lower'  | 'capitalize'` | no  | `undefined` |
-| `children`  | List Row content     | `React.ReactNode` | no       | `null`        |
+| prop        | description          | type                                       | required | default     |
+| ----------- | -------------------- | ------------------------------------------ | -------- | ----------- |
+| `alignment` | Text alignment guide | `'leading'` or ` 'center'` or `'trailing'` | no       | `'center'`  |
+| `textCase`  | Text case            | `'upper'` or ` 'lower'` or `'capitalize'`  | no       | `undefined` |
+| `children`  | List Row content     | `React.ReactNode`                          | no       | `null`      |
 
 Text inherits all `TextModifiers` as props.
 
@@ -213,11 +213,11 @@ Toggle inherits all `Modifiers` as props.
 
 A stack that displays items vertically
 
-| prop       | description                         | type                     | required                   | default   |
-| ---------- | ----------------------------------- | ------------------------ | -------------------------- | --------- | ------ | ---------- |
-| spacing    | Amount of space between stack items | `number`                 | no                         | `0`       |
-| alignment  | The SF Symbol name (iOS only)       | `leading'                | 'trailing'                 | 'center'` | no     | `'center'` |
-| `children` | Stack items                         | `React.ReactElement<any> | React.ReactElement<any>[]` | no        | `null` |
+| prop       | description                         | type                                                     | required | default    |
+| ---------- | ----------------------------------- | -------------------------------------------------------- | -------- | ---------- |
+| spacing    | Amount of space between stack items | `number`                                                 | no       | `0`        |
+| alignment  | The SF Symbol name (iOS only)       | `leading'` or `'trailing'` or `'center'`                 | no       | `'center'` |
+| `children` | Stack items                         | `React.ReactElement<any>` or `React.ReactElement<any>[]` | no       | `null`     |
 
 VStack inherits all `Modifiers` as props.
 
@@ -225,11 +225,11 @@ VStack inherits all `Modifiers` as props.
 
 A vertical stack
 
-| prop       | description                         | type                     | required                   | default                         |
-| ---------- | ----------------------------------- | ------------------------ | -------------------------- | ------------------------------- | ---------- | ------------ | --- | ---------- |
-| spacing    | Amount of space between stack items | `number`                 | no                         | `0`                             |
-| alignment  | The SF Symbol name (iOS only)       | `{ vertical: 'top'       | 'bottom'                   | 'center', horizontal: 'leading' | 'trailing' | 'center' } ` | no  | `'center'` |
-| `children` | Stack items                         | `React.ReactElement<any> | React.ReactElement<any>[]` | no                              | `null`     |
+| prop       | description                         | type                                                              | required | default    |
+| ---------- | ----------------------------------- | ----------------------------------------------------------------- | -------- | ---------- |
+| spacing    | Amount of space between stack items | `number`                                                          | no       | `0`        |
+| alignment  | The SF Symbol name (iOS only)       | `{ vertical: VerticalAlignment horizontal: HorizontalAlignment} ` | no       | `'center'` |
+| `children` | Stack items                         | `React.ReactElement<any>` or `React.ReactElement<any>[]`          | no       | `null`     |
 
 HStack inherits all `Modifiers` as props.
 

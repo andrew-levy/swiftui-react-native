@@ -6,9 +6,9 @@
 
 SwiftUI is awesome. So is React Native! This library aims to recreate some of the best SwiftUI features in React Native applications.
 
-:white_check_mark: Written in TypeScript
-:white_check_mark: Animations with Reanimated v2
-:white_check_mark: Built-in dark mode
+- :white_check_mark: Written in TypeScript
+- :white_check_mark: Animations with Reanimated v2
+- :white_check_mark: Built-in dark mode
 
 ## What do you get?
 
@@ -78,9 +78,9 @@ yarn add react-native-reanimated react-native-gesture-handler react-native-sfsym
 yarn add react-native-reanimated react-native-gesture-handler
 ```
 
-:information_source: `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
-:information_source: `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
-:information_source: `react-native-sfsymbols` requires extra steps to set up. Complete them [here](https://github.com/birkir/react-native-sfsymbols).
+- :information_source: `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
+- :information_source: `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
+- :information_source: `react-native-sfsymbols` requires extra steps to set up. Complete them [here](https://github.com/birkir/react-native-sfsymbols).
 
 **Step 3:** Now run
 

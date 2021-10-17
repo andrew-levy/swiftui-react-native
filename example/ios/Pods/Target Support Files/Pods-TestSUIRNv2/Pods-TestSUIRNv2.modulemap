@@ -1,6 +1,0 @@
-module Pods_TestSUIRNv2 {
-  umbrella header "Pods-TestSUIRNv2-umbrella.h"
-
-  export *
-  module * { export * }
-}
