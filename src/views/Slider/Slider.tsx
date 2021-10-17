@@ -1,124 +1,169 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { State } from 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
 import Animated, {
-  add,
-  call,
-  cond,
-  divide,
-  eq,
-  interpolate,
-  not,
-  set,
-  sub,
-  useCode,
-  useValue,
+  runOnJS,
+  useAnimatedGestureHandler,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
 } from 'react-native-reanimated';
-import { clamp, onGestureEvent } from 'react-native-redash/lib/module/v1';
-import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor, UIColor } from '../../utils/colors';
-import { CIRCLE_WIDTH, SLIDER_HEIGHT, SLIDER_WIDTH } from './Constants';
-import { Cursor } from './Cursor';
-import { FillBar } from './FillBar';
+import {
+  PanGestureHandlerGestureEvent,
+  PanGestureHandler,
+} from 'react-native-gesture-handler';
+import { Binding } from '../../utils/binding';
+import { Modifiers } from '../../utils/modifiers';
+import { useUIColor } from '../../hooks/useUIColor';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { getPadding } from '../../utils/padding';
+import { getBorder } from '../../utils/border';
+import { getShadow } from '../../utils/shadow';
+import { getCornerRadius } from '../../utils/cornerRadius';
+import {
+  CIRCLE_WIDTH,
+  getSliderWidth,
+  position2Value,
+  value2Position,
+} from './utils';
 
-type SliderProps = {
-  color?: string;
+type SliderProps = Modifiers & {
+  accentColor?: string;
   step?: number;
   range?: [number, number];
-  value: number;
-  onSlide: (n: number) => void;
+  value: Binding<number>;
+  updateOnSlide?: boolean;
+  onChange?: (value?: number) => void;
+};
+
+type GestureHandlerContext = {
+  offsetX: number;
 };
 
 export const Slider: React.FC<SliderProps> = ({
-  color = UIColor.systemBlue,
+  accentColor,
   range = [0, 10],
   step = 1,
   value,
-  onSlide,
+  updateOnSlide = true,
+  frame,
+  backgroundColor,
+  style,
+  padding,
+  cornerRadius,
+  shadow,
+  border,
+  opacity,
+  zIndex,
+  onAppear,
+  onDisappear,
+  onChange,
 }) => {
-  const { colorScheme } = useColorScheme();
+  useLifecycle(onAppear, onDisappear);
+  const UIColor = useUIColor();
+  const [sliderWidth, sliderHeight] = getSliderWidth(frame);
   const [from, through] = range;
   const midPoint = (through + from) / 2;
+  const slope = (midPoint - from) / (sliderWidth / 2);
 
-  const translationX = useValue(0);
-  const velocityX = useValue(0);
-  const state = useValue(State.UNDETERMINED);
-  const offset = useValue(0);
-  const start = useValue(0);
-  const dragging = useValue(0);
-  const position = useValue(0);
-  const init = useValue(0);
-  const valueVal = useValue(value);
-  const midpointVal = useValue(midPoint);
-  const fromVal = useValue(from);
-  const sliderWidthVal = useValue(SLIDER_WIDTH);
-
-  const gestureHandler = onGestureEvent({
-    state,
-    translationX,
-    velocityX,
-    offset,
-  });
-
-  const translateX = clamp(
-    [
-      cond(not(init), [
-        set(
-          position,
-          divide(
-            sub(valueVal, midpointVal),
-            divide(sub(midpointVal, fromVal), divide(sliderWidthVal, 2))
-          )
-        ),
-        set(init, 1),
-      ]),
-      cond(
-        eq(state, State.ACTIVE),
-        [
-          cond(eq(dragging, 0), [set(dragging, 1), set(start, position)]),
-          set(position, add(start, translationX)),
-        ],
-        [set(dragging, 0), position]
-      ),
-    ],
-    -SLIDER_WIDTH / 2,
-    SLIDER_WIDTH / 2
+  const translateX = useSharedValue(
+    value2Position(value.value, midPoint, slope)
   );
 
-  const fillWidth = interpolate(translateX, {
-    inputRange: [-SLIDER_WIDTH / 2, SLIDER_WIDTH / 2],
-    outputRange: [0, SLIDER_WIDTH],
+  useEffect(() => {
+    const newPos = value2Position(value.value, midPoint, slope);
+    translateX.value = withTiming(newPos);
+  }, [value.value]);
+
+  const animatedCursorStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: translateX.value,
+        },
+      ],
+    };
   });
 
-  useCode(() => {
-    return call([translateX], (translateX) => {
-      const slope = (midPoint - from) / (SLIDER_WIDTH / 2);
-      let newValue =
-        Math.round((midPoint + translateX[0] * slope) / step) * step;
-      if (!Number.isInteger(step))
-        newValue = parseFloat(
-          newValue.toFixed(step.toString().split('.')[1].length)
-        );
-      onSlide(newValue);
-    });
-  }, [translateX]);
+  const animatedFillStyle = useAnimatedStyle(() => {
+    return {
+      width: translateX.value + sliderWidth / 2,
+    };
+  });
+
+  const gestureHandler = useAnimatedGestureHandler<
+    PanGestureHandlerGestureEvent,
+    GestureHandlerContext
+  >({
+    onStart: (_, ctx) => {
+      ctx.offsetX = translateX.value;
+    },
+    onActive: (e, ctx) => {
+      const prevPos = translateX.value;
+      const newPos = e.translationX + ctx.offsetX;
+      if (newPos < sliderWidth / 2 && newPos > -sliderWidth / 2) {
+        translateX.value = newPos;
+        const prevVal = position2Value(prevPos, midPoint, slope, step);
+        const newVal = position2Value(newPos, midPoint, slope, step);
+        if (updateOnSlide && prevVal !== newVal) {
+          runOnJS(value.setValue)(newVal);
+          if (onChange) runOnJS(onChange)(newVal);
+        }
+      }
+    },
+    onEnd: () => {
+      if (!updateOnSlide) {
+        const newVal = position2Value(translateX.value, midPoint, slope, step);
+        runOnJS(value.setValue)(newVal);
+        if (onChange) runOnJS(onChange)(newVal);
+      }
+    },
+  });
 
   return (
-    <Animated.View
+    <View
       style={[
         styles.slider,
         {
-          width: SLIDER_WIDTH,
-          height: SLIDER_HEIGHT,
+          width: sliderWidth,
+          height: sliderHeight,
           marginTop: CIRCLE_WIDTH / 2,
           marginBottom: CIRCLE_WIDTH / 2,
-          backgroundColor: systemColor(UIColor.systemGray5, colorScheme),
+          backgroundColor: backgroundColor || UIColor.systemGray4,
+          opacity,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getPadding(padding),
+          ...getBorder(border),
+          ...getShadow(shadow),
         },
+        style,
       ]}
     >
-      <FillBar fillWidth={fillWidth} color={color} />
-      <Cursor translateX={translateX} gestureHandler={gestureHandler} />
-    </Animated.View>
+      <Animated.View
+        style={[
+          {
+            height: sliderHeight,
+            borderRadius: 10,
+            backgroundColor: accentColor || UIColor.systemBlue,
+          },
+          animatedFillStyle,
+        ]}
+      />
+      <PanGestureHandler onGestureEvent={gestureHandler}>
+        <Animated.View
+          style={[
+            styles.cursor,
+            {
+              left: sliderWidth / 2 - CIRCLE_WIDTH / 2,
+              top: -CIRCLE_WIDTH / 2,
+              height: CIRCLE_WIDTH,
+              width: CIRCLE_WIDTH,
+            },
+            animatedCursorStyle,
+          ]}
+        />
+      </PanGestureHandler>
+    </View>
   );
 };
 
@@ -126,5 +171,18 @@ const styles = StyleSheet.create({
   slider: {
     flexDirection: 'row',
     borderRadius: 10,
+  },
+  cursor: {
+    backgroundColor: '#fff',
+    position: 'absolute',
+    borderRadius: 100,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 5,
   },
 });

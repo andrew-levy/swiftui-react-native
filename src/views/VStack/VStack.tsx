@@ -1,44 +1,55 @@
 import React from 'react';
-import { Frame, Padding, HorizontalAlignment } from '../../types/propTypes';
-import { systemColor, UIColor } from '../../utils/colors';
-import { FlexAlignType, View } from 'react-native';
-import { getPadding } from '../../utils/padding';
-import { Alignments } from '../../utils/alignments';
+import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { Modifiers, WithChildren } from '../../utils/modifiers';
+import { Alignments, HorizontalAlignment } from '../../utils/alignments';
+import { getBorder } from '../../utils/border';
 import { getFrame } from '../../utils/frame';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { getPadding } from '../../utils/padding';
+import { getShadow } from '../../utils/shadow';
+import { getCornerRadius } from '../../utils/cornerRadius';
 
-type VStackProps = {
-  background?: string;
-  alignment?: HorizontalAlignment;
-  padding?: Padding;
-  spacing?: number;
-  width?: number;
-  frame?: Frame;
-  fillSpace?: string;
-  cornerRadius?: number;
-  children: React.ReactElement<any> | React.ReactElement<any>[];
-};
+type VStackProps = Modifiers &
+  WithChildren & {
+    spacing?: number;
+    style?: StyleProp<ViewStyle>;
+    alignment?: HorizontalAlignment;
+  };
 
 export const VStack = ({
-  background = UIColor.transparent,
   spacing,
-  alignment = Alignments.horizontal.center as HorizontalAlignment,
-  cornerRadius = 0,
-  padding,
-  frame,
+  alignment = 'center',
+  style,
   children,
+  padding,
+  cornerRadius,
+  shadow,
+  backgroundColor,
+  border,
+  opacity,
+  frame,
+  zIndex,
+  onAppear,
+  onDisappear,
 }: VStackProps) => {
-  const { colorScheme } = useColorScheme();
+  useLifecycle(onAppear, onDisappear);
   return (
     <View
-      style={{
-        backgroundColor: systemColor(background, colorScheme),
-        alignItems: Alignments.horizontal[alignment] as FlexAlignType,
-        justifyContent: 'center',
-        borderRadius: cornerRadius,
-        ...getFrame(frame),
-        ...getPadding(padding),
-      }}
+      style={[
+        styles.vStack,
+        {
+          alignItems: Alignments.horizontal[alignment],
+          backgroundColor,
+          opacity,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getShadow(shadow),
+          ...getPadding(padding),
+          ...getFrame(frame),
+          ...getBorder(border),
+        },
+        style,
+      ]}
     >
       {spacing && spacing !== 0
         ? React.Children.map(children, (child) => (
@@ -52,3 +63,9 @@ export const VStack = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  vStack: {
+    flexDirection: 'column',
+  },
+});

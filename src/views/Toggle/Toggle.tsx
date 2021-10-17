@@ -1,28 +1,61 @@
 import React from 'react';
 import { Switch } from 'react-native';
-import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor } from '../../utils/colors';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { Binding } from '../../utils/binding';
+import { Modifiers } from '../../utils/modifiers';
+import { getBorder } from '../../utils/border';
+import { getFrame } from '../../utils/frame';
+import { getPadding } from '../../utils/padding';
+import { getShadow } from '../../utils/shadow';
+import { getCornerRadius } from '../../utils/cornerRadius';
 
-type ToggleProps = {
-  isOn: boolean;
-  onColor?: string;
-  offColor?: string;
-  onToggle: () => void;
+type ToggleProps = Modifiers & {
+  isOn: Binding<boolean>;
+  tintColor?: string;
+  onChange?: (value?: boolean) => void;
 };
 
 export const Toggle: React.FC<ToggleProps> = ({
   isOn,
-  onColor,
-  offColor,
-  onToggle,
+  tintColor,
+  padding,
+  backgroundColor,
+  shadow,
+  frame,
+  border,
+  opacity,
+  zIndex,
+  cornerRadius,
+  style,
+  onAppear,
+  onDisappear,
+  onChange,
 }) => {
-  const { colorScheme } = useColorScheme();
+  useLifecycle(onAppear, onDisappear);
   return (
     <Switch
-      value={isOn}
-      onValueChange={onToggle}
-      trackColor={{ true: systemColor(onColor, colorScheme), false: null }}
-      ios_backgroundColor={systemColor(offColor, colorScheme)}
+      style={[
+        {
+          backgroundColor,
+          opacity,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getPadding(padding),
+          ...getFrame(frame),
+          ...getBorder(border),
+          ...getShadow(shadow),
+        },
+        style,
+      ]}
+      value={isOn.value}
+      onValueChange={() => {
+        const newValue = !isOn.value;
+        isOn.setValue(newValue);
+        if (onChange) {
+          onChange(newValue);
+        }
+      }}
+      trackColor={{ true: tintColor, false: null }}
     />
   );
 };

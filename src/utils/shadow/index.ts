@@ -1,4 +1,10 @@
-import { Shadow } from '../../types/propTypes';
+export type Shadow = {
+  color?: string;
+  x?: number;
+  y?: number;
+  radius?: number;
+  opacity?: number;
+};
 
 export const getShadow = (shadow: Shadow) => {
   if (!shadow) return null;

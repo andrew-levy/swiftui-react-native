@@ -1,79 +1,60 @@
-import { ColorScheme } from '../../views/ColorSchemeManager';
-
-type UIColorNames = keyof typeof COLOR_VALUES;
-
-const COLOR_VALUES = {
-  black: { light: '#000', dark: '#fff' },
-  white: { light: '#fff', dark: '#000' },
-  transparent: { light: 'transparent', dark: 'transparent' },
-  systemBackground: { light: '#fff', dark: '#000' },
-  systemRed: { light: '#ff3b30', dark: '#ff3b30' },
-  systemBlue: { light: '#007bff', dark: '#0a84ff' },
-  systemGreen: { light: '#34c759', dark: '#30d158' },
-  systemIndigo: { light: '#5856d6', dark: '#5e5ce6' },
-  systemTeal: { light: '#5ac7fa', dark: '#64d2ff' },
-  systemPink: { light: '#ff2d54', dark: '#ff375f' },
-  systemPurple: { light: '#af52de', dark: '#bf5af2' },
-  systemOrange: { light: '#ff9500', dark: '#ff9f0a' },
-  systemYellow: { light: '#ffcc00', dark: '#ffd60a' },
-  systemGray: { light: '#8e8e93', dark: '#8e8e93' },
-  systemGray2: { light: '#aeaeb2', dark: '#636366' },
-  systemGray3: { light: '#c7c7cc', dark: '#48484a' },
-  systemGray4: { light: '#d1d1d6', dark: '#3a3a3c' },
-  systemGray5: { light: '#e5e5ea', dark: '#2c2c2e' },
-  systemGray6: { light: '#f2f2f7', dark: '#1c1c1e' },
+const LIGHT_COLORS = {
+  label: '#000000FF',
+  secondaryLabel: '#3C3C4399',
+  tertiaryLabel: '#3C3C434D',
+  quaternaryLabel: '#3C3C432E',
+  placeholderText: '#3C3C434D',
+  systemBackground: '#FFFFFFFF',
+  secondarySystemBackground: '#F2F2F7FF',
+  tertiarySystemBackground: '#FFFFFFFF',
+  separator: '#3C3C434A',
+  opaqueSeparator: '#C6C6C8FF',
+  systemRed: '#FF3B30FF',
+  systemBlue: '#007AFFFF',
+  systemGreen: '#34C759FF',
+  systemIndigo: '#5856D6FF',
+  systemTeal: '#5AC8FAFF',
+  systemPink: '#FF2D55FF',
+  systemPurple: '#AF52DEFF',
+  systemOrange: '#FF9500FF',
+  systemYellow: '#FFCC00FF',
+  systemGray: '#8E8E93FF',
+  systemGray2: '#AEAEB2FF',
+  systemGray3: '#C7C7CCFF',
+  systemGray4: '#D1D1D6FF',
+  systemGray5: '#E5E5EAFF',
+  systemGray6: '#F2F2F7FF',
 };
 
-/**
- * A map of all UIColors
- */
-export const UIColor: { [key in UIColorNames]: string } = {
-  black: 'black',
-  white: 'white',
-  transparent: 'transparent',
-  systemBackground: 'systemBackground',
-  systemRed: 'systemRed',
-  systemBlue: 'systemBlue',
-  systemGreen: 'systemGreen',
-  systemIndigo: 'systemIndigo',
-  systemTeal: 'systemTeal',
-  systemPink: 'systemPink',
-  systemPurple: 'systemPurple',
-  systemOrange: 'systemOrange',
-  systemYellow: 'systemYellow',
-  systemGray: 'systemGray',
-  systemGray2: 'systemGray2',
-  systemGray3: 'systemGray3',
-  systemGray4: 'systemGray4',
-  systemGray5: 'systemGray5',
-  systemGray6: 'systemGray6',
+const DARK_COLORS = {
+  label: '#FFFFFFFF',
+  secondaryLabel: '#EBEBF599',
+  tertiaryLabel: '#EBEBF54D',
+  quaternaryLabel: '#EBEBF52E',
+  placeholderText: '#EBEBF54D',
+  systemBackground: '#000000FF',
+  secondarySystemBackground: '#1C1C1EFF',
+  tertiarySystemBackground: '#2C2C2EFF',
+  separator: '#54545899',
+  opaqueSeparator: '#38383AFF',
+  systemRed: '#ff3b30',
+  systemBlue: '#0a84ff',
+  systemGreen: '#30d158',
+  systemIndigo: '#5e5ce6',
+  systemTeal: '#64d2ff',
+  systemPink: '#ff375f',
+  systemPurple: '#bf5af2',
+  systemOrange: '#ff9f0a',
+  systemYellow: '#ffd60a',
+  systemGray: '#8e8e93',
+  systemGray2: '#636366',
+  systemGray3: '#48484a',
+  systemGray4: '#3a3a3c',
+  systemGray5: '#2c2c2e',
+  systemGray6: '#1c1c1e',
 };
 
-/**
- * Gets the color hex value for a given color.
- * If a color scheme is provided, the appropriate color will be chosen.
- * Defaults to light mode.
- */
-export const systemColor = (
-  color: string,
-  colorScheme?: ColorScheme
-): string => {
-  const colorValues = COLOR_VALUES[color];
-  if (colorValues) {
-    return colorScheme ? colorValues[colorScheme] : colorValues.light;
-  }
-  return color;
+export const UIColor = {
+  light: LIGHT_COLORS,
+  dark: DARK_COLORS,
 };
-
-// UNIMPLEMENTED COLORS
-// link: 'link',
-// label: 'label',
-// secondaryLabel: 'secondaryLabel',
-// tertiaryLabel: 'tertiaryLabel',
-// quaternaryLabel: 'quaternaryLabel',
-// systemFill: 'systemFill',
-// secondarySystemFill: 'secondarySystemFill',
-// tertiarySystemFill: 'tertiarySystemFill',
-// quaternarySystemFill: 'quaternarySystemFill',
-// secondarySystemBackground: 'secondarySystemBackground',
-// tertiarySystemBackground: 'tertiarySystemBackground',

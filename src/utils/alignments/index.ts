@@ -1,3 +1,6 @@
+export type HorizontalAlignment = 'leading' | 'center' | 'trailing';
+export type VerticalAlignment = 'top' | 'center' | 'bottom';
+
 export const Alignments = {
   horizontal: {
     leading: 'flex-start',
@@ -9,4 +12,12 @@ export const Alignments = {
     center: 'center',
     bottom: 'flex-end',
   },
+} as const;
+
+export const Alignment = {
+  leading: 'leading',
+  center: 'center',
+  trailing: 'trailing',
+  top: 'top',
+  bottom: 'bottom',
 };

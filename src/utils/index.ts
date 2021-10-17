@@ -1,1 +1,0 @@
-export { UIColor } from './colors';

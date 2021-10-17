@@ -1,0 +1,15 @@
+com/testsuirnv2/BuildConfig.java
+ com.testsuirnv2.BuildConfig
+com/testsuirnv2/ReactNativeFlipper.java
+ com.testsuirnv2.ReactNativeFlipper
+ com.testsuirnv2.ReactNativeFlipper$1
+ com.testsuirnv2.ReactNativeFlipper$2
+ com.testsuirnv2.ReactNativeFlipper$2$1
+com/testsuirnv2/MainApplication.java
+ com.testsuirnv2.MainApplication
+ com.testsuirnv2.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/testsuirnv2/MainActivity.java
+ com.testsuirnv2.MainActivity
+ com.testsuirnv2.MainActivity$1

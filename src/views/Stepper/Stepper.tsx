@@ -1,57 +1,137 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
-import Animated from 'react-native-reanimated';
-import { useColorScheme } from '../../hooks/useColorScheme';
-import { systemColor, UIColor } from '../../utils/colors';
+import { Platform, StyleSheet, View } from 'react-native';
+import { Button } from '../Button';
+import { Text } from '../Text';
+import { Modifiers } from '../../utils/modifiers';
+import { Binding } from '../../utils/binding';
+import { useUIColor } from '../../hooks/useUIColor';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { getPadding } from '../../utils/padding';
+import { getFrame } from '../../utils/frame';
+import { getBorder } from '../../utils/border';
+import { getShadow } from '../../utils/shadow';
+import { getCornerRadius } from '../../utils/cornerRadius';
 
-type StepperProps = {
-  onIncrement: () => void;
-  onDecrement: () => void;
+const { SFSymbol } =
+  Platform.select({
+    ios: () => require('react-native-sfsymbols'),
+    default: () => null,
+  })() || {};
+
+type StepperProps = Modifiers & {
+  step?: number;
+  range?: [number, number];
+  value: Binding<number>;
+  onChange?: (value?: number) => void;
 };
 
-// TODO: use tap gesture handler to animate buttons
 export const Stepper: React.FC<StepperProps> = ({
-  onIncrement,
-  onDecrement,
+  value,
+  step = 1,
+  range = [-100, 100],
+  backgroundColor,
+  style,
+  padding,
+  cornerRadius,
+  shadow,
+  border,
+  opacity,
+  frame,
+  zIndex,
+  onAppear,
+  onDisappear,
+  onChange,
 }) => {
-  const { colorScheme } = useColorScheme();
+  useLifecycle(onAppear, onDisappear);
+  const UIColor = useUIColor();
   return (
     <View
       style={[
         styles.container,
-        { backgroundColor: systemColor(UIColor.systemGray6, colorScheme) },
+        {
+          backgroundColor: backgroundColor || UIColor.systemGray6,
+          opacity,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getPadding(padding),
+          ...getFrame(frame),
+          ...getBorder(border),
+          ...getShadow(shadow),
+        },
+        style,
       ]}
     >
-      <Animated.View style={styles.button}>
-        <Button onPress={() => onDecrement} title='-' />
-      </Animated.View>
+      <View style={styles.button}>
+        <Button
+          disabled={value.value <= range[0]}
+          style={styles.alignCenter}
+          action={() => {
+            if (value.value - step >= range[0]) {
+              const newValue = value.value - step;
+              value.setValue(newValue);
+              if (onChange) onChange(newValue);
+            }
+          }}
+        >
+          {SFSymbol ? (
+            <SFSymbol
+              name='minus'
+              color={UIColor.systemGray}
+              style={{ width: 20, height: 20 }}
+            />
+          ) : (
+            <Text style={styles.alignCenter}>-</Text>
+          )}
+        </Button>
+      </View>
       <View
-        style={[
-          styles.divider,
-          { borderRightColor: systemColor(UIColor.systemGray4, colorScheme) },
-        ]}
+        style={[styles.separator, { borderRightColor: UIColor.systemGray2 }]}
       />
-      <Animated.View style={styles.button}>
-        <Button onPress={() => onIncrement} title='+' />
-      </Animated.View>
+      <View style={styles.button}>
+        <Button
+          disabled={value.value >= range[1]}
+          style={styles.alignCenter}
+          action={() => {
+            if (value.value + step <= range[1]) {
+              const newValue = value.value + step;
+              value.setValue(newValue);
+              if (onChange) onChange(newValue);
+            }
+          }}
+        >
+          {SFSymbol ? (
+            <SFSymbol
+              name='plus'
+              color={UIColor.systemGray}
+              style={{ width: 20, height: 20 }}
+            />
+          ) : (
+            <Text style={styles.alignCenter}>+</Text>
+          )}
+        </Button>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 6,
+    borderRadius: 10,
     flexDirection: 'row',
-    padding: 3,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
     width: 100,
+    padding: 5,
   },
-  divider: {
-    top: 5,
-    height: 15,
+  separator: {
     borderRightWidth: 1,
+    height: 15,
     width: 0,
   },
   button: {
-    width: '50%',
+    flex: 1,
+  },
+  alignCenter: {
+    alignItems: 'center',
   },
 });

@@ -1,60 +1,80 @@
 import React from 'react';
-import { Text as RNText } from 'react-native';
-import { systemColor, UIColor } from '../../utils/colors';
-import { Fonts } from '../../utils/fonts';
+import { StyleProp, Text as RNText, TextStyle } from 'react-native';
 import { getPadding } from '../../utils/padding';
-import {
-  VerticalAlignment,
-  HorizontalAlignment,
-  Padding,
-  Shadow,
-} from '../../types/propTypes';
 import { getShadow } from '../../utils/shadow';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { getFrame } from '../../utils/frame';
+import { getBorder } from '../../utils/border';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { Font, getFont } from '../../utils/fonts';
+import { Modifiers, TextModifiers } from '../../utils/modifiers';
+import { HorizontalAlignment } from '../../utils/alignments';
+import { useUIColor } from '../../hooks/useUIColor';
+import { getCornerRadius } from '../../utils/cornerRadius';
 
-export type TextProps = {
-  fontSize?: number;
-  font?: string;
-  foregroundColor?: string;
-  fontWeight?: string;
-  alignment?: VerticalAlignment | HorizontalAlignment;
-  padding?: Padding;
-  cornerRadius?: number;
-  shadow?: Shadow;
-  buttonChild?: boolean;
-};
+export type TextProps = Omit<Modifiers, 'style'> &
+  TextModifiers & {
+    textCase?: 'lower' | 'upper' | 'capitalize';
+    alignment?: HorizontalAlignment;
+    style?: StyleProp<TextStyle>;
+  };
 
 export const Text: React.FC<TextProps> = ({
-  fontSize = 18,
-  font,
-  foregroundColor = UIColor.black,
+  font = Font.body,
+  fontSize,
   fontWeight,
+  customFont,
+  foregroundColor,
   alignment = 'center',
   padding,
-  cornerRadius = 0,
+  cornerRadius,
   shadow,
+  textCase,
+  backgroundColor,
+  border,
+  opacity,
+  frame,
+  zIndex,
+  style,
+  onAppear,
+  onDisappear,
   children,
-  buttonChild,
-  ...props
 }) => {
-  const { colorScheme } = useColorScheme();
+  useLifecycle(onAppear, onDisappear);
+  const UIColor = useUIColor();
   return (
     <RNText
-      style={{
-        color: buttonChild
-          ? systemColor(UIColor.systemBlue, colorScheme)
-          : systemColor(foregroundColor, colorScheme),
-        fontSize,
-        fontWeight: Fonts.weights[fontWeight] || Fonts.weights.normal,
-        fontFamily: Fonts.fonts[font] || Fonts.fonts.system,
-        textAlign: alignment === 'leading' ? 'left' : 'center',
-        borderRadius: cornerRadius,
-        ...getShadow(shadow),
-        ...getPadding(padding),
-      }}
-      {...props}
+      style={[
+        {
+          backgroundColor,
+          color: foregroundColor || UIColor.label,
+          textAlign: alignment === 'leading' ? 'left' : 'center',
+          opacity,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getTextCase(textCase),
+          ...getFont(font, fontSize, fontWeight, customFont),
+          ...getShadow(shadow),
+          ...getPadding(padding),
+          ...getFrame(frame),
+          ...getBorder(border),
+        },
+        style,
+      ]}
     >
       {children}
     </RNText>
   );
 };
+
+function getTextCase(textCase: string) {
+  switch (textCase) {
+    case 'lower':
+      return { textTransform: 'lowercase' };
+    case 'upper':
+      return { textTransform: 'uppercase' };
+    case 'capitalize':
+      return { textTransform: 'capitalize' };
+    default:
+      return null;
+  }
+}

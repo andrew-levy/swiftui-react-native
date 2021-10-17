@@ -1,43 +1,54 @@
 import React from 'react';
-import { VerticalAlignment, Frame, Padding } from '../../types/propTypes';
-import { systemColor, UIColor } from '../../utils/colors';
-import { FlexAlignType, View } from 'react-native';
-import { getPadding } from '../../utils/padding';
-import { Alignments } from '../../utils/alignments';
+import { StyleSheet, View } from 'react-native';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { WithChildren, Modifiers } from '../../utils/modifiers';
+import { Alignments, VerticalAlignment } from '../../utils/alignments';
+import { getBorder } from '../../utils/border';
 import { getFrame } from '../../utils/frame';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { getPadding } from '../../utils/padding';
+import { getShadow } from '../../utils/shadow';
+import { getCornerRadius } from '../../utils/cornerRadius';
 
-type HStackProps = {
-  background?: string;
-  alignment?: VerticalAlignment;
-  padding?: Padding;
-  spacing?: number;
-  frame?: Frame;
-  cornerRadius?: number;
-  children: React.ReactElement<any> | React.ReactElement<any>[];
-};
+type HStackProps = Modifiers &
+  WithChildren & {
+    spacing?: number;
+    alignment?: VerticalAlignment;
+  };
 
-export const HStack: React.FC<HStackProps> = ({
-  background = UIColor.transparent,
+export const HStack = ({
   spacing,
-  alignment = Alignments.vertical.center,
-  cornerRadius = 0,
-  padding,
-  frame,
+  alignment = 'center',
   children,
-}) => {
-  const { colorScheme } = useColorScheme();
+  padding,
+  cornerRadius,
+  shadow,
+  backgroundColor,
+  border,
+  opacity,
+  frame,
+  zIndex,
+  style,
+  onAppear,
+  onDisappear,
+}: HStackProps) => {
+  useLifecycle(onAppear, onDisappear);
   return (
     <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'center',
-        backgroundColor: systemColor(background, colorScheme),
-        borderRadius: cornerRadius,
-        alignItems: Alignments.vertical[alignment] as FlexAlignType,
-        ...getFrame(frame),
-        ...getPadding(padding),
-      }}
+      style={[
+        styles.hStack,
+        {
+          alignItems: Alignments.vertical[alignment],
+          backgroundColor,
+          opacity,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getShadow(shadow),
+          ...getPadding(padding),
+          ...getFrame(frame),
+          ...getBorder(border),
+        },
+        style,
+      ]}
     >
       {spacing && spacing !== 0
         ? React.Children.map(children, (child) => (
@@ -51,3 +62,9 @@ export const HStack: React.FC<HStackProps> = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  hStack: {
+    flexDirection: 'row',
+  },
+});

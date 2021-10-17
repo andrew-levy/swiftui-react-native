@@ -1,65 +1,60 @@
 # swiftui-react-native
 
-:exclamation::exclamation: This project was a fun experiment to build SwiftUI-like views in React Native. The goal was to use similar naming conventions and syntax where possible (component names, colors, modifiers, etc.) which could help ease the transition for a SwiftUI developer entering the React Native world - plus I just really like how Apple names things. Although many of the components are completed, it's not a production ready library in its current state. Please feel free to contribute if you think you'd like to use this package.
-
-<img src="https://github.com/andrew-levy/swiftui-react-native/blob/master/assets/readme.png?raw=true" />
+![swiftui-rn](/assets/swiftuirn.png?raw=true)
 
 ## What is it?
 
-SwiftUI is awesome. So is React Native! This library aims to leverage some of the best SwiftUI features in React Native applications.
+SwiftUI is awesome. So is React Native! This library aims to recreate some of the best SwiftUI features in React Native applications.
 
-## Views :eyes:
+:white_check_mark: Written in TypeScript
+:white_check_mark: Animations with Reanimated v2
+:white_check_mark: Built-in dark mode
+
+## What do you get?
 
 ### Stacks :pancakes: :abcd:
 
 - **VStack:** Vertical stack
 - **HStack:** Horizontal stack
 - **ZStack:** Overlay stack
+- **Spacer:** Space in between stacks
 
-### UI Elements :atom_symbol: :iphone:
+### Views :atom_symbol: :iphone:
 
-- **Text:** A text element
-- **TextField:** A text input element
-- **Label:** An element with text and an icon/image
-- **Button:** A clickable element that performs an action
-- **Image:** An image or icon
-- **Link:** An external link redirecting to the browser
-- **Spacer:** Space in between views (horizontal or vertical)
-- **List:** A formatted list
-- **RoundedRectangle:** You guessed it, a rounded rectangle
+- **Text:** Text view
+- **TextField:** Text input view
+- **Label:** View with text and an icon/image
+- **Button:** Clickable view that performs an action
+- **Image:** Image or icon (supports SF Symbols)
+- **Link:** External link redirecting to the browser
+- **List:** List view
+- **ListRow:** List item view
 
 ### Controls :control_knobs: :bulb:
 
-- **Toggle:** An toggle element to switch a value on/off
-- **Picker:** A styled selection element
-- **Slider:** A slideable value selector
-- **Stepper:** An element to increment and decrement a value
+- **Toggle:** Toggle control to switch a value on/off
+- **Slider:** Sliding value selector
+- **Stepper:** Control to increment and decrement a value
+<!-- - **Picker:** A styled selection element -->
 
-### Scroll Views + Sheets :scroll: :arrow_up:
+### Providers :new_moon_with_face: :sunny:
 
-- **ScrollView:** A scrollable view
-- **BottomSheet:** An animated bottom sheet
+- **ColorSchemeProvider** Provides context for the current color scheme
 
-### Managers + Wrappers :sun_with_face: :new_moon_with_face:
+### Hooks :fishing_pole_and_fish:
 
-- **ColorSchemeManager:** Dark/Light mode provider
-- **NavigationManager:** Container to enable navigation
-
-### Navigation :arrow_right: :link:
-
-- **NavigationManager:** Container to enable navigation
-- **NavigationViewManager:** A collection of naviagble views
-- **NavigationView:** A representation of a navigable screen
-- **NavigationLink:** A link to another view
-- **TabView:** A tab bar view
-- **TabItem:** A tab bar item
-
-## Hooks :fishing_pole_and_fish:
-
-- **useAlert:** Show a native alert
-- **useColorScheme:** Manage light/dark mode
+- **useBinding:** Create and use a bindable value that a view can read and write to
+- **useAlert:** Show an alert based on some condition
 - **useOnAppear:** Perform an action when the view appears
 - **useOnDisappear:** Perform an action when the view disappears
+- **useColorScheme:** Access the current color scheme and update it
+- **useUIColor:** Access dynamic UI colors based off of the current color scheme
+
+### Utilities :wrench: :rainbow:
+
+- **UIColor:** A collection of light and dark UI color values
+- **Font:** A collection of text font options
+- **Alignment:** A collection of horizontal and vertical alignments
 
 ## Installation
 
@@ -71,91 +66,88 @@ yarn add swiftui-react-native
 
 **Step 2:** Add the following dependencies
 
-```console
-yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
-```
-
-**Step 3:** The dependency `react-native-gesture-handler` requires you to complete one more <a href='https://docs.swmansion.com/react-native-gesture-handler/docs/'>step</a>. Here is the TL;DR version for iOS:
-
-Import the package at the top of your `index.js` file:
-
-```javascript
-import 'react-native-gesture-handler';
-```
-
-Then, run
+**ios:** (Includes the SF Symbols library!)
 
 ```console
-cd ios && pod install && cd ..
+yarn add react-native-reanimated react-native-gesture-handler react-native-sfsymbols
 ```
 
-**Step 4:** Finally, run
+**android:** (Excludes the SF Symbols library)
 
 ```console
-npx react-native run-ios
+yarn add react-native-reanimated react-native-gesture-handler
+```
+
+:information_source: `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
+:information_source: `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
+:information_source: `react-native-sfsymbols` requires extra steps to set up. Complete them [here](https://github.com/birkir/react-native-sfsymbols).
+
+**Step 3:** Now run
+
+```console
+npx react-native start
 ```
 
 You should be all set now!
 
-### Navigation Installation (optional)
-
-If you intend on using any of the navigation views, you will need to install these dependencies as well
-
-```console
-yarn add @react-navigation/bottom-tabs @react-navigation/native react-native-screens
-```
-
-Then, run
-
-```console
-cd ios && pod install && cd ..
-```
-
-Finally, run
-
-```console
-npx react-native run-ios
-```
-
-**Note:** These views are wrappers of <a href="https://reactnavigation.org/docs/getting-started/">react-navigation</a> components.
-
 ## Usage
 
-Import the components you need like this
-
-```javascript
-import { VStack, Text, Button } from 'swiftui-react-native';
-```
-
-And display them like this
-
 ```jsx
-return (
-  <VStack
-    aligment='leading'
-    background={UIColor.systemGray6}
-    padding={{ leading: 30 }}
-    cornerRadius={20}
-  >
-    <Text font='title'>Some cool text</Text>
-    <Button action={doSomething}>
-      <Text>Click the cool button</Text>
-    </Button>
-  </VStack>
-);
+import {
+  VStack,
+  Text,
+  Button,
+  useBinding,
+  UIColor,
+  Font,
+  Alignment,
+} from 'swiftui-react-native';
+
+function App() {
+  const text = useBinding('');
+  return (
+    <VStack
+      aligment={Alignment.leading}
+      backgroundColor={UIColor.light.systemGray6}
+      padding={{ leading: 30 }}
+      cornerRadius={20}
+    >
+      <Text font={Font.title}>Some cool text</Text>
+      <TextField text={text} placeholder='Name' />
+      <Button action={doSomething}>
+        <Text>Click the cool button</Text>
+      </Button>
+    </VStack>
+  );
+}
 ```
 
 vs. SwiftUI...
 
 ```swift
-var body: some View {
-  VStack(alignment: .leading) {
-    Text("Some cool text").font(.title)
-    Button(action: doSomething) {
-      Text("Click the cool button")
-    }
-  }.background(Color(UIColor.systemGray6))
-   .cornerRadius(20)
-   .padding(.leading, 30)
+struct App: View {
+  @State var text = "";
+  var body: some View {
+    VStack(alignment: .leading) {
+      Text("Some cool text").font(.title)
+      TextField("Name", text: $text)
+      Button(action: doSomething) {
+        Text("Click the cool button")
+      }
+    }.background(Color(UIColor.systemGray6))
+    .padding(.leading, 30)
+    .cornerRadius(20)
+  }
 }
 ```
+
+## Documentation
+
+Read the documentation [here](README-docs.md)
+
+## Roadmap
+
+- [x] Release v2
+- [ ] New Component: Segmented Picker
+- [ ] New Component: ProgressView
+- [ ] Any suggestions?

@@ -1,43 +1,105 @@
 import React from 'react';
-import { Image as RNImage, ImageSourcePropType } from 'react-native';
-import { Frame } from '../../types/propTypes';
-// import {
-//   SFSymbol,
-//   SFSymbolWeight,
-//   SFSymbolScale,
-// } from 'react-native-sfsymbols';
+import {
+  Image as RNImage,
+  ImageSourcePropType,
+  ImageStyle,
+  Platform,
+} from 'react-native';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { getShadow } from '../../utils/shadow';
+import { getPadding } from '../../utils/padding';
+import { getFrame } from '../../utils/frame';
+import { getBorder } from '../../utils/border';
+import { Modifiers, TextModifiers } from '../../utils/modifiers';
+import { FontStyles } from '../../utils/fonts';
+import { getCornerRadius } from '../../utils/cornerRadius';
 
-type ImageProps = {
-  source?: ImageSourcePropType;
-  systemName?: string;
-  frame?: Frame;
-  foregroundColor?: string;
-};
+const { SFSymbol, SFSymbolWeight, SFSymbolScale } =
+  Platform.select({
+    ios: () => require('react-native-sfsymbols'),
+    default: () => null,
+  })() || {};
+
+type ImageProps = Omit<Modifiers, 'style'> &
+  TextModifiers & {
+    systemName?: string;
+    source?: ImageSourcePropType;
+    style?: ImageStyle;
+  };
 
 const DEFAULT_IMAGE_SIZE = 15;
 
 export const Image: React.FC<ImageProps> = ({
   source,
   systemName,
+  frame,
+  padding,
+  cornerRadius,
+  shadow,
+  backgroundColor,
+  border,
+  opacity,
+  zIndex,
+  style,
+  onAppear,
+  onDisappear,
+  font,
+  fontSize,
+  fontWeight,
   foregroundColor,
-  frame = { width: DEFAULT_IMAGE_SIZE, height: DEFAULT_IMAGE_SIZE },
 }) => {
+  useLifecycle(onAppear, onDisappear);
   if (systemName) {
-    return null;
-    // <SFSymbol
-    //   name={systemName}
-    //   weight={SFSymbolWeight.SEMIBOLD}
-    //   scale={SFSymbolScale.SMALL}
-    //   color={foregroundColor}
-    // />
+    if (!SFSymbol) return null;
+    let size = DEFAULT_IMAGE_SIZE;
+    if (fontSize) {
+      size = fontSize;
+    } else if (font) {
+      size = FontStyles[font].fontSize;
+    }
+    return (
+      <SFSymbol
+        name={systemName}
+        weight={fontWeight || SFSymbolWeight.Regular}
+        scale={SFSymbolScale.SMALL}
+        size={size}
+        color={foregroundColor}
+        style={[
+          {
+            opacity,
+            backgroundColor,
+            zIndex,
+            width: fontSize,
+            height: fontSize,
+            ...getCornerRadius(cornerRadius),
+            ...getShadow(shadow),
+            ...getPadding(padding),
+            ...getFrame(frame || { width: size, height: size }),
+            ...getBorder(border),
+          },
+          style,
+        ]}
+      />
+    );
   }
   return (
     <RNImage
       source={source}
-      style={{
-        width: frame.width,
-        height: frame.height,
-      }}
+      style={[
+        {
+          opacity,
+          backgroundColor,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getShadow(shadow),
+          ...getPadding(padding),
+          ...getFrame(
+            frame || { width: DEFAULT_IMAGE_SIZE, height: DEFAULT_IMAGE_SIZE }
+          ),
+          ...getBorder(border),
+        },
+        style,
+      ]}
     />
   );
 };

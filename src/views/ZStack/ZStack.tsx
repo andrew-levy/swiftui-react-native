@@ -1,49 +1,68 @@
 import React from 'react';
+import { StyleProp, View, ViewStyle } from 'react-native';
+import { useLifecycle } from '../../hooks/useLifecycle';
 import {
-  VerticalAlignment,
+  Alignments,
   HorizontalAlignment,
-  Frame,
-  Padding,
-} from '../../types/propTypes';
-import { systemColor, UIColor } from '../../utils/colors';
-import { View } from 'react-native';
-import { getPadding } from '../../utils/padding';
+  VerticalAlignment,
+} from '../../utils/alignments';
+import { getBorder } from '../../utils/border';
+import { getCornerRadius } from '../../utils/cornerRadius';
 import { getFrame } from '../../utils/frame';
-import { useColorScheme } from '../../hooks/useColorScheme';
+import { Modifiers, WithChildren } from '../../utils/modifiers';
+import { getPadding } from '../../utils/padding';
+import { getShadow } from '../../utils/shadow';
 
-type ZStackProps = {
-  background?: string;
-  alignment?: HorizontalAlignment | VerticalAlignment;
-  padding?: Padding;
-  spacing?: number;
-  width?: number;
-  frame?: Frame;
-  cornerRadius?: number;
-  children: React.ReactElement<any> | React.ReactElement<any>[];
-};
+type ZStackProps = Omit<Modifiers, 'alignment'> &
+  WithChildren & {
+    style?: StyleProp<ViewStyle>;
+    alignment?: {
+      vertical: VerticalAlignment;
+      horizontal: HorizontalAlignment;
+    };
+  };
 
 export const ZStack = ({
-  background = UIColor.transparent,
-  cornerRadius = 0,
-  padding,
-  frame,
+  alignment = { vertical: 'center', horizontal: 'center' },
+  style,
   children,
+  padding,
+  cornerRadius,
+  shadow,
+  backgroundColor,
+  border,
+  opacity,
+  frame,
+  zIndex,
+  onAppear,
+  onDisappear,
 }: ZStackProps) => {
-  const { colorScheme } = useColorScheme();
+  useLifecycle(onAppear, onDisappear);
   return (
     <View
-      style={{
-        backgroundColor: systemColor(background, colorScheme),
-        justifyContent: 'center',
-        borderRadius: cornerRadius,
-        ...getFrame(frame),
-        ...getPadding(padding),
-      }}
+      style={[
+        {
+          justifyContent: Alignments.vertical[alignment.vertical],
+          alignItems: Alignments.horizontal[alignment.horizontal],
+          backgroundColor,
+          opacity,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getShadow(shadow),
+          ...getPadding(padding),
+          ...getFrame(frame),
+          ...getBorder(border),
+        },
+        style,
+      ]}
     >
       {React.Children.map(children, (child, i) =>
         React.cloneElement(child, {
           ...child.props,
-          style: { zIndex: i, position: 'absolute' },
+          style: {
+            zIndex: i,
+            position: i === 1 ? 'relative' : 'absolute',
+          },
         })
       )}
     </View>

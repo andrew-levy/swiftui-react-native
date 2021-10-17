@@ -1,64 +1,71 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Alignments } from '../../utils/alignments';
-import { systemColor, UIColor } from '../../utils/colors';
-import {
-  VerticalAlignment,
-  HorizontalAlignment,
-  Padding,
-  Shadow,
-} from '../../types/propTypes';
+import { WithChildren, Modifiers, TextModifiers } from '../../utils/modifiers';
 import { Text } from '../Text';
+import { getPadding } from '../../utils/padding';
+import { getFrame } from '../../utils/frame';
+import { getBorder } from '../../utils/border';
+import { getShadow } from '../../utils/shadow';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { useUIColor } from '../../hooks/useUIColor';
+import { getCornerRadius } from '../../utils/cornerRadius';
 
-export type ButtonProps = {
-  action?: () => void;
-  disabled?: boolean;
-  text?: string;
-  background?: string;
-  padding?: Padding;
-  cornerRadius?: number;
-  shadow?: Shadow;
-  border?: object;
-  fontSize?: number;
-  fontWeight?: number;
-  foregroundColor?: string;
-  children?: React.ReactElement<any>;
-  alignment?: HorizontalAlignment | VerticalAlignment;
-};
+export type ButtonProps = Modifiers &
+  TextModifiers &
+  WithChildren & {
+    action?: () => void;
+    disabled?: boolean;
+    text?: string;
+  };
 
 export const Button = ({
-  action,
   text,
-  background = UIColor.transparent,
-  foregroundColor = UIColor.systemBlue,
-  cornerRadius = 0,
-  padding = 0,
-  alignment,
+  action,
+  disabled,
+  backgroundColor,
+  cornerRadius,
+  padding,
+  border,
+  frame,
+  shadow,
+  opacity,
+  zIndex,
   children,
-  ...props
+  style,
+  onAppear,
+  onDisappear,
+  ...textProps
 }: ButtonProps) => {
+  useLifecycle(onAppear, onDisappear);
+  const UIColor = useUIColor();
   return (
     <TouchableOpacity
+      disabled={disabled}
       onPress={action}
-      style={{
-        backgroundColor: background,
-        justifyContent: 'center',
-        alignItems:
-          Alignments.horizontal[alignment] || Alignments.horizontal.center,
-        borderRadius: cornerRadius,
-      }}
-      {...props}
+      style={[
+        {
+          backgroundColor,
+          justifyContent: 'center',
+          opacity,
+          zIndex,
+          ...getCornerRadius(cornerRadius),
+          ...getPadding(padding),
+          ...getFrame(frame),
+          ...getBorder(border),
+          ...getShadow(shadow),
+        },
+        style,
+      ]}
     >
       {text ? (
-        // Send in props from button to text
-        <Text buttonChild={!foregroundColor} foregroundColor={foregroundColor}>
+        <Text foregroundColor={UIColor.systemBlue} {...textProps}>
           {text}
         </Text>
       ) : (
         React.Children.map(children, (child) =>
           React.cloneElement(child, {
+            ...{ foregroundColor: UIColor.systemBlue, textProps },
             ...child.props,
-            ...{ buttonChild: !foregroundColor },
           })
         )
       )}

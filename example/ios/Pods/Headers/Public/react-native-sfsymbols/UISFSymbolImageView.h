@@ -1,0 +1,1 @@
+../../../../../node_modules/react-native-sfsymbols/ios/UISFSymbolImageView.h

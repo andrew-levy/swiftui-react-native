@@ -1,4 +1,14 @@
-import { Padding } from '../../types/propTypes';
+export type Padding =
+  | number
+  | {
+      leading?: number;
+      top?: number;
+      bottom?: number;
+      trailing?: number;
+      horizontal?: number;
+      vertical?: number;
+      all?: number;
+    };
 
 export const getPadding = (paddingProps: Padding) => {
   if (!paddingProps) return null;
@@ -10,15 +20,8 @@ export const getPadding = (paddingProps: Padding) => {
       paddingRight: paddingProps,
     };
   }
-  const {
-    top,
-    bottom,
-    leading,
-    trailing,
-    vertical,
-    horizontal,
-    all,
-  } = paddingProps;
+  const { top, bottom, leading, trailing, vertical, horizontal, all } =
+    paddingProps;
   return {
     ...((top || vertical || all) && {
       paddingTop: all || vertical || top || null,

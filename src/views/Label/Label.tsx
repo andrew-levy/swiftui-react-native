@@ -1,20 +1,56 @@
-import React from "react";
-import { HStack } from "../HStack";
-import { Image } from "../Image";
-import { Text, TextProps } from "../Text";
+import React, { ReactElement } from 'react';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { Modifiers, TextModifiers, WithChildren } from '../../utils/modifiers';
+import { HStack } from '../HStack';
+import { Image } from '../Image';
+import { Text } from '../Text';
 
-type LabelProps = {
-  text?: string;
-  systemName?: string;
-  icon?: React.ReactElement;
-  children?: React.ReactElement<TextProps>;
-};
+type LabelProps = Modifiers &
+  WithChildren &
+  TextModifiers & {
+    text?: string | ReactElement<any>;
+    icon?: ReactElement<any>;
+    systemImage?: string;
+    spacing?: number;
+  };
 
-export const Label = ({ text, systemName, icon }: LabelProps) => {
+export const Label = ({
+  fontSize,
+  font,
+  foregroundColor,
+  fontWeight,
+  text,
+  icon,
+  systemImage,
+  onAppear,
+  onDisappear,
+  spacing = 5,
+  ...containerProps
+}: LabelProps) => {
+  useLifecycle(onAppear, onDisappear);
   return (
-    <HStack>
-      <Text>{text}</Text>
-      {icon ? icon : <Image systemName={systemName} />}
+    <HStack spacing={spacing} {...containerProps}>
+      {icon || (
+        <Image
+          systemName={systemImage}
+          fontWeight={fontWeight}
+          fontSize={fontSize}
+          foregroundColor={foregroundColor}
+          font={font}
+        />
+      )}
+      {typeof text === 'string' ? (
+        <Text
+          fontWeight={fontWeight}
+          fontSize={fontSize}
+          foregroundColor={foregroundColor}
+          font={font}
+        >
+          {text}
+        </Text>
+      ) : (
+        text
+      )}
     </HStack>
   );
 };
