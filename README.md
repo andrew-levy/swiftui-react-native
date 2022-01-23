@@ -97,11 +97,15 @@ npx react-native start
 
 You should be all set now!
 
-:information_source: NOTE: If you run into any errors during installation, try stopping metro and run
+:exclamation: NOTE: If you run into any errors during installation, try stopping metro and run
 
 ```console
 yarn --reset-cache
 ```
+
+## Example Project
+
+[swiftui-react-native-example](https://github.com/andrew-levy/swiftui-react-native-example) is an example app that showcases the features of this library.
 
 ## Usage
 
