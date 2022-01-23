@@ -8,6 +8,7 @@ import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
+import { getScaleEffect } from '../../utils/scaleEffect';
 
 type ToggleProps = Modifiers & {
   isOn: Binding<boolean>;
@@ -26,6 +27,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   opacity,
   zIndex,
   cornerRadius,
+  scaleEffect,
   style,
   onAppear,
   onDisappear,
@@ -44,6 +46,7 @@ export const Toggle: React.FC<ToggleProps> = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
+          ...getScaleEffect(scaleEffect),
         },
         style,
       ]}

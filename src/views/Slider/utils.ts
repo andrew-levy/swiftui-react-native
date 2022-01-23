@@ -19,6 +19,7 @@ export const getSliderWidth = (frame: Frame) => {
   if (frame.height) {
     if (typeof frame.height === 'number') dims[1] = frame.height;
   }
+  return dims;
 };
 
 export const value2Position = (

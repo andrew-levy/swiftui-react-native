@@ -19,7 +19,7 @@ SwiftUI is awesome. So is React Native! This library aims to recreate some of th
 - **ZStack:** Overlay stack
 - **Spacer:** Space in between stacks
 
-### Views :atom_symbol: :iphone:
+### Views :eyes: :iphone:
 
 - **Text:** Text view
 - **TextField:** Text input view
@@ -28,18 +28,17 @@ SwiftUI is awesome. So is React Native! This library aims to recreate some of th
 - **Image:** Image or icon (supports SF Symbols)
 - **Link:** External link redirecting to the browser
 - **List:** List view
-- **ListRow:** List item view
+- **ProgressView:** Progress indicator views
 
 ### Controls :control_knobs: :bulb:
 
 - **Toggle:** Toggle control to switch a value on/off
 - **Slider:** Sliding value selector
 - **Stepper:** Control to increment and decrement a value
-<!-- - **Picker:** A styled selection element -->
 
 ### Providers :new_moon_with_face: :sunny:
 
-- **ColorSchemeProvider** Provides context for the current color scheme
+- **ColorSchemeProvider:** Provides context for the current color scheme
 
 ### Hooks :fishing_pole_and_fish:
 
@@ -52,8 +51,10 @@ SwiftUI is awesome. So is React Native! This library aims to recreate some of th
 
 ### Utilities :wrench: :rainbow:
 
+- **ForEach:** A function to dynamically render multiple views
 - **UIColor:** A collection of light and dark UI color values
 - **Font:** A collection of text font options
+- **FontWeight:** A collection of font weight options
 - **Alignment:** A collection of horizontal and vertical alignments
 
 ## Installation
@@ -66,21 +67,27 @@ yarn add swiftui-react-native
 
 **Step 2:** Add the following dependencies
 
-**ios:** (Includes the SF Symbols library!)
+**iOS:**
 
 ```console
 yarn add react-native-reanimated react-native-gesture-handler react-native-sfsymbols
 ```
 
-**android:** (Excludes the SF Symbols library)
+:information_source: `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
+
+:information_source: `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
+
+:information_source: `react-native-sfsymbols` requires extra steps to set up. Complete them [here](https://github.com/birkir/react-native-sfsymbols).
+
+**android:**
 
 ```console
 yarn add react-native-reanimated react-native-gesture-handler
 ```
 
-- :information_source: `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
-- :information_source: `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
-- :information_source: `react-native-sfsymbols` requires extra steps to set up. Complete them [here](https://github.com/birkir/react-native-sfsymbols).
+:information_source: `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
+
+:information_source: `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
 
 **Step 3:** Now run
 
@@ -89,6 +96,12 @@ npx react-native start
 ```
 
 You should be all set now!
+
+:information_source: NOTE: If you run into any errors during installation, try stopping metro and run
+
+```console
+yarn --reset-cache
+```
 
 ## Usage
 
@@ -144,10 +157,3 @@ struct App: View {
 ## Documentation
 
 Read the documentation [here](README-docs.md)
-
-## Roadmap
-
-- [x] Release v2
-- [ ] New Component: Segmented Picker
-- [ ] New Component: ProgressView
-- [ ] Any suggestions?

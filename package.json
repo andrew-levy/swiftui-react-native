@@ -1,6 +1,6 @@
 {
   "name": "swiftui-react-native",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A React Native component library inspired by SwiftUI",
   "main": "main.js",
   "types": "main.d.ts",

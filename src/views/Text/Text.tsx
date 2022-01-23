@@ -10,8 +10,9 @@ import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { HorizontalAlignment } from '../../utils/alignments';
 import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
+import { getScaleEffect } from '../../utils/scaleEffect';
 
-export type TextProps = Omit<Modifiers, 'style'> &
+type TextProps = Omit<Modifiers, 'style'> &
   TextModifiers & {
     textCase?: 'lower' | 'upper' | 'capitalize';
     alignment?: HorizontalAlignment;
@@ -27,6 +28,7 @@ export const Text: React.FC<TextProps> = ({
   alignment = 'center',
   padding,
   cornerRadius,
+  scaleEffect,
   shadow,
   textCase,
   backgroundColor,
@@ -47,7 +49,7 @@ export const Text: React.FC<TextProps> = ({
         {
           backgroundColor,
           color: foregroundColor || UIColor.label,
-          textAlign: alignment === 'leading' ? 'left' : 'center',
+          textAlign: getTextAlignment(alignment),
           opacity,
           zIndex,
           ...getCornerRadius(cornerRadius),
@@ -57,6 +59,7 @@ export const Text: React.FC<TextProps> = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
+          ...getScaleEffect(scaleEffect),
         },
         style,
       ]}
@@ -76,5 +79,18 @@ function getTextCase(textCase: string) {
       return { textTransform: 'capitalize' };
     default:
       return null;
+  }
+}
+
+function getTextAlignment(alignment: HorizontalAlignment) {
+  switch (alignment) {
+    case 'leading':
+      return 'left';
+    case 'trailing':
+      return 'right';
+    case 'center':
+      return 'center';
+    default:
+      return 'center';
   }
 }

@@ -1,1 +1,1 @@
-export * from './Stepper';
+export { Stepper } from './Stepper';

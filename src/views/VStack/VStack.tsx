@@ -8,6 +8,7 @@ import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
+import { getScaleEffect } from '../../utils/scaleEffect';
 
 type VStackProps = Modifiers &
   WithChildren & {
@@ -23,6 +24,7 @@ export const VStack = ({
   children,
   padding,
   cornerRadius,
+  scaleEffect,
   shadow,
   backgroundColor,
   border,
@@ -47,6 +49,7 @@ export const VStack = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
+          ...getScaleEffect(scaleEffect),
         },
         style,
       ]}

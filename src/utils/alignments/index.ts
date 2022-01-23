@@ -20,4 +20,4 @@ export const Alignment = {
   trailing: 'trailing',
   top: 'top',
   bottom: 'bottom',
-};
+} as const;

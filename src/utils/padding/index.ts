@@ -1,4 +1,5 @@
 export type Padding =
+  | boolean
   | number
   | {
       leading?: number;
@@ -10,6 +11,8 @@ export type Padding =
       all?: number;
     };
 
+export const SYSTEM_PADDING = 20;
+
 export const getPadding = (paddingProps: Padding) => {
   if (!paddingProps) return null;
   if (typeof paddingProps === 'number') {
@@ -18,6 +21,14 @@ export const getPadding = (paddingProps: Padding) => {
       paddingBottom: paddingProps,
       paddingLeft: paddingProps,
       paddingRight: paddingProps,
+    };
+  }
+  if (typeof paddingProps === 'boolean' && paddingProps === true) {
+    return {
+      paddingTop: SYSTEM_PADDING,
+      paddingBottom: SYSTEM_PADDING,
+      paddingLeft: SYSTEM_PADDING,
+      paddingRight: SYSTEM_PADDING,
     };
   }
   const { top, bottom, leading, trailing, vertical, horizontal, all } =

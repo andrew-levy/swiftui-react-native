@@ -4,11 +4,12 @@ export * from './views/Button';
 export * from './views/List';
 export * from './views/Link';
 export * from './views/Label';
-export * from './views/TextField';
+export * from './views/ProgressView';
 
 export * from './views/Toggle';
 export * from './views/Stepper';
 export * from './views/Slider';
+export * from './views/TextField';
 
 export * from './views/VStack';
 export * from './views/HStack';
@@ -24,6 +25,7 @@ export * from './hooks/useUIColor';
 export * from './hooks/useColorScheme';
 export * from './hooks/useBinding';
 
-export { Font } from './utils/fonts';
+export { Font, FontWeight } from './utils/fonts';
 export { UIColor } from './utils/colors';
 export { Alignment } from './utils/alignments';
+export { ForEach } from './utils/ForEach';

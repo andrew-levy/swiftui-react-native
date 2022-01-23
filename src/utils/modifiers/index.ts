@@ -1,6 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { Border } from '../border';
-import { FontStyles, FontWeight } from '../fonts';
 import { Frame } from '../frame';
 import { Padding } from '../padding';
 import { Shadow } from '../shadow';
@@ -9,6 +8,7 @@ export type Modifiers = {
   backgroundColor?: string;
   padding?: Padding;
   cornerRadius?: number;
+  scaleEffect?: number;
   shadow?: Shadow;
   border?: Border;
   opacity?: number;
@@ -20,8 +20,8 @@ export type Modifiers = {
 };
 
 export type TextModifiers = {
-  font?: keyof typeof FontStyles;
-  fontWeight?: keyof typeof FontWeight;
+  font?: string;
+  fontWeight?: string;
   fontSize?: number;
   foregroundColor?: string;
   customFont?: string;

@@ -1,1 +1,1 @@
-export * from './ZStack';
+export { ZStack } from './ZStack';

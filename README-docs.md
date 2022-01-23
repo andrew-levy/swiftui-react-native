@@ -8,27 +8,28 @@ Here's a list of the modifer props that are available to most views:
 
 **`Modifiers`:**
 
-- `backgroundColor?: string`
-- `border?: Border`
-- `cornerRadius?: number`
-- `frame?: Frame`
-- `opacity?: number`
-- `onAppear?: () => void`
-- `onDisappear?: () => void`
-- `padding?: Padding`
-- `shadow?: Shadow`
-- `style?: StyleProp<ViewStyle | TextStyle | ImageStyle>`
-- `zIndex?: number`
+- `backgroundColor: string`
+- `border: Border`
+- `cornerRadius: number`
+- `scaleEffect: number`
+- `frame: Frame`
+- `opacity: number`
+- `onAppear: () => void`
+- `onDisappear: () => void`
+- `padding: Padding`
+- `shadow: Shadow`
+- `style: StyleProp<ViewStyle | TextStyle | ImageStyle>`
+- `zIndex: number`
 
 And for any views that deal with text:
 
 **`TextModifiers`:**
 
-- `customFont?: string`
-- `font?: string`
-- `fontSize?: number`
-- `fontWeight?: string`
-- `foregroundColor?: string`
+- `customFont: string`
+- `font: string`
+- `fontSize: number`
+- `fontWeight: string`
+- `foregroundColor: string`
 
 ### Components
 
@@ -77,7 +78,9 @@ An image view to display an asset, URI (or SF Symbol - iOS only)
 Image inherits all `Modifiers` and `TextModifiers` as props.
 
 :information_source: [SF Symbols App](https://developer.apple.com/sf-symbols/)
+
 :information_source: Using [react-native-sfsymbols](https://github.com/birkir/react-native-sfsymbols) under the hood! :star:
+
 :information_source: Choose between the `systemName` prop for an SF Symbol and the `source` prop for a uri or asset image. When using an SF Symbol, use font modifiers to customize it.
 
 ### `<Label />`
@@ -109,29 +112,14 @@ Label inherits all of `Button`'s props.
 
 A list view
 
-| prop       | description                                                                                                              | type                                                             | required | default     |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | -------- | ----------- |
-| `header`   | List header                                                                                                              | `string ` or ` ReactElement<any>`                                | no       | `undefined` |
-| `footer`   | List footer                                                                                                              | `string ` or ` ReactElement<any>`                                | no       | `undefined` |
-| `inset`    | Gives the list rounded corners and adjusts list width to be inset from the edges of the parent view.                     | `boolean`                                                        | no       | `false`     |
-| `sideBar`  | If true, the leading component for each Row will display in the left margin of the row item, extending past the divider. | `boolean`                                                        | no       | `false`     |
-| `children` | List Rows                                                                                                                | `React.ReactElement<ListRow>` or `React.ReactElement<ListRow>[]` | no       | `null`      |
+| prop       | description                                                                                          | type                                                     | required | default     |
+| ---------- | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------- | -------- | ----------- |
+| `header`   | List header                                                                                          | `string ` or ` ReactElement<any>`                        | no       | `undefined` |
+| `footer`   | List footer                                                                                          | `string ` or ` ReactElement<any>`                        | no       | `undefined` |
+| `inset`    | Gives the list rounded corners and adjusts list width to be inset from the edges of the parent view. | `boolean`                                                | no       | `false`     |
+| `children` | List Rows                                                                                            | `React.ReactElement<any>` or `React.ReactElement<any>[]` | no       | `null`      |
 
 List inherits all `Modifiers` as props.
-
-### `<ListRow />`
-
-A list row
-
-| prop            | description                                     | type                                                     | required | default     |
-| --------------- | ----------------------------------------------- | -------------------------------------------------------- | -------- | ----------- |
-| `leading`       | Leading component (usually an image)            | `ReactElement<any>` or `null`                            | no       | `undefined` |
-| `trailing`      | Trailing component (usually a control or image) | `ReactElement<any>` or ` null`                           | no       | `undefined` |
-| `hideSeparator` | Hides row separator                             | `boolean`                                                | no       | `false`     |
-| `action`        | A function to execute on press                  | `() => void`                                             | no       | `undefined` |
-| `children`      | List Row content                                | `React.ReactElement<any>` or `React.ReactElement<any>[]` | no       | `null`      |
-
-ListRow inherits all `Modifiers` as props.
 
 ### `<Slider />`
 
@@ -311,7 +299,23 @@ const UIColor = useUIColor();
 
 ### Utilites
 
-This package ships 3 utility objects that make it easy to use constants like font names and colors without having to memorize them.
+This package ships a few utility objects that make it easy to use constants like font names and colors without having to memorize them.
+
+`ForEach`
+
+A function that allows you map over an array to dynamically render a collection of views
+
+```tsx
+const options = ['Option 1', 'Option 2', 'Option 3'];
+```
+
+```tsx
+<VStack>
+  {ForEach(optoions, (option, i) => (
+    <Text key={i}>{option}</Text>
+  ))}
+</VStack>
+```
 
 `Alignment`
 
@@ -340,6 +344,14 @@ A collection of fonts
 
 ```tsx
 <Text font={Font.largeTitle}>Large Title</Text>
+```
+
+`FontWeight`
+
+A collection of font weights
+
+```tsx
+<Text fontWeight={FontWeight.heavy}>Thats some heavy text ya got there</Text>
 ```
 
 ### Bindings

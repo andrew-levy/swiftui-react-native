@@ -10,8 +10,9 @@ import { getShadow } from '../../utils/shadow';
 import { Binding } from '../../utils/binding';
 import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
+import { getScaleEffect } from '../../utils/scaleEffect';
 
-export type TextFieldProps = Modifiers &
+type TextFieldProps = Modifiers &
   TextModifiers & {
     placeholder?: string;
     text: Binding<string>;
@@ -29,6 +30,7 @@ export const TextField: React.FC<TextFieldProps> = ({
   fontWeight = FontWeight.regular,
   cornerRadius,
   backgroundColor,
+  scaleEffect,
   padding,
   border,
   frame,
@@ -55,6 +57,7 @@ export const TextField: React.FC<TextFieldProps> = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
+          ...getScaleEffect(scaleEffect),
         },
         style,
       ]}

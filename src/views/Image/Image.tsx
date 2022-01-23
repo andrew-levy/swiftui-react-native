@@ -13,6 +13,7 @@ import { getBorder } from '../../utils/border';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { FontStyles } from '../../utils/fonts';
 import { getCornerRadius } from '../../utils/cornerRadius';
+import { getScaleEffect } from '../../utils/scaleEffect';
 
 const { SFSymbol, SFSymbolWeight, SFSymbolScale } =
   Platform.select({
@@ -35,6 +36,7 @@ export const Image: React.FC<ImageProps> = ({
   frame,
   padding,
   cornerRadius,
+  scaleEffect,
   shadow,
   backgroundColor,
   border,
@@ -76,6 +78,7 @@ export const Image: React.FC<ImageProps> = ({
             ...getPadding(padding),
             ...getFrame(frame || { width: size, height: size }),
             ...getBorder(border),
+            ...getScaleEffect(scaleEffect),
           },
           style,
         ]}
@@ -97,6 +100,7 @@ export const Image: React.FC<ImageProps> = ({
             frame || { width: DEFAULT_IMAGE_SIZE, height: DEFAULT_IMAGE_SIZE }
           ),
           ...getBorder(border),
+          ...getScaleEffect(scaleEffect),
         },
         style,
       ]}

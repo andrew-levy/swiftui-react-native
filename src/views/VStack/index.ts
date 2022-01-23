@@ -1,1 +1,1 @@
-export * from './VStack';
+export { VStack } from './VStack';
