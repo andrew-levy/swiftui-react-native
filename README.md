@@ -100,7 +100,7 @@ You should be all set now!
 :exclamation: NOTE: If you run into any errors during installation, try stopping metro and run
 
 ```console
-yarn --reset-cache
+yarn start --reset-cache
 ```
 
 ## Example Project
