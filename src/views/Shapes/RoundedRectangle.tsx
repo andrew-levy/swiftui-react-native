@@ -7,10 +7,7 @@ import { Modifiers } from "../../utils/modifiers";
 import { getPadding } from "../../utils/padding";
 import { getScaleEffect } from "../../utils/scaleEffect";
 import { getShadow } from "../../utils/shadow";
-import { HStack } from "../HStack";
-import { Spacer } from "../Spacer";
-import { Text } from "../Text";
-import { VStack } from "../VStack";
+import { View } from "react-native";
 
 type RoundedRectangleProps = Omit<Modifiers, "frame"> & {
     cornerRadius: number;
@@ -37,7 +34,7 @@ export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
     const UIColor = useUIColor();
 
     return (
-        <VStack
+        <View
             style={[
                 {
                     opacity,
@@ -53,13 +50,6 @@ export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
                 style,
             ]}
         >
-            <Spacer />
-            <HStack>
-                <Spacer />
-                <Text>{""}</Text>
-                <Spacer />
-            </HStack>
-            <Spacer />
-        </VStack>
+        </View>
     );
 };
