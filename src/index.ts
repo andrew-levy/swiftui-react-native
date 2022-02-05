@@ -29,3 +29,5 @@ export { Font, FontWeight } from './utils/fonts';
 export { UIColor } from './utils/colors';
 export { Alignment } from './utils/alignments';
 export { ForEach } from './utils/ForEach';
+
+export { Rectangle, RoundedRectangle, Capsule, Circle } from './views/Shapes'
