@@ -1,22 +1,15 @@
 import React from "react";
-import { View } from "react-native";
-import { useUIColor } from "../../hooks/useUIColor";
-import { useLifecycle } from "../../hooks/useLifecycle";
-import { getBorder } from "../../utils/border";
-import { getCornerRadius } from "../../utils/cornerRadius";
+import { Dimensions } from "react-native";
 import { Modifiers } from "../../utils/modifiers";
-import { getPadding } from "../../utils/padding";
-import { getScaleEffect } from "../../utils/scaleEffect";
-import { getShadow } from "../../utils/shadow";
+import { Rectangle } from "./Rectangle";
 
-type CircleProps = Omit<Modifiers, "frame"> & {
-    radius: number;
-};
+type CircleProps = Modifiers;
 
 export const Circle: React.FC<CircleProps> = ({
     backgroundColor,
     opacity,
-    radius,
+    frame = { width: 100, height: 100 },
+    cornerRadius = Dimensions.get('window').width,
     scaleEffect,
     padding,
     border,
@@ -26,26 +19,19 @@ export const Circle: React.FC<CircleProps> = ({
     onAppear,
     onDisappear,
 }) => {
-    
-    useLifecycle(onAppear, onDisappear);
-    const UIColor = useUIColor();
 
-    return (
-        <View
-            style={[
-                {
-                    opacity,
-                    backgroundColor: backgroundColor || UIColor.systemBlue,
-                    zIndex,
-                    ...getCornerRadius(radius || 50),
-                    ...getShadow(shadow),
-                    ...getPadding(padding),
-                    ...getBorder(border),
-                    ...getScaleEffect(scaleEffect),
-                },
-                { width: radius || 100, height: radius || 100 },
-                style,
-            ]}
-        />
-    );
+    return <Rectangle {...{
+        backgroundColor,
+        opacity,
+        frame,
+        cornerRadius,
+        scaleEffect,
+        padding,
+        border,
+        shadow,
+        zIndex,
+        style,
+        onAppear,
+        onDisappear,
+    }}></Rectangle>;
 };
