@@ -10,6 +10,7 @@ import { useLifecycle } from '../../hooks/useLifecycle';
 import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getScaleEffect } from '../../utils/scaleEffect';
+import { getRotationEffect } from '../../utils/rotationEffect';
 
 export type ButtonProps = Modifiers &
   TextModifiers &
@@ -25,6 +26,7 @@ export const Button = ({
   disabled,
   backgroundColor,
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   padding,
   border,
@@ -55,6 +57,7 @@ export const Button = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
+          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
         style,

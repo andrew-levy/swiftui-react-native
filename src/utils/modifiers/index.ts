@@ -2,12 +2,14 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { Border } from '../border';
 import { Frame } from '../frame';
 import { Padding } from '../padding';
+import { Rotation } from '../rotationEffect';
 import { Shadow } from '../shadow';
 
 export type Modifiers = {
   backgroundColor?: string;
   padding?: Padding;
   cornerRadius?: number;
+  rotationEffect?: Rotation;
   scaleEffect?: number;
   shadow?: Shadow;
   border?: Border;

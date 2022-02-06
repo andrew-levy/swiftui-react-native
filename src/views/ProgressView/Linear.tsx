@@ -14,6 +14,7 @@ import { useUIColor } from '../../hooks/useUIColor';
 import { getSliderWidth, value2Position } from '../Slider/utils';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getScaleEffect } from '../../utils/scaleEffect';
+import { getRotationEffect } from '../../utils/rotationEffect';
 
 type LinearProps = Modifiers & {
   value: number;
@@ -28,6 +29,7 @@ export const Linear = ({
   opacity,
   frame,
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   padding,
   border,
@@ -76,6 +78,7 @@ export const Linear = ({
           ...getPadding(padding),
           ...getBorder(border),
           ...getShadow(shadow),
+          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
         style,

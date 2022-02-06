@@ -11,6 +11,7 @@ import { HorizontalAlignment } from '../../utils/alignments';
 import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getScaleEffect } from '../../utils/scaleEffect';
+import { getRotationEffect } from '../../utils/rotationEffect';
 
 type TextProps = Omit<Modifiers, 'style'> &
   TextModifiers & {
@@ -28,6 +29,7 @@ export const Text: React.FC<TextProps> = ({
   alignment = 'center',
   padding,
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   shadow,
   textCase,
@@ -59,6 +61,7 @@ export const Text: React.FC<TextProps> = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
+          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
         style,

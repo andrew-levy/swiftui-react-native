@@ -28,6 +28,7 @@ export const Indeterminate = ({
   opacity,
   frame = { width: 20, height: 20 },
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   padding,
   border,

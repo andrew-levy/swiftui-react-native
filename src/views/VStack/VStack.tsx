@@ -9,6 +9,7 @@ import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getScaleEffect } from '../../utils/scaleEffect';
+import { getRotationEffect } from '../../utils/rotationEffect';
 
 type VStackProps = Modifiers &
   WithChildren & {
@@ -24,6 +25,7 @@ export const VStack = ({
   children,
   padding,
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   shadow,
   backgroundColor,
@@ -49,6 +51,7 @@ export const VStack = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
+          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
         style,

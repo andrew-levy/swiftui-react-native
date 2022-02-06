@@ -29,3 +29,4 @@ export { Font, FontWeight } from './utils/fonts';
 export { UIColor } from './utils/colors';
 export { Alignment } from './utils/alignments';
 export { ForEach } from './utils/ForEach';
+export { Rotation } from './utils/rotationEffect'

@@ -9,6 +9,7 @@ import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getScaleEffect } from '../../utils/scaleEffect';
+import { getRotationEffect } from '../../utils/rotationEffect';
 
 type HStackProps = Modifiers &
   WithChildren & {
@@ -22,6 +23,7 @@ export const HStack = ({
   children,
   padding,
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   shadow,
   backgroundColor,
@@ -48,6 +50,7 @@ export const HStack = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
+          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
         style,
