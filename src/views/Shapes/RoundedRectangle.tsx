@@ -7,8 +7,8 @@ type RoundedRectangleProps = Modifiers;
 export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
     backgroundColor,
     opacity,
-    frame = { width: 50, height: 50 },
-    cornerRadius = 5,
+    frame,
+    cornerRadius = 10,
     scaleEffect,
     padding,
     border,
