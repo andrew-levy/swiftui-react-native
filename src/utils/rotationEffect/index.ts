@@ -8,7 +8,7 @@ export const getRotationEffect = (rotation: Rotation) => {
         };
     }
     if (rotation?.radians) {
-        const rotate = Math.round(rotation.radians * 180 / Math.PI) + 'deg'
+        const rotate = rotation.radians + 'rad'
         return {
             transform: [{ rotate }],
         };
