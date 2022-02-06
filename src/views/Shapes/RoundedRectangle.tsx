@@ -2,10 +2,12 @@ import React from "react";
 import { Modifiers } from "../../utils/modifiers";
 import { Rectangle } from "./Rectangle";
 
-type RoundedRectangleProps = Modifiers;
+type RoundedRectangleProps = Omit<Modifiers,"backgroundColor"> & {
+    fill: string
+};
 
 export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
-    backgroundColor,
+    fill,
     opacity,
     frame,
     cornerRadius = 10,
@@ -20,7 +22,7 @@ export const RoundedRectangle: React.FC<RoundedRectangleProps> = ({
 }) => {
 
     return <Rectangle {...{
-        backgroundColor,
+        fill,
         opacity,
         frame,
         cornerRadius,

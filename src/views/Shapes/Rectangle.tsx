@@ -14,10 +14,12 @@ import { HStack } from "../HStack";
 import { Spacer } from "../Spacer";
 import { Text } from "../Text";
 
-type RectangleProps = Modifiers
+type RectangleProps = Omit<Modifiers,"backgroundColor"> & {
+    fill: string
+}
 
 export const Rectangle: React.FC<RectangleProps> = ({
-    backgroundColor,
+    fill,
     opacity,
     frame = { width: 50, height: 50 },
     cornerRadius,
@@ -46,7 +48,7 @@ export const Rectangle: React.FC<RectangleProps> = ({
             style={[
                 {
                     opacity,
-                    backgroundColor: backgroundColor || defaultBackgroundColor,
+                    backgroundColor: fill || defaultBackgroundColor,
                     zIndex,
                     ...getFrame(frame),
                     ...getCornerRadius(cornerRadius),

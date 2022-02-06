@@ -2,10 +2,12 @@ import React from "react";
 import { Modifiers } from "../../utils/modifiers";
 import { Rectangle } from "./Rectangle";
 
-type CapsuleProps = Modifiers;
+type CapsuleProps = Omit<Modifiers,"backgroundColor"> & {
+    fill: string
+}
 
 export const Capsule: React.FC<CapsuleProps> = ({
-    backgroundColor,
+    fill,
     opacity,
     frame,
     scaleEffect,
@@ -24,7 +26,7 @@ export const Capsule: React.FC<CapsuleProps> = ({
     return (
         <Rectangle
             {...{
-                backgroundColor,
+                fill,
                 opacity,
                 frame: { width, height },
                 cornerRadius: Number.MAX_SAFE_INTEGER,

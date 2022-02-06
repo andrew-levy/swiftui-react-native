@@ -2,10 +2,12 @@ import React from "react";
 import { Modifiers } from "../../utils/modifiers";
 import { Rectangle } from "./Rectangle";
 
-type CircleProps = Modifiers;
+type CircleProps = Omit<Modifiers,"backgroundColor"> & {
+    fill: string
+}
 
 export const Circle: React.FC<CircleProps> = ({
-    backgroundColor,
+    fill,
     opacity,
     frame,
     scaleEffect,
@@ -36,7 +38,7 @@ export const Circle: React.FC<CircleProps> = ({
     return (
         <Rectangle
             {...{
-                backgroundColor,
+                fill,
                 opacity,
                 frame: { width, height },
                 cornerRadius: Number.MAX_SAFE_INTEGER,
