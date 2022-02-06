@@ -1,9 +1,9 @@
-import { StyleProp, ViewStyle } from 'react-native';
-import { Border } from '../border';
-import { Frame } from '../frame';
-import { Padding } from '../padding';
-import { Rotation } from '../rotationEffect';
-import { Shadow } from '../shadow';
+import { StyleProp, ViewStyle } from "react-native";
+import { Border } from "../border";
+import { Frame } from "../frame";
+import { Padding } from "../padding";
+import { Shadow } from "../shadow";
+import { Rotation } from "../transform";
 
 export type Modifiers = {
   backgroundColor?: string;

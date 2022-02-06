@@ -1,23 +1,21 @@
-import React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
-import { Button } from '../Button';
-import { Text } from '../Text';
-import { Modifiers } from '../../utils/modifiers';
-import { Binding } from '../../utils/binding';
-import { useUIColor } from '../../hooks/useUIColor';
-import { useLifecycle } from '../../hooks/useLifecycle';
-import { getPadding } from '../../utils/padding';
-import { getFrame } from '../../utils/frame';
-import { getBorder } from '../../utils/border';
-import { getShadow } from '../../utils/shadow';
-import { getCornerRadius } from '../../utils/cornerRadius';
-import { getScaleEffect } from '../../utils/scaleEffect';
-import { getRotationEffect } from '../../utils/rotationEffect';
-import { getTransform } from '../../utils/transform';
+import React from "react";
+import { Platform, StyleSheet, View } from "react-native";
+import { Button } from "../Button";
+import { Text } from "../Text";
+import { Modifiers } from "../../utils/modifiers";
+import { Binding } from "../../utils/binding";
+import { useUIColor } from "../../hooks/useUIColor";
+import { useLifecycle } from "../../hooks/useLifecycle";
+import { getPadding } from "../../utils/padding";
+import { getFrame } from "../../utils/frame";
+import { getBorder } from "../../utils/border";
+import { getShadow } from "../../utils/shadow";
+import { getCornerRadius } from "../../utils/cornerRadius";
+import { getTransform } from "../../utils/transform";
 
 const { SFSymbol } =
   Platform.select({
-    ios: () => require('react-native-sfsymbols'),
+    ios: () => require("react-native-sfsymbols"),
     default: () => null,
   })() || {};
 
@@ -62,7 +60,7 @@ export const Stepper: React.FC<StepperProps> = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getTransform(scaleEffect,rotationEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}
@@ -81,7 +79,7 @@ export const Stepper: React.FC<StepperProps> = ({
         >
           {SFSymbol ? (
             <SFSymbol
-              name='minus'
+              name="minus"
               color={UIColor.systemGray}
               style={{ width: 20, height: 20 }}
             />
@@ -107,7 +105,7 @@ export const Stepper: React.FC<StepperProps> = ({
         >
           {SFSymbol ? (
             <SFSymbol
-              name='plus'
+              name="plus"
               color={UIColor.systemGray}
               style={{ width: 20, height: 20 }}
             />
@@ -123,9 +121,9 @@ export const Stepper: React.FC<StepperProps> = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
     width: 100,
     padding: 5,
   },
@@ -138,6 +136,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   alignCenter: {
-    alignItems: 'center',
+    alignItems: "center",
   },
 });
