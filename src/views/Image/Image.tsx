@@ -80,9 +80,9 @@ export const Image: React.FC<ImageProps> = ({
             ...getPadding(padding),
             ...getFrame(frame || { width: size, height: size }),
             ...getBorder(border),
-            ...getRotationEffect(rotationEffect),
             ...getScaleEffect(scaleEffect),
           },
+          getRotationEffect(rotationEffect),
           style,
         ]}
       />
@@ -103,9 +103,9 @@ export const Image: React.FC<ImageProps> = ({
             frame || { width: DEFAULT_IMAGE_SIZE, height: DEFAULT_IMAGE_SIZE }
           ),
           ...getBorder(border),
-          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
+        getRotationEffect(rotationEffect),
         style,
       ]}
     />

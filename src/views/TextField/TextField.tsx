@@ -59,9 +59,9 @@ export const TextField: React.FC<TextFieldProps> = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
+        getRotationEffect(rotationEffect),
         style,
       ]}
       placeholder={placeholder}

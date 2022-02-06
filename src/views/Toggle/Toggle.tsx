@@ -48,9 +48,9 @@ export const Toggle: React.FC<ToggleProps> = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
+        getRotationEffect(rotationEffect),
         style,
       ]}
       value={isOn.value}

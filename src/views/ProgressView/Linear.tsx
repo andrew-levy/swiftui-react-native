@@ -78,9 +78,9 @@ export const Linear = ({
           ...getPadding(padding),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getRotationEffect(rotationEffect),
           ...getScaleEffect(scaleEffect),
         },
+        getRotationEffect(rotationEffect),
         style,
       ]}
     >

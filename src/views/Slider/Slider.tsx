@@ -26,6 +26,7 @@ import {
   value2Position,
 } from './utils';
 import { getScaleEffect } from '../../utils/scaleEffect';
+import { getRotationEffect } from '../../utils/rotationEffect';
 
 type SliderProps = Modifiers & {
   accentColor?: string;
@@ -51,6 +52,7 @@ export const Slider: React.FC<SliderProps> = ({
   style,
   padding,
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   shadow,
   border,
@@ -139,6 +141,7 @@ export const Slider: React.FC<SliderProps> = ({
           ...getShadow(shadow),
           ...getScaleEffect(scaleEffect),
         },
+        getRotationEffect(rotationEffect),
         style,
       ]}
     >
