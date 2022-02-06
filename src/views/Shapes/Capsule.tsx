@@ -7,37 +7,17 @@ type CapsuleProps = Omit<Modifiers,"backgroundColor"> & {
 }
 
 export const Capsule: React.FC<CapsuleProps> = ({
-    fill,
-    opacity,
-    frame,
-    scaleEffect,
-    padding,
-    border,
-    shadow,
-    zIndex,
-    style,
-    onAppear,
-    onDisappear,
+    frame = { width: "100%", height: "100%" },
+    ...rest
 }) => {
 
-    const width = frame?.width || "100%";
-    const height = frame?.height || "100%";
 
     return (
         <Rectangle
             {...{
-                fill,
-                opacity,
-                frame: { width, height },
+                frame,
                 cornerRadius: Number.MAX_SAFE_INTEGER,
-                scaleEffect,
-                padding,
-                border,
-                shadow,
-                zIndex,
-                style,
-                onAppear,
-                onDisappear,
+                ...rest
             }}
         />
     );

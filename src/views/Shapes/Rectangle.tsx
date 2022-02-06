@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { View } from "react-native";
+import React from "react";
 import { useLifecycle } from "../../hooks/useLifecycle";
 import { getBorder } from "../../utils/border";
 import { getCornerRadius } from "../../utils/cornerRadius";
@@ -10,18 +9,16 @@ import { getShadow } from "../../utils/shadow";
 import { getFrame } from "../../utils/frame";
 import { useColorScheme } from "../../hooks/useColorScheme";
 import { VStack } from "../VStack";
-import { HStack } from "../HStack";
 import { Spacer } from "../Spacer";
-import { Text } from "../Text";
 
 type RectangleProps = Omit<Modifiers,"backgroundColor"> & {
-    fill: string
+    fill?: string
 }
 
 export const Rectangle: React.FC<RectangleProps> = ({
     fill,
     opacity,
-    frame = { width: 50, height: 50 },
+    frame = { width: "100%", height: "100%" },
     cornerRadius,
     scaleEffect,
     padding,
@@ -37,11 +34,6 @@ export const Rectangle: React.FC<RectangleProps> = ({
 
     // could be replaced with UIColor.primary if that is created
     const defaultBackgroundColor = colorScheme.colorScheme == "light" ? "black" : "white";
-
-
-    // stretch the frame if needed so it's stretched before onLayout fires
-    if (!frame?.width) frame.width = "100%";
-    if (!frame?.height) frame.height = "100%";
 
     return (
         <VStack
@@ -64,14 +56,3 @@ export const Rectangle: React.FC<RectangleProps> = ({
         </VStack>
     );
 };
-
-// onLayout={(event) => {
-//     if (onLayout) {
-//         console.log(event.nativeEvent.layout);
-//         onLayout(event.nativeEvent.layout.width, event.nativeEvent.layout.height);
-//         setLayout({
-//             width: event.nativeEvent.layout.width,
-//             height: event.nativeEvent.layout.height,
-//         });
-//     }
-// }}
