@@ -13,8 +13,7 @@ import { getShadow } from '../../utils/shadow';
 import { useUIColor } from '../../hooks/useUIColor';
 import { getSliderWidth, value2Position } from '../Slider/utils';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { getScaleEffect } from '../../utils/scaleEffect';
-import { getRotationEffect } from '../../utils/rotationEffect';
+import { getTransform } from '../../utils/transform';
 
 type LinearProps = Modifiers & {
   value: number;
@@ -78,9 +77,8 @@ export const Linear = ({
           ...getPadding(padding),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getScaleEffect(scaleEffect),
+          ...getTransform(scaleEffect,rotationEffect),
         },
-        getRotationEffect(rotationEffect),
         style,
       ]}
     >

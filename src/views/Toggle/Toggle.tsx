@@ -8,8 +8,7 @@ import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
-import { getScaleEffect } from '../../utils/scaleEffect';
-import { getRotationEffect } from '../../utils/rotationEffect';
+import { getTransform } from '../../utils/transform';
 
 type ToggleProps = Modifiers & {
   isOn: Binding<boolean>;
@@ -48,9 +47,8 @@ export const Toggle: React.FC<ToggleProps> = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getScaleEffect(scaleEffect),
+          ...getTransform(scaleEffect,rotationEffect),
         },
-        getRotationEffect(rotationEffect),
         style,
       ]}
       value={isOn.value}
