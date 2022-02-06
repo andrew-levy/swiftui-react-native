@@ -15,6 +15,7 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getFrame } from '../../utils/frame';
 import { Modifiers } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
+import { getRotationEffect } from '../../utils/rotationEffect';
 import { getScaleEffect } from '../../utils/scaleEffect';
 import { getShadow } from '../../utils/shadow';
 
@@ -57,6 +58,7 @@ export const Indeterminate = ({
           ...getBorder(border),
           ...getScaleEffect(scaleEffect),
         },
+        getRotationEffect(rotationEffect),
         style,
       ]}
     >
