@@ -18,8 +18,8 @@ export const Capsule: React.FC<CapsuleProps> = ({
     onDisappear,
 }) => {
 
-    const width = frame.width || "100%";
-    const height = frame.height || "100%";
+    const width = frame?.width || "100%";
+    const height = frame?.height || "100%";
 
     return (
         <Rectangle

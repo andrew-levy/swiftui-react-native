@@ -38,8 +38,8 @@ export const Rectangle: React.FC<RectangleProps> = ({
 
 
     // stretch the frame if needed so it's stretched before onLayout fires
-    if (!frame.width) frame.width = "100%";
-    if (!frame.height) frame.height = "100%";
+    if (!frame?.width) frame.width = "100%";
+    if (!frame?.height) frame.height = "100%";
 
     return (
         <VStack
