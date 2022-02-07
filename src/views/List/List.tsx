@@ -9,7 +9,7 @@ import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
 import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
-import { getScaleEffect } from '../../utils/scaleEffect';
+import { getTransform } from '../../utils/transform';
 
 type ListProps = Modifiers &
   PropsWithChildren<{
@@ -29,6 +29,7 @@ export const List = ({
   hideSeparators,
   cornerRadius,
   scaleEffect,
+  rotationEffect,
   padding,
   border,
   frame,
@@ -55,7 +56,7 @@ export const List = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getScaleEffect(scaleEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
       ]}
     >
