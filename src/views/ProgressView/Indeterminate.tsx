@@ -55,55 +55,55 @@ export const Indeterminate = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
-          ...getTransform(scaleEffect,rotationEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}
     >
       <Line
-        degree='0deg'
+        degree="0deg"
         shift={-shift}
         delay={0}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='-45deg'
+        degree="-45deg"
         shift={shift}
         delay={300}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='90deg'
+        degree="90deg"
         shift={shift}
         delay={600}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='45deg'
+        degree="45deg"
         shift={shift}
         delay={500}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='0deg'
+        degree="0deg"
         shift={shift}
         delay={400}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='-45deg'
+        degree="-45deg"
         shift={-shift}
         delay={700}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='90deg'
+        degree="90deg"
         shift={-shift}
         delay={200}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='45deg'
+        degree="45deg"
         shift={-shift}
         delay={100}
         color={accentColor || UIColor.systemGray}

@@ -1,34 +1,34 @@
-import React, { Children, cloneElement, Fragment, useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { Binding } from "../../utils/binding";
-import { Modifiers, WithChildren } from "../../utils/modifiers";
+import React, { Children, cloneElement, Fragment, useState } from 'react';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Binding } from '../../utils/binding';
+import { Modifiers, WithChildren } from '../../utils/modifiers';
 import Animated, {
   runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
-} from "react-native-reanimated";
+} from 'react-native-reanimated';
 import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
-} from "react-native-gesture-handler";
+} from 'react-native-gesture-handler';
 import {
   clamp,
   GestureHandlerContext,
   positionToSelected,
   selectedToPosition,
-} from "./utils";
-import { getCornerRadius } from "../../utils/cornerRadius";
-import { getShadow } from "../../utils/shadow";
-import { getPadding } from "../../utils/padding";
-import { getFrame } from "../../utils/frame";
-import { getBorder } from "../../utils/border";
-import { useLifecycle } from "../../hooks/useLifecycle";
-import { useColorScheme } from "../../hooks/useColorScheme";
-import { useUIColor } from "../../hooks/useUIColor";
-import { Text } from "../Text";
-import { getTransform } from "../../utils/transform";
+} from './utils';
+import { getCornerRadius } from '../../utils/cornerRadius';
+import { getShadow } from '../../utils/shadow';
+import { getPadding } from '../../utils/padding';
+import { getFrame } from '../../utils/frame';
+import { getBorder } from '../../utils/border';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { useUIColor } from '../../hooks/useUIColor';
+import { Text } from '../Text';
+import { getTransform } from '../../utils/transform';
 
 type PickerProps = Modifiers &
   WithChildren & {
@@ -174,7 +174,7 @@ export const Picker = ({
               width: sliderWidth,
               height: sliderHeight,
               backgroundColor:
-                colorScheme === "dark"
+                colorScheme === 'dark'
                   ? UIColor.secondarySystemBackground
                   : UIColor.systemBackground,
             },
@@ -239,15 +239,15 @@ const Divider = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 6,
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 3,
   },
   options: {
-    flexDirection: "row",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   option: {
-    justifyContent: "center",
+    justifyContent: 'center',
     paddingVertical: 5,
     paddingHorizontal: 20,
   },
@@ -258,11 +258,11 @@ const styles = StyleSheet.create({
     width: 0,
   },
   slider: {
-    position: "absolute",
+    position: 'absolute',
     top: 2,
     zIndex: -1,
     borderRadius: 6,
-    shadowColor: "black",
+    shadowColor: 'black',
     shadowOffset: {
       width: 0,
       height: 2,

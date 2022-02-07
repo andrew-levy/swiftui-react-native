@@ -138,7 +138,7 @@ export const Slider: React.FC<SliderProps> = ({
           ...getPadding(padding),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getTransform(scaleEffect,rotationEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}

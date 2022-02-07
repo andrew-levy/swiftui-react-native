@@ -56,7 +56,7 @@ export const Button = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getTransform(scaleEffect,rotationEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}

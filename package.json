@@ -11,6 +11,7 @@
     "dev": "nodemon dist/",
     "clean": "rimraf ./dist/*",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "publish:custom": "npm run clean-build && cd dist && npm publish && cd -"
   },
   "author": "Andrew Levy <alevy97@gmail.com>",
@@ -22,6 +23,7 @@
     "copyfiles": "^2.4.1",
     "esbuild": "^0.8.50",
     "nodemon": "^2.0.6",
+    "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.39.0",
     "rollup-plugin-copy": "^3.4.0",

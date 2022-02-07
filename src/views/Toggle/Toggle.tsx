@@ -47,7 +47,7 @@ export const Toggle: React.FC<ToggleProps> = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getTransform(scaleEffect,rotationEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}

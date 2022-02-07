@@ -60,7 +60,7 @@ export const Text: React.FC<TextProps> = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
-          ...getTransform(scaleEffect,rotationEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}

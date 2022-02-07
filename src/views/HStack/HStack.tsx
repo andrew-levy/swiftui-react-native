@@ -49,7 +49,7 @@ export const HStack = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
-          ...getTransform(scaleEffect,rotationEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}
