@@ -12,6 +12,7 @@ Here's a list of the modifer props that are available to most views:
 - `border: Border`
 - `cornerRadius: number`
 - `scaleEffect: number`
+- `rotationEffect: Rotation`
 - `frame: Frame`
 - `opacity: number`
 - `onAppear: () => void`
@@ -230,14 +231,14 @@ Display an alert message based on a condition
 ```jsx
 const [show, setShow] = useState(false);
 useAlert(show, {
-  title: 'SwiftUI is Cool',
-  message: 'So is React Native!',
-  buttons: [{ text: 'Cancel', onPress: () => setShowAlert(false) }],
+  title: "SwiftUI is Cool",
+  message: "So is React Native!",
+  buttons: [{ text: "Cancel", onPress: () => setShowAlert(false) }],
 });
 ```
 
 ```jsx
-<Button text='Show Alert' action={() => setShow(true)} />
+<Button text="Show Alert" action={() => setShow(true)} />
 ```
 
 #### `useBinding`
@@ -245,7 +246,7 @@ useAlert(show, {
 Create and use a bindable value that a view can read and write to
 
 ```jsx
-const text = useBinding('');
+const text = useBinding("");
 ```
 
 ```jsx
@@ -263,10 +264,10 @@ const { colorScheme, setColorScheme } = useColorScheme();
 ```
 
 ```jsx
-<VStack backgroundColor={colorScheme === 'dark' ? '#000' : '#fff'}>
+<VStack backgroundColor={colorScheme === "dark" ? "#000" : "#fff"}>
   <Button
-    text='Dark Mode'
-    action={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
+    text="Dark Mode"
+    action={() => setColorScheme(colorScheme === "dark" ? "light" : "dark")}
   />
 </VStack>
 ```
@@ -276,7 +277,7 @@ const { colorScheme, setColorScheme } = useColorScheme();
 Perform an action when the view appears
 
 ```jsx
-useOnAppear(() => console.log('view appeared'));
+useOnAppear(() => console.log("view appeared"));
 ```
 
 #### `useOnAppear`
@@ -284,7 +285,7 @@ useOnAppear(() => console.log('view appeared'));
 Perform an action when the view disappears
 
 ```jsx
-useOnDisappear(() => console.log('view disappeared'));
+useOnDisappear(() => console.log("view disappeared"));
 ```
 
 #### `useUIColor`
@@ -306,7 +307,7 @@ This package ships a few utility objects that make it easy to use constants like
 A function that allows you map over an array to dynamically render a collection of views
 
 ```tsx
-const options = ['Option 1', 'Option 2', 'Option 3'];
+const options = ["Option 1", "Option 2", "Option 3"];
 ```
 
 ```tsx
@@ -371,7 +372,7 @@ In this example, we pass a binding wrapper of the `text` state variable using th
 In **React Native**, this is how you would accomplish the same thing
 
 ```jsx
-const [text, setText] = useState('');
+const [text, setText] = useState("");
 ```
 
 ```jsx
@@ -383,7 +384,7 @@ And this is _completely_ fine, but it would be nice if the view handled that log
 In **swiftui-react-native**, the implementation is a combination of both approaches
 
 ```jsx
-const text = useBinding('');
+const text = useBinding("");
 ```
 
 ```jsx

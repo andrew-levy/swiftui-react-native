@@ -28,7 +28,7 @@ import { useLifecycle } from '../../hooks/useLifecycle';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { useUIColor } from '../../hooks/useUIColor';
 import { Text } from '../Text';
-import { getScaleEffect } from '../../utils/scaleEffect';
+import { getTransform } from '../../utils/transform';
 
 type PickerProps = Modifiers &
   WithChildren & {
@@ -44,6 +44,7 @@ export const Picker = ({
   frame,
   cornerRadius,
   scaleEffect,
+  rotationEffect,
   padding,
   border,
   shadow,
@@ -126,7 +127,7 @@ export const Picker = ({
             ...getPadding(padding),
             ...getFrame(frame),
             ...getBorder(border),
-            ...getScaleEffect(scaleEffect),
+            ...getTransform(scaleEffect, rotationEffect),
           },
           style,
         ]}

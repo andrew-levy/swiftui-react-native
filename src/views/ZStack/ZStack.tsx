@@ -11,8 +11,8 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getFrame } from '../../utils/frame';
 import { Modifiers, WithChildren } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
-import { getScaleEffect } from '../../utils/scaleEffect';
 import { getShadow } from '../../utils/shadow';
+import { getTransform } from '../../utils/transform';
 
 type ZStackProps = Omit<Modifiers, 'alignment'> &
   WithChildren & {
@@ -29,6 +29,7 @@ export const ZStack = ({
   children,
   padding,
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   shadow,
   backgroundColor,
@@ -54,7 +55,7 @@ export const ZStack = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
-          ...getScaleEffect(scaleEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}

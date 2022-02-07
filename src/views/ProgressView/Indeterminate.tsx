@@ -15,8 +15,8 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getFrame } from '../../utils/frame';
 import { Modifiers } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
-import { getScaleEffect } from '../../utils/scaleEffect';
 import { getShadow } from '../../utils/shadow';
+import { getTransform } from '../../utils/transform';
 
 type IndeterminateProps = Modifiers & {
   accentColor?: string;
@@ -28,6 +28,7 @@ export const Indeterminate = ({
   opacity,
   frame = { width: 20, height: 20 },
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   padding,
   border,
@@ -54,55 +55,55 @@ export const Indeterminate = ({
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
-          ...getScaleEffect(scaleEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}
     >
       <Line
-        degree='0deg'
+        degree="0deg"
         shift={-shift}
         delay={0}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='-45deg'
+        degree="-45deg"
         shift={shift}
         delay={300}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='90deg'
+        degree="90deg"
         shift={shift}
         delay={600}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='45deg'
+        degree="45deg"
         shift={shift}
         delay={500}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='0deg'
+        degree="0deg"
         shift={shift}
         delay={400}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='-45deg'
+        degree="-45deg"
         shift={-shift}
         delay={700}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='90deg'
+        degree="90deg"
         shift={-shift}
         delay={200}
         color={accentColor || UIColor.systemGray}
       />
       <Line
-        degree='45deg'
+        degree="45deg"
         shift={-shift}
         delay={100}
         color={accentColor || UIColor.systemGray}

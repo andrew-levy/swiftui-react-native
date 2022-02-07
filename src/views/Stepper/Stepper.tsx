@@ -11,7 +11,7 @@ import { getFrame } from '../../utils/frame';
 import { getBorder } from '../../utils/border';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
-import { getScaleEffect } from '../../utils/scaleEffect';
+import { getTransform } from '../../utils/transform';
 
 const { SFSymbol } =
   Platform.select({
@@ -34,6 +34,7 @@ export const Stepper: React.FC<StepperProps> = ({
   style,
   padding,
   cornerRadius,
+  rotationEffect,
   scaleEffect,
   shadow,
   border,
@@ -59,7 +60,7 @@ export const Stepper: React.FC<StepperProps> = ({
           ...getFrame(frame),
           ...getBorder(border),
           ...getShadow(shadow),
-          ...getScaleEffect(scaleEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}
@@ -78,7 +79,7 @@ export const Stepper: React.FC<StepperProps> = ({
         >
           {SFSymbol ? (
             <SFSymbol
-              name='minus'
+              name="minus"
               color={UIColor.systemGray}
               style={{ width: 20, height: 20 }}
             />
@@ -104,7 +105,7 @@ export const Stepper: React.FC<StepperProps> = ({
         >
           {SFSymbol ? (
             <SFSymbol
-              name='plus'
+              name="plus"
               color={UIColor.systemGray}
               style={{ width: 20, height: 20 }}
             />
