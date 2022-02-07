@@ -2,38 +2,30 @@ import React from "react";
 import { Modifiers } from "../../utils/modifiers";
 import { Rectangle } from "./Rectangle";
 
-type CircleProps = Omit<Modifiers,"backgroundColor"> & {
-    fill?: string
-}
+type CircleProps = Omit<Modifiers, "backgroundColor"> & {
+  fill?: string;
+  frame?: { width?: number; height?: number };
+};
 
 export const Circle: React.FC<CircleProps> = ({
-    frame,
-    cornerRadius,
-    ...rest
+  frame,
+  cornerRadius = 99999,
+  ...rest
 }) => {
-    var width: any = frame?.width;
-    var height: any = frame?.height;
+  let diameter;
+  if (frame) {
+    const { width: frameWidth, height: frameHeight } = frame;
+    if (frameWidth && frameHeight) diameter = Math.max(frameWidth, frameHeight);
+    else if (frameWidth && !frameHeight) diameter = frameWidth;
+    else if (frameHeight && !frameWidth) diameter = frameHeight;
+    else diameter = 100;
+  }
 
-    if (width && height) {
-        try {
-            // width/height could be a string
-            const size = Math.max(width, height);
-            width = size;
-            height = size;
-        } catch (e) {}
-    } else if (width) {
-        height = width;
-    } else if (height) {
-        width = height;
-    }
-
-    return (
-        <Rectangle
-            {...{
-                frame: { width, height },
-                cornerRadius: Number.MAX_SAFE_INTEGER,
-                ...rest
-            }}
-        />
-    );
+  return (
+    <Rectangle
+      frame={{ width: diameter, height: diameter }}
+      cornerRadius={cornerRadius}
+      {...rest}
+    />
+  );
 };

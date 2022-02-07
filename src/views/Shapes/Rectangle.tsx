@@ -7,52 +7,49 @@ import { getPadding } from "../../utils/padding";
 import { getScaleEffect } from "../../utils/scaleEffect";
 import { getShadow } from "../../utils/shadow";
 import { getFrame } from "../../utils/frame";
-import { useColorScheme } from "../../hooks/useColorScheme";
 import { VStack } from "../VStack";
 import { Spacer } from "../Spacer";
+import { useUIColor } from "../..";
 
-type RectangleProps = Omit<Modifiers,"backgroundColor"> & {
-    fill?: string
-}
+type RectangleProps = Omit<Modifiers, "backgroundColor"> & {
+  fill?: string;
+};
 
 export const Rectangle: React.FC<RectangleProps> = ({
-    fill,
-    opacity,
-    frame = { width: "100%", height: "100%" },
-    cornerRadius,
-    scaleEffect,
-    padding,
-    border,
-    shadow,
-    zIndex,
-    style,
-    onAppear,
-    onDisappear,
+  fill,
+  opacity,
+  frame = { width: "100%", height: "100%" },
+  cornerRadius,
+  scaleEffect,
+  padding,
+  border,
+  shadow,
+  zIndex,
+  style,
+  onAppear,
+  onDisappear,
 }) => {
-    useLifecycle(onAppear, onDisappear);
-    const colorScheme = useColorScheme();
+  useLifecycle(onAppear, onDisappear);
+  const UIColor = useUIColor();
 
-    // could be replaced with UIColor.primary if that is created
-    const defaultBackgroundColor = colorScheme.colorScheme == "light" ? "black" : "white";
-
-    return (
-        <VStack
-            style={[
-                {
-                    opacity,
-                    backgroundColor: fill || defaultBackgroundColor,
-                    zIndex,
-                    ...getFrame(frame),
-                    ...getCornerRadius(cornerRadius),
-                    ...getShadow(shadow),
-                    ...getPadding(padding),
-                    ...getBorder(border),
-                    ...getScaleEffect(scaleEffect),
-                },
-                style,
-            ]}
-        >
-            <Spacer/>
-        </VStack>
-    );
+  return (
+    <VStack
+      style={[
+        {
+          opacity,
+          backgroundColor: fill || UIColor.systemBackground,
+          zIndex,
+          ...getFrame(frame),
+          ...getCornerRadius(cornerRadius),
+          ...getShadow(shadow),
+          ...getPadding(padding),
+          ...getBorder(border),
+          ...getScaleEffect(scaleEffect),
+        },
+        style,
+      ]}
+    >
+      <Spacer />
+    </VStack>
+  );
 };
