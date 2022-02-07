@@ -1,26 +1,27 @@
-import React from "react";
-import { useLifecycle } from "../../hooks/useLifecycle";
-import { getBorder } from "../../utils/border";
-import { getCornerRadius } from "../../utils/cornerRadius";
-import { Modifiers } from "../../utils/modifiers";
-import { getPadding } from "../../utils/padding";
-import { getScaleEffect } from "../../utils/scaleEffect";
-import { getShadow } from "../../utils/shadow";
-import { getFrame } from "../../utils/frame";
-import { VStack } from "../VStack";
-import { Spacer } from "../Spacer";
-import { useUIColor } from "../..";
+import React from 'react';
+import { View } from 'react-native';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { getBorder } from '../../utils/border';
+import { getCornerRadius } from '../../utils/cornerRadius';
+import { Modifiers } from '../../utils/modifiers';
+import { getPadding } from '../../utils/padding';
+import { getTransform } from '../../utils/transform';
+import { getShadow } from '../../utils/shadow';
+import { getFrame } from '../../utils/frame';
+import { useUIColor } from '../..';
 
-type RectangleProps = Omit<Modifiers, "backgroundColor"> & {
+type RectangleProps = Omit<Modifiers, 'backgroundColor'> & {
   fill?: string;
+  frame: { width?: number; height?: number };
 };
 
 export const Rectangle: React.FC<RectangleProps> = ({
   fill,
   opacity,
-  frame = { width: "100%", height: "100%" },
+  frame,
   cornerRadius,
   scaleEffect,
+  rotationEffect,
   padding,
   border,
   shadow,
@@ -31,25 +32,43 @@ export const Rectangle: React.FC<RectangleProps> = ({
 }) => {
   useLifecycle(onAppear, onDisappear);
   const UIColor = useUIColor();
+  const { rectWidth, rectHeight } = getRectDims(frame);
 
   return (
-    <VStack
+    <View
       style={[
         {
           opacity,
           backgroundColor: fill || UIColor.systemBackground,
           zIndex,
-          ...getFrame(frame),
+          ...getFrame({ width: rectWidth, height: rectHeight }),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),
           ...getPadding(padding),
           ...getBorder(border),
-          ...getScaleEffect(scaleEffect),
+          ...getTransform(scaleEffect, rotationEffect),
         },
         style,
       ]}
-    >
-      <Spacer />
-    </VStack>
+    />
   );
+};
+
+const getRectDims = (frame: { width?: number; height?: number }) => {
+  if (!frame) return { rectWidth: 0, rectHeight: 0 };
+  let rectWidth;
+  let rectHeight;
+
+  if (frame.width && frame.height) {
+    rectWidth = frame.width;
+    rectHeight = frame.height;
+  } else if (frame.width) {
+    rectWidth = frame.width;
+    rectHeight = '100%';
+  } else if (frame.height) {
+    rectWidth = '100%';
+    rectHeight = frame.height;
+  }
+
+  return { rectWidth, rectHeight };
 };
