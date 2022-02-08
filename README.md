@@ -29,6 +29,10 @@ SwiftUI is awesome. So is React Native! This library aims to recreate some of th
 - **Link:** External link redirecting to the browser
 - **List:** List view
 - **ProgressView:** Progress indicator views
+- **Rectangle** Rectangle view
+- **Capsule** Capsule view
+- **RoundedRectangle** RoundedRectangle view
+- **Circle** Circle view
 
 ### Controls :control_knobs: :bulb:
 

@@ -65,7 +65,10 @@ export const ZStack = ({
           ...child.props,
           style: {
             zIndex: i,
-            position: i === 1 ? 'relative' : 'absolute',
+            position:
+              i === 1 || React.Children.count(children) === 1
+                ? 'relative'
+                : 'absolute',
           },
         })
       )}

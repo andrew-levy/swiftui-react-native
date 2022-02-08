@@ -18,7 +18,7 @@ type VStackProps = Modifiers &
   };
 
 export const VStack = ({
-  spacing,
+  spacing = 2,
   alignment = 'center',
   style,
   children,
