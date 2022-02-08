@@ -4,7 +4,7 @@ import { Rectangle } from './Rectangle';
 
 type CapsuleProps = Omit<Modifiers, 'backgroundColor'> & {
   fill?: string;
-  frame: { width?: number; height?: number };
+  frame: { width: number; } | { height: number } | { width: number; height: number };
 };
 
 export const Capsule: React.FC<CapsuleProps> = ({

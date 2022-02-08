@@ -4,7 +4,7 @@ import { Rectangle } from './Rectangle';
 
 type CircleProps = Omit<Modifiers, 'backgroundColor'> & {
   fill?: string;
-  frame: { width?: number; height?: number };
+  frame: { width: number; } | { height: number } | { width: number; height: number };
 };
 
 export const Circle: React.FC<CircleProps> = ({
@@ -22,9 +22,10 @@ export const Circle: React.FC<CircleProps> = ({
   );
 };
 
-const getDiameter = (frame: { width?: number; height?: number }) => {
+const getDiameter = (frame: { width: number; } | { height: number } | { width: number; height: number }) => {
   let diameter;
-  const { width: frameWidth, height: frameHeight } = frame;
+  const frameWidth = frame['width'];
+  const frameHeight = frame['height'];
   if (frameWidth && frameHeight) diameter = Math.max(frameWidth, frameHeight);
   else if (frameWidth && !frameHeight) diameter = frameWidth;
   else if (frameHeight && !frameWidth) diameter = frameHeight;
