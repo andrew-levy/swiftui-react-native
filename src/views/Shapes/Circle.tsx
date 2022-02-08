@@ -1,17 +1,12 @@
 import React from 'react';
-import { Modifiers } from '../../utils/modifiers';
+import { ShapeModifiers } from '../../utils/modifiers';
 import { Rectangle } from './Rectangle';
 
-type CircleProps = Omit<Modifiers, 'backgroundColor'> & {
-  fill?: string;
-  frame: { width?: number; height?: number };
-};
-
-export const Circle: React.FC<CircleProps> = ({
+export const Circle = ({
   frame,
   cornerRadius = 99999,
   ...rest
-}) => {
+}: ShapeModifiers) => {
   const diameter = getDiameter(frame);
   return (
     <Rectangle
@@ -22,11 +17,9 @@ export const Circle: React.FC<CircleProps> = ({
   );
 };
 
-const getDiameter = (frame: { width?: number; height?: number }) => {
-  let diameter;
-  const { width: frameWidth, height: frameHeight } = frame;
-  if (frameWidth && frameHeight) diameter = Math.max(frameWidth, frameHeight);
-  else if (frameWidth && !frameHeight) diameter = frameWidth;
-  else if (frameHeight && !frameWidth) diameter = frameHeight;
-  return diameter;
+const getDiameter = (frame: ShapeModifiers['frame']) => {
+  if ('width' in frame && 'height' in frame)
+    return Math.max(frame.width, frame.height);
+  else if ('width' in frame) return frame.width;
+  else if ('height' in frame) return frame.height;
 };

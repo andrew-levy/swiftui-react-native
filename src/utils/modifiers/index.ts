@@ -29,6 +29,14 @@ export type TextModifiers = {
   customFont?: string;
 };
 
+export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
+  fill?: string;
+  frame:
+    | { width: number; height: number }
+    | { width: number }
+    | { height: number };
+};
+
 export type WithChildren = {
   children?: React.ReactElement | React.ReactElement[];
 };

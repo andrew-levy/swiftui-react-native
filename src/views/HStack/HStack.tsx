@@ -17,7 +17,7 @@ type HStackProps = Modifiers &
   };
 
 export const HStack = ({
-  spacing,
+  spacing = 2,
   alignment = 'center',
   children,
   padding,

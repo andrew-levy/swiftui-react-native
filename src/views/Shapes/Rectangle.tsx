@@ -3,19 +3,14 @@ import { View } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getBorder } from '../../utils/border';
 import { getCornerRadius } from '../../utils/cornerRadius';
-import { Modifiers } from '../../utils/modifiers';
+import { ShapeModifiers } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
 import { getTransform } from '../../utils/transform';
 import { getShadow } from '../../utils/shadow';
 import { getFrame } from '../../utils/frame';
-import { useUIColor } from '../..';
+import { useUIColor } from '../../hooks/useUIColor';
 
-type RectangleProps = Omit<Modifiers, 'backgroundColor'> & {
-  fill?: string;
-  frame: { width?: number; height?: number };
-};
-
-export const Rectangle: React.FC<RectangleProps> = ({
+export const Rectangle = ({
   fill,
   opacity,
   frame,
@@ -29,7 +24,7 @@ export const Rectangle: React.FC<RectangleProps> = ({
   style,
   onAppear,
   onDisappear,
-}) => {
+}: ShapeModifiers) => {
   useLifecycle(onAppear, onDisappear);
   const UIColor = useUIColor();
   const { rectWidth, rectHeight } = getRectDims(frame);
@@ -54,18 +49,18 @@ export const Rectangle: React.FC<RectangleProps> = ({
   );
 };
 
-const getRectDims = (frame: { width?: number; height?: number }) => {
+const getRectDims = (frame: ShapeModifiers['frame']) => {
   if (!frame) return { rectWidth: 0, rectHeight: 0 };
   let rectWidth;
   let rectHeight;
 
-  if (frame.width && frame.height) {
+  if ('width' in frame && 'height' in frame) {
     rectWidth = frame.width;
     rectHeight = frame.height;
-  } else if (frame.width) {
+  } else if ('width' in frame) {
     rectWidth = frame.width;
     rectHeight = '100%';
-  } else if (frame.height) {
+  } else if ('height' in frame) {
     rectWidth = '100%';
     rectHeight = frame.height;
   }
