@@ -12,7 +12,7 @@ import { useUIColor } from '../..';
 
 type RectangleProps = Omit<Modifiers, 'backgroundColor'> & {
   fill?: string;
-  frame: { width: number; } | { height: number } | { width: number; height: number };
+  frame: { width: number; } | { height: number; } | { width: number; height: number; };
 };
 
 export const Rectangle: React.FC<RectangleProps> = ({
@@ -54,7 +54,7 @@ export const Rectangle: React.FC<RectangleProps> = ({
   );
 };
 
-const getRectDims = (frame: { width: number; } | { height: number } | { width: number; height: number }) => {
+const getRectDims = (frame: { width: number; } | { height: number; } | { width: number; height: number; }) => {
   if (!frame) return { rectWidth: 0, rectHeight: 0 };
   let rectWidth;
   let rectHeight;
