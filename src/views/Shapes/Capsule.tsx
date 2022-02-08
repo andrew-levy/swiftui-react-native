@@ -3,7 +3,7 @@ import { Modifiers } from '../../utils/modifiers';
 import { Rectangle } from './Rectangle';
 
 type CapsuleProps = Omit<Modifiers, 'backgroundColor'> & {
-  fill: string;
+  fill?: string;
   frame: { width?: number; height?: number };
 };
 
