@@ -8,9 +8,10 @@ import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { Binding } from '../../utils/binding';
-import { useUIColor } from '../../hooks/useUIColor';
+import { useColorScheme } from '../../hooks/useColorScheme';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { getColor } from '../../utils/colors';
 
 type TextFieldProps = Modifiers &
   TextModifiers & {
@@ -43,13 +44,14 @@ export const TextField: React.FC<TextFieldProps> = ({
   onDisappear,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
+
   return (
     <TextInput
       style={[
         {
-          backgroundColor,
-          color: foregroundColor || UIColor.label,
+          backgroundColor: getColor(backgroundColor, colorScheme),
+          color: getColor(foregroundColor, colorScheme, 'label'),
           opacity,
           zIndex,
           ...getCornerRadius(cornerRadius),
@@ -63,7 +65,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         style,
       ]}
       placeholder={placeholder}
-      placeholderTextColor={UIColor.secondaryLabel}
+      placeholderTextColor={getColor('secondaryLabel', colorScheme)}
       value={text.value}
       onChangeText={(newText) => {
         text.setValue(newText);

@@ -14,6 +14,8 @@ import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { FontStyles } from '../../utils/fonts';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { getColor } from '../../utils/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 const { SFSymbol, SFSymbolWeight, SFSymbolScale } =
   Platform.select({
@@ -52,6 +54,8 @@ export const Image: React.FC<ImageProps> = ({
   foregroundColor,
 }) => {
   useLifecycle(onAppear, onDisappear);
+  const { colorScheme } = useColorScheme();
+
   if (systemName) {
     if (!SFSymbol) return null;
     let size = DEFAULT_IMAGE_SIZE;
@@ -66,7 +70,7 @@ export const Image: React.FC<ImageProps> = ({
         weight={fontWeight || SFSymbolWeight.Regular}
         scale={SFSymbolScale.SMALL}
         size={size}
-        color={foregroundColor}
+        color={getColor(foregroundColor, colorScheme)}
         style={[
           {
             opacity,
@@ -92,7 +96,7 @@ export const Image: React.FC<ImageProps> = ({
       style={[
         {
           opacity,
-          backgroundColor,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           zIndex,
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),

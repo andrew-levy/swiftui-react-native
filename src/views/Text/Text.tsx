@@ -8,9 +8,10 @@ import { useLifecycle } from '../../hooks/useLifecycle';
 import { Font, getFont } from '../../utils/fonts';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { HorizontalAlignment } from '../../utils/alignments';
-import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { getColor } from '../../utils/colors';
 
 type TextProps = Omit<Modifiers, 'style'> &
   TextModifiers & {
@@ -43,13 +44,13 @@ export const Text: React.FC<TextProps> = ({
   children,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
   return (
     <RNText
       style={[
         {
           backgroundColor,
-          color: foregroundColor || UIColor.label,
+          color: getColor(foregroundColor, colorScheme, 'label'),
           textAlign: getTextAlignment(alignment),
           opacity,
           zIndex,

@@ -9,10 +9,12 @@ import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { Color, getColor } from '../../utils/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 type ToggleProps = Modifiers & {
   isOn: Binding<boolean>;
-  tintColor?: string;
+  tintColor?: Color;
   onChange?: (value?: boolean) => void;
 };
 
@@ -35,11 +37,13 @@ export const Toggle: React.FC<ToggleProps> = ({
   onChange,
 }) => {
   useLifecycle(onAppear, onDisappear);
+  const { colorScheme } = useColorScheme();
+
   return (
     <Switch
       style={[
         {
-          backgroundColor,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           opacity,
           zIndex,
           ...getCornerRadius(cornerRadius),
@@ -59,7 +63,7 @@ export const Toggle: React.FC<ToggleProps> = ({
           onChange(newValue);
         }
       }}
-      trackColor={{ true: tintColor, false: null }}
+      trackColor={{ true: getColor(tintColor, colorScheme), false: null }}
     />
   );
 };

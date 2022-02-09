@@ -8,7 +8,8 @@ import { getPadding } from '../../utils/padding';
 import { getTransform } from '../../utils/transform';
 import { getShadow } from '../../utils/shadow';
 import { getFrame } from '../../utils/frame';
-import { useUIColor } from '../../hooks/useUIColor';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { getColor } from '../../utils/colors';
 
 export const Rectangle = ({
   fill,
@@ -26,7 +27,7 @@ export const Rectangle = ({
   onDisappear,
 }: ShapeModifiers) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
   const { rectWidth, rectHeight } = getRectDims(frame);
 
   return (
@@ -34,7 +35,7 @@ export const Rectangle = ({
       style={[
         {
           opacity,
-          backgroundColor: fill || UIColor.systemBackground,
+          backgroundColor: getColor(fill, colorScheme, 'systemBackground'),
           zIndex,
           ...getFrame({ width: rectWidth, height: rectHeight }),
           ...getCornerRadius(cornerRadius),

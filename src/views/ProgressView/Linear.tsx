@@ -10,15 +10,16 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getPadding } from '../../utils/padding';
 import { getBorder } from '../../utils/border';
 import { getShadow } from '../../utils/shadow';
-import { useUIColor } from '../../hooks/useUIColor';
 import { getSliderWidth, value2Position } from '../Slider/utils';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getTransform } from '../../utils/transform';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { Color, getColor } from '../../utils/colors';
 
 type LinearProps = Modifiers & {
   value: number;
   total?: number;
-  accentColor?: string;
+  accentColor?: Color;
 };
 
 export const Linear = ({
@@ -40,7 +41,7 @@ export const Linear = ({
   onDisappear,
 }: LinearProps) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
   const [sliderWidth, sliderHeight] = getSliderWidth(frame);
   const midPoint = total / 2;
   const slope = midPoint / (sliderWidth / 2);
@@ -70,7 +71,7 @@ export const Linear = ({
         {
           width: sliderWidth,
           height: sliderHeight,
-          backgroundColor: backgroundColor || UIColor.systemGray4,
+          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
           opacity,
           zIndex,
           ...getCornerRadius(cornerRadius),
@@ -87,7 +88,7 @@ export const Linear = ({
           {
             height: sliderHeight,
             borderRadius: 10,
-            backgroundColor: accentColor || UIColor.systemBlue,
+            backgroundColor: getColor(accentColor, colorScheme, 'systemBlue'),
           },
           animatedFillStyle,
         ]}

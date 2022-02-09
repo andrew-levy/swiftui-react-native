@@ -26,9 +26,11 @@ import {
   value2Position,
 } from './utils';
 import { getTransform } from '../../utils/transform';
+import { Color, getColor } from '../../utils/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 type SliderProps = Modifiers & {
-  accentColor?: string;
+  accentColor?: Color;
   step?: number;
   range?: [number, number];
   value: Binding<number>;
@@ -62,7 +64,7 @@ export const Slider: React.FC<SliderProps> = ({
   onChange,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
   const [sliderWidth, sliderHeight] = getSliderWidth(frame);
   const [from, through] = range;
   const midPoint = (through + from) / 2;
@@ -131,7 +133,11 @@ export const Slider: React.FC<SliderProps> = ({
           height: sliderHeight,
           marginTop: CIRCLE_WIDTH / 2,
           marginBottom: CIRCLE_WIDTH / 2,
-          backgroundColor: backgroundColor || UIColor.systemGray4,
+          backgroundColor: getColor(
+            backgroundColor,
+            colorScheme,
+            'systemGray4'
+          ),
           opacity,
           zIndex,
           ...getCornerRadius(cornerRadius),
@@ -148,7 +154,7 @@ export const Slider: React.FC<SliderProps> = ({
           {
             height: sliderHeight,
             borderRadius: 10,
-            backgroundColor: accentColor || UIColor.systemBlue,
+            backgroundColor: getColor(accentColor, colorScheme, 'systemBlue'),
           },
           animatedFillStyle,
         ]}

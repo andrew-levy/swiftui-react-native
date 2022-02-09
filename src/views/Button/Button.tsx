@@ -10,6 +10,8 @@ import { useLifecycle } from '../../hooks/useLifecycle';
 import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { getColor } from '../../utils/colors';
 
 export type ButtonProps = Modifiers &
   TextModifiers &
@@ -41,13 +43,14 @@ export const Button = ({
 }: ButtonProps) => {
   useLifecycle(onAppear, onDisappear);
   const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
   return (
     <TouchableOpacity
       disabled={disabled}
       onPress={action}
       style={[
         {
-          backgroundColor,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           justifyContent: 'center',
           opacity,
           zIndex,
@@ -62,13 +65,13 @@ export const Button = ({
       ]}
     >
       {text ? (
-        <Text foregroundColor={UIColor.systemBlue} {...textProps}>
+        <Text foregroundColor="systemBlue" {...textProps}>
           {text}
         </Text>
       ) : (
         React.Children.map(children, (child) =>
           React.cloneElement(child, {
-            ...{ foregroundColor: UIColor.systemBlue, textProps },
+            ...{ foregroundColor: 'systemBlue', textProps },
             ...child.props,
           })
         )

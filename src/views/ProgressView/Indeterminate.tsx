@@ -9,7 +9,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { useUIColor } from '../../hooks/useUIColor';
+import { useColorScheme } from '../../hooks/useColorScheme';
 import { getBorder } from '../../utils/border';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getFrame } from '../../utils/frame';
@@ -17,9 +17,10 @@ import { Modifiers } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getTransform } from '../../utils/transform';
+import { Color, getColor } from '../../utils/colors';
 
 type IndeterminateProps = Modifiers & {
-  accentColor?: string;
+  accentColor?: Color;
   scaleEffect?: number;
 };
 
@@ -41,13 +42,14 @@ export const Indeterminate = ({
 }: IndeterminateProps) => {
   useLifecycle(onAppear, onDisappear);
   const shift = 6;
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
+
   return (
     <View
       style={[
         styles.container,
         {
-          backgroundColor,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           opacity,
           zIndex,
           ...getCornerRadius(cornerRadius),
@@ -64,49 +66,49 @@ export const Indeterminate = ({
         degree="0deg"
         shift={-shift}
         delay={0}
-        color={accentColor || UIColor.systemGray}
+        color={getColor(accentColor, colorScheme, 'systemGray')}
       />
       <Line
         degree="-45deg"
         shift={shift}
         delay={300}
-        color={accentColor || UIColor.systemGray}
+        color={getColor(accentColor, colorScheme, 'systemGray')}
       />
       <Line
         degree="90deg"
         shift={shift}
         delay={600}
-        color={accentColor || UIColor.systemGray}
+        color={getColor(accentColor, colorScheme, 'systemGray')}
       />
       <Line
         degree="45deg"
         shift={shift}
         delay={500}
-        color={accentColor || UIColor.systemGray}
+        color={getColor(accentColor, colorScheme, 'systemGray')}
       />
       <Line
         degree="0deg"
         shift={shift}
         delay={400}
-        color={accentColor || UIColor.systemGray}
+        color={getColor(accentColor, colorScheme, 'systemGray')}
       />
       <Line
         degree="-45deg"
         shift={-shift}
         delay={700}
-        color={accentColor || UIColor.systemGray}
+        color={getColor(accentColor, colorScheme, 'systemGray')}
       />
       <Line
         degree="90deg"
         shift={-shift}
         delay={200}
-        color={accentColor || UIColor.systemGray}
+        color={getColor(accentColor, colorScheme, 'systemGray')}
       />
       <Line
         degree="45deg"
         shift={-shift}
         delay={100}
-        color={accentColor || UIColor.systemGray}
+        color={getColor(accentColor, colorScheme, 'systemGray')}
       />
     </View>
   );

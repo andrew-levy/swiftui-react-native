@@ -7,16 +7,17 @@ import { getShadow } from '../../utils/shadow';
 import { getBorder } from '../../utils/border';
 import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
-import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { Color, getColor } from '../../utils/colors';
 
 type ListProps = Modifiers &
   PropsWithChildren<{
     inset?: boolean;
     header?: string | ReactElement<any>;
     footer?: string | ReactElement<any>;
-    separatorTint?: string;
+    separatorTint?: Color;
     hideSeparators?: boolean;
   }>;
 
@@ -42,7 +43,8 @@ export const List = ({
   onDisappear,
 }: ListProps) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
+
   const listStyle = inset ? 'insetGrouped' : 'grouped';
   return (
     <View
@@ -65,8 +67,12 @@ export const List = ({
         style={[
           getContainerStyles(listStyle),
           {
-            backgroundColor: backgroundColor || UIColor.systemBackground,
-            borderColor: separatorTint || UIColor.separator,
+            backgroundColor: getColor(
+              backgroundColor,
+              colorScheme,
+              'systemBackground'
+            ),
+            borderColor: getColor(separatorTint, colorScheme, 'separator'),
           },
           style,
         ]}
@@ -75,7 +81,7 @@ export const List = ({
           children,
           (child: React.ReactElement<ListRowProps>, index: number) => (
             <ListRow
-              separatorTint={separatorTint || UIColor.separator}
+              separatorTint={getColor(separatorTint, colorScheme, 'separator')}
               hideSeparator={
                 hideSeparators ? true : index === Children.count(children) - 1
               }
@@ -113,9 +119,11 @@ const getContainerStyles = (type: string) => {
 };
 
 const Caption = ({ caption }: { caption: string | ReactElement<any> }) => {
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
   return typeof caption === 'string' ? (
-    <Text style={[styles.caption, { color: UIColor.systemGray }]}>
+    <Text
+      style={[styles.caption, { color: getColor('systemGray', colorScheme) }]}
+    >
       {caption}
     </Text>
   ) : (

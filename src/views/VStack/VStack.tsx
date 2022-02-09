@@ -9,6 +9,8 @@ import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { getColor } from '../../utils/colors';
 
 type VStackProps = Modifiers &
   WithChildren & {
@@ -36,13 +38,15 @@ export const VStack = ({
   onDisappear,
 }: VStackProps) => {
   useLifecycle(onAppear, onDisappear);
+  const { colorScheme } = useColorScheme();
+
   return (
     <View
       style={[
         styles.vStack,
         {
           alignItems: Alignments.horizontal[alignment],
-          backgroundColor,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           opacity,
           zIndex,
           ...getCornerRadius(cornerRadius),
