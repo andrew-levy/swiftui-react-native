@@ -1,9 +1,13 @@
 import { useContext } from 'react';
-import { ColorSchemeContext } from '../views/ColorSchemeProvider/ColorSchemeProvider';
+import {
+  ColorSchemeContext,
+  ColorSchemeContextType,
+  ColorSchemeOptions,
+} from '../views/ColorSchemeProvider/ColorSchemeProvider';
 
-const defaultScheme = {
+const defaultScheme: ColorSchemeContextType = {
   colorScheme: 'light',
-  setColorScheme: (_: 'light' | 'dark' | 'auto') => {
+  setColorScheme: (colorScheme: ColorSchemeOptions) => {
     console.warn(
       'No ColorSchemeProvider found. You need to wrap your app with a ColorSchemeProvider in order to update the color scheme.'
     );

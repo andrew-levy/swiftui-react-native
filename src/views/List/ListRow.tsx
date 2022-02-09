@@ -1,6 +1,7 @@
 import React, { cloneElement } from 'react';
 import { TouchableHighlight, View, StyleSheet } from 'react-native';
-import { useUIColor } from '../../hooks/useUIColor';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { getColor } from '../../utils/colors';
 import { openURL } from '../Link/Link';
 
 const SYSTEM_SPACE = 10;
@@ -16,7 +17,7 @@ export const ListRow = ({
   children,
   separatorTint,
 }: ListRowProps) => {
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
   const action = getAction(children);
   const buttonChild = cloneElement(children, {
     ...children.props,
@@ -35,7 +36,10 @@ export const ListRow = ({
   );
   if (action) {
     return (
-      <TouchableHighlight underlayColor={UIColor.systemGray4} onPress={action}>
+      <TouchableHighlight
+        underlayColor={getColor('systemGray4', colorScheme)}
+        onPress={action}
+      >
         {rowContent}
       </TouchableHighlight>
     );

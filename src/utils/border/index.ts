@@ -1,5 +1,7 @@
+import { Color } from '../colors';
+
 export type Border = {
-  color?: string;
+  color?: Color;
   width?: number;
 };
 

@@ -2,13 +2,15 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { WithChildren, Modifiers } from '../../utils/modifiers';
-import { Alignments, VerticalAlignment } from '../../utils/alignments';
+import { getAlignment, VerticalAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
 import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { getColor } from '../../utils/colors';
 
 type HStackProps = Modifiers &
   WithChildren & {
@@ -35,15 +37,17 @@ export const HStack = ({
   onDisappear,
 }: HStackProps) => {
   useLifecycle(onAppear, onDisappear);
+  const { colorScheme } = useColorScheme();
+
   return (
     <View
       style={[
         styles.hStack,
         {
-          alignItems: Alignments.vertical[alignment],
-          backgroundColor,
           opacity,
           zIndex,
+          alignItems: getAlignment(alignment, 'vertical'),
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),
           ...getPadding(padding),

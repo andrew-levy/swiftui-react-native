@@ -11,9 +11,11 @@ import { getPadding } from '../../utils/padding';
 import { getFrame } from '../../utils/frame';
 import { getBorder } from '../../utils/border';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
-import { FontStyles } from '../../utils/fonts';
+import { Fonts } from '../../utils/fonts';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { getColor } from '../../utils/colors';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 const { SFSymbol, SFSymbolWeight, SFSymbolScale } =
   Platform.select({
@@ -52,13 +54,15 @@ export const Image: React.FC<ImageProps> = ({
   foregroundColor,
 }) => {
   useLifecycle(onAppear, onDisappear);
+  const { colorScheme } = useColorScheme();
+
   if (systemName) {
     if (!SFSymbol) return null;
     let size = DEFAULT_IMAGE_SIZE;
     if (fontSize) {
       size = fontSize;
     } else if (font) {
-      size = FontStyles[font].fontSize;
+      size = Fonts[font].fontSize;
     }
     return (
       <SFSymbol
@@ -66,14 +70,14 @@ export const Image: React.FC<ImageProps> = ({
         weight={fontWeight || SFSymbolWeight.Regular}
         scale={SFSymbolScale.SMALL}
         size={size}
-        color={foregroundColor}
+        color={getColor(foregroundColor, colorScheme)}
         style={[
           {
             opacity,
-            backgroundColor,
             zIndex,
             width: fontSize,
             height: fontSize,
+            backgroundColor: getColor(backgroundColor, colorScheme),
             ...getCornerRadius(cornerRadius),
             ...getShadow(shadow),
             ...getPadding(padding),
@@ -92,7 +96,7 @@ export const Image: React.FC<ImageProps> = ({
       style={[
         {
           opacity,
-          backgroundColor,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           zIndex,
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),

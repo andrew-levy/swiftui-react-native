@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
-import { useColorScheme } from 'react-native';
+
+export type ColorSchemeOptions = 'light' | 'dark';
 
 type ColorSchemeProviderProps = {
-  preferredColorScheme?: 'light' | 'dark' | 'auto';
+  preferredColorScheme?: ColorSchemeOptions;
   children: React.ReactNode;
 };
 
-export const ColorSchemeContext = React.createContext<{
-  colorScheme: string;
-  setColorScheme: (colorScheme: 'light' | 'dark' | 'auto') => void;
-} | null>(null);
+export type ColorSchemeContextType = {
+  colorScheme: ColorSchemeOptions;
+  setColorScheme: (colorScheme: 'light' | 'dark') => void;
+};
+
+export const ColorSchemeContext =
+  React.createContext<ColorSchemeContextType | null>(null);
 
 export const ColorSchemeProvider = ({
   children,
   preferredColorScheme = 'light',
 }: ColorSchemeProviderProps) => {
-  const [colorScheme, setColorScheme] = useState(preferredColorScheme);
-  const systemColorScheme = useColorScheme();
+  const [current, setCurrent] = useState(preferredColorScheme);
   const value = {
-    colorScheme: colorScheme === 'auto' ? systemColorScheme : colorScheme,
-    setColorScheme,
+    colorScheme: current,
+    setColorScheme: setCurrent,
   };
 
   return (

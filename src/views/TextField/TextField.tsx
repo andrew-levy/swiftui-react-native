@@ -3,14 +3,15 @@ import { TextInput } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { getBorder } from '../../utils/border';
-import { Font, FontWeight, getFont } from '../../utils/fonts';
+import { getFont } from '../../utils/fonts';
 import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { Binding } from '../../utils/binding';
-import { useUIColor } from '../../hooks/useUIColor';
+import { useColorScheme } from '../../hooks/useColorScheme';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { getColor } from '../../utils/colors';
 
 type TextFieldProps = Modifiers &
   TextModifiers & {
@@ -24,10 +25,10 @@ export const TextField: React.FC<TextFieldProps> = ({
   text,
   onChange,
   fontSize,
-  font = Font.body,
+  font = 'body',
   customFont,
   foregroundColor,
-  fontWeight = FontWeight.regular,
+  fontWeight = 'regular',
   cornerRadius,
   backgroundColor,
   rotationEffect,
@@ -43,15 +44,16 @@ export const TextField: React.FC<TextFieldProps> = ({
   onDisappear,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
+
   return (
     <TextInput
       style={[
         {
-          backgroundColor,
-          color: foregroundColor || UIColor.label,
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme),
+          color: getColor(foregroundColor, colorScheme, 'label'),
           ...getCornerRadius(cornerRadius),
           ...getFont(font, fontSize, fontWeight, customFont),
           ...getPadding(padding),
@@ -63,7 +65,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         style,
       ]}
       placeholder={placeholder}
-      placeholderTextColor={UIColor.secondaryLabel}
+      placeholderTextColor={getColor('secondaryLabel', colorScheme)}
       value={text.value}
       onChangeText={(newText) => {
         text.setValue(newText);

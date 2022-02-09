@@ -1,12 +1,14 @@
 import { StyleProp, ViewStyle } from 'react-native';
+import { Color } from '../colors';
 import { Border } from '../border';
-import { Frame } from '../frame';
+import { Frame, ShapeFrame } from '../frame';
 import { Padding } from '../padding';
 import { Shadow } from '../shadow';
 import { Rotation } from '../transform';
+import { Fonts, FontWeights } from '../fonts';
 
 export type Modifiers = {
-  backgroundColor?: string;
+  backgroundColor?: Color;
   padding?: Padding;
   cornerRadius?: number;
   rotationEffect?: Rotation;
@@ -22,19 +24,16 @@ export type Modifiers = {
 };
 
 export type TextModifiers = {
-  font?: string;
-  fontWeight?: string;
+  font?: keyof typeof Fonts;
+  fontWeight?: keyof typeof FontWeights;
   fontSize?: number;
-  foregroundColor?: string;
+  foregroundColor?: Color;
   customFont?: string;
 };
 
 export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
-  fill?: string;
-  frame:
-    | { width: number; height: number }
-    | { width: number }
-    | { height: number };
+  fill?: Color;
+  frame: ShapeFrame;
 };
 
 export type WithChildren = {

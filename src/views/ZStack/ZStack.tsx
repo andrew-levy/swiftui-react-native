@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import { useColorScheme } from '../../hooks/useColorScheme';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import {
-  Alignments,
+  getAlignment,
   HorizontalAlignment,
   VerticalAlignment,
 } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
+import { getColor } from '../../utils/colors';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getFrame } from '../../utils/frame';
 import { Modifiers, WithChildren } from '../../utils/modifiers';
@@ -41,15 +43,17 @@ export const ZStack = ({
   onDisappear,
 }: ZStackProps) => {
   useLifecycle(onAppear, onDisappear);
+  const { colorScheme } = useColorScheme();
+
   return (
     <View
       style={[
         {
-          justifyContent: Alignments.vertical[alignment.vertical],
-          alignItems: Alignments.horizontal[alignment.horizontal],
-          backgroundColor,
           opacity,
           zIndex,
+          justifyContent: getAlignment(alignment.vertical, 'vertical'),
+          alignItems: getAlignment(alignment.horizontal, 'horizontal'),
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),
           ...getPadding(padding),

@@ -26,9 +26,9 @@ import { getFrame } from '../../utils/frame';
 import { getBorder } from '../../utils/border';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { useUIColor } from '../../hooks/useUIColor';
 import { Text } from '../Text';
 import { getTransform } from '../../utils/transform';
+import { getColor } from '../../utils/colors';
 
 type PickerProps = Modifiers &
   WithChildren & {
@@ -56,7 +56,6 @@ export const Picker = ({
 }: PickerProps) => {
   useLifecycle(onAppear, onDisappear);
   const { colorScheme } = useColorScheme();
-  const UIColor = useUIColor();
   const childCount = Children.count(children);
   const [optionDimensions, setOptionDimensions] = useState(null);
   const tempSelection = useSharedValue(selection.value);
@@ -118,10 +117,13 @@ export const Picker = ({
         style={[
           styles.container,
           {
-            backgroundColor:
-              backgroundColor || UIColor.secondarySystemBackground,
             opacity,
             zIndex,
+            backgroundColor: getColor(
+              backgroundColor,
+              colorScheme,
+              'secondarySystemBackground'
+            ),
             ...getCornerRadius(cornerRadius),
             ...getShadow(shadow),
             ...getPadding(padding),
@@ -157,7 +159,7 @@ export const Picker = ({
                   {textChild}
                 </TouchableOpacity>
                 <Divider
-                  color={UIColor.systemGray4}
+                  color={getColor('systemGray4', colorScheme)}
                   index={i}
                   selection={tempSelection.value}
                   childCount={childCount}
@@ -175,8 +177,8 @@ export const Picker = ({
               height: sliderHeight,
               backgroundColor:
                 colorScheme === 'dark'
-                  ? UIColor.secondarySystemBackground
-                  : UIColor.systemBackground,
+                  ? getColor('secondarySystemBackground', 'dark')
+                  : getColor('systemBackground', 'light'),
             },
           ]}
         />

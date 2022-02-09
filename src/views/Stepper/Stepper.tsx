@@ -4,7 +4,7 @@ import { Button } from '../Button';
 import { Text } from '../Text';
 import { Modifiers } from '../../utils/modifiers';
 import { Binding } from '../../utils/binding';
-import { useUIColor } from '../../hooks/useUIColor';
+import { useColorScheme } from '../../hooks/useColorScheme';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getPadding } from '../../utils/padding';
 import { getFrame } from '../../utils/frame';
@@ -12,6 +12,7 @@ import { getBorder } from '../../utils/border';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
+import { getColor } from '../../utils/colors';
 
 const { SFSymbol } =
   Platform.select({
@@ -46,15 +47,16 @@ export const Stepper: React.FC<StepperProps> = ({
   onChange,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
+  const { colorScheme } = useColorScheme();
+
   return (
     <View
       style={[
         styles.container,
         {
-          backgroundColor: backgroundColor || UIColor.systemGray6,
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),
@@ -80,7 +82,7 @@ export const Stepper: React.FC<StepperProps> = ({
           {SFSymbol ? (
             <SFSymbol
               name="minus"
-              color={UIColor.systemGray}
+              color={getColor('systemGray', colorScheme)}
               style={{ width: 20, height: 20 }}
             />
           ) : (
@@ -89,7 +91,10 @@ export const Stepper: React.FC<StepperProps> = ({
         </Button>
       </View>
       <View
-        style={[styles.separator, { borderRightColor: UIColor.systemGray2 }]}
+        style={[
+          styles.separator,
+          { borderRightColor: getColor('systemGray2', colorScheme) },
+        ]}
       />
       <View style={styles.button}>
         <Button
@@ -106,7 +111,7 @@ export const Stepper: React.FC<StepperProps> = ({
           {SFSymbol ? (
             <SFSymbol
               name="plus"
-              color={UIColor.systemGray}
+              color={getColor('systemGray', colorScheme)}
               style={{ width: 20, height: 20 }}
             />
           ) : (

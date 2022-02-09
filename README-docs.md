@@ -8,7 +8,7 @@ Here's a list of the modifer props that are available to most views:
 
 **`Modifiers`:**
 
-- `backgroundColor: string`
+- `backgroundColor: Color`
 - `border: Border`
 - `cornerRadius: number`
 - `scaleEffect: number`
@@ -27,10 +27,17 @@ And for any views that deal with text:
 **`TextModifiers`:**
 
 - `customFont: string`
-- `font: string`
+- `font: Font`
 - `fontSize: number`
-- `fontWeight: string`
+- `fontWeight: FontWeight`
 - `foregroundColor: string`
+
+Shapes inherit all of the view modifiers with a few exceptions. The prop `fill` is used instead of `backgroundColor`, and `frame` is required and defined a bit differently:
+
+**`ShapeModifiers`:**
+
+- `fill: Color`
+- `frame: ShapeFrame`
 
 ### Components
 
@@ -50,10 +57,10 @@ Button inherits all `Modifiers` and `TextModifers` as props.
 
 Provides context for the current color scheme. Wrap your app in this component to access dynamic color palettes and color scheme functionality.
 
-| prop                   | description          | type                              | required | default |
-| ---------------------- | -------------------- | --------------------------------- | -------- | ------- |
-| `preferredColorScheme` | Default color scheme | `'light'` or `'dark'` or `'auto'` | no       | `light` |
-| `children`             | Button content       | `React.ReactNode`                 | yes      | `null`  |
+| prop                   | description          | type                  | required | default |
+| ---------------------- | -------------------- | --------------------- | -------- | ------- |
+| `preferredColorScheme` | Default color scheme | `'light'` or `'dark'` | no       | `light` |
+| `children`             | Button content       | `React.ReactNode`     | yes      | `null`  |
 
 ### `<HStack />`
 
@@ -78,11 +85,11 @@ An image view to display an asset, URI (or SF Symbol - iOS only)
 
 Image inherits all `Modifiers` and `TextModifiers` as props.
 
-:information_source: [SF Symbols App](https://developer.apple.com/sf-symbols/)
+:information_source: Check out [SF Symbols App](https://developer.apple.com/sf-symbols/) for a complete list of SF Symbols
 
 :information_source: Using [react-native-sfsymbols](https://github.com/birkir/react-native-sfsymbols) under the hood! :star:
 
-:information_source: Choose between the `systemName` prop for an SF Symbol and the `source` prop for a uri or asset image. When using an SF Symbol, use font modifiers to customize it.
+:information_source: Use the `systemName` prop for an SF Symbol or the `source` prop for a uri or asset image. When using an SF Symbol, use font modifiers to customize it.
 
 ### `<Label />`
 
@@ -132,7 +139,7 @@ A sliding value selector
 | `step`          | The increment/decrement amount                                                                                                                                                                 | `number`                       | no       | `1`                              |
 | `range`         | The range of values `[minNumber, maxNumber]`                                                                                                                                                   | `[number, number]`             | no       | `[0, 10]`                        |
 | `updateOnSlide` | If true, the value will update as the slider is moving. If false, it will only update when the gesture has been completed. Setting this to true might cause some lag if the range is too wide. | `boolean`                      | no       | `true`                           |
-| `accentColor`   | The slider accent fill-color                                                                                                                                                                   | `string`                       | no       | `#0a84ff` (`UIColor.systemBlue`) |
+| `accentColor`   | The slider accent fill-color                                                                                                                                                                   | `Color`                        | no       | `#0a84ff` (`UIColor.systemBlue`) |
 | `onChange`      | Function to execute when the slider value changes                                                                                                                                              | `(v: Binding<number>) => void` | no       | `undefined`                      |
 
 Slider inherits all `Modifiers` as props.
@@ -191,7 +198,7 @@ A toggle component to switch between on and off values
 | prop        | description                                       | type                            | required | default     |
 | ----------- | ------------------------------------------------- | ------------------------------- | -------- | ----------- |
 | `isOn`      | The toggle binding                                | `Binding<boolean>`              | yes      | `undefined` |
-| `tintColor` | The "on" toggle color                             | `string`                        | no       | `undefined` |
+| `tintColor` | The "on" toggle color                             | `Color`                         | no       | `undefined` |
 | `onChange`  | Function to execute when the toggle value changes | `(v: Binding<boolean>) => void` | no       | `undefined` |
 
 Toggle inherits all `Modifiers` as props.
@@ -222,6 +229,17 @@ A vertical stack
 
 HStack inherits all `Modifiers` as props.
 
+### Shapes
+
+The supported shapes are `Rectangle`, `RoundedRectangle`, `Capsule`, and `Circle`. They have the following props:
+
+| prop    | description                 | type         | required | default            |
+| ------- | --------------------------- | ------------ | -------- | ------------------ |
+| `fill`  | The fill color of the shape | `Color`      | no       | `systemBackground` |
+| `frame` | The frame of the shape      | `ShapeFrame` | yes      | `undefined`        |
+
+Rectangle inherits all `Modifiers` and `ShapeModifers` as props.
+
 ### Hooks
 
 #### `useAlert`
@@ -231,9 +249,9 @@ Display an alert message based on a condition
 ```jsx
 const [show, setShow] = useState(false);
 useAlert(show, {
-  title: "SwiftUI is Cool",
-  message: "So is React Native!",
-  buttons: [{ text: "Cancel", onPress: () => setShowAlert(false) }],
+  title: 'SwiftUI is Cool',
+  message: 'So is React Native!',
+  buttons: [{ text: 'Cancel', onPress: () => setShowAlert(false) }],
 });
 ```
 
@@ -243,10 +261,10 @@ useAlert(show, {
 
 #### `useBinding`
 
-Create and use a bindable value that a view can read and write to
+Create and use a bindable value that a view can read and write to. Learn more [here](#bindings).
 
 ```jsx
-const text = useBinding("");
+const text = useBinding('');
 ```
 
 ```jsx
@@ -257,17 +275,17 @@ const text = useBinding("");
 
 Display an alert message based on a condition
 
-:information_source: `ColorSchemeProvider` is necessary for this to work properly. Will default to light if not found.
+:information_source: `ColorSchemeProvider` is necessary in order to take full advantage of this hook. Will default to light if its not found.
 
 ```jsx
 const { colorScheme, setColorScheme } = useColorScheme();
 ```
 
 ```jsx
-<VStack backgroundColor={colorScheme === "dark" ? "#000" : "#fff"}>
+<VStack backgroundColor={colorScheme === 'dark' ? '#000' : '#fff'}>
   <Button
     text="Dark Mode"
-    action={() => setColorScheme(colorScheme === "dark" ? "light" : "dark")}
+    action={() => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')}
   />
 </VStack>
 ```
@@ -277,7 +295,7 @@ const { colorScheme, setColorScheme } = useColorScheme();
 Perform an action when the view appears
 
 ```jsx
-useOnAppear(() => console.log("view appeared"));
+useOnAppear(() => console.log('view appeared'));
 ```
 
 #### `useOnAppear`
@@ -285,14 +303,14 @@ useOnAppear(() => console.log("view appeared"));
 Perform an action when the view disappears
 
 ```jsx
-useOnDisappear(() => console.log("view disappeared"));
+useOnDisappear(() => console.log('view disappeared'));
 ```
 
 #### `useUIColor`
 
 Access dynamic UI colors based off of the current color scheme
 
-:information_source: `ColorSchemeProvider` is necessary for this to work properly. Will default to light colors if not found.
+:information_source: `ColorSchemeProvider` is necessary in order to take full advantage of this hook. Will default to light colors if its not found.
 
 ```jsx
 const UIColor = useUIColor();
@@ -302,57 +320,20 @@ const UIColor = useUIColor();
 
 This package ships a few utility objects that make it easy to use constants like font names and colors without having to memorize them.
 
-`ForEach`
+#### `ForEach`
 
 A function that allows you map over an array to dynamically render a collection of views
 
 ```tsx
-const options = ["Option 1", "Option 2", "Option 3"];
+const options = ['Option 1', 'Option 2', 'Option 3'];
 ```
 
 ```tsx
 <VStack>
-  {ForEach(optoions, (option, i) => (
+  {ForEach(options, (option, i) => (
     <Text key={i}>{option}</Text>
   ))}
 </VStack>
-```
-
-`Alignment`
-
-A collection of alignment options `leading`, `trailing`, `top`, `bottom`, and `center`
-
-```tsx
-<VStack alignment={Alignment.leading}>
-  {/* left aligned vstack content here ...*/}
-</VStack>
-```
-
-`UIColor`
-
-A static collection of light and dark colors
-
-```tsx
-<VStack
-  backgroundColor={UIColor.light.systemBlue}
-  frame={{ width: 10, height: 10 }}
-/>
-```
-
-`Font`
-
-A collection of fonts
-
-```tsx
-<Text font={Font.largeTitle}>Large Title</Text>
-```
-
-`FontWeight`
-
-A collection of font weights
-
-```tsx
-<Text fontWeight={FontWeight.heavy}>Thats some heavy text ya got there</Text>
 ```
 
 ### Bindings
@@ -372,7 +353,7 @@ In this example, we pass a binding wrapper of the `text` state variable using th
 In **React Native**, this is how you would accomplish the same thing
 
 ```jsx
-const [text, setText] = useState("");
+const [text, setText] = useState('');
 ```
 
 ```jsx
@@ -384,7 +365,7 @@ And this is _completely_ fine, but it would be nice if the view handled that log
 In **swiftui-react-native**, the implementation is a combination of both approaches
 
 ```jsx
-const text = useBinding("");
+const text = useBinding('');
 ```
 
 ```jsx

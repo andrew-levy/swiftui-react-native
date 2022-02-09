@@ -28,6 +28,7 @@ export const Label = ({
   ...containerProps
 }: LabelProps) => {
   useLifecycle(onAppear, onDisappear);
+
   return (
     <HStack spacing={spacing} {...containerProps}>
       {icon || (
@@ -39,6 +40,7 @@ export const Label = ({
           font={font}
         />
       )}
+
       {typeof text === 'string' ? (
         <Text
           fontWeight={fontWeight}

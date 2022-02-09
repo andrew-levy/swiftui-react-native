@@ -1,26 +1,4 @@
-export const FontWeight = {
-  regular: 'regular',
-  bold: 'bold',
-  heavy: 'heavy',
-  medium: 'medium',
-  light: 'light',
-};
-
-export const Font = {
-  largeTitle: 'largeTitle',
-  title: 'title',
-  title2: 'title2',
-  title3: 'title3',
-  headline: 'headline',
-  subheadline: 'subheadline',
-  body: 'body',
-  callout: 'callout',
-  caption: 'caption',
-  caption2: 'caption2',
-  footnote: 'footnote',
-};
-
-export const FontStyles = {
+export const Fonts = {
   largeTitle: { fontSize: 34, fontWeight: 'normal' },
   title: { fontSize: 28, fontWeight: 'normal' },
   title2: { fontSize: 22, fontWeight: 'normal' },
@@ -34,7 +12,7 @@ export const FontStyles = {
   caption2: { fontSize: 11, fontWeight: 'normal' },
 };
 
-export const FontWeightValues = {
+export const FontWeights = {
   regular: 'normal',
   bold: 'bold',
   heavy: '800',
@@ -43,15 +21,15 @@ export const FontWeightValues = {
 };
 
 export const getFont = (
-  font?: string,
+  font?: keyof typeof Fonts | string,
   fontSize?: number,
-  fontWeight?: string,
+  fontWeight?: keyof typeof FontWeights,
   customFont?: string
 ) => {
   return {
-    ...FontStyles[font],
+    ...Fonts[font],
     ...(fontSize && { fontSize }),
-    ...(fontWeight && { fontWeight: FontWeightValues[fontWeight] }),
+    ...(fontWeight && { fontWeight: FontWeights[fontWeight] }),
     ...(customFont && { fontFamily: customFont }),
   };
 };

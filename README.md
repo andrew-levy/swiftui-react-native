@@ -29,10 +29,13 @@ SwiftUI is awesome. So is React Native! This library aims to recreate some of th
 - **Link:** External link redirecting to the browser
 - **List:** List view
 - **ProgressView:** Progress indicator views
+
+### Shapes :black_circle: :black_square_button:
+
 - **Rectangle** Rectangle view
-- **Capsule** Capsule view
-- **RoundedRectangle** RoundedRectangle view
+- **RoundedRectangle** Rounded Rectangle view
 - **Circle** Circle view
+- **Capsule** Capsule view
 
 ### Controls :control_knobs: :bulb:
 
@@ -56,10 +59,6 @@ SwiftUI is awesome. So is React Native! This library aims to recreate some of th
 ### Utilities :wrench: :rainbow:
 
 - **ForEach:** A function to dynamically render multiple views
-- **UIColor:** A collection of light and dark UI color values
-- **Font:** A collection of text font options
-- **FontWeight:** A collection of font weight options
-- **Alignment:** A collection of horizontal and vertical alignments
 
 ## Installation
 
@@ -93,15 +92,9 @@ yarn add react-native-reanimated react-native-gesture-handler
 
 :information_source: `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
 
-**Step 3:** Now run
+:tada: You should be all set now - start up your app and enjoy building!
 
-```console
-npx react-native start
-```
-
-You should be all set now!
-
-:exclamation: NOTE: If you run into any errors during installation, try stopping metro and run
+:exclamation: Note: If you run into any errors during installation, try stopping metro and run
 
 ```console
 yarn start --reset-cache
@@ -120,24 +113,21 @@ import {
   TextField,
   Button,
   useBinding,
-  UIColor,
-  Font,
-  Alignment,
 } from 'swiftui-react-native';
 
 function App() {
   const text = useBinding('');
   return (
     <VStack
-      aligment={Alignment.leading}
-      backgroundColor={UIColor.light.systemGray6}
+      aligment="leading"
+      backgroundColor="systemGray6"
       padding={{ leading: 30 }}
       cornerRadius={20}
     >
-      <Text font={Font.title}>Some cool text</Text>
-      <TextField text={text} placeholder='Name' />
+      <Text font="title">Some cool text</Text>
+      <TextField text={text} placeholder="Name" />
       <Button action={doSomething}>
-        <Text>Click the cool button</Text>
+        <Text fontWeight="bold">Click the cool button</Text>
       </Button>
     </VStack>
   );

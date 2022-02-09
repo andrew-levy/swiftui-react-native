@@ -7,6 +7,11 @@ export type Frame = {
   minHeight?: number | string;
 };
 
+export type ShapeFrame =
+  | { width: number; height: number }
+  | { width: number }
+  | { height: number };
+
 export const getFrame = (frame: Frame) => {
   let styles = {};
   if (!frame) return styles;
