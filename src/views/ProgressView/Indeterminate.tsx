@@ -175,7 +175,6 @@ const styles = StyleSheet.create({
   line: {
     position: 'absolute',
     borderRadius: 5,
-    backgroundColor: 'blue',
     margin: 4,
   },
 });

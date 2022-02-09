@@ -74,10 +74,10 @@ export const Image: React.FC<ImageProps> = ({
         style={[
           {
             opacity,
-            backgroundColor,
             zIndex,
             width: fontSize,
             height: fontSize,
+            backgroundColor: getColor(backgroundColor, colorScheme),
             ...getCornerRadius(cornerRadius),
             ...getShadow(shadow),
             ...getPadding(padding),
