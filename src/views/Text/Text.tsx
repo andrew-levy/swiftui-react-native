@@ -5,7 +5,7 @@ import { getShadow } from '../../utils/shadow';
 import { getFrame } from '../../utils/frame';
 import { getBorder } from '../../utils/border';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { Font, getFont } from '../../utils/fonts';
+import { getFont } from '../../utils/fonts';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { HorizontalAlignment } from '../../utils/alignments';
 import { getCornerRadius } from '../../utils/cornerRadius';
@@ -21,7 +21,7 @@ type TextProps = Omit<Modifiers, 'style'> &
   };
 
 export const Text: React.FC<TextProps> = ({
-  font = Font.body,
+  font = 'body',
   fontSize,
   fontWeight,
   customFont,
@@ -49,11 +49,11 @@ export const Text: React.FC<TextProps> = ({
     <RNText
       style={[
         {
-          backgroundColor,
-          color: getColor(foregroundColor, colorScheme, 'label'),
-          textAlign: getTextAlignment(alignment),
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme),
+          color: getColor(foregroundColor, colorScheme, 'label'),
+          textAlign: getTextAlignment(alignment),
           ...getCornerRadius(cornerRadius),
           ...getTextCase(textCase),
           ...getFont(font, fontSize, fontWeight, customFont),

@@ -7,7 +7,6 @@ import { getFrame } from '../../utils/frame';
 import { getBorder } from '../../utils/border';
 import { getShadow } from '../../utils/shadow';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { useUIColor } from '../../hooks/useUIColor';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
@@ -42,18 +41,18 @@ export const Button = ({
   ...textProps
 }: ButtonProps) => {
   useLifecycle(onAppear, onDisappear);
-  const UIColor = useUIColor();
   const { colorScheme } = useColorScheme();
+
   return (
     <TouchableOpacity
       disabled={disabled}
       onPress={action}
       style={[
         {
-          backgroundColor: getColor(backgroundColor, colorScheme),
           justifyContent: 'center',
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),

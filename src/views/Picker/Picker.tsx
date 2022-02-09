@@ -26,7 +26,6 @@ import { getFrame } from '../../utils/frame';
 import { getBorder } from '../../utils/border';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { useUIColor } from '../../hooks/useUIColor';
 import { Text } from '../Text';
 import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
@@ -118,13 +117,13 @@ export const Picker = ({
         style={[
           styles.container,
           {
+            opacity,
+            zIndex,
             backgroundColor: getColor(
               backgroundColor,
               colorScheme,
               'secondarySystemBackground'
             ),
-            opacity,
-            zIndex,
             ...getCornerRadius(cornerRadius),
             ...getShadow(shadow),
             ...getPadding(padding),

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { WithChildren, Modifiers } from '../../utils/modifiers';
-import { Alignments, VerticalAlignment } from '../../utils/alignments';
+import { getAlignment, VerticalAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
 import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
@@ -44,10 +44,10 @@ export const HStack = ({
       style={[
         styles.hStack,
         {
-          alignItems: Alignments.vertical[alignment],
-          backgroundColor: getColor(backgroundColor, colorScheme),
           opacity,
           zIndex,
+          alignItems: getAlignment(alignment, 'vertical'),
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),
           ...getPadding(padding),

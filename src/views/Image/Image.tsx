@@ -11,7 +11,7 @@ import { getPadding } from '../../utils/padding';
 import { getFrame } from '../../utils/frame';
 import { getBorder } from '../../utils/border';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
-import { FontStyles } from '../../utils/fonts';
+import { Fonts } from '../../utils/fonts';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
@@ -62,7 +62,7 @@ export const Image: React.FC<ImageProps> = ({
     if (fontSize) {
       size = fontSize;
     } else if (font) {
-      size = FontStyles[font].fontSize;
+      size = Fonts[font].fontSize;
     }
     return (
       <SFSymbol

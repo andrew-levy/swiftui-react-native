@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
+export type ColorSchemeOptions = 'light' | 'dark';
+
 type ColorSchemeProviderProps = {
-  preferredColorScheme?: 'light' | 'dark';
+  preferredColorScheme?: ColorSchemeOptions;
   children: React.ReactNode;
 };
 
 export type ColorSchemeContextType = {
-  colorScheme: 'light' | 'dark';
+  colorScheme: ColorSchemeOptions;
   setColorScheme: (colorScheme: 'light' | 'dark') => void;
 };
 

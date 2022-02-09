@@ -5,6 +5,7 @@ import { Frame } from '../frame';
 import { Padding } from '../padding';
 import { Shadow } from '../shadow';
 import { Rotation } from '../transform';
+import { Fonts, FontWeights } from '../fonts';
 
 export type Modifiers = {
   backgroundColor?: Color;
@@ -23,8 +24,8 @@ export type Modifiers = {
 };
 
 export type TextModifiers = {
-  font?: string;
-  fontWeight?: string;
+  font?: keyof typeof Fonts;
+  fontWeight?: keyof typeof FontWeights;
   fontSize?: number;
   foregroundColor?: Color;
   customFont?: string;

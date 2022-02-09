@@ -1,3 +1,5 @@
+import { ColorSchemeOptions } from '../../views/ColorSchemeProvider/ColorSchemeProvider';
+
 const LIGHT_COLORS = {
   label: '#000000FF',
   secondaryLabel: '#3C3C4399',
@@ -60,7 +62,7 @@ export const UIColor = {
 };
 
 export type Color =
-  | keyof typeof UIColor.light
+  | keyof typeof LIGHT_COLORS
   | `#${string}`
   | `rgb${string}`
   | BuiltInColors;

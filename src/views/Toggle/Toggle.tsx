@@ -43,9 +43,9 @@ export const Toggle: React.FC<ToggleProps> = ({
     <Switch
       style={[
         {
-          backgroundColor: getColor(backgroundColor, colorScheme),
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),

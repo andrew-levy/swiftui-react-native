@@ -35,8 +35,8 @@ export const Rectangle = ({
       style={[
         {
           opacity,
-          backgroundColor: getColor(fill, colorScheme, 'systemBackground'),
           zIndex,
+          backgroundColor: getColor(fill, colorScheme, 'systemBackground'),
           ...getFrame({ width: rectWidth, height: rectHeight }),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),

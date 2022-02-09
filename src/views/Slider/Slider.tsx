@@ -13,7 +13,6 @@ import {
 } from 'react-native-gesture-handler';
 import { Binding } from '../../utils/binding';
 import { Modifiers } from '../../utils/modifiers';
-import { useUIColor } from '../../hooks/useUIColor';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getPadding } from '../../utils/padding';
 import { getBorder } from '../../utils/border';
@@ -129,6 +128,8 @@ export const Slider: React.FC<SliderProps> = ({
       style={[
         styles.slider,
         {
+          opacity,
+          zIndex,
           width: sliderWidth,
           height: sliderHeight,
           marginTop: CIRCLE_WIDTH / 2,
@@ -138,8 +139,6 @@ export const Slider: React.FC<SliderProps> = ({
             colorScheme,
             'systemGray4'
           ),
-          opacity,
-          zIndex,
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getBorder(border),

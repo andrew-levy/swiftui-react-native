@@ -16,18 +16,15 @@ export * from './views/HStack';
 export * from './views/ZStack';
 export * from './views/Spacer';
 
+export * from './views/Shapes';
+
 export * from './views/ColorSchemeProvider';
 
 export * from './hooks/useOnAppear';
 export * from './hooks/useOnDisappear';
 export * from './hooks/useAlert';
-export * from './hooks/useUIColor';
 export * from './hooks/useColorScheme';
+export * from './hooks/useUIColor';
 export * from './hooks/useBinding';
 
-export { Font, FontWeight } from './utils/fonts';
-export { UIColor } from './utils/colors';
-export { Alignment } from './utils/alignments';
-export { ForEach } from './utils/ForEach';
-
-export { Rectangle, RoundedRectangle, Capsule, Circle } from './views/Shapes'
+export * from './utils/ForEach';

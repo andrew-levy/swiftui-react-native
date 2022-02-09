@@ -3,7 +3,7 @@ import { TextInput } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { getBorder } from '../../utils/border';
-import { Font, FontWeight, getFont } from '../../utils/fonts';
+import { getFont } from '../../utils/fonts';
 import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
@@ -25,10 +25,10 @@ export const TextField: React.FC<TextFieldProps> = ({
   text,
   onChange,
   fontSize,
-  font = Font.body,
+  font = 'body',
   customFont,
   foregroundColor,
-  fontWeight = FontWeight.regular,
+  fontWeight = 'regular',
   cornerRadius,
   backgroundColor,
   rotationEffect,
@@ -50,10 +50,10 @@ export const TextField: React.FC<TextFieldProps> = ({
     <TextInput
       style={[
         {
-          backgroundColor: getColor(backgroundColor, colorScheme),
-          color: getColor(foregroundColor, colorScheme, 'label'),
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme),
+          color: getColor(foregroundColor, colorScheme, 'label'),
           ...getCornerRadius(cornerRadius),
           ...getFont(font, fontSize, fontWeight, customFont),
           ...getPadding(padding),

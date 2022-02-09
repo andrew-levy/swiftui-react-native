@@ -71,9 +71,9 @@ export const Linear = ({
         {
           width: sliderWidth,
           height: sliderHeight,
-          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getBorder(border),

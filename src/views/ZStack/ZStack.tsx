@@ -3,7 +3,7 @@ import { StyleProp, View, ViewStyle } from 'react-native';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import {
-  Alignments,
+  getAlignment,
   HorizontalAlignment,
   VerticalAlignment,
 } from '../../utils/alignments';
@@ -49,11 +49,11 @@ export const ZStack = ({
     <View
       style={[
         {
-          justifyContent: Alignments.vertical[alignment.vertical],
-          alignItems: Alignments.horizontal[alignment.horizontal],
-          backgroundColor: getColor(backgroundColor, colorScheme),
           opacity,
           zIndex,
+          justifyContent: getAlignment(alignment.vertical, 'vertical'),
+          alignItems: getAlignment(alignment.horizontal, 'horizontal'),
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),
           ...getPadding(padding),

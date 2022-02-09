@@ -49,9 +49,9 @@ export const Indeterminate = ({
       style={[
         styles.container,
         {
-          backgroundColor: getColor(backgroundColor, colorScheme),
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),
           ...getPadding(padding),

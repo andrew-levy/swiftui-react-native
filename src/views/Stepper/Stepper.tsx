@@ -54,9 +54,9 @@ export const Stepper: React.FC<StepperProps> = ({
       style={[
         styles.container,
         {
-          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
           opacity,
           zIndex,
+          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),

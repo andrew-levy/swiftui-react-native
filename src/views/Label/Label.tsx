@@ -1,7 +1,5 @@
 import React, { ReactElement } from 'react';
-import { useColorScheme } from '../../hooks/useColorScheme';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { getColor } from '../../utils/colors';
 import { Modifiers, TextModifiers, WithChildren } from '../../utils/modifiers';
 import { HStack } from '../HStack';
 import { Image } from '../Image';
@@ -30,7 +28,6 @@ export const Label = ({
   ...containerProps
 }: LabelProps) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
 
   return (
     <HStack spacing={spacing} {...containerProps}>
@@ -39,7 +36,7 @@ export const Label = ({
           systemName={systemImage}
           fontWeight={fontWeight}
           fontSize={fontSize}
-          foregroundColor={getColor(foregroundColor, colorScheme)}
+          foregroundColor={foregroundColor}
           font={font}
         />
       )}
@@ -48,7 +45,7 @@ export const Label = ({
         <Text
           fontWeight={fontWeight}
           fontSize={fontSize}
-          foregroundColor={getColor(foregroundColor, colorScheme)}
+          foregroundColor={foregroundColor}
           font={font}
         >
           {text}

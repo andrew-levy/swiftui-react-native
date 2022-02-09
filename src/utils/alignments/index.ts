@@ -1,7 +1,7 @@
 export type HorizontalAlignment = 'leading' | 'center' | 'trailing';
 export type VerticalAlignment = 'top' | 'center' | 'bottom';
 
-export const Alignments = {
+export const AlignmentMap = {
   horizontal: {
     leading: 'flex-start',
     center: 'center',
@@ -12,12 +12,11 @@ export const Alignments = {
     center: 'center',
     bottom: 'flex-end',
   },
-} as const;
+};
 
-export const Alignment = {
-  leading: 'leading',
-  center: 'center',
-  trailing: 'trailing',
-  top: 'top',
-  bottom: 'bottom',
-} as const;
+export const getAlignment = (
+  alignment: HorizontalAlignment | VerticalAlignment,
+  direction: 'horizontal' | 'vertical'
+) => {
+  return AlignmentMap[direction][alignment || 'center'];
+};
