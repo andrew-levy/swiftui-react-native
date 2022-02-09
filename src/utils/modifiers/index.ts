@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { Color } from '../colors';
 import { Border } from '../border';
-import { Frame } from '../frame';
+import { Frame, ShapeFrame } from '../frame';
 import { Padding } from '../padding';
 import { Shadow } from '../shadow';
 import { Rotation } from '../transform';
@@ -33,10 +33,7 @@ export type TextModifiers = {
 
 export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
   fill?: Color;
-  frame:
-    | { width: number; height: number }
-    | { width: number }
-    | { height: number };
+  frame: ShapeFrame;
 };
 
 export type WithChildren = {

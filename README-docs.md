@@ -27,9 +27,9 @@ And for any views that deal with text:
 **`TextModifiers`:**
 
 - `customFont: string`
-- `font: string`
+- `font: Font`
 - `fontSize: number`
-- `fontWeight: string`
+- `fontWeight: FontWeight`
 - `foregroundColor: string`
 
 Shapes inherit all of the view modifiers with a few exceptions. The prop `fill` is used instead of `backgroundColor`, and `frame` is required and defined a bit differently:
@@ -37,7 +37,7 @@ Shapes inherit all of the view modifiers with a few exceptions. The prop `fill` 
 **`ShapeModifiers`:**
 
 - `fill: Color`
-- `frame: { width: number; height: number } | { width: number } | { height: number };`
+- `frame: ShapeFrame`
 
 ### Components
 
@@ -233,10 +233,10 @@ HStack inherits all `Modifiers` as props.
 
 The supported shapes are `Rectangle`, `RoundedRectangle`, `Capsule`, and `Circle`. They have the following props:
 
-| prop    | description                 | type                     | required | default            |
-| ------- | --------------------------- | ------------------------ | -------- | ------------------ |
-| `fill`  | The fill color of the shape | `Color`                  | no       | `systemBackground` |
-| `frame` | The frame of the shape      | `ShapeModifers['frame']` | yes      | `undefined`        |
+| prop    | description                 | type         | required | default            |
+| ------- | --------------------------- | ------------ | -------- | ------------------ |
+| `fill`  | The fill color of the shape | `Color`      | no       | `systemBackground` |
+| `frame` | The frame of the shape      | `ShapeFrame` | yes      | `undefined`        |
 
 Rectangle inherits all `Modifiers` and `ShapeModifers` as props.
 

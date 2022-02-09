@@ -30,12 +30,12 @@ SwiftUI is awesome. So is React Native! This library aims to recreate some of th
 - **List:** List view
 - **ProgressView:** Progress indicator views
 
-### Shapes :red_circle: :black_square_button:
+### Shapes :black_circle: :black_square_button:
 
 - **Rectangle** Rectangle view
-- **Capsule** Capsule view
 - **RoundedRectangle** Rounded Rectangle view
 - **Circle** Circle view
+- **Capsule** Capsule view
 
 ### Controls :control_knobs: :bulb:
 
