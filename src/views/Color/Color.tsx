@@ -48,7 +48,7 @@ const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {
 };
 
 const getColor = (props: ColorProps) => {
-  var propsColor = null;
+  let propsColor = null;
   if (props['color']) {
     propsColor = props['color']
   }
