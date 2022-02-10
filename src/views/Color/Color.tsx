@@ -1,5 +1,6 @@
 import React from 'react';
 import { Color as ColorType } from '../../utils/colors';
+import { ShapeModifiers } from '../../utils/modifiers';
 import { Rectangle } from '../Shapes';
 
 interface ColorView {
@@ -25,43 +26,53 @@ interface ColorView {
   secondary: (props: ColorSubComponentProps) => JSX.Element;
 }
 
-type ColorProps = {
+type ColorProps = Omit<ShapeModifiers, 'fill'> & {
   red?: number;
   blue?: number;
   green?: number;
 };
 
-type ColorSubComponentProps = { color?: ColorType };
-
-const ColorSubComponent = ({ color }: ColorSubComponentProps) => {
-  return <Rectangle frame={{ width: 100, height: 100 }} fill={color} />;
+type ColorSubComponentProps = Omit<ShapeModifiers, 'fill'> & {
+  color?: ColorType;
 };
 
-export const Color: ColorView = ({ red = 0, green = 0, blue = 0 }) => {
+const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {
+  return (
+    <Rectangle frame={{ width: 100, height: 100 }} fill={color} {...props} />
+  );
+};
+
+export const Color: ColorView = ({
+  red = 0,
+  green = 0,
+  blue = 0,
+  ...props
+}) => {
   return (
     <Rectangle
       frame={{ width: 100, height: 100 }}
       fill={`rgb(${red},${green},${blue})`}
+      {...props}
     />
   );
 };
 
-Color.black = (props) => <ColorSubComponent color="#000" />;
-Color.blue = (props) => <ColorSubComponent color="#00f" />;
-Color.brown = (props) => <ColorSubComponent color="#a52a2a" />;
-Color.clear = (props) => <ColorSubComponent color="rgba(0,0,0,0)" />;
-Color.cyan = (props) => <ColorSubComponent color="#0ff" />;
-Color.gray = (props) => <ColorSubComponent color="#808080" />;
-Color.green = (props) => <ColorSubComponent color="#008000" />;
-Color.indigo = (props) => <ColorSubComponent color="#4b0082" />;
-Color.mint = (props) => <ColorSubComponent color="#9acd32" />;
-Color.orange = (props) => <ColorSubComponent color="#ffa500" />;
-Color.pink = (props) => <ColorSubComponent color="#f0c0cb" />;
-Color.purple = (props) => <ColorSubComponent color="#800080" />;
-Color.red = (props) => <ColorSubComponent color="#f00" />;
-Color.teal = (props) => <ColorSubComponent color="#008080" />;
-Color.white = (props) => <ColorSubComponent color="#fff" />;
-Color.yellow = (props) => <ColorSubComponent color="#ff0" />;
-Color.accentColor = (props) => <ColorSubComponent color="#ffc107" />;
-Color.primary = (props) => <ColorSubComponent color="#2196f3" />;
-Color.secondary = (props) => <ColorSubComponent color="#ff9800" />;
+Color.black = (props) => <ColorSubComponent color="#000" {...props} />;
+Color.blue = (props) => <ColorSubComponent color="#00f" {...props} />;
+Color.brown = (props) => <ColorSubComponent color="#a52a2a" {...props} />;
+Color.clear = (props) => <ColorSubComponent color="rgba(0,0,0,0)" {...props} />;
+Color.cyan = (props) => <ColorSubComponent color="#0ff" {...props} />;
+Color.gray = (props) => <ColorSubComponent color="#808080" {...props} />;
+Color.green = (props) => <ColorSubComponent color="#008000" {...props} />;
+Color.indigo = (props) => <ColorSubComponent color="#4b0082" {...props} />;
+Color.mint = (props) => <ColorSubComponent color="#9acd32" {...props} />;
+Color.orange = (props) => <ColorSubComponent color="#ffa500" {...props} />;
+Color.pink = (props) => <ColorSubComponent color="#f0c0cb" {...props} />;
+Color.purple = (props) => <ColorSubComponent color="#800080" {...props} />;
+Color.red = (props) => <ColorSubComponent color="#f00" {...props} />;
+Color.teal = (props) => <ColorSubComponent color="#008080" {...props} />;
+Color.white = (props) => <ColorSubComponent color="#fff" {...props} />;
+Color.yellow = (props) => <ColorSubComponent color="#ff0" {...props} />;
+Color.accentColor = (props) => <ColorSubComponent color="#ffc107" {...props} />;
+Color.primary = (props) => <ColorSubComponent color="#2196f3" {...props} />;
+Color.secondary = (props) => <ColorSubComponent color="#ff9800" {...props} />;
