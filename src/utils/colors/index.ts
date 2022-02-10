@@ -1,5 +1,3 @@
-import { ColorSchemeOptions } from '../../views/ColorSchemeProvider/ColorSchemeProvider';
-
 const LIGHT_COLORS = {
   label: '#000000FF',
   secondaryLabel: '#3C3C4399',
