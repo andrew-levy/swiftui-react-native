@@ -1,8 +1,9 @@
 import React from 'react';
 import { Color as ColorType } from '../../utils/colors';
+import { ShapeModifiers } from '../../utils/modifiers';
 import { Rectangle } from '../Shapes';
 
-type ColorProps = {
+type ColorProps = Omit<ShapeModifiers,"fill"> & {
   red?: number;
   blue?: number;
   green?: number;
@@ -15,11 +16,11 @@ const colorSubComponents = {
 };
 
 // Example: <Color red={255} green={255} blue={255} />
-export const Color = ({ red = 0, green = 0, blue = 0 }: ColorProps) => {
+export const Color = ({ red = 0, green = 0, blue = 0, ...rest}: ColorProps) => {
   return (
     <Rectangle
-      frame={{ width: 100, height: 100 }}
       fill={`rgb(${red},${green},${blue})`}
+      {...rest}
     />
   );
 };
