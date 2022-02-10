@@ -15,7 +15,7 @@
     "publish:custom": "npm run clean-build && cd dist && npm publish && cd -"
   },
   "author": "Andrew Levy <alevy97@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.14.10",
     "@types/react": "^16.9.56",
