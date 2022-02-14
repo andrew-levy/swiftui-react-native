@@ -16,6 +16,7 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { SystemName } from './types';
 
 const { SFSymbol, SFSymbolWeight, SFSymbolScale } =
   Platform.select({
@@ -25,7 +26,7 @@ const { SFSymbol, SFSymbolWeight, SFSymbolScale } =
 
 type ImageProps = Omit<Modifiers, 'style'> &
   TextModifiers & {
-    systemName?: string;
+    systemName?: SystemName;
     source?: ImageSourcePropType;
     style?: ImageStyle;
   };
@@ -67,7 +68,7 @@ export const Image: React.FC<ImageProps> = ({
     return (
       <SFSymbol
         name={systemName}
-        weight={fontWeight || SFSymbolWeight.Regular}
+        weight={fontWeight || SFSymbolWeight.REGULAR}
         scale={SFSymbolScale.SMALL}
         size={size}
         color={getColor(foregroundColor, colorScheme)}
