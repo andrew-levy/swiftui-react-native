@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { WithChildren, Modifiers } from '../../utils/modifiers';
-import { getAlignment, VerticalAlignment } from '../../utils/alignments';
+import { getAlignment, HStackAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
 import { getFrame } from '../../utils/frame';
 import { getPadding } from '../../utils/padding';
@@ -15,7 +15,7 @@ import { getColor } from '../../utils/colors';
 type HStackProps = Modifiers &
   WithChildren & {
     spacing?: number;
-    alignment?: VerticalAlignment;
+    alignment?: HStackAlignment;
   };
 
 export const HStack = ({
@@ -46,8 +46,8 @@ export const HStack = ({
         {
           opacity,
           zIndex,
-          alignItems: getAlignment(alignment, 'vertical'),
           backgroundColor: getColor(backgroundColor, colorScheme),
+          ...getAlignment(alignment, 'hstack'),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),
           ...getPadding(padding),
