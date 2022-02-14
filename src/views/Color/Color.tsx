@@ -26,11 +26,17 @@ interface ColorView {
   secondary: (props: ColorSubComponentProps) => JSX.Element;
 }
 
-type ColorProps = Omit<ShapeModifiers, 'fill'> & {
-  red?: number;
-  blue?: number;
-  green?: number;
-};
+type ColorProps = Omit<ShapeModifiers, 'fill'> &
+  (
+    | {
+        red?: number;
+        blue?: number;
+        green?: number;
+      }
+    | {
+        color: ColorType;
+      }
+  );
 
 type ColorSubComponentProps = Omit<ShapeModifiers, 'fill'> & {
   color?: ColorType;
@@ -42,18 +48,24 @@ const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {
   );
 };
 
-export const Color: ColorView = ({
-  red = 0,
-  green = 0,
-  blue = 0,
-  ...props
-}) => {
+const getColor = (props: ColorProps) => {
+  let propsColor = null;
+  if (props['color']) {
+    propsColor = props['color'];
+  } else if (props['red'] || props['green'] || props['blue']) {
+    propsColor = `rgb(${props['red'] || 0},${props['green'] || 0},${
+      props['blue'] || 0
+    })`;
+  } else {
+    propsColor = 'primary';
+  }
+  return propsColor;
+};
+
+export const Color: ColorView = (props: ColorProps) => {
+  const color = getColor(props);
   return (
-    <Rectangle
-      frame={{ width: 100, height: 100 }}
-      fill={`rgb(${red},${green},${blue})`}
-      {...props}
-    />
+    <Rectangle frame={{ width: 100, height: 100 }} fill={color} {...props} />
   );
 };
 
