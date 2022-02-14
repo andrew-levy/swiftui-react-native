@@ -1,3 +1,4 @@
+export type TextAlignment = 'leading' | 'center' | 'trailing';
 export type VStackAlignment = 'leading' | 'center' | 'trailing';
 export type HStackAlignment = 'top' | 'center' | 'bottom';
 export type ZStackAlignment =
