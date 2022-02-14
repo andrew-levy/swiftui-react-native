@@ -2,11 +2,7 @@ import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import {
-  getAlignment,
-  HorizontalAlignment,
-  VerticalAlignment,
-} from '../../utils/alignments';
+import { getAlignment, ZStackAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
 import { getColor } from '../../utils/colors';
 import { getCornerRadius } from '../../utils/cornerRadius';
@@ -19,14 +15,11 @@ import { getTransform } from '../../utils/transform';
 type ZStackProps = Omit<Modifiers, 'alignment'> &
   WithChildren & {
     style?: StyleProp<ViewStyle>;
-    alignment?: {
-      vertical: VerticalAlignment;
-      horizontal: HorizontalAlignment;
-    };
+    alignment?: ZStackAlignment;
   };
 
 export const ZStack = ({
-  alignment = { vertical: 'center', horizontal: 'center' },
+  alignment = 'center',
   style,
   children,
   padding,
@@ -51,9 +44,8 @@ export const ZStack = ({
         {
           opacity,
           zIndex,
-          justifyContent: getAlignment(alignment.vertical, 'vertical'),
-          alignItems: getAlignment(alignment.horizontal, 'horizontal'),
           backgroundColor: getColor(backgroundColor, colorScheme),
+          ...getAlignment(alignment, 'zstack'),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow),
           ...getPadding(padding),
