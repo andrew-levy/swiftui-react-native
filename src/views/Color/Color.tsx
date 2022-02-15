@@ -1,5 +1,5 @@
 import React from 'react';
-import { Color as ColorType } from '../../utils/colors';
+import type { UIColor } from '../../utils/colors';
 import { ShapeModifiers } from '../../utils/modifiers';
 import { Rectangle } from '../Shapes';
 
@@ -28,7 +28,7 @@ interface ColorView {
 
 type ColorProps = Omit<ShapeModifiers, 'fill'> & {
   color:
-    | ColorType
+    | UIColor
     | {
         red?: number;
         blue?: number;
@@ -37,14 +37,14 @@ type ColorProps = Omit<ShapeModifiers, 'fill'> & {
 };
 
 type ColorSubComponentProps = Omit<ShapeModifiers, 'fill'> & {
-  color?: ColorType;
+  color?: UIColor;
 };
 
 const getColor = (colorValue: ColorProps['color']) => {
-  if (typeof colorValue === 'string') return colorValue as ColorType;
+  if (typeof colorValue === 'string') return colorValue as UIColor;
   return `rgb(${colorValue.red || 0}, ${colorValue.green || 0}, ${
     colorValue.blue || 0
-  })` as ColorType;
+  })` as UIColor;
 };
 
 const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {

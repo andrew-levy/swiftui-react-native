@@ -29,3 +29,5 @@ export * from './hooks/useUIColor';
 export * from './hooks/useBinding';
 
 export * from './utils/ForEach';
+
+export type { UIColor } from './utils/colors';
