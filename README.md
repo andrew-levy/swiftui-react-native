@@ -138,18 +138,22 @@ vs. SwiftUI...
 
 ```swift
 struct App: View {
-  @State var text = "";
-  var body: some View {
-    VStack(alignment: .leading) {
-      Text("Some cool text").font(.title)
-      TextField("Name", text: $text)
-      Button(action: doSomething) {
-        Text("Click the cool button")
-      }
-    }.background(Color(UIColor.systemGray6))
-    .padding(.leading, 30)
-    .cornerRadius(20)
-  }
+    
+    @State var text = ""
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Some cool text")
+                .font(.title)
+            TextField("Name", text: $text)
+            Button(action: doSomething) {
+                Text("Click the cool button")
+            }
+        }
+        .background(Color(.systemGray6))
+        .padding(.leading, 30)
+        .cornerRadius(20)
+    }
 }
 ```
 
