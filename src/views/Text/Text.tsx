@@ -7,7 +7,7 @@ import { getBorder } from '../../utils/border';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getFont } from '../../utils/fonts';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
-import { HorizontalAlignment } from '../../utils/alignments';
+import { TextAlignment } from '../../utils/alignments';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
@@ -16,7 +16,7 @@ import { getColor } from '../../utils/colors';
 type TextProps = Omit<Modifiers, 'style'> &
   TextModifiers & {
     textCase?: 'lower' | 'upper' | 'capitalize';
-    alignment?: HorizontalAlignment;
+    alignment?: TextAlignment;
     style?: StyleProp<TextStyle>;
   };
 
@@ -84,7 +84,7 @@ function getTextCase(textCase: string) {
   }
 }
 
-function getTextAlignment(alignment: HorizontalAlignment) {
+function getTextAlignment(alignment: TextAlignment) {
   switch (alignment) {
     case 'leading':
       return 'left';

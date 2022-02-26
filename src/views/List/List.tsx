@@ -10,14 +10,14 @@ import { getPadding } from '../../utils/padding';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { Color, getColor } from '../../utils/colors';
+import { UIColor, getColor } from '../../utils/colors';
 
 type ListProps = Modifiers &
   PropsWithChildren<{
     inset?: boolean;
     header?: string | ReactElement<any>;
     footer?: string | ReactElement<any>;
-    separatorTint?: Color;
+    separatorTint?: UIColor;
     hideSeparators?: boolean;
   }>;
 

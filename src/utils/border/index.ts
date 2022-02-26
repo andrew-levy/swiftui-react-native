@@ -1,7 +1,7 @@
-import { Color } from '../colors';
+import type { UIColor } from '../colors';
 
 export type Border = {
-  color?: Color;
+  color?: UIColor;
   width?: number;
 };
 

@@ -3,6 +3,7 @@ import { useLifecycle } from '../../hooks/useLifecycle';
 import { Modifiers, TextModifiers, WithChildren } from '../../utils/modifiers';
 import { HStack } from '../HStack';
 import { Image } from '../Image';
+import { SystemName } from '../Image/types';
 import { Text } from '../Text';
 
 type LabelProps = Modifiers &
@@ -10,7 +11,7 @@ type LabelProps = Modifiers &
   TextModifiers & {
     text?: string | ReactElement<any>;
     icon?: ReactElement<any>;
-    systemImage?: string;
+    systemImage?: SystemName;
     spacing?: number;
   };
 

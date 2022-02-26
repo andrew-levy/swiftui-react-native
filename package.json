@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "description": "A React Native component library inspired by SwiftUI",
   "main": "main.js",
+  "typings": "main.d.ts",
   "types": "main.d.ts",
   "scripts": {
     "build": "rollup -c",
@@ -15,7 +16,7 @@
     "publish:custom": "npm run clean-build && cd dist && npm publish && cd -"
   },
   "author": "Andrew Levy <alevy97@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.14.10",
     "@types/react": "^16.9.56",
