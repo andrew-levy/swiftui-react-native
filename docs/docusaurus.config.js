@@ -67,7 +67,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/docs/01-getting-started',
+                to: '/docs/getting-started',
               },
             ],
           },
