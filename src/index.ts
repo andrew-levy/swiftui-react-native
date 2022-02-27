@@ -20,11 +20,7 @@ export * from './views/Shapes';
 
 export * from './views/ColorSchemeProvider';
 
-export * from './hooks/useOnAppear';
-export * from './hooks/useOnDisappear';
-export * from './hooks/useAlert';
 export * from './hooks/useColorScheme';
-export * from './hooks/useUIColor';
 export * from './hooks/useBinding';
 
 export * from './utils/ForEach';
