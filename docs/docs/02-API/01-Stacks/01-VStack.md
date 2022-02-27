@@ -1,5 +1,4 @@
 ---
-
 ---
 
 A vertical stack with configurable alignment and spacing between child views.
@@ -11,9 +10,9 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<VStack alignment='leading' spacing={10}>
-    <Text>Hello</Text>
-    <Text>World</Text>
+<VStack alignment="leading" spacing={10}>
+  <Text>Hello</Text>
+  <Text>World</Text>
 </VStack>
 ```
 
@@ -31,9 +30,9 @@ VStack(alignment: .leading, spacing: 10) {
 <TabItem value="react-native" label="React Native">
 
 ```tsx
-<View style={{  }}>
-    <Text>Hello</Text>
-    <Text>World</Text>
+<View style={{}}>
+  <Text>Hello</Text>
+  <Text>World</Text>
 </View>
 ```
 
