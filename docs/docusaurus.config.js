@@ -38,7 +38,7 @@ const config = {
         title: 'swiftui-react-native',
         logo: {
           alt: 'SwiftUI-React-Native',
-          src: 'img/logo.svg',
+          src: 'img/swiftui-react-native.svg',
         },
         items: [
           {

@@ -14,7 +14,7 @@ function HomepageHeader() {
         <img
           className={styles.logoPng}
           alt={siteConfig.title}
-          src={'/img/swiftui-react-native.png'}
+          src={'/img/swiftui-react-native.svg'}
         />
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
