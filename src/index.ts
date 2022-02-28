@@ -24,6 +24,7 @@ export * from './views/ColorSchemeProvider';
 
 export * from './hooks/useColorScheme';
 export * from './hooks/useBinding';
+export * from './hooks/useUIColor';
 
 export * from './utils/ForEach';
 
