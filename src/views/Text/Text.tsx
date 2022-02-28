@@ -44,7 +44,7 @@ export const Text: React.FC<TextProps> = ({
   children,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
   return (
     <RNText
       style={[

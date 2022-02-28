@@ -42,7 +42,7 @@ export const Indeterminate = ({
 }: IndeterminateProps) => {
   useLifecycle(onAppear, onDisappear);
   const shift = 6;
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   return (
     <View

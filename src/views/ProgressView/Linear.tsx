@@ -41,7 +41,7 @@ export const Linear = ({
   onDisappear,
 }: LinearProps) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
   const [sliderWidth, sliderHeight] = getSliderWidth(frame);
   const midPoint = total / 2;
   const slope = midPoint / (sliderWidth / 2);
