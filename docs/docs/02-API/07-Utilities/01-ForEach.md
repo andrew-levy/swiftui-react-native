@@ -29,13 +29,11 @@ let options = ["Option 1", "Option 2", "Option 3"]
 ```
 
 ```swift
-
 VStack {
     ForEach(options, id: \.self) { option in
         Text(option)
     }
 }
-
 ```
 
 </TabItem>

@@ -1,7 +1,7 @@
 ---
 ---
 
-A function that allows you map over an array to dynamically render a collection of views
+SwiftUI color palette object. If you need to break out of the `swiftui-react-native` components but still need to access a `UIColor`, this object provides light and dark color palettes.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -10,48 +10,24 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-const options = ['Option 1', 'Option 2', 'Option 3'];
+const { colorScheme } = useColorScheme();
 ```
 
 ```tsx
-<VStack>
-  {ForEach(options, (option, i) => (
-    <Text key={i}>{option}</Text>
-  ))}
-</VStack>
+<View style={{ backgroundColor: UIColor[colorScheme].systemBlue }}>
+  <Text>Learn More</Text>
+</View>
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-let options = ["Option 1", "Option 2", "Option 3"]
-```
-
-```swift
-
 VStack {
-    ForEach(options, id: \.self) { option in
-        Text(option)
-    }
-}
-
+  Text("Learn More")
+}.background(Color(.systemBlue))
 ```
 
 </TabItem>
-<TabItem value="react-native" label="React Native">
 
-```tsx
-const options = ['Option 1', 'Option 2', 'Option 3'];
-```
-
-```tsx
-<View>
-  {options.map((option, i) => (
-    <Text key={i}>{option}</Text>
-  ))}
-</View>
-```
-
-</TabItem>
 </Tabs>
