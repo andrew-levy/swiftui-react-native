@@ -11,13 +11,9 @@ type SwiftUIRootProps = WithChildren & {
   preferredColorScheme?: 'light' | 'dark';
 };
 
-export const SwiftUIRoot = ({
-  environment,
-  children,
-  preferredColorScheme,
-}: SwiftUIRootProps) => {
+export const SwiftUIRoot = ({ environment, children }: SwiftUIRootProps) => {
   const [envs, setEnvs] = useState({
-    colorScheme: preferredColorScheme,
+    colorScheme: 'light',
     ...environment,
   });
 
