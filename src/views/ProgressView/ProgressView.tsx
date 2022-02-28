@@ -1,5 +1,5 @@
 import React from 'react';
-import { Color } from '../../utils/colors';
+import type { UIColor } from '../../utils/colors';
 import { Modifiers } from '../../utils/modifiers';
 import { Indeterminate } from './Indeterminate';
 import { Linear } from './Linear';
@@ -8,7 +8,7 @@ type ProgressViewProps = Modifiers & {
   value?: number;
   total?: number;
   progressViewStyle?: 'linear' | 'indeterminate';
-  accentColor?: Color;
+  accentColor?: UIColor;
 };
 
 export const ProgressView = ({

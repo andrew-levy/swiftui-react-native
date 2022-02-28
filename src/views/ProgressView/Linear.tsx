@@ -14,12 +14,12 @@ import { getSliderWidth, value2Position } from '../Slider/utils';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { Color, getColor } from '../../utils/colors';
+import { UIColor, getColor } from '../../utils/colors';
 
 type LinearProps = Modifiers & {
   value: number;
   total?: number;
-  accentColor?: Color;
+  accentColor?: UIColor;
 };
 
 export const Linear = ({

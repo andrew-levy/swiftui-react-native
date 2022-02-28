@@ -25,11 +25,11 @@ import {
   value2Position,
 } from './utils';
 import { getTransform } from '../../utils/transform';
-import { Color, getColor } from '../../utils/colors';
+import { UIColor, getColor } from '../../utils/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
 
 type SliderProps = Modifiers & {
-  accentColor?: Color;
+  accentColor?: UIColor;
   step?: number;
   range?: [number, number];
   value: Binding<number>;

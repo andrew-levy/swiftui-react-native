@@ -17,10 +17,10 @@ import { Modifiers } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getTransform } from '../../utils/transform';
-import { Color, getColor } from '../../utils/colors';
+import { UIColor, getColor } from '../../utils/colors';
 
 type IndeterminateProps = Modifiers & {
-  accentColor?: Color;
+  accentColor?: UIColor;
   scaleEffect?: number;
 };
 

@@ -4,6 +4,7 @@ export * from './views/Button';
 export * from './views/List';
 export * from './views/Link';
 export * from './views/Label';
+export * from './views/Color';
 export * from './views/ProgressView';
 
 export * from './views/Toggle';
@@ -24,3 +25,5 @@ export * from './hooks/useColorScheme';
 export * from './hooks/useBinding';
 
 export * from './utils/ForEach';
+
+export type { UIColor } from './utils/colors';

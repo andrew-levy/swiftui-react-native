@@ -9,12 +9,12 @@ import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
-import { Color, getColor } from '../../utils/colors';
+import { UIColor, getColor } from '../../utils/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
 
 type ToggleProps = Modifiers & {
   isOn: Binding<boolean>;
-  tintColor?: Color;
+  tintColor?: UIColor;
   onChange?: (value?: boolean) => void;
 };
 
