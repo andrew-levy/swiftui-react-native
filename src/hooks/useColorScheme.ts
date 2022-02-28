@@ -6,5 +6,5 @@ import { SwiftUIRootContext } from '../views/SwiftUIRoot/SwiftUIRoot';
  * If a ColorSchemeProvider is not present in the tree, the default color scheme is used.
  */
 export const useColorScheme = () => {
-  return useContext(SwiftUIRootContext).colorScheme;
+  return useContext(SwiftUIRootContext).envs.colorScheme || 'light';
 };
