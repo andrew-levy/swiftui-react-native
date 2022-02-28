@@ -8,6 +8,6 @@ import { useColorScheme } from './useColorScheme';
 export const useUIColor = (preferredColorScheme?: ColorSchemeOptions) => {
   if (preferredColorScheme) return UIColor[preferredColorScheme];
 
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
   return colorScheme === 'light' ? UIColor.light : UIColor.dark;
 };

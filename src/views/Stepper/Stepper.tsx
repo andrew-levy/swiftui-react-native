@@ -47,7 +47,7 @@ export const Stepper: React.FC<StepperProps> = ({
   onChange,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   return (
     <View

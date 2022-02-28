@@ -37,7 +37,7 @@ export const Toggle: React.FC<ToggleProps> = ({
   onChange,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   return (
     <Switch

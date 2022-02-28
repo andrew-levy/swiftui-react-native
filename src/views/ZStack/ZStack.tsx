@@ -36,7 +36,7 @@ export const ZStack = ({
   onDisappear,
 }: ZStackProps) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   return (
     <View

@@ -44,7 +44,7 @@ export const TextField: React.FC<TextFieldProps> = ({
   onDisappear,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   return (
     <TextInput

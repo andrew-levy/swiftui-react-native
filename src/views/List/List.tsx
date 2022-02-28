@@ -43,7 +43,7 @@ export const List = ({
   onDisappear,
 }: ListProps) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   const listStyle = inset ? 'insetGrouped' : 'grouped';
   return (
@@ -119,7 +119,7 @@ const getContainerStyles = (type: string) => {
 };
 
 const Caption = ({ caption }: { caption: string | ReactElement<any> }) => {
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
   return typeof caption === 'string' ? (
     <Text
       style={[styles.caption, { color: getColor('systemGray', colorScheme) }]}

@@ -55,7 +55,7 @@ export const Picker = ({
   onDisappear,
 }: PickerProps) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
   const childCount = Children.count(children);
   const [optionDimensions, setOptionDimensions] = useState(null);
   const tempSelection = useSharedValue(selection.value);
