@@ -27,7 +27,7 @@ export const Rectangle = ({
   onDisappear,
 }: ShapeModifiers) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
   const { rectWidth, rectHeight } = getRectDims(frame);
 
   return (

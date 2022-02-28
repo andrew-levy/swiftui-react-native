@@ -55,7 +55,7 @@ export const Image: React.FC<ImageProps> = ({
   foregroundColor,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   if (systemName) {
     if (!SFSymbol) return null;

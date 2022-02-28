@@ -17,7 +17,7 @@ export const ListRow = ({
   children,
   separatorTint,
 }: ListRowProps) => {
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
   const action = getAction(children);
   const buttonChild = cloneElement(children, {
     ...children.props,

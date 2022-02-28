@@ -38,7 +38,7 @@ export const VStack = ({
   onDisappear,
 }: VStackProps) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   return (
     <View

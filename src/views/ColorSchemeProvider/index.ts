@@ -1,1 +1,0 @@
-export { ColorSchemeProvider } from './ColorSchemeProvider';

@@ -63,7 +63,7 @@ export const Slider: React.FC<SliderProps> = ({
   onChange,
 }) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
   const [sliderWidth, sliderHeight] = getSliderWidth(frame);
   const [from, through] = range;
   const midPoint = (through + from) / 2;

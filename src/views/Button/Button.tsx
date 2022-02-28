@@ -41,7 +41,7 @@ export const Button = ({
   ...textProps
 }: ButtonProps) => {
   useLifecycle(onAppear, onDisappear);
-  const { colorScheme } = useColorScheme();
+  const colorScheme = useColorScheme();
 
   return (
     <TouchableOpacity
