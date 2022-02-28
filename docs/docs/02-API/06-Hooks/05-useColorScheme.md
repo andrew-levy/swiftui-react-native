@@ -25,7 +25,9 @@ Create a state variable
 </TabItem>
 <TabItem value="react-native" label="React Native">
 
-In order to achieve this in React Native, you would need to keep track the current color scheme with something like context.
+```tsx
+const colorScheme = useColorScheme();
+```
 
 </TabItem>
 </Tabs>

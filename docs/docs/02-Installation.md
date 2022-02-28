@@ -51,7 +51,7 @@ yarn add react-native-reanimated react-native-gesture-handler
 
 **Step 3:** :tada: You should be all set now! Start up your app and enjoy building.
 
-:::caution
+:::caution Having trouble?
 If you run into any errors during installation, try stopping your metro bundler and run
 
 ```console
