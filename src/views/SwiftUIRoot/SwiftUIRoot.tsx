@@ -8,7 +8,6 @@ export const SwiftUIRootContext = createContext<{
 
 type SwiftUIRootProps = WithChildren & {
   environment?: { [key: string]: any };
-  preferredColorScheme?: 'light' | 'dark';
 };
 
 export const SwiftUIRoot = ({ environment, children }: SwiftUIRootProps) => {
