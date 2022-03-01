@@ -29,4 +29,3 @@ export * from './hooks/useEnvironment';
 export * from './utils/ForEach';
 
 export type { UIColor } from './utils/colors';
-export type { EnvironmentKeys } from './hooks/useEnvironment';
