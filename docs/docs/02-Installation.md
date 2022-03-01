@@ -21,13 +21,9 @@ yarn add react-native-reanimated react-native-gesture-handler react-native-sfsym
 
 :::info Dependency
 `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
-:::
 
-:::info Dependency
 `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
-:::
 
-:::info Dependency
 `react-native-sfsymbols` requires extra steps to set up. Complete them [here](https://github.com/birkir/react-native-sfsymbols).
 :::
 
@@ -40,9 +36,7 @@ yarn add react-native-reanimated react-native-gesture-handler
 
 :::info Dependency
 `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
-:::
 
-:::info Dependency
 `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
 :::
 

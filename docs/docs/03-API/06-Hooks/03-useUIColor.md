@@ -31,7 +31,7 @@ const UIColor = useUIColor('dark');
 ```swift
 VStack {
   Text("Learn More")
-}.background(Color(UIColor(.systemBlue)))
+}.background(Color(UIColor(.systemBlue))
 ```
 
 </TabItem>
