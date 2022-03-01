@@ -1,9 +1,12 @@
 import { useContext } from 'react';
 import { SwiftUIRootContext } from '../views/SwiftUIRoot/SwiftUIRoot';
 
-export type EnvironmentKeys<T> = 'colorScheme' | keyof T;
+type EnvironmentKeys<T> = 'colorScheme' | keyof T;
 
-export const useEnvironment = <T>(key: T) => {
-  const { envs, setEnv } = useContext(SwiftUIRootContext);
-  return [envs[key], (value: any) => setEnv(key, value)];
+export const useEnvironment = <T>(key: EnvironmentKeys<T>) => {
+  const { envs, update } = useContext(SwiftUIRootContext);
+  return [
+    envs[key as string],
+    (value: any) => update(key as string, value),
+  ] as const;
 };
