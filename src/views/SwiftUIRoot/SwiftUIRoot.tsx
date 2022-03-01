@@ -7,21 +7,21 @@ type SwiftUIRootProps = WithChildren & {
 export const SwiftUIRootContext = createContext<{
   envs: {
     colorScheme?: 'light' | 'dark';
-    [key: string]: any;
+    [key: string]: unknown;
   };
-  update: (key: string, value: any) => void;
+  setValueAtKey: (key: string, value: unknown) => void;
 } | null>(null);
 
 export const SwiftUIRoot = ({ environment, children }: SwiftUIRootProps) => {
   const [envs, setEnvs] = useState<{
     colorScheme?: 'light' | 'dark';
-    [key: string]: any;
+    [key: string]: unknown;
   }>({
     colorScheme: 'light',
     ...environment,
   });
 
-  const update = (key: string, value: any) => {
+  const setValueAtKey = (key: string, value: unknown) => {
     setEnvs({
       ...envs,
       [key]: value,
@@ -29,7 +29,7 @@ export const SwiftUIRoot = ({ environment, children }: SwiftUIRootProps) => {
   };
 
   return (
-    <SwiftUIRootContext.Provider value={{ envs, update }}>
+    <SwiftUIRootContext.Provider value={{ envs, setValueAtKey }}>
       {children}
     </SwiftUIRootContext.Provider>
   );
