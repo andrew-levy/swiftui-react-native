@@ -19,9 +19,14 @@ import TabItem from '@theme/TabItem';
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-
+MyApp()
+  .environment(.\colorScheme, .dark)
+  .environment(.\isLoggedIn, false)
 ```
 
 </TabItem>
-
 </Tabs>
+
+:::info
+Use the `useEnvironment` hook to access these values throughout the app.
+:::

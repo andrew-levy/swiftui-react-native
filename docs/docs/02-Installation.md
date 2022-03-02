@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
 yarn add react-native-reanimated react-native-gesture-handler react-native-sfsymbols
 ```
 
-:::info Dependency
+:::info Dependencies
 `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
 
 `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
@@ -34,7 +34,7 @@ yarn add react-native-reanimated react-native-gesture-handler react-native-sfsym
 yarn add react-native-reanimated react-native-gesture-handler
 ```
 
-:::info Dependency
+:::info Dependencies
 `react-native-reanimated` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation/).
 
 `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).

@@ -28,7 +28,7 @@ export default function HelloWorld() {
   return (
     <HStack spacing={5}>
       <Image systemName='face.smiling' frame={{ width: 100, height: 100}}>
-      <Text>Hello World!</Text>
+      <Text font='title'>Hello World!</Text>
     </HStack>
   );
 }
