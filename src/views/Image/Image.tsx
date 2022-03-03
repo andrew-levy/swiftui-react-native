@@ -17,6 +17,7 @@ import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { SystemName } from './types';
+import { useAlert } from '../../hooks/useAlert';
 
 const { SFSymbol, SFSymbolWeight, SFSymbolScale } =
   Platform.select({
@@ -36,6 +37,7 @@ const DEFAULT_IMAGE_SIZE = 15;
 export const Image: React.FC<ImageProps> = ({
   source,
   systemName,
+  alert,
   frame,
   padding,
   cornerRadius,
@@ -54,6 +56,7 @@ export const Image: React.FC<ImageProps> = ({
   fontWeight,
   foregroundColor,
 }) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 

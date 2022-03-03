@@ -11,6 +11,7 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { UIColor, getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 type ListProps = Modifiers &
   PropsWithChildren<{
@@ -39,9 +40,11 @@ export const List = ({
   zIndex,
   children,
   style,
+  alert,
   onAppear,
   onDisappear,
 }: ListProps) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { Binding } from '../../utils/binding';
+import { BooleanBinding } from '../../utils/binding';
 import { Modifiers } from '../../utils/modifiers';
 import { getBorder } from '../../utils/border';
 import { getFrame } from '../../utils/frame';
@@ -11,9 +11,10 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { UIColor, getColor } from '../../utils/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { useAlert } from '../../hooks/useAlert';
 
 type ToggleProps = Modifiers & {
-  isOn: Binding<boolean>;
+  isOn: BooleanBinding;
   tintColor?: UIColor;
   onChange?: (value?: boolean) => void;
 };
@@ -32,10 +33,12 @@ export const Toggle: React.FC<ToggleProps> = ({
   rotationEffect,
   scaleEffect,
   style,
+  alert,
   onAppear,
   onDisappear,
   onChange,
 }) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 

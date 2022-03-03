@@ -15,6 +15,7 @@ import { useLifecycle } from '../../hooks/useLifecycle';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { UIColor, getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 type LinearProps = Modifiers & {
   value: number;
@@ -37,9 +38,11 @@ export const Linear = ({
   zIndex,
   style,
   accentColor,
+  alert,
   onAppear,
   onDisappear,
 }: LinearProps) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
   const [sliderWidth, sliderHeight] = getSliderWidth(frame);

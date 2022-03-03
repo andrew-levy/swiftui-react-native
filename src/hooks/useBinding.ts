@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Binding } from '../utils/binding';
+import { SetStateAction, useState } from 'react';
+import { Binding, BooleanBinding } from '../utils/binding';
 
 /**
  * Creates a Binding object that can be used to read and write to a value.
@@ -8,7 +8,13 @@ import { Binding } from '../utils/binding';
  * @param initialValue
  * @returns A Binding containing the value and a setter function.
  */
-export function useBinding<T>(initialValue: T): Binding<T> {
+export function useBinding<T>(initialValue: T) {
   const [value, setValue] = useState<T>(initialValue);
-  return { value, setValue };
+  const toggle = () => setValue(!value as unknown as SetStateAction<T>);
+
+  return {
+    value,
+    setValue,
+    ...(typeof initialValue === 'boolean' && { toggle }),
+  } as unknown as T extends boolean ? BooleanBinding : Binding<T>;
 }

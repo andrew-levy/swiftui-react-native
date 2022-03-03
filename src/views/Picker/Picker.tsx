@@ -29,6 +29,7 @@ import { useColorScheme } from '../../hooks/useColorScheme';
 import { Text } from '../Text';
 import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 type PickerProps = Modifiers &
   WithChildren & {
@@ -50,10 +51,12 @@ export const Picker = ({
   shadow,
   zIndex,
   style,
+  alert,
   onChange,
   onAppear,
   onDisappear,
 }: PickerProps) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
   const childCount = Children.count(children);

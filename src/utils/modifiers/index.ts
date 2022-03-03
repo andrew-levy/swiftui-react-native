@@ -5,9 +5,11 @@ import { Frame, ShapeFrame } from '../frame';
 import { Padding } from '../padding';
 import { Shadow } from '../shadow';
 import { Rotation } from '../transform';
+import { Alert } from '../alert';
 import { Fonts, FontWeights } from '../fonts';
 
 export type Modifiers = {
+  alert?: Alert;
   backgroundColor?: UIColor;
   padding?: Padding;
   cornerRadius?: number;
