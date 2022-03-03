@@ -11,6 +11,7 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { UIColor, getColor } from '../../utils/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { useAlert } from '../../hooks/useAlert';
 
 type ToggleProps = Modifiers & {
   isOn: Binding<boolean>;
@@ -32,10 +33,12 @@ export const Toggle: React.FC<ToggleProps> = ({
   rotationEffect,
   scaleEffect,
   style,
+  alert,
   onAppear,
   onDisappear,
   onChange,
 }) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 

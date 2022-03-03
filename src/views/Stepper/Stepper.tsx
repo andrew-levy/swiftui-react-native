@@ -13,6 +13,7 @@ import { getShadow } from '../../utils/shadow';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 const { SFSymbol } =
   Platform.select({
@@ -42,10 +43,12 @@ export const Stepper: React.FC<StepperProps> = ({
   opacity,
   frame,
   zIndex,
+  alert,
   onAppear,
   onDisappear,
   onChange,
 }) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 

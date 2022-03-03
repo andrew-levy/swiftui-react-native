@@ -12,6 +12,7 @@ import { useColorScheme } from '../../hooks/useColorScheme';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 type TextFieldProps = Modifiers &
   TextModifiers & {
@@ -40,9 +41,11 @@ export const TextField: React.FC<TextFieldProps> = ({
   opacity,
   zIndex,
   style,
+  alert,
   onAppear,
   onDisappear,
 }) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 

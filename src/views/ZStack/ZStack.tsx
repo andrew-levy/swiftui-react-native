@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
+import { useAlert } from '../../hooks/useAlert';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getAlignment, ZStackAlignment } from '../../utils/alignments';
@@ -32,9 +33,11 @@ export const ZStack = ({
   opacity,
   frame,
   zIndex,
+  alert,
   onAppear,
   onDisappear,
 }: ZStackProps) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 

@@ -10,6 +10,7 @@ import { getShadow } from '../../utils/shadow';
 import { getFrame } from '../../utils/frame';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 export const Rectangle = ({
   fill,
@@ -23,9 +24,11 @@ export const Rectangle = ({
   shadow,
   zIndex,
   style,
+  alert,
   onAppear,
   onDisappear,
 }: ShapeModifiers) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
   const { rectWidth, rectHeight } = getRectDims(frame);

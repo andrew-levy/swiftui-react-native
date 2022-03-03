@@ -11,6 +11,7 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 export type ButtonProps = Modifiers &
   TextModifiers &
@@ -23,6 +24,7 @@ export type ButtonProps = Modifiers &
 export const Button = ({
   label,
   action,
+  alert,
   disabled,
   backgroundColor,
   cornerRadius,
@@ -40,6 +42,7 @@ export const Button = ({
   onDisappear,
   ...textProps
 }: ButtonProps) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 
