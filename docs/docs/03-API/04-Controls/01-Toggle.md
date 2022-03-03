@@ -1,7 +1,7 @@
 ---
 ---
 
-A component to switch between on and off values
+A control that toggles between on and off states.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

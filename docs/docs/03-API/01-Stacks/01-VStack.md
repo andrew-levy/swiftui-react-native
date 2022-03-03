@@ -1,7 +1,7 @@
 ---
 ---
 
-A vertical stack with configurable alignment and spacing between child views.
+A view that arranges its children vertically.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -30,9 +30,9 @@ VStack(alignment: .leading, spacing: 10) {
 <TabItem value="react-native" label="React Native">
 
 ```tsx
-<View style={{}}>
+<View>
   <Text>Hello</Text>
-  <Text>World</Text>
+  <Text style={{ marginTop: 10 }}>World</Text>
 </View>
 ```
 

@@ -3,4 +3,4 @@ slug: /
 title: Getting Started
 ---
 
-<img style={{ borderRadius: 20 }} src="img/cover.png" />
+<img class="cover" style={{ borderRadius: 20, boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" }} src="img/cover.png" />
