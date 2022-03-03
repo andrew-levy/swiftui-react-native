@@ -12,6 +12,7 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 type TextProps = Omit<Modifiers, 'style'> &
   TextModifiers & {
@@ -39,10 +40,12 @@ export const Text: React.FC<TextProps> = ({
   frame,
   zIndex,
   style,
+  alert,
   onAppear,
   onDisappear,
   children,
 }) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
   return (

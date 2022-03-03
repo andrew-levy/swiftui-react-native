@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { useAlert } from '../../hooks/useAlert';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { Modifiers, TextModifiers, WithChildren } from '../../utils/modifiers';
 import { HStack } from '../HStack';
@@ -23,11 +24,13 @@ export const Label = ({
   text,
   icon,
   systemImage,
+  alert,
   onAppear,
   onDisappear,
   spacing = 5,
   ...containerProps
 }: LabelProps) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
 
   return (

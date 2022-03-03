@@ -18,6 +18,7 @@ import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getTransform } from '../../utils/transform';
 import { UIColor, getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 type IndeterminateProps = Modifiers & {
   accentColor?: UIColor;
@@ -37,9 +38,11 @@ export const Indeterminate = ({
   zIndex,
   style,
   accentColor,
+  alert,
   onAppear,
   onDisappear,
 }: IndeterminateProps) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const shift = 6;
   const colorScheme = useColorScheme();

@@ -11,6 +11,7 @@ import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { getColor } from '../../utils/colors';
+import { useAlert } from '../../hooks/useAlert';
 
 type VStackProps = Modifiers &
   WithChildren & {
@@ -22,6 +23,7 @@ type VStackProps = Modifiers &
 export const VStack = ({
   spacing = 2,
   alignment = 'center',
+  alert,
   style,
   children,
   padding,
@@ -37,6 +39,7 @@ export const VStack = ({
   onAppear,
   onDisappear,
 }: VStackProps) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
 

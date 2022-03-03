@@ -27,6 +27,7 @@ import {
 import { getTransform } from '../../utils/transform';
 import { UIColor, getColor } from '../../utils/colors';
 import { useColorScheme } from '../../hooks/useColorScheme';
+import { useAlert } from '../../hooks/useAlert';
 
 type SliderProps = Modifiers & {
   accentColor?: UIColor;
@@ -58,10 +59,12 @@ export const Slider: React.FC<SliderProps> = ({
   border,
   opacity,
   zIndex,
+  alert,
   onAppear,
   onDisappear,
   onChange,
 }) => {
+  useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
   const [sliderWidth, sliderHeight] = getSliderWidth(frame);
