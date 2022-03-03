@@ -10,18 +10,19 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
+// Get the color palette (light or dark based on current color scheme)
 const UIColor = useUIColor();
 ```
 
 ```tsx
+// Use it!
 <View style={{ backgroundColor: UIColor.systemBlue }}>
   <Text>Learn More</Text>
 </View>
 ```
 
-Or if you want to override the `colorScheme`
-
 ```tsx
+// You can also override the `colorScheme` by passing in an optional preferred color scheme argument
 const UIColor = useUIColor('dark');
 ```
 
@@ -31,7 +32,8 @@ const UIColor = useUIColor('dark');
 ```swift
 VStack {
   Text("Learn More")
-}.background(Color(UIColor(.systemBlue))
+}
+.background(Color(UIColor(.systemBlue))
 ```
 
 </TabItem>

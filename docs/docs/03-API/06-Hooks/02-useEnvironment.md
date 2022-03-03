@@ -19,7 +19,7 @@ const [isLoggedIn, setIsLoggedIn] = useEnvironment('isLoggedIn');
 
 ```swift
 @Environment(\.colorScheme) var colorScheme
-@Environment(\.isLoggedIn) var colorScheme
+@Environment(\.isLoggedIn) var isLoggedIn
 ```
 
 </TabItem>
@@ -33,16 +33,48 @@ The `colorScheme` environment variable is always included whether you specify it
 
 You can supply the `useEnvironment` hook with generics to leverage types and intellisense
 
+`useEnvironment`
+
 ```tsx
+// App.tsx
+
+import { SwiftUIRoot } from 'swiftui-react-native';
+import SomeComponent from './SomeComponent';
+
 const environemntVars = { isLoggedIn: false };
 export type MyEnvs = typeof environemntVars;
+
+export default function App() {
+  return (
+    <SwiftUIRoot environment={environmentVars}>
+      <SomeComponent />
+    </SwiftUIRoot>
+  );
+}
 ```
 
 ```tsx
-const [isLoggedIn, setIsLoggedIn] = useEnvironment<MyEnvs, boolean>(
-  'isLoggedIn'
-);
-const [colorScheme, setColorScheme] = useEnvironment<MyEnvs, 'dark' | 'light'>(
-  'colorScheme'
-);
+// SomeComponent.tsx
+
+import { VStack, Text, useEnvironment } from 'swiftui-react-native';
+import type { MyEnvs } from './App';
+
+type ColorScheme = 'light' | 'dark';
+
+export default function SomeComponent() {
+  const [colorScheme, setColorScheme] = useEnvironment<MyEnvs, ColorScheme>(
+    'colorScheme'
+  );
+  const [isLoggedIn, setIsLoggedIn] = useEnvironment<MyEnvs, boolean>(
+    'isLoggedIn'
+  );
+  return (
+    <VStack>
+      <Text>Current Color Scheme: {colorScheme}</Text>
+      <Text>
+        {isLoggedIn ? 'User is logged in 🙂' : 'User is not logged in 🙁'}
+      </Text>
+    </VStack>
+  );
+}
 ```

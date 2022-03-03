@@ -10,11 +10,13 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
+// Create a binding value
 const $isOn = useBinding(false);
 ```
 
 ```tsx
-<Toggle isOn={isOn} />
+// Pass it to the view
+<Toggle isOn={$isOn} />
 ```
 
 </TabItem>
