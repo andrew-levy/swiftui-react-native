@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { Binding } from '../../utils/binding';
+import { BooleanBinding } from '../../utils/binding';
 import { Modifiers } from '../../utils/modifiers';
 import { getBorder } from '../../utils/border';
 import { getFrame } from '../../utils/frame';
@@ -14,7 +14,7 @@ import { useColorScheme } from '../../hooks/useColorScheme';
 import { useAlert } from '../../hooks/useAlert';
 
 type ToggleProps = Modifiers & {
-  isOn: Binding<boolean>;
+  isOn: BooleanBinding;
   tintColor?: UIColor;
   onChange?: (value?: boolean) => void;
 };

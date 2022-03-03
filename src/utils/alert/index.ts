@@ -1,7 +1,7 @@
-import { Binding } from '../binding';
+import { BooleanBinding } from '../binding';
 
 export type Alert = {
-  isPresented: Binding<boolean>;
+  isPresented: BooleanBinding;
   title: string;
   message?: string;
   buttons?: {
