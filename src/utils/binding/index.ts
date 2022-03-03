@@ -1,4 +1,7 @@
+import { SetStateAction } from 'react';
+
 export type Binding<T> = {
   value: T;
-  setValue: (value: T) => void;
+  setValue: React.Dispatch<SetStateAction<T>>;
+  toggle: () => void;
 };

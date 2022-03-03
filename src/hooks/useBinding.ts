@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import { Binding } from '../utils/binding';
 
 /**
@@ -10,5 +10,9 @@ import { Binding } from '../utils/binding';
  */
 export function useBinding<T>(initialValue: T): Binding<T> {
   const [value, setValue] = useState<T>(initialValue);
-  return { value, setValue };
+  const toggle =
+    typeof initialValue === 'boolean'
+      ? () => setValue(!value as unknown as SetStateAction<T>)
+      : () => console.warn('Toggling a non-boolean value is not supported');
+  return { value, setValue, toggle };
 }
