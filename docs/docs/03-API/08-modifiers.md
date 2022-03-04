@@ -8,6 +8,7 @@ Here's a list of the modifer props that are available to most views:
 
 **`Modifiers`:**
 
+- `alert: Alert`
 - `backgroundColor: Color`
 - `border: Border`
 - `cornerRadius: number`
