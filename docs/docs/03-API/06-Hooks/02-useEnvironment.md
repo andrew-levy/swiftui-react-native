@@ -3,8 +3,16 @@
 
 The `useEnvironment` hook allows you to access your environment variables supplied to the `SwiftUIRoot` view.
 
+```typescript
+function useEnvironment<T, V>(
+  key: EnvironmentKeys<T>
+): readonly [V, (value: V) => void];
+```
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+## Example
 
 <Tabs>
 <TabItem value="srn" label="swiftui-react-native">
@@ -32,8 +40,6 @@ The `colorScheme` environment variable is always included whether you specify it
 ## TypeScript
 
 You can supply the `useEnvironment` hook with generics to leverage types and intellisense
-
-`useEnvironment`
 
 ```tsx
 // App.tsx

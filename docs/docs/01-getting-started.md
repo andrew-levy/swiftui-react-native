@@ -3,9 +3,9 @@ slug: /
 title: Getting Started
 ---
 
-<img style={{ borderRadius: 20, boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", marginBottom: 20 }} src="img/cover.png" />
+Bringing the best **SwiftUI** features to **React Native** applications :rocket:
 
-Welcome to SwiftUI React Native, the library that aims to recreate the best SwiftUI features in React Native applications.
+<img style={{ borderRadius: 20, boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", marginTop: 20 }} src="img/cover.png" />
 
 ## At a Glance
 
@@ -52,6 +52,8 @@ function App() {
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
+import SwiftUI
+
 struct App: View {
 
     @State var text = ""

@@ -6,6 +6,8 @@ A view that overlays its children, aligning them in both axes
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Example
+
 <Tabs>
 <TabItem value="srn" label="swiftui-react-native">
 

@@ -6,6 +6,8 @@ A control that toggles between on and off states.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Example
+
 <Tabs>
 <TabItem value="srn" label="swiftui-react-native">
 
@@ -43,3 +45,13 @@ const [isOn, setIsOn] = useState(false);
 
 </TabItem>
 </Tabs>
+
+## Props
+
+Toggle inherits all `Modifiers` as props.
+
+| prop        | description                                       | type                   | required | default     |
+| ----------- | ------------------------------------------------- | ---------------------- | -------- | ----------- |
+| `isOn`      | The toggle binding                                | `BooleanBinding`       | yes      | `undefined` |
+| `tintColor` | The "on" toggle color                             | `UIColor`              | no       | `undefined` |
+| `onChange`  | Function to execute when the toggle value changes | `(v: boolean) => void` | no       | `undefined` |

@@ -6,6 +6,8 @@ A flexible space that expands along the major axis of its containing stack layou
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Example
+
 <Tabs>
 <TabItem value="srn" label="swiftui-react-native">
 

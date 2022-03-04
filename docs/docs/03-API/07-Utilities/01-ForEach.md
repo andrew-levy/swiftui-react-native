@@ -3,8 +3,17 @@
 
 A function that allows you map over an array to dynamically render a collection of views
 
+```typescript
+function ForEach<T>(
+  iterable: T[],
+  renderFn: (element: T, index: number) => ReactElement<any>
+): ReactElement<any, string | React.JSXElementConstructor<any>>[];
+```
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+## Example
 
 <Tabs>
 <TabItem value="srn" label="swiftui-react-native">

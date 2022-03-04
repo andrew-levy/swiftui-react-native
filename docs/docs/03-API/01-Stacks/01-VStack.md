@@ -6,6 +6,8 @@ A view that arranges its children vertically.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Example
+
 <Tabs>
 <TabItem value="srn" label="swiftui-react-native">
 

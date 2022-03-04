@@ -6,6 +6,8 @@ Provides global context to the app. Wrap your app in a `SwiftUIRoot` to access e
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Example
+
 <Tabs>
 <TabItem value="srn" label="swiftui-react-native">
 
@@ -30,3 +32,9 @@ MyApp()
 :::info
 Use the `useEnvironment` hook to access these values throughout the app.
 :::
+
+## Props
+
+| prop          | description                                                           | type                                              | required | default                    |
+| ------------- | --------------------------------------------------------------------- | ------------------------------------------------- | -------- | -------------------------- |
+| `environment` | A key value map of environment variables to access throughout the app | `{ colorScheme: string, [key: string]: unknown }` | no       | `{ colorScheme: 'light' }` |
