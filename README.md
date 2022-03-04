@@ -1,17 +1,20 @@
-# swiftui-react-native
+# SwiftUI React Native
 
-![swiftui-rn](/assets/cover.png?raw=true)
+<img class="cover" style="border-radius: 20px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin-bottom: 20px" src="assets/cover.png" />
 
-## What is it?
+Welcome to SwiftUI React Native, the library that aims to recreate the best SwiftUI features in React Native applications.
 
-SwiftUI is awesome. So is React Native! This library aims to recreate some of the best SwiftUI features in React Native applications.
+## At a Glance
 
+- :white_check_mark: SwiftUI-like API
 - :white_check_mark: Written in TypeScript
 - :white_check_mark: Animations with Reanimated v2
 - :white_check_mark: Built-in dark mode
 
 ## Documentation
 
+Check out the [official documentation](https://github.com/andrew-levy/swiftui-react-native-example).
+
 ## Example Project
 
-[swiftui-react-native-example](https://github.com/andrew-levy/swiftui-react-native-example) is an example app that showcases the features of this library.
+Check out this [example project](https://github.com/andrew-levy/swiftui-react-native-example).

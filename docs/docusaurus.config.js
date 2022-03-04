@@ -36,7 +36,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'swiftui-react-native',
+        title: 'SwiftUI React Native',
         logo: {
           alt: 'SwiftUI-React-Native',
           src: 'img/swiftui-react-native.svg',
