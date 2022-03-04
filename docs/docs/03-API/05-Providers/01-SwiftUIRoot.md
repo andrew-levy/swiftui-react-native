@@ -30,6 +30,10 @@ MyApp()
 </Tabs>
 
 :::info
+The pair `colorScheme: 'light'` will be included by default if no `environment` prop is supplied.
+
+:::
+:::tip
 Use the `useEnvironment` hook to access these values throughout the app.
 :::
 

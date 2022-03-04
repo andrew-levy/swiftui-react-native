@@ -28,10 +28,6 @@ const $text = useBinding('');
 <Text>Current Value: {$text.value}</Text>
 ```
 
-:::info
-The `$` is optional, but it makes it clear that this value is a binding
-:::
-
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
@@ -56,3 +52,7 @@ const [text, setText] = useState('');
 
 </TabItem>
 </Tabs>
+
+:::tip
+The `$` is optional, but it makes it clear that this value is a binding
+:::

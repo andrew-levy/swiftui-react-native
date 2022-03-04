@@ -40,3 +40,13 @@ HStack(alignment: .top, spacing: 10) {
 
 </TabItem>
 </Tabs>
+
+## Props
+
+ZStack inherits all `Modifiers` as props.
+
+| prop       | description                         | type                                                                                                                                                                              | required | default    |
+| ---------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------- |
+| spacing    | Amount of space between stack items | `number`                                                                                                                                                                          | no       | `0`        |
+| alignment  | The alignment guide                 | `'leading'` &#124; `'trailing'`&#124; `'top'` &#124; `'bottom'` &#124; `'topLeading'` &#124; `'topTrailing'` &#124; `'bottomLeading'` &#124; `'bottomTrailing'` &#124; `'center'` | no       | `'center'` |
+| `children` | Stack items                         | `React.ReactElement<any>` &#124; `React.ReactElement<any>[]`                                                                                                                      | no       | `null`     |

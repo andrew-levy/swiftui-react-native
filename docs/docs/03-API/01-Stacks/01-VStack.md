@@ -40,3 +40,13 @@ VStack(alignment: .leading, spacing: 10) {
 
 </TabItem>
 </Tabs>
+
+## Props
+
+VStack inherits all `Modifiers` as props.
+
+| prop       | description                         | type                                                         | required | default    |
+| ---------- | ----------------------------------- | ------------------------------------------------------------ | -------- | ---------- |
+| spacing    | Amount of space between stack items | `number`                                                     | no       | `0`        |
+| alignment  | The alignment guide                 | `'leading'` &#124; `'trailing'` &#124; `'center'`            | no       | `'center'` |
+| `children` | Stack items                         | `React.ReactElement<any>` &#124; `React.ReactElement<any>[]` | no       | `null`     |
