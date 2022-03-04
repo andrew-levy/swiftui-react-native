@@ -38,8 +38,8 @@ const config = {
       navbar: {
         title: 'SwiftUI React Native',
         logo: {
-          alt: 'SwiftUI-React-Native',
-          src: 'img/swiftui-react-native.svg',
+          alt: 'SwiftUI React Native',
+          src: 'img/logo.svg',
         },
         items: [
           {
@@ -61,28 +61,7 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Getting Started',
-                to: '/',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/andrew-levy/swiftui-react-native',
-              },
-            ],
-          },
-        ],
-        copyright: `Built with Docusaurus.`,
+        copyright: 'Copyright © 2022 Andrew Levy',
       },
       prism: {
         theme: lightCodeTheme,
