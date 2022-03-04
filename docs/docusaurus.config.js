@@ -55,7 +55,7 @@ const config = {
           },
           {
             href: 'https://github.com/andrew-levy/swiftui-react-native-example',
-            label: 'Examples',
+            label: 'Example',
             position: 'right',
           },
         ],
@@ -68,16 +68,7 @@ const config = {
             items: [
               {
                 label: 'Getting Started',
-                to: '/docs/getting-started',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/swiftui-react-native',
+                to: '/',
               },
             ],
           },
