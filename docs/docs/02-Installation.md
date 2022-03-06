@@ -1,13 +1,13 @@
 ---
 ---
 
-**Step 1:** Install the package in your React Native project
+## Add the package to your app
 
 ```console
 yarn add swiftui-react-native
 ```
 
-**Step 2:** Complete the following steps based on your target platform
+## Add the dependencies
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -43,7 +43,13 @@ yarn add react-native-reanimated react-native-gesture-handler
 </TabItem>
 </Tabs>
 
-**Step 3:** :tada: You should be all set now! Start up your app and enjoy building.
+:::caution Heads up
+`react-native-sfsymbols` is only supported on iOS due to [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/).
+:::
+
+## Build!
+
+You should be all set now. Go build something awesome!
 
 :::caution Having trouble?
 If you run into any errors during installation, try stopping your metro bundler and run
