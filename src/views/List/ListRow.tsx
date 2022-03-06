@@ -83,6 +83,7 @@ const rowStyles = StyleSheet.create({
   content: {
     flexGrow: 1,
     marginRight: SYSTEM_SPACE,
+    alignItems: 'flex-start',
   },
   leading: {
     marginRight: SYSTEM_SPACE,
