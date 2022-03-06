@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<TextField text={text} placeholder="Name" />
+<TextField placeholder="Name" text={text} />
 ```
 
 </TabItem>
