@@ -12,14 +12,22 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-
+<List>
+    <Text>List Item</Text>
+    <Text>List Item</Text>
+    <Text>List Item</Text>
+</List>
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-
+List {
+    Text("List Item")
+    Text("List Item")
+    Text("List Item")
+}
 ```
 
 </TabItem>

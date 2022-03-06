@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-
+<ProgressView />
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-
+ProgressView()
 ```
 
 </TabItem>

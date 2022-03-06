@@ -12,14 +12,16 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-
+<Color.red cornerRadius={10} frame={{ width: 100, height: 100 }}>
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-
+Color.red
+    .cornerRadius(10)
+    .frame(width: 100, height: 100)
 ```
 
 </TabItem>

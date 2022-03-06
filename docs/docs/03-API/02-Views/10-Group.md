@@ -19,7 +19,14 @@ import TabItem from '@theme/TabItem';
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-
+HStack {
+    Group {
+        Text("Hello")
+        Image(systemName: "globe")
+    }
+    .font(.title)
+    .padding(5)
+}
 ```
 
 </TabItem>
