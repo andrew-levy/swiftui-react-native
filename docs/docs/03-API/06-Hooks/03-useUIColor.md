@@ -27,11 +27,6 @@ const UIColor = useUIColor();
 </View>
 ```
 
-```tsx
-// You can also override the `colorScheme` by passing in an optional preferred color scheme argument
-const UIColor = useUIColor('dark');
-```
-
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 

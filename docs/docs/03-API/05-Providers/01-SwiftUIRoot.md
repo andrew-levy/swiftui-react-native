@@ -30,8 +30,7 @@ MyApp()
 </Tabs>
 
 :::info
-The pair `colorScheme: 'light'` will be included by default if no `environment` prop is supplied.
-
+The `colorScheme` environment variable is always included whether you specify it or not (defaults to `'light'`).
 :::
 :::tip
 Use the `useEnvironment` hook to access these values throughout the app.
