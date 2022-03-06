@@ -3,6 +3,9 @@
 
 A view that displays one or more lines of read-only text.
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## Example
 
 <Tabs>

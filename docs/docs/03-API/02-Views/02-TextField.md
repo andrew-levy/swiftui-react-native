@@ -3,6 +3,8 @@
 
 A control that displays an editable text interface.
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## Example
 
