@@ -31,3 +31,7 @@ Text("Hello")
 
 </TabItem>
 </Tabs>
+
+## Props
+
+Text has a unique set of modifiers. See [Text Modifiers](../modifiers#text-modifiers).

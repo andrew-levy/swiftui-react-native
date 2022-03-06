@@ -35,3 +35,5 @@ TextField("Name", text: $text)
 
 </TabItem>
 </Tabs>
+
+## Props
