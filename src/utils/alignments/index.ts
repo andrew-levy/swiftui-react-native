@@ -14,25 +14,85 @@ export type ZStackAlignment =
 
 export const AlignmentMap = {
   vstack: {
-    leading: { alignItems: 'flex-start' },
-    center: { alignItems: 'center' },
-    trailing: { alignItems: 'flex-end' },
+    leading: {
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      alignSelf: 'center',
+    },
+    center: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'center',
+    },
+    trailing: {
+      alignItems: 'flex-end',
+      justifyContent: 'center',
+      alignSelf: 'center',
+    },
   },
   hstack: {
-    top: { alignItems: 'flex-start' },
-    center: { alignItems: 'center' },
-    bottom: { alignItems: 'flex-end' },
+    top: {
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      alignSelf: 'center',
+    },
+    center: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'center',
+    },
+    bottom: {
+      alignItems: 'flex-end',
+      justifyContent: 'center',
+      alignSelf: 'center',
+    },
   },
   zstack: {
-    center: { justifyContent: 'center', alignItems: 'center' },
-    leading: { justifyContent: 'center', alignItems: 'flex-start' },
-    trailing: { justifyContent: 'center', alignItems: 'flex-end' },
-    top: { justifyContent: 'flex-start', alignItems: 'center' },
-    bottom: { justifyContent: 'flex-end', alignItems: 'center' },
-    topLeading: { justifyContent: 'flex-start', alignItems: 'flex-start' },
-    topTrailing: { justifyContent: 'flex-start', alignItems: 'flex-end' },
-    bottomLeading: { justifyContent: 'flex-end', alignItems: 'flex-start' },
-    bottomTrailing: { justifyContent: 'flex-end', alignItems: 'flex-end' },
+    center: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignSelf: 'center',
+    },
+    leading: {
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      alignSelf: 'center',
+    },
+    trailing: {
+      justifyContent: 'center',
+      alignItems: 'flex-end',
+      alignSelf: 'center',
+    },
+    top: {
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      alignSelf: 'center',
+    },
+    bottom: {
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      alignSelf: 'center',
+    },
+    topLeading: {
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      alignSelf: 'center',
+    },
+    topTrailing: {
+      justifyContent: 'flex-start',
+      alignItems: 'flex-end',
+      alignSelf: 'center',
+    },
+    bottomLeading: {
+      justifyContent: 'flex-end',
+      alignItems: 'flex-start',
+      alignSelf: 'center',
+    },
+    bottomTrailing: {
+      justifyContent: 'flex-end',
+      alignItems: 'flex-end',
+      alignSelf: 'center',
+    },
   },
 };
 

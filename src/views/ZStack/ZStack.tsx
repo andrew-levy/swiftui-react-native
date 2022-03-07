@@ -7,16 +7,17 @@ import { getAlignment, ZStackAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
 import { getColor } from '../../utils/colors';
 import { getCornerRadius } from '../../utils/cornerRadius';
-import { getFrame } from '../../utils/frame';
+import { Frame, getFrame } from '../../utils/frame';
 import { Modifiers, WithChildren } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getTransform } from '../../utils/transform';
 
-type ZStackProps = Omit<Modifiers, 'alignment'> &
+type ZStackProps = Omit<Modifiers, 'alignment' | 'frame'> &
   WithChildren & {
     style?: StyleProp<ViewStyle>;
     alignment?: ZStackAlignment;
+    frame: Frame;
   };
 
 export const ZStack = ({

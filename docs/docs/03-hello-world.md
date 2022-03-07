@@ -26,7 +26,7 @@ import { VStack, Image, Text } from 'swiftui-react-native';
 
 export default function HelloWorld() {
   return (
-    <VStack spacing={5}>
+    <VStack spacing={5} frame={{ maxHeight: 'infinity' }}>
       <Image systemName="face.smiling" fontSize={50} />
       <Text font="title">Hello World!</Text>
     </VStack>

@@ -1,10 +1,10 @@
 export type Frame = {
-  width?: number | string;
-  height?: number | string;
-  maxWidth?: number | string;
-  maxHeight?: number | string;
-  minWidth?: number | string;
-  minHeight?: number | string;
+  width?: number | `${number}%`;
+  height?: number | `${number}%`;
+  maxWidth?: number | `${number}%` | 'infinity';
+  maxHeight?: number | `${number}%` | 'infinity';
+  minWidth?: number | `${number}%`;
+  minHeight?: number | `${number}%`;
 };
 
 export type ShapeFrame =
@@ -16,10 +16,13 @@ export const getFrame = (frame: Frame) => {
   let styles = {};
   if (!frame) return styles;
 
-  // Case: maxHeight: 'infinity'
   if (frame.maxHeight === 'infinity') {
     styles = { ...styles, flex: 1 };
     delete frame.maxHeight;
+  }
+  if (frame.maxWidth === 'infinity') {
+    styles = { ...styles, width: '100%' };
+    delete frame.maxWidth;
   }
 
   return { ...styles, ...frame };
