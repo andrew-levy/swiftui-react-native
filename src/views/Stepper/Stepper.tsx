@@ -59,7 +59,11 @@ export const Stepper: React.FC<StepperProps> = ({
         {
           opacity,
           zIndex,
-          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
+          backgroundColor: getColor(
+            backgroundColor,
+            colorScheme,
+            'systemGray5'
+          ),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),
