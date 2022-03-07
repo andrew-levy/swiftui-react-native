@@ -1,7 +1,7 @@
 ---
 ---
 
-The `useEnvironment` hook allows you to access your environment variables supplied to the `SwiftUIRoot` view.
+The `useEnvironment` hook allows you to access your environment values supplied to the `SwiftUIRoot` view.
 
 ```typescript
 function useEnvironment<T, V>(
@@ -34,7 +34,7 @@ const [isLoggedIn, setIsLoggedIn] = useEnvironment('isLoggedIn');
 </Tabs>
 
 :::info
-The `colorScheme` environment variable is always included whether you specify it or not.
+The `colorScheme` environment value is always included whether you specify it or not.
 :::
 
 ## TypeScript

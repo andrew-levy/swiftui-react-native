@@ -1,7 +1,7 @@
 ---
 ---
 
-Provides global context to the app. Wrap your app in a `SwiftUIRoot` to access environment variables like `colorScheme`.
+Provides global context to the app. Wrap your app in a `SwiftUIRoot` to access environment values like `colorScheme`.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -30,7 +30,7 @@ MyApp()
 </Tabs>
 
 :::info
-The `colorScheme` environment variable is always included whether you specify it or not (defaults to `'light'`).
+The `colorScheme` environment value is always included whether you specify it or not (defaults to `'light'`).
 :::
 :::tip
 Use the `useEnvironment` hook to access these values throughout the app.
@@ -38,6 +38,6 @@ Use the `useEnvironment` hook to access these values throughout the app.
 
 ## Props
 
-| prop          | description                                                           | type                                              | required | default                    |
-| ------------- | --------------------------------------------------------------------- | ------------------------------------------------- | -------- | -------------------------- |
-| `environment` | A key value map of environment variables to access throughout the app | `{ colorScheme: string, [key: string]: unknown }` | no       | `{ colorScheme: 'light' }` |
+| prop          | description                                                        | type                                              | required | default                    |
+| ------------- | ------------------------------------------------------------------ | ------------------------------------------------- | -------- | -------------------------- |
+| `environment` | A key value map of environment values to access throughout the app | `{ colorScheme: string, [key: string]: unknown }` | no       | `{ colorScheme: 'light' }` |

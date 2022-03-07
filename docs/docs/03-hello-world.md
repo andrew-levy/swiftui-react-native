@@ -2,7 +2,7 @@
 title: Hello World
 ---
 
-The first step to creating your first SwiftUI React Native app is to wrap your app in a `SwiftUIRoot` view.
+Let's make a simple hello world app using SwiftUI primitives. If you want to take advantage of features like dynamic colors and environment values, you'll need to wrap your app in a `SwiftUIRoot` view.
 
 ```tsx
 // App.js
@@ -22,14 +22,14 @@ export default function App() {
 ```tsx
 // HelloWorld.js
 
-import { HStack, Image, Text } from 'swiftui-react-native';
+import { VStack, Image, Text } from 'swiftui-react-native';
 
 export default function HelloWorld() {
   return (
-    <HStack spacing={5}>
-      <Image systemName='face.smiling' frame={{ width: 100, height: 100}}>
-      <Text font='title'>Hello World!</Text>
-    </HStack>
+    <VStack spacing={5}>
+      <Image systemName="face.smiling" fontSize={50} />
+      <Text font="title">Hello World!</Text>
+    </VStack>
   );
 }
 ```
