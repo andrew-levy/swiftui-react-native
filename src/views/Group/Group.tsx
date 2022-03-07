@@ -5,7 +5,7 @@ import { Modifiers, TextModifiers, WithChildren } from '../../utils/modifiers';
 type GroupProps = WithChildren &
   Modifiers &
   TextModifiers & {
-    fill: UIColor;
+    fill?: UIColor;
   };
 
 export const Group = ({ children, ...rest }: GroupProps) => {
