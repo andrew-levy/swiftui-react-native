@@ -35,3 +35,7 @@ Color.red
 </Tabs>
 
 ## Props
+
+:::info
+The `frame` prop is required for Color.
+:::

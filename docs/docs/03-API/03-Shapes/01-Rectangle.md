@@ -37,3 +37,7 @@ Rectangle()
 ## Props
 
 Rectangle inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers).
+
+:::info
+The `frame` prop is required for Rectange.
+:::

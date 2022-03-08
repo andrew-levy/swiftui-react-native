@@ -39,3 +39,7 @@ Capsule()
 ## Props
 
 Capsule inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers).
+
+:::info
+The `frame` prop is required for Capsule.
+:::
