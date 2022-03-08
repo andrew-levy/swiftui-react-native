@@ -15,13 +15,13 @@ import { useAlert } from '../../hooks/useAlert';
 
 type ToggleProps = Modifiers & {
   isOn: BooleanBinding;
-  tintColor?: UIColor;
+  tint?: UIColor;
   onChange?: (value?: boolean) => void;
 };
 
 export const Toggle: React.FC<ToggleProps> = ({
   isOn,
-  tintColor,
+  tint,
   padding,
   backgroundColor,
   shadow,
@@ -66,7 +66,7 @@ export const Toggle: React.FC<ToggleProps> = ({
           onChange(newValue);
         }
       }}
-      trackColor={{ true: getColor(tintColor, colorScheme), false: null }}
+      trackColor={{ true: getColor(tint, colorScheme), false: null }}
     />
   );
 };

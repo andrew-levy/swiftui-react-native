@@ -8,7 +8,7 @@ type ProgressViewProps = Modifiers & {
   value?: number;
   total?: number;
   progressViewStyle?: 'linear' | 'indeterminate';
-  accentColor?: UIColor;
+  tint?: UIColor;
 };
 
 export const ProgressView = ({

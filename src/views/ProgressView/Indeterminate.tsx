@@ -21,7 +21,7 @@ import { UIColor, getColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
 
 type IndeterminateProps = Modifiers & {
-  accentColor?: UIColor;
+  tint?: UIColor;
   scaleEffect?: number;
 };
 
@@ -37,7 +37,7 @@ export const Indeterminate = ({
   shadow,
   zIndex,
   style,
-  accentColor,
+  tint,
   alert,
   onAppear,
   onDisappear,
@@ -69,49 +69,49 @@ export const Indeterminate = ({
         degree="0deg"
         shift={-shift}
         delay={0}
-        color={getColor(accentColor, colorScheme, 'systemGray')}
+        color={getColor(tint, colorScheme, 'systemGray')}
       />
       <Line
         degree="-45deg"
         shift={shift}
         delay={300}
-        color={getColor(accentColor, colorScheme, 'systemGray')}
+        color={getColor(tint, colorScheme, 'systemGray')}
       />
       <Line
         degree="90deg"
         shift={shift}
         delay={600}
-        color={getColor(accentColor, colorScheme, 'systemGray')}
+        color={getColor(tint, colorScheme, 'systemGray')}
       />
       <Line
         degree="45deg"
         shift={shift}
         delay={500}
-        color={getColor(accentColor, colorScheme, 'systemGray')}
+        color={getColor(tint, colorScheme, 'systemGray')}
       />
       <Line
         degree="0deg"
         shift={shift}
         delay={400}
-        color={getColor(accentColor, colorScheme, 'systemGray')}
+        color={getColor(tint, colorScheme, 'systemGray')}
       />
       <Line
         degree="-45deg"
         shift={-shift}
         delay={700}
-        color={getColor(accentColor, colorScheme, 'systemGray')}
+        color={getColor(tint, colorScheme, 'systemGray')}
       />
       <Line
         degree="90deg"
         shift={-shift}
         delay={200}
-        color={getColor(accentColor, colorScheme, 'systemGray')}
+        color={getColor(tint, colorScheme, 'systemGray')}
       />
       <Line
         degree="45deg"
         shift={-shift}
         delay={100}
-        color={getColor(accentColor, colorScheme, 'systemGray')}
+        color={getColor(tint, colorScheme, 'systemGray')}
       />
     </View>
   );

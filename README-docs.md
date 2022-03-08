@@ -139,7 +139,7 @@ A sliding value selector
 | `step`          | The increment/decrement amount                                                                                                                                                                 | `number`                       | no       | `1`                              |
 | `range`         | The range of values `[minNumber, maxNumber]`                                                                                                                                                   | `[number, number]`             | no       | `[0, 10]`                        |
 | `updateOnSlide` | If true, the value will update as the slider is moving. If false, it will only update when the gesture has been completed. Setting this to true might cause some lag if the range is too wide. | `boolean`                      | no       | `true`                           |
-| `accentColor`   | The slider accent fill-color                                                                                                                                                                   | `Color`                        | no       | `#0a84ff` (`UIColor.systemBlue`) |
+| `tint`          | The slider accent fill-color                                                                                                                                                                   | `Color`                        | no       | `#0a84ff` (`UIColor.systemBlue`) |
 | `onChange`      | Function to execute when the slider value changes                                                                                                                                              | `(v: Binding<number>) => void` | no       | `undefined`                      |
 
 Slider inherits all `Modifiers` as props.
@@ -195,11 +195,11 @@ TextField inherits all `Modifiers` and `TextModifiers` as props.
 
 A toggle component to switch between on and off values
 
-| prop        | description                                       | type                            | required | default     |
-| ----------- | ------------------------------------------------- | ------------------------------- | -------- | ----------- |
-| `isOn`      | The toggle binding                                | `Binding<boolean>`              | yes      | `undefined` |
-| `tintColor` | The "on" toggle color                             | `Color`                         | no       | `undefined` |
-| `onChange`  | Function to execute when the toggle value changes | `(v: Binding<boolean>) => void` | no       | `undefined` |
+| prop       | description                                       | type                            | required | default     |
+| ---------- | ------------------------------------------------- | ------------------------------- | -------- | ----------- |
+| `isOn`     | The toggle binding                                | `Binding<boolean>`              | yes      | `undefined` |
+| `tint`     | The "on" toggle color                             | `Color`                         | no       | `undefined` |
+| `onChange` | Function to execute when the toggle value changes | `(v: Binding<boolean>) => void` | no       | `undefined` |
 
 Toggle inherits all `Modifiers` as props.
 

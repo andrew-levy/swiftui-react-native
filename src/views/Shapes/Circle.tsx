@@ -18,8 +18,12 @@ export const Circle = ({
 };
 
 const getDiameter = (frame: ShapeModifiers['frame']) => {
-  if ('width' in frame && 'height' in frame)
-    return Math.max(frame.width, frame.height);
-  else if ('width' in frame) return frame.width;
+  if (!frame) return 0;
+  if ('width' in frame && 'height' in frame) {
+    if (typeof frame.width === 'number' && typeof frame.height === 'number')
+      return Math.max(frame.width, frame.height);
+    else if (typeof frame.width === 'number') return frame.width;
+    else if (typeof frame.height === 'number') return frame.height;
+  } else if ('width' in frame) return frame.width;
   else if ('height' in frame) return frame.height;
 };

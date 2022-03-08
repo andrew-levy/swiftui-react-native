@@ -30,7 +30,9 @@ import { useColorScheme } from '../../hooks/useColorScheme';
 import { useAlert } from '../../hooks/useAlert';
 
 type SliderProps = Modifiers & {
-  accentColor?: UIColor;
+  tint?: UIColor;
+  trackTint?: UIColor;
+  thumbTint?: UIColor;
   step?: number;
   range?: [number, number];
   value: Binding<number>;
@@ -43,7 +45,9 @@ type GestureHandlerContext = {
 };
 
 export const Slider: React.FC<SliderProps> = ({
-  accentColor,
+  tint,
+  trackTint,
+  thumbTint,
   range = [0, 10],
   step = 1,
   value,
@@ -129,19 +133,10 @@ export const Slider: React.FC<SliderProps> = ({
   return (
     <View
       style={[
-        styles.slider,
         {
           opacity,
           zIndex,
-          width: sliderWidth,
-          height: sliderHeight,
-          marginTop: CIRCLE_WIDTH / 2,
-          marginBottom: CIRCLE_WIDTH / 2,
-          backgroundColor: getColor(
-            backgroundColor,
-            colorScheme,
-            'systemGray4'
-          ),
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getBorder(border),
@@ -151,30 +146,44 @@ export const Slider: React.FC<SliderProps> = ({
         style,
       ]}
     >
-      <Animated.View
+      <View
         style={[
+          styles.slider,
           {
+            width: sliderWidth,
             height: sliderHeight,
-            borderRadius: 10,
-            backgroundColor: getColor(accentColor, colorScheme, 'systemBlue'),
+            marginTop: CIRCLE_WIDTH / 2,
+            marginBottom: CIRCLE_WIDTH / 2,
+            backgroundColor: getColor(trackTint, colorScheme, 'systemGray4'),
           },
-          animatedFillStyle,
         ]}
-      />
-      <PanGestureHandler onGestureEvent={gestureHandler}>
+      >
         <Animated.View
           style={[
-            styles.cursor,
             {
-              left: sliderWidth / 2 - CIRCLE_WIDTH / 2,
-              top: -CIRCLE_WIDTH / 2,
-              height: CIRCLE_WIDTH,
-              width: CIRCLE_WIDTH,
+              height: sliderHeight,
+              borderRadius: 10,
+              backgroundColor: getColor(tint, colorScheme, 'systemBlue'),
             },
-            animatedCursorStyle,
+            animatedFillStyle,
           ]}
         />
-      </PanGestureHandler>
+        <PanGestureHandler onGestureEvent={gestureHandler}>
+          <Animated.View
+            style={[
+              styles.cursor,
+              {
+                left: sliderWidth / 2 - CIRCLE_WIDTH / 2,
+                top: -CIRCLE_WIDTH / 2,
+                height: CIRCLE_WIDTH,
+                width: CIRCLE_WIDTH,
+                backgroundColor: getColor(thumbTint, colorScheme, '#fff'),
+              },
+              animatedCursorStyle,
+            ]}
+          />
+        </PanGestureHandler>
+      </View>
     </View>
   );
 };

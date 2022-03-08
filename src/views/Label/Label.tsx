@@ -10,7 +10,7 @@ import { Text } from '../Text';
 type LabelProps = Modifiers &
   WithChildren &
   TextModifiers & {
-    text?: string | ReactElement<any>;
+    title?: string | ReactElement<any>;
     icon?: ReactElement<any>;
     systemImage?: SystemName;
     spacing?: number;
@@ -21,7 +21,7 @@ export const Label = ({
   font,
   foregroundColor,
   fontWeight,
-  text,
+  title,
   icon,
   systemImage,
   alert,
@@ -45,17 +45,17 @@ export const Label = ({
         />
       )}
 
-      {typeof text === 'string' ? (
+      {typeof title === 'string' ? (
         <Text
           fontWeight={fontWeight}
           fontSize={fontSize}
           foregroundColor={foregroundColor}
           font={font}
         >
-          {text}
+          {title}
         </Text>
       ) : (
-        text
+        title
       )}
     </HStack>
   );

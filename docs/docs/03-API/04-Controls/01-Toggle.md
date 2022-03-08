@@ -50,8 +50,8 @@ const [isOn, setIsOn] = useState(false);
 
 Toggle inherits all `Modifiers` as props.
 
-| prop        | description                                       | type                   | required | default     |
-| ----------- | ------------------------------------------------- | ---------------------- | -------- | ----------- |
-| `isOn`      | The toggle binding                                | `BooleanBinding`       | yes      | `undefined` |
-| `tintColor` | The "on" toggle color                             | `UIColor`              | no       | `undefined` |
-| `onChange`  | Function to execute when the toggle value changes | `(v: boolean) => void` | no       | `undefined` |
+| prop       | description                                       | type                   | required | default     |
+| ---------- | ------------------------------------------------- | ---------------------- | -------- | ----------- |
+| `isOn`     | The toggle binding                                | `BooleanBinding`       | yes      | `undefined` |
+| `tint`     | The "on" toggle color                             | `UIColor`              | no       | `undefined` |
+| `onChange` | Function to execute when the toggle value changes | `(v: boolean) => void` | no       | `undefined` |

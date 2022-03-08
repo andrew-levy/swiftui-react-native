@@ -8,9 +8,22 @@ export type Frame = {
 };
 
 export type ShapeFrame =
-  | { width: number; height: number }
-  | { width: number }
-  | { height: number };
+  | {
+      width: number | `${number}%`;
+      height?: number | `${number}%`;
+      maxWidth?: number | `${number}%` | 'infinity';
+      maxHeight?: number | `${number}%` | 'infinity';
+      minWidth?: number | `${number}%`;
+      minHeight?: number | `${number}%`;
+    }
+  | {
+      width?: number | `${number}%`;
+      height: number | `${number}%`;
+      maxWidth?: number | `${number}%` | 'infinity';
+      maxHeight?: number | `${number}%` | 'infinity';
+      minWidth?: number | `${number}%`;
+      minHeight?: number | `${number}%`;
+    };
 
 export const getFrame = (frame: Frame) => {
   let styles = {};
