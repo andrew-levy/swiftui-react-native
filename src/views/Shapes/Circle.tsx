@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 import { ShapeModifiers } from '../../utils/modifiers';
 import { Rectangle } from './Rectangle';
 
@@ -17,13 +18,23 @@ export const Circle = ({
   );
 };
 
-const getDiameter = (frame: ShapeModifiers['frame']) => {
+const getDiameter = (frame: ShapeModifiers['frame']): number | `${number}%` => {
   if (!frame) return 0;
-  if ('width' in frame && 'height' in frame) {
-    if (typeof frame.width === 'number' && typeof frame.height === 'number')
-      return Math.max(frame.width, frame.height);
-    else if (typeof frame.width === 'number') return frame.width;
-    else if (typeof frame.height === 'number') return frame.height;
-  } else if ('width' in frame) return frame.width;
-  else if ('height' in frame) return frame.height;
+  const wWidth = Dimensions.get('window').width;
+  const wHeight = Dimensions.get('window').height;
+
+  const widthFromFrame = frame.width || 0;
+  const heightFromFrame = frame.height || 0;
+
+  const width =
+    typeof widthFromFrame === 'string'
+      ? (parseFloat(widthFromFrame) / 100) * wWidth
+      : widthFromFrame;
+
+  const height =
+    typeof heightFromFrame === 'string'
+      ? (parseFloat(heightFromFrame) / 100) * wHeight
+      : heightFromFrame;
+
+  return Math.max(width, height);
 };
