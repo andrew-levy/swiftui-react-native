@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { SwiftUIRootContext } from '../views/SwiftUIRoot/SwiftUIRoot';
+import { EnvironmentProviderContext } from '../views/EnvironmentProvider/EnvironmentProvider';
 
 export const useColorScheme = () => {
-  return useContext(SwiftUIRootContext)?.envs?.colorScheme || 'light';
+  return useContext(EnvironmentProviderContext)?.envs?.colorScheme || 'light';
 };

@@ -1,7 +1,7 @@
 ---
 ---
 
-The `useEnvironment` hook allows you to access your environment values supplied to the `SwiftUIRoot` view.
+The `useEnvironment` hook allows you to access your environment values supplied to the `EnvironmentProvider` view.
 
 ```typescript
 function useEnvironment<T, V>(
@@ -44,7 +44,7 @@ You can supply the `useEnvironment` hook with generics to leverage types and int
 ```tsx
 // App.tsx
 
-import { SwiftUIRoot } from 'swiftui-react-native';
+import { EnvironmentProvider } from 'swiftui-react-native';
 import SomeComponent from './SomeComponent';
 
 const environemntVars = { isLoggedIn: false };
@@ -52,9 +52,9 @@ export type MyEnvs = typeof environemntVars;
 
 export default function App() {
   return (
-    <SwiftUIRoot environment={environmentVars}>
+    <EnvironmentProvider environment={environmentVars}>
       <SomeComponent />
-    </SwiftUIRoot>
+    </EnvironmentProvider>
   );
 }
 ```

@@ -1,16 +1,16 @@
 import { useContext } from 'react';
-import { SwiftUIRootContext } from '../views/SwiftUIRoot/SwiftUIRoot';
+import { EnvironmentProviderContext } from '../views/EnvironmentProvider/EnvironmentProvider';
 
 type EnvironmentKeys<T> = 'colorScheme' | keyof T;
 
 export const useEnvironment = <T, V>(key: EnvironmentKeys<T>) => {
-  const ctx = useContext(SwiftUIRootContext) as unknown as {
+  const ctx = useContext(EnvironmentProviderContext) as unknown as {
     envs: T;
     setValueAtKey: (key: string, value: V) => void;
   };
   if (!ctx) {
     console.warn(
-      'In order to use useEnvironment, you must wrap your component in a SwiftUIRoot.'
+      'In order to use useEnvironment, you must wrap your component in a EnvironmentProvider.'
     );
     return [undefined, () => {}];
   }

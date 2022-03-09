@@ -1,10 +1,10 @@
 import React, { createContext, useState } from 'react';
 import { WithChildren } from '../../utils/modifiers';
 
-type SwiftUIRootProps = WithChildren & {
+type EnvironmentProviderProps = WithChildren & {
   environment?: { [key: string]: any };
 };
-export const SwiftUIRootContext = createContext<{
+export const EnvironmentProviderContext = createContext<{
   envs: {
     colorScheme?: 'light' | 'dark';
     [key: string]: unknown;
@@ -12,7 +12,10 @@ export const SwiftUIRootContext = createContext<{
   setValueAtKey: (key: string, value: unknown) => void;
 } | null>(null);
 
-export const SwiftUIRoot = ({ environment, children }: SwiftUIRootProps) => {
+export const EnvironmentProvider = ({
+  environment,
+  children,
+}: EnvironmentProviderProps) => {
   const [envs, setEnvs] = useState<{
     colorScheme?: 'light' | 'dark';
     [key: string]: unknown;
@@ -29,8 +32,8 @@ export const SwiftUIRoot = ({ environment, children }: SwiftUIRootProps) => {
   };
 
   return (
-    <SwiftUIRootContext.Provider value={{ envs, setValueAtKey }}>
+    <EnvironmentProviderContext.Provider value={{ envs, setValueAtKey }}>
       {children}
-    </SwiftUIRootContext.Provider>
+    </EnvironmentProviderContext.Provider>
   );
 };

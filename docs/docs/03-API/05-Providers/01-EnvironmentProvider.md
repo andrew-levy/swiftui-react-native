@@ -1,7 +1,7 @@
 ---
 ---
 
-Provides global context to the app. Wrap your app in a `SwiftUIRoot` to access environment values like `colorScheme`.
+Provides global context to the app. Wrap your app in a `EnvironmentProvider` to access environment values like `colorScheme`.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,9 +12,9 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<SwiftUIRoot environment={{ colorScheme: 'dark', isLoggedIn: false }}>
+<EnvironmentProvider environment={{ colorScheme: 'dark', isLoggedIn: false }}>
   <MyApp />
-</SwiftUIRoot>
+</EnvironmentProvider>
 ```
 
 </TabItem>

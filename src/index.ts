@@ -20,7 +20,7 @@ export * from './views/Spacer';
 
 export * from './views/Shapes';
 
-export * from './views/SwiftUIRoot';
+export * from './views/EnvironmentProvider';
 
 export * from './hooks/useUIColor';
 export * from './hooks/useBinding';

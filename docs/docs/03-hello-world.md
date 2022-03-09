@@ -2,19 +2,19 @@
 title: Hello World
 ---
 
-Let's make a simple hello world app using SwiftUI primitives. If you want to take advantage of features like dynamic colors and environment values, you'll need to wrap your app in a `SwiftUIRoot` view.
+Let's make a simple hello world app using SwiftUI primitives. If you want to take advantage of features like dynamic colors and environment values, you'll need to wrap your app in a `EnvironmentProvider` view.
 
 ```tsx
 // App.js
 
-import { SwiftUIRoot } from 'swiftui-react-native';
+import { EnvironmentProvider } from 'swiftui-react-native';
 import HelloWorld from './HelloWorld';
 
 export default function App() {
   return (
-    <SwiftUIRoot>
+    <EnvironmentProvider>
       <HelloWorld />
-    </SwiftUIRoot>
+    </EnvironmentProvider>
   );
 }
 ```
