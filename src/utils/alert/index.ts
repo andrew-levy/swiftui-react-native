@@ -5,7 +5,7 @@ export type Alert = {
   title: string;
   message?: string;
   buttons?: {
-    label: string;
+    title: string;
     action?: () => void;
     role?: 'default' | 'cancel' | 'destructive';
   }[];

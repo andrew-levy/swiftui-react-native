@@ -18,11 +18,11 @@ export type ButtonProps = Modifiers &
   WithChildren & {
     action?: () => void;
     disabled?: boolean;
-    label?: string;
+    title?: string;
   };
 
 export const Button = ({
-  label,
+  title,
   action,
   alert,
   disabled,
@@ -66,9 +66,9 @@ export const Button = ({
         style,
       ]}
     >
-      {label ? (
+      {title ? (
         <Text foregroundColor="systemBlue" {...textProps}>
-          {label}
+          {title}
         </Text>
       ) : (
         React.Children.map(children, (child) =>
