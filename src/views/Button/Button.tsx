@@ -73,7 +73,7 @@ export const Button = ({
       ) : (
         React.Children.map(children, (child) =>
           React.cloneElement(child, {
-            ...{ foregroundColor: 'systemBlue', textProps },
+            ...{ foregroundColor: 'systemBlue', ...textProps },
             ...child.props,
           })
         )
