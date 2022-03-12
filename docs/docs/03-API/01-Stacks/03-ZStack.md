@@ -43,7 +43,7 @@ HStack(alignment: .top, spacing: 10) {
 
 ## Props
 
-ZStack inherits all `Modifiers` as props.
+ZStack inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
 :::info
 The `frame` prop is required for ZStack.

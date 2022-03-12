@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { useAlert } from '../../hooks/useAlert';
 import { useColorScheme } from '../../hooks/useColorScheme';
@@ -60,17 +60,19 @@ export const ZStack = ({
         style,
       ]}
     >
-      {React.Children.map(children, (child, i) =>
-        React.cloneElement(child, {
-          ...child.props,
-          style: {
-            zIndex: i,
-            position:
-              i === 1 || React.Children.count(children) === 1
-                ? 'relative'
-                : 'absolute',
-          },
-        })
+      {React.Children.map(children as ReactElement<any>[], (child, i) =>
+        child
+          ? React.cloneElement(child, {
+              ...child.props,
+              style: {
+                zIndex: i,
+                position:
+                  i === 1 || React.Children.count(children) === 1
+                    ? 'relative'
+                    : 'absolute',
+              },
+            })
+          : null
       )}
     </View>
   );

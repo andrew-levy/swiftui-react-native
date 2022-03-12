@@ -47,7 +47,7 @@ yarn add react-native-reanimated react-native-gesture-handler
 `react-native-sfsymbols` is only supported on iOS due to [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/).
 :::
 
-## Build!
+## Go Build!
 
 You should be all set now. Go build something awesome!
 

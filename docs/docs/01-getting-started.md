@@ -3,7 +3,7 @@ slug: /
 title: Getting Started
 ---
 
-Bringing the best **SwiftUI** features to **React Native** applications :rocket:
+Bringing the best **SwiftUI** features to your **React Native** app :rocket:
 
 <img style={{ borderRadius: 20, boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px", marginTop: 20 }} src="img/cover.png" />
 

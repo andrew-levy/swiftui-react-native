@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { WithChildren, Modifiers, TextModifiers } from '../../utils/modifiers';
 import { Text } from '../Text';
@@ -71,11 +71,13 @@ export const Button = ({
           {title}
         </Text>
       ) : (
-        React.Children.map(children, (child) =>
-          React.cloneElement(child, {
-            ...{ foregroundColor: 'systemBlue', ...textProps },
-            ...child.props,
-          })
+        React.Children.map(children as ReactElement<any>[], (child) =>
+          child
+            ? React.cloneElement(child, {
+                ...{ foregroundColor: 'systemBlue', ...textProps },
+                ...child.props,
+              })
+            : null
         )
       )}
     </TouchableOpacity>

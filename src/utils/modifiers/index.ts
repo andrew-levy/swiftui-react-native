@@ -7,6 +7,7 @@ import { Shadow } from '../shadow';
 import { Rotation } from '../transform';
 import { Alert } from '../alert';
 import { Fonts, FontWeights } from '../fonts';
+import { ReactNode } from 'react';
 
 export type Modifiers = {
   alert?: Alert;
@@ -39,5 +40,5 @@ export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
 };
 
 export type WithChildren = {
-  children?: React.ReactElement | React.ReactElement[];
+  children?: ReactNode;
 };

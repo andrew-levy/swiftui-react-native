@@ -81,8 +81,8 @@ export const List = ({
         ]}
       >
         {Children.map(
-          children,
-          (child: React.ReactElement<ListRowProps>, index: number) => (
+          children as React.ReactElement<any>[],
+          (child, index: number) => (
             <ListRow
               separatorTint={getColor(separatorTint, colorScheme, 'separator')}
               hideSeparator={

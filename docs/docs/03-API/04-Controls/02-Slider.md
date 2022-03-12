@@ -12,12 +12,10 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-// Create a binding value
 const $sliderValue = useBinding(0);
 ```
 
 ```tsx
-// Pass it to the view
 <Slider value={$sliderValue} range={[0, 10]} />
 ```
 
@@ -37,7 +35,7 @@ Slider(value: $sliderValue, in: 0...10)
 
 ## Props
 
-Slider inherits all `Modifiers` as props.
+Slider inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
 | prop            | description                                                                                                                                                                                    | type                  | required | default       |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | -------- | ------------- |

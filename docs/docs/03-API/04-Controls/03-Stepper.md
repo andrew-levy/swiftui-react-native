@@ -12,12 +12,10 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-// Create a binding value
 const $stepperVal = useBinding(0);
 ```
 
 ```tsx
-// Pass it to the view
 <Stepper value={$stepperVal} step={2} />
 ```
 
@@ -37,7 +35,7 @@ Stepper(value: $stepperVal, step: 2)
 
 ## Props
 
-Stepper inherits all `Modifiers` as props.
+Stepper inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
 | prop       | description                                        | type                  | required | default       |
 | ---------- | -------------------------------------------------- | --------------------- | -------- | ------------- |

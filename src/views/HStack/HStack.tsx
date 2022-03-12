@@ -62,13 +62,15 @@ export const HStack = ({
       ]}
     >
       {spacing && spacing !== 0
-        ? React.Children.map(children, (child) => (
-            <>
-              <View style={{ width: spacing }} />
-              {child}
-              <View style={{ width: spacing }} />
-            </>
-          ))
+        ? React.Children.map(children, (child) =>
+            child ? (
+              <>
+                <View style={{ width: spacing }} />
+                {child}
+                <View style={{ width: spacing }} />
+              </>
+            ) : null
+          )
         : children}
     </View>
   );

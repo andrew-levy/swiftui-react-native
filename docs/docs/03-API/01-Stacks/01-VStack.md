@@ -43,7 +43,7 @@ VStack(alignment: .leading, spacing: 10) {
 
 ## Props
 
-VStack inherits all `Modifiers` as props.
+VStack inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
 | prop       | description                         | type                                                         | required | default    |
 | ---------- | ----------------------------------- | ------------------------------------------------------------ | -------- | ---------- |
