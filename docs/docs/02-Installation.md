@@ -1,7 +1,7 @@
 ---
 ---
 
-## Add the package to your app
+## Add the package
 
 ```console
 yarn add swiftui-react-native
