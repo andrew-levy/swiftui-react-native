@@ -2,7 +2,7 @@
 
 <img class="cover" style="border-radius: 20px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; margin-bottom: 20px" src="assets/cover.png" />
 
-Welcome to SwiftUI React Native, the library that aims to recreate the best SwiftUI features in React Native applications.
+Bringing the best **SwiftUI** features to your **React Native** app :rocket:
 
 ## At a Glance
 
@@ -13,7 +13,7 @@ Welcome to SwiftUI React Native, the library that aims to recreate the best Swif
 
 ## Documentation
 
-Check out the [official documentation](https://github.com/andrew-levy/swiftui-react-native-example).
+Check out the [official documentation](https://swiftui-react-native.vercel.app).
 
 ## Example Project
 

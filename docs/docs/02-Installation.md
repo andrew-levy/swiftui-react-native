@@ -24,7 +24,7 @@ yarn add react-native-reanimated react-native-gesture-handler react-native-sfsym
 
 `react-native-gesture-handler` requires extra steps to set up. Complete them [here](https://docs.swmansion.com/react-native-gesture-handler/docs/).
 
-`react-native-sfsymbols` requires extra steps to set up. Complete them [here](https://github.com/birkir/react-native-sfsymbols).
+`react-native-sfsymbols` requires extra steps to set up. Complete them [here](https://github.com/birkir/react-native-sfsymbols). This library is only supported on iOS due to [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/).
 :::
 
 </TabItem>
@@ -43,11 +43,7 @@ yarn add react-native-reanimated react-native-gesture-handler
 </TabItem>
 </Tabs>
 
-:::caution Heads up
-`react-native-sfsymbols` is only supported on iOS due to [Apple's Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/).
-:::
-
-## Go Build!
+## Go build!
 
 You should be all set now. Go build something awesome!
 

@@ -71,14 +71,6 @@ Color.red
 
 Color inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
 
-<!-- color:
-| UIColor
-| {
-red?: number;
-blue?: number;
-green?: number;
-}; -->
-
 | prop    | description     | type                                                           | required | default     |
 | ------- | --------------- | -------------------------------------------------------------- | -------- | ----------- |
 | `color` | The color value | `UIColor` or `{ red?: number; blue?: number; green?: number;}` | no       | `undefined` |
