@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 ```tsx
 <Button action={doSomething}>
-    <Text fontWeight="bold">Click the cool button</Text>
+  <Text fontWeight="bold">Click the cool button</Text>
 </Button>
 ```
 
@@ -32,7 +32,7 @@ Button(action: doSomething) {
 
 ```tsx
 <TouchableOpacity onPress={doSomething}>
-    <Text style={{ fontWeight: 'bold' }}>Click the cool button</Text>
+  <Text style={{ fontWeight: 'bold' }}>Click the cool button</Text>
 </TouchableOpacity>
 ```
 
@@ -40,3 +40,11 @@ Button(action: doSomething) {
 </Tabs>
 
 ## Props
+
+Button inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+
+| prop       | description                                               | type         | required | default     |
+| ---------- | --------------------------------------------------------- | ------------ | -------- | ----------- |
+| `title`    | A view that describes the purpose of the button’s action. | `string`     | yes      | `undefined` |
+| `action`   | The action to perform when the user triggers the button.  | `() => void` | yes      | `undefined` |
+| `disabled` | The action to perform when the user triggers the button.  | `boolean`    | no       | `undefined` |

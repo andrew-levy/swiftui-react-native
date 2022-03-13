@@ -27,9 +27,9 @@ TextField("Name", text: $text)
 
 ```tsx
 <TextInput
-    placeholder="Name"
-    value={text}
-    onChangeText={(text) => setText(text)}
+  placeholder="Name"
+  value={text}
+  onChangeText={(text) => setText(text)}
 />
 ```
 
@@ -37,3 +37,11 @@ TextField("Name", text: $text)
 </Tabs>
 
 ## Props
+
+TextField inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+
+| prop          | description                                           | type            | required | default     |
+| ------------- | ----------------------------------------------------- | --------------- | -------- | ----------- |
+| `placeholder` | The title of the text view, describing its purpose.   | `string`        | no       | `''`        |
+| `text`        | The text to display and edit.                         | `StringBinding` | yes      | `undefined` |
+| `onChange`    | Function to execute when the input text value changes | `() => void`    | no       | `undefined` |
