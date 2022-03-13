@@ -1,7 +1,7 @@
 ---
 ---
 
-A view that displays one or more lines of read-only text.
+A view that displays text.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,21 +12,21 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<Text>Hello</Text>
+<Text font="largeTitle">Hello</Text>
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-Text("Hello")
+Text("Hello").font(.largeTitle)
 ```
 
 </TabItem>
 <TabItem value="react-native" label="React Native">
 
 ```tsx
-<Text>Hello</Text>
+<Text style={{ fontWeight: 'bold', fontSize: 34 }}>Hello</Text>
 ```
 
 </TabItem>
@@ -34,4 +34,4 @@ Text("Hello")
 
 ## Props
 
-Text has a unique set of modifiers. See [Text Modifiers](../modifiers#text-modifiers).
+Text inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.

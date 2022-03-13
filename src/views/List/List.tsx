@@ -1,4 +1,9 @@
-import React, { Children, ReactElement, PropsWithChildren } from 'react';
+import React, {
+  Children,
+  ReactElement,
+  PropsWithChildren,
+  ReactNode,
+} from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Modifiers } from '../../utils/modifiers';
 import { ListRow, ListRowProps } from './ListRow';
@@ -13,16 +18,18 @@ import { useColorScheme } from '../../hooks/useColorScheme';
 import { UIColor, getColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
 
-type ListProps = Modifiers &
-  PropsWithChildren<{
-    inset?: boolean;
-    header?: string | ReactElement<any>;
-    footer?: string | ReactElement<any>;
-    separatorTint?: UIColor;
-    hideSeparators?: boolean;
-  }>;
+type ListProps<T> = Modifiers & {
+  inset?: boolean;
+  header?: string | ReactElement<any>;
+  footer?: string | ReactElement<any>;
+  separatorTint?: UIColor;
+  hideSeparators?: boolean;
+  data?: T[];
+  children?: ReactNode | ((item: T, index: number) => ReactNode);
+};
 
-export const List = ({
+export function List<T>({
+  data,
   inset = false,
   header,
   footer,
@@ -43,7 +50,7 @@ export const List = ({
   alert,
   onAppear,
   onDisappear,
-}: ListProps) => {
+}: ListProps<T>) {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
@@ -80,24 +87,53 @@ export const List = ({
           style,
         ]}
       >
-        {Children.map(
-          children as React.ReactElement<any>[],
-          (child, index: number) => (
-            <ListRow
-              separatorTint={getColor(separatorTint, colorScheme, 'separator')}
-              hideSeparator={
-                hideSeparators ? true : index === Children.count(children) - 1
+        {data && typeof children === 'function'
+          ? data.map((dataItem, index: number) => {
+              const rowId = Math.floor(Math.random()) * 1000;
+              return (
+                <ListRow
+                  key={`listRow-${rowId}-${index}`}
+                  separatorTint={getColor(
+                    separatorTint,
+                    colorScheme,
+                    'separator'
+                  )}
+                  hideSeparator={
+                    hideSeparators ? true : index === data.length - 1
+                  }
+                >
+                  {children(dataItem, index)}
+                </ListRow>
+              );
+            })
+          : Children.map(
+              children as React.ReactElement<any>[],
+              (child, index: number) => {
+                const rowId = Math.floor(Math.random()) * 1000;
+                return (
+                  <ListRow
+                    key={`listRow-${rowId}-${index}`}
+                    separatorTint={getColor(
+                      separatorTint,
+                      colorScheme,
+                      'separator'
+                    )}
+                    hideSeparator={
+                      hideSeparators
+                        ? true
+                        : index === Children.count(children) - 1
+                    }
+                  >
+                    {child}
+                  </ListRow>
+                );
               }
-            >
-              {child}
-            </ListRow>
-          )
-        )}
+            )}
       </View>
       {footer && <Caption caption={footer} />}
     </View>
   );
-};
+}
 
 const getOuterContainerStyles = (type: string) => {
   switch (type) {

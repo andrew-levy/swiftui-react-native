@@ -11,20 +11,39 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="srn" label="swiftui-react-native">
 
+### Verbose
+
 ```tsx
 <Button action={doSomething}>
-  <Text fontWeight="bold">Click the cool button</Text>
+  <Text fontWeight="bold" fontSize={24}>
+    Click the cool button
+  </Text>
 </Button>
+```
+
+### Shorthand
+
+```tsx
+<Button title="Click the cool button" fontWeight="bold" action={doSomething} />
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
+### Verbose
+
 ```swift
 Button(action: doSomething) {
     Text("Click the cool button")
-        .bold()
+        .fontWeight(.bold)
 }
+```
+
+### Shorthand
+
+```swift
+Button("Click the cool button", action: doSomething)
+  .fontWeight(.bold)
 ```
 
 </TabItem>
@@ -41,10 +60,11 @@ Button(action: doSomething) {
 
 ## Props
 
-Button inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+Button inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
 
-| prop       | description                                               | type         | required | default     |
-| ---------- | --------------------------------------------------------- | ------------ | -------- | ----------- |
-| `title`    | A view that describes the purpose of the button’s action. | `string`     | yes      | `undefined` |
-| `action`   | The action to perform when the user triggers the button.  | `() => void` | yes      | `undefined` |
-| `disabled` | The action to perform when the user triggers the button.  | `boolean`    | no       | `undefined` |
+| prop       | description                                          | type         | required | default     |
+| ---------- | ---------------------------------------------------- | ------------ | -------- | ----------- |
+| `title`    | The text of the button.                              | `string`     | yes      | `undefined` |
+| `action`   | The action to perform when the user taps the button. | `() => void` | yes      | `undefined` |
+| `disabled` | Whether the button is able to be clicked.            | `boolean`    | no       | `undefined` |
+| `children` | The button content.                                  | `ReactNode`  | no       | `undefined` |
