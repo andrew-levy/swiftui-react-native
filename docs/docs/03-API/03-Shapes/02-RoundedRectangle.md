@@ -38,7 +38,7 @@ RoundedRectangle()
 
 ## Props
 
-RoundedRectangle inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers).
+RoundedRectangle inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
 
 :::info
 The `frame` prop is required for RoundedRectangle.
