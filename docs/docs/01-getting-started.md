@@ -128,3 +128,7 @@ const styles = StyleSheet.create({
 This meme pretty much sums it up!
 
 ![Meme](../static/img/spiderman-meme.jpeg)
+
+## But...Why?
+
+Recently I made the switch, both professionally and personally, to focus more on mobile development and less on the web. I started playing around with React Native and SwiftUI, and I was really impressed with how easy it was to build quality apps with them both. My experience building apps with these frameworks encouraged me to combine their strengths. React Native is easy to learn coming from a web dev background, which makes it one of the most accessible mobile development frameworks out there. SwiftUI is incredibly well designed, and using it feels like the _right_ way to build apps. This library started as an experiement to see if I could bring that same feeling to the React Native world. Even if no one uses this, it was still a lot of fun to build and better understand React Native and SwiftUI primitives.
