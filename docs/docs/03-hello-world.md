@@ -21,24 +21,7 @@ export default function App() {
 }
 ```
 
-Next, lets use some commonly used primitives like `VStack`, `Image`, and `Text`. We'll display a smiling face icon and some text saying "Hello World" below it.
-
-```tsx
-// HelloWorld.js
-
-import { VStack, Image, Text } from 'swiftui-react-native';
-
-export default function HelloWorld() {
-  return (
-    <VStack spacing={5} frame={{ maxHeight: 'infinity' }}>
-      <Image systemName="face.smiling" fontSize={50} />
-      <Text font="title">Hello World!</Text>
-    </VStack>
-  );
-}
-```
-
-<!-- Want to see how easy it is to implement dark mode? Since we already have an `EnvironmentProvider` wrapping our app, we have access to the color scheme environment value which defaults to light. Let's add two buttons to switch between light and dark mode.
+Next, let's use some commonly used primitives like `VStack`, `Image`, and `Text`. We'll display a smiling face icon and some text saying "Hello World" below it. Since we already wrapped our app in an `EnvironmentProvider`, we can easily take advantage of the `colorScheme` environment value (this is automatically exposed to us). Let's add a button to switch between light and dark mode.
 
 ```tsx
 // HelloWorld.js
@@ -52,14 +35,16 @@ import {
 } from 'swiftui-react-native';
 
 export default function HelloWorld() {
-  const [colorScheme] = useEnvironment('colorScheme');
-  const $colorScheme = useBinding(colorScheme)
+  const [colorScheme, setColorScheme] = useEnvironment('colorScheme');
+  const toggleColorScheme = () => {
+    setColorScheme(colorScheme === 'light' ? 'dark' : 'light');
+  };
   return (
     <VStack spacing={5} frame={{ maxHeight: 'infinity' }}>
       <Image systemName="face.smiling" fontSize={50} />
       <Text font="title">Hello World!</Text>
-      <Toggle isOn={$colorScheme} />
+      <Button title={`${colorScheme} mode`} action={toggleColorScheme} />
     </VStack>
   );
 }
-``` -->
+```

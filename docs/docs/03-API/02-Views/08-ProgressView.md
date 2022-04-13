@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 ### Indeterminate
 
 ```tsx
-<ProgressView />
+<ProgressView /> // progressViewStyle defaults to 'indeterminate'
 ```
 
 ### Linear

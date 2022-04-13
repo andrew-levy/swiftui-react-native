@@ -14,10 +14,6 @@ Bringing the best **SwiftUI** features to your **React Native** app :rocket:
 - :white_check_mark: Animations with Reanimated v2
 - :white_check_mark: Built-in dark mode
 
-This meme pretty much sums it up!
-
-![Meme](../static/img/spiderman-meme.jpeg)
-
 ## Usage
 
 import Tabs from '@theme/Tabs';
@@ -128,3 +124,7 @@ const styles = StyleSheet.create({
 
 </TabItem>
 </Tabs>
+
+This meme pretty much sums it up!
+
+![Meme](../static/img/spiderman-meme.jpeg)
