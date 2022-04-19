@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import { Button } from '../Button';
 import { Text } from '../Text';
@@ -51,6 +51,14 @@ export const Stepper: React.FC<StepperProps> = ({
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme();
+  useEffect(() => {
+    const [min, max] = range;
+    if (value.value < min) {
+      value.setValue(min);
+    } else if (value.value > max) {
+      value.setValue(max);
+    }
+  }, [value]);
 
   return (
     <View
@@ -59,7 +67,11 @@ export const Stepper: React.FC<StepperProps> = ({
         {
           opacity,
           zIndex,
-          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
+          backgroundColor: getColor(
+            backgroundColor,
+            colorScheme,
+            'systemGray5'
+          ),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),

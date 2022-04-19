@@ -20,7 +20,7 @@ import { useAlert } from '../../hooks/useAlert';
 type LinearProps = Modifiers & {
   value: number;
   total?: number;
-  accentColor?: UIColor;
+  tint?: UIColor;
 };
 
 export const Linear = ({
@@ -37,7 +37,7 @@ export const Linear = ({
   shadow,
   zIndex,
   style,
-  accentColor,
+  tint,
   alert,
   onAppear,
   onDisappear,
@@ -70,13 +70,10 @@ export const Linear = ({
   return (
     <View
       style={[
-        styles.progressBar,
         {
-          width: sliderWidth,
-          height: sliderHeight,
           opacity,
           zIndex,
-          backgroundColor: getColor(backgroundColor, colorScheme, 'systemGray'),
+          backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getBorder(border),
@@ -86,16 +83,27 @@ export const Linear = ({
         style,
       ]}
     >
-      <Animated.View
+      <View
         style={[
+          styles.progressBar,
           {
+            width: sliderWidth,
             height: sliderHeight,
-            borderRadius: 10,
-            backgroundColor: getColor(accentColor, colorScheme, 'systemBlue'),
+            backgroundColor: getColor('systemGray4', colorScheme),
           },
-          animatedFillStyle,
         ]}
-      />
+      >
+        <Animated.View
+          style={[
+            {
+              height: sliderHeight,
+              borderRadius: 10,
+              backgroundColor: getColor(tint, colorScheme, 'systemBlue'),
+            },
+            animatedFillStyle,
+          ]}
+        />
+      </View>
     </View>
   );
 };

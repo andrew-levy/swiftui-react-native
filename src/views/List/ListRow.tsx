@@ -22,12 +22,20 @@ export const ListRow = ({
   const buttonChild = cloneElement(children, {
     ...children.props,
     disabled: true,
+    style: { ...children.props.style, alignSelf: 'flex-start' },
+  });
+
+  const nonButtonChild = cloneElement(children, {
+    ...children.props,
+    style: { ...children.props.style, alignSelf: 'flex-start' },
   });
 
   const rowContent = (
     <View style={rowStyles.container}>
       <View style={rowStyles.contentContainer}>
-        <View style={rowStyles.content}>{action ? buttonChild : children}</View>
+        <View style={rowStyles.content}>
+          {action ? buttonChild : nonButtonChild}
+        </View>
         {!hideSeparator && (
           <View style={[rowStyles.separator, { borderColor: separatorTint }]} />
         )}
@@ -83,6 +91,7 @@ const rowStyles = StyleSheet.create({
   content: {
     flexGrow: 1,
     marginRight: SYSTEM_SPACE,
+    alignItems: 'flex-start',
   },
   leading: {
     marginRight: SYSTEM_SPACE,

@@ -54,12 +54,37 @@ const DARK_COLORS = {
   systemGray6: '#1c1c1e',
 };
 
-export const UIColor = {
-  light: LIGHT_COLORS,
-  dark: DARK_COLORS,
+const FIXED_COLORS = {
+  clear: 'rgba(0,0,0,0)',
+  black: '#000000',
+  white: '#FFFFFF',
+  brown: '#a2835e',
+  cyan: '#31ade6',
+  primary: '#000000',
+  secondary: '#3b3b43',
+  gray: '#8e8e93',
+  green: '#33c758',
+  teal: '#2fb0c7',
+  orange: '#fe9500',
+  purple: '#af52de',
+  red: '#fe3a2f',
+  yellow: '#fecc00',
+  blue: '#007afe',
+  pink: '#fe2c54',
+  accentColor: '#007afe',
+  indigo: '#5755d6',
+  mint: '#00c7be',
 };
 
-export type UIColor = keyof typeof LIGHT_COLORS | `#${string}` | `rgb${string}`;
+export const UIColor = {
+  light: { ...LIGHT_COLORS, ...FIXED_COLORS },
+  dark: { ...DARK_COLORS, ...FIXED_COLORS },
+};
+
+export type UIColor =
+  | keyof typeof UIColor.light
+  | `#${string}`
+  | `rgb${string}`;
 
 export const getColor = (
   color: UIColor,

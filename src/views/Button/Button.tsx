@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { WithChildren, Modifiers, TextModifiers } from '../../utils/modifiers';
 import { Text } from '../Text';
@@ -18,11 +18,11 @@ export type ButtonProps = Modifiers &
   WithChildren & {
     action?: () => void;
     disabled?: boolean;
-    label?: string;
+    title?: string;
   };
 
 export const Button = ({
-  label,
+  title,
   action,
   alert,
   disabled,
@@ -66,16 +66,18 @@ export const Button = ({
         style,
       ]}
     >
-      {label ? (
+      {title ? (
         <Text foregroundColor="systemBlue" {...textProps}>
-          {label}
+          {title}
         </Text>
       ) : (
-        React.Children.map(children, (child) =>
-          React.cloneElement(child, {
-            ...{ foregroundColor: 'systemBlue', textProps },
-            ...child.props,
-          })
+        React.Children.map(children as ReactElement<any>[], (child) =>
+          child
+            ? React.cloneElement(child, {
+                ...{ foregroundColor: 'systemBlue', ...textProps },
+                ...child.props,
+              })
+            : null
         )
       )}
     </TouchableOpacity>

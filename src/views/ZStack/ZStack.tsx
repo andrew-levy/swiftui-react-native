@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { StyleProp, View, ViewStyle } from 'react-native';
 import { useAlert } from '../../hooks/useAlert';
 import { useColorScheme } from '../../hooks/useColorScheme';
@@ -7,16 +7,17 @@ import { getAlignment, ZStackAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
 import { getColor } from '../../utils/colors';
 import { getCornerRadius } from '../../utils/cornerRadius';
-import { getFrame } from '../../utils/frame';
+import { Frame, getFrame } from '../../utils/frame';
 import { Modifiers, WithChildren } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getTransform } from '../../utils/transform';
 
-type ZStackProps = Omit<Modifiers, 'alignment'> &
+type ZStackProps = Omit<Modifiers, 'alignment' | 'frame'> &
   WithChildren & {
     style?: StyleProp<ViewStyle>;
     alignment?: ZStackAlignment;
+    frame: Frame;
   };
 
 export const ZStack = ({
@@ -59,17 +60,19 @@ export const ZStack = ({
         style,
       ]}
     >
-      {React.Children.map(children, (child, i) =>
-        React.cloneElement(child, {
-          ...child.props,
-          style: {
-            zIndex: i,
-            position:
-              i === 1 || React.Children.count(children) === 1
-                ? 'relative'
-                : 'absolute',
-          },
-        })
+      {React.Children.map(children as ReactElement<any>[], (child, i) =>
+        child
+          ? React.cloneElement(child, {
+              ...child.props,
+              style: {
+                zIndex: i,
+                position:
+                  i === 1 || React.Children.count(children) === 1
+                    ? 'relative'
+                    : 'absolute',
+              },
+            })
+          : null
       )}
     </View>
   );

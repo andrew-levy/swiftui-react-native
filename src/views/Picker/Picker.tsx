@@ -30,6 +30,7 @@ import { Text } from '../Text';
 import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
+import { ReactElement } from 'react';
 
 type PickerProps = Modifiers &
   WithChildren & {
@@ -138,9 +139,9 @@ export const Picker = ({
         ]}
       >
         <View style={styles.options}>
-          {React.Children.map(children, (child, i) => {
+          {React.Children.map(children as ReactElement<any>, (child, i) => {
             const textChild =
-              child.type === Text
+              child?.type === Text
                 ? cloneElement(child, { fontSize: 12, ...child.props })
                 : child;
             return (
