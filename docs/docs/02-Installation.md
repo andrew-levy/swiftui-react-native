@@ -1,6 +1,10 @@
 ---
 ---
 
+:::info Note
+Due to the nature of the project, there was a bias towards iOS while developing and testing this library. Though Android is supported, some features (like sfsymbols) can't be implemented.
+:::
+
 ## Add the package
 
 ```console
@@ -46,12 +50,3 @@ yarn add react-native-reanimated react-native-gesture-handler
 ## Go build!
 
 You should be all set now. Go build something awesome!
-
-:::caution Having trouble?
-If you run into any errors during installation, try stopping your metro bundler and run
-
-```console
-yarn start --reset-cache
-```
-
-:::

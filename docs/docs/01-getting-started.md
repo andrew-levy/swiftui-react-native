@@ -1,6 +1,6 @@
 ---
 slug: /
-title: Getting Started
+title: Welcome
 ---
 
 Bringing the best **SwiftUI** features to your **React Native** app :rocket:
@@ -32,7 +32,7 @@ import {
 } from 'swiftui-react-native';
 
 function App() {
-  const text = useBinding('');
+  const $text = useBinding('');
   return (
     <VStack
       aligment="leading"
@@ -41,7 +41,7 @@ function App() {
       cornerRadius={20}
     >
       <Text font="title">Some cool text</Text>
-      <TextField text={text} placeholder="Name" />
+      <TextField text={$text} placeholder="Name" />
       <Button action={doSomething}>
         <Text fontWeight="bold">Click the cool button</Text>
       </Button>
@@ -131,4 +131,8 @@ This meme pretty much sums it up!
 
 ## But...Why?
 
-Recently I made the switch, both professionally and personally, to focus more on mobile development and less on the web. I started playing around with React Native and SwiftUI, and I was really impressed with how easy it was to build quality apps with them both. My experience building apps with these frameworks encouraged me to combine their strengths. React Native is easy to learn coming from a web dev background, which makes it one of the most accessible mobile development frameworks out there. SwiftUI is incredibly well designed, and using it feels like the _right_ way to build apps. This library started as an experiement to see if I could bring that same feeling to the React Native world. Even if no one uses this, it was still a lot of fun to build and better understand React Native and SwiftUI primitives.
+Recently I made the switch, both personally and professionally, to focus more on mobile development and less on the web. I started playing around with React Native and SwiftUI, and I was really impressed by how easy it was to build quality apps with them both. My experience building apps with these frameworks encouraged me to combine their strengths. SwiftUI is incredibly well designed, and using it feels like the _right_ way to build apps. This library started as an experiement to see if I could bring that same feeling to the React Native world.
+
+## Acknowledgements
+
+Thanks to [Zach Grimaldi](https://github.com/zpg6) for contributing awesome ideas and for bringing a much needed iOS developer's perspective to table.

@@ -1,7 +1,7 @@
 ---
 ---
 
-A function that allows you map over an array to dynamically render a collection of views
+A function that allows you to map over an array to dynamically render a collection of views
 
 ```typescript
 function ForEach<T>(

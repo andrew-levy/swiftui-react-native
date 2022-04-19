@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 ### Normal Image
 
 ```tsx
-<Image source="bolt.fill">
+<Image source={require('./assets/bolt.fill.png')}>
 ```
 
 ### System Image
