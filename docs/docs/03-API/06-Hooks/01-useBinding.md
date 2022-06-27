@@ -43,6 +43,11 @@ TextField("Name", text: $text)
 ```tsx
 const [text, setText] = useState('');
 ```
+  
+```tsx
+text.toggle()
+```
+
 
 ```tsx
 <TextInput value={text} onChangeText={(newText) => setText(newText)} />
