@@ -19,6 +19,10 @@ import TabItem from '@theme/TabItem';
 
 ```tsx
 const $text = useBinding('');
+const $showAlert = useBinding(false);
+
+$text.setValue("Hi")
+$showAlert.toggle()
 ```
 
 ```tsx
