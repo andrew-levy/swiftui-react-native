@@ -1,9 +1,4 @@
-import React, {
-  Children,
-  ReactElement,
-  PropsWithChildren,
-  ReactNode,
-} from 'react';
+import React, { Children, ReactElement, ReactNode } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { Modifiers } from '../../utils/modifiers';
 import { ListRow, ListRowProps } from './ListRow';
@@ -48,12 +43,13 @@ export function List<T>({
   children,
   style,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
 }: ListProps<T>) {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
 
   const listStyle = inset ? 'insetGrouped' : 'grouped';
   return (
@@ -66,13 +62,15 @@ export function List<T>({
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
-          ...getShadow(shadow),
+          ...getBorder(border, colorScheme),
+          ...getShadow(shadow, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
       ]}
     >
-      {header && <Caption caption={header} />}
+      {header && (
+        <Caption caption={header} preferredColorScheme={preferredColorScheme} />
+      )}
       <View
         style={[
           getContainerStyles(listStyle),
@@ -157,8 +155,14 @@ const getContainerStyles = (type: string) => {
   }
 };
 
-const Caption = ({ caption }: { caption: string | ReactElement<any> }) => {
-  const colorScheme = useColorScheme();
+const Caption = ({
+  caption,
+  preferredColorScheme,
+}: {
+  caption: string | ReactElement<any>;
+  preferredColorScheme?: Modifiers['preferredColorScheme'];
+}) => {
+  const colorScheme = useColorScheme(preferredColorScheme);
   return typeof caption === 'string' ? (
     <Text
       style={[styles.caption, { color: getColor('systemGray', colorScheme) }]}

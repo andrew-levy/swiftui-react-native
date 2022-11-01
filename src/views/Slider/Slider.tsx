@@ -64,13 +64,14 @@ export const Slider: React.FC<SliderProps> = ({
   opacity,
   zIndex,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
   onChange,
 }) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
   const [sliderWidth, sliderHeight] = getSliderWidth(frame);
   const [from, through] = range;
   const midPoint = (through + from) / 2;
@@ -139,8 +140,8 @@ export const Slider: React.FC<SliderProps> = ({
           backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
-          ...getBorder(border),
-          ...getShadow(shadow),
+          ...getBorder(border, colorScheme),
+          ...getShadow(shadow, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

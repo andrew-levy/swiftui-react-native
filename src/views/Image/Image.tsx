@@ -55,10 +55,11 @@ export const Image: React.FC<ImageProps> = ({
   fontSize,
   fontWeight,
   foregroundColor,
+  preferredColorScheme,
 }) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
 
   if (systemName) {
     if (!SFSymbol) return null;
@@ -83,10 +84,10 @@ export const Image: React.FC<ImageProps> = ({
             height: fontSize,
             backgroundColor: getColor(backgroundColor, colorScheme),
             ...getCornerRadius(cornerRadius),
-            ...getShadow(shadow),
+            ...getShadow(shadow, colorScheme),
             ...getPadding(padding),
             ...getFrame(frame || { width: size, height: size }),
-            ...getBorder(border),
+            ...getBorder(border, colorScheme),
             ...getTransform(scaleEffect, rotationEffect),
           },
           style,
@@ -103,12 +104,12 @@ export const Image: React.FC<ImageProps> = ({
           backgroundColor: getColor(backgroundColor, colorScheme),
           zIndex,
           ...getCornerRadius(cornerRadius),
-          ...getShadow(shadow),
+          ...getShadow(shadow, colorScheme),
           ...getPadding(padding),
           ...getFrame(
             frame || { width: DEFAULT_IMAGE_SIZE, height: DEFAULT_IMAGE_SIZE }
           ),
-          ...getBorder(border),
+          ...getBorder(border, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

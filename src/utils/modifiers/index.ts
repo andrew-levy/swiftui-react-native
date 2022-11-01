@@ -21,6 +21,7 @@ export type Modifiers = {
   opacity?: number;
   frame?: Frame;
   zIndex?: number;
+  preferredColorScheme?: 'light' | 'dark';
   style?: StyleProp<ViewStyle>;
   onAppear?: () => void;
   onDisappear?: () => void;
@@ -32,6 +33,12 @@ export type TextModifiers = {
   fontSize?: number;
   foregroundColor?: UIColor;
   customFont?: string;
+  bold?: boolean;
+  italic?: boolean;
+  strikethrough?:
+    | boolean
+    | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
+  underline?: boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
 };
 
 export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
@@ -39,6 +46,6 @@ export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
   frame: ShapeFrame;
 };
 
-export type WithChildren = {
+export type WithChildren<T> = T & {
   children?: ReactNode;
 };

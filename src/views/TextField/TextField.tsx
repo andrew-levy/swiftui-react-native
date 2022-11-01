@@ -12,6 +12,7 @@ import { useColorScheme } from '../../hooks/useColorScheme';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { getColor } from '../../utils/colors';
+import { getTextDecoration } from '../../utils/textDecoration';
 import { useAlert } from '../../hooks/useAlert';
 
 type TextFieldProps = Modifiers &
@@ -30,6 +31,10 @@ export const TextField: React.FC<TextFieldProps> = ({
   customFont,
   foregroundColor,
   fontWeight = 'regular',
+  bold,
+  italic,
+  strikethrough,
+  underline,
   cornerRadius,
   backgroundColor,
   rotationEffect,
@@ -42,12 +47,13 @@ export const TextField: React.FC<TextFieldProps> = ({
   zIndex,
   style,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
 }) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
 
   return (
     <TextInput
@@ -58,11 +64,18 @@ export const TextField: React.FC<TextFieldProps> = ({
           backgroundColor: getColor(backgroundColor, colorScheme),
           color: getColor(foregroundColor, colorScheme, 'label'),
           ...getCornerRadius(cornerRadius),
-          ...getFont(font, fontSize, fontWeight, customFont),
+          ...getFont(
+            font,
+            fontSize,
+            bold ? 'bold' : fontWeight,
+            customFont,
+            italic
+          ),
+          ...getTextDecoration(strikethrough, underline, colorScheme),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
-          ...getShadow(shadow),
+          ...getBorder(border, colorScheme),
+          ...getShadow(shadow, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

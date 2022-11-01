@@ -13,6 +13,7 @@ import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { getColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
+import { getTextDecoration } from '../../utils/textDecoration';
 
 type TextProps = Omit<Modifiers, 'style'> &
   TextModifiers & {
@@ -26,6 +27,8 @@ export const Text: React.FC<TextProps> = ({
   fontSize,
   fontWeight,
   customFont,
+  bold,
+  italic,
   foregroundColor,
   alignment = 'center',
   padding,
@@ -41,13 +44,16 @@ export const Text: React.FC<TextProps> = ({
   zIndex,
   style,
   alert,
+  preferredColorScheme,
+  strikethrough,
+  underline,
   onAppear,
   onDisappear,
   children,
 }) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
   return (
     <RNText
       style={[
@@ -59,11 +65,18 @@ export const Text: React.FC<TextProps> = ({
           textAlign: getTextAlignment(alignment),
           ...getCornerRadius(cornerRadius),
           ...getTextCase(textCase),
-          ...getFont(font, fontSize, fontWeight, customFont),
-          ...getShadow(shadow),
+          ...getFont(
+            font,
+            fontSize,
+            bold ? 'bold' : fontWeight,
+            customFont,
+            italic
+          ),
+          ...getTextDecoration(strikethrough, underline, colorScheme),
+          ...getShadow(shadow, colorScheme),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
+          ...getBorder(border, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

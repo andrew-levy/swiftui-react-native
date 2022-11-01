@@ -32,11 +32,12 @@ import { getColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
 import { ReactElement } from 'react';
 
-type PickerProps = Modifiers &
-  WithChildren & {
+type PickerProps = WithChildren<
+  Modifiers & {
     selection: Binding<number>;
     onChange?: (value: number) => void;
-  };
+  }
+>;
 
 export const Picker = ({
   children,
@@ -53,13 +54,14 @@ export const Picker = ({
   zIndex,
   style,
   alert,
+  preferredColorScheme,
   onChange,
   onAppear,
   onDisappear,
 }: PickerProps) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
   const childCount = Children.count(children);
   const [optionDimensions, setOptionDimensions] = useState(null);
   const tempSelection = useSharedValue(selection.value);
@@ -129,10 +131,10 @@ export const Picker = ({
               'secondarySystemBackground'
             ),
             ...getCornerRadius(cornerRadius),
-            ...getShadow(shadow),
+            ...getShadow(shadow, colorScheme),
             ...getPadding(padding),
             ...getFrame(frame),
-            ...getBorder(border),
+            ...getBorder(border, colorScheme),
             ...getTransform(scaleEffect, rotationEffect),
           },
           style,

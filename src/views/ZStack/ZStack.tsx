@@ -13,12 +13,13 @@ import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getTransform } from '../../utils/transform';
 
-type ZStackProps = Omit<Modifiers, 'alignment' | 'frame'> &
-  WithChildren & {
+type ZStackProps = WithChildren<
+  Omit<Modifiers, 'alignment' | 'frame'> & {
     style?: StyleProp<ViewStyle>;
     alignment?: ZStackAlignment;
     frame: Frame;
-  };
+  }
+>;
 
 export const ZStack = ({
   alignment = 'center',
@@ -35,12 +36,13 @@ export const ZStack = ({
   frame,
   zIndex,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
 }: ZStackProps) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
 
   return (
     <View
@@ -51,10 +53,10 @@ export const ZStack = ({
           backgroundColor: getColor(backgroundColor, colorScheme),
           ...getAlignment(alignment, 'zstack'),
           ...getCornerRadius(cornerRadius),
-          ...getShadow(shadow),
+          ...getShadow(shadow, colorScheme),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
+          ...getBorder(border, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

@@ -39,12 +39,13 @@ export const Linear = ({
   style,
   tint,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
 }: LinearProps) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
   const [sliderWidth, sliderHeight] = getSliderWidth(frame);
   const midPoint = total / 2;
   const slope = midPoint / (sliderWidth / 2);
@@ -76,8 +77,8 @@ export const Linear = ({
           backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
-          ...getBorder(border),
-          ...getShadow(shadow),
+          ...getBorder(border, colorScheme),
+          ...getShadow(shadow, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

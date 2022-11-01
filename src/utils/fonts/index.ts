@@ -24,12 +24,14 @@ export const getFont = (
   font?: keyof typeof Fonts | string,
   fontSize?: number,
   fontWeight?: keyof typeof FontWeights,
-  customFont?: string
+  customFont?: string,
+  italic?: boolean
 ) => {
   return {
     ...Fonts[font],
     ...(fontSize && { fontSize }),
     ...(fontWeight && { fontWeight: FontWeights[fontWeight] }),
     ...(customFont && { fontFamily: customFont }),
+    ...(italic && { fontStyle: 'italic' }),
   };
 };
