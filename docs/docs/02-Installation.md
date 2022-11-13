@@ -2,7 +2,7 @@
 ---
 
 :::info Note
-Due to the nature of the project, there was a bias towards iOS while developing and testing this library. Though Android is supported, some features (like sfsymbols) can't be implemented.
+Due to the nature of the project, there was a bias towards iOS while developing and testing this library. Though Android is supported, some features (like SFSymbols) can't be implemented.
 :::
 
 ## Add the package
