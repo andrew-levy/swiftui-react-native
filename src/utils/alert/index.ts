@@ -4,7 +4,7 @@ export type Alert = {
   isPresented: BooleanBinding;
   title: string;
   message?: string;
-  buttons?: {
+  actions?: {
     title: string;
     action?: () => void;
     role?: 'default' | 'cancel' | 'destructive';

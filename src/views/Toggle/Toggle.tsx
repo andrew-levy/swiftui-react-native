@@ -34,13 +34,14 @@ export const Toggle: React.FC<ToggleProps> = ({
   scaleEffect,
   style,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
   onChange,
 }) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
 
   return (
     <Switch
@@ -52,8 +53,8 @@ export const Toggle: React.FC<ToggleProps> = ({
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
-          ...getShadow(shadow),
+          ...getBorder(border, colorScheme),
+          ...getShadow(shadow, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

@@ -31,12 +31,13 @@ export const Indeterminate = ({
   style,
   tint,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
 }: IndeterminateProps) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
 
   return (
     <ActivityIndicator
@@ -47,10 +48,10 @@ export const Indeterminate = ({
           zIndex,
           backgroundColor: getColor(backgroundColor, colorScheme),
           ...getCornerRadius(cornerRadius),
-          ...getShadow(shadow),
+          ...getShadow(shadow, colorScheme),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
+          ...getBorder(border, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

@@ -7,14 +7,15 @@ import { Image } from '../Image';
 import { SystemName } from '../Image/types';
 import { Text } from '../Text';
 
-type LabelProps = Modifiers &
-  WithChildren &
-  TextModifiers & {
-    title?: string | ReactElement<any>;
-    icon?: ReactElement<any>;
-    systemImage?: SystemName;
-    spacing?: number;
-  };
+type LabelProps = WithChildren<
+  Modifiers &
+    TextModifiers & {
+      title?: string | ReactElement<any>;
+      icon?: ReactElement<any>;
+      systemImage?: SystemName;
+      spacing?: number;
+    }
+>;
 
 export const Label = ({
   fontSize,

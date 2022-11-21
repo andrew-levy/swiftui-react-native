@@ -1,7 +1,7 @@
 ---
 ---
 
-Provides global context to the app. Wrap your app in a `EnvironmentProvider` to access environment values like `colorScheme`.
+Provides global context to environment values. Wrap your app in a `EnvironmentProvider` to access environment values like `colorScheme`.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<EnvironmentProvider environment={{ colorScheme: 'dark', isLoggedIn: false }}>
+<EnvironmentProvider colorScheme="dark">
   <MyApp />
 </EnvironmentProvider>
 ```
@@ -23,14 +23,13 @@ import TabItem from '@theme/TabItem';
 ```swift
 MyApp()
   .environment(.\colorScheme, .dark)
-  .environment(.\isLoggedIn, false)
 ```
 
 </TabItem>
 </Tabs>
 
 :::info
-The `colorScheme` environment value is always included whether you specify it or not (defaults to `'light'`).
+If not provided, the `colorScheme` value will default to your device's system color scheme.
 :::
 :::tip
 Use the `useEnvironment` hook to access these values throughout the app.
@@ -38,6 +37,7 @@ Use the `useEnvironment` hook to access these values throughout the app.
 
 ## Props
 
-| prop          | description                                                        | type                                              | required | default                    |
-| ------------- | ------------------------------------------------------------------ | ------------------------------------------------- | -------- | -------------------------- |
-| `environment` | A key value map of environment values to access throughout the app | `{ colorScheme: string, [key: string]: unknown }` | no       | `{ colorScheme: 'light' }` |
+| prop          | description                         | type                | required | default             |
+| ------------- | ----------------------------------- | ------------------- | -------- | ------------------- |
+| `colorScheme` | The default color scheme of the app | `"light" or "dark"` | no       | System Color Scheme |
+| `locale`      | The default locale of the app       | `string`            | no       | `"en"`              |

@@ -43,7 +43,7 @@ function App() {
       <Text font="title">Some cool text</Text>
       <TextField text={$text} placeholder="Name" />
       <Button action={doSomething}>
-        <Text fontWeight="bold">Click the cool button</Text>
+        <Text bold>Click the cool button</Text>
       </Button>
     </VStack>
   );
@@ -66,7 +66,7 @@ struct App: View {
                 .font(.title)
             TextField("Name", text: $text)
             Button(action: doSomething) {
-                Text("Click the cool button")
+                Text("Click the cool button").bold()
             }
         }
         .background(Color(.systemGray6))
@@ -124,14 +124,6 @@ const styles = StyleSheet.create({
 
 </TabItem>
 </Tabs>
-
-This meme pretty much sums it up!
-
-![Meme](../static/img/spiderman-meme.jpeg)
-
-## But...Why?
-
-Recently I made the switch, both personally and professionally, to focus more on mobile development and less on the web. I started playing around with React Native and SwiftUI, and I was really impressed by how easy it was to build quality apps with them both. My experience building apps with these frameworks encouraged me to combine their strengths. SwiftUI is incredibly well designed, and using it feels like the _right_ way to build apps. This library started as an experiement to see if I could bring that same feeling to the React Native world.
 
 ## Acknowledgements
 

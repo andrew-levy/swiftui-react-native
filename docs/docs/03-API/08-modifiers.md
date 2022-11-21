@@ -20,6 +20,7 @@ SwiftUI has a large selection of built-in modifiers that allow you to easily cus
 - shadow: `Shadow`
 - style: `StyleProp<ViewStyle | TextStyle | ImageStyle>`
 - zIndex: `number`
+- preferredColorScheme: `ColorScheme`
 
 ## Text Modifiers
 
@@ -28,6 +29,10 @@ SwiftUI has a large selection of built-in modifiers that allow you to easily cus
 - fontSize: `number`
 - fontWeight: `FontWeight`
 - foregroundColor: `string`
+- bold: `boolean`
+- italic: `boolean`
+- underline: `TextDecoration`
+- strikethrough: `TextDecoration`
 
 ## Shape Modifiers
 

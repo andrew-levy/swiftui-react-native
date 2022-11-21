@@ -1,38 +1,55 @@
 import React, { createContext, useState } from 'react';
+import { useColorScheme } from 'react-native';
 import { WithChildren } from '../../utils/modifiers';
 
-type EnvironmentProviderProps = WithChildren & {
-  environment?: { [key: string]: any };
+type EnvironmentValues = {
+  colorScheme: 'light' | 'dark';
+  locale: string;
 };
-export const EnvironmentProviderContext = createContext<{
-  envs: {
-    colorScheme?: 'light' | 'dark';
-    [key: string]: unknown;
-  };
-  setValueAtKey: (key: string, value: unknown) => void;
-} | null>(null);
+
+type EnvironmentContext = {
+  colorScheme: EnvironmentValues['colorScheme'];
+  locale: EnvironmentValues['locale'];
+  setValues: (values: Partial<EnvironmentValues>) => void;
+} | null;
+
+type EnvironmentProviderProps = WithChildren<
+  Partial<{
+    [K in keyof EnvironmentValues]: EnvironmentValues[K];
+  }>
+>;
+
+export const EnvironmentProviderContext =
+  createContext<EnvironmentContext>(null);
 
 export const EnvironmentProvider = ({
-  environment,
+  colorScheme,
+  locale,
   children,
 }: EnvironmentProviderProps) => {
-  const [envs, setEnvs] = useState<{
-    colorScheme?: 'light' | 'dark';
-    [key: string]: unknown;
-  }>({
-    colorScheme: 'light',
-    ...environment,
+  const systemColorScheme = useColorScheme();
+  const colorSchemeValue = colorScheme || systemColorScheme || 'light';
+  const localeValue = locale || 'en';
+
+  const [envValues, setEnvValues] = useState<EnvironmentValues>({
+    colorScheme: colorSchemeValue,
+    locale: localeValue,
   });
 
-  const setValueAtKey = (key: string, value: unknown) => {
-    setEnvs({
-      ...envs,
-      [key]: value,
-    });
+  const setValues = (newValues: Partial<EnvironmentValues>) => {
+    setEnvValues((prevEnvironment) => ({
+      ...prevEnvironment,
+      ...newValues,
+    }));
   };
 
   return (
-    <EnvironmentProviderContext.Provider value={{ envs, setValueAtKey }}>
+    <EnvironmentProviderContext.Provider
+      value={{
+        ...envValues,
+        setValues,
+      }}
+    >
       {children}
     </EnvironmentProviderContext.Provider>
   );

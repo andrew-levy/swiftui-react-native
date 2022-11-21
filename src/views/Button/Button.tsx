@@ -15,11 +15,11 @@ import { useAlert } from '../../hooks/useAlert';
 
 export type ButtonProps = Modifiers &
   TextModifiers &
-  WithChildren & {
+  WithChildren<{
     action?: () => void;
     disabled?: boolean;
     title?: string;
-  };
+  }>;
 
 export const Button = ({
   title,
@@ -38,13 +38,14 @@ export const Button = ({
   zIndex,
   children,
   style,
+  preferredColorScheme,
   onAppear,
   onDisappear,
   ...textProps
 }: ButtonProps) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
 
   return (
     <TouchableOpacity
@@ -59,8 +60,8 @@ export const Button = ({
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
-          ...getShadow(shadow),
+          ...getBorder(border, colorScheme),
+          ...getShadow(shadow, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

@@ -7,17 +7,11 @@ To get started, let's create a simple _Hello World_ app using common SwiftUI pri
 ```tsx
 // HelloWorld.jsx
 
-import {
-  VStack,
-  Image,
-  Text,
-  Button,
-  useEnvironment,
-} from 'swiftui-react-native';
+import { VStack, Image, Text, Button } from 'swiftui-react-native';
 
 export default function HelloWorld() {
   return (
-    <VStack spacing={5} frame={{ height: 'infinity' }}>
+    <VStack spacing={5}>
       <Image systemName="face.smiling" fontSize={50} />
       <Text font="title">Hello World!</Text>
     </VStack>
@@ -54,15 +48,19 @@ import {
 } from 'swiftui-react-native';
 
 export default function HelloWorld() {
-  const [colorScheme, setColorScheme] = useEnvironment('colorScheme');
-  const toggleColorScheme = () => {
-    setColorScheme(colorScheme === 'light' ? 'dark' : 'light');
-  };
+  const { colorScheme, setValues } = useEnvironment();
   return (
-    <VStack spacing={5} frame={{ maxHeight: 'infinity' }}>
+    <VStack spacing={5}>
       <Image systemName="face.smiling" fontSize={50} />
       <Text font="title">Hello World!</Text>
-      <Button title={`${colorScheme} mode`} action={toggleColorScheme} />
+      <Button
+        title={`${colorScheme} mode`}
+        action={() => {
+          setValues({
+            colorScheme: colorScheme === 'light' ? 'dark' : 'light',
+          });
+        }}
+      />
     </VStack>
   );
 }

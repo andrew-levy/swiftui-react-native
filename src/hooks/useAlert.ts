@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { Alert as RNAlert } from 'react-native';
 import { Alert } from '../utils/alert';
 
-const triggerAlert = ({ title, message = null, buttons }: Alert) => {
-  const mappedButtons = buttons.map(({ label, action, role = 'default' }) => ({
-    text: label,
+const triggerAlert = ({ title, message = null, actions }: Alert) => {
+  const mappedButtons = actions.map(({ title, action, role = 'default' }) => ({
+    text: title,
     onPress: action,
     style: role,
   }));

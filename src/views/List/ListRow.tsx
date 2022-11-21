@@ -2,6 +2,7 @@ import React, { cloneElement } from 'react';
 import { TouchableHighlight, View, StyleSheet } from 'react-native';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { getColor } from '../../utils/colors';
+import { Modifiers } from '../../utils/modifiers';
 import { openURL } from '../Link/Link';
 
 const SYSTEM_SPACE = 10;
@@ -9,6 +10,7 @@ const SYSTEM_SPACE = 10;
 export type ListRowProps = {
   hideSeparator?: boolean;
   separatorTint?: string;
+  preferredColorScheme?: Modifiers['preferredColorScheme'];
   children: React.ReactElement;
 };
 
@@ -16,8 +18,9 @@ export const ListRow = ({
   hideSeparator,
   children,
   separatorTint,
+  preferredColorScheme,
 }: ListRowProps) => {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
   const action = getAction(children);
   const buttonChild = cloneElement(children, {
     ...children.props,

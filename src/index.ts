@@ -29,3 +29,9 @@ export * from './hooks/useEnvironment';
 export * from './utils/ForEach';
 
 export type { UIColor } from './utils/colors';
+export type { SystemName } from './views/Image/types';
+export type {
+  Modifiers,
+  TextModifiers,
+  ShapeModifiers,
+} from './utils/modifiers';

@@ -44,13 +44,14 @@ export const Stepper: React.FC<StepperProps> = ({
   frame,
   zIndex,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
   onChange,
 }) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
   useEffect(() => {
     const [min, max] = range;
     if (value.value < min) {
@@ -75,8 +76,8 @@ export const Stepper: React.FC<StepperProps> = ({
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
-          ...getShadow(shadow),
+          ...getBorder(border, colorScheme),
+          ...getShadow(shadow, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

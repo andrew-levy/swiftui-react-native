@@ -25,12 +25,13 @@ export const Rectangle = ({
   zIndex,
   style,
   alert,
+  preferredColorScheme,
   onAppear,
   onDisappear,
 }: ShapeModifiers) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
   const { rectWidth, rectHeight } = getRectDims(frame);
 
   return (
@@ -42,9 +43,9 @@ export const Rectangle = ({
           backgroundColor: getColor(fill, colorScheme, 'systemBackground'),
           ...getFrame({ width: rectWidth, height: rectHeight }),
           ...getCornerRadius(cornerRadius),
-          ...getShadow(shadow),
+          ...getShadow(shadow, colorScheme),
           ...getPadding(padding),
-          ...getBorder(border),
+          ...getBorder(border, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,

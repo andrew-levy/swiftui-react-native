@@ -13,11 +13,12 @@ import { useColorScheme } from '../../hooks/useColorScheme';
 import { getColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
 
-type HStackProps = Modifiers &
-  WithChildren & {
+type HStackProps = WithChildren<
+  Modifiers & {
     spacing?: number;
     alignment?: HStackAlignment;
-  };
+  }
+>;
 
 export const HStack = ({
   spacing = 2,
@@ -35,12 +36,13 @@ export const HStack = ({
   frame,
   zIndex,
   style,
+  preferredColorScheme,
   onAppear,
   onDisappear,
 }: HStackProps) => {
   useAlert(alert);
   useLifecycle(onAppear, onDisappear);
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme(preferredColorScheme);
 
   return (
     <View
@@ -52,10 +54,10 @@ export const HStack = ({
           backgroundColor: getColor(backgroundColor, colorScheme),
           ...getAlignment(alignment, 'hstack'),
           ...getCornerRadius(cornerRadius),
-          ...getShadow(shadow),
+          ...getShadow(shadow, colorScheme),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border),
+          ...getBorder(border, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,
