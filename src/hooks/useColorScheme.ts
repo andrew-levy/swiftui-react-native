@@ -3,7 +3,7 @@ import { Modifiers } from '../utils/modifiers';
 import { EnvironmentProviderContext } from '../views/EnvironmentProvider/EnvironmentProvider';
 
 export const useColorScheme = (
-  preferredColorScheme: Modifiers['preferredColorScheme']
+  preferredColorScheme?: Modifiers['preferredColorScheme']
 ) => {
   const colorScheme =
     useContext(EnvironmentProviderContext)?.colorScheme || 'light';

@@ -14,8 +14,8 @@ import TabItem from '@theme/TabItem';
 ### Verbose
 
 ```tsx
-<Button action={doSomething}>
-  <Text fontWeight="bold" fontSize={24}>
+<Button action={doSomething} buttonStyle="borderedProminent">
+  <Text bold fontSize={24}>
     Click the cool button
   </Text>
 </Button>
@@ -24,7 +24,12 @@ import TabItem from '@theme/TabItem';
 ### Shorthand
 
 ```tsx
-<Button title="Click the cool button" fontWeight="bold" action={doSomething} />
+<Button
+  title="Click the cool button"
+  action={doSomething}
+  buttonStyle="borderedProminent"
+  bold
+/>
 ```
 
 </TabItem>
@@ -36,7 +41,7 @@ import TabItem from '@theme/TabItem';
 Button(action: doSomething) {
     Text("Click the cool button")
         .fontWeight(.bold)
-}
+}.buttonStyle(.borderedProminent)
 ```
 
 ### Shorthand
@@ -44,6 +49,7 @@ Button(action: doSomething) {
 ```swift
 Button("Click the cool button", action: doSomething)
   .fontWeight(.bold)
+  .buttonStyle(.borderedProminent)
 ```
 
 </TabItem>
@@ -62,9 +68,14 @@ Button("Click the cool button", action: doSomething)
 
 Button inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
 
-| prop       | description                                          | type         | required | default     |
-| ---------- | ---------------------------------------------------- | ------------ | -------- | ----------- |
-| `title`    | The text of the button.                              | `string`     | yes      | `undefined` |
-| `action`   | The action to perform when the user taps the button. | `() => void` | yes      | `undefined` |
-| `disabled` | Whether the button is able to be clicked.            | `boolean`    | no       | `undefined` |
-| `children` | The button content.                                  | `ReactNode`  | no       | `undefined` |
+| prop          | description                                          | type          | required | default        |
+| ------------- | ---------------------------------------------------- | ------------- | -------- | -------------- |
+| `title`       | The text of the button.                              | `string`      | yes      | `undefined`    |
+| `action`      | The action to perform when the user taps the button. | `() => void`  | yes      | `undefined`    |
+| `disabled`    | Whether the button is able to be clicked.            | `boolean`     | no       | `undefined`    |
+| `buttonStyle` | The button style                                     | `ButtonStyle` | no       | `'borderless'` |
+| `children`    | The button content.                                  | `ReactNode`   | no       | `undefined`    |
+
+```ts
+type ButtonStyle = 'bordered' | 'borderedProminent' | 'plain' | 'borderless';
+```
