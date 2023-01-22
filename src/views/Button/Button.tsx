@@ -10,7 +10,7 @@ import { useLifecycle } from '../../hooks/useLifecycle';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
-import { getColor } from '../../utils/colors';
+import { getColor, UIColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
 
 export type ButtonProps = Modifiers &
@@ -19,6 +19,7 @@ export type ButtonProps = Modifiers &
     action?: () => void;
     disabled?: boolean;
     title?: string;
+    buttonStyle?: 'bordered' | 'borderless' | 'borderedProminent' | 'plain';
   }>;
 
 export const Button = ({
@@ -36,6 +37,7 @@ export const Button = ({
   shadow,
   opacity,
   zIndex,
+  buttonStyle = 'borderless',
   children,
   style,
   preferredColorScheme,
@@ -47,6 +49,52 @@ export const Button = ({
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme(preferredColorScheme);
 
+  function getButtonTextColor(): UIColor {
+    switch (buttonStyle) {
+      case 'borderless':
+      case 'bordered':
+        return 'systemBlue';
+      case 'plain':
+        return 'label';
+      case 'borderedProminent':
+        return 'white';
+    }
+  }
+
+  function getButtonBackgroundColor(): UIColor {
+    switch (buttonStyle) {
+      case 'borderless':
+      case 'plain':
+        return;
+      case 'bordered':
+        return 'systemGray5';
+      case 'borderedProminent':
+        return 'systemBlue';
+    }
+  }
+
+  function getButtonPadding() {
+    switch (buttonStyle) {
+      case 'borderless':
+      case 'plain':
+        return;
+      case 'bordered':
+      case 'borderedProminent':
+        return { horizontal: 12, vertical: 8 };
+    }
+  }
+
+  function getButtonCornerRadius() {
+    switch (buttonStyle) {
+      case 'borderless':
+      case 'plain':
+        return;
+      case 'bordered':
+      case 'borderedProminent':
+        return 8;
+    }
+  }
+
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -56,9 +104,12 @@ export const Button = ({
           justifyContent: 'center',
           opacity,
           zIndex,
-          backgroundColor: getColor(backgroundColor, colorScheme),
-          ...getCornerRadius(cornerRadius),
-          ...getPadding(padding),
+          backgroundColor: getColor(
+            backgroundColor || getButtonBackgroundColor(),
+            colorScheme
+          ),
+          ...getCornerRadius(cornerRadius || getButtonCornerRadius()),
+          ...getPadding(padding || getButtonPadding()),
           ...getFrame(frame),
           ...getBorder(border, colorScheme),
           ...getShadow(shadow, colorScheme),
@@ -68,14 +119,20 @@ export const Button = ({
       ]}
     >
       {title ? (
-        <Text foregroundColor="systemBlue" {...textProps}>
+        <Text
+          foregroundColor={getColor(getButtonTextColor(), colorScheme)}
+          {...textProps}
+        >
           {title}
         </Text>
       ) : (
         React.Children.map(children as ReactElement<any>[], (child) =>
           child
             ? React.cloneElement(child, {
-                ...{ foregroundColor: 'systemBlue', ...textProps },
+                ...{
+                  foregroundColor: getColor(getButtonTextColor(), colorScheme),
+                  ...textProps,
+                },
                 ...child.props,
               })
             : null

@@ -6,7 +6,7 @@ import { getFrame } from '../../utils/frame';
 import { getBorder } from '../../utils/border';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getFont } from '../../utils/fonts';
-import { Modifiers, TextModifiers } from '../../utils/modifiers';
+import { Modifiers, TextModifiers, WithChildren } from '../../utils/modifiers';
 import { TextAlignment } from '../../utils/alignments';
 import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
@@ -16,11 +16,12 @@ import { useAlert } from '../../hooks/useAlert';
 import { getTextDecoration } from '../../utils/textDecoration';
 
 type TextProps = Omit<Modifiers, 'style'> &
-  TextModifiers & {
+  TextModifiers &
+  WithChildren<{
     textCase?: 'lower' | 'upper' | 'capitalize';
     alignment?: TextAlignment;
     style?: StyleProp<TextStyle>;
-  };
+  }>;
 
 export const Text: React.FC<TextProps> = ({
   font = 'body',
