@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ActivityIndicator } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { getBorder } from '../../utils/border';
