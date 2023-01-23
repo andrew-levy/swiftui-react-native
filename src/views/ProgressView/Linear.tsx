@@ -92,7 +92,7 @@ export const Linear = ({
           {
             width: sliderWidth,
             height: sliderHeight,
-            backgroundColor: getColor('systemGray4', colorScheme),
+            backgroundColor: getColor('systemGray5', colorScheme),
           },
         ]}
       >

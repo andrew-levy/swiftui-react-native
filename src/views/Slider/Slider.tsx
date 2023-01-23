@@ -29,7 +29,7 @@ export const Slider: React.FC<SliderProps> = ({
   trackTint,
   thumbTint,
   range = [0, 10],
-  step = 1,
+  step = 0,
   value,
   frame,
   backgroundColor,

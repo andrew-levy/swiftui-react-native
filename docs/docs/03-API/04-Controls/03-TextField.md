@@ -54,6 +54,6 @@ TextField inherits all [View Modifiers](../modifiers#view-modifiers) and [Text M
 
 | prop          | description                                           | type              | required | default     |
 | ------------- | ----------------------------------------------------- | ----------------- | -------- | ----------- |
-| `placeholder` | The title of the text view, describing its purpose.   | `string`          | no       | `""`        |
 | `text`        | The text to display and edit.                         | `Binding<string>` | yes      | `undefined` |
+| `placeholder` | The title of the text view, describing its purpose.   | `string`          | no       | `""`        |
 | `onChange`    | Function to execute when the input text value changes | `() => void`      | no       | `undefined` |
