@@ -34,7 +34,12 @@ Slider(value: $sliderValue, in: 0...10)
 </Tabs>
 
 :::info
-If you want the value to be an integer, you can either use the `step` prop (which doesn't animate smoothly), or round the value when you use it (which does animate smoothly) `const roundedVal = Math.round($sliderValue.value)`.
+If you want the value to be an integer, you can either use the `step` prop (which doesn't animate smoothly), or round the value when you use it (which does animate smoothly).
+
+```tsx
+const roundedVal = Math.round($sliderValue.value);
+```
+
 :::
 
 ## Props

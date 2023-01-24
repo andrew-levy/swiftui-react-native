@@ -34,7 +34,7 @@ const UIColor = useUIColor();
 VStack {
   Text("Learn More")
 }
-.background(Color(UIColor(.systemBlue))
+.background(Color(.systemBlue))
 ```
 
 </TabItem>

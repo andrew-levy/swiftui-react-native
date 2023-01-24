@@ -23,9 +23,9 @@ export type Dimensions = {
 /**
  * Callback for slider change events. The second number value will be only if provided an array with two values in `value` prop
  */
-export type SliderOnChangeCallback = (value: number | Array<number>) => void;
+type SliderOnChangeCallback = (value: number | Array<number>) => void;
 
-export type SliderProps = {
+type SliderProps = {
   animateTransitions?: boolean;
   animationConfig?: {
     spring?: Animated.AnimatedProps<ViewStyle>;
@@ -65,7 +65,7 @@ export type SliderProps = {
   vertical?: boolean;
 };
 
-export type SliderState = {
+type SliderState = {
   allMeasured: boolean;
   containerSize: Dimensions;
   thumbSize: Dimensions;
