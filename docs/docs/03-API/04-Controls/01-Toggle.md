@@ -50,6 +50,6 @@ Toggle inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
 | prop       | description                                       | type                   | required | default     |
 | ---------- | ------------------------------------------------- | ---------------------- | -------- | ----------- |
-| `isOn`     | The toggle binding                                | `BooleanBinding`       | yes      | `undefined` |
+| `isOn`     | The toggle value                                  | `BooleanBinding`       | yes      | `undefined` |
 | `tint`     | The "on" toggle color                             | `UIColor`              | no       | `undefined` |
 | `onChange` | Function to execute when the toggle value changes | `(v: boolean) => void` | no       | `undefined` |

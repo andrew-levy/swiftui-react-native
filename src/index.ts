@@ -3,10 +3,12 @@ export * from './views/Image';
 export * from './views/Button';
 export * from './views/List';
 export * from './views/Link';
+export * from './views/ShareLink';
 export * from './views/Label';
 export * from './views/Color';
 export * from './views/ProgressView';
 export * from './views/Group';
+export * from './views/GeometryReader';
 
 export * from './views/Toggle';
 export * from './views/Stepper';

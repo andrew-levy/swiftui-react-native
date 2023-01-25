@@ -12,29 +12,49 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<HStack alignment="top" spacing={10}>
-  <Text>Hello</Text>
-  <Text>World</Text>
-</HStack>
+<ZStack frame={{ width: 100, height: 100 }}>
+  <Image systemName="circle.fill" fontSize={100} />
+  <Image systemName="circle.fill" foregroundColor="systemTeal" fontSize={50} />
+  <Text foregroundColor="white" bold>
+    ZStack
+  </Text>
+</ZStack>
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-HStack(alignment: .top, spacing: 10) {
-    Text("Hello")
-    Text("World")
-}
+ZStack(alignment: .top, spacing: 10) {
+    Image(systemName: "circle.fill").font(.system(size: 100))
+    Image(systemName: "circle.fill").foregroundColor(.systemTeal).font(.system(size: 50))
+    Text("ZStack").foregroundColor(.white).bold()
+}.frame(width: 100, height: 100)
 ```
 
 </TabItem>
 <TabItem value="react-native" label="React Native">
 
 ```tsx
-<View style={{ flexDirection: 'row', jusitfyContent: 'flex-start' }}>
-  <Text>Hello</Text>
-  <Text style={{ marginLeft: 10 }}>World</Text>
+<View style={{ width: 100, height: 100 }}>
+  <Image
+    source={require('circle.fill.jpg')}
+    style={{ fontSize: 100, position: 'absolute', zIndex: 1 }}
+  />
+  <Image
+    source={require('circle.fill.jpg')}
+    style={{ fontSize: 50, color: 'teal', position: 'absolute', zIndex: 2 }}
+  />
+  <Text
+    style={{
+      color: 'white',
+      fontWeight: 'bold',
+      position: 'absolute',
+      zIndex: 3,
+    }}
+  >
+    ZStack
+  </Text>
 </View>
 ```
 

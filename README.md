@@ -7,9 +7,9 @@ Bringing the best **SwiftUI** features to your **React Native** app :rocket:
 ## At a Glance
 
 - :white_check_mark: SwiftUI-like API
+- :white_check_mark: Dark Mode out of the box
+- :white_check_mark: Access to Apple's design system
 - :white_check_mark: Written in TypeScript
-- :white_check_mark: Animations with Reanimated v2
-- :white_check_mark: Built-in dark mode
 
 ## Documentation
 

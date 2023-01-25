@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from 'react';
+import { SetStateAction, useState, useEffect } from 'react';
 import { Binding, BooleanBinding } from '../utils/binding';
 
 /**
@@ -11,6 +11,10 @@ import { Binding, BooleanBinding } from '../utils/binding';
 export function useBinding<T>(initialValue: T) {
   const [value, setValue] = useState<T>(initialValue);
   const toggle = () => setValue(!value as unknown as SetStateAction<T>);
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
 
   return {
     value,

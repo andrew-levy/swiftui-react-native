@@ -6,6 +6,11 @@ The `useEnvironment` hook allows you to access your environment values provided 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+## Supported Environment Values
+
+- `colorScheme`: Current color scheme of the app.
+- `locale`: Current locale of the app.
+
 ## Example
 
 <Tabs>

@@ -54,6 +54,7 @@ export const Image: React.FC<ImageProps> = ({
   font,
   fontSize,
   fontWeight,
+  bold,
   foregroundColor,
   preferredColorScheme,
 }) => {
@@ -72,8 +73,8 @@ export const Image: React.FC<ImageProps> = ({
     return (
       <SFSymbol
         name={systemName}
-        weight={fontWeight || SFSymbolWeight.REGULAR}
-        scale={SFSymbolScale.SMALL}
+        weight={bold ? 'bold' : fontWeight || SFSymbolWeight.REGULAR}
+        scale={SFSymbolScale.MEDIUM}
         size={size}
         color={getColor(foregroundColor, colorScheme)}
         style={[
