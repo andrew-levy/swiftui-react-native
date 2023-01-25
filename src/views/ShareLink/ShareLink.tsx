@@ -37,7 +37,7 @@ export const ShareLink = ({
         }
       );
     } catch (error) {
-      console.warn(`Couldn't share ${item}`);
+      console.warn(`Couldn't share ${item}. Failed with error: ${error}`);
     }
   };
   return (
