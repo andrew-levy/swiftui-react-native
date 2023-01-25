@@ -4,7 +4,6 @@ import { Button } from '../Button';
 import { ButtonProps } from '../Button/Button';
 import { SystemName } from '../Image/types';
 import { Label } from '../Label';
-import { Image } from '../Image';
 
 type ShareLinkProps = PropsWithChildren<
   {
@@ -20,7 +19,7 @@ export const ShareLink = ({
   message,
   subject,
   children,
-  title,
+  title = 'Share',
   systemImage = 'square.and.arrow.up',
   ...props
 }: ShareLinkProps) => {
@@ -40,13 +39,18 @@ export const ShareLink = ({
       console.warn(`Couldn't share ${item}. Failed with error: ${error}`);
     }
   };
+
+  const getLabel = () => {
+    if (children) {
+      return children;
+    } else {
+      return <Label title={title} systemImage={systemImage} />;
+    }
+  };
+
   return (
     <Button action={share} {...props}>
-      {title ? (
-        <Label title={title} systemImage={systemImage} />
-      ) : (
-        children || <Image systemName={systemImage} />
-      )}
+      {getLabel()}
     </Button>
   );
 };
