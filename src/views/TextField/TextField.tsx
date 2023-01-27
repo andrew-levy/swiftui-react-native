@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, TextInputProps } from 'react-native';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { getBorder } from '../../utils/border';
@@ -15,11 +15,17 @@ import { getColor } from '../../utils/colors';
 import { getTextDecoration } from '../../utils/textDecoration';
 import { useAlert } from '../../hooks/useAlert';
 
-type TextFieldProps = Modifiers &
+export type TextFieldProps = Modifiers &
   TextModifiers & {
     placeholder?: string;
     text: Binding<string>;
     onChange?: () => void;
+    autocorrectionDisabled?: boolean;
+    autocapitalization?: TextInputProps['autoCapitalize'];
+    textContentType?: TextInputProps['textContentType'];
+    keyboardType?: TextInputProps['keyboardType'];
+    secureField?: boolean;
+    textEditor?: boolean;
   };
 
 export const TextField: React.FC<TextFieldProps> = ({
@@ -48,6 +54,12 @@ export const TextField: React.FC<TextFieldProps> = ({
   style,
   alert,
   preferredColorScheme,
+  autocapitalization = 'none',
+  autocorrectionDisabled = false,
+  keyboardType = 'default',
+  textContentType = 'none',
+  secureField = false,
+  textEditor = false,
   onAppear,
   onDisappear,
 }) => {
@@ -82,6 +94,12 @@ export const TextField: React.FC<TextFieldProps> = ({
       ]}
       placeholder={placeholder}
       placeholderTextColor={getColor('secondaryLabel', colorScheme)}
+      autoCapitalize={autocapitalization}
+      autoCorrect={!autocorrectionDisabled}
+      secureTextEntry={secureField}
+      keyboardType={keyboardType}
+      textContentType={textContentType}
+      multiline={textEditor}
       value={text.value}
       onChangeText={(newText) => {
         text.setValue(newText);
