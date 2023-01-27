@@ -1,18 +1,17 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { Share } from 'react-native';
+import { RemoveField } from '../../utils/types';
 import { Button } from '../Button';
 import { ButtonProps } from '../Button/Button';
 import { SystemName } from '../Image/types';
 import { Label } from '../Label';
 
-type ShareLinkProps = PropsWithChildren<
-  {
-    item: string;
-    message?: string;
-    subject?: string;
-    systemImage?: SystemName;
-  } & Omit<ButtonProps, 'action'>
->;
+type ShareLinkProps = RemoveField<ButtonProps, 'action'> & {
+  item: string;
+  message?: string;
+  subject?: string;
+  systemImage?: SystemName;
+};
 
 export const ShareLink = ({
   item,
@@ -40,17 +39,9 @@ export const ShareLink = ({
     }
   };
 
-  const getLabel = () => {
-    if (children) {
-      return children;
-    } else {
-      return <Label title={title} systemImage={systemImage} />;
-    }
-  };
-
   return (
     <Button action={share} {...props}>
-      {getLabel()}
+      {children ? children : <Label title={title} systemImage={systemImage} />}
     </Button>
   );
 };
