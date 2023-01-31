@@ -14,6 +14,8 @@ export * from './views/Toggle';
 export * from './views/Stepper';
 export * from './views/Slider';
 export * from './views/TextField';
+export * from './views/SecureField';
+export * from './views/TextEditor';
 
 export * from './views/VStack';
 export * from './views/HStack';

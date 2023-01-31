@@ -1,6 +1,6 @@
 {
   "name": "swiftui-react-native",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "description": "A React Native component library inspired by SwiftUI",
   "main": "main.js",
   "typings": "main.d.ts",
@@ -19,8 +19,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.14.10",
-    "@types/react": "^16.9.56",
-    "@types/react-native": "^0.63.34",
+    "@types/react": "^17.0.2",
+    "@types/react-native": "^0.71.1",
     "copyfiles": "^2.4.1",
     "esbuild": "^0.8.50",
     "nodemon": "^2.0.6",
@@ -38,6 +38,9 @@
     "react": "*",
     "react-native": "*",
     "react-native-sfsymbols": ">=1.0.0"
+  },
+  "resolutions": {
+    "react": "17.0.2"
   },
   "repository": {
     "type": "git",

@@ -28,16 +28,13 @@ MyApp()
 </TabItem>
 </Tabs>
 
-:::info
-If not provided, the `colorScheme` value will default to your device's system color scheme.
-:::
 :::tip
 Use the `useEnvironment` hook to access these values throughout the app.
 :::
 
 ## Props
 
-| prop          | description                         | type                | required | default             |
-| ------------- | ----------------------------------- | ------------------- | -------- | ------------------- |
-| `colorScheme` | The default color scheme of the app | `"light" or "dark"` | no       | System Color Scheme |
-| `locale`      | The default locale of the app       | `string`            | no       | `"en"`              |
+| prop          | description                         | type                  | required | default   |
+| ------------- | ----------------------------------- | --------------------- | -------- | --------- |
+| `colorScheme` | The default color scheme of the app | `"light"` or `"dark"` | no       | `"light"` |
+| `locale`      | The default locale of the app       | `string`              | no       | `"en"`    |

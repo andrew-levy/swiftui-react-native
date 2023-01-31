@@ -46,4 +46,4 @@ let base64Encoding = "..."; // You can use an online tool to convert an image to
 
 ## Props
 
-Link inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
+ShareLink inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.

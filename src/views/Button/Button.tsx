@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { WithChildren, Modifiers, TextModifiers } from '../../utils/modifiers';
+import { Modifiers, TextModifiers } from '../../utils/modifiers';
 import { Text } from '../Text';
 import { getPadding } from '../../utils/padding';
 import { getFrame } from '../../utils/frame';
@@ -13,14 +13,28 @@ import { useColorScheme } from '../../hooks/useColorScheme';
 import { getColor, UIColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
 
-export type ButtonProps = Modifiers &
-  TextModifiers &
-  WithChildren<{
+export type RemoveField<Type, Field extends string> = {
+  [Property in keyof Type as Exclude<Property, Field>]: Type[Property];
+};
+
+export type CommonButtonProps = Modifiers &
+  TextModifiers & {
     action?: () => void;
     disabled?: boolean;
-    title?: string;
     buttonStyle?: 'bordered' | 'borderless' | 'borderedProminent' | 'plain';
-  }>;
+  };
+
+type TitleOrChildren =
+  | {
+      title?: string;
+      children?: never;
+    }
+  | {
+      children?: ReactElement;
+      title?: never;
+    };
+
+export type ButtonProps = CommonButtonProps & TitleOrChildren;
 
 export const Button = ({
   title,
@@ -95,6 +109,30 @@ export const Button = ({
     }
   }
 
+  function getChildren() {
+    if (children) {
+      return React.Children.map(children, (child) =>
+        React.cloneElement(child, {
+          ...{
+            foregroundColor: getColor(getButtonTextColor(), colorScheme),
+            ...textProps,
+          },
+          ...child.props,
+        })
+      );
+    } else if (title) {
+      return (
+        <Text
+          foregroundColor={getColor(getButtonTextColor(), colorScheme)}
+          {...textProps}
+        >
+          {title}
+        </Text>
+      );
+    }
+    return null;
+  }
+
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -118,26 +156,7 @@ export const Button = ({
         style,
       ]}
     >
-      {title ? (
-        <Text
-          foregroundColor={getColor(getButtonTextColor(), colorScheme)}
-          {...textProps}
-        >
-          {title}
-        </Text>
-      ) : (
-        React.Children.map(children as ReactElement<any>[], (child) =>
-          child
-            ? React.cloneElement(child, {
-                ...{
-                  foregroundColor: getColor(getButtonTextColor(), colorScheme),
-                  ...textProps,
-                },
-                ...child.props,
-              })
-            : null
-        )
-      )}
+      {getChildren()}
     </TouchableOpacity>
   );
 };

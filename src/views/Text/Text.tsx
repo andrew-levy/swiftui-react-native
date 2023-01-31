@@ -64,7 +64,7 @@ export const Text: React.FC<TextProps> = ({
           backgroundColor: getColor(backgroundColor, colorScheme),
           color: getColor(foregroundColor, colorScheme, 'label'),
           textAlign: getTextAlignment(alignment),
-          ...getCornerRadius(cornerRadius),
+          ...getCornerRadius(cornerRadius, true),
           ...getTextCase(textCase),
           ...getFont(
             font,
