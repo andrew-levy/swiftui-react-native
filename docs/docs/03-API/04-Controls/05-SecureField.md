@@ -16,7 +16,7 @@ const $password = useBinding('');
 ```
 
 ```tsx
-<TextField placeholder="Password" text={$password} />
+<SecureField placeholder="Password" text={$password} />
 ```
 
 </TabItem>
@@ -27,7 +27,7 @@ const $password = useBinding('');
 ```
 
 ```swift
-TextField("Password", text: $name)
+SecureField("Password", text: $name)
 ```
 
 </TabItem>
