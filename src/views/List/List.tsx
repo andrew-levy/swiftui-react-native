@@ -1,5 +1,5 @@
 import React, { Children, ReactElement, ReactNode } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, ScrollView } from 'react-native';
 import { Modifiers } from '../../utils/modifiers';
 import { ListRow, ListRowProps } from './ListRow';
 import { useLifecycle } from '../../hooks/useLifecycle';
@@ -71,8 +71,8 @@ export function List<T>({
       {header && (
         <Caption caption={header} preferredColorScheme={preferredColorScheme} />
       )}
-      <View
-        style={[
+      <ScrollView
+        contentContainerStyle={[
           getContainerStyles(listStyle),
           {
             backgroundColor: getColor(
@@ -127,7 +127,7 @@ export function List<T>({
                 );
               }
             )}
-      </View>
+      </ScrollView>
       {footer && <Caption caption={footer} />}
     </View>
   );
