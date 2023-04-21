@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 ### Static
 
 ```tsx
-<List inset header="My Static List">
+<List>
   <Text>List Item</Text>
   <Text>List Item</Text>
   <Text>List Item</Text>
@@ -28,9 +28,7 @@ const options = ['Option 1', 'Option 2', 'Option 3'];
 ```
 
 ```tsx
-<List header="My Dynamic List" data={options}>
-  {(option) => <Text>{option}</Text>}
-</List>
+<List data={options}>{(option) => <Text>{option}</Text>}</List>
 ```
 
 </TabItem>
@@ -65,10 +63,8 @@ List(options) { option in
 
 List inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
-| prop       | description                                                                                          | type                                                | required | default     |
-| ---------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------- | -------- | ----------- |
-| `header`   | List header                                                                                          | `string ` or ` ReactElement<any>`                   | no       | `undefined` |
-| `footer`   | List footer                                                                                          | `string ` or ` ReactElement<any>`                   | no       | `undefined` |
-| `inset`    | Gives the list rounded corners and adjusts list width to be inset from the edges of the parent view. | `boolean`                                           | no       | `false`     |
-| `data`     | List data                                                                                            | `T`                                                 | no       | `null`      |
-| `children` | List Rows                                                                                            | `ReactNode` or `(data: T, i: number ) => ReactNode` | no       | `null`      |
+| prop        | description | type                                                | required | default          |
+| ----------- | ----------- | --------------------------------------------------- | -------- | ---------------- |
+| `listStyle` | List style  | `"insetGrouped"` or `"grouped"`                     | no       | `"insetGrouped"` |
+| `data`      | List data   | `T`                                                 | no       | `null`           |
+| `children`  | List Rows   | `ReactNode` or `(data: T, i: number ) => ReactNode` | no       | `null`           |

@@ -1,7 +1,6 @@
 import React, { Children, ReactElement, ReactNode } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { Modifiers } from '../../utils/modifiers';
-import { ListRow, ListRowProps } from './ListRow';
 import { useLifecycle } from '../../hooks/useLifecycle';
 import { getShadow } from '../../utils/shadow';
 import { getBorder } from '../../utils/border';
@@ -12,25 +11,22 @@ import { getTransform } from '../../utils/transform';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { UIColor, getColor } from '../../utils/colors';
 import { useAlert } from '../../hooks/useAlert';
+import { Section } from '../Section';
 
 type ListProps<T> = Modifiers & {
-  inset?: boolean;
-  header?: string | ReactElement<any>;
-  footer?: string | ReactElement<any>;
+  listStyle?: 'grouped' | 'insetGrouped';
   separatorTint?: UIColor;
-  hideSeparators?: boolean;
+  separatorHidden?: boolean;
   data?: T[];
   children?: ReactNode | ((item: T, index: number) => ReactNode);
 };
 
 export function List<T>({
   data,
-  inset = false,
-  header,
-  footer,
+  listStyle = 'insetGrouped',
   backgroundColor,
   separatorTint,
-  hideSeparators,
+  separatorHidden,
   cornerRadius,
   scaleEffect,
   rotationEffect,
@@ -51,14 +47,68 @@ export function List<T>({
   useLifecycle(onAppear, onDisappear);
   const colorScheme = useColorScheme(preferredColorScheme);
 
-  const listStyle = inset ? 'insetGrouped' : 'grouped';
+  function getAllChildren() {
+    if (typeof children == 'function') {
+      return Children.map(data, (item, index) => {
+        return children(item, index);
+      });
+    } else {
+      return Children.toArray(children);
+    }
+  }
+
+  function mapChildrenToSections() {
+    const allChildren = getAllChildren();
+    const sections = [];
+    let currentSection = [];
+    allChildren.forEach((child: ReactElement) => {
+      if (child.type === Section) {
+        if (currentSection.length > 0) {
+          sections.push(
+            <Section {...{ separatorHidden, separatorTint, listStyle }}>
+              {currentSection}
+            </Section>
+          );
+        }
+        const childWithProps = React.cloneElement(child, {
+          listStyle,
+          separatorHidden,
+          separatorTint,
+          ...child.props,
+        });
+
+        sections.push(childWithProps);
+        currentSection = [];
+      } else {
+        currentSection.push(child);
+      }
+    });
+    if (currentSection.length > 0) {
+      sections.push(
+        <Section {...{ separatorHidden, separatorTint, listStyle }}>
+          {currentSection}
+        </Section>
+      );
+    }
+    return sections;
+  }
+
+  function renderSections() {
+    return mapChildrenToSections();
+  }
+
   return (
-    <View
+    <ScrollView
       style={[
         getOuterContainerStyles(listStyle),
         {
           opacity,
           zIndex,
+          backgroundColor: getColor(
+            backgroundColor,
+            colorScheme,
+            'secondarySystemBackground'
+          ),
           ...getCornerRadius(cornerRadius),
           ...getPadding(padding),
           ...getFrame(frame),
@@ -66,70 +116,11 @@ export function List<T>({
           ...getShadow(shadow, colorScheme),
           ...getTransform(scaleEffect, rotationEffect),
         },
+        style,
       ]}
     >
-      {header && (
-        <Caption caption={header} preferredColorScheme={preferredColorScheme} />
-      )}
-      <View
-        style={[
-          getContainerStyles(listStyle),
-          {
-            backgroundColor: getColor(
-              backgroundColor,
-              colorScheme,
-              'systemBackground'
-            ),
-            borderColor: getColor(separatorTint, colorScheme, 'separator'),
-          },
-          style,
-        ]}
-      >
-        {data && typeof children === 'function'
-          ? data.map((dataItem, index: number) => {
-              const rowId = Math.floor(Math.random()) * 1000;
-              return (
-                <ListRow
-                  key={`listRow-${rowId}-${index}`}
-                  separatorTint={getColor(
-                    separatorTint,
-                    colorScheme,
-                    'separator'
-                  )}
-                  hideSeparator={
-                    hideSeparators ? true : index === data.length - 1
-                  }
-                >
-                  {children(dataItem, index)}
-                </ListRow>
-              );
-            })
-          : Children.map(
-              children as React.ReactElement<any>[],
-              (child, index: number) => {
-                const rowId = Math.floor(Math.random()) * 1000;
-                return (
-                  <ListRow
-                    key={`listRow-${rowId}-${index}`}
-                    separatorTint={getColor(
-                      separatorTint,
-                      colorScheme,
-                      'separator'
-                    )}
-                    hideSeparator={
-                      hideSeparators
-                        ? true
-                        : index === Children.count(children) - 1
-                    }
-                  >
-                    {child}
-                  </ListRow>
-                );
-              }
-            )}
-      </View>
-      {footer && <Caption caption={footer} />}
-    </View>
+      {renderSections()}
+    </ScrollView>
   );
 }
 
@@ -144,57 +135,14 @@ const getOuterContainerStyles = (type: string) => {
   }
 };
 
-const getContainerStyles = (type: string) => {
-  switch (type) {
-    case 'grouped':
-      return styles.groupedContainer;
-    case 'insetGrouped':
-      return styles.insetGroupedContainer;
-    default:
-      return styles.groupedContainer;
-  }
-};
-
-const Caption = ({
-  caption,
-  preferredColorScheme,
-}: {
-  caption: string | ReactElement<any>;
-  preferredColorScheme?: Modifiers['preferredColorScheme'];
-}) => {
-  const colorScheme = useColorScheme(preferredColorScheme);
-  return typeof caption === 'string' ? (
-    <Text
-      style={[styles.caption, { color: getColor('systemGray', colorScheme) }]}
-    >
-      {caption}
-    </Text>
-  ) : (
-    caption
-  );
-};
-
 const styles = StyleSheet.create({
   groupedOuterContainer: {
     width: '100%',
     backgroundColor: 'transparent',
   },
   insetGroupedOuterContainer: {
-    width: '90%',
+    width: '100%',
     backgroundColor: 'transparent',
     alignSelf: 'center',
-  },
-  groupedContainer: {
-    borderBottomWidth: StyleSheet.hairlineWidth * 1.2,
-    borderTopWidth: StyleSheet.hairlineWidth * 1.2,
-  },
-  insetGroupedContainer: {
-    borderRadius: 10,
-    overflow: 'hidden',
-  },
-  caption: {
-    fontWeight: '500',
-    marginLeft: '3%',
-    marginVertical: 10,
   },
 });
