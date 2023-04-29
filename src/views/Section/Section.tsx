@@ -86,54 +86,39 @@ export function Section({
         ))}
       <View
         style={[
+          getContainerStyles(listStyle),
           {
-            opacity,
-            zIndex,
-            ...getCornerRadius(cornerRadius),
-            ...getPadding(padding),
-            ...getFrame(frame),
-            ...getBorder(border, colorScheme),
-            ...getShadow(shadow, colorScheme),
-            ...getTransform(scaleEffect, rotationEffect),
+            backgroundColor: getColor(
+              backgroundColor,
+              colorScheme,
+              'systemBackground'
+            ),
+            borderColor: getColor(separatorTint, colorScheme, 'separator'),
           },
         ]}
       >
-        <View
-          style={[
-            getContainerStyles(listStyle),
-            {
-              backgroundColor: getColor(
-                backgroundColor,
-                colorScheme,
-                'systemBackground'
-              ),
-              borderColor: getColor(separatorTint, colorScheme, 'separator'),
-            },
-          ]}
-        >
-          {Children.map(
-            children as React.ReactElement<any>[],
-            (child, index: number) => {
-              return (
-                <ListRow
-                  key={`listRow-${index}-${child}`}
-                  separatorTint={getColor(
-                    separatorTint,
-                    colorScheme,
-                    'separator'
-                  )}
-                  hideSeparator={
-                    separatorHidden
-                      ? true
-                      : index === Children.count(children) - 1
-                  }
-                >
-                  {child}
-                </ListRow>
-              );
-            }
-          )}
-        </View>
+        {Children.map(
+          children as React.ReactElement<any>[],
+          (child, index: number) => {
+            return (
+              <ListRow
+                key={`listRow-${index}-${child}`}
+                separatorTint={getColor(
+                  separatorTint,
+                  colorScheme,
+                  'separator'
+                )}
+                hideSeparator={
+                  separatorHidden
+                    ? true
+                    : index === Children.count(children) - 1
+                }
+              >
+                {child}
+              </ListRow>
+            );
+          }
+        )}
       </View>
       {footer &&
         (typeof header === 'string' ? (
