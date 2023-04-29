@@ -46,8 +46,11 @@ List {
 
 List inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
-| prop       | description | type                                                | required | default     |
-| ---------- | ----------- | --------------------------------------------------- | -------- | ----------- |
-| `header`   | List header | `string ` or ` ReactElement<any>`                   | no       | `undefined` |
-| `footer`   | List footer | `string ` or ` ReactElement<any>`                   | no       | `undefined` |
-| `children` | List Rows   | `ReactNode` or `(data: T, i: number ) => ReactNode` | no       | `null`      |
+| prop              | description          | type                                                | required | default          |
+| ----------------- | -------------------- | --------------------------------------------------- | -------- | ---------------- |
+| `header`          | List header          | `string ` or ` ReactElement<any>`                   | no       | `undefined`      |
+| `footer`          | List footer          | `string ` or ` ReactElement<any>`                   | no       | `undefined`      |
+| `listStyle`       | List style           | `"insetGrouped"` or `"grouped"`                     | no       | `"insetGrouped"` |
+| `separatorTint`   | Separator tint color | `UIColor`                                           | no       | `undefined`      |
+| `separatorHidden` | Separator hidden     | `boolean`                                           | no       | `false`          |
+| `children`        | Section content      | `ReactNode` or `(data: T, i: number ) => ReactNode` | no       | `null`           |

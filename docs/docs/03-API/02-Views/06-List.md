@@ -63,8 +63,10 @@ List(options) { option in
 
 List inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
-| prop        | description | type                                                | required | default          |
-| ----------- | ----------- | --------------------------------------------------- | -------- | ---------------- |
-| `listStyle` | List style  | `"insetGrouped"` or `"grouped"`                     | no       | `"insetGrouped"` |
-| `data`      | List data   | `T`                                                 | no       | `null`           |
-| `children`  | List Rows   | `ReactNode` or `(data: T, i: number ) => ReactNode` | no       | `null`           |
+| prop              | description          | type                                                | required | default          |
+| ----------------- | -------------------- | --------------------------------------------------- | -------- | ---------------- |
+| `listStyle`       | List style           | `"insetGrouped"` or `"grouped"`                     | no       | `"insetGrouped"` |
+| `data`            | List data            | `T`                                                 | no       | `null`           |
+| `separatorTint`   | Separator tint color | `UIColor`                                           | no       | `undefined`      |
+| `separatorHidden` | Separator hidden     | `boolean`                                           | no       | `false`          |
+| `children`        | List content         | `ReactNode` or `(data: T, i: number ) => ReactNode` | no       | `null`           |
