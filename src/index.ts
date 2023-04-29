@@ -2,6 +2,7 @@ export * from './views/Text';
 export * from './views/Image';
 export * from './views/Button';
 export * from './views/List';
+export * from './views/Section';
 export * from './views/Link';
 export * from './views/ShareLink';
 export * from './views/Label';
