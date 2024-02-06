@@ -1,19 +1,19 @@
 import React from 'react';
-import { StyleProp, Text as RNText, TextStyle } from 'react-native';
+import { Text as RNText, StyleProp, TextStyle } from 'react-native';
+import { useAlert } from '../../hooks/useAlert';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { TextAlignment } from '../../utils/alignments';
+import { getBorder } from '../../utils/border';
+import { getColor } from '../../utils/colors';
+import { getCornerRadius } from '../../utils/cornerRadius';
+import { getFont } from '../../utils/fonts';
+import { getFrame } from '../../utils/frame';
+import { Modifiers, TextModifiers, WithChildren } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
-import { getFrame } from '../../utils/frame';
-import { getBorder } from '../../utils/border';
-import { useLifecycle } from '../../hooks/useLifecycle';
-import { getFont } from '../../utils/fonts';
-import { Modifiers, TextModifiers, WithChildren } from '../../utils/modifiers';
-import { TextAlignment } from '../../utils/alignments';
-import { getCornerRadius } from '../../utils/cornerRadius';
-import { getTransform } from '../../utils/transform';
-import { useColorScheme } from '../../hooks/useColorScheme';
-import { getColor } from '../../utils/colors';
-import { useAlert } from '../../hooks/useAlert';
 import { getTextDecoration } from '../../utils/textDecoration';
+import { getTransform } from '../../utils/transform';
 
 type TextProps = Omit<Modifiers, 'style'> &
   TextModifiers &

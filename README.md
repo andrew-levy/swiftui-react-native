@@ -20,3 +20,36 @@ Check out the [official documentation](https://swiftui-react-native.vercel.app).
 ## Example Project
 
 Check out this [example project](https://github.com/andrew-levy/swiftui-react-native-example).
+
+## To convert:
+
+- Button
+- Color
+- Image
+- Label
+- Link
+- ProgressView
+- Slider
+- SecureField
+- Stepper
+- ShareLink
+- Shapes
+- TextEditor
+- TextField
+- Toggle
+- Text
+
+## To add:
+
+- DatePicker
+- ColorPicker
+- Picker
+- Real UIColor values
+
+## to do:
+
+- add swiftui versions
+- support modifiers prop and convert all existing props to modifiers
+- support bindings + state/onchange
+- ensure android fallbacks
+- ensure tree shaking

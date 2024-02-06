@@ -1,51 +1,114 @@
+import { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import type { UIColor } from '../colors';
+import { Alert } from '../alert';
 import { Border } from '../border';
+import type { UIColor } from '../colors';
+import { FontWeights, Fonts } from '../fonts';
 import { Frame, ShapeFrame } from '../frame';
 import { Padding } from '../padding';
 import { Shadow } from '../shadow';
 import { Rotation } from '../transform';
-import { Alert } from '../alert';
-import { Fonts, FontWeights } from '../fonts';
-import { ReactNode } from 'react';
+
+// Alert might be possible if we can commuinicate which action was taken back to
+// the js so that we can trigger the right function.
 
 export type Modifiers = {
-  alert?: Alert;
-  backgroundColor?: UIColor;
-  padding?: Padding;
-  cornerRadius?: number;
-  rotationEffect?: Rotation;
-  scaleEffect?: number;
-  shadow?: Shadow;
-  border?: Border;
-  opacity?: number;
-  frame?: Frame;
-  zIndex?: number;
-  preferredColorScheme?: 'light' | 'dark';
+  alert?: Alert; // propably cant do this
+  backgroundColor?: UIColor; // rename?
+  padding?: Padding; // good
+  cornerRadius?: number; // removed in swiftui?
+  rotationEffect?: Rotation; // check
+  scaleEffect?: number; // check
+  shadow?: Shadow; // good but check
+  border?: Border; // good
+  opacity?: number; // good
+  frame?: Frame; // good but check
+  zIndex?: number; // good but check
+  preferredColorScheme?: 'light' | 'dark'; // check
   style?: StyleProp<ViewStyle>;
-  onAppear?: () => void;
-  onDisappear?: () => void;
+  onAppear?: () => void; // should we move this to swiftui? i think yes
+  onDisappear?: () => void; // should we move this to swiftui? i think yes
 };
 
 export type TextModifiers = {
-  font?: keyof typeof Fonts;
-  fontWeight?: keyof typeof FontWeights;
-  fontSize?: number;
-  foregroundColor?: UIColor;
-  customFont?: string;
-  bold?: boolean;
-  italic?: boolean;
-  strikethrough?:
-    | boolean
-    | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
-  underline?: boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
+  font?: keyof typeof Fonts; // swiftui
+  fontWeight?: keyof typeof FontWeights; // swiftui but check
+  fontSize?: number; // swiftui but check
+  foregroundColor?: UIColor; // this changed to foregroundStyle in swiftui
+  customFont?: string; // check
+  bold?: boolean; // swiftui
+  italic?: boolean; // swiftui
+  strikethrough?: // swiftui
+  boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
+  underline?: boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' }; // swiftui
 };
 
 export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
-  fill?: UIColor;
-  frame: ShapeFrame;
+  fill?: UIColor; // swiftui
+  frame: ShapeFrame; // swiftui
 };
 
 export type WithChildren<T> = T & {
   children?: ReactNode;
 };
+
+export class InternalModifiersBuilder {
+  private modifiers: { [key: string]: any }[] = [];
+
+  build() {
+    return this.modifiers;
+  }
+
+  alert(alert: Alert) {
+    this.modifiers.push({ alert });
+    return this;
+  }
+
+  bold() {
+    this.modifiers.push({ bold: true });
+    return this;
+  }
+
+  border(border: Border) {
+    this.modifiers.push({ border });
+    return this;
+  }
+
+  padding(padding: Padding) {
+    this.modifiers.push({ padding });
+    return this;
+  }
+
+  frame(frame: Frame) {
+    this.modifiers.push({ frame });
+    return this;
+  }
+
+  background(background: UIColor) {
+    this.modifiers.push({ background });
+    return this;
+  }
+
+  scaleEffect(scaleEffect: number) {
+    this.modifiers.push({ scaleEffect });
+    return this;
+  }
+
+  preferredColorScheme(preferredColorScheme: 'light' | 'dark') {
+    this.modifiers.push({ preferredColorScheme });
+    return this;
+  }
+}
+
+export type ModifiersBuilder = Omit<InternalModifiersBuilder, 'build'>;
+
+export function buildModifiers(
+  modifiers: (builder: ModifiersBuilder) => ModifiersBuilder
+) {
+  if (!modifiers) return;
+  const builder = new InternalModifiersBuilder();
+  return (modifiers(builder) as InternalModifiersBuilder).build();
+}
+
+export type NativeModifiersProp = { [key: string]: any };
+export type ModifiersProp = (builder: ModifiersBuilder) => ModifiersBuilder;
