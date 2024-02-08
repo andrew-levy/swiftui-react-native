@@ -84,6 +84,16 @@ export class InternalModifiersBuilder {
     return this;
   }
 
+  fill(fill: UIColor) {
+    this.modifiers.push({ fill });
+    return this;
+  }
+
+  stroke(stroke: UIColor, lineWidth: number) {
+    this.modifiers.push({ stroke: { color: stroke, lineWidth } });
+    return this;
+  }
+
   background(background: UIColor) {
     this.modifiers.push({ background });
     return this;
@@ -94,8 +104,18 @@ export class InternalModifiersBuilder {
     return this;
   }
 
+  imageScale(scale: 'small' | 'medium' | 'large') {
+    this.modifiers.push({ imageScale: scale });
+    return this;
+  }
+
   preferredColorScheme(preferredColorScheme: 'light' | 'dark') {
     this.modifiers.push({ preferredColorScheme });
+    return this;
+  }
+
+  pickerStyle(pickerStyle: 'wheel' | 'segmented' | 'menu') {
+    this.modifiers.push({ pickerStyle });
     return this;
   }
 }
@@ -105,10 +125,30 @@ export type ModifiersBuilder = Omit<InternalModifiersBuilder, 'build'>;
 export function buildModifiers(
   modifiers: (builder: ModifiersBuilder) => ModifiersBuilder
 ) {
-  if (!modifiers) return;
+  if (!modifiers) return [];
   const builder = new InternalModifiersBuilder();
   return (modifiers(builder) as InternalModifiersBuilder).build();
 }
 
 export type NativeModifiersProp = { [key: string]: any };
 export type ModifiersProp = (builder: ModifiersBuilder) => ModifiersBuilder;
+
+export function parseJsViewModifiers(modifiers: ModifiersProp) {
+  const result = {};
+  const builtModifiers = buildModifiers(modifiers);
+  // [ { alert: Alert }, { padding: Padding }, { frame: Frame }]
+  for (const modifier of builtModifiers) {
+    const key = Object.keys(modifier)[0];
+    const value = modifier[key];
+    switch (key) {
+      case 'alert':
+        // do something
+        break;
+      case 'padding':
+        // do something
+        break;
+      default:
+        break;
+    }
+  }
+}

@@ -15,8 +15,8 @@ extension View {
   func conditionalTint(color: UIColor?) -> some View {
     modifier(ConditionalTint(color: color))
   }
-  func reactModifiers(mods: [[String: Any]]) -> some View {
-    modifier(RNModifiers(mods: mods))
+  func reactNativeViewModifiers(mods: [[String: Any]]) -> some View {
+    modifier(ReactNativeViewModifiers(mods: mods))
   }
 }
 
@@ -90,8 +90,7 @@ struct ConditionalTint: ViewModifier {
   }
 }
 
-
- struct RNModifiers: ViewModifier {
+ struct ReactNativeViewModifiers: ViewModifier {
    var mods: [[String: Any]]
    func body(content: Content) -> some View {
      var view = AnyView(content)
@@ -174,6 +173,19 @@ struct ConditionalTint: ViewModifier {
                view = AnyView(view.preferredColorScheme(.dark))
              }
            }
+           case "imageScale":
+             if let scale = value as? String {
+               switch scale {
+                case "small":
+                  view = AnyView(view.imageScale(.small))
+                case "medium":
+                  view = AnyView(view.imageScale(.medium))
+                case "large":
+                  view = AnyView(view.imageScale(.large))
+                  default:
+                    break
+               }
+             }
          case "fontWeight":
            if let fontWeight = value as? String {
              
@@ -223,6 +235,26 @@ struct ConditionalTint: ViewModifier {
                }
              }
            }
+
+          case "pickerStyle":
+            if let pickerStyle = value as? String {
+              switch pickerStyle {
+              case "wheel":
+                if #available(iOS 14.0, *) {
+                  view = AnyView(view.pickerStyle(.wheel))
+                }
+              case "segmented":
+                if #available(iOS 14.0, *) {
+                  view = AnyView(view.pickerStyle(.segmented))
+                }
+              case "menu":
+                if #available(iOS 14.0, *) {
+                  view = AnyView(view.pickerStyle(.menu))
+                }
+              default:
+                break
+              }
+            }
          default:
            break
          }
@@ -240,3 +272,4 @@ func convertRGBAToHexString(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: 
   let alphaInt = Int(alpha * 255)
   return String(format: "#%02X%02X%02X%02X", redInt, greenInt, blueInt, alphaInt)
 }
+

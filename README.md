@@ -6,50 +6,44 @@
 
 Bringing the best **SwiftUI** features to your **React Native** app :rocket:
 
-## At a Glance
-
-- :white_check_mark: SwiftUI-like API
-- :white_check_mark: Apple's design system
-- :white_check_mark: Dark Mode out of the box
-- :white_check_mark: Written in TypeScript
-
 ## Documentation
 
 Check out the [official documentation](https://swiftui-react-native.vercel.app).
 
 ## Example Project
 
-Check out this [example project](https://github.com/andrew-levy/swiftui-react-native-example).
+Check out the [example project](./example/).
 
 ## To convert:
 
-- Button
-- Color
-- Image
-- Label
-- Link
-- ProgressView
-- Slider
-- SecureField
-- Stepper
-- ShareLink
-- Shapes
-- TextEditor
-- TextField
+- Image ✅
+- ProgressView ✅
+- Stepper ✅
+- Shapes ✅ (Rectangle, Circle, Ellipse, Capsule)
 - Toggle
-- Text
+- Slider
+- Color
+- Button - js fallback
+- Label - js fallback
+- Link - js fallback
+- ShareLink - js fallback
+- SecureField - js fallback
+- TextEditor - js fallback
+- TextField - js fallback (combine these? ^^)
+- Text - js fallback
 
 ## To add:
 
+- ColorPicker ✅
+- Picker ✅
 - DatePicker
-- ColorPicker
-- Picker
-- Real UIColor values
+- Real UIColor values?
 
 ## to do:
 
 - add swiftui versions
 - support modifiers prop and convert all existing props to modifiers
+- get colors working
 - support bindings + state/onchange
 - ensure android fallbacks
 - ensure tree shaking

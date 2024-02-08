@@ -20,6 +20,7 @@ type NativeColorPickerProps = {
   }) => void;
   modifiers?: NativeModifiersProp;
   label?: string;
+  supportsOpacity?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -28,20 +29,28 @@ type ColorPickerProps = {
   onChange?: (color: string) => void;
   modifiers?: ModifiersProp;
   label?: string;
+  supportsOpacity?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
-export function ColorPicker(props: ColorPickerProps) {
-  const { modifiers, selection, style, ...restProps } = props;
+export function ColorPicker({
+  modifiers,
+  selection,
+  style,
+  supportsOpacity = true,
+  onChange,
+  ...restProps
+}: ColorPickerProps) {
   return (
     <NativeColorPicker
+      supportsOpacity={supportsOpacity}
       selection={getValueOrBinding(selection) as string}
       modifiers={buildModifiers(modifiers)}
       onValueChange={(e) => {
         if (typeof selection === 'object' && 'setValue' in selection) {
           selection.setValue(e.nativeEvent.value);
         }
-        props.onChange?.(e.nativeEvent.value);
+        onChange?.(e.nativeEvent.value);
       }}
       style={{
         width: '100%',

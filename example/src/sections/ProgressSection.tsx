@@ -39,7 +39,7 @@ export const ProgressSection = () => {
             <Spacer />
             <Button title="Download" action={() => setDownloading(true)} />
           </HStack>
-          <ProgressView value={progress} progressViewStyle="linear" />
+          <ProgressView value={progress} total={100} modifiers={(v) => v} />
         </VStack>
         <VStack alignment="leading" spacing={10}>
           <Text>Indeterminate</Text>

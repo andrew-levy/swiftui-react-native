@@ -13,13 +13,14 @@ import { FontSection } from './src/sections/FontSection';
 import { ImageSection } from './src/sections/ImageSection';
 import { PickerSection } from './src/sections/PickerSection';
 import { ProgressSection } from './src/sections/ProgressSection';
+import { ShapeSection } from './src/sections/ShapeSection';
 import { StackSection } from './src/sections/StackSection';
 import { TextFieldSection } from './src/sections/TextFieldSection';
 
 // Wrap the app in a EnvironmentProvider to enable light/dark mode by default
 export default function App() {
   return (
-    <EnvironmentProvider colorScheme="dark">
+    <EnvironmentProvider colorScheme="light">
       <Examples />
     </EnvironmentProvider>
   );
@@ -53,6 +54,7 @@ const Examples = () => {
         <PickerSection />
         <ImageSection />
         <StackSection />
+        <ShapeSection />
         <ColorSection />
       </ScrollView>
     </View>

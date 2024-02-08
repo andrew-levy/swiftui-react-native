@@ -15,6 +15,9 @@ public class ColorPickerModule: Module {
       Prop("modifiers") { (view: ColorPickerExpoView, prop: [[String: Any]]) in
         view.props.modifiers = prop
       }
+      Prop("supportsOpacity") { (view: ColorPickerExpoView, prop: Bool) in
+        view.props.supportsOpacity = prop
+      }
     }
   }
 }

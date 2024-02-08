@@ -1,6 +1,13 @@
 {
   "platforms": ["ios"],
   "ios": {
-    "modules": ["ColorPickerModule", "StepperModule"]
+    "modules": [
+      "ColorPickerModule",
+      "StepperModule",
+      "ImageModule",
+      "ShapeModule",
+      "ProgressModule",
+      "PickerModule"
+    ]
   }
 }

@@ -1,7 +1,14 @@
 import { useContext } from 'react';
-import { EnvironmentProviderContext } from '../views/EnvironmentProvider/EnvironmentProvider';
+import {
+  EnvironmentProviderContext,
+  EnvironmentValues,
+} from '../views/EnvironmentProvider/EnvironmentProvider';
 
-export const useEnvironment = () => {
+export const useEnvironment = (): {
+  colorScheme: EnvironmentValues['colorScheme'];
+  locale: EnvironmentValues['locale'];
+  setValues: (values: Partial<EnvironmentValues>) => void;
+} => {
   const env = useContext(EnvironmentProviderContext);
   if (!env) {
     console.warn(

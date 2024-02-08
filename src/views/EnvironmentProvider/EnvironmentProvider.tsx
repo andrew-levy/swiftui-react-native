@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react';
 import { useColorScheme } from 'react-native';
 import { WithChildren } from '../../utils/modifiers';
 
-type EnvironmentValues = {
+export type EnvironmentValues = {
   colorScheme: 'light' | 'dark';
   locale: string;
 };

@@ -16,8 +16,8 @@ struct ColorPickerView: View {
   
   var body: some View {
     if #available(iOS 14.0, *) {
-      ColorPicker(props.label, selection: colorBinding)
-        .reactModifiers(mods: props.modifiers)
+      ColorPicker(props.label, selection: colorBinding, supportsOpacity: props.supportsOpacity)
+        .reactNativeViewModifiers(mods: props.modifiers)
         .conditionalLabel(hasLabel: !props.label.isEmpty)
         .onAppear {
           colorBinding.wrappedValue = Color(props.selection)

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { UIColor } from '../../utils/colors';
 import { ShapeModifiers } from '../../utils/modifiers';
-import { Rectangle } from '../Shapes';
+import { Rectangle } from '../Shape';
 
 interface ColorView {
   (props: ColorProps): JSX.Element;

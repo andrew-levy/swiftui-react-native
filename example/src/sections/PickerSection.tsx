@@ -1,24 +1,31 @@
 import React from 'react';
-import { ColorPicker, List, useBinding } from 'swiftui-react-native';
+import {
+  ColorPicker,
+  List,
+  Picker,
+  Section,
+  useBinding,
+} from 'swiftui-react-native';
+const options = ['red', 'green', 'blue'];
 
 export const PickerSection = () => {
   const color = useBinding('red');
-  console.log('color', color);
+  const wheelPicker = useBinding('red');
+  const menuPicker = useBinding('red');
+  const segmentedPicker = useBinding('red');
+
   return (
     <List>
-      <ColorPicker
-        selection={color}
-        label="Color"
-        modifiers={
-          (content) => content
-          // .background('red')
-          // .border({ color: 'black', width: 1 })
-          // .padding(10)
-          // .border({ color: 'accentColor', width: 1 })
-          // .border({ color: 'black', width: 1 })
-          // .bold()
-        }
-      />
+      <Section header="Pickers">
+        <ColorPicker selection={color} label="Color" />
+        <Picker
+          selection={segmentedPicker}
+          options={options}
+          pickerStyle="segmented"
+        />
+        <Picker selection={wheelPicker} options={options} pickerStyle="wheel" />
+        <Picker selection={menuPicker} options={options} pickerStyle="menu" />
+      </Section>
     </List>
   );
 };

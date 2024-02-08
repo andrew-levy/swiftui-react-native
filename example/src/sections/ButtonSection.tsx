@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Link,
@@ -6,19 +6,17 @@ import {
   ShareLink,
   Text,
   useBinding,
-} from "swiftui-react-native";
+} from 'swiftui-react-native';
 
 export const ButtonSection = () => {
   const showAlert = useBinding(false);
   return (
     <List
-      inset
-      header="Buttons"
       alert={{
         isPresented: showAlert,
-        title: "SwiftUI is Cool",
-        message: "So is React Native!",
-        actions: [{ title: "Cancel" }],
+        title: 'SwiftUI is Cool',
+        message: 'So is React Native!',
+        actions: [{ title: 'Cancel' }],
       }}
     >
       <>
