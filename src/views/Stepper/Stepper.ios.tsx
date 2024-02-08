@@ -5,7 +5,7 @@ import { Binding, getValueOrBinding } from '../../utils/binding';
 import {
   ModifiersProp,
   NativeModifiersProp,
-  buildModifiers,
+  mapToNativeModifiers,
 } from '../../utils/modifiers';
 
 const NativeStepper: React.ComponentType<NativeStepperProps> =
@@ -43,8 +43,8 @@ export function Stepper(props: StepperProps) {
   } = props;
   return (
     <NativeStepper
-      value={getValueOrBinding(value) as number}
-      modifiers={buildModifiers(modifiers)}
+      value={getValueOrBinding(value)}
+      modifiers={mapToNativeModifiers(modifiers)}
       step={step}
       range={range}
       style={{

@@ -7,7 +7,7 @@ import {
   InternalModifiersBuilder,
   ModifiersProp,
   NativeModifiersProp,
-  buildModifiers,
+  mapToNativeModifiers,
 } from '../../utils/modifiers';
 
 type NativePickerProps = {
@@ -47,7 +47,7 @@ export function Picker({
   return (
     <NativeView
       selection={getValueOrBinding(selection) as string}
-      modifiers={[...buildModifiers(modifiers), ...pickerStyleModifiers]}
+      modifiers={[...mapToNativeModifiers(modifiers), ...pickerStyleModifiers]}
       style={{
         width: '100%',
         height: 100,

@@ -4,7 +4,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 import {
   ModifiersProp,
   NativeModifiersProp,
-  buildModifiers,
+  mapToNativeModifiers,
 } from '../../utils/modifiers';
 
 const NativeShape: React.ComponentType<NativeShapeProps> =
@@ -25,7 +25,7 @@ export function Rectangle({ modifiers, style, ...restProps }: ShapeProps) {
   return (
     <NativeShape
       type="Rectangle"
-      modifiers={buildModifiers(modifiers)}
+      modifiers={mapToNativeModifiers(modifiers)}
       style={{
         width: 30,
         height: 30,
@@ -41,7 +41,7 @@ export function RoundedRectangle(props: ShapeProps & { cornerRadius: number }) {
   return (
     <NativeShape
       type="RoundedRectangle"
-      modifiers={buildModifiers(modifiers)}
+      modifiers={mapToNativeModifiers(modifiers)}
       style={{
         width: 30,
         height: 30,
@@ -57,7 +57,7 @@ export function Circle(props: ShapeProps) {
   return (
     <NativeShape
       type="Circle"
-      modifiers={buildModifiers(modifiers)}
+      modifiers={mapToNativeModifiers(modifiers)}
       style={{
         width: 30,
         height: 30,
@@ -73,7 +73,7 @@ export function Capsule(props: ShapeProps) {
   return (
     <NativeShape
       type="Capsule"
-      modifiers={buildModifiers(modifiers)}
+      modifiers={mapToNativeModifiers(modifiers)}
       style={{
         width: 30,
         height: 30,

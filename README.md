@@ -20,7 +20,7 @@ Check out the [example project](./example/).
 - ProgressView ✅
 - Stepper ✅
 - Shapes ✅ (Rectangle, Circle, Ellipse, Capsule)
-- Toggle
+- Toggle ✅
 - Slider
 - Color
 - Button - js fallback
@@ -42,8 +42,9 @@ Check out the [example project](./example/).
 ## to do:
 
 - add swiftui versions
-- support modifiers prop and convert all existing props to modifiers
-- get colors working
+- support modifiers object and function builder prop
+- get colors working (pass from RN to swift)
 - support bindings + state/onchange
-- ensure android fallbacks
+- if js only, need to support mapping modifers to styles
+- ensure android fallbacks?
 - ensure tree shaking

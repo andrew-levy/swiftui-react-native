@@ -4,7 +4,7 @@ import { ViewProps } from 'react-native';
 import {
   ModifiersProp,
   NativeModifiersProp,
-  buildModifiers,
+  mapToNativeModifiers,
 } from '../../utils/modifiers';
 
 export type NativeProgressProps = {
@@ -30,7 +30,7 @@ export function ProgressView({
 }: ProgressProps) {
   return (
     <NativeView
-      modifiers={buildModifiers(modifiers)}
+      modifiers={mapToNativeModifiers(modifiers)}
       total={total ?? 1}
       style={{
         width: 300,

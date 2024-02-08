@@ -7,10 +7,10 @@ export type Binding<T> = {
 
 export type BooleanBinding = Binding<boolean> & { toggle: () => void };
 
-export function getValueOrBinding<T>(incoming: T | Binding<T>) {
+export function getValueOrBinding<T>(incoming: T | Binding<T>): T {
   const value =
     incoming && typeof incoming === 'object' && 'value' in incoming
       ? incoming.value
       : incoming;
-  return value;
+  return value as T;
 }

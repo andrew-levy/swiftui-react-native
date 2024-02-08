@@ -5,7 +5,7 @@ import { Binding, getValueOrBinding } from '../../utils/binding';
 import {
   ModifiersProp,
   NativeModifiersProp,
-  buildModifiers,
+  mapToNativeModifiers,
 } from '../../utils/modifiers';
 
 const NativeColorPicker: React.ComponentType<NativeColorPickerProps> =
@@ -44,8 +44,8 @@ export function ColorPicker({
   return (
     <NativeColorPicker
       supportsOpacity={supportsOpacity}
-      selection={getValueOrBinding(selection) as string}
-      modifiers={buildModifiers(modifiers)}
+      selection={getValueOrBinding(selection)}
+      modifiers={mapToNativeModifiers(modifiers)}
       onValueChange={(e) => {
         if (typeof selection === 'object' && 'setValue' in selection) {
           selection.setValue(e.nativeEvent.value);

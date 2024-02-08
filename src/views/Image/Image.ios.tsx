@@ -9,7 +9,7 @@ import {
 import {
   ModifiersProp,
   NativeModifiersProp,
-  buildModifiers,
+  mapToNativeModifiers,
 } from '../../utils/modifiers';
 import { SystemName } from './types';
 
@@ -35,7 +35,7 @@ export function Image(props: ImageProps) {
     return (
       <NativeImage
         systemName={systemName}
-        modifiers={buildModifiers(modifiers)}
+        modifiers={mapToNativeModifiers(modifiers)}
         style={{
           width: 30,
           height: 30,

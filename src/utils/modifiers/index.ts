@@ -52,6 +52,18 @@ export type WithChildren<T> = T & {
   children?: ReactNode;
 };
 
+export type ModifiersBuilder = Omit<InternalModifiersBuilder, 'build'>;
+export type NativeModifiersProp = { [key: string]: any };
+export type ModifiersFunctionProp = (
+  builder: ModifiersBuilder
+) => ModifiersBuilder;
+export type ModifierObjectProp = Modifiers;
+export type ModifiersProp = ModifiersFunctionProp | ModifierObjectProp;
+
+/**
+ * A builder class for creating native modifiers.
+ */
+
 export class InternalModifiersBuilder {
   private modifiers: { [key: string]: any }[] = [];
 
@@ -120,8 +132,9 @@ export class InternalModifiersBuilder {
   }
 }
 
-export type ModifiersBuilder = Omit<InternalModifiersBuilder, 'build'>;
-
+/**
+ * Builds an array of native modifiers from a modifiers function.
+ */
 export function buildModifiers(
   modifiers: (builder: ModifiersBuilder) => ModifiersBuilder
 ) {
@@ -130,14 +143,16 @@ export function buildModifiers(
   return (modifiers(builder) as InternalModifiersBuilder).build();
 }
 
-export type NativeModifiersProp = { [key: string]: any };
-export type ModifiersProp = (builder: ModifiersBuilder) => ModifiersBuilder;
-
-export function parseJsViewModifiers(modifiers: ModifiersProp) {
+/**
+ * Applies styles from a modifiers prop to a style object. This is used for
+ * components that aren't implemented in SwiftUI yet.
+ */
+export function applyStylesFromModifierProps(
+  modifiers: [{ [key: string]: any }]
+) {
   const result = {};
-  const builtModifiers = buildModifiers(modifiers);
   // [ { alert: Alert }, { padding: Padding }, { frame: Frame }]
-  for (const modifier of builtModifiers) {
+  for (const modifier of modifiers) {
     const key = Object.keys(modifier)[0];
     const value = modifier[key];
     switch (key) {
@@ -151,4 +166,20 @@ export function parseJsViewModifiers(modifiers: ModifiersProp) {
         break;
     }
   }
+}
+
+/**
+ * Maps a modifiers object or function to an array of native modifiers, with
+ * the order being preserved.
+ */
+export function mapToNativeModifiers(modifiers: ModifiersProp | Modifiers) {
+  let result: NativeModifiersProp[] = [];
+  if (typeof modifiers === 'function') {
+    result = buildModifiers(modifiers);
+  } else {
+    result = Object.keys(modifiers || {}).map((key) => {
+      return { [key]: modifiers[key] };
+    });
+  }
+  return result;
 }
