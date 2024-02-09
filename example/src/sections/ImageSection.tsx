@@ -4,7 +4,6 @@ import {
   HStack,
   Image,
   List,
-  Section,
   SystemName,
   UIColor,
 } from 'swiftui-react-native';
@@ -25,7 +24,7 @@ export const ImageSection = () => {
     <>
       {/* Images using a URI as a source */}
       <List>
-        <Section header="Images (URI + Assets)">
+        <List.Section header="Images (URI + Assets)">
           <HStack spacing={6}>
             {ForEach(Array(5).fill(0), (_, i) => (
               <Image
@@ -39,11 +38,11 @@ export const ImageSection = () => {
               />
             ))}
           </HStack>
-        </Section>
+        </List.Section>
       </List>
       {/* SF Symbols */}
       <List>
-        <Section header="Images (SF Symbols)">
+        <List.Section header="Images (SF Symbols)">
           <HStack spacing={15}>
             {ForEach(sfSymbols, (symbol, i) => (
               <Image
@@ -53,7 +52,7 @@ export const ImageSection = () => {
               />
             ))}
           </HStack>
-        </Section>
+        </List.Section>
       </List>
     </>
   );

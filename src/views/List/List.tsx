@@ -1,17 +1,17 @@
 import React, { Children, ReactElement, ReactNode } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { Modifiers } from '../../utils/modifiers';
-import { useLifecycle } from '../../hooks/useLifecycle';
-import { getShadow } from '../../utils/shadow';
-import { getBorder } from '../../utils/border';
-import { getFrame } from '../../utils/frame';
-import { getPadding } from '../../utils/padding';
-import { getCornerRadius } from '../../utils/cornerRadius';
-import { getTransform } from '../../utils/transform';
-import { useColorScheme } from '../../hooks/useColorScheme';
-import { UIColor, getColor } from '../../utils/colors';
+import { ScrollView, StyleSheet } from 'react-native';
 import { useAlert } from '../../hooks/useAlert';
-import { Section } from '../Section';
+import { useColorScheme } from '../../hooks/useColorScheme';
+import { useLifecycle } from '../../hooks/useLifecycle';
+import { getBorder } from '../../utils/border';
+import { UIColor, getColor } from '../../utils/colors';
+import { getCornerRadius } from '../../utils/cornerRadius';
+import { getFrame } from '../../utils/frame';
+import { Modifiers } from '../../utils/modifiers';
+import { getPadding } from '../../utils/padding';
+import { getShadow } from '../../utils/shadow';
+import { getTransform } from '../../utils/transform';
+import { Section } from './Section';
 
 type ListProps<T> = Modifiers & {
   listStyle?: 'grouped' | 'insetGrouped';
@@ -146,3 +146,5 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
+
+List.Section = Section;

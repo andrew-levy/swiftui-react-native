@@ -7,7 +7,6 @@ export * from './views/Label';
 export * from './views/Link';
 export * from './views/List';
 export * from './views/ProgressView';
-export * from './views/Section';
 export * from './views/ShareLink';
 export * from './views/Text';
 

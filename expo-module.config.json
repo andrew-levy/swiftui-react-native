@@ -8,7 +8,10 @@
       "ShapeModule",
       "ProgressModule",
       "PickerModule",
-      "ToggleModule"
+      "ToggleModule",
+      "SliderModule",
+      "ColorModule",
+      "LabelModule"
     ]
   }
 }

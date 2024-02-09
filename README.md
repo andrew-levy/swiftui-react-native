@@ -16,15 +16,17 @@ Check out the [example project](./example/).
 
 ## To convert:
 
-- Image ✅
+- Image ✅ (remove fallback? copy over sfsymbol code)
 - ProgressView ✅
 - Stepper ✅
 - Shapes ✅ (Rectangle, Circle, Ellipse, Capsule)
 - Toggle ✅
-- Slider
-- Color
-- Button - js fallback
+- ColorPicker ✅
+- Picker ✅
+- Slider ✅ (has a lot of bugs)
+- Color ✅
 - Label - js fallback
+- Button - js fallback
 - Link - js fallback
 - ShareLink - js fallback
 - SecureField - js fallback
@@ -34,10 +36,19 @@ Check out the [example project](./example/).
 
 ## To add:
 
-- ColorPicker ✅
-- Picker ✅
 - DatePicker
 - Real UIColor values?
+
+## Can't do:
+
+- VStack
+- HStack
+- ZStack
+- Group
+- List
+- List.Section
+- EnvironmentProvider
+- Spacer??
 
 ## to do:
 
@@ -48,3 +59,22 @@ Check out the [example project](./example/).
 - if js only, need to support mapping modifers to styles
 - ensure android fallbacks?
 - ensure tree shaking
+
+Option 1: Modifiers as props (Basic)
+
+```tsx
+<VStack frame={{width: 100, height: 100}}>
+    <Text padding>Hello</Text>
+    <ColorPicker selection={color}>
+</VStack>
+```
+
+Option 2: Advanced API
+
+```tsx
+VStack(() => (
+    Text("Hello").padding()
+    ColorPicker(selection: color)
+))
+.frame({width: 100, height: 100})
+```

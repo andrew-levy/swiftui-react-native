@@ -19,43 +19,45 @@ export const ButtonSection = () => {
         actions: [{ title: 'Cancel' }],
       }}
     >
-      <>
-        <Button
-          buttonStyle="bordered"
-          title="Bordered"
-          action={showAlert.toggle}
-        />
-      </>
-      <>
+      <List.Section header={'Buttons'}>
+        <>
+          <Button
+            buttonStyle="bordered"
+            title="Bordered"
+            action={showAlert.toggle}
+          />
+        </>
+        <>
+          <Button
+            buttonStyle="borderless"
+            title="Borderless"
+            action={showAlert.toggle}
+          />
+        </>
+        <>
+          <Button
+            buttonStyle="borderedProminent"
+            title="Bordered Prominent"
+            action={showAlert.toggle}
+          />
+        </>
+        <>
+          <Button buttonStyle="plain" title="Plain" action={showAlert.toggle} />
+        </>
         <Button
           buttonStyle="borderless"
-          title="Borderless"
+          title="List Item"
           action={showAlert.toggle}
         />
-      </>
-      <>
-        <Button
-          buttonStyle="borderedProminent"
-          title="Bordered Prominent"
-          action={showAlert.toggle}
-        />
-      </>
-      <>
-        <Button buttonStyle="plain" title="Plain" action={showAlert.toggle} />
-      </>
-      <Button
-        buttonStyle="borderless"
-        title="List Item"
-        action={showAlert.toggle}
-      />
-      <>
-        <ShareLink item="https://www.apple.com" />
-      </>
-      <>
-        <Link destination="https://www.apple.com">
-          <Text>Link</Text>
-        </Link>
-      </>
+        <>
+          <ShareLink item="https://www.apple.com" />
+        </>
+        <>
+          <Link destination="https://www.apple.com">
+            <Text>Link</Text>
+          </Link>
+        </>
+      </List.Section>
     </List>
   );
 };

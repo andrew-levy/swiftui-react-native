@@ -4,7 +4,6 @@ import {
   HStack,
   List,
   ProgressView,
-  Section,
   Spacer,
   Text,
   VStack,
@@ -32,7 +31,7 @@ export const ProgressSection = () => {
 
   return (
     <List>
-      <Section header="Progress View">
+      <List.Section header="Progress View">
         <VStack alignment="leading" spacing={10}>
           <HStack>
             <Text>Linear</Text>
@@ -45,7 +44,7 @@ export const ProgressSection = () => {
           <Text>Indeterminate</Text>
           <ProgressView />
         </VStack>
-      </Section>
+      </List.Section>
     </List>
   );
 };

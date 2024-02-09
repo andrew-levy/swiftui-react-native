@@ -1,21 +1,19 @@
-import React from "react";
+import React from 'react';
 import {
-  List,
-  Text,
-  HStack,
-  VStack,
-  UIColor,
-  useUIColor,
+  Color,
   ForEach,
   Label,
-} from "swiftui-react-native";
-import { toWords } from "../utils";
+  List,
+  UIColor,
+  useUIColor,
+} from 'swiftui-react-native';
+import { toWords } from '../utils';
 
 export const ColorSection = () => {
   const UIColors = useUIColor();
   return (
-    <>
-      <List inset header="Colors">
+    <List>
+      <List.Section header="Colors">
         {ForEach(Object.keys(UIColors), (color, i) => (
           <Label
             key={i}
@@ -23,18 +21,18 @@ export const ColorSection = () => {
             icon={<Swatch color={color as UIColor} />}
           />
         ))}
-      </List>
-    </>
+      </List.Section>
+    </List>
   );
 };
 
 const Swatch = ({ color }: { color: UIColor }) => {
   return (
-    <VStack
-      frame={{ width: 20, height: 20 }}
-      cornerRadius={6}
-      border={{ width: 1, color: "systemGray5" }}
-      backgroundColor={color}
+    <Color
+      color={color}
+      modifiers={{
+        border: { width: 1, color: 'black' },
+      }}
     />
   );
 };

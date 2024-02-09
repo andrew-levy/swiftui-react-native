@@ -1,8 +1,8 @@
 import React from 'react';
 import {
+  Button,
   HStack,
   List,
-  Section,
   Slider,
   Spacer,
   Stepper,
@@ -21,7 +21,7 @@ export const ControlSection = () => {
 
   return (
     <List>
-      <Section header="Controls">
+      <List.Section header="Controls">
         <VStack>
           <HStack>
             <Text font="body">Slider</Text>
@@ -30,11 +30,15 @@ export const ControlSection = () => {
               {Math.round(sliderValue.value)}
             </Text>
           </HStack>
+          <Button
+            title="Random"
+            action={() => sliderValue.setValue(Math.random() * 20)}
+          />
           <Slider
             value={sliderValue}
-            trackTint="accentColor"
-            thumbTint="blue"
+            onChange={console.log}
             range={[0, 20]}
+            step={5}
           />
         </VStack>
         <VStack frame={{ width: '100%' }}>
@@ -68,7 +72,7 @@ export const ControlSection = () => {
             />
           </VStack>
         </VStack>
-      </Section>
+      </List.Section>
     </List>
   );
 };

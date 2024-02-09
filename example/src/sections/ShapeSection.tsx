@@ -6,7 +6,6 @@ import {
   List,
   Rectangle,
   RoundedRectangle,
-  Section,
   Spacer,
   Text,
 } from 'swiftui-react-native';
@@ -14,7 +13,7 @@ import {
 export const ShapeSection = () => {
   return (
     <List>
-      <Section header="Shapes">
+      <List.Section header="Shapes">
         <HStack>
           <Text>Rectangle</Text>
           <Spacer />
@@ -35,7 +34,7 @@ export const ShapeSection = () => {
           <Spacer />
           <Capsule />
         </HStack>
-      </Section>
+      </List.Section>
     </List>
   );
 };

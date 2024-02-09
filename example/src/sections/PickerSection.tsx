@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  ColorPicker,
-  List,
-  Picker,
-  Section,
-  useBinding,
-} from 'swiftui-react-native';
+import { ColorPicker, List, Picker, useBinding } from 'swiftui-react-native';
 const options = ['red', 'green', 'blue'];
 
 export const PickerSection = () => {
@@ -16,7 +10,7 @@ export const PickerSection = () => {
 
   return (
     <List>
-      <Section header="Pickers">
+      <List.Section header="Pickers">
         <ColorPicker selection={color} label="Color" />
         <Picker
           selection={segmentedPicker}
@@ -25,7 +19,7 @@ export const PickerSection = () => {
         />
         <Picker selection={wheelPicker} options={options} pickerStyle="wheel" />
         <Picker selection={menuPicker} options={options} pickerStyle="menu" />
-      </Section>
+      </List.Section>
     </List>
   );
 };

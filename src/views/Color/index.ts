@@ -1,1 +1,1 @@
-export { Color } from './Color';
+export { Color } from './Color.ios';
