@@ -73,7 +73,6 @@ const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {
 
 export const Color: ColorView = ({ color, modifiers, ...rest }: ColorProps) => {
   const colorValue = processColor(getColor(color));
-  console.log('color', colorValue);
   return (
     <NativeColor
       modifiers={mapToNativeModifiers(modifiers)}

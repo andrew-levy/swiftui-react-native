@@ -173,6 +173,9 @@ export function applyStylesFromModifierProps(
  * the order being preserved.
  */
 export function mapToNativeModifiers(modifiers: ModifiersProp | Modifiers) {
+  if (Array.isArray(modifiers)) {
+    return modifiers;
+  }
   let result: NativeModifiersProp[] = [];
   if (typeof modifiers === 'function') {
     result = buildModifiers(modifiers);

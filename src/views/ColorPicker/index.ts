@@ -1,1 +1,1 @@
-export { ColorPicker } from './ColorPicker.ios';
+export { ColorPicker } from './ColorPicker';

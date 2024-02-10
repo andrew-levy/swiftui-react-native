@@ -25,7 +25,7 @@ Check out the [example project](./example/).
 - Picker ✅
 - Slider ✅ (has a lot of bugs)
 - Color ✅
-- Label - js fallback
+- Label ✅ - js fallback
 - Button - js fallback
 - Link - js fallback
 - ShareLink - js fallback
@@ -57,6 +57,7 @@ Check out the [example project](./example/).
 - get colors working (pass from RN to swift)
 - support bindings + state/onchange
 - if js only, need to support mapping modifers to styles
+- experimental api
 - ensure android fallbacks?
 - ensure tree shaking
 
@@ -69,7 +70,7 @@ Option 1: Modifiers as props (Basic)
 </VStack>
 ```
 
-Option 2: Advanced API
+Option 2: Experimental API
 
 ```tsx
 VStack(() => (

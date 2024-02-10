@@ -9,6 +9,7 @@ import {
 import { ButtonSection } from './src/sections/ButtonSection';
 import { ColorSection } from './src/sections/ColorSection';
 import { ControlSection } from './src/sections/ControlSection';
+import { ExperimentalApiSection } from './src/sections/ExperimentalApiSection';
 import { FontSection } from './src/sections/FontSection';
 import { ImageSection } from './src/sections/ImageSection';
 import { PickerSection } from './src/sections/PickerSection';
@@ -56,6 +57,7 @@ const Examples = () => {
         <StackSection />
         <ShapeSection />
         <ColorSection />
+        <ExperimentalApiSection />
       </ScrollView>
     </View>
   );
