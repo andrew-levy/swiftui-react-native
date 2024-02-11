@@ -1,60 +1,17 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { StyleProp, ViewStyle, processColor } from 'react-native';
+import { processColor } from 'react-native';
 import { UIColor } from '../../utils/colors';
+import { mapToNativeModifiers } from '../../utils/modifiers';
 import {
-  ModifiersProp,
-  NativeModifiersProp,
-  ShapeModifiers,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
+  ColorProps,
+  ColorSubComponentProps,
+  ColorView,
+  NativeColorProps,
+} from './types';
 
 const NativeColor: React.ComponentType<NativeColorProps> =
   requireNativeViewManager('Color');
-
-type NativeColorProps = {
-  color: UIColor;
-  modifiers?: NativeModifiersProp;
-  style: StyleProp<ViewStyle>;
-};
-
-type ColorProps = {
-  color:
-    | UIColor
-    | {
-        red?: number;
-        blue?: number;
-        green?: number;
-      };
-  modifiers?: ModifiersProp;
-};
-
-interface ColorView {
-  (props: ColorProps): JSX.Element;
-  black: (props: ColorSubComponentProps) => JSX.Element;
-  blue: (props: ColorSubComponentProps) => JSX.Element;
-  brown: (props: ColorSubComponentProps) => JSX.Element;
-  clear: (props: ColorSubComponentProps) => JSX.Element;
-  cyan: (props: ColorSubComponentProps) => JSX.Element;
-  gray: (props: ColorSubComponentProps) => JSX.Element;
-  green: (props: ColorSubComponentProps) => JSX.Element;
-  indigo: (props: ColorSubComponentProps) => JSX.Element;
-  mint: (props: ColorSubComponentProps) => JSX.Element;
-  orange: (props: ColorSubComponentProps) => JSX.Element;
-  pink: (props: ColorSubComponentProps) => JSX.Element;
-  purple: (props: ColorSubComponentProps) => JSX.Element;
-  red: (props: ColorSubComponentProps) => JSX.Element;
-  teal: (props: ColorSubComponentProps) => JSX.Element;
-  white: (props: ColorSubComponentProps) => JSX.Element;
-  yellow: (props: ColorSubComponentProps) => JSX.Element;
-  accentColor: (props: ColorSubComponentProps) => JSX.Element;
-  primary: (props: ColorSubComponentProps) => JSX.Element;
-  secondary: (props: ColorSubComponentProps) => JSX.Element;
-}
-
-type ColorSubComponentProps = Omit<ShapeModifiers, 'fill'> & {
-  color?: UIColor;
-};
 
 const getColor = (
   colorValue: ColorProps['color'],
@@ -79,7 +36,6 @@ export const Color: ColorView = ({ color, modifiers, ...rest }: ColorProps) => {
       style={{
         width: 30,
         height: 30,
-        backgroundColor: colorValue,
       }}
       color={colorValue}
       {...rest}

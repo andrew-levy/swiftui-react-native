@@ -66,6 +66,9 @@ export const ControlSection = () => {
           <VStack padding={10}>
             <Toggle
               isOn={toggleValue}
+              modifiers={{
+                tint: 'systemBlue',
+              }}
               onChange={() =>
                 setValues({ colorScheme: toggleValue.value ? 'light' : 'dark' })
               }

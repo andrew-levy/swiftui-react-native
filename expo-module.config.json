@@ -11,7 +11,8 @@
       "ToggleModule",
       "SliderModule",
       "ColorModule",
-      "LabelModule"
+      "LabelModule",
+      "TextModule"
     ]
   }
 }

@@ -15,6 +15,9 @@ type NativePickerProps = {
   options: any[];
   pickerStyle?: 'menu' | 'segmented' | 'wheel';
   modifiers?: NativeModifiersProp;
+  onSized?: (
+    e: NativeSyntheticEvent<{ value: { width: number; height: number } }>
+  ) => void;
   onValueChange?: (
     e: NativeSyntheticEvent<{
       value: string;

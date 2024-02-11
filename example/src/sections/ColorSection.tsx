@@ -17,7 +17,13 @@ export const ColorSection = () => {
       <List.Section header="Colors">
         {ForEach(Object.keys(UIColors), (color, i) => (
           <HStack key={i} spacing={10}>
-            <Color color={color} />
+            <Color
+              color={color as UIColor}
+              modifiers={{
+                border: { width: 1, color: 'gray' },
+                cornerRadius: 10,
+              }}
+            />
             <Text>{toWords(color)}</Text>
           </HStack>
         ))}

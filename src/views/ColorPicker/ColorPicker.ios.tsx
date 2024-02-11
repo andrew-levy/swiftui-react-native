@@ -1,37 +1,11 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import { Binding, getValueOrBinding } from '../../utils/binding';
-import {
-  ModifiersProp,
-  NativeModifiersProp,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
+import { getValueOrBinding } from '../../utils/binding';
+import { mapToNativeModifiers } from '../../utils/modifiers';
+import { ColorPickerProps, NativeColorPickerProps } from './types';
 
 const NativeColorPicker: React.ComponentType<NativeColorPickerProps> =
   requireNativeViewManager('ColorPicker');
-
-type NativeColorPickerProps = {
-  selection: string;
-  onValueChange?: (e: {
-    nativeEvent: {
-      value: string;
-    };
-  }) => void;
-  modifiers?: NativeModifiersProp;
-  label?: string;
-  supportsOpacity?: boolean;
-  style?: StyleProp<ViewStyle>;
-};
-
-type ColorPickerProps = {
-  selection: string | Binding<string>;
-  onChange?: (color: string) => void;
-  modifiers?: ModifiersProp;
-  label?: string;
-  supportsOpacity?: boolean;
-  style?: StyleProp<ViewStyle>;
-};
 
 export function ColorPicker({
   modifiers,

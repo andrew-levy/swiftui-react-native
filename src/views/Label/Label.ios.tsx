@@ -30,7 +30,7 @@ export function Label(props: LabelProps) {
       systemImage={systemImage}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: '100%',
+        width: 100,
         height: 30,
         ...(style as object),
       }}

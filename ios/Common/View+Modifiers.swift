@@ -27,7 +27,8 @@ struct SizedToFit: ViewModifier {
   func body(content: Content) -> some View {
     if #available(iOS 15.0, *) {
       content
-        .background() {
+        .border(.red)
+        .background {
           GeometryReader { geometry in
             Path { path in
               let size = geometry.size
@@ -110,28 +111,40 @@ struct ConditionalTint: ViewModifier {
            }
          case "border":
            if let border = value as? [String: Any] {
-             if let color = border["color"] as? String, let width = border["width"] as? CGFloat {
-               view = AnyView(view.border(.black, width: width))
+             if let color = getColor(border["color"]) as UIColor?, let width = border["width"] as? CGFloat {
+               view = AnyView(view.border(Color(color), width: width))
              }
            }
          case "foregroundStyle":
-           if let color = value as? UIColor {
+           print(value)
+           if let color = getColor(value) as UIColor? {
              if #available(iOS 15.0, *) {
                view = AnyView(view.foregroundStyle(Color(color)))
              } else {
                
              }
            } else if let color = value as? [UIColor] {
-             if #available(iOS 15.0, *) {
-               
-             } else {
-               
+             switch color.count {
+             case 1:
+               if #available(iOS 15.0, *) {
+                 view = AnyView(view.foregroundStyle(Color(color[0])))
+               }
+             case 2:
+               if #available(iOS 15.0, *) {
+                 view = AnyView(view.foregroundStyle(Color(color[0]), Color(color[1])))
+               }
+             case 3:
+               if #available(iOS 15.0, *) {
+                 view = AnyView(view.foregroundStyle(Color(color[0]), Color(color[1]), Color(color[2])))
+               }
+             default:
+               break
              }
            }
+           
          case "background":
-           if let color = value as? String {
-             print("adding color \(color)")
-             view = AnyView(view.background(Color.red))
+           if let color = getColor(value) as UIColor? {
+             view = AnyView(view.background(Color(color)))
            }
          case "rotationEffect":
            if let rotation = value as? [String: CGFloat] {
@@ -147,7 +160,7 @@ struct ConditionalTint: ViewModifier {
            }
          case "shadow":
            if let shadow = value as? [String: Any] {
-             if let color = shadow["color"] as? UIColor, let radius = shadow["radius"] as? CGFloat, let x = shadow["x"] as? CGFloat, let y = shadow["y"] as? CGFloat {
+             if let color = getColor(value) as UIColor?, let radius = shadow["radius"] as? CGFloat, let x = shadow["x"] as? CGFloat, let y = shadow["y"] as? CGFloat {
                view = AnyView(view.shadow(color: Color(color), radius: radius, x: x, y: y))
              }
            }
@@ -235,6 +248,19 @@ struct ConditionalTint: ViewModifier {
                }
              }
            }
+         case "tint":
+           if let color = getColor(value) as UIColor? {
+             if #available(iOS 16.0, *) {
+               view = AnyView(view.tint(Color(color)))
+             } else {
+               view = AnyView(view.accentColor(Color(color)))
+             }
+           }
+
+           case "cornerRadius":
+             if let cornerRadius = value as? CGFloat {
+               view = AnyView(view.cornerRadius(cornerRadius))
+             }
 
           case "pickerStyle":
             if let pickerStyle = value as? String {
@@ -273,3 +299,28 @@ func convertRGBAToHexString(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: 
   return String(format: "#%02X%02X%02X%02X", redInt, greenInt, blueInt, alphaInt)
 }
 
+func convertProcessedColorToUIColor(from value: Any?) -> UIColor {
+  do {
+    return try UIColor.convert(from: value, appContext: AppContext())
+  } catch _  {
+    return UIColor.black
+  }
+}
+
+
+func getColor(_ color: Any?) -> UIColor {
+  if let color = color as? String {
+    let selector: Selector
+    if color.hasSuffix("Color") {
+      selector = Selector(color)
+    } else {
+      selector = Selector("\(color)Color")
+    }
+    if UIColor.responds(to: selector) {
+      return UIColor.perform(selector).takeUnretainedValue() as! UIColor
+    } else {
+      return convertProcessedColorToUIColor(from: color) as UIColor
+    }
+  }
+  return convertProcessedColorToUIColor(from: color) as UIColor
+}

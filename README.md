@@ -25,14 +25,15 @@ Check out the [example project](./example/).
 - Picker ✅
 - Slider ✅ (has a lot of bugs)
 - Color ✅
-- Label ✅ - js fallback
-- Button - js fallback
-- Link - js fallback
-- ShareLink - js fallback
-- SecureField - js fallback
-- TextEditor - js fallback
-- TextField - js fallback (combine these? ^^)
-- Text - js fallback
+  -------- These are all text based, need to figure out dynamic sizing --------
+- Label ✅
+- Text ✅
+- Button
+- Link
+- ShareLink
+- SecureField
+- TextEditor
+- TextField (combine these? ^^)
 
 ## To add:
 
@@ -53,8 +54,10 @@ Check out the [example project](./example/).
 ## to do:
 
 - add swiftui versions
-- support modifiers object and function builder prop
-- get colors working (pass from RN to swift)
+- props as modifiers for all components
+- Figure out Color vs UIColor
+- Add overlay, background
+- SFSymbol all custom modifiers support
 - support bindings + state/onchange
 - if js only, need to support mapping modifers to styles
 - experimental api
@@ -73,9 +76,9 @@ Option 1: Modifiers as props (Basic)
 Option 2: Experimental API
 
 ```tsx
-VStack(() => (
+VStack(() => ([
     Text("Hello").padding()
     ColorPicker(selection: color)
-))
+]))
 .frame({width: 100, height: 100})
 ```

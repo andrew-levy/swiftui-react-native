@@ -48,7 +48,9 @@ export const ImageSection = () => {
               <Image
                 key={i}
                 systemName={symbol.name}
-                modifiers={(v) => v.imageScale('large')}
+                modifiers={(v) =>
+                  v.imageScale('large').foregroundStyle('systemBlue')
+                }
               />
             ))}
           </HStack>

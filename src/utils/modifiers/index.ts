@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { Alert } from '../alert';
 import { Border } from '../border';
-import type { UIColor } from '../colors';
+import { UIColor } from '../colors';
 import { FontWeights, Fonts } from '../fonts';
 import { Frame, ShapeFrame } from '../frame';
 import { Padding } from '../padding';
@@ -26,6 +26,7 @@ export type Modifiers = {
   zIndex?: number; // good but check
   preferredColorScheme?: 'light' | 'dark'; // check
   style?: StyleProp<ViewStyle>;
+  tint?: UIColor; // check
   onAppear?: () => void; // should we move this to swiftui? i think yes
   onDisappear?: () => void; // should we move this to swiftui? i think yes
 };
@@ -128,6 +129,11 @@ export class InternalModifiersBuilder {
 
   pickerStyle(pickerStyle: 'wheel' | 'segmented' | 'menu') {
     this.modifiers.push({ pickerStyle });
+    return this;
+  }
+
+  foregroundStyle(foregroundStyle: UIColor | UIColor[]) {
+    this.modifiers.push({ foregroundStyle });
     return this;
   }
 }

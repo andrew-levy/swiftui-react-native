@@ -1,1 +1,3 @@
-export const ColorPicker = () => null;
+import { ColorPickerProps } from './types';
+
+export const ColorPicker = (props: ColorPickerProps) => null;

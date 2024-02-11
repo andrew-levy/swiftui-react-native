@@ -1,6 +1,11 @@
+import { BooleanBinding } from '../utils/binding';
 import { HStack as HStackComp } from '../views/HStack';
 import { Image as ImageComp } from '../views/Image';
+import { Label as LabelComp } from '../views/Label';
+import { List as ListComp } from '../views/List';
+import { Spacer as SpacerComp } from '../views/Spacer';
 import { Text as TextComp } from '../views/Text';
+import { Toggle as ToggleComp } from '../views/Toggle';
 import { VStack as VStackComp } from '../views/VStack';
 import { createSwiftUIComponent } from './createSwiftUIComponent';
 
@@ -14,9 +19,29 @@ const VStack = (children: () => any) =>
 const HStack = (children: () => any) =>
   createSwiftUIComponent(HStackComp, {}, children());
 
+const Toggle = (label: string, isOn: boolean | BooleanBinding) =>
+  createSwiftUIComponent(ToggleComp, { label, isOn }, undefined);
+
+const Spacer = () => createSwiftUIComponent(SpacerComp, {}, undefined);
+
+const Label = (title: string, systemImage: string) =>
+  createSwiftUIComponent(LabelComp, { systemImage, title }, undefined);
+
+const List = (children: () => any) =>
+  createSwiftUIComponent(ListComp, {}, children());
+
+const Section = (header: string, children: () => any) =>
+  createSwiftUIComponent(ListComp.Section, { header }, children());
+
+List.Section = Section;
+
 export const SwiftUI = {
   Text,
   Image,
   VStack,
   HStack,
+  Spacer,
+  Toggle,
+  Label,
+  List,
 };
