@@ -49,7 +49,7 @@ export const ImageSection = () => {
                 key={i}
                 systemName={symbol.name}
                 modifiers={(v) =>
-                  v.imageScale('large').foregroundStyle('systemBlue')
+                  v.imageScale('large').foregroundStyle('systemBlue').blur(2)
                 }
               />
             ))}

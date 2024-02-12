@@ -7,6 +7,9 @@ public class ImageModule: Module {
       Prop("systemName") { (view: ImageExpoView, prop: String) in
         view.props.systemName = prop
       }
+      Prop("variableValue") { (view: ImageExpoView, variableValue: Double?) in
+        view.props.variableValue = variableValue ?? 1.0
+      }
       Prop("modifiers") { (view: ImageExpoView, prop: [[String: Any]]) in
         view.props.modifiers = prop
       }

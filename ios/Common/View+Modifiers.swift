@@ -6,14 +6,8 @@ extension View {
   func sizedToFit(onSized: EventDispatcher) -> some View {
     modifier(SizedToFit(onSized: onSized))
   }
-  func pickerType(type: String) -> some View {
-    modifier(PickerType(type: type))
-  }
   func conditionalLabel(hasLabel: Bool) -> some View {
     modifier(ConditionalLabel(hasLabel: hasLabel))
-  }
-  func conditionalTint(color: UIColor?) -> some View {
-    modifier(ConditionalTint(color: color))
   }
   func reactNativeViewModifiers(mods: [[String: Any]]) -> some View {
     modifier(ReactNativeViewModifiers(mods: mods))
@@ -21,13 +15,11 @@ extension View {
 }
 
 
-
 struct SizedToFit: ViewModifier {
   var onSized: EventDispatcher
   func body(content: Content) -> some View {
     if #available(iOS 15.0, *) {
       content
-        .border(.red)
         .background {
           GeometryReader { geometry in
             Path { path in
@@ -45,26 +37,6 @@ struct SizedToFit: ViewModifier {
   }
 }
 
-struct PickerType: ViewModifier {
-  var type: String
-  func body(content: Content) -> some View {
-    switch(type) {
-    case "wheel":
-      return AnyView(content.pickerStyle(.wheel))
-    case "segmented":
-      return AnyView(content.pickerStyle(.segmented))
-    case "menu":
-      if #available(iOS 14.0, *) {
-        return AnyView(content.pickerStyle(.menu))
-      } else {
-        return AnyView(content.pickerStyle(.segmented))
-      }
-    default:
-      return AnyView(content.pickerStyle(.segmented))
-    }
-  }
-}
-
 struct ConditionalLabel: ViewModifier {
   let hasLabel: Bool
   func body(content: Content) -> some View {
@@ -76,20 +48,6 @@ struct ConditionalLabel: ViewModifier {
   }
 }
 
-struct ConditionalTint: ViewModifier {
-  let color: UIColor?
-  func body(content: Content) -> some View {
-    if let color = color {
-      if #available(iOS 16.0, *) {
-        content.tint(Color(color))
-      } else {
-        content.accentColor(Color(color))
-      }
-    } else {
-      content
-    }
-  }
-}
 
  struct ReactNativeViewModifiers: ViewModifier {
    var mods: [[String: Any]]
@@ -168,6 +126,10 @@ struct ConditionalTint: ViewModifier {
            if let opacity = value as? CGFloat {
              view = AnyView(view.opacity(opacity))
            }
+          case "blur": 
+            if let blur = value as? CGFloat {
+              view = AnyView(view.blur(radius: blur))
+            }
          case "frame":
            if let frame = value as? [String: Any] {
              if let width = frame["width"] as? CGFloat, let height = frame["height"] as? CGFloat {
@@ -201,52 +163,77 @@ struct ConditionalTint: ViewModifier {
              }
          case "fontWeight":
            if let fontWeight = value as? String {
-             
+             if #available(iOS 16.0, *)  {
+               switch fontWeight {
+               case "ultralight":
+                 view = AnyView(view.fontWeight(.ultraLight))
+               case "thin":
+                 view = AnyView(view.fontWeight(.thin))
+               case "light":
+                 view = AnyView(view.fontWeight(.light))
+               case "regular":
+                 view = AnyView(view.fontWeight(.regular))
+               case "medium":
+                 view = AnyView(view.fontWeight(.medium))
+               case "semibold":
+                 view = AnyView(view.fontWeight(.semibold))
+               case "bold":
+                 view = AnyView(view.fontWeight(.bold))
+               case "heavy":
+                 view = AnyView(view.fontWeight(.heavy))
+               case "black":
+                 view = AnyView(view.fontWeight(.black))
+               default:
+                 break
+               }
+             }
            }
          case "font":
            if let font = value as? String {
-             
-             
+             switch font {
+              case "caption":
+                view = AnyView(view.font(.caption))
+              case "footnote":
+                view = AnyView(view.font(.footnote))
+              case "body":
+                view = AnyView(view.font(.body))
+              case "callout":
+                view = AnyView(view.font(.callout))
+              case "subheadline":
+                view = AnyView(view.font(.subheadline))
+              case "headline":
+                view = AnyView(view.font(.headline))
+              case "title":
+                view = AnyView(view.font(.title))
+              case "largeTitle":
+                view = AnyView(view.font(.largeTitle))
+              default:
+                break
+             }
            }
          case "bold":
            if let bold = value as? Bool {
-             if bold {
-               if #available(iOS 16.0, *) {
-                 view = AnyView(view.bold())
-               } else {
-                 
-               }
+             if bold == true, #available(iOS 16.0, *)  {
+              view = AnyView(view.bold())
              }
            }
          case "italic":
            if let italic = value as? Bool {
-             if italic {
-               if #available(iOS 16.0, *) {
-                 view = AnyView(view.italic())
-               } else {
-                 // Fallback on earlier versions
-               }
-             }
+              if italic == true, #available(iOS 16.0, *)  {
+                view = AnyView(view.italic())
+              }
            }
          case "strikethrough":
            if let strikethrough = value as? Bool {
-             if strikethrough {
-               if #available(iOS 16.0, *) {
-                 view = AnyView(view.strikethrough(true))
-               } else {
-                 // Fallback on earlier versions
-               }
-             }
+              if strikethrough, #available(iOS 16.0, *) {
+                view = AnyView(view.strikethrough(true))
+              }
            }
          case "underline":
            if let underline = value as? Bool {
-             if underline {
-               if #available(iOS 16.0, *) {
-                 view = AnyView(view.underline(true))
-               } else {
-                 // Fallback on earlier versions
-               }
-             }
+              if underline, #available(iOS 16.0, *) {
+                view = AnyView(view.underline(true))
+              }
            }
          case "tint":
            if let color = getColor(value) as UIColor? {
@@ -257,10 +244,10 @@ struct ConditionalTint: ViewModifier {
              }
            }
 
-           case "cornerRadius":
-             if let cornerRadius = value as? CGFloat {
-               view = AnyView(view.cornerRadius(cornerRadius))
-             }
+          case "cornerRadius":
+            if let cornerRadius = value as? CGFloat {
+              view = AnyView(view.cornerRadius(cornerRadius))
+            }
 
           case "pickerStyle":
             if let pickerStyle = value as? String {
@@ -281,6 +268,38 @@ struct ConditionalTint: ViewModifier {
                 break
               }
             }
+
+          // case "symbolEffect":
+          //   if let symbolEffect = value as? [String: Any] {
+          //     let type = symbolEffect["type"] as? String ?? "bounce"
+          //     let repeatCount = symbolEffect["repeatCount"] as? Int
+          //     let speed = symbolEffect["speed"] as? Double
+          //     let reversing = symbolEffect["reversing"] as? Bool
+          //     let direction = symbolEffect["direction"] as? String
+          //     let animateBy = symbolEffect["animateBy"] as? String
+          //     let inactiveLayers = symbolEffect["inactiveLayers"] as? String
+          //     let value = symbolEffect["value"]
+          //     let isActive = symbolEffect["isActive"] as? Bool ?? false
+          //     view = AnyView(
+          //       view.modifier(
+          //         SymbolEffectModifier(
+          //           symbolEffect: SFSymbolEffect(
+          //             type: type,
+          //             repeatCount: repeatCount,
+          //             speed: speed,
+          //             reversing: reversing,
+          //             direction: direction,
+          //             animateBy: animateBy,
+          //             inactiveLayers: inactiveLayers,
+          //             value: value,
+          //             isActive: isActive
+          //           )
+          //         )
+          //       )
+          //     )
+          //   }
+           
+
          default:
            break
          }
@@ -324,3 +343,4 @@ func getColor(_ color: Any?) -> UIColor {
   }
   return convertProcessedColorToUIColor(from: color) as UIColor
 }
+

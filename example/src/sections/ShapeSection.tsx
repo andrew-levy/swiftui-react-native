@@ -32,7 +32,11 @@ export const ShapeSection = () => {
         <HStack>
           <Text>Capsule</Text>
           <Spacer />
-          <Capsule />
+          <Capsule
+            modifiers={{
+              frame: { width: 50, height: 30 },
+            }}
+          />
         </HStack>
       </List.Section>
     </List>

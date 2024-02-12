@@ -42,7 +42,11 @@ export const ProgressSection = () => {
         </VStack>
         <VStack alignment="leading" spacing={10}>
           <Text>Indeterminate</Text>
-          <ProgressView />
+          <ProgressView
+            modifiers={{
+              tint: 'systemBlue',
+            }}
+          />
         </VStack>
       </List.Section>
     </List>

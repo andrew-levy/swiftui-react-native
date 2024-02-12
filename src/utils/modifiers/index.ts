@@ -26,6 +26,7 @@ export type Modifiers = {
   zIndex?: number; // good but check
   preferredColorScheme?: 'light' | 'dark'; // check
   style?: StyleProp<ViewStyle>;
+  blur?: number; // check
   tint?: UIColor; // check
   onAppear?: () => void; // should we move this to swiftui? i think yes
   onDisappear?: () => void; // should we move this to swiftui? i think yes
@@ -77,8 +78,8 @@ export class InternalModifiersBuilder {
     return this;
   }
 
-  bold() {
-    this.modifiers.push({ bold: true });
+  bold(isActive: boolean = true) {
+    this.modifiers.push({ bold: isActive });
     return this;
   }
 
@@ -134,6 +135,11 @@ export class InternalModifiersBuilder {
 
   foregroundStyle(foregroundStyle: UIColor | UIColor[]) {
     this.modifiers.push({ foregroundStyle });
+    return this;
+  }
+
+  blur(blur: number) {
+    this.modifiers.push({ blur });
     return this;
   }
 }

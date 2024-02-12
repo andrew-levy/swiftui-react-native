@@ -20,8 +20,7 @@ export const ColorSection = () => {
             <Color
               color={color as UIColor}
               modifiers={{
-                border: { width: 1, color: 'gray' },
-                cornerRadius: 10,
+                border: { width: 1, color: 'systemGray4' },
               }}
             />
             <Text>{toWords(color)}</Text>
@@ -29,16 +28,5 @@ export const ColorSection = () => {
         ))}
       </List.Section>
     </List>
-  );
-};
-
-const Swatch = ({ color }: { color: UIColor }) => {
-  return (
-    <Color
-      color={color}
-      modifiers={{
-        border: { width: 1, color: 'black' },
-      }}
-    />
   );
 };

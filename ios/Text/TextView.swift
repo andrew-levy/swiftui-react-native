@@ -7,6 +7,7 @@ struct TextView: View {
       Text(props.text.toMarkdown())
         .modifier(ReactNativeViewModifiers(mods: props.modifiers))
         .sizedToFit(onSized: props.onSized)
+      
     } else {
       Text(props.text)
         .modifier(ReactNativeViewModifiers(mods: props.modifiers))
