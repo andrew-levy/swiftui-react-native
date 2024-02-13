@@ -1,6 +1,12 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
+import {
+  NativeSyntheticEvent,
+  Text as RNText,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
+import { useSizedToFit } from '../../hooks/useSizedToFit';
 import {
   ModifiersProp,
   NativeModifiersProp,
@@ -29,20 +35,21 @@ type TextProps = {
 
 export function Text(props: TextProps) {
   const { modifiers, style, children, ...restProps } = props;
-
+  const { size, onSized } = useSizedToFit();
   return (
-    <NativeText
-      text={children}
-      modifiers={mapToNativeModifiers(modifiers)}
-      // onSized={onSized}
-      style={{
-        // take up all space it needs
-        width: 100,
-        height: 30,
-        borderWidth: 1,
-        ...(style as object),
-      }}
-      {...restProps}
-    />
+    <RNText>
+      <NativeText
+        text={children}
+        modifiers={mapToNativeModifiers(modifiers)}
+        style={{
+          width: size.width,
+          height: size.height,
+          borderWidth: 1,
+          ...(style as object),
+        }}
+        onSized={onSized}
+        {...restProps}
+      />
+    </RNText>
   );
 }

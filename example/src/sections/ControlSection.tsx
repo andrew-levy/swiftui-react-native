@@ -18,7 +18,6 @@ export const ControlSection = () => {
   const sliderValue = useBinding(0);
   const stepperValue = useBinding(0);
   const toggleValue = useBinding(colorScheme === 'dark');
-
   return (
     <List>
       <List.Section header="Controls">
@@ -27,7 +26,7 @@ export const ControlSection = () => {
             <Text font="body">Slider</Text>
             <Spacer />
             <Text font="body" foregroundColor="systemBlue">
-              {Math.round(sliderValue.value)}
+              {Math.round(sliderValue.value).toString()}
             </Text>
           </HStack>
           <Button
@@ -46,7 +45,7 @@ export const ControlSection = () => {
             <Text font="body">Stepper</Text>
             <Spacer />
             <Text font="body" foregroundColor="systemBlue">
-              {stepperValue.value}
+              {stepperValue.value.toString()}
             </Text>
           </HStack>
           <Stepper

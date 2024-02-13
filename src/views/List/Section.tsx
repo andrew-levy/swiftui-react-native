@@ -165,3 +165,5 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
 });
+
+Section.displayName = 'SwiftUISection';

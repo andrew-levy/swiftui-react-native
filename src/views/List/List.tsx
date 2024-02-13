@@ -148,3 +148,4 @@ const styles = StyleSheet.create({
 });
 
 List.Section = Section;
+List.displayName = 'SwiftUIList';

@@ -56,3 +56,5 @@ export function Toggle({
     />
   );
 }
+
+Toggle.displayName = 'SwiftUIToggle';

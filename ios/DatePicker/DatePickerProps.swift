@@ -1,11 +1,11 @@
 import SwiftUI
 import ExpoModulesCore
 
-class ColorPickerProps: ObservableObject {
+class DatePickerProps: ObservableObject {
   @Published var label: String = ""
-  @Published var selection: UIColor = .white
+  @Published var selection: String = ""
+  @Published var displayedComponents: [String] = []
   @Published var modifiers: [[String: Any]] = []
-  @Published var supportsOpacity = true
   @Published var onValueChange: EventDispatcher
   init(onValueChange: EventDispatcher) {
     self.onValueChange = onValueChange

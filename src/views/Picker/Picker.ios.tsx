@@ -53,7 +53,7 @@ export function Picker({
       modifiers={[...mapToNativeModifiers(modifiers), ...pickerStyleModifiers]}
       style={{
         width: '100%',
-        height: 100,
+        height: pickerStyle === 'wheel' ? 100 : 35,
         ...(style as any),
       }}
       onValueChange={(e) => {

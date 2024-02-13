@@ -12,12 +12,13 @@ export function createSwiftUIComponent(
   props: any,
   children: ReactNode
 ) {
-  console.log('children:! ', children);
   const Element = deepUnfreeze(
     createElement(type, props, children)
   ) as ElementWithModifiers;
 
   Element.props.modifiers = [];
+
+  Element.key = type.displayName;
   Element.padding = function (value) {
     this.props.modifiers.push({ padding: true });
     return this;

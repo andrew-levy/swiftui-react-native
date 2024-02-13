@@ -1,9 +1,11 @@
 import { SwiftUI, useBinding } from 'swiftui-react-native';
 
-const { HStack, Image, Label, Spacer, Text, Toggle, List } = SwiftUI;
+const { HStack, Image, Label, Spacer, Text, Toggle, List, Stepper } = SwiftUI;
 
 export const ExperimentalApiSection = () => {
+  console.log('ExperimentalApiSection');
   const isOn = useBinding(true);
+  const stepperValue = useBinding(0);
   return List(() => [
     List.Section('Experimental API', () => [
       HStack(() => [Image('person'), Text('Hello, World!')]),
@@ -12,6 +14,7 @@ export const ExperimentalApiSection = () => {
         Spacer(),
         Toggle('Toggle', isOn),
       ]),
+      Stepper(stepperValue, [0, 10], console.log),
     ]),
   ]);
 };

@@ -1,15 +1,17 @@
-import { BooleanBinding } from '../utils/binding';
+import { Binding, BooleanBinding } from '../utils/binding';
 import { HStack as HStackComp } from '../views/HStack';
 import { Image as ImageComp } from '../views/Image';
 import { Label as LabelComp } from '../views/Label';
 import { List as ListComp } from '../views/List';
 import { Spacer as SpacerComp } from '../views/Spacer';
+import { Stepper as StepperComp } from '../views/Stepper';
 import { Text as TextComp } from '../views/Text';
 import { Toggle as ToggleComp } from '../views/Toggle';
 import { VStack as VStackComp } from '../views/VStack';
 import { createSwiftUIComponent } from './createSwiftUIComponent';
 
 const Text = (text: string) => createSwiftUIComponent(TextComp, {}, text);
+
 const Image = (systemName: string) =>
   createSwiftUIComponent(ImageComp, { systemName }, undefined);
 
@@ -21,6 +23,12 @@ const HStack = (children: () => any) =>
 
 const Toggle = (label: string, isOn: boolean | BooleanBinding) =>
   createSwiftUIComponent(ToggleComp, { label, isOn }, undefined);
+
+const Stepper = (
+  value: number | Binding<number>,
+  range: [number, number],
+  onChange: (value: number) => void
+) => createSwiftUIComponent(StepperComp, { value, range, onChange }, undefined);
 
 const Spacer = () => createSwiftUIComponent(SpacerComp, {}, undefined);
 
@@ -44,4 +52,5 @@ export const SwiftUI = {
   Toggle,
   Label,
   List,
+  Stepper,
 };

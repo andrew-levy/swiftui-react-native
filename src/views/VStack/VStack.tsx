@@ -1,17 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { useAlert } from '../../hooks/useAlert';
+import { useColorScheme } from '../../hooks/useColorScheme';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { Modifiers, WithChildren } from '../../utils/modifiers';
-import { getAlignment, VStackAlignment } from '../../utils/alignments';
+import { VStackAlignment, getAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
+import { getColor } from '../../utils/colors';
+import { getCornerRadius } from '../../utils/cornerRadius';
 import { getFrame } from '../../utils/frame';
+import { Modifiers, WithChildren } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
-import { getCornerRadius } from '../../utils/cornerRadius';
 import { getTransform } from '../../utils/transform';
-import { useColorScheme } from '../../hooks/useColorScheme';
-import { getColor } from '../../utils/colors';
-import { useAlert } from '../../hooks/useAlert';
 
 type VStackProps = WithChildren<
   Modifiers & {
@@ -82,3 +82,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
 });
+
+VStack.displayName = 'SwiftUIVStack';

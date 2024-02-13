@@ -12,7 +12,8 @@
       "SliderModule",
       "ColorModule",
       "LabelModule",
-      "TextModule"
+      "TextModule",
+      "DatePickerModule"
     ]
   }
 }

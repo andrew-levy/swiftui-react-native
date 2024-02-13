@@ -3,8 +3,8 @@ import { NativeSyntheticEvent } from 'react-native';
 
 export function useSizedToFit() {
   const [size, setSize] = useState({
-    width: '100%',
-    height: 'auto',
+    width: 100,
+    height: 20,
   });
   return {
     size,

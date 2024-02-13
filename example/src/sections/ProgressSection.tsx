@@ -40,7 +40,7 @@ export const ProgressSection = () => {
           </HStack>
           <ProgressView value={progress} total={100} />
         </VStack>
-        <VStack alignment="leading" spacing={10}>
+        <VStack alignment="leading" spacing={10} style={{ width: '100%' }}>
           <Text>Indeterminate</Text>
           <ProgressView
             modifiers={{

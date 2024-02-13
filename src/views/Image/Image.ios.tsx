@@ -57,3 +57,5 @@ export function Image(props: ImageProps) {
     );
   }
 }
+
+Image.displayName = 'SwiftUIImage';
