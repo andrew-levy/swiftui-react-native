@@ -28,13 +28,14 @@ export function ProgressView({
   style,
   ...restProps
 }: ProgressProps) {
+  console.log(restProps.value);
   return (
     <NativeView
       modifiers={mapToNativeModifiers(modifiers)}
       total={total ?? 1}
       style={{
         width: 300,
-        height: 10,
+        height: restProps.value == undefined ? 20 : 10,
         ...(style as any),
       }}
       {...restProps}

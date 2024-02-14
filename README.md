@@ -22,6 +22,7 @@ Check out the [example project](./example/).
 - Shapes ✅ (Rectangle, Circle, Ellipse, Capsule)
 - Toggle ✅
 - ColorPicker ✅
+- DatePicker ✅
 - Picker ✅
 - Slider ✅ (has a lot of bugs)
 - Color ✅
@@ -37,19 +38,15 @@ Check out the [example project](./example/).
 
 ## To add:
 
-- DatePicker
-- Real UIColor values?
-
-## Can't do:
-
-- VStack
-- HStack
+- HStack ✅
+- List ✅
+- Spacer ✅
+- VStack ✅
 - ZStack
 - Group
-- List
-- List.Section
+- List.Section (Not doing)
 - EnvironmentProvider
-- Spacer??
+- Real UIColor values?
 
 ## to do:
 

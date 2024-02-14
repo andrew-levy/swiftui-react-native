@@ -168,9 +168,6 @@ export function applyStylesFromModifierProps(
     const key = Object.keys(modifier)[0];
     const value = modifier[key];
     switch (key) {
-      case 'alert':
-        // do something
-        break;
       case 'padding':
         // do something
         break;

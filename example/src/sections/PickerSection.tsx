@@ -18,21 +18,32 @@ export const PickerSection = () => {
 
   return (
     <List>
-      <List.Section header="Pickers">
-        <ColorPicker selection={color} label="Color" />
-        <DatePicker
-          selection={date}
-          label="Date"
-          displayedComponents={['date', 'hourAndMinute']}
-        />
-        <Picker
-          selection={segmentedPicker}
-          options={options}
-          pickerStyle="segmented"
-        />
-        <Picker selection={wheelPicker} options={options} pickerStyle="wheel" />
-        <Picker selection={menuPicker} options={options} pickerStyle="menu" />
-      </List.Section>
+      {/* <List.Section header="Pickers"> */}
+      <ColorPicker selection={color} label="Color" />
+      <DatePicker
+        selection={date}
+        label="Date"
+        displayedComponents={['date', 'hourAndMinute']}
+      />
+      <Picker
+        selection={segmentedPicker}
+        style={{ width: 200 }}
+        options={options}
+        pickerStyle="segmented"
+      />
+      <Picker
+        selection={wheelPicker}
+        options={options}
+        pickerStyle="wheel"
+        style={{ width: 300 }}
+      />
+      <Picker
+        selection={menuPicker}
+        options={options}
+        pickerStyle="menu"
+        style={{ width: 100 }}
+      />
+      {/* </List.Section> */}
     </List>
   );
 };

@@ -48,8 +48,8 @@ export function Stepper(props: StepperProps) {
       step={step}
       range={range}
       style={{
-        width: '100%',
-        height: 30,
+        width: 100,
+        height: 35,
         ...(style as object),
       }}
       onValueChange={(e) => {

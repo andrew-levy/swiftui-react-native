@@ -32,7 +32,7 @@ export function DatePicker({
         onChange?.(newDate);
       }}
       style={{
-        width: '100%',
+        width: 200,
         height: 35,
         ...(style as object),
       }}

@@ -27,7 +27,7 @@ export function ColorPicker({
         onChange?.(e.nativeEvent.value);
       }}
       style={{
-        width: '100%',
+        width: 30,
         height: 30,
         ...(style as object),
       }}

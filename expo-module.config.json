@@ -13,7 +13,10 @@
       "ColorModule",
       "LabelModule",
       "TextModule",
-      "DatePickerModule"
+      "DatePickerModule",
+      "ListModule",
+      "HStackModule",
+      "VStackModule"
     ]
   }
 }

@@ -3,7 +3,7 @@ import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 import { useAlert } from '../../hooks/useAlert';
 import { useColorScheme } from '../../hooks/useColorScheme';
 import { useLifecycle } from '../../hooks/useLifecycle';
-import { VStackAlignment, getAlignment } from '../../utils/alignments';
+import { VStackAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
 import { getColor } from '../../utils/colors';
 import { getCornerRadius } from '../../utils/cornerRadius';
@@ -53,7 +53,7 @@ export const VStack = ({
           opacity,
           zIndex,
           backgroundColor: getColor(backgroundColor, colorScheme),
-          ...getAlignment(alignment, 'vstack'),
+          // ...getAlignment(alignment, 'vstack'),
           ...getCornerRadius(cornerRadius),
           ...getShadow(shadow, colorScheme),
           ...getPadding(padding),
