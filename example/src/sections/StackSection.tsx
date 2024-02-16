@@ -1,8 +1,8 @@
 import React from 'react';
+import { View } from 'react-native';
 import {
   HStack,
   Image,
-  List,
   Spacer,
   Text,
   VStack,
@@ -11,32 +11,51 @@ import {
 
 export const StackSection = () => {
   return (
-    <List>
-      {/* <List.Section header="Stacks"> */}
-      <HStack>
+    <View>
+      <HStack
+        modifiers={{
+          padding: 10,
+          border: { width: 1, color: 'systemGray4' },
+        }}
+      >
         <Text>HStack</Text>
         <Spacer />
         <Text>HStack</Text>
         <Spacer />
         <Text>HStack</Text>
       </HStack>
-      <VStack>
+      <VStack
+        style={{
+          marginTop: 100,
+          height: 200,
+        }}
+        modifiers={{
+          padding: 10,
+          border: { width: 1, color: 'systemGray4' },
+        }}
+      >
         <Text>VStack</Text>
+        <Spacer />
         <Text>VStack</Text>
         <Text>VStack</Text>
       </VStack>
-      <ZStack frame={{ width: 100, height: 100 }}>
-        <Image systemName="circle.fill" />
+      <ZStack
+        style={{ marginTop: 100 }}
+        modifiers={{
+          padding: 10,
+          border: { width: 1, color: 'systemGray4' },
+          scaleEffect: 2,
+        }}
+      >
         <Image
           systemName="circle.fill"
-          // foregroundColor="systemTeal"
-          // fontSize={50}
+          modifiers={{
+            foregroundStyle: 'red',
+            imageScale: 'large',
+          }}
         />
-        <Text foregroundColor="white" bold>
-          ZStack
-        </Text>
+        <Text>ZStack</Text>
       </ZStack>
-      {/* </List.Section> */}
-    </List>
+    </View>
   );
 };

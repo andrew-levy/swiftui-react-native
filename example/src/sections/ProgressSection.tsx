@@ -29,7 +29,7 @@ export const ProgressSection = () => {
   }, [downloading]);
 
   return (
-    <List>
+    <List style={{ flex: 1 }}>
       {/* <List.Section header="Progress View"> */}
       <VStack alignment="leading" spacing={10}>
         <HStack>

@@ -18,7 +18,7 @@ export const ControlSection = () => {
   const stepperValue = useBinding(0);
   const toggleValue = useBinding(colorScheme === 'dark');
   return (
-    <List>
+    <List style={{ flex: 1 }}>
       {/* <List.Section header="Controls"> */}
       <VStack>
         <HStack>

@@ -5,9 +5,9 @@ public class VStackModule: Module {
   public func definition() -> ModuleDefinition {
     Name("VStack")
     View(VStackExpoView.self) {
-      // Prop("label") { (view: VStackExpoView, prop: String?) in
-      //   view.props.label = prop ?? ""
-      // }
+      Prop("modifiers") { (view: VStackExpoView, prop: [[String: Any]]) in
+        view.props.modifiers = prop
+      }
     }
   }
 }

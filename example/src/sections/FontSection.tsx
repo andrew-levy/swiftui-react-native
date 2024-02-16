@@ -1,12 +1,12 @@
 import React from 'react';
-import { List, Text } from 'swiftui-react-native';
+import { Label, List, Text } from 'swiftui-react-native';
 
 /**
  * A list of SwiftUI Fonts
  */
 export const FontSection = () => {
   return (
-    <List>
+    <List style={{ flex: 1 }}>
       <Text alignment="leading" font="body">
         Body
       </Text>
@@ -40,12 +40,7 @@ export const FontSection = () => {
       <Text alignment="leading" font="title3">
         Title 3
       </Text>
-      {/* </List.Section>
-      <List.Section header="Labels">
-        <Label title="Folder" systemImage="square.grid.3x1.folder.badge.plus" />
-        <Label title="Person" systemImage="person" />
-        <Label title="Moon" systemImage="moon" />
-      </List.Section> */}
+      <Label title="Labels" systemImage="square.grid.3x1.folder.badge.plus" />
     </List>
   );
 };

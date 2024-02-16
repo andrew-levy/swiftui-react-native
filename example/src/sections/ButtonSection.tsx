@@ -12,6 +12,7 @@ export const ButtonSection = () => {
   const showAlert = useBinding(false);
   return (
     <List
+      style={{ flex: 1 }}
       alert={{
         isPresented: showAlert,
         title: 'SwiftUI is Cool',

@@ -1,9 +1,9 @@
 import React from 'react';
+import { View } from 'react-native';
 import {
   ForEach,
   HStack,
   Image,
-  List,
   SystemName,
   UIColor,
 } from 'swiftui-react-native';
@@ -21,41 +21,32 @@ export const ImageSection = () => {
   ];
 
   return (
-    <>
-      {/* Images using a URI as a source */}
-      <List>
-        {/* <List.Section header="Images (URI + Assets)"> */}
-        <HStack spacing={6}>
-          {ForEach(Array(5).fill(0), (_, i) => (
-            <Image
-              key={i}
-              source={{ uri: 'https://picsum.photos/200/300/?random' }}
-              style={{
-                width: 50,
-                height: 50,
-                borderRadius: 10,
-              }}
-            />
-          ))}
-        </HStack>
-        {/* </List.Section> */}
-      </List>
-      {/* SF Symbols */}
-      <List>
-        {/* <List.Section header="Images (SF Symbols)"> */}
-        <HStack spacing={15}>
-          {ForEach(sfSymbols, (symbol, i) => (
-            <Image
-              key={i}
-              systemName={symbol.name}
-              modifiers={(v) =>
-                v.imageScale('large').foregroundStyle('systemBlue').blur(2)
-              }
-            />
-          ))}
-        </HStack>
-        {/* </List.Section> */}
-      </List>
-    </>
+    <View>
+      {/* <List.Section header="Images (URI + Assets)"> */}
+      <HStack spacing={6}>
+        {ForEach(Array(5).fill(0), (_, i) => (
+          <Image
+            key={i}
+            source={{ uri: 'https://picsum.photos/200/300/?random' }}
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: 10,
+            }}
+          />
+        ))}
+      </HStack>
+      <HStack spacing={15}>
+        {ForEach(sfSymbols, (symbol, i) => (
+          <Image
+            key={i}
+            systemName={symbol.name}
+            modifiers={(v) =>
+              v.imageScale('large').foregroundStyle('systemBlue')
+            }
+          />
+        ))}
+      </HStack>
+    </View>
   );
 };

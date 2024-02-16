@@ -1,23 +1,8 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React, { ReactElement } from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
-import {
-  ModifiersProp,
-  NativeModifiersProp,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
-
-type NativeListProps = {
-  children?: React.ReactNode;
-  modifiers?: NativeModifiersProp;
-  style?: StyleProp<ViewStyle>;
-};
-
-type ListProps = {
-  modifiers?: ModifiersProp;
-  style?: StyleProp<ViewStyle>;
-  children?: React.ReactNode;
-};
+import { View } from 'react-native';
+import { mapToNativeModifiers } from '../../utils/modifiers';
+import { ListProps, NativeListProps } from './types';
 
 const NativeList: React.ComponentType<NativeListProps> =
   requireNativeViewManager('List');

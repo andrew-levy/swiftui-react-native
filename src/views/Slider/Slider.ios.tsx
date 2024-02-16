@@ -26,7 +26,7 @@ type NativeSliderProps = {
 type SliderProps = {
   step?: number;
   range?: [number, number];
-  value: Binding<number>;
+  value: Binding<number> | number;
   modifiers?: ModifiersProp;
   onChange?: (value?: number) => void;
   style?: StyleProp<ViewStyle>;

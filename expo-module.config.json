@@ -16,7 +16,10 @@
       "DatePickerModule",
       "ListModule",
       "HStackModule",
-      "VStackModule"
+      "VStackModule",
+      "ZStackModule",
+      "GroupModule",
+      "SpacerModule"
     ]
   }
 }

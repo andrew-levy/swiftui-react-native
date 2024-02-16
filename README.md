@@ -40,10 +40,12 @@ Check out the [example project](./example/).
 
 - HStack ✅
 - List ✅
-- Spacer ✅
 - VStack ✅
-- ZStack
-- Group
+- ZStack ✅
+- Group ✅
+- Spacer
+- NavigationStack/NavigationView
+- NavigationLink
 - List.Section (Not doing)
 - EnvironmentProvider
 - Real UIColor values?

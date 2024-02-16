@@ -13,8 +13,7 @@ import { toWords } from '../utils';
 export const ColorSection = () => {
   const UIColors = useUIColor();
   return (
-    <List>
-      {/* <List.Section header="Colors"> */}
+    <List style={{ flex: 1 }}>
       {ForEach(Object.keys(UIColors), (color, i) => (
         <HStack key={i} spacing={10}>
           <Color
@@ -27,7 +26,6 @@ export const ColorSection = () => {
           <Text>{toWords(color)}</Text>
         </HStack>
       ))}
-      {/* </List.Section> */}
     </List>
   );
 };
