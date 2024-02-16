@@ -24,10 +24,23 @@ export type Modifiers = {
   opacity?: number; // good
   frame?: Frame; // good but check
   zIndex?: number; // good but check
-  preferredColorScheme?: 'light' | 'dark'; // check
+  environment?: {
+    colorScheme: 'light' | 'dark';
+  };
   style?: StyleProp<ViewStyle>;
   blur?: number; // check
   tint?: UIColor; // check
+  font?: keyof typeof Fonts; // swiftui
+  fontWeight?: keyof typeof FontWeights; // swiftui but check
+  fontSize?: number; // swiftui but check
+  foregroundColor?: UIColor; // this changed to foregroundStyle in swiftui
+  customFont?: string; // check
+  bold?: boolean; // swiftui
+  italic?: boolean; // swiftui
+  strikethrough?:
+    | boolean
+    | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
+  underline?: boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' }; // swiftui
   onAppear?: () => void; // should we move this to swiftui? i think yes
   onDisappear?: () => void; // should we move this to swiftui? i think yes
 };

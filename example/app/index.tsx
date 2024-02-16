@@ -19,6 +19,7 @@ export default function Page() {
       <Button title="Progress" action={() => router.push('/progress')} />
       <Button title="Shapes" action={() => router.push('/shapes')} />
       <Button title="Group" action={() => router.push('/group')} />
+      <Button title="TextField" action={() => router.push('/textfield')} />
     </List>
   );
 }

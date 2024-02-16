@@ -29,7 +29,7 @@ Check out the [example project](./example/).
   -------- These are all text based, need to figure out dynamic sizing --------
 - Label ✅
 - Text ✅
-- Button
+- Button ✅
 - Link
 - ShareLink
 - SecureField
@@ -43,8 +43,9 @@ Check out the [example project](./example/).
 - VStack ✅
 - ZStack ✅
 - Group ✅
-- Spacer
-- NavigationStack/NavigationView
+- Spacer ✅
+- ForEach
+- NavigationStack
 - NavigationLink
 - List.Section (Not doing)
 - EnvironmentProvider

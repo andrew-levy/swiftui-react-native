@@ -10,6 +10,5 @@ class TextExpoView: ExpoView {
     let hostingController = UIHostingController(rootView: TextView(props: props))
     super.init(appContext: appContext)
     setupHostingController(hostingController)
-
   }
 }

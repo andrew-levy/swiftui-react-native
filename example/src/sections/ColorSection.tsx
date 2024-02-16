@@ -5,8 +5,8 @@ import {
   HStack,
   List,
   Text,
+  UIColor,
   useUIColor,
-  type UIColor,
 } from 'swiftui-react-native';
 import { toWords } from '../utils';
 

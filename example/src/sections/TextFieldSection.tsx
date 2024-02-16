@@ -1,27 +1,26 @@
 import React from 'react';
+
 import {
   List,
   SecureField,
+  Text,
   TextEditor,
   TextField,
   useBinding,
 } from 'swiftui-react-native';
 
 export const TextFieldSection = () => {
-  const text = useBinding('');
-  const password = useBinding('');
-  const bio = useBinding('');
+  const text = useBinding('Andrew');
+  const password = useBinding('password');
+  const bio = useBinding('My bio...');
   return (
     <List>
-      {/* <List.Section header="Text Fields"> */}
-      <TextField frame={{ width: '100%' }} placeholder="Username" text={text} />
-      <SecureField
-        frame={{ width: '100%' }}
-        placeholder="Password"
-        text={password}
-      />
-      <TextEditor frame={{ width: '100%' }} placeholder="Bio" text={bio} />
-      {/* </List.Section> */}
+      <TextField placeholder="Username" text={text} />
+      <SecureField placeholder="Password" text={password} />
+      <TextEditor placeholder="Bio" text={bio} style={{ height: 100 }} />
+      <Text>Username: {text.value}</Text>
+      <Text>Password: {password.value}</Text>
+      <Text>Bio: {bio.value}</Text>
     </List>
   );
 };

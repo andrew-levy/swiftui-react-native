@@ -4,6 +4,7 @@ import {
   HStack,
   List,
   Slider,
+  Spacer,
   Stepper,
   Text,
   Toggle,
@@ -41,7 +42,7 @@ export const ControlSection = () => {
       <VStack>
         <HStack>
           <Text font="body">Stepper</Text>
-          {/* <Spacer /> */}
+          <Spacer />
           <Text font="body" foregroundColor="systemBlue">
             {stepperValue.value.toString()}
           </Text>
@@ -51,7 +52,7 @@ export const ControlSection = () => {
       <VStack>
         <HStack>
           <Text font="body">Toggle</Text>
-          {/* <Spacer /> */}
+          <Spacer />
           <Text foregroundColor="systemBlue" font="body">
             {toggleValue.value ? 'On' : 'Off'}
           </Text>

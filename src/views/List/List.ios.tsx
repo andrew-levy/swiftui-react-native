@@ -9,9 +9,6 @@ const NativeList: React.ComponentType<NativeListProps> =
 
 export function List({ modifiers, style, children, ...restProps }: ListProps) {
   const mappedChildren = React.Children.map(children, (child: ReactElement) => {
-    // if (child.type === HStack) {
-    //   return child;
-    // }
     return <View style={{ alignSelf: 'center' }}>{child}</View>;
   });
   return (

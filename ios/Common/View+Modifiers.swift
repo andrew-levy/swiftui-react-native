@@ -130,6 +130,77 @@ struct ConditionalLabel: ViewModifier {
             if let blur = value as? CGFloat {
               view = AnyView(view.blur(radius: blur))
             }
+         case "saturation":
+           if let sat = value as? Double {
+             view = AnyView(view.saturation(sat))
+           }
+         case "grayscale":
+           if let gs = value as? Double {
+             view = AnyView(view.grayscale(gs))
+           }
+         case "brigtness":
+           if let brightness = value as? Double {
+             view = AnyView(view.brightness(brightness))
+           }
+          case "contrast": 
+           if let contrast = value as? Double {
+             view = AnyView(view.contrast(contrast))
+           }
+           case "hidden": 
+              if let hidden = value as? Bool {
+                if hidden == true {
+                  view = AnyView(view.hidden())
+                }
+              }
+         case "blendMode":
+           if let blendMode = value as? String {
+             switch blendMode {
+             case "color":
+               view = AnyView(view.blendMode(.color))
+             case "colorBurn":
+               view = AnyView(view.blendMode(.colorBurn))
+             case "colorDodge":
+               view = AnyView(view.blendMode(.colorDodge))
+             case "darken":
+               view = AnyView(view.blendMode(.darken))
+             case "difference":
+               view = AnyView(view.blendMode(.difference))
+             case "exclusion":
+               view = AnyView(view.blendMode(.exclusion))
+             case "hardLight":
+               view = AnyView(view.blendMode(.hardLight))
+             case "hue":
+               view = AnyView(view.blendMode(.hue))
+             case "lighten":
+               view = AnyView(view.blendMode(.lighten))
+             case "luminosity":
+               view = AnyView(view.blendMode(.luminosity))
+             case "multiply":
+               view = AnyView(view.blendMode(.multiply))
+             case "overlay":
+               view = AnyView(view.blendMode(.overlay))
+             case "saturation":
+               view = AnyView(view.blendMode(.saturation))
+             case "screen":
+               view = AnyView(view.blendMode(.screen))
+             case "softLight":
+               view = AnyView(view.blendMode(.softLight))
+             case "sourceAtop":
+               view = AnyView(view.blendMode(.sourceAtop))
+             case "destinationOver":
+               view = AnyView(view.blendMode(.destinationOver))
+             case "destinationOut":
+               view = AnyView(view.blendMode(.destinationOut))
+             case "plusDarker":
+               view = AnyView(view.blendMode(.plusDarker))
+             case "plusLighter":
+               view = AnyView(view.blendMode(.plusLighter))
+             case "normal":
+               view = AnyView(view.blendMode(.normal))
+             default:
+               break
+             }
+           }
          case "frame":
            if let frame = value as? [String: Any] {
              if let width = frame["width"] as? CGFloat, let height = frame["height"] as? CGFloat {
@@ -137,16 +208,74 @@ struct ConditionalLabel: ViewModifier {
              }
            }
          case "zIndex":
-           if let zIndex = value as? Int {
-             view = AnyView(view.zIndex(Double(zIndex)))
+           if let zIndex = value as? Double {
+             view = AnyView(view.zIndex(zIndex))
            }
-         case "preferredColorScheme":
-           if let scheme = value as? String {
-             if scheme == "light" {
-               view = AnyView(view.preferredColorScheme(.light))
-             } else if scheme == "dark" {
-               view = AnyView(view.preferredColorScheme(.dark))
+         case "mask":
+           if let mask = value as? String {
+             if #available(iOS 15.0, *) {
+               view = AnyView(view.mask({
+                 Text(mask).font(.largeTitle)
+               }))
              }
+           }
+         case "clipShape":
+           if let clipShape = value as? String {
+             switch clipShape {
+             case "circle":
+               view = AnyView(view.clipShape(Circle()))
+             case "roundedRectangle":
+               view = AnyView(view.clipShape(RoundedRectangle(cornerRadius: 10)))
+             case "capsule":
+               view = AnyView(view.clipShape(Capsule()))
+             case "ellipse":
+               view = AnyView(view.clipShape(Ellipse()))
+             case "rectangle":
+               view = AnyView(view.clipShape(Rectangle()))
+             default:
+               break
+             }
+           } else if let clipShape = value as? [String: Any] {
+             if let shape = clipShape["shape"] as? String {
+               switch shape {
+               case "circle":
+                 view = AnyView(view.clipShape(Circle()))
+               case "roundedRectangle":
+                 if let cornerRadius = clipShape["cornerRadius"] as? CGFloat {
+                   view = AnyView(view.clipShape(RoundedRectangle(cornerRadius: cornerRadius)))
+                 }
+               case "capsule":
+                 view = AnyView(view.clipShape(Capsule()))
+               case "ellipse":
+                 view = AnyView(view.clipShape(Ellipse()))
+               case "rectangle":
+                 view = AnyView(view.clipShape(Rectangle()))
+               default:
+                 break
+               }
+             }
+           }
+         case "environment":
+           if let obj = value as? [String: Any] {
+              for (key, value) in obj {
+                switch key {
+                case "colorScheme":
+                  if let colorScheme = value as? String {
+                    if #available(iOS 15.0, *) {
+                      switch colorScheme {
+                      case "light":
+                        view = AnyView(view.environment(\.colorScheme, .light))
+                      case "dark":
+                        view = AnyView(view.environment(\.colorScheme, .dark))
+                      default:
+                        break
+                      }
+                    }
+                  }
+                default:
+                  break
+                }
+              }
            }
            case "imageScale":
              if let scale = value as? String {
@@ -244,10 +373,30 @@ struct ConditionalLabel: ViewModifier {
              }
            }
 
-          case "cornerRadius":
+         case "cornerRadius":
             if let cornerRadius = value as? CGFloat {
               view = AnyView(view.cornerRadius(cornerRadius))
             }
+
+         case "buttonStyle":
+           if let buttonStyle = value as? String {
+             switch buttonStyle {
+             case "borderless":
+               view = AnyView(view.buttonStyle(.borderless))
+             case "bordered":
+               if #available(iOS 15.0, *) {
+                 view = AnyView(view.buttonStyle(.bordered))
+               }
+              case "borderedProminent":
+                if #available(iOS 15.0, *) {
+                  view = AnyView(view.buttonStyle(.borderedProminent))
+                }
+             case "plain":
+               view = AnyView(view.buttonStyle(.plain))
+             default:
+               break
+             }
+           }
 
           case "pickerStyle":
             if let pickerStyle = value as? String {

@@ -13,10 +13,8 @@ export * from './views/Text';
 export * from './views/ColorPicker';
 export * from './views/DatePicker';
 export * from './views/Picker';
-export * from './views/SecureField';
 export * from './views/Slider';
 export * from './views/Stepper';
-export * from './views/TextEditor';
 export * from './views/TextField';
 export * from './views/Toggle';
 

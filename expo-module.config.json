@@ -19,7 +19,9 @@
       "VStackModule",
       "ZStackModule",
       "GroupModule",
-      "SpacerModule"
+      "SpacerModule",
+      "ButtonModule",
+      "TextFieldModule"
     ]
   }
 }

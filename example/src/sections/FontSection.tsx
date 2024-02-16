@@ -7,37 +7,42 @@ import { Label, List, Text } from 'swiftui-react-native';
 export const FontSection = () => {
   return (
     <List style={{ flex: 1 }}>
-      <Text alignment="leading" font="body">
+      <Text
+        alignment="leading"
+        modifiers={{
+          font: 'body',
+        }}
+      >
         Body
       </Text>
-      <Text alignment="leading" font="callout">
+      <Text alignment="leading" modifiers={{ font: 'callout' }}>
         Callout
       </Text>
-      <Text alignment="leading" font="caption">
+      <Text alignment="leading" modifiers={{ font: 'caption' }}>
         Caption
       </Text>
-      <Text alignment="leading" font="caption2">
+      <Text alignment="leading" modifiers={{ font: 'caption2' }}>
         Caption 2
       </Text>
-      <Text alignment="leading" font="footnote">
+      <Text alignment="leading" modifiers={{ font: 'footnote' }}>
         Footnote
       </Text>
-      <Text alignment="leading" font="headline">
+      <Text alignment="leading" modifiers={{ font: 'headline' }}>
         Headline
       </Text>
-      <Text alignment="leading" font="largeTitle">
+      <Text alignment="leading" modifiers={{ font: 'largeTitle' }}>
         Large Title
       </Text>
-      <Text alignment="leading" font="subheadline">
+      <Text alignment="leading" modifiers={{ font: 'subheadline' }}>
         Subheadline
       </Text>
-      <Text alignment="leading" font="title">
+      <Text alignment="leading" modifiers={{ font: 'title' }}>
         Title
       </Text>
-      <Text alignment="leading" font="title2">
+      <Text alignment="leading" modifiers={{ font: 'title2' }}>
         Title 2
       </Text>
-      <Text alignment="leading" font="title3">
+      <Text alignment="leading" modifiers={{ font: 'title3' }}>
         Title 3
       </Text>
       <Label title="Labels" systemImage="square.grid.3x1.folder.badge.plus" />

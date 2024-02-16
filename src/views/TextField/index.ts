@@ -1,1 +1,1 @@
-export { TextField } from './TextField';
+export { SecureField, TextEditor, TextField } from './TextField';
