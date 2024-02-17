@@ -6,6 +6,7 @@ import {
   NativeModifiersProp,
   mapToNativeModifiers,
 } from '../../utils/modifiers';
+import { Text } from '../Text';
 
 const NativeButton: React.ComponentType<NativeButtonProps> =
   requireNativeViewManager('Button');
@@ -14,6 +15,7 @@ type NativeButtonProps = {
   text: string;
   modifiers?: NativeModifiersProp;
   style?: StyleProp<ViewStyle>;
+  children?: React.ReactNode;
   onAction?: (
     e: NativeSyntheticEvent<{
       value: boolean;
@@ -35,17 +37,17 @@ type ButtonProps = {
 };
 
 export function Button(props: ButtonProps) {
-  const { modifiers, style, title, action, ...restProps } = props;
+  const { modifiers, style, title, action, children, ...restProps } = props;
+  const child = <Text>{title}</Text>;
   return (
     <NativeButton
       text={title}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: 100,
-        height: 30,
         ...(style as object),
       }}
       onAction={action}
+      children={child}
       {...restProps}
     />
   );

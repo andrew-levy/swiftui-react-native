@@ -20,7 +20,6 @@ export const ButtonSection = () => {
         actions: [{ title: 'Cancel' }],
       }}
     >
-      {/* <List.Section header={'Buttons'}> */}
       <Button
         title="Bordered"
         action={showAlert.toggle}
@@ -43,18 +42,10 @@ export const ButtonSection = () => {
         }}
       />
       <Button buttonStyle="plain" title="Plain" action={showAlert.toggle} />
-      <Button
-        title="List Item"
-        action={showAlert.toggle}
-        modifiers={{
-          buttonStyle: 'borderless',
-        }}
-      />
       <ShareLink item="https://www.apple.com" />
       <Link destination="https://www.apple.com">
         <Text>Link</Text>
       </Link>
-      {/* </List.Section> */}
     </List>
   );
 };

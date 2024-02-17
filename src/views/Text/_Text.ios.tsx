@@ -38,7 +38,6 @@ export function Text(props: TextProps) {
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
         ...calculateTextWidthAndHeight(text, mapToNativeModifiers(modifiers)),
-        // borderWidth: 1,
         ...(style as object),
       }}
       {...restProps}

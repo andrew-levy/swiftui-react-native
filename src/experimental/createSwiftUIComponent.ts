@@ -1,6 +1,6 @@
 import { ComponentType, ReactNode, createElement } from 'react';
 
-type ElementWithModifiers = React.ReactElement & {
+export type ElementWithModifiers = React.ReactElement & {
   padding: (value: number) => ElementWithModifiers;
   bold: () => ElementWithModifiers;
   border: (width: number) => ElementWithModifiers;
@@ -28,7 +28,12 @@ export function createSwiftUIComponent(
     return this;
   };
   Element.border = function (width) {
-    this.props.modifiers.push({ border: true });
+    this.props.modifiers.push({
+      border: {
+        width,
+        color: 'systemGray4',
+      },
+    });
     return this;
   };
   Element.imageScale = function (scale: 'small' | 'medium' | 'large') {

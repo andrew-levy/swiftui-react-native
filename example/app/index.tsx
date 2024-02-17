@@ -1,47 +1,50 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Button, List } from 'swiftui-react-native';
+import { Button, HStack, Image, List, Spacer } from 'swiftui-react-native';
 
 export default function Page() {
   const router = useRouter();
   return (
-    <List style={{ flex: 1 }}>
-      <Button title="Fonts" action={() => router.push('/fonts')} />
-      <Button title="Colors" action={() => router.push('/colors')} />
-      <Button title="Buttons" action={() => router.push('/buttons')} />
-      <Button title="Stacks" action={() => router.push('/stacks')} />
-      <Button title="Controls" action={() => router.push('/controls')} />
-      <Button title="Images" action={() => router.push('/images')} />
-      <Button title="Lists" action={() => router.push('/lists')} />
-      <Button title="Navigation" action={() => router.push('/navigation')} />
-      <Button title="Pickers" action={() => router.push('/pickers')} />
-      <Button title="Progress" action={() => router.push('/progress')} />
-      <Button title="Shapes" action={() => router.push('/shapes')} />
-      <Button title="Group" action={() => router.push('/group')} />
-      <Button title="TextField" action={() => router.push('/textfield')} />
+    <List
+      style={{ flex: 1 }}
+      modifiers={{
+        environment: {
+          colorScheme: 'light',
+        },
+      }}
+    >
+      <ListRow title="Fonts" path="/fonts" />
+      <ListRow title="Colors" path="/colors" />
+      <ListRow title="Buttons" path="/buttons" />
+      <ListRow title="Stacks" path="/stacks" />
+      <ListRow title="Controls" path="/controls" />
+      <ListRow title="Images" path="/images" />
+      <ListRow title="Lists" path="/lists" />
+      <ListRow title="Navigation" path="/navigation" />
+      <ListRow title="Pickers" path="/pickers" />
+      <ListRow title="Progress" path="/progress" />
+      <ListRow title="Shapes" path="/shapes" />
+      <ListRow title="Group" path="/group" />
+      <ListRow title="TextField" path="/textfield" />
+      <ListRow title="Experimental" path="/experimental" />
     </List>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 24,
-  },
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    maxWidth: 960,
-    marginHorizontal: 'auto',
-  },
-  title: {
-    fontSize: 64,
-    fontWeight: 'bold',
-  },
-  subtitle: {
-    fontSize: 36,
-    color: '#38434D',
-  },
-});
+function ListRow({ title, path }: { title: string; path: string }) {
+  const router = useRouter();
+  return (
+    <HStack>
+      <Button title={title} action={() => router.push(path)} />
+      <Spacer />
+      <Image
+        systemName="chevron.right"
+        style={{ width: 10, height: 10 }}
+        modifiers={{
+          imageScale: 'small',
+          foregroundStyle: 'systemGray',
+        }}
+      />
+    </HStack>
+  );
+}

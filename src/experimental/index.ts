@@ -8,18 +8,21 @@ import { Stepper as StepperComp } from '../views/Stepper';
 import { Text as TextComp } from '../views/Text';
 import { Toggle as ToggleComp } from '../views/Toggle';
 import { VStack as VStackComp } from '../views/VStack';
-import { createSwiftUIComponent } from './createSwiftUIComponent';
+import {
+  ElementWithModifiers,
+  createSwiftUIComponent,
+} from './createSwiftUIComponent';
 
 const Text = (text: string) => createSwiftUIComponent(TextComp, {}, text);
 
 const Image = (systemName: string) =>
   createSwiftUIComponent(ImageComp, { systemName }, undefined);
 
-const VStack = (children: () => any) =>
-  createSwiftUIComponent(VStackComp, {}, children());
+const VStack = (children: ElementWithModifiers[]) =>
+  createSwiftUIComponent(VStackComp, {}, children);
 
-const HStack = (children: () => any) =>
-  createSwiftUIComponent(HStackComp, {}, children());
+const HStack = (children: ElementWithModifiers[]) =>
+  createSwiftUIComponent(HStackComp, {}, children);
 
 const Toggle = (label: string, isOn: boolean | BooleanBinding) =>
   createSwiftUIComponent(ToggleComp, { label, isOn }, undefined);
@@ -37,11 +40,6 @@ const Label = (title: string, systemImage: string) =>
 
 const List = (children: () => any) =>
   createSwiftUIComponent(ListComp, {}, children());
-
-const Section = (header: string, children: () => any) =>
-  createSwiftUIComponent(ListComp.Section, { header }, children());
-
-List.Section = Section;
 
 export const SwiftUI = {
   Text,

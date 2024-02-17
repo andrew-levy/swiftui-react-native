@@ -215,7 +215,7 @@ struct ConditionalLabel: ViewModifier {
            if let mask = value as? String {
              if #available(iOS 15.0, *) {
                view = AnyView(view.mask({
-                 Text(mask).font(.largeTitle)
+                 Text(mask)
                }))
              }
            }

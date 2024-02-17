@@ -25,10 +25,7 @@ export * from './views/ZStack';
 
 export * from './views/Shape';
 
-export * from './views/EnvironmentProvider';
-
 export * from './hooks/useBinding';
-export * from './hooks/useEnvironment';
 export * from './hooks/useUIColor';
 
 export * from './utils/ForEach';

@@ -4,6 +4,7 @@ import {
   ForEach,
   HStack,
   List,
+  Spacer,
   Text,
   UIColor,
   useUIColor,
@@ -24,6 +25,7 @@ export const ColorSection = () => {
             }}
           />
           <Text>{toWords(color)}</Text>
+          <Spacer />
         </HStack>
       ))}
     </List>

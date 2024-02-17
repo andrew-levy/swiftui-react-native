@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Button,
   HStack,
-  List,
   Slider,
   Spacer,
   Stepper,
@@ -10,20 +9,19 @@ import {
   Toggle,
   VStack,
   useBinding,
-  useEnvironment,
 } from 'swiftui-react-native';
 
 export const ControlSection = () => {
-  const { colorScheme, setValues } = useEnvironment();
   const sliderValue = useBinding(0);
   const stepperValue = useBinding(0);
-  const toggleValue = useBinding(colorScheme === 'dark');
+  const toggleValue = useBinding(true);
   return (
-    <List style={{ flex: 1 }}>
-      {/* <List.Section header="Controls"> */}
+    <VStack style={{ height: '100%' }}>
+      <Spacer />
       <VStack>
         <HStack>
           <Text font="body">Slider</Text>
+          <Spacer />
           <Text font="body" foregroundColor="systemBlue">
             {Math.round(sliderValue.value).toString()}
           </Text>
@@ -39,6 +37,7 @@ export const ControlSection = () => {
           step={5}
         />
       </VStack>
+      <Spacer />
       <VStack>
         <HStack>
           <Text font="body">Stepper</Text>
@@ -49,6 +48,7 @@ export const ControlSection = () => {
         </HStack>
         <Stepper value={stepperValue} range={[0, 10]} onChange={console.log} />
       </VStack>
+      <Spacer />
       <VStack>
         <HStack>
           <Text font="body">Toggle</Text>
@@ -63,13 +63,10 @@ export const ControlSection = () => {
             modifiers={{
               tint: 'systemBlue',
             }}
-            onChange={() =>
-              setValues({ colorScheme: toggleValue.value ? 'light' : 'dark' })
-            }
           />
         </VStack>
       </VStack>
-      {/* </List.Section> */}
-    </List>
+      <Spacer />
+    </VStack>
   );
 };

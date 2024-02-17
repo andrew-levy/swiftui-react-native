@@ -11,7 +11,7 @@ import {
 
 export const StackSection = () => {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <HStack
         modifiers={{
           padding: 10,

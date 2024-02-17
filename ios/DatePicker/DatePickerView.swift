@@ -5,15 +5,16 @@ struct DatePickerView: View {
   @ObservedObject var props: DatePickerProps
   @State var date = Date()
   
+  init(props: DatePickerProps) {
+    self.props = props
+    _date.wrappedValue = ISO8601DateFormatter().date(from: props.selection) ?? Date()
+  }
+
   var body: some View {
-  
     if #available(iOS 14.0, *) {
       DatePicker(props.label, selection: $date, displayedComponents: mapDisplayedComponents(props.displayedComponents))
         .reactNativeViewModifiers(mods: props.modifiers)
         .conditionalLabel(hasLabel: !props.label.isEmpty)
-        .onAppear {
-          date = ISO8601DateFormatter().date(from: props.selection) ?? Date()
-        }
         .onChange(of: date) { newValue in
           print("newval \(newValue)")
           if #available(iOS 15.0, *) {

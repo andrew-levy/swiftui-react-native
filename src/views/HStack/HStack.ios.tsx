@@ -28,8 +28,8 @@ export function HStack({
   children,
   ...restProps
 }: HStackProps) {
-  //wrap each child in a vstack
   const mappedChildren = React.Children.map(children, (child) => {
+    // return child;
     return <View style={{ alignSelf: 'center' }}>{child}</View>;
   });
   return (
@@ -43,3 +43,5 @@ export function HStack({
     />
   );
 }
+
+// for lists, return as is child in hstack,

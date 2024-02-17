@@ -30,11 +30,11 @@ Check out the [example project](./example/).
 - Label ✅
 - Text ✅
 - Button ✅
+- SecureField ✅
+- TextEditor ✅
+- TextField ✅
 - Link
 - ShareLink
-- SecureField
-- TextEditor
-- TextField (combine these? ^^)
 
 ## To add:
 
@@ -44,12 +44,19 @@ Check out the [example project](./example/).
 - ZStack ✅
 - Group ✅
 - Spacer ✅
-- ForEach
 - NavigationStack
 - NavigationLink
 - List.Section (Not doing)
-- EnvironmentProvider
+- GeometryReader (Not doing)
+- ForEach (Not doing)
+- EnvironmentProvider (Not doing)
 - Real UIColor values?
+
+## Modifiers to add:
+
+- onAppear
+- onDisappear
+- alert
 
 ## to do:
 
