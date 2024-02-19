@@ -50,6 +50,8 @@ struct ConditionalLabel: ViewModifier {
 
 
  struct ReactNativeViewModifiers: ViewModifier {
+//   var onAppear: EventDispatcher
+//   var onDisappear: EventDispatcher
    var mods: [[String: Any]]
    func body(content: Content) -> some View {
      var view = AnyView(content)
@@ -417,6 +419,39 @@ struct ConditionalLabel: ViewModifier {
                 break
               }
             }
+           
+//         case "onAppear":
+//           view = AnyView(view.onAppear {
+//             onAppear()
+//           })
+//           
+//         case "onDisappear":
+//           view = AnyView(view.onDisappear {
+//             onDisappear()
+//           })
+           
+
+
+//          case "alert":
+//           if let alert = value as? [String: Any] {
+//             let isPresented = alert["isPresented"] as? Bool ?? false
+//             let title = alert["title"] as? String ?? ""
+//             let message = alert["message"] as? String ?? ""
+//             let actions = alert["actions"] as? [[String: Any]]
+//             print("2")
+//             if #available(iOS 15.0, *) {
+//               print("3")
+//               view = AnyView(view.alert(title, isPresented: .constant(true), actions: {
+//                 Button("OK", role: .cancel) { }
+//               }, message: {
+//                 Text(message)
+//               }))
+//             } else {
+//               // Fallback on earlier versions
+//             }
+//           }
+
+
 
           // case "symbolEffect":
           //   if let symbolEffect = value as? [String: Any] {

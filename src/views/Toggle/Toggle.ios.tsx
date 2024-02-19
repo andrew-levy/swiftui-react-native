@@ -1,45 +1,23 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import { BooleanBinding, getValueOrBinding } from '../../utils/binding';
-import {
-  ModifiersProp,
-  NativeModifiersProp,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
+import { getValueOrBinding } from '../../utils/binding';
+import { mapToNativeModifiers } from '../../utils/modifiers';
+import { NativeToggleProps, ToggleProps } from './types';
 
 const NativeToggle: React.ComponentType<NativeToggleProps> =
   requireNativeViewManager('Toggle');
-
-type NativeToggleProps = {
-  isOn: boolean;
-  label?: string;
-  modifiers?: NativeModifiersProp;
-  onValueChange?: (e: {
-    nativeEvent: {
-      value: boolean;
-    };
-  }) => void;
-  style?: StyleProp<ViewStyle>;
-};
-type ToggleProps = {
-  isOn: BooleanBinding | boolean;
-  label?: string;
-  modifiers?: ModifiersProp;
-  onChange?: (value?: boolean) => void;
-  style?: StyleProp<ViewStyle>;
-};
 
 export function Toggle({
   isOn,
   onChange,
   style,
-  modifiers,
-  ...restProps
+  label,
+  ...modifiers
 }: ToggleProps) {
   return (
     <NativeToggle
       isOn={getValueOrBinding(isOn)}
+      label={label}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
         width: 50,
@@ -52,7 +30,6 @@ export function Toggle({
         }
         onChange?.(e.nativeEvent.value);
       }}
-      {...restProps}
     />
   );
 }

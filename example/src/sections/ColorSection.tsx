@@ -19,10 +19,8 @@ export const ColorSection = () => {
         <HStack key={i} spacing={10}>
           <Color
             color={color as UIColor}
-            modifiers={{
-              border: { width: 1, color: 'systemGray4' },
-              frame: { width: 25, height: 25 },
-            }}
+            border={{ width: 1, color: 'systemGray4' }}
+            frame={{ width: 25, height: 25 }}
           />
           <Text>{toWords(color)}</Text>
           <Spacer />

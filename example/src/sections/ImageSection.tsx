@@ -21,29 +21,15 @@ export const ImageSection = () => {
   ];
 
   return (
-    <View>
-      {/* <List.Section header="Images (URI + Assets)"> */}
-      <HStack spacing={6}>
-        {ForEach(Array(5).fill(0), (_, i) => (
-          <Image
-            key={i}
-            source={{ uri: 'https://picsum.photos/200/300/?random' }}
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: 10,
-            }}
-          />
-        ))}
-      </HStack>
+    <View style={{ flex: 1, justifyContent: 'center' }}>
       <HStack spacing={15}>
         {ForEach(sfSymbols, (symbol, i) => (
           <Image
             key={i}
             systemName={symbol.name}
-            modifiers={(v) =>
-              v.imageScale('large').foregroundStyle('systemBlue')
-            }
+            imageScale="large"
+            foregroundStyle="systemBlue"
+            bold
           />
         ))}
       </HStack>

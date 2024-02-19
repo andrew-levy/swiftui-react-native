@@ -1,44 +1,19 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
-import {
-  ModifiersProp,
-  NativeModifiersProp,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
+import { mapToNativeModifiers } from '../../utils/modifiers';
 import { Text } from '../Text';
+import { ButtonProps, NativeButtonProps } from './types';
 
 const NativeButton: React.ComponentType<NativeButtonProps> =
   requireNativeViewManager('Button');
 
-type NativeButtonProps = {
-  text: string;
-  modifiers?: NativeModifiersProp;
-  style?: StyleProp<ViewStyle>;
-  children?: React.ReactNode;
-  onAction?: (
-    e: NativeSyntheticEvent<{
-      value: boolean;
-    }>
-  ) => void;
-  onSized?: (
-    e: NativeSyntheticEvent<{
-      value: { width: number; height: number };
-    }>
-  ) => void;
-};
-
-type ButtonProps = {
-  style?: StyleProp<ViewStyle>;
-  title: string;
-  action: () => void;
-  modifiers?: ModifiersProp;
-  children?: string;
-};
-
-export function Button(props: ButtonProps) {
-  const { modifiers, style, title, action, children, ...restProps } = props;
-  const child = <Text>{title}</Text>;
+export function Button({
+  style,
+  title,
+  action,
+  children,
+  ...modifiers
+}: ButtonProps) {
   return (
     <NativeButton
       text={title}
@@ -47,8 +22,8 @@ export function Button(props: ButtonProps) {
         ...(style as object),
       }}
       onAction={action}
-      children={child}
-      {...restProps}
-    />
+    >
+      <Text {...modifiers}>{title}</Text>
+    </NativeButton>
   );
 }

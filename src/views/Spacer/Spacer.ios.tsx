@@ -1,26 +1,13 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import {
-  ModifiersProp,
-  NativeModifiersProp,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
+import { mapToNativeModifiers } from '../../utils/modifiers';
+import { NativeSpacerProps, SpacerProps } from './types';
 
 const NativeSpacer: React.ComponentType<NativeSpacerProps> =
   requireNativeViewManager('Spacer');
 
-type NativeSpacerProps = {
-  modifiers?: NativeModifiersProp;
-  style?: StyleProp<ViewStyle>;
-};
-type SpacerProps = {
-  modifiers?: ModifiersProp;
-  style?: StyleProp<ViewStyle>;
-};
-
 export function Spacer(props: SpacerProps) {
-  const { style, modifiers } = props;
+  const { style, ...modifiers } = props;
 
   return (
     <NativeSpacer

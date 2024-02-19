@@ -7,23 +7,13 @@ import { ListProps, NativeListProps } from './types';
 const NativeList: React.ComponentType<NativeListProps> =
   requireNativeViewManager('List');
 
-export function List({ modifiers, style, children, ...restProps }: ListProps) {
+export function List({ style, children, ...modifiers }: ListProps) {
   const { width, height } = useWindowDimensions();
   const insetWidth = width - 80;
   const insetHeight = 30;
   const groupedWidth = width - 20;
   const groupedHeight = 30;
-  const mappedChildren = React.Children.map(children, (child: ReactElement) => {
-    return (
-      <View
-        style={{
-          width: insetWidth,
-        }}
-      >
-        {child}
-      </View>
-    );
-  });
+  // TODO: implement other widths and heights
 
   return (
     <NativeList
@@ -33,8 +23,18 @@ export function List({ modifiers, style, children, ...restProps }: ListProps) {
         height: 500,
         ...(style as object),
       }}
-      children={mappedChildren}
-      {...restProps}
-    />
+    >
+      {React.Children.map(children, (child: ReactElement) => {
+        return (
+          <View
+            style={{
+              width: insetWidth,
+            }}
+          >
+            {child}
+          </View>
+        );
+      })}
+    </NativeList>
   );
 }

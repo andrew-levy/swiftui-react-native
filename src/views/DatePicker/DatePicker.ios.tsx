@@ -8,17 +8,18 @@ const NativeDatePicker: React.ComponentType<NativeDatePickerProps> =
   requireNativeViewManager('DatePicker');
 
 export function DatePicker({
-  modifiers,
   selection,
   displayedComponents,
   style,
   onChange,
-  ...restProps
+  label,
+  ...modifiers
 }: DatePickerProps) {
   return (
     <NativeDatePicker
       selection={getValueOrBinding(selection).toISOString()}
       modifiers={mapToNativeModifiers(modifiers)}
+      label={label}
       displayedComponents={
         Array.isArray(displayedComponents)
           ? displayedComponents
@@ -32,11 +33,10 @@ export function DatePicker({
         onChange?.(newDate);
       }}
       style={{
-        width: 200,
+        width: '100%',
         height: 35,
         ...(style as object),
       }}
-      {...restProps}
     />
   );
 }

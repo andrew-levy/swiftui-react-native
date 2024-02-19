@@ -1,36 +1,11 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import { Binding, getValueOrBinding } from '../../utils/binding';
-import {
-  ModifiersProp,
-  NativeModifiersProp,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
+import { getValueOrBinding } from '../../utils/binding';
+import { mapToNativeModifiers } from '../../utils/modifiers';
+import { NativeStepperProps, StepperProps } from './types';
 
 const NativeStepper: React.ComponentType<NativeStepperProps> =
   requireNativeViewManager('Stepper');
-
-type NativeStepperProps = {
-  step?: number;
-  range?: [number, number];
-  value: number;
-  modifiers?: NativeModifiersProp;
-  onValueChange?: (e: {
-    nativeEvent: {
-      value: number;
-    };
-  }) => void;
-  style?: StyleProp<ViewStyle>;
-};
-type StepperProps = {
-  step?: number;
-  range?: [number, number];
-  value: Binding<number>;
-  modifiers?: ModifiersProp;
-  onChange?: (value?: number) => void;
-  style?: StyleProp<ViewStyle>;
-};
 
 export function Stepper(props: StepperProps) {
   const {
@@ -39,7 +14,7 @@ export function Stepper(props: StepperProps) {
     range = [-100, 100],
     onChange,
     style,
-    modifiers,
+    ...modifiers
   } = props;
   return (
     <NativeStepper

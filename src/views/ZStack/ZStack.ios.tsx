@@ -1,33 +1,13 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { StyleProp, View, ViewStyle } from 'react-native';
-import {
-  ModifiersProp,
-  NativeModifiersProp,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
-
-type NativeZStackProps = {
-  children?: React.ReactNode;
-  modifiers?: NativeModifiersProp;
-  style?: StyleProp<ViewStyle>;
-};
-
-type ZStackProps = {
-  modifiers?: ModifiersProp;
-  style?: StyleProp<ViewStyle>;
-  children?: React.ReactNode;
-};
+import { View } from 'react-native';
+import { mapToNativeModifiers } from '../../utils/modifiers';
+import { NativeZStackProps, ZStackProps } from './types';
 
 const NativeZStack: React.ComponentType<NativeZStackProps> =
   requireNativeViewManager('ZStack');
 
-export function ZStack({
-  modifiers,
-  style,
-  children,
-  ...restProps
-}: ZStackProps) {
+export function ZStack({ style, children, ...modifiers }: ZStackProps) {
   const mappedChildren = React.Children.map(children, (child) => {
     return <View style={{ alignSelf: 'center' }}>{child}</View>;
   });
@@ -38,7 +18,6 @@ export function ZStack({
         ...(style as object),
       }}
       children={mappedChildren}
-      {...restProps}
     />
   );
 }

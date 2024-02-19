@@ -23,23 +23,17 @@ export const ButtonSection = () => {
       <Button
         title="Bordered"
         action={showAlert.toggle}
-        modifiers={{
-          buttonStyle: 'bordered',
-        }}
+        buttonStyle="bordered"
       />
       <Button
         title="Borderless"
         action={showAlert.toggle}
-        modifiers={{
-          buttonStyle: 'borderless',
-        }}
+        buttonStyle="borderless"
       />
       <Button
         title="Bordered Prominent"
         action={showAlert.toggle}
-        modifiers={{
-          buttonStyle: 'borderedProminent',
-        }}
+        buttonStyle="borderedProminent"
       />
       <Button buttonStyle="plain" title="Plain" action={showAlert.toggle} />
       <ShareLink item="https://www.apple.com" />

@@ -8,16 +8,17 @@ const NativeColorPicker: React.ComponentType<NativeColorPickerProps> =
   requireNativeViewManager('ColorPicker');
 
 export function ColorPicker({
-  modifiers,
   selection,
   style,
   supportsOpacity = true,
+  label,
   onChange,
-  ...restProps
+  ...modifiers
 }: ColorPickerProps) {
   return (
     <NativeColorPicker
       supportsOpacity={supportsOpacity}
+      label={label}
       selection={getValueOrBinding(selection)}
       modifiers={mapToNativeModifiers(modifiers)}
       onValueChange={(e) => {
@@ -27,11 +28,10 @@ export function ColorPicker({
         onChange?.(e.nativeEvent.value);
       }}
       style={{
-        width: 30,
+        width: '100%',
         height: 30,
         ...(style as object),
       }}
-      {...restProps}
     />
   );
 }

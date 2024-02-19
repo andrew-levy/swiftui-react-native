@@ -83,9 +83,9 @@ Option 1: Modifiers as props (Basic)
 Option 2: Experimental API
 
 ```tsx
-VStack(() => ([
+VStack([
     Text("Hello").padding()
     ColorPicker(selection: color)
-]))
+])
 .frame({width: 100, height: 100})
 ```

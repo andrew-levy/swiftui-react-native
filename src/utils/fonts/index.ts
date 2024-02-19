@@ -9,7 +9,7 @@ export const Fonts = {
   subheadline: { fontSize: 15, fontWeight: 'normal' },
   footnote: { fontSize: 13, fontWeight: 'normal' },
   caption: { fontSize: 12, fontWeight: 'normal' },
-  caption2: { fontSize: 11, fontWeight: 'normal' },
+  caption2: { fontSize: 17, fontWeight: 'normal' },
 };
 
 export const FontWeights = {

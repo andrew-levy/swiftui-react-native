@@ -28,7 +28,7 @@ const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {
   return <Color color={color} {...props} />;
 };
 
-export const Color: ColorView = ({ color, modifiers, ...rest }: ColorProps) => {
+export const Color: ColorView = ({ color, ...modifiers }: ColorProps) => {
   const colorValue = processColor(getColor(color));
   const mods = mapToNativeModifiers(modifiers);
   const frame = mods.find((mod) => 'frame' in mod);
@@ -40,7 +40,6 @@ export const Color: ColorView = ({ color, modifiers, ...rest }: ColorProps) => {
         height: frame?.frame?.height || 30,
       }}
       color={colorValue}
-      {...rest}
     />
   );
 };

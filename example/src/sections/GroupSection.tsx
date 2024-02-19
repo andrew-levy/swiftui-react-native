@@ -20,11 +20,9 @@ export const GroupSection = () => {
         <Spacer />
         <Spacer />
         <Group
-          modifiers={{
-            padding: 10,
-            border: { width: 1, color: 'systemGray4' },
-            tint: color.value,
-          }}
+          padding={10}
+          border={{ width: 1, color: 'systemGray4' }}
+          tint={color.value}
         >
           <Toggle isOn />
           <Slider value={10} />

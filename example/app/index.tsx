@@ -7,10 +7,8 @@ export default function Page() {
   return (
     <List
       style={{ flex: 1 }}
-      modifiers={{
-        environment: {
-          colorScheme: 'light',
-        },
+      environment={{
+        colorScheme: 'light',
       }}
     >
       <ListRow title="Fonts" path="/fonts" />
@@ -39,11 +37,9 @@ function ListRow({ title, path }: { title: string; path: string }) {
       <Spacer />
       <Image
         systemName="chevron.right"
+        imageScale="small"
+        foregroundStyle="systemGray2"
         style={{ width: 10, height: 10 }}
-        modifiers={{
-          imageScale: 'small',
-          foregroundStyle: 'systemGray',
-        }}
       />
     </HStack>
   );

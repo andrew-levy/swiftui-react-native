@@ -3,10 +3,14 @@ import SwiftUI
 
 class TextExpoView: ExpoView {
   let props: TextProps
-  let onSized = EventDispatcher()
+  
+  override func didUpdateReactSubviews() {
+    let subChildren = self.reactSubviews()
+    props.children = subChildren
+  }
   
   required init(appContext: AppContext? = nil) {
-    props = TextProps(onSized: onSized)
+    props = TextProps()
     let hostingController = UIHostingController(rootView: TextView(props: props))
     super.init(appContext: appContext)
     setupHostingController(hostingController)

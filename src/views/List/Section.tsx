@@ -11,7 +11,7 @@ import { Modifiers } from '../../utils/modifiers';
 import { getPadding } from '../../utils/padding';
 import { getShadow } from '../../utils/shadow';
 import { getTransform } from '../../utils/transform';
-import { Text } from '../Text/Text';
+import { Text } from '../Text/ShadowText';
 import { ListRow } from './ListRow';
 
 type SectionProps = Modifiers & {

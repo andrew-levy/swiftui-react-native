@@ -1,6 +1,3 @@
-import React from 'react';
-import { View } from 'react-native';
+import { SpacerProps } from './types';
 
-export const Spacer: React.FC = () => {
-  return <View style={{ width: 9999 }} />;
-};
+export const Spacer = (props: SpacerProps) => null;

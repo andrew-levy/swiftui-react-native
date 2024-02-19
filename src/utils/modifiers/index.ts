@@ -3,14 +3,53 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { Alert } from '../alert';
 import { Border } from '../border';
 import { UIColor } from '../colors';
+import { BlendMode, ClipShape } from '../filters';
 import { FontWeights, Fonts } from '../fonts';
 import { Frame, ShapeFrame } from '../frame';
 import { Padding } from '../padding';
 import { Shadow } from '../shadow';
 import { Rotation } from '../transform';
 
-// Alert might be possible if we can commuinicate which action was taken back to
-// the js so that we can trigger the right function.
+// New types for swiftui modifiers. Need to rename to Modifiers after its all done.
+export type _Modifiers = {
+  padding?: Padding;
+  border?: Border;
+  foregroundStyle?: UIColor | UIColor[];
+  background?: UIColor;
+  rotationEffect?: Rotation;
+  scaleEffect?: number;
+  shadow?: Shadow;
+  blur?: number;
+  opacity?: number;
+  saturation?: number;
+  grayscale?: number;
+  brightness?: number;
+  contrast?: number;
+  hidden?: boolean;
+  blendMode?: BlendMode;
+  frame?: Frame;
+  zIndex?: number;
+  mask?: string;
+  clipShape?: ClipShape;
+  environment?: {
+    colorScheme: 'light' | 'dark';
+  };
+  imageScale?: 'small' | 'medium' | 'large';
+  fontWeight?: keyof typeof FontWeights;
+  font?: keyof typeof Fonts;
+  bold?: boolean;
+  italic?: boolean;
+  strikethrough?: boolean;
+  underline?: boolean;
+  tint?: UIColor;
+  cornerRadius?: number;
+  buttonStyle?: 'bordered' | 'borderless' | 'plain' | 'borderedProminent';
+  pickerStyle?: 'wheel' | 'segmented' | 'menu';
+  // to implement
+  alert?: Alert;
+  onAppear?: () => void;
+  onDisappear?: () => void;
+};
 
 export type Modifiers = {
   alert?: Alert; // propably cant do this
@@ -78,7 +117,6 @@ export type ModifiersProp = ModifiersFunctionProp | ModifierObjectProp;
 /**
  * A builder class for creating native modifiers.
  */
-
 export class InternalModifiersBuilder {
   private modifiers: { [key: string]: any }[] = [];
 

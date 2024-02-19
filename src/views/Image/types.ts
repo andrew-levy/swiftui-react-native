@@ -1,3 +1,17 @@
+import { StyleProp, ViewStyle } from 'react-native';
+import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+
+export type NativeImageProps = {
+  systemName: SystemName;
+  modifiers?: NativeModifiersProp;
+  style?: StyleProp<ViewStyle>;
+};
+
+export type ImageProps = {
+  systemName?: SystemName;
+  style?: StyleProp<ViewStyle>;
+} & _Modifiers;
+
 export type SystemName =
   | '0.circle'
   | '0.circle.fill'

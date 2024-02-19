@@ -1,4 +1,5 @@
-import { SwiftUI, useBinding } from 'swiftui-react-native';
+import { useBinding } from 'swiftui-react-native';
+import { SwiftUI } from 'swiftui-react-native/experimental';
 
 const { HStack, Image, Label, Spacer, Text, Toggle, List, Stepper, VStack } =
   SwiftUI;

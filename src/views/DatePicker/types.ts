@@ -1,6 +1,10 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
-import { ModifiersProp, NativeModifiersProp } from '../../utils/modifiers';
+import {
+  ModifiersProp,
+  NativeModifiersProp,
+  _Modifiers,
+} from '../../utils/modifiers';
 
 export type NativeDatePickerProps = {
   selection: string;
@@ -22,4 +26,4 @@ export type DatePickerProps = {
   modifiers?: ModifiersProp;
   label?: string;
   style?: StyleProp<ViewStyle>;
-};
+} & _Modifiers;

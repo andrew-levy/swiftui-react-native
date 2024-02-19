@@ -29,10 +29,8 @@ export const StackSection = () => {
           marginTop: 100,
           height: 200,
         }}
-        modifiers={{
-          padding: 10,
-          border: { width: 1, color: 'systemGray4' },
-        }}
+        padding={10}
+        border={{ width: 1, color: 'systemGray4' }}
       >
         <Text>VStack</Text>
         <Spacer />
@@ -41,18 +39,14 @@ export const StackSection = () => {
       </VStack>
       <ZStack
         style={{ marginTop: 100 }}
-        modifiers={{
-          padding: 10,
-          border: { width: 1, color: 'systemGray4' },
-          scaleEffect: 2,
-        }}
+        padding={10}
+        border={{ width: 1, color: 'systemGray4' }}
+        scaleEffect={2}
       >
         <Image
           systemName="circle.fill"
-          modifiers={{
-            foregroundStyle: 'red',
-            imageScale: 'large',
-          }}
+          imageScale="large"
+          foregroundStyle="systemPurple"
         />
         <Text>ZStack</Text>
       </ZStack>

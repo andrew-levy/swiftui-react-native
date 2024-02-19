@@ -9,7 +9,15 @@ module.exports = function (api) {
         'module-resolver',
         {
           extensions: ['.tsx', '.ts', '.js', '.json'],
+
           alias: {
+            'swiftui-react-native/experimental': path.join(
+              __dirname,
+              '..',
+              'src',
+              'experimental',
+              'index.ts'
+            ),
             // For development, we want to alias the library to the source
             'swiftui-react-native': path.join(
               __dirname,

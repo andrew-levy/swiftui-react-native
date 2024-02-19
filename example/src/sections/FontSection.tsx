@@ -7,63 +7,37 @@ import { Label, List, Text } from 'swiftui-react-native';
 export const FontSection = () => {
   return (
     <List style={{ flex: 1 }}>
-      <Text
-        alignment="leading"
-        font="body"
-        modifiers={{
-          font: 'body',
-        }}
-      >
+      <Text alignment="leading" font="body">
         Body
       </Text>
-      <Text alignment="leading" font="callout" modifiers={{ font: 'callout' }}>
+      <Text alignment="leading" font="callout">
         Callout
       </Text>
-      <Text alignment="leading" modifiers={{ font: 'caption' }} font="caption">
+      <Text alignment="leading" font="caption">
         Caption
       </Text>
-      <Text
-        alignment="leading"
-        modifiers={{ font: 'caption2' }}
-        font="caption2"
-      >
+      <Text alignment="leading" font="caption2">
         Caption 2
       </Text>
-      <Text
-        alignment="leading"
-        modifiers={{ font: 'footnote' }}
-        font="footnote"
-      >
+      <Text alignment="leading" font="footnote">
         Footnote
       </Text>
-      <Text
-        alignment="leading"
-        modifiers={{ font: 'headline' }}
-        font="headline"
-      >
+      <Text alignment="leading" font="headline">
         Headline
       </Text>
-      <Text
-        alignment="leading"
-        modifiers={{ font: 'largeTitle' }}
-        font="largeTitle"
-      >
+      <Text alignment="leading" font="largeTitle">
         Large Title
       </Text>
-      <Text
-        alignment="leading"
-        modifiers={{ font: 'subheadline' }}
-        font="subheadline"
-      >
+      <Text alignment="leading" font="subheadline">
         Subheadline
       </Text>
-      <Text alignment="leading" modifiers={{ font: 'title' }} font="title">
+      <Text alignment="leading" font="title">
         Title
       </Text>
-      <Text alignment="leading" modifiers={{ font: 'title2' }} font="title2">
+      <Text alignment="leading" font="title2">
         Title 2
       </Text>
-      <Text alignment="leading" modifiers={{ font: 'title3' }} font="title3">
+      <Text alignment="leading" font="title3">
         Title 3
       </Text>
       <Label title="Labels" systemImage="square.grid.3x1.folder.badge.plus" />

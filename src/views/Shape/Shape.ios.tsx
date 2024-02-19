@@ -1,27 +1,12 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
-import {
-  ModifiersProp,
-  NativeModifiersProp,
-  mapToNativeModifiers,
-} from '../../utils/modifiers';
+import { mapToNativeModifiers } from '../../utils/modifiers';
+import { NativeShapeProps, ShapeProps } from './types';
 
 const NativeShape: React.ComponentType<NativeShapeProps> =
   requireNativeViewManager('Shape');
 
-type NativeShapeProps = {
-  modifiers?: NativeModifiersProp;
-  style?: StyleProp<ViewStyle>;
-  type: 'Circle' | 'Rectangle' | 'RoundedRectangle' | 'Capsule';
-};
-
-type ShapeProps = {
-  style?: StyleProp<ViewStyle>;
-  modifiers?: ModifiersProp;
-};
-
-export function Rectangle({ modifiers, style, ...restProps }: ShapeProps) {
+export function Rectangle({ style, ...modifiers }: ShapeProps) {
   return (
     <NativeShape
       type="Rectangle"
@@ -31,29 +16,28 @@ export function Rectangle({ modifiers, style, ...restProps }: ShapeProps) {
         height: 30,
         ...(style as object),
       }}
-      {...restProps}
     />
   );
 }
 
 export function RoundedRectangle(props: ShapeProps & { cornerRadius: number }) {
-  const { modifiers, style, ...restProps } = props;
+  const { style, cornerRadius, ...modifiers } = props;
   return (
     <NativeShape
       type="RoundedRectangle"
       modifiers={mapToNativeModifiers(modifiers)}
+      cornerRadius={cornerRadius}
       style={{
         width: 30,
         height: 30,
         ...(style as object),
       }}
-      {...restProps}
     />
   );
 }
 
 export function Circle(props: ShapeProps) {
-  const { modifiers, style, ...restProps } = props;
+  const { style, ...modifiers } = props;
   return (
     <NativeShape
       type="Circle"
@@ -63,13 +47,12 @@ export function Circle(props: ShapeProps) {
         height: 30,
         ...(style as object),
       }}
-      {...restProps}
     />
   );
 }
 
 export function Capsule(props: ShapeProps) {
-  const { modifiers, style, ...restProps } = props;
+  const { style, ...modifiers } = props;
   return (
     <NativeShape
       type="Capsule"
@@ -79,7 +62,6 @@ export function Capsule(props: ShapeProps) {
         height: 30,
         ...(style as object),
       }}
-      {...restProps}
     />
   );
 }

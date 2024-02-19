@@ -84,7 +84,8 @@ export const UIColor = {
 export type UIColor =
   | keyof typeof UIColor.light
   | `#${string}`
-  | `rgb${string}`;
+  | `rgb${string}`
+  | (string & {});
 
 export const getColor = (
   color: UIColor,
