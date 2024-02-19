@@ -21,7 +21,8 @@
       "GroupModule",
       "SpacerModule",
       "ButtonModule",
-      "TextFieldModule"
+      "TextFieldModule",
+      "SheetContentModule"
     ]
   }
 }

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { Alert } from '../alert';
+import { BooleanBinding } from '../binding';
 import { Border } from '../border';
 import { UIColor } from '../colors';
 import { BlendMode, ClipShape } from '../filters';
@@ -47,6 +48,11 @@ export type _Modifiers = {
   pickerStyle?: 'wheel' | 'segmented' | 'menu';
   // to implement
   alert?: Alert;
+  sheet?: {
+    isPresented: boolean | BooleanBinding;
+    content: ReactNode;
+    onDismiss?: () => void;
+  };
   onAppear?: () => void;
   onDisappear?: () => void;
 };

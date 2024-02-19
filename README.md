@@ -19,7 +19,7 @@ Check out the [example project](./example/).
 - Image ✅ (remove fallback? copy over sfsymbol code)
 - ProgressView ✅
 - Stepper ✅
-- Shapes ✅ (Rectangle, Circle, Ellipse, Capsule)
+- Shapes ✅ (Rectangle, Circle, Ellipse, Capsule) add ellipse?
 - Toggle ✅
 - ColorPicker ✅
 - DatePicker ✅
@@ -56,7 +56,10 @@ Check out the [example project](./example/).
 
 - onAppear
 - onDisappear
-- alert
+- sheet
+- sheetDetents
+
+- alert maybe?
 
 ## to do:
 

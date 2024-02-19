@@ -42,7 +42,7 @@ export const ControlSection = () => {
         <HStack>
           <Text font="body">Stepper</Text>
           <Spacer />
-          <Text font="body" foregroundColor="systemBlue">
+          <Text font="body" foregroundStyle="systemBlue">
             {stepperValue.value.toString()}
           </Text>
         </HStack>
@@ -53,7 +53,7 @@ export const ControlSection = () => {
         <HStack>
           <Text font="body">Toggle</Text>
           <Spacer />
-          <Text foregroundColor="systemBlue" font="body">
+          <Text foregroundStyle="systemBlue" font="body">
             {toggleValue.value ? 'On' : 'Off'}
           </Text>
         </HStack>

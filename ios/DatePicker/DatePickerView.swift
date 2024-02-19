@@ -7,7 +7,8 @@ struct DatePickerView: View {
   
   init(props: DatePickerProps) {
     self.props = props
-    _date.wrappedValue = ISO8601DateFormatter().date(from: props.selection) ?? Date()
+    print(props.selection)
+    _date.wrappedValue = Date()
   }
 
   var body: some View {
@@ -15,6 +16,11 @@ struct DatePickerView: View {
       DatePicker(props.label, selection: $date, displayedComponents: mapDisplayedComponents(props.displayedComponents))
         .reactNativeViewModifiers(mods: props.modifiers)
         .conditionalLabel(hasLabel: !props.label.isEmpty)
+      
+      // TODO: move this to get and set, bind to the props.date
+        .onAppear {
+          date = ISO8601DateFormatter().date(from: props.selection) ?? Date()
+        }
         .onChange(of: date) { newValue in
           print("newval \(newValue)")
           if #available(iOS 15.0, *) {

@@ -11,6 +11,8 @@ export type NativeHStackProps = {
   modifiers?: NativeModifiersProp;
   spacing?: number;
   alignment?: string;
+  onSheetDismissed?: () => void;
+  isSheetPresented: boolean;
   style?: StyleProp<ViewStyle>;
 };
 

@@ -1,26 +1,40 @@
 import React from 'react';
 import { View } from 'react-native';
 import {
+  Button,
   HStack,
   Image,
   Spacer,
   Text,
   VStack,
   ZStack,
+  useBinding,
 } from 'swiftui-react-native';
 
 export const StackSection = () => {
+  const isSheetPresented = useBinding(false);
   return (
     <View style={{ flex: 1 }}>
       <HStack
-        modifiers={{
-          padding: 10,
-          border: { width: 1, color: 'systemGray4' },
+        sheet={{
+          isPresented: isSheetPresented,
+          content: (
+            <VStack>
+              <Text>Sheet Content</Text>
+              <Button
+                title="Close"
+                action={() => isSheetPresented.setValue(false)}
+              />
+            </VStack>
+          ),
         }}
       >
         <Text>HStack</Text>
         <Spacer />
-        <Text>HStack</Text>
+        <Button
+          title="Show Sheet"
+          action={() => isSheetPresented.setValue(true)}
+        />
         <Spacer />
         <Text>HStack</Text>
       </HStack>
