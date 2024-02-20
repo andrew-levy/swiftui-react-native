@@ -1,6 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeTextFieldProps = {
   text: string;
@@ -16,4 +16,4 @@ export type TextFieldProps = {
   text: string | Binding<string>;
   placeholder?: string;
   onValueChange?: (value: string) => void;
-} & _Modifiers;
+} & Modifiers;

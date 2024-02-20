@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeTextProps = {
   text: string;
@@ -10,4 +10,4 @@ export type NativeTextProps = {
 export type TextProps = {
   style?: StyleProp<ViewStyle>;
   children?: string | string[] | number | number[];
-} & _Modifiers;
+} & Modifiers;

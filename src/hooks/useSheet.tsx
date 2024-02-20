@@ -1,9 +1,9 @@
 import React from 'react';
 import { getValueOrBinding } from '../utils/binding';
-import { _Modifiers } from '../utils/modifiers';
+import { Modifiers } from '../utils/modifiers';
 import { SheetContent } from '../views/SheetContent/SheetContent.ios';
 
-export function useSheet(sheetModifier: _Modifiers['sheet']) {
+export function useSheet(sheetModifier: Modifiers['sheet']) {
   const isSheetPresented = getValueOrBinding(sheetModifier?.isPresented);
   const onSheetDismissed = () => {
     if (

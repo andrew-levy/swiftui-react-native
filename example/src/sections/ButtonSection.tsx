@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Button,
-  Link,
-  List,
-  ShareLink,
-  Text,
-  useBinding,
-} from 'swiftui-react-native';
+import { Button, List, useBinding } from 'swiftui-react-native';
 
 export const ButtonSection = () => {
   const showAlert = useBinding(false);
@@ -36,10 +29,6 @@ export const ButtonSection = () => {
         buttonStyle="borderedProminent"
       />
       <Button buttonStyle="plain" title="Plain" action={showAlert.toggle} />
-      <ShareLink item="https://www.apple.com" />
-      <Link destination="https://www.apple.com">
-        <Text>Link</Text>
-      </Link>
     </List>
   );
 };

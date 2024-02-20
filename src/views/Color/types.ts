@@ -1,6 +1,6 @@
 import { ProcessedColorValue, StyleProp, ViewStyle } from 'react-native';
 import { UIColor } from '../../utils/colors';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeColorProps = {
   color: ProcessedColorValue;
@@ -16,11 +16,11 @@ export type ColorProps = {
         blue?: number;
         green?: number;
       };
-} & _Modifiers;
+} & Modifiers;
 
 export type ColorSubComponentProps = {
   color?: UIColor;
-} & _Modifiers;
+} & Modifiers;
 
 export interface ColorView {
   (props: ColorProps): JSX.Element;

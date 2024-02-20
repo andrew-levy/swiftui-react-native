@@ -1,6 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { BooleanBinding } from '../../utils/binding';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeToggleProps = {
   isOn: boolean;
@@ -18,4 +18,4 @@ export type ToggleProps = {
   label?: string;
   onChange?: (value?: boolean) => void;
   style?: StyleProp<ViewStyle>;
-} & _Modifiers;
+} & Modifiers;

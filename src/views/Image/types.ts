@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeImageProps = {
   systemName: SystemName;
@@ -10,7 +10,7 @@ export type NativeImageProps = {
 export type ImageProps = {
   systemName?: SystemName;
   style?: StyleProp<ViewStyle>;
-} & _Modifiers;
+} & Modifiers;
 
 export type SystemName =
   | '0.circle'

@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeProgressProps = {
   value?: number;
@@ -12,4 +12,4 @@ export type ProgressProps = {
   value?: number;
   total?: number;
   style?: StyleProp<ViewStyle>;
-} & _Modifiers;
+} & Modifiers;

@@ -1,8 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { View } from 'react-native';
-import { Modifiers } from '../../utils/modifiers';
 
-type GeometryReaderProps = Modifiers & {
+type GeometryReaderProps = {
   children?: ReactNode | ((proxy: GeometryProxy) => ReactNode);
 };
 

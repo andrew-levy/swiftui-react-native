@@ -1,52 +1,67 @@
 import { ReactNode } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
 import { Alert } from '../alert';
 import { BooleanBinding } from '../binding';
 import { Border } from '../border';
 import { UIColor } from '../colors';
 import { BlendMode, ClipShape } from '../filters';
-import { FontWeights, Fonts } from '../fonts';
-import { Frame, ShapeFrame } from '../frame';
+import { Fonts } from '../fonts';
+import { Frame } from '../frame';
 import { Padding } from '../padding';
 import { Shadow } from '../shadow';
 import { Rotation } from '../transform';
 
-// New types for swiftui modifiers. Need to rename to Modifiers after its all done.
-export type _Modifiers = {
+export type Modifiers = {
+  // View
   padding?: Padding;
   border?: Border;
   foregroundStyle?: UIColor | UIColor[];
-  background?: UIColor;
   rotationEffect?: Rotation;
   scaleEffect?: number;
   shadow?: Shadow;
-  blur?: number;
+  background?: UIColor;
+  hidden?: boolean;
+  frame?: Frame;
+  zIndex?: number;
   opacity?: number;
+  tint?: UIColor;
+  cornerRadius?: number;
+  // Filter
+  blur?: number;
   saturation?: number;
   grayscale?: number;
   brightness?: number;
   contrast?: number;
-  hidden?: boolean;
   blendMode?: BlendMode;
-  frame?: Frame;
-  zIndex?: number;
   mask?: string;
   clipShape?: ClipShape;
+  // Context
   environment?: {
     colorScheme: 'light' | 'dark';
   };
+  // Image
   imageScale?: 'small' | 'medium' | 'large';
-  fontWeight?: keyof typeof FontWeights;
+  // Text
+  fontWeight?:
+    | 'ultralight'
+    | 'thin'
+    | 'light'
+    | 'regular'
+    | 'medium'
+    | 'semibold'
+    | 'bold'
+    | 'heavy'
+    | 'black';
   font?: keyof typeof Fonts;
   bold?: boolean;
   italic?: boolean;
   strikethrough?: boolean;
   underline?: boolean;
-  tint?: UIColor;
-  cornerRadius?: number;
+  // Style Variants
   buttonStyle?: 'bordered' | 'borderless' | 'plain' | 'borderedProminent';
   pickerStyle?: 'wheel' | 'segmented' | 'menu';
   textFieldStyle?: 'plain' | 'roundedBorder';
+  listStyle?: 'inset' | 'grouped' | 'plain' | 'insetGrouped';
+  // Sheet
   sheet?: {
     isPresented: boolean | BooleanBinding;
     content: ReactNode;
@@ -59,204 +74,46 @@ export type _Modifiers = {
     | { fraction: number }
     | { height: number }
   )[];
-  // to implement
-  alert?: Alert;
+  // Haptics
+  sensoryFeedback?: {
+    feedback:
+      | 'warning'
+      | 'error'
+      | 'success'
+      | 'alignment'
+      | 'decrease'
+      | 'impact'
+      | 'increase'
+      | 'levelChange'
+      | 'selection'
+      | 'start'
+      | 'stop';
+    trigger: any;
+  };
+  // Lifecycle - todo
   onAppear?: () => void;
   onDisappear?: () => void;
-};
-
-export type Modifiers = {
-  alert?: Alert; // propably cant do this
-  backgroundColor?: UIColor; // rename?
-  padding?: Padding; // good
-  cornerRadius?: number; // removed in swiftui?
-  rotationEffect?: Rotation; // check
-  scaleEffect?: number; // check
-  shadow?: Shadow; // good but check
-  border?: Border; // good
-  opacity?: number; // good
-  frame?: Frame; // good but check
-  zIndex?: number; // good but check
-  environment?: {
-    colorScheme: 'light' | 'dark';
-  };
-  style?: StyleProp<ViewStyle>;
-  blur?: number; // check
-  tint?: UIColor; // check
-  font?: keyof typeof Fonts; // swiftui
-  fontWeight?: keyof typeof FontWeights; // swiftui but check
-  fontSize?: number; // swiftui but check
-  foregroundColor?: UIColor; // this changed to foregroundStyle in swiftui
-  customFont?: string; // check
-  bold?: boolean; // swiftui
-  italic?: boolean; // swiftui
-  strikethrough?:
-    | boolean
-    | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
-  underline?: boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' }; // swiftui
-  onAppear?: () => void; // should we move this to swiftui? i think yes
-  onDisappear?: () => void; // should we move this to swiftui? i think yes
-};
-
-export type TextModifiers = {
-  font?: keyof typeof Fonts; // swiftui
-  fontWeight?: keyof typeof FontWeights; // swiftui but check
-  fontSize?: number; // swiftui but check
-  foregroundColor?: UIColor; // this changed to foregroundStyle in swiftui
-  customFont?: string; // check
-  bold?: boolean; // swiftui
-  italic?: boolean; // swiftui
-  strikethrough?: // swiftui
-  boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
-  underline?: boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' }; // swiftui
-};
-
-export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
-  fill?: UIColor; // swiftui
-  frame: ShapeFrame; // swiftui
+  // Alert  - todo
+  alert?: Alert;
 };
 
 export type WithChildren<T> = T & {
   children?: ReactNode;
 };
 
-export type ModifiersBuilder = Omit<InternalModifiersBuilder, 'build'>;
 export type NativeModifiersProp = { [key: string]: any };
-export type ModifiersFunctionProp = (
-  builder: ModifiersBuilder
-) => ModifiersBuilder;
-export type ModifierObjectProp = Modifiers;
-export type ModifiersProp = ModifiersFunctionProp | ModifierObjectProp;
-
-/**
- * A builder class for creating native modifiers.
- */
-export class InternalModifiersBuilder {
-  private modifiers: { [key: string]: any }[] = [];
-
-  build() {
-    return this.modifiers;
-  }
-
-  alert(alert: Alert) {
-    this.modifiers.push({ alert });
-    return this;
-  }
-
-  bold(isActive: boolean = true) {
-    this.modifiers.push({ bold: isActive });
-    return this;
-  }
-
-  border(border: Border) {
-    this.modifiers.push({ border });
-    return this;
-  }
-
-  padding(padding: Padding) {
-    this.modifiers.push({ padding });
-    return this;
-  }
-
-  frame(frame: Frame) {
-    this.modifiers.push({ frame });
-    return this;
-  }
-
-  fill(fill: UIColor) {
-    this.modifiers.push({ fill });
-    return this;
-  }
-
-  stroke(stroke: UIColor, lineWidth: number) {
-    this.modifiers.push({ stroke: { color: stroke, lineWidth } });
-    return this;
-  }
-
-  background(background: UIColor) {
-    this.modifiers.push({ background });
-    return this;
-  }
-
-  scaleEffect(scaleEffect: number) {
-    this.modifiers.push({ scaleEffect });
-    return this;
-  }
-
-  imageScale(scale: 'small' | 'medium' | 'large') {
-    this.modifiers.push({ imageScale: scale });
-    return this;
-  }
-
-  preferredColorScheme(preferredColorScheme: 'light' | 'dark') {
-    this.modifiers.push({ preferredColorScheme });
-    return this;
-  }
-
-  pickerStyle(pickerStyle: 'wheel' | 'segmented' | 'menu') {
-    this.modifiers.push({ pickerStyle });
-    return this;
-  }
-
-  foregroundStyle(foregroundStyle: UIColor | UIColor[]) {
-    this.modifiers.push({ foregroundStyle });
-    return this;
-  }
-
-  blur(blur: number) {
-    this.modifiers.push({ blur });
-    return this;
-  }
-}
-
-/**
- * Builds an array of native modifiers from a modifiers function.
- */
-export function buildModifiers(
-  modifiers: (builder: ModifiersBuilder) => ModifiersBuilder
-) {
-  if (!modifiers) return [];
-  const builder = new InternalModifiersBuilder();
-  return (modifiers(builder) as InternalModifiersBuilder).build();
-}
-
-/**
- * Applies styles from a modifiers prop to a style object. This is used for
- * components that aren't implemented in SwiftUI yet.
- */
-export function applyStylesFromModifierProps(
-  modifiers: [{ [key: string]: any }]
-) {
-  const result = {};
-  // [ { alert: Alert }, { padding: Padding }, { frame: Frame }]
-  for (const modifier of modifiers) {
-    const key = Object.keys(modifier)[0];
-    const value = modifier[key];
-    switch (key) {
-      case 'padding':
-        // do something
-        break;
-      default:
-        break;
-    }
-  }
-}
 
 /**
  * Maps a modifiers object or function to an array of native modifiers, with
  * the order being preserved.
  */
-export function mapToNativeModifiers(modifiers: ModifiersProp | Modifiers) {
+export function mapToNativeModifiers(modifiers: Modifiers) {
   if (Array.isArray(modifiers)) {
     return modifiers;
   }
   let result: NativeModifiersProp[] = [];
-  if (typeof modifiers === 'function') {
-    result = buildModifiers(modifiers);
-  } else {
-    result = Object.keys(modifiers || {}).map((key) => {
-      return { [key]: modifiers[key] };
-    });
-  }
+  result = Object.keys(modifiers || {}).map((key) => {
+    return { [key]: modifiers[key] };
+  });
   return result;
 }

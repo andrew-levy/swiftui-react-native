@@ -27,11 +27,8 @@ const HStack = (children: ElementWithModifiers[]) =>
 const Toggle = (label: string, isOn: boolean | BooleanBinding) =>
   createSwiftUIComponent(ToggleComp, { label, isOn }, undefined);
 
-const Stepper = (
-  value: number | Binding<number>,
-  range: [number, number],
-  onChange: (value: number) => void
-) => createSwiftUIComponent(StepperComp, { value, range, onChange }, undefined);
+const Stepper = (value: number | Binding<number>, range: [number, number]) =>
+  createSwiftUIComponent(StepperComp, { value, range }, undefined);
 
 const Spacer = () => createSwiftUIComponent(SpacerComp, {}, undefined);
 

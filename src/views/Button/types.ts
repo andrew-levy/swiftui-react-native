@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeButtonProps = {
   text: string;
@@ -14,4 +14,4 @@ export type ButtonProps = {
   title: string;
   action: () => void;
   children?: string;
-} & _Modifiers;
+} & Modifiers;

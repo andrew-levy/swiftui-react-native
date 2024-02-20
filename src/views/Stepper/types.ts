@@ -1,6 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeStepperProps = {
   step?: number;
@@ -21,4 +21,4 @@ export type StepperProps = {
   value: Binding<number>;
   onChange?: (value?: number) => void;
   style?: StyleProp<ViewStyle>;
-} & _Modifiers;
+} & Modifiers;

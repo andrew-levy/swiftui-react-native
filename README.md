@@ -16,7 +16,7 @@ Check out the [example project](./example/).
 
 ## To convert:
 
-- Image ✅ (remove fallback? copy over sfsymbol code)
+- Image ✅ (copy over sfsymbol code)
 - ProgressView ✅
 - Stepper ✅
 - Shapes ✅ (Rectangle, Circle, Ellipse, Capsule) add ellipse?
@@ -24,16 +24,16 @@ Check out the [example project](./example/).
 - ColorPicker ✅
 - DatePicker ✅
 - Picker ✅
-- Slider ✅ (has a lot of bugs)
+- Slider ✅
 - Color ✅
-  -------- These are all text based, need to figure out dynamic sizing --------
 - Label ✅
 - Text ✅
 - Button ✅
 - SecureField ✅
 - TextEditor ✅
 - TextField ✅
-- ShareLink
+
+- GeometryReader
 
 ## To add:
 
@@ -43,9 +43,10 @@ Check out the [example project](./example/).
 - ZStack ✅
 - Group ✅
 - Spacer ✅
+
+- Section
 - NavigationStack
 - NavigationLink
-- List.Section (Not doing)
 - GeometryReader (Not doing)
 - ForEach (Not doing)
 - EnvironmentProvider (Not doing)
@@ -53,13 +54,10 @@ Check out the [example project](./example/).
 
 ## Modifiers to add:
 
-- sheet ✅
-- sheetDetents ✅
 - onAppear
 - onDisappear
-- background and mask passing props
-
-- alert maybe?
+- background
+- symbol modifiers
 
 ## to do:
 

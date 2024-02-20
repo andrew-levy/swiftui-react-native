@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeListProps = {
   children?: React.ReactNode;
@@ -11,4 +11,4 @@ export type NativeListProps = {
 export type ListProps = {
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode | ReactElement[];
-} & _Modifiers;
+} & Modifiers;

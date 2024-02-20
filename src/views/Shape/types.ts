@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeShapeProps = {
   modifiers?: NativeModifiersProp;
@@ -11,4 +11,4 @@ export type NativeShapeProps = {
 export type ShapeProps = {
   style?: StyleProp<ViewStyle>;
   cornerRadius?: number;
-} & _Modifiers;
+} & Modifiers;

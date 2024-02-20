@@ -17,7 +17,6 @@ struct SliderView: View {
         ])
       })
         .reactNativeViewModifiers(mods: props.modifiers)
-        .conditionalLabel(hasLabel: props.labelText != nil)
         .onChange(of: props.value) { (oldValue, newValue) in
          
         }

@@ -1,18 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import {
-  ForEach,
-  HStack,
-  Image,
-  SystemName,
-  UIColor,
-} from 'swiftui-react-native';
+import { ForEach, HStack, Image } from 'swiftui-react-native';
 
 export const ImageSection = () => {
-  const sfSymbols: {
-    name: SystemName;
-    color: UIColor;
-  }[] = [
+  const sfSymbols = [
     { name: 'trash', color: 'systemOrange' },
     { name: 'plus', color: 'systemBlue' },
     { name: 'phone', color: 'systemPurple' },
@@ -26,7 +17,7 @@ export const ImageSection = () => {
         {ForEach(sfSymbols, (symbol, i) => (
           <Image
             key={i}
-            systemName={symbol.name}
+            systemName={symbol.name as any}
             imageScale="large"
             foregroundStyle="systemBlue"
             bold

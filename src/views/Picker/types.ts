@@ -1,9 +1,9 @@
 import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
 import {
+  Modifiers,
   ModifiersProp,
   NativeModifiersProp,
-  _Modifiers,
 } from '../../utils/modifiers';
 
 export type NativePickerProps = {
@@ -29,4 +29,4 @@ export type PickerProps = {
   modifiers?: ModifiersProp;
   onValueChange?: (newValue: string) => void;
   style?: StyleProp<ViewStyle>;
-} & _Modifiers;
+} & Modifiers;

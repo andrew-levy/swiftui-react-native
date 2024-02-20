@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeSpacerProps = {
   modifiers?: NativeModifiersProp;
@@ -7,4 +7,4 @@ export type NativeSpacerProps = {
 };
 export type SpacerProps = {
   style?: StyleProp<ViewStyle>;
-} & _Modifiers;
+} & Modifiers;

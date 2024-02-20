@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import {
+  Modifiers,
   ModifiersProp,
   NativeModifiersProp,
-  _Modifiers,
 } from '../../utils/modifiers';
 
 export type NativeHStackProps = {
@@ -22,4 +22,4 @@ export type HStackProps = {
   alignment?: 'leading' | 'center' | 'trailing';
   style?: StyleProp<ViewStyle>;
   children?: ReactElement | ReactElement[];
-} & _Modifiers;
+} & Modifiers;

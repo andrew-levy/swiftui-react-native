@@ -9,11 +9,17 @@ const NativeList: React.ComponentType<NativeListProps> =
 
 export function List({ style, children, ...modifiers }: ListProps) {
   const { width, height } = useWindowDimensions();
-  const insetWidth = width - 80;
-  const insetHeight = 30;
-  const groupedWidth = width - 20;
-  const groupedHeight = 30;
-  // TODO: implement other widths and heights
+  let rowWidth = width;
+  switch (modifiers.listStyle) {
+    case 'insetGrouped':
+      rowWidth = width - 80;
+      break;
+    case 'inset':
+    case 'grouped':
+    case 'plain':
+      rowWidth = width - 40;
+      break;
+  }
 
   return (
     <NativeList
@@ -28,7 +34,7 @@ export function List({ style, children, ...modifiers }: ListProps) {
         return (
           <View
             style={{
-              width: insetWidth,
+              width: rowWidth,
             }}
           >
             {child}

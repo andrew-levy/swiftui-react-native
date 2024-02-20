@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 import { SystemName } from '../Image/types';
 
 export type NativeLabelProps = {
@@ -13,4 +13,4 @@ export type LabelProps = {
   systemImage?: SystemName;
   title?: string;
   style?: StyleProp<ViewStyle>;
-} & _Modifiers;
+} & Modifiers;

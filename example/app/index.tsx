@@ -3,13 +3,13 @@ import React from 'react';
 import { Button, HStack, Image, List, Spacer } from 'swiftui-react-native';
 
 export default function Page() {
-  const router = useRouter();
   return (
     <List
       style={{ flex: 1 }}
       environment={{
         colorScheme: 'light',
       }}
+      listStyle="insetGrouped"
     >
       <ListRow title="Fonts" path="/fonts" />
       <ListRow title="Colors" path="/colors" />

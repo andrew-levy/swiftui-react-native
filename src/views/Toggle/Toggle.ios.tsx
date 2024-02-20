@@ -20,8 +20,8 @@ export function Toggle({
       label={label}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: 50,
-        height: 30,
+        width: 51,
+        height: 31,
         ...(style as object),
       }}
       onValueChange={(e) => {

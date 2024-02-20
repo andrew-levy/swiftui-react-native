@@ -7,7 +7,6 @@ struct ToggleView: View {
         if #available(iOS 16.0, *) {
             Toggle(props.label ?? "", isOn: $props.isOn)
               .reactNativeViewModifiers(mods: props.modifiers)
-              .conditionalLabel(hasLabel: props.label != nil)
               .onChange(of: props.isOn) { newValue in
                 props.onValueChange([
                     "value": newValue

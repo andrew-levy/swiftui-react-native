@@ -14,8 +14,6 @@ struct DatePickerView: View {
     if #available(iOS 14.0, *) {
       DatePicker(props.label, selection: $date, displayedComponents: mapDisplayedComponents(props.displayedComponents))
         .reactNativeViewModifiers(mods: props.modifiers)
-        .conditionalLabel(hasLabel: !props.label.isEmpty)
-      
       // TODO: move this to get and set, bind to the props.date
         .onAppear {
           date = ISO8601DateFormatter().date(from: props.selection) ?? Date()

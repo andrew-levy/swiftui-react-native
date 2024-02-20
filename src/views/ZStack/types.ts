@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeZStackProps = {
   children?: React.ReactNode;
@@ -10,4 +10,4 @@ export type NativeZStackProps = {
 export type ZStackProps = {
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
-} & _Modifiers;
+} & Modifiers;

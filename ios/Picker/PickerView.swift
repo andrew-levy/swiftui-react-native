@@ -11,7 +11,6 @@ struct PickerView: View {
         }
       }
       .reactNativeViewModifiers(mods: props.modifiers)
-      .sizedToFit(onSized: props.onSized)
       .onChange(of: props.selection) { newValue in
         props.onValueChange([
           "value": newValue
