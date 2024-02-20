@@ -33,7 +33,6 @@ Check out the [example project](./example/).
 - SecureField ✅
 - TextEditor ✅
 - TextField ✅
-- Link
 - ShareLink
 
 ## To add:
@@ -54,10 +53,11 @@ Check out the [example project](./example/).
 
 ## Modifiers to add:
 
+- sheet ✅
+- sheetDetents ✅
 - onAppear
 - onDisappear
-- sheet
-- sheetDetents
+- background and mask passing props
 
 - alert maybe?
 

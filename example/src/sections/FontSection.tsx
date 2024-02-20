@@ -40,7 +40,7 @@ export const FontSection = () => {
       <Text alignment="leading" font="title3">
         Title 3
       </Text>
-      <Label title="Labels" systemImage="square.grid.3x1.folder.badge.plus" />
+      <Label title="Label" systemImage="square.grid.3x1.folder.badge.plus" />
     </List>
   );
 };

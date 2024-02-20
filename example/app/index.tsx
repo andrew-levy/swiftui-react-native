@@ -18,6 +18,7 @@ export default function Page() {
       <ListRow title="Controls" path="/controls" />
       <ListRow title="Images" path="/images" />
       <ListRow title="Lists" path="/lists" />
+      <ListRow title="Sheet" path="/sheet" />
       <ListRow title="Navigation" path="/navigation" />
       <ListRow title="Pickers" path="/pickers" />
       <ListRow title="Progress" path="/progress" />

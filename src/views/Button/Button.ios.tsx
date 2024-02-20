@@ -18,9 +18,7 @@ export function Button({
     <NativeButton
       text={title}
       modifiers={mapToNativeModifiers(modifiers)}
-      style={{
-        ...(style as object),
-      }}
+      style={style}
       onAction={action}
     >
       <Text {...modifiers}>{title}</Text>

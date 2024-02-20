@@ -7,7 +7,6 @@ struct DatePickerView: View {
   
   init(props: DatePickerProps) {
     self.props = props
-    print(props.selection)
     _date.wrappedValue = Date()
   }
 
@@ -22,7 +21,6 @@ struct DatePickerView: View {
           date = ISO8601DateFormatter().date(from: props.selection) ?? Date()
         }
         .onChange(of: date) { newValue in
-          print("newval \(newValue)")
           if #available(iOS 15.0, *) {
             props.onValueChange([
               "value": newValue.ISO8601Format()

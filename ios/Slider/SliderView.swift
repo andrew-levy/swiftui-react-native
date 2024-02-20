@@ -12,7 +12,6 @@ struct SliderView: View {
       }, maximumValueLabel: {
         Text(props.labelText ?? "")
       }, onEditingChanged: { state in
-        print("edit changed \(state ? "start" : "end")")
         props.onValueChange([
           "value": props.value
         ])
@@ -20,15 +19,6 @@ struct SliderView: View {
         .reactNativeViewModifiers(mods: props.modifiers)
         .conditionalLabel(hasLabel: props.labelText != nil)
         .onChange(of: props.value) { (oldValue, newValue) in
-          // only post a change if the new value - old value is greater than the step
-//          if abs(newValue - oldValue) >= props.step {
-//            props.onValueChange([
-//              "value": newValue
-//            ])
-//          }
-//          props.onValueChange([
-//            "value": newValue
-//          ])
          
         }
     }

@@ -22,7 +22,7 @@ export const ControlSection = () => {
         <HStack>
           <Text font="body">Slider</Text>
           <Spacer />
-          <Text font="body" foregroundColor="systemBlue">
+          <Text font="body" foregroundStyle="systemBlue">
             {Math.round(sliderValue.value).toString()}
           </Text>
         </HStack>

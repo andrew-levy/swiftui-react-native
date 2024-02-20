@@ -46,13 +46,21 @@ export type _Modifiers = {
   cornerRadius?: number;
   buttonStyle?: 'bordered' | 'borderless' | 'plain' | 'borderedProminent';
   pickerStyle?: 'wheel' | 'segmented' | 'menu';
-  // to implement
-  alert?: Alert;
+  textFieldStyle?: 'plain' | 'roundedBorder';
   sheet?: {
     isPresented: boolean | BooleanBinding;
     content: ReactNode;
     onDismiss?: () => void;
   };
+  presentationCornerRadius?: number;
+  presentationDetents?: (
+    | 'medium'
+    | 'large'
+    | { fraction: number }
+    | { height: number }
+  )[];
+  // to implement
+  alert?: Alert;
   onAppear?: () => void;
   onDisappear?: () => void;
 };

@@ -76,7 +76,6 @@ struct ConditionalLabel: ViewModifier {
              }
            }
          case "foregroundStyle":
-           print(value)
            if let color = getColor(value) as UIColor? {
              if #available(iOS 15.0, *) {
                view = AnyView(view.foregroundStyle(Color(color)))
@@ -399,6 +398,52 @@ struct ConditionalLabel: ViewModifier {
                break
              }
            }
+
+           case "presentationCornerRadius": 
+            if let cornerRadius = value as? CGFloat {
+              if #available(iOS 16.4, *) {
+                view = AnyView(view.presentationCornerRadius(cornerRadius))
+              }
+            }
+
+           case "presentationDetents":
+            if let presentationDetents = value as? [Any] {
+              if #available(iOS 16.0, *) {
+                var detents: Set<PresentationDetent> = []
+                for detent in presentationDetents {
+                  if let detent = detent as? String {
+                    switch detent {
+                    case "medium":
+                      detents.insert(.medium)
+                    case "large":
+                      detents.insert(.large)
+                    default:
+                      break
+                    }
+                  } else if let detent = detent as? [String: Any] {
+                    if let fraction = detent["fraction"] as? CGFloat {
+                      detents.insert(.fraction(fraction))
+                    } else if let height = detent["height"] as? CGFloat {
+                      detents.insert(.height(height))
+                    }
+                  }
+                }
+                view = AnyView(view.presentationDetents(detents))
+              }
+            }
+
+          case "textFieldStyle":
+            if let textFieldStyle = value as? String {
+              switch textFieldStyle {
+              case "roundedBorder":
+                view = AnyView(view.textFieldStyle(.roundedBorder))
+              case "plain":
+                view = AnyView(view.textFieldStyle(.plain))
+              default:
+                break
+              }
+            }
+
 
           case "pickerStyle":
             if let pickerStyle = value as? String {

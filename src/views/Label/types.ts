@@ -1,13 +1,16 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { NativeModifiersProp, _Modifiers } from '../../utils/modifiers';
+import { SystemName } from '../Image/types';
 
-export type NativeTextProps = {
-  text: string;
+export type NativeLabelProps = {
+  systemImage: SystemName;
+  title: string;
   modifiers?: NativeModifiersProp;
   style?: StyleProp<ViewStyle>;
 };
 
-export type TextProps = {
+export type LabelProps = {
+  systemImage?: SystemName;
+  title?: string;
   style?: StyleProp<ViewStyle>;
-  children?: string | string[] | number | number[];
 } & _Modifiers;
