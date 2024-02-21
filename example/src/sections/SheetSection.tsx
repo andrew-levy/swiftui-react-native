@@ -10,10 +10,7 @@ export const SheetSection = () => {
         sheet={{
           isPresented: isSheetPresented,
           content: (
-            <VStack
-              presentationDetents={['medium', 'large', { fraction: 0.12 }]}
-              presentationCornerRadius={40}
-            >
+            <VStack>
               <Text>Sheet Content</Text>
               <Button
                 title="Close"

@@ -34,6 +34,10 @@ export const ColorSection = () => {
               color={color}
               border={{ width: 1, color: 'systemGray4' }}
               frame={{ width: 25, height: 25 }}
+              clipShape={{
+                cornerRadius: 5,
+                shape: 'roundedRectangle',
+              }}
             />
             <Text>{toWords(color)}</Text>
             <Spacer />

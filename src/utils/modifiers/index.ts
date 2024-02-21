@@ -25,6 +25,8 @@ export type Modifiers = {
   opacity?: number;
   tint?: UIColor;
   cornerRadius?: number;
+  position?: { x: number; y: number };
+  offset?: { x: number; y: number };
   // Filter
   blur?: number;
   saturation?: number;
@@ -39,6 +41,7 @@ export type Modifiers = {
     colorScheme: 'light' | 'dark';
   };
   // Image
+  resizable?: boolean;
   imageScale?: 'small' | 'medium' | 'large';
   // Text
   fontWeight?:
@@ -67,13 +70,13 @@ export type Modifiers = {
     content: ReactNode;
     onDismiss?: () => void;
   };
-  presentationCornerRadius?: number;
-  presentationDetents?: (
-    | 'medium'
-    | 'large'
-    | { fraction: number }
-    | { height: number }
-  )[];
+  // presentationCornerRadius?: number;
+  // presentationDetents?: (
+  //   | 'medium'
+  //   | 'large'
+  //   | { fraction: number }
+  //   | { height: number }
+  // )[];
   // Haptics
   sensoryFeedback?: {
     feedback:
@@ -113,6 +116,11 @@ export function mapToNativeModifiers(modifiers: Modifiers) {
   }
   let result: NativeModifiersProp[] = [];
   result = Object.keys(modifiers || {}).map((key) => {
+    if (key === 'sheet') {
+      const { content, ...rest } = modifiers[key];
+      console.log('rest', rest);
+      return { [key]: rest };
+    }
     return { [key]: modifiers[key] };
   });
   return result;

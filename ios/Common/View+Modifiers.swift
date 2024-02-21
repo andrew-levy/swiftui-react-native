@@ -3,21 +3,33 @@ import SwiftUI
 import ExpoModulesCore
 
 extension View {
-  func reactNativeViewModifiers(mods: [[String: Any]]) -> some View {
-    modifier(ReactNativeViewModifiers(mods: mods))
+  func reactNativeViewModifiers(
+    mods: [[String: Any]],
+    lifecycleModifier: LifecycleModifier? = nil,
+    sheetModifier: SheetModifier? = nil
+  ) -> some View {
+    modifier(
+      ReactNativeViewModifiers(
+        mods: mods,
+        lifecycleModifier: lifecycleModifier,
+        sheetModifier: sheetModifier
+      )
+    )
   }
 }
 
-
 struct ReactNativeViewModifiers: ViewModifier {
   var mods: [[String: Any]]
+  var lifecycleModifier: LifecycleModifier? = nil
+  var sheetModifier: SheetModifier? = nil
+  
   func body(content: Content) -> some View {
     var view = AnyView(content)
     for mod in mods {
       for (key, value) in mod {
         switch(key) {
         case "padding":
-          if let padding = value as? Bool {
+          if value is Bool {
             view = AnyView(view.padding())
           } else if let padding = value as? CGFloat {
             view = AnyView(view.padding(padding))
@@ -60,7 +72,7 @@ struct ReactNativeViewModifiers: ViewModifier {
               break
             }
           }
-        // Currently only supports color
+          // Currently only supports color
         case "background":
           if let color = getColor(value) as UIColor? {
             view = AnyView(view.background(Color(color)))
@@ -172,7 +184,7 @@ struct ReactNativeViewModifiers: ViewModifier {
           if let zIndex = value as? Double {
             view = AnyView(view.zIndex(zIndex))
           }
-        // Currently only supports text mask
+          // Currently only supports text mask
         case "mask":
           if let mask = value as? String {
             if #available(iOS 15.0, *) {
@@ -181,7 +193,7 @@ struct ReactNativeViewModifiers: ViewModifier {
               }))
             }
           }
-        // Currently only supports direct mapping to shapes
+          // Currently only supports direct mapping to shapes
         case "clipShape":
           if let clipShape = value as? String {
             switch clipShape {
@@ -440,8 +452,8 @@ struct ReactNativeViewModifiers: ViewModifier {
               }
             }
           }
-
-          case "listStyle":
+          
+        case "listStyle":
           if let listStyle = value as? String {
             switch listStyle {
             case "grouped":
@@ -466,7 +478,7 @@ struct ReactNativeViewModifiers: ViewModifier {
               break
             }
           }
-
+          
           
           
         case "textFieldStyle":
@@ -502,69 +514,39 @@ struct ReactNativeViewModifiers: ViewModifier {
             }
           }
           
-          //         case "onAppear":
-          //           view = AnyView(view.onAppear {
-          //             onAppear()
-          //           })
-          //
-          //         case "onDisappear":
-          //           view = AnyView(view.onDisappear {
-          //             onDisappear()
-          //           })
+        case "position":
+          if let position = value as? [String: Any] {
+            if let x = position["x"] as? CGFloat, let y = position["y"] as? CGFloat {
+              view = AnyView(view.position(x: x, y: y))
+            }
+          }
           
+        case "offset":
+          if let offset = value as? [String: Any] {
+            if let x = offset["x"] as? CGFloat, let y = offset["y"] as? CGFloat {
+              view = AnyView(view.offset(x: x, y: y))
+            }
+          }
           
+        case "onAppear":
+          view = AnyView(view.onAppear {
+            lifecycleModifier?.onAppear()
+          })
           
-          //          case "alert":
-          //           if let alert = value as? [String: Any] {
-          //             let isPresented = alert["isPresented"] as? Bool ?? false
-          //             let title = alert["title"] as? String ?? ""
-          //             let message = alert["message"] as? String ?? ""
-          //             let actions = alert["actions"] as? [[String: Any]]
-          //             print("2")
-          //             if #available(iOS 15.0, *) {
-          //               print("3")
-          //               view = AnyView(view.alert(title, isPresented: .constant(true), actions: {
-          //                 Button("OK", role: .cancel) { }
-          //               }, message: {
-          //                 Text(message)
-          //               }))
-          //             } else {
-          //               // Fallback on earlier versions
-          //             }
-          //           }
+        case "onDisappear":
+          view = AnyView(view.onDisappear {
+            lifecycleModifier?.onDisappear()
+          })
           
-          
-          
-          // case "symbolEffect":
-          //   if let symbolEffect = value as? [String: Any] {
-          //     let type = symbolEffect["type"] as? String ?? "bounce"
-          //     let repeatCount = symbolEffect["repeatCount"] as? Int
-          //     let speed = symbolEffect["speed"] as? Double
-          //     let reversing = symbolEffect["reversing"] as? Bool
-          //     let direction = symbolEffect["direction"] as? String
-          //     let animateBy = symbolEffect["animateBy"] as? String
-          //     let inactiveLayers = symbolEffect["inactiveLayers"] as? String
-          //     let value = symbolEffect["value"]
-          //     let isActive = symbolEffect["isActive"] as? Bool ?? false
-          //     view = AnyView(
-          //       view.modifier(
-          //         SymbolEffectModifier(
-          //           symbolEffect: SFSymbolEffect(
-          //             type: type,
-          //             repeatCount: repeatCount,
-          //             speed: speed,
-          //             reversing: reversing,
-          //             direction: direction,
-          //             animateBy: animateBy,
-          //             inactiveLayers: inactiveLayers,
-          //             value: value,
-          //             isActive: isActive
-          //           )
-          //         )
-          //       )
-          //     )
-          //   }
-          
+        case "sheet":
+          view = AnyView(view.sheet(isPresented: sheetModifier?.isSheetPresented ?? .constant(false), onDismiss: {
+            sheetModifier?.onSheetDismissed()
+          }) {
+            if #available(iOS 16.0, *) {
+              RepresentableView(view: sheetModifier?.sheetContent ?? UIView())
+                .frame(width: sheetModifier?.sheetContent.frame.width, height: sheetModifier?.sheetContent.frame.height)
+            }
+          })
           
         default:
           break
@@ -610,3 +592,14 @@ func getColor(_ color: Any?) -> UIColor {
   return convertProcessedColorToUIColor(from: color) as UIColor
 }
 
+
+struct LifecycleModifier {
+  var onAppear: EventDispatcher
+  var onDisappear: EventDispatcher
+}
+
+struct SheetModifier {
+  var onSheetDismissed: EventDispatcher
+  var isSheetPresented: Binding<Bool>
+  var sheetContent: UIView
+}

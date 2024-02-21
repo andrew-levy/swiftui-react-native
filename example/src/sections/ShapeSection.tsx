@@ -16,12 +16,18 @@ export const ShapeSection = () => {
       <HStack>
         <Text>Rectangle</Text>
         <Spacer />
-        <Rectangle />
+        <Rectangle
+          fill="pink"
+          stroke={{
+            color: 'purple',
+            lineWidth: 2,
+          }}
+        />
       </HStack>
       <HStack>
         <Text>Rounded Rectangle</Text>
         <Spacer />
-        <RoundedRectangle cornerRadius={10} />
+        <RoundedRectangle fill="blue" cornerRadius={10} />
       </HStack>
       <HStack>
         <Text>Circle</Text>

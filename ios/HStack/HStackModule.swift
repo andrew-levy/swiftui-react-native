@@ -5,7 +5,7 @@ public class HStackModule: Module {
   public func definition() -> ModuleDefinition {
     Name("HStack")
     View(HStackExpoView.self) {
-      Events("onSheetDismissed", "onAppear", "onDisappear")
+      Events("onAppear", "onDisappear", "onSheetDismissed")
       Prop("modifiers") { (view: HStackExpoView, prop: [[String: Any]]) in
         view.props.modifiers = prop
       }

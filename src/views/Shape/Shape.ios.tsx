@@ -65,3 +65,18 @@ export function Capsule(props: ShapeProps) {
     />
   );
 }
+
+export function Ellipse(props: ShapeProps) {
+  const { style, ...modifiers } = props;
+  return (
+    <NativeShape
+      type="Ellipse"
+      modifiers={mapToNativeModifiers(modifiers)}
+      style={{
+        width: 30,
+        height: 30,
+        ...(style as object),
+      }}
+    />
+  );
+}

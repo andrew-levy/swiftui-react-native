@@ -8,9 +8,10 @@ const NativeList: React.ComponentType<NativeListProps> =
   requireNativeViewManager('List');
 
 export function List({ style, children, ...modifiers }: ListProps) {
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   let rowWidth = width;
-  switch (modifiers.listStyle) {
+  switch (modifiers.listStyle || 'insetGrouped') {
+    default:
     case 'insetGrouped':
       rowWidth = width - 80;
       break;
