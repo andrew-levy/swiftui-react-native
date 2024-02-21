@@ -10,6 +10,8 @@ export default function Page() {
         colorScheme: 'light',
       }}
       listStyle="insetGrouped"
+      header="SwiftUI for React Native"
+      footer='This is a demo of the "swiftui-react-native" library. Each section demonstrates a different component or feature.'
     >
       <ListRow title="Fonts" path="/fonts" />
       <ListRow title="Colors" path="/colors" />
@@ -17,15 +19,13 @@ export default function Page() {
       <ListRow title="Stacks" path="/stacks" />
       <ListRow title="Controls" path="/controls" />
       <ListRow title="Images" path="/images" />
-      <ListRow title="Lists" path="/lists" />
       <ListRow title="Sheet" path="/sheet" />
-      <ListRow title="Navigation" path="/navigation" />
       <ListRow title="Pickers" path="/pickers" />
       <ListRow title="Progress" path="/progress" />
       <ListRow title="Shapes" path="/shapes" />
       <ListRow title="Group" path="/group" />
       <ListRow title="TextField" path="/textfield" />
-      <ListRow title="Experimental" path="/experimental" />
+      <ListRow title="Experimental API" path="/experimental" />
     </List>
   );
 }

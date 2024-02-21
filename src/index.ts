@@ -6,6 +6,7 @@ export * from './views/Image';
 export * from './views/Label';
 export * from './views/List';
 export * from './views/ProgressView';
+export * from './views/Section';
 export * from './views/Shape';
 export * from './views/Text';
 

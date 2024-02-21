@@ -1,19 +1,19 @@
 import { requireNativeViewManager } from 'expo-modules-core';
-import React, { ReactElement } from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import React from 'react';
+import { useWindowDimensions } from 'react-native';
 import { mapToNativeModifiers } from '../../utils/modifiers';
-import { ListProps, NativeListProps } from './types';
+import { NativeSectionProps, SectionProps } from './types';
 
-const NativeList: React.ComponentType<NativeListProps> =
-  requireNativeViewManager('List');
+const NativeSection: React.ComponentType<NativeSectionProps> =
+  requireNativeViewManager('Section');
 
-export function List({
+export function Section({
   style,
   children,
   header,
   footer,
   ...modifiers
-}: ListProps) {
+}: SectionProps) {
   const { width } = useWindowDimensions();
   let rowWidth = width;
   switch (modifiers.listStyle || 'insetGrouped') {
@@ -29,7 +29,7 @@ export function List({
   }
 
   return (
-    <NativeList
+    <NativeSection
       modifiers={mapToNativeModifiers(modifiers)}
       header={header}
       footer={footer}
@@ -39,17 +39,7 @@ export function List({
         ...(style as object),
       }}
     >
-      {React.Children.map(children, (child: ReactElement) => {
-        return (
-          <View
-            style={{
-              width: rowWidth,
-            }}
-          >
-            {child}
-          </View>
-        );
-      })}
-    </NativeList>
+      {children}
+    </NativeSection>
   );
 }

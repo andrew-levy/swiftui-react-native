@@ -25,11 +25,7 @@ export const ColorSection = () => {
           'systemYellow',
         ],
         (color, i) => (
-          <HStack
-            key={i}
-            spacing={10}
-            border={{ width: 1, color: 'systemGray4' }}
-          >
+          <HStack key={i} spacing={10}>
             <Color
               color={color}
               border={{ width: 1, color: 'systemGray4' }}

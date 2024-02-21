@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
-export type NativeListProps = {
+export type NativeSectionProps = {
   children?: React.ReactNode;
   modifiers?: NativeModifiersProp;
   header?: string;
@@ -10,7 +10,7 @@ export type NativeListProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-export type ListProps = {
+export type SectionProps = {
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode | ReactElement[];
   header?: string;

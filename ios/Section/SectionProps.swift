@@ -1,7 +1,7 @@
 import SwiftUI
 import ExpoModulesCore
 
-class ListProps: ObservableObject {
+class SectionProps: ObservableObject {
   @Published var children: [UIView]?
   @Published var modifiers: [[String: Any]] = []
   @Published var header: String = ""
