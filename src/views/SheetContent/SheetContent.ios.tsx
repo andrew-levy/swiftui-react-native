@@ -3,17 +3,9 @@ import React, { ReactNode } from 'react';
 
 const NativeSheetContent: React.ComponentType<{
   children: ReactNode;
-  style: object;
+  style?: object;
 }> = requireNativeViewManager('SheetContent');
 
 export function SheetContent({ children }: { children: ReactNode }) {
-  return (
-    <NativeSheetContent
-      style={{
-        position: 'absolute',
-      }}
-    >
-      {children}
-    </NativeSheetContent>
-  );
+  return <NativeSheetContent>{children}</NativeSheetContent>;
 }

@@ -2,7 +2,10 @@ import { requireNativeViewManager } from 'expo-modules-core';
 import * as React from 'react';
 
 import { getValueOrBinding } from '../../utils/binding';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { NativePickerProps, PickerProps } from './types';
 
 const NativeView: React.ComponentType<NativePickerProps> =
@@ -12,17 +15,26 @@ export function Picker({
   selection,
   style,
   onValueChange,
-  options,
+  children,
   ...modifiers
 }: PickerProps) {
+  const options = React.Children.map(children, (child) => {
+    return child.props.children;
+  });
+
+  const defaultSize = {
+    wheel: { width: 300, height: 100 },
+    menu: { width: 100, height: 35 },
+    segmented: { width: 300, height: 35 },
+  };
+
   return (
     <NativeView
       options={options}
       selection={getValueOrBinding(selection)}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: '100%',
-        height: modifiers.pickerStyle === 'wheel' ? 100 : 35,
+        ...getSizeFromModifiers(modifiers, defaultSize[modifiers.pickerStyle]),
         ...(style as any),
       }}
       onValueChange={(e) => {

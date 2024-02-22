@@ -14,15 +14,22 @@ export const ColorSection = () => {
     <List style={{ flex: 1 }}>
       {ForEach(
         [
-          'systemBlue',
-          'systemGreen',
-          'systemIndigo',
-          'systemOrange',
-          'systemPink',
-          'systemPurple',
-          'systemRed',
-          'systemTeal',
-          'systemYellow',
+          'blue',
+          'green',
+          'indigo',
+          'orange',
+          'pink',
+          'purple',
+          'red',
+          'teal',
+          'yellow',
+          'accentColor',
+          'primary',
+          'secondary',
+          'brown',
+          'clear',
+          'cyan',
+          'mint',
         ],
         (color, i) => (
           <HStack key={i} spacing={10}>

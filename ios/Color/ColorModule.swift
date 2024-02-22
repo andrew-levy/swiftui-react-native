@@ -7,7 +7,7 @@ public class ColorModule: Module {
 
     }
     View(ColorExpoView.self) {
-      Prop("color") { (view: ColorExpoView, prop: UIColor) in
+      Prop("color") { (view: ColorExpoView, prop: String) in
         view.props.color = prop
       }
       Prop("modifiers") { (view: ColorExpoView, prop: [[String: Any]]) in

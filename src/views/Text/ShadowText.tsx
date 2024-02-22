@@ -1,7 +1,5 @@
 import React from 'react';
 import { Text as RNText } from 'react-native';
-import { useAlert } from '../../hooks/useAlert';
-import { TextAlignment } from '../../utils/alignments';
 import { getBorder } from '../../utils/border';
 import { getFont } from '../../utils/fonts';
 import { getFrame } from '../../utils/frame';
@@ -14,22 +12,21 @@ export const ShadowText = ({
   italic,
   padding,
   rotationEffect,
+  fontWeight,
   scaleEffect,
   border,
   frame,
   style,
-  alert,
   children,
 }: TextProps) => {
-  useAlert(alert);
   return (
     <RNText
       style={[
         {
-          ...getFont(font, null, null, italic),
+          ...getFont(font, fontWeight, italic),
           ...getPadding(padding),
           ...getFrame(frame),
-          ...getBorder(border, 'light'),
+          ...getBorder(border),
           ...getTransform(scaleEffect, rotationEffect),
         },
         style,
@@ -39,29 +36,3 @@ export const ShadowText = ({
     </RNText>
   );
 };
-
-function getTextCase(textCase: string) {
-  switch (textCase) {
-    case 'lower':
-      return { textTransform: 'lowercase' };
-    case 'upper':
-      return { textTransform: 'uppercase' };
-    case 'capitalize':
-      return { textTransform: 'capitalize' };
-    default:
-      return null;
-  }
-}
-
-function getTextAlignment(alignment: TextAlignment) {
-  switch (alignment) {
-    case 'leading':
-      return 'left';
-    case 'trailing':
-      return 'right';
-    case 'center':
-      return 'center';
-    default:
-      return 'center';
-  }
-}

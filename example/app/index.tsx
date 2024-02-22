@@ -11,9 +11,9 @@ export default function Page() {
       }}
       listStyle="insetGrouped"
       header="SwiftUI for React Native"
-      footer='This is a demo of the "swiftui-react-native" library. Each section demonstrates a different component or feature.'
+      footer='This is a demo of the **"swiftui-react-native"** library. Each section demonstrates a different component or feature.'
     >
-      <ListRow title="Fonts" path="/fonts" />
+      <ListRow title="Text" path="/text" />
       <ListRow title="Colors" path="/colors" />
       <ListRow title="Buttons" path="/buttons" />
       <ListRow title="Stacks" path="/stacks" />
@@ -39,7 +39,7 @@ function ListRow({ title, path }: { title: string; path: string }) {
       <Image
         systemName="chevron.right"
         imageScale="small"
-        foregroundStyle="systemGray2"
+        foregroundStyle="gray"
         style={{ width: 10, height: 10 }}
       />
     </HStack>

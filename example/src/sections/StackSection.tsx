@@ -47,7 +47,7 @@ export const StackSection = () => {
         <Image
           systemName="circle.fill"
           imageScale="large"
-          foregroundStyle="systemPurple"
+          foregroundStyle="purple"
         />
         <Text>ZStack</Text>
       </ZStack>

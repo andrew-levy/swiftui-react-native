@@ -1,11 +1,11 @@
 import { ComponentType, ReactNode, createElement } from 'react';
-import { UIColor } from '../utils/colors';
+import { Color } from '../utils/colors';
 import { Frame } from '../utils/frame';
 
-export type ElementWithModifiers = React.ReactElement & {
+export type ElementWithModifiers = JSX.Element & {
   padding: (value: number) => ElementWithModifiers;
   bold: () => ElementWithModifiers;
-  border: (width: number, color: UIColor) => ElementWithModifiers;
+  border: (width: number, color: Color) => ElementWithModifiers;
   imageScale: (scale: 'small' | 'medium' | 'large') => ElementWithModifiers;
   frame: (frame: Frame) => ElementWithModifiers;
 };
@@ -19,17 +19,18 @@ export function createSwiftUIComponent(
     createElement(type, props, children)
   ) as ElementWithModifiers;
 
-  Element.props.modifiers = [];
-  Element.key = type.displayName;
+  // @ts-ignore
+  Element.ref = null;
+  Element.key = type.displayName + JSON.stringify(props);
   Element.padding = function (value) {
-    this.props.push({ padding: true });
+    this.props = { ...this.props, padding: true };
     return this;
   };
   Element.bold = function () {
     this.props = { ...this.props, bold: true };
     return this;
   };
-  Element.border = function (width: number, color: UIColor) {
+  Element.border = function (width: number, color: Color) {
     this.props = { ...this.props, border: { width, color } };
     return this;
   };

@@ -1,19 +1,13 @@
+import { ReactElement } from 'react';
 import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
-import {
-  Modifiers,
-  ModifiersProp,
-  NativeModifiersProp,
-} from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativePickerProps = {
   selection: string;
   options: any[];
   pickerStyle?: 'menu' | 'segmented' | 'wheel';
   modifiers?: NativeModifiersProp;
-  onSized?: (
-    e: NativeSyntheticEvent<{ value: { width: number; height: number } }>
-  ) => void;
   onValueChange?: (
     e: NativeSyntheticEvent<{
       value: string;
@@ -24,9 +18,8 @@ export type NativePickerProps = {
 
 export type PickerProps = {
   selection: Binding<string> | string;
-  options: any[];
   pickerStyle?: 'menu' | 'segmented' | 'wheel';
-  modifiers?: ModifiersProp;
   onValueChange?: (newValue: string) => void;
   style?: StyleProp<ViewStyle>;
+  children: ReactElement | ReactElement[];
 } & Modifiers;

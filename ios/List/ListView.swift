@@ -5,9 +5,9 @@ struct ListView: View {
   @ObservedObject var props: ListProps
   
   var body: some View {
-    if #available(iOS 15, *) {
+    if #available(iOS 15.0, *) {
       List {
-        Section(header: Text(props.header), footer: Text(props.footer)) {
+        Section(header: Text(props.header.toMarkdown()), footer: Text(props.footer.toMarkdown())) {
           ForEach(props.children?.indices ?? 0..<0, id: \.self) { index in
             RepresentableView(view: props.children?[index] ?? UIView())
               .frame(width: props.children?[index].frame.width, height: props.children?[index].frame.height)

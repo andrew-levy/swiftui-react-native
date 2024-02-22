@@ -29,3 +29,5 @@ export function HStack({ style, children, ...modifiers }: HStackProps) {
     </NativeHStack>
   );
 }
+
+HStack.displayName = 'SwiftUIHStack';

@@ -22,7 +22,7 @@ export const ControlSection = () => {
         <HStack>
           <Text font="body">Slider</Text>
           <Spacer />
-          <Text font="body" foregroundStyle="systemBlue">
+          <Text font="body" foregroundStyle="blue">
             {Math.round(sliderValue.value).toString()}
           </Text>
         </HStack>
@@ -42,7 +42,7 @@ export const ControlSection = () => {
         <HStack>
           <Text font="body">Stepper</Text>
           <Spacer />
-          <Text font="body" foregroundStyle="systemBlue">
+          <Text font="body" foregroundStyle="blue">
             {stepperValue.value.toString()}
           </Text>
         </HStack>
@@ -53,12 +53,12 @@ export const ControlSection = () => {
         <HStack>
           <Text font="body">Toggle</Text>
           <Spacer />
-          <Text foregroundStyle="systemBlue" font="body">
+          <Text foregroundStyle="blue" font="body">
             {toggleValue.value ? 'On' : 'Off'}
           </Text>
         </HStack>
         <VStack padding={10}>
-          <Toggle isOn={toggleValue} tint="systemBlue" />
+          <Toggle isOn={toggleValue} tint="blue" />
         </VStack>
       </VStack>
       <Spacer />

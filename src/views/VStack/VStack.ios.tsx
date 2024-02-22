@@ -22,3 +22,5 @@ export function VStack({ style, children, ...modifiers }: VStackProps) {
     />
   );
 }
+
+VStack.displayName = 'SwiftUIVStack';

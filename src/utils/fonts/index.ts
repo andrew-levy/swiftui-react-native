@@ -11,16 +11,27 @@ export const Fonts = {
   caption: { fontSize: 12, fontWeight: 'normal' },
   caption2: { fontSize: 11, fontWeight: 'normal' },
 };
+
+export const FontWeights = {
+  regular: 'normal',
+  bold: 'bold',
+  heavy: '800',
+  medium: '600',
+  light: '500',
+  thin: '300',
+  ultralight: '200',
+  semibold: '700',
+  black: '900',
+};
+
 export const getFont = (
   font?: keyof typeof Fonts | string,
-  fontSize?: number,
-  customFont?: string,
+  fontWeight?: keyof typeof FontWeights,
   italic?: boolean
 ) => {
   return {
     ...Fonts[font],
-    ...(fontSize && { fontSize }),
-    ...(customFont && { fontFamily: customFont }),
+    ...(fontWeight && { fontWeight: FontWeights[fontWeight] }),
     ...(italic && { fontStyle: 'italic' }),
   };
 };

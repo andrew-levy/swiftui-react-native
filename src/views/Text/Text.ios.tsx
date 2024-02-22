@@ -22,3 +22,5 @@ export function Text({ style, children, ...modifiers }: TextProps) {
     </NativeText>
   );
 }
+
+Text.displayName = 'SwiftUIText';

@@ -43,14 +43,22 @@ struct ReactNativeViewModifiers: ViewModifier {
           }
         case "border":
           if let border = value as? [String: Any] {
-            if let color = getColor(border["color"]) as UIColor?, let width = border["width"] as? CGFloat {
-              view = AnyView(view.border(Color(color), width: width))
+            if let color = getColor(border["color"]) as Color?, let width = border["width"] as? CGFloat {
+              view = AnyView(view.border(color, width: width))
             }
           }
+
+        case "tag":
+          if let tag = value as? Int {
+            view = AnyView(view.tag(tag))
+          } else if let tag = value as? String {
+            view = AnyView(view.tag(tag))
+          }
+
         case "foregroundStyle":
-          if let color = getColor(value) as UIColor? {
+          if let color = getColor(value) as Color? {
             if #available(iOS 15.0, *) {
-              view = AnyView(view.foregroundStyle(Color(color)))
+              view = AnyView(view.foregroundStyle(color))
             } else {
               
             }
@@ -74,8 +82,8 @@ struct ReactNativeViewModifiers: ViewModifier {
           }
           // Currently only supports color
         case "background":
-          if let color = getColor(value) as UIColor? {
-            view = AnyView(view.background(Color(color)))
+          if let color = getColor(value) as Color? {
+            view = AnyView(view.background(color))
           }
         case "rotationEffect":
           if let rotation = value as? [String: CGFloat] {
@@ -91,8 +99,8 @@ struct ReactNativeViewModifiers: ViewModifier {
           }
         case "shadow":
           if let shadow = value as? [String: Any] {
-            if let color = getColor(value) as UIColor?, let radius = shadow["radius"] as? CGFloat, let x = shadow["x"] as? CGFloat, let y = shadow["y"] as? CGFloat {
-              view = AnyView(view.shadow(color: Color(color), radius: radius, x: x, y: y))
+            if let color = getColor(value) as Color?, let radius = shadow["radius"] as? CGFloat, let x = shadow["x"] as? CGFloat, let y = shadow["y"] as? CGFloat {
+              view = AnyView(view.shadow(color: color, radius: radius, x: x, y: y))
             }
           }
         case "opacity":
@@ -352,11 +360,11 @@ struct ReactNativeViewModifiers: ViewModifier {
             }
           }
         case "tint":
-          if let color = getColor(value) as UIColor? {
+          if let color = getColor(value) as Color? {
             if #available(iOS 16.0, *) {
-              view = AnyView(view.tint(Color(color)))
+              view = AnyView(view.tint(color))
             } else {
-              view = AnyView(view.accentColor(Color(color)))
+              view = AnyView(view.accentColor(color))
             }
           }
           
@@ -478,7 +486,17 @@ struct ReactNativeViewModifiers: ViewModifier {
               break
             }
           }
+      
           
+
+          case "scrollDisabled":
+            if let scrollDisabled = value as? Bool {
+              if scrollDisabled {
+                if #available(iOS 16.0, *) {
+                  view = AnyView(view.scrollDisabled(scrollDisabled))
+                }
+              }
+            }
           
           
         case "textFieldStyle":
@@ -575,21 +593,90 @@ func convertProcessedColorToUIColor(from value: Any?) -> UIColor {
 }
 
 
-func getColor(_ color: Any?) -> UIColor {
+//func getColor(_ color: Any?) -> UIColor {
+//  if let color = color as? String {
+//    let selector: Selector
+//    if color.hasSuffix("Color") {
+//      selector = Selector(color)
+//    } else {
+//      selector = Selector("\(color)Color")
+//    }
+//    if UIColor.responds(to: selector) {
+//      return UIColor.perform(selector).takeUnretainedValue() as! UIColor
+//    } else {
+//      return convertProcessedColorToUIColor(from: color) as UIColor
+//    }
+//  }
+//  return convertProcessedColorToUIColor(from: color) as UIColor
+//}
+
+func getColor(_ color: Any?) -> Color {
   if let color = color as? String {
-    let selector: Selector
-    if color.hasSuffix("Color") {
-      selector = Selector(color)
-    } else {
-      selector = Selector("\(color)Color")
-    }
-    if UIColor.responds(to: selector) {
-      return UIColor.perform(selector).takeUnretainedValue() as! UIColor
-    } else {
-      return convertProcessedColorToUIColor(from: color) as UIColor
+    switch color {
+    case "blue":
+      return .blue
+    case "red":
+      return .red
+    case "green":
+      return .green
+    case "yellow":
+      return .yellow
+    case "orange":  
+      return .orange
+    case "purple":
+      return .purple
+    case "pink":
+      return .pink
+    case "primary":
+      return .primary
+    case "secondary":
+      return .secondary
+    case "accentColor":
+      return .accentColor
+    case "black":
+      return .black
+    case "white":
+      return .white
+    case "gray":
+      return .gray
+    case "clear":
+      return .clear
+    case "mint":
+      if #available(iOS 15.0, *) {
+        return .mint
+      }
+    case "brown":
+      if #available(iOS 15.0, *) {
+        return .brown
+      }
+    case "teal":
+      if #available(iOS 15.0, *) {
+        return .teal
+      }
+    case "cyan":
+      if #available(iOS 15.0, *) {
+        return .cyan
+      }
+
+    case "indigo":
+      if #available(iOS 15.0, *) {
+        return .indigo
+      }
+
+      
+    default:
+      if #available(iOS 15.0, *) {
+        return Color(uiColor: convertProcessedColorToUIColor(from: color))
+      } else {
+        return .clear
+      }
     }
   }
-  return convertProcessedColorToUIColor(from: color) as UIColor
+  if #available(iOS 15.0, *) {
+    return Color(uiColor: convertProcessedColorToUIColor(from: color))
+  } else {
+    return .clear
+  }
 }
 
 

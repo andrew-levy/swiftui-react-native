@@ -7,7 +7,7 @@ struct ShapeView: View {
     for mod in props.modifiers {
       for (key, value) in mod {
         if key == "fill" {
-          return Color(getColor(value))
+          return getColor(value)
         }
       }
     }
@@ -19,11 +19,11 @@ struct ShapeView: View {
       for (key, value) in mod {
         if key == "stroke" {
           if let val = value as? [String: Any] {
-            if let color = getColor(val["color"]) as? UIColor, let width = val["lineWidth"] as? CGFloat {
-              return (Color(color), width)
+            if let color = getColor(val["color"]) as Color?, let width = val["lineWidth"] as? CGFloat {
+              return (color, width)
             }
-          } else if let color = getColor(value) as? UIColor {
-            return (Color(color), 1)
+          } else if let color = getColor(value) as Color? {
+            return (color, 1)
           }
         }
       }

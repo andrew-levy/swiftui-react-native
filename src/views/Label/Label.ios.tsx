@@ -24,3 +24,5 @@ export function Label({ style, systemImage, title, ...modifiers }: LabelProps) {
     </NativeLabel>
   );
 }
+
+Label.displayName = 'SwiftUILabel';

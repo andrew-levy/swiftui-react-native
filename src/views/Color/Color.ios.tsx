@@ -1,7 +1,5 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { processColor } from 'react-native';
-import { UIColor } from '../../utils/colors';
 import { mapToNativeModifiers } from '../../utils/modifiers';
 import {
   ColorProps,
@@ -13,23 +11,11 @@ import {
 const NativeColor: React.ComponentType<NativeColorProps> =
   requireNativeViewManager('Color');
 
-const getColor = (
-  colorValue: ColorProps['color'],
-  colorScheme: 'light' | 'dark' = 'light'
-) => {
-  if (typeof colorValue === 'string')
-    return UIColor[colorScheme][colorValue] || colorValue;
-  return `rgb(${colorValue.red || 0}, ${colorValue.green || 0}, ${
-    colorValue.blue || 0
-  })` as UIColor;
-};
-
 const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {
   return <Color color={color} {...props} />;
 };
 
 export const Color: ColorView = ({ color, ...modifiers }: ColorProps) => {
-  const colorValue = processColor(getColor(color));
   const mods = mapToNativeModifiers(modifiers);
   const frame = mods.find((mod) => 'frame' in mod);
   return (
@@ -39,7 +25,7 @@ export const Color: ColorView = ({ color, ...modifiers }: ColorProps) => {
         width: frame?.frame?.width || 30,
         height: frame?.frame?.height || 30,
       }}
-      color={colorValue}
+      color={color}
     />
   );
 };

@@ -18,3 +18,5 @@ export function Spacer(props: SpacerProps) {
     />
   );
 }
+
+Spacer.displayName = 'SwiftUISpacer';

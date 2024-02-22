@@ -19,7 +19,7 @@ export const ImageSection = () => {
             key={i}
             systemName={symbol.name as any}
             imageScale="large"
-            foregroundStyle="systemBlue"
+            foregroundStyle="blue"
             bold
           />
         ))}

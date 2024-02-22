@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { Text } from 'react-native';
 import {
   ColorPicker,
   DatePicker,
@@ -24,18 +25,26 @@ export const PickerSection = () => {
         label="Date"
         displayedComponents={['date', 'hourAndMinute']}
       />
-      <Picker
-        selection={segmentedPicker}
-        options={options}
-        pickerStyle="segmented"
-      />
+      <Picker selection={segmentedPicker} pickerStyle="segmented">
+        {options.map((option) => (
+          <Text key={option}>{option}</Text>
+        ))}
+      </Picker>
       <Picker
         selection={wheelPicker}
-        options={options}
         pickerStyle="wheel"
-        style={{ width: 300 }}
-      />
-      <Picker selection={menuPicker} options={options} pickerStyle="menu" />
+        frame={{ width: 300 }}
+        padding
+      >
+        {options.map((option) => (
+          <Text key={option}>{option}</Text>
+        ))}
+      </Picker>
+      <Picker selection={menuPicker} pickerStyle="menu">
+        {options.map((option) => (
+          <Text key={option}>{option}</Text>
+        ))}
+      </Picker>
     </List>
   );
 };

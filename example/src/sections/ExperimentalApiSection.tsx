@@ -9,7 +9,7 @@ export const ExperimentalApiSection = () => {
   const stepperValue = useBinding(0);
   return VStack([
     HStack([
-      Image('person').imageScale('large').bold(),
+      Image('person').imageScale('large').bold().padding(10),
       Text('Hello, World!').bold(),
     ]),
     HStack([Label('Sound', 'speaker.3.fill'), Spacer(), Toggle('Toggle', isOn)])

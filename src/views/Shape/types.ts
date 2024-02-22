@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { UIColor } from '../../utils/colors';
+import { Color } from '../../utils/colors';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeShapeProps = {
@@ -12,6 +12,6 @@ export type NativeShapeProps = {
 export type ShapeProps = {
   style?: StyleProp<ViewStyle>;
   cornerRadius?: number;
-  fill?: UIColor;
-  stroke?: UIColor | { color: UIColor; lineWidth: number };
+  fill?: Color;
+  stroke?: Color | { color: Color; lineWidth: number };
 } & Modifiers;

@@ -1,29 +1,28 @@
-import { ReactNode } from 'react';
-import { Alert } from '../alert';
-import { BooleanBinding } from '../binding';
-import { Border } from '../border';
-import { UIColor } from '../colors';
-import { BlendMode, ClipShape } from '../filters';
-import { Fonts } from '../fonts';
-import { Frame } from '../frame';
-import { Padding } from '../padding';
-import { Shadow } from '../shadow';
-import { Rotation } from '../transform';
+import { type ReactNode } from 'react';
+import { type BooleanBinding } from '../binding';
+import { type Border } from '../border';
+import { type Color } from '../colors';
+import { type BlendMode, type ClipShape } from '../filters';
+import { type Fonts } from '../fonts';
+import { type Frame } from '../frame';
+import { type Padding } from '../padding';
+import { type Shadow } from '../shadow';
+import { type Rotation } from '../transform';
 
 export type Modifiers = {
   // View
   padding?: Padding;
   border?: Border;
-  foregroundStyle?: UIColor | UIColor[];
+  foregroundStyle?: Color | Color[];
   rotationEffect?: Rotation;
   scaleEffect?: number;
   shadow?: Shadow;
-  background?: UIColor;
+  background?: Color;
   hidden?: boolean;
   frame?: Frame;
   zIndex?: number;
   opacity?: number;
-  tint?: UIColor;
+  tint?: Color;
   cornerRadius?: number;
   position?: { x: number; y: number };
   offset?: { x: number; y: number };
@@ -93,11 +92,13 @@ export type Modifiers = {
       | 'stop';
     trigger: any;
   };
+  // List
+  scrollDisabled?: boolean;
   // Lifecycle - todo
   onAppear?: () => void;
   onDisappear?: () => void;
   // Alert  - todo
-  alert?: Alert;
+  // alert?: Alert;
 };
 
 export type WithChildren<T> = T & {
@@ -124,4 +125,45 @@ export function mapToNativeModifiers(modifiers: Modifiers) {
     return { [key]: modifiers[key] };
   });
   return result;
+}
+
+// TODO: this assumes {} need to assume [{}] for multiple modifiers
+export function getSizeFromModifiers(
+  modifiers: Modifiers,
+  defaultSize: { width: number; height: number }
+) {
+  let width = modifiers.frame?.width || defaultSize.width;
+  let height = modifiers.frame?.height || defaultSize.height;
+  if (typeof modifiers.padding === 'number') {
+    width += modifiers.padding;
+    height += modifiers.padding;
+  } else if (typeof modifiers.padding === 'boolean') {
+    width += 8;
+    height += 8;
+  } else {
+    const { all, horizontal, vertical, top, bottom, leading, trailing } =
+      modifiers.padding || {
+        all: 0,
+        horizontal: 0,
+        vertical: 0,
+        top: 0,
+        bottom: 0,
+        leading: 0,
+        trailing: 0,
+      };
+    width += all;
+    height += all;
+    width += horizontal;
+    height += vertical;
+    height += top;
+    height += bottom;
+    width += leading;
+    width += trailing;
+  }
+
+  if (modifiers.border) {
+    width += modifiers.border.width;
+    height += modifiers.border.width;
+  }
+  return { width, height };
 }

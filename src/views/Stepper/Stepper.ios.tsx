@@ -36,3 +36,5 @@ export function Stepper(props: StepperProps) {
     />
   );
 }
+
+Stepper.displayName = 'SwiftUIStepper';
