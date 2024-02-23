@@ -5,7 +5,7 @@ struct HStackView: View {
   @ObservedObject var props: HStackProps
   
   var body: some View {
-    HStack {
+    HStack(alignment: props.alignment, spacing:  props.spacing != nil ? CGFloat(props.spacing!) : nil) {
       ForEach(props.children?.indices ?? 0..<0, id: \.self) { index in
         if ((props.children?[index].subviews.first(where: {$0 is SpacerExpoView} )) != nil) {
           Spacer()

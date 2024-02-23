@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import {
+  Button,
   HStack,
   Image,
   Spacer,
@@ -26,6 +27,8 @@ export const StackSection = () => {
         <Text>HStack</Text>
       </HStack>
       <VStack
+        alignment="leading"
+        spacing={20}
         style={{
           marginTop: 100,
           height: 200,
@@ -35,10 +38,12 @@ export const StackSection = () => {
       >
         <Text>VStack</Text>
         <Spacer />
+        <Button title="this is a button" action={() => {}} />
         <Text>VStack</Text>
         <Text>VStack</Text>
       </VStack>
       <ZStack
+        alignment="center"
         style={{ marginTop: 100 }}
         padding={10}
         border={{ width: 1, color: 'systemGray4' }}

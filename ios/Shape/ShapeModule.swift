@@ -13,6 +13,9 @@ public class ShapeModule: Module {
       Prop("cornerRadius") { (view: ShapeExpoView, prop: Double) in
         view.props.cornerRadius = prop
       }
+      Prop("cornerRadii") { (view: ShapeExpoView, prop: [String: Double]) in
+        view.props.cornerRadii = prop
+      }
     }
   }
 }

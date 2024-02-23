@@ -50,12 +50,22 @@ struct ShapeView: View {
       RoundedRectangle(cornerRadius: props.cornerRadius)
         .strokeAndFill(stroke: getStroke(), fill: getFill())
         .reactNativeViewModifiers(mods: props.modifiers)
-      
     case "Ellipse":
       Ellipse()
         .strokeAndFill(stroke: getStroke(), fill: getFill())
         .reactNativeViewModifiers(mods: props.modifiers)
-      
+    case "UnevenRoundedRectangle":
+      if #available(iOS 16.0, *) {
+        let _ = print(props.cornerRadii)
+        UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(
+          topLeading: props.cornerRadii["topLeading"] ?? 0,
+          bottomLeading: props.cornerRadii["bottomLeading"] ?? 0,
+          bottomTrailing: props.cornerRadii["bottomTrailing"] ?? 0,
+          topTrailing: props.cornerRadii["topTrailing"] ?? 0
+        ))
+          .strokeAndFill(stroke: getStroke(), fill: getFill())
+          .reactNativeViewModifiers(mods: props.modifiers)
+      }
     default:
       EmptyView()
     }

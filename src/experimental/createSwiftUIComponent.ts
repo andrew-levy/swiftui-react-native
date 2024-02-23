@@ -1,11 +1,18 @@
 import { ComponentType, ReactNode, createElement } from 'react';
 import { Color } from '../utils/colors';
 import { Frame } from '../utils/frame';
+import { Padding } from '../utils/padding';
 
 export type ElementWithModifiers = JSX.Element & {
-  padding: (value: number) => ElementWithModifiers;
+  padding: (value: Padding) => ElementWithModifiers;
   bold: () => ElementWithModifiers;
-  border: (width: number, color: Color) => ElementWithModifiers;
+  border: ({
+    width,
+    color,
+  }: {
+    width: number;
+    color: Color;
+  }) => ElementWithModifiers;
   imageScale: (scale: 'small' | 'medium' | 'large') => ElementWithModifiers;
   frame: (frame: Frame) => ElementWithModifiers;
 };
@@ -21,16 +28,22 @@ export function createSwiftUIComponent(
 
   // @ts-ignore
   Element.ref = null;
-  Element.key = type.displayName + JSON.stringify(props);
+  Element.key = type.displayName;
   Element.padding = function (value) {
-    this.props = { ...this.props, padding: true };
+    this.props = { ...this.props, padding: value };
     return this;
   };
   Element.bold = function () {
     this.props = { ...this.props, bold: true };
     return this;
   };
-  Element.border = function (width: number, color: Color) {
+  Element.border = function ({
+    width,
+    color,
+  }: {
+    width: number;
+    color: Color;
+  }) {
     this.props = { ...this.props, border: { width, color } };
     return this;
   };
@@ -38,10 +51,10 @@ export function createSwiftUIComponent(
     this.props = { ...this.props, imageScale: scale };
     return this;
   };
-  Element.frame = function ({ width, height, maxWidth, maxHeight }: Frame) {
+  Element.frame = function ({ width, height }: Frame) {
     this.props = {
       ...this.props,
-      frame: { width, height, maxWidth, maxHeight },
+      frame: { width, height },
     };
     return this;
   };

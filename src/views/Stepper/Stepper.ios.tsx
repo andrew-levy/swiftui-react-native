@@ -1,7 +1,10 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { getValueOrBinding } from '../../utils/binding';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { NativeStepperProps, StepperProps } from './types';
 
 const NativeStepper: React.ComponentType<NativeStepperProps> =
@@ -23,8 +26,7 @@ export function Stepper(props: StepperProps) {
       step={step}
       range={range}
       style={{
-        width: 100,
-        height: 35,
+        ...getSizeFromModifiers(modifiers, { width: 100, height: 30 }),
         ...(style as object),
       }}
       onValueChange={(e) => {

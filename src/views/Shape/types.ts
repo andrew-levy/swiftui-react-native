@@ -5,13 +5,24 @@ import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 export type NativeShapeProps = {
   modifiers?: NativeModifiersProp;
   cornerRadius?: number;
+  cornerRadii?: {
+    topLeading: number;
+    topTrailing: number;
+    bottomLeading: number;
+    bottomTrailing: number;
+  };
   style?: StyleProp<ViewStyle>;
-  type: 'Circle' | 'Rectangle' | 'RoundedRectangle' | 'Capsule' | 'Ellipse';
+  type:
+    | 'Circle'
+    | 'Rectangle'
+    | 'RoundedRectangle'
+    | 'Capsule'
+    | 'Ellipse'
+    | 'UnevenRoundedRectangle';
 };
 
 export type ShapeProps = {
   style?: StyleProp<ViewStyle>;
-  cornerRadius?: number;
   fill?: Color;
   stroke?: Color | { color: Color; lineWidth: number };
 } & Modifiers;

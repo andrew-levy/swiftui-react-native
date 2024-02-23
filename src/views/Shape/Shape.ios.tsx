@@ -36,6 +36,31 @@ export function RoundedRectangle(props: ShapeProps & { cornerRadius: number }) {
   );
 }
 
+export function UnevenRoundedRectangle(
+  props: ShapeProps & {
+    cornerRadii: {
+      topLeading: number;
+      topTrailing: number;
+      bottomLeading: number;
+      bottomTrailing: number;
+    };
+  }
+) {
+  const { style, cornerRadii, ...modifiers } = props;
+  return (
+    <NativeShape
+      type="UnevenRoundedRectangle"
+      modifiers={mapToNativeModifiers(modifiers)}
+      cornerRadii={cornerRadii}
+      style={{
+        width: 30,
+        height: 30,
+        ...(style as object),
+      }}
+    />
+  );
+}
+
 export function Circle(props: ShapeProps) {
   const { style, ...modifiers } = props;
   return (

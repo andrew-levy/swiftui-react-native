@@ -6,6 +6,17 @@ public class HStackModule: Module {
     Name("HStack")
     View(HStackExpoView.self) {
       Events("onAppear", "onDisappear", "onSheetDismissed")
+      Prop("alignment") { (view: HStackExpoView, prop: String?) in
+        switch prop {
+        case "top" : view.props.alignment = .top
+        case "center" : view.props.alignment = .center
+        case "bottom" : view.props.alignment = .bottom
+        default: view.props.alignment = .center
+        }
+      }
+      Prop("spacing") { (view: HStackExpoView, prop: Float?) in
+        view.props.spacing = prop
+      }
       Prop("modifiers") { (view: HStackExpoView, prop: [[String: Any]]) in
         view.props.modifiers = prop
       }

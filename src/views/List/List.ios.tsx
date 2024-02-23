@@ -1,7 +1,10 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React, { ReactElement } from 'react';
 import { View, useWindowDimensions } from 'react-native';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { ListProps, NativeListProps } from './types';
 
 const NativeList: React.ComponentType<NativeListProps> =
@@ -34,8 +37,10 @@ export function List({
       header={header}
       footer={footer}
       style={{
-        width: '100%',
-        height: 500,
+        ...getSizeFromModifiers(modifiers, {
+          width: '100%' as any,
+          height: 500,
+        }),
         ...(style as object),
       }}
     >

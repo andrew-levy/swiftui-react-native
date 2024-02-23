@@ -1,1 +1,7 @@
-export { Capsule, Circle, Rectangle, RoundedRectangle } from './Shape.ios';
+export {
+  Capsule,
+  Circle,
+  Rectangle,
+  RoundedRectangle,
+  UnevenRoundedRectangle,
+} from './Shape';

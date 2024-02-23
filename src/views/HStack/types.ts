@@ -16,7 +16,7 @@ export type NativeHStackProps = {
 
 export type HStackProps = {
   spacing?: number;
-  alignment?: 'leading' | 'center' | 'trailing';
+  alignment?: 'top' | 'center' | 'bottom';
   style?: StyleProp<ViewStyle>;
   children?: ReactElement | ReactElement[];
 } & Modifiers;

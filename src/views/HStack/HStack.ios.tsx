@@ -9,10 +9,18 @@ import { HStackProps, NativeHStackProps } from './types';
 const NativeHStack: React.ComponentType<NativeHStackProps> =
   requireNativeViewManager('HStack');
 
-export function HStack({ style, children, ...modifiers }: HStackProps) {
+export function HStack({
+  style,
+  spacing,
+  alignment,
+  children,
+  ...modifiers
+}: HStackProps) {
   const { isSheetPresented, onSheetDismissed } = useSheet(modifiers.sheet);
   return (
     <NativeHStack
+      spacing={spacing}
+      alignment={alignment}
       modifiers={mapToNativeModifiers(modifiers)}
       style={style}
       onAppear={modifiers.onAppear}

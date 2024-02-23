@@ -13,6 +13,7 @@ export const ShadowText = ({
   padding,
   rotationEffect,
   fontWeight,
+  bold,
   scaleEffect,
   border,
   frame,
@@ -23,7 +24,7 @@ export const ShadowText = ({
     <RNText
       style={[
         {
-          ...getFont(font, fontWeight, italic),
+          ...getFont(font, bold ? 'bold' : fontWeight, italic),
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),

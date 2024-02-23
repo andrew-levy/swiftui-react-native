@@ -30,12 +30,7 @@ export const ControlSection = () => {
           title="Random"
           action={() => sliderValue.setValue(Math.random() * 20)}
         />
-        <Slider
-          value={sliderValue}
-          onChange={console.log}
-          range={[0, 20]}
-          step={5}
-        />
+        <Slider value={sliderValue} onChange={console.log} range={[0, 20]} />
       </VStack>
       <Spacer />
       <VStack>

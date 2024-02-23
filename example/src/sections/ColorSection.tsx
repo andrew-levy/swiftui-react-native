@@ -32,14 +32,16 @@ export const ColorSection = () => {
           'mint',
         ],
         (color, i) => (
-          <HStack key={i} spacing={10}>
-            <Color
+          <HStack key={i} spacing={20}>
+            <Color.red
               color={color}
-              border={{ width: 1, color: 'systemGray4' }}
               frame={{ width: 25, height: 25 }}
-              clipShape={{
-                cornerRadius: 5,
-                shape: 'roundedRectangle',
+              clipShape="circle"
+              shadow={{
+                color: color === 'clear' ? 'black' : color,
+                radius: 3,
+                x: 0,
+                y: 1,
               }}
             />
             <Text>{toWords(color)}</Text>

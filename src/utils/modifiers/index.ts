@@ -134,36 +134,39 @@ export function getSizeFromModifiers(
 ) {
   let width = modifiers.frame?.width || defaultSize.width;
   let height = modifiers.frame?.height || defaultSize.height;
-  if (typeof modifiers.padding === 'number') {
-    width += modifiers.padding;
-    height += modifiers.padding;
-  } else if (typeof modifiers.padding === 'boolean') {
-    width += 8;
-    height += 8;
-  } else {
-    const { all, horizontal, vertical, top, bottom, leading, trailing } =
-      modifiers.padding || {
-        all: 0,
-        horizontal: 0,
-        vertical: 0,
-        top: 0,
-        bottom: 0,
-        leading: 0,
-        trailing: 0,
-      };
-    width += all;
-    height += all;
-    width += horizontal;
-    height += vertical;
-    height += top;
-    height += bottom;
-    width += leading;
-    width += trailing;
-  }
 
-  if (modifiers.border) {
-    width += modifiers.border.width;
-    height += modifiers.border.width;
+  if (typeof width === 'number' && typeof height === 'number') {
+    if (typeof modifiers.padding === 'number') {
+      width += modifiers.padding;
+      height += modifiers.padding;
+    } else if (typeof modifiers.padding === 'boolean') {
+      width += 8;
+      height += 8;
+    } else {
+      const { all, horizontal, vertical, top, bottom, leading, trailing } =
+        modifiers.padding || {
+          all: 0,
+          horizontal: 0,
+          vertical: 0,
+          top: 0,
+          bottom: 0,
+          leading: 0,
+          trailing: 0,
+        };
+      width += all;
+      height += all;
+      width += horizontal;
+      height += vertical;
+      height += top;
+      height += bottom;
+      width += leading;
+      width += trailing;
+    }
+
+    if (modifiers.border) {
+      width += modifiers.border.width;
+      height += modifiers.border.width;
+    }
   }
   return { width, height };
 }

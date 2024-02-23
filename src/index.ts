@@ -1,12 +1,9 @@
 export * from './views/Button';
 export * from './views/Color';
-export * from './views/GeometryReader';
-export * from './views/Group';
 export * from './views/Image';
 export * from './views/Label';
 export * from './views/List';
 export * from './views/ProgressView';
-export * from './views/Section';
 export * from './views/Shape';
 export * from './views/Text';
 
@@ -26,3 +23,7 @@ export * from './views/ZStack';
 export * from './hooks/useBinding';
 
 export * from './utils/ForEach';
+
+// export * from './views/Section';
+// export * from './views/GeometryReader';
+// export * from './views/Group';

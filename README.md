@@ -44,6 +44,8 @@ Check out the [example project](./example/).
 - Group ✅
 - Spacer ✅
 
+Not doing (yet):
+
 - Section
 - NavigationStack
 - NavigationLink
@@ -51,13 +53,6 @@ Check out the [example project](./example/).
 - ForEach (Not doing)
 - EnvironmentProvider (Not doing)
 - Real UIColor values?
-
-## Modifiers to add:
-
-- onAppear
-- onDisappear
-- background
-- symbol modifiers
 
 ## to do:
 

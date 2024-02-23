@@ -1,6 +1,9 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import {
   ColorProps,
   ColorSubComponentProps,
@@ -22,8 +25,7 @@ export const Color: ColorView = ({ color, ...modifiers }: ColorProps) => {
     <NativeColor
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: frame?.frame?.width || 30,
-        height: frame?.frame?.height || 30,
+        ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
       }}
       color={color}
     />

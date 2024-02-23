@@ -1,7 +1,10 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { getValueOrBinding } from '../../utils/binding';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { NativeSliderProps, SliderProps } from './types';
 
 const NativeSlider: React.ComponentType<NativeSliderProps> =
@@ -24,8 +27,7 @@ export function Slider(props: SliderProps) {
       step={step}
       range={range}
       style={{
-        width: 300,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 300, height: 35 }),
         ...(style as object),
       }}
       onValueChange={(e) => {

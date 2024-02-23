@@ -99,7 +99,7 @@ struct ReactNativeViewModifiers: ViewModifier {
           }
         case "shadow":
           if let shadow = value as? [String: Any] {
-            if let color = getColor(value) as Color?, let radius = shadow["radius"] as? CGFloat, let x = shadow["x"] as? CGFloat, let y = shadow["y"] as? CGFloat {
+            if let color = getColor(shadow["color"]) as Color?, let radius = shadow["radius"] as? CGFloat, let x = shadow["x"] as? CGFloat, let y = shadow["y"] as? CGFloat {
               view = AnyView(view.shadow(color: color, radius: radius, x: x, y: y))
             }
           }

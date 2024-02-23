@@ -8,6 +8,7 @@ import {
   RoundedRectangle,
   Spacer,
   Text,
+  UnevenRoundedRectangle,
 } from 'swiftui-react-native';
 
 export const ShapeSection = () => {
@@ -16,13 +17,7 @@ export const ShapeSection = () => {
       <HStack>
         <Text>Rectangle</Text>
         <Spacer />
-        <Rectangle
-          fill="pink"
-          stroke={{
-            color: 'purple',
-            lineWidth: 2,
-          }}
-        />
+        <Rectangle fill="pink" />
       </HStack>
       <HStack>
         <Text>Rounded Rectangle</Text>
@@ -32,12 +27,32 @@ export const ShapeSection = () => {
       <HStack>
         <Text>Circle</Text>
         <Spacer />
-        <Circle />
+        <Circle
+          fill="yellow"
+          stroke={{
+            color: 'orange',
+            lineWidth: 5,
+          }}
+        />
       </HStack>
       <HStack>
         <Text>Capsule</Text>
         <Spacer />
-        <Capsule frame={{ width: 50, height: 30 }} />
+        <Capsule fill="indigo" frame={{ width: 50, height: 30 }} />
+      </HStack>
+      <HStack>
+        <Text>Uneven Rounded Rectangle</Text>
+        <Spacer />
+        <UnevenRoundedRectangle
+          fill="green"
+          frame={{ width: 50, height: 50 }}
+          cornerRadii={{
+            topLeading: 10,
+            topTrailing: 20,
+            bottomLeading: 5,
+            bottomTrailing: 0,
+          }}
+        />
       </HStack>
     </List>
   );
