@@ -14,7 +14,7 @@ const NativeView: React.ComponentType<NativePickerProps> =
 export function Picker({
   selection,
   style,
-  onValueChange,
+  onChange,
   children,
   ...modifiers
 }: PickerProps) {
@@ -41,7 +41,7 @@ export function Picker({
         if (typeof selection === 'object' && 'setValue' in selection) {
           selection.setValue(e.nativeEvent.value);
         }
-        onValueChange?.(e.nativeEvent.value);
+        onChange?.(e.nativeEvent.value);
       }}
     />
   );

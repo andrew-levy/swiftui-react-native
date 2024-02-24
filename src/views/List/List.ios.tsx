@@ -1,6 +1,7 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React, { ReactElement } from 'react';
 import { View, useWindowDimensions } from 'react-native';
+import { ForEach } from '../../utils/ForEach';
 import {
   getSizeFromModifiers,
   mapToNativeModifiers,
@@ -10,13 +11,14 @@ import { ListProps, NativeListProps } from './types';
 const NativeList: React.ComponentType<NativeListProps> =
   requireNativeViewManager('List');
 
-export function List({
+export function List<T>({
   style,
   children,
+  data,
   header,
   footer,
   ...modifiers
-}: ListProps) {
+}: ListProps<T>) {
   const { width } = useWindowDimensions();
   let rowWidth = width;
   switch (modifiers.listStyle || 'insetGrouped') {
@@ -44,17 +46,30 @@ export function List({
         ...(style as object),
       }}
     >
-      {React.Children.map(children, (child: ReactElement) => {
-        return (
-          <View
-            style={{
-              width: rowWidth,
-            }}
-          >
-            {child}
-          </View>
-        );
-      })}
+      {data && typeof children === 'function'
+        ? ForEach(data, (item, index) => {
+            return (
+              <View
+                key={index}
+                style={{
+                  width: rowWidth,
+                }}
+              >
+                {children(item, index)}
+              </View>
+            );
+          })
+        : React.Children.map(children, (child: ReactElement) => {
+            return (
+              <View
+                style={{
+                  width: rowWidth,
+                }}
+              >
+                {child}
+              </View>
+            );
+          })}
     </NativeList>
   );
 }

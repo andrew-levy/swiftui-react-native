@@ -10,9 +10,13 @@ export type NativeListProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-export type ListProps = {
+export type ListProps<T> = {
   style?: StyleProp<ViewStyle>;
-  children?: React.ReactNode | ReactElement[];
+  children?:
+    | React.ReactNode
+    | ReactElement[]
+    | ((item: T, index: number) => ReactElement);
+  data?: T[];
   header?: string;
   footer?: string;
 } & Modifiers;

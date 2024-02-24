@@ -12,12 +12,12 @@ import {
 
 export const StackSection = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, padding: 50 }}>
       <HStack
         padding={20}
         border={{
           width: 1,
-          color: 'systemGray4',
+          color: 'gray',
         }}
       >
         <Text>HStack</Text>
@@ -34,7 +34,7 @@ export const StackSection = () => {
           height: 200,
         }}
         padding={10}
-        border={{ width: 1, color: 'systemGray4' }}
+        border={{ width: 1, color: 'gray' }}
       >
         <Text>VStack</Text>
         <Spacer />
@@ -46,8 +46,7 @@ export const StackSection = () => {
         alignment="center"
         style={{ marginTop: 100 }}
         padding={10}
-        border={{ width: 1, color: 'systemGray4' }}
-        scaleEffect={2}
+        border={{ width: 1, color: 'gray' }}
       >
         <Image
           systemName="circle.fill"

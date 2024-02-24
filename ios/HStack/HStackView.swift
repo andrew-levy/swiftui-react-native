@@ -7,7 +7,8 @@ struct HStackView: View {
   var body: some View {
     HStack(alignment: props.alignment, spacing:  props.spacing != nil ? CGFloat(props.spacing!) : nil) {
       ForEach(props.children?.indices ?? 0..<0, id: \.self) { index in
-        if ((props.children?[index].subviews.first(where: {$0 is SpacerExpoView} )) != nil) {
+        let child = props.children?[index]
+        if let spacerChild = props.children?[index].subviews.first(where: {$0 is SpacerExpoView} ) {
           Spacer()
         } else {
           RepresentableView(view: props.children?[index] ?? UIView())

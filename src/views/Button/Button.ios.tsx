@@ -16,7 +16,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <NativeButton
-      text={title}
+      title={title}
       modifiers={mapToNativeModifiers(modifiers)}
       style={style}
       onAction={action}

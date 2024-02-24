@@ -2,7 +2,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeButtonProps = {
-  text: string;
+  title: string;
   modifiers?: NativeModifiersProp;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;

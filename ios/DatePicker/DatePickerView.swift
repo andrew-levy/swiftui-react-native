@@ -4,17 +4,11 @@ import ExpoModulesCore
 struct DatePickerView: View {
   @ObservedObject var props: DatePickerProps
   @State var date = Date()
-  
-  init(props: DatePickerProps) {
-    self.props = props
-    _date.wrappedValue = Date()
-  }
 
   var body: some View {
     if #available(iOS 14.0, *) {
       DatePicker(props.label, selection: $date, displayedComponents: mapDisplayedComponents(props.displayedComponents))
         .reactNativeViewModifiers(mods: props.modifiers)
-      // TODO: move this to get and set, bind to the props.date
         .onAppear {
           date = ISO8601DateFormatter().date(from: props.selection) ?? Date()
         }

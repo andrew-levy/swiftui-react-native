@@ -119,7 +119,7 @@ struct ReactNativeViewModifiers: ViewModifier {
           if let gs = value as? Double {
             view = AnyView(view.grayscale(gs))
           }
-        case "brigtness":
+        case "brightness":
           if let brightness = value as? Double {
             view = AnyView(view.brightness(brightness))
           }
@@ -255,6 +255,23 @@ struct ReactNativeViewModifiers: ViewModifier {
                     }
                   }
                 }
+              default:
+                break
+              }
+            }
+          }
+        case "symbolRenderingMode":
+          if let renderingMode = value as? String {
+            if #available(iOS 15.0, *) {
+              switch renderingMode {
+              case "monochrome":
+                view = AnyView(view.symbolRenderingMode(.monochrome))
+              case "hierarchical":
+                view = AnyView(view.symbolRenderingMode(.hierarchical))
+              case "multicolor":
+                view = AnyView(view.symbolRenderingMode(.multicolor))
+              case "palette":
+                view = AnyView(view.symbolRenderingMode(.palette))
               default:
                 break
               }

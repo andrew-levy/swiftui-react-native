@@ -1,10 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
-import {
-  Modifiers,
-  ModifiersProp,
-  NativeModifiersProp,
-} from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeColorPickerProps = {
   selection: string;
@@ -22,7 +18,6 @@ export type NativeColorPickerProps = {
 export type ColorPickerProps = {
   selection: string | Binding<string>;
   onChange?: (color: string) => void;
-  modifiers?: ModifiersProp;
   label?: string;
   supportsOpacity?: boolean;
   style?: StyleProp<ViewStyle>;

@@ -1,10 +1,6 @@
 import { StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
-import {
-  Modifiers,
-  ModifiersProp,
-  NativeModifiersProp,
-} from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeDatePickerProps = {
   selection: string;
@@ -23,7 +19,6 @@ export type DatePickerProps = {
   selection: Date | Binding<Date>;
   displayedComponents?: 'date' | 'hourAndMinute' | ('date' | 'hourAndMinute')[];
   onChange?: (date: Date) => void;
-  modifiers?: ModifiersProp;
   label?: string;
   style?: StyleProp<ViewStyle>;
 } & Modifiers;

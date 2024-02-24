@@ -1,3 +1,5 @@
 import { ListProps } from './types';
 
-export const List = (props: ListProps) => null;
+export function List<T>(props: ListProps<T>) {
+  return null;
+}

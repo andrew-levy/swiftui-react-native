@@ -44,5 +44,5 @@ export const ExperimentalApiSection = () => {
         action: () => console.log('Hello, World!'),
       })
     )
-  ).border({ color: 'systemBlue', width: 2 });
+  );
 };

@@ -42,6 +42,11 @@ export type Modifiers = {
   // Image
   resizable?: boolean;
   imageScale?: 'small' | 'medium' | 'large';
+  symbolRenderingMode?:
+    | 'palette'
+    | 'monochrome'
+    | 'hierarchical'
+    | 'multicolor';
   // Text
   fontWeight?:
     | 'ultralight'

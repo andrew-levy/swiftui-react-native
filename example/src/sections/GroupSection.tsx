@@ -23,7 +23,7 @@ export const GroupSection = () => {
           }}
         />
         <Spacer />
-        <Group padding={10} tint={color.value}>
+        <Group tint={color.value}>
           <Toggle isOn />
           <Slider value={10} />
         </Group>

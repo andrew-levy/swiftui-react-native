@@ -30,16 +30,16 @@ export const ProgressSection = () => {
 
   return (
     <List style={{ flex: 1 }}>
-      <VStack alignment="leading" spacing={10}>
+      <VStack>
         <HStack>
           <Text>Linear</Text>
           <Button title="Download" action={() => setDownloading(true)} />
         </HStack>
         <ProgressView value={progress} total={100} />
       </VStack>
-      <VStack alignment="leading" spacing={10} style={{ width: '100%' }}>
+      <VStack spacing={20}>
         <Text>Indeterminate</Text>
-        <ProgressView tint="systemBlue" />
+        <ProgressView tint="blue" />
       </VStack>
     </List>
   );

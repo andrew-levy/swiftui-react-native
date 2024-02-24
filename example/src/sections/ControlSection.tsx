@@ -53,7 +53,7 @@ export const ControlSection = () => {
           </Text>
         </HStack>
         <VStack padding={10}>
-          <Toggle isOn={toggleValue} tint="blue" />
+          <Toggle isOn={toggleValue} />
         </VStack>
       </VStack>
       <Spacer />

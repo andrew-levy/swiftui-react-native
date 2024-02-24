@@ -20,8 +20,6 @@ export const SheetSection = () => {
           content: (
             <VStack
               style={{
-                width: '100%',
-                height: '100%',
                 padding: 40,
               }}
             >

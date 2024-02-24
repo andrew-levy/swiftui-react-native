@@ -7,5 +7,14 @@ const NativeSheetContent: React.ComponentType<{
 }> = requireNativeViewManager('SheetContent');
 
 export function SheetContent({ children }: { children: ReactNode }) {
-  return <NativeSheetContent>{children}</NativeSheetContent>;
+  return (
+    <NativeSheetContent
+      style={{
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      {children}
+    </NativeSheetContent>
+  );
 }

@@ -1,10 +1,6 @@
 import React from 'react';
 import { StyleProp, ViewStyle } from 'react-native';
-import {
-  Modifiers,
-  ModifiersProp,
-  NativeModifiersProp,
-} from '../../utils/modifiers';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeGroupProps = {
   children?: React.ReactNode;
@@ -13,7 +9,6 @@ export type NativeGroupProps = {
 };
 
 export type GroupProps = {
-  modifiers?: ModifiersProp;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
 } & Modifiers;

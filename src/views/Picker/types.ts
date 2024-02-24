@@ -19,7 +19,7 @@ export type NativePickerProps = {
 export type PickerProps = {
   selection: Binding<string> | string;
   pickerStyle?: 'menu' | 'segmented' | 'wheel';
-  onValueChange?: (newValue: string) => void;
+  onChange?: (newValue: string) => void;
   style?: StyleProp<ViewStyle>;
   children: ReactElement | ReactElement[];
 } & Modifiers;

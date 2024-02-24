@@ -2,9 +2,27 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { Button, HStack, Image, List, Spacer } from 'swiftui-react-native';
 
+const sections = [
+  { title: 'Text', path: '/text' },
+  { title: 'Colors', path: '/colors' },
+  { title: 'Buttons', path: '/buttons' },
+  { title: 'Stacks', path: '/stacks' },
+  { title: 'Controls', path: '/controls' },
+  { title: 'Images', path: '/images' },
+  { title: 'Sheet', path: '/sheet' },
+  { title: 'Pickers', path: '/pickers' },
+  { title: 'Progress', path: '/progress' },
+  { title: 'Shapes', path: '/shapes' },
+  { title: 'Group', path: '/group' },
+  { title: 'TextField', path: '/textfield' },
+  { title: 'Filters', path: '/filters' },
+  { title: 'Experimental API', path: '/experimental' },
+];
+
 export default function Page() {
   return (
     <List
+      data={sections}
       style={{ flex: 1 }}
       environment={{
         colorScheme: 'light',
@@ -13,19 +31,7 @@ export default function Page() {
       header="SwiftUI for React Native"
       footer='This is a demo of the **"swiftui-react-native"** library. Each section demonstrates a different component or feature.'
     >
-      <ListRow title="Text" path="/text" />
-      <ListRow title="Colors" path="/colors" />
-      <ListRow title="Buttons" path="/buttons" />
-      <ListRow title="Stacks" path="/stacks" />
-      <ListRow title="Controls" path="/controls" />
-      <ListRow title="Images" path="/images" />
-      <ListRow title="Sheet" path="/sheet" />
-      <ListRow title="Pickers" path="/pickers" />
-      <ListRow title="Progress" path="/progress" />
-      <ListRow title="Shapes" path="/shapes" />
-      <ListRow title="Group" path="/group" />
-      <ListRow title="TextField" path="/textfield" />
-      <ListRow title="Experimental API" path="/experimental" />
+      {(item) => <ListRow title={item.title} path={item.path} />}
     </List>
   );
 }

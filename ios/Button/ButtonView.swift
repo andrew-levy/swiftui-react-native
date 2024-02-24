@@ -3,10 +3,12 @@ import SwiftUI
 struct ButtonView: View {
   @ObservedObject var props: ButtonProps
   var body: some View {
-     Button(props.text) {
-       props.onAction()
-     }
-    .modifier(ReactNativeViewModifiers(mods: props.modifiers))
+    if #available(iOS 15.0, *) {
+      Button(props.title) {
+        props.onAction()
+      }
+      .modifier(ReactNativeViewModifiers(mods: props.modifiers))
+    }
   }
 }
 
