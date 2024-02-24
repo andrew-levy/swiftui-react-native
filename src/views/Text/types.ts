@@ -9,5 +9,5 @@ export type NativeTextProps = {
 
 export type TextProps = {
   style?: StyleProp<ViewStyle>;
-  children?: string | string[] | number | number[];
+  children?: string | string[] | number | number[] | (string | number)[];
 } & Modifiers;

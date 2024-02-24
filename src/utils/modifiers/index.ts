@@ -26,6 +26,25 @@ export type Modifiers = {
   cornerRadius?: number;
   position?: { x: number; y: number };
   offset?: { x: number; y: number };
+  animation?: {
+    type:
+      | 'spring'
+      | 'easeIn'
+      | 'easeOut'
+      | 'easeInOut'
+      | 'linear'
+      | 'interpolatingSpring'
+      | 'bouncy'
+      | 'smooth'
+      | 'default';
+    value: any;
+  };
+  contentTransition?:
+    | 'numericText'
+    | 'opacity'
+    | 'identity'
+    | 'interpolate'
+    | 'symbolEffect';
   // Filter
   blur?: number;
   saturation?: number;

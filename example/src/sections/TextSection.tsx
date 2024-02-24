@@ -1,14 +1,23 @@
 import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { Label, List, Text } from 'swiftui-react-native';
+import {
+  Button,
+  HStack,
+  Label,
+  List,
+  Spacer,
+  Text,
+  VStack,
+} from 'swiftui-react-native';
 
 /**
  * A list of SwiftUI Fonts
  */
 export const TextSection = () => {
+  const [count, setCount] = React.useState(0);
   return (
     <ScrollView>
-      <List style={{ height: 600 }} header="Fonts" scrollDisabled>
+      <List style={{ height: 560 }} header="Fonts" scrollDisabled>
         <Text font="body">Body</Text>
         <Text font="callout">Callout</Text>
         <Text font="caption">Caption</Text>
@@ -21,16 +30,47 @@ export const TextSection = () => {
         <Text font="title2">Title 2</Text>
         <Text font="title3">Title 3</Text>
       </List>
-      <List style={{ height: 300 }} header="Markdown" scrollDisabled>
+      <List style={{ height: 280 }} header="Markdown" scrollDisabled>
         <Text>**Bold**</Text>
         <Text>*Italic*</Text>
         <Text>[Link](https://www.google.com)</Text>
         <Text>`Code`</Text>
         <Text>~~Strikethrough~~</Text>
       </List>
-      <List style={{ height: 300 }} header="Labels" scrollDisabled>
+      <List style={{ height: 200 }} header="Labels" scrollDisabled>
         <Label title="Label" systemImage="square.grid.3x1.folder.badge.plus" />
         <Label title="Moon" systemImage="moon.stars" />
+      </List>
+      <List style={{ height: 200 }} header="Content Transition" scrollDisabled>
+        <HStack>
+          <VStack alignment="leading">
+            <Button
+              buttonStyle="borderless"
+              title="Add"
+              action={() => {
+                setCount(count + 1);
+              }}
+            />
+            <Button
+              buttonStyle="borderless"
+              title="Subtract"
+              action={() => {
+                setCount(count - 1);
+              }}
+            />
+          </VStack>
+          <Spacer />
+          <Text
+            font="body"
+            contentTransition="numericText"
+            animation={{
+              type: 'spring',
+              value: count,
+            }}
+          >
+            Count: {count}
+          </Text>
+        </HStack>
       </List>
     </ScrollView>
   );

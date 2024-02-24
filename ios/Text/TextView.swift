@@ -2,8 +2,9 @@ import SwiftUI
 
 struct TextView: View {
   @ObservedObject var props: TextProps
+  
   var body: some View {
-    if #available(iOS 15, *) {
+    if #available(iOS 16, *) {
       Text(props.text.toMarkdown())
         .modifier(ReactNativeViewModifiers(mods: props.modifiers))
     } else {

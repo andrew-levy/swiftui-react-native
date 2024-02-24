@@ -562,6 +562,66 @@ struct ReactNativeViewModifiers: ViewModifier {
               view = AnyView(view.offset(x: x, y: y))
             }
           }
+
+      case "contentTransition":
+        if let transition = value as? String {
+          switch transition {
+          // identity, interpolate, opacity, symbolEffect, numericText
+          case "identity":
+            if #available(iOS 16.0, *) {
+              view = AnyView(view.contentTransition(.identity))
+            }
+          case "interpolate":
+            if #available(iOS 16.0, *) {
+              view = AnyView(view.contentTransition(.interpolate))
+            }
+          case "opacity":
+            if #available(iOS 16.0, *) {
+              view = AnyView(view.contentTransition(.opacity))
+            }
+          case "symbolEffect":
+            if #available(iOS 17.0, *) {
+              view = AnyView(view.contentTransition(.symbolEffect))
+            }
+          case "numericText":
+            if #available(iOS 16.0, *) {
+              view = AnyView(view.contentTransition(.numericText(countsDown: false)))
+            }
+          default:
+            break
+          }
+        }
+
+        case "animation":
+        if let animation = value as? [String: Any] {
+          if let type = animation["type"] as? String {
+            if let value = animation["value"] as? any Equatable {
+              switch type {
+              case "bouncy":
+                view = AnyView(view.animation(.bouncy, value: value))
+              case "easeIn":
+                view = AnyView(view.animation(.easeIn, value: value))
+              case "easeOut":
+                view = AnyView(view.animation(.easeOut, value: value))
+              case "easeInOut":
+                view = AnyView(view.animation(.easeInOut, value: value))
+              case "linear":
+                view = AnyView(view.animation(.linear, value: value))
+              case "spring":
+                view = AnyView(view.animation(.spring, value: value))
+              case "smooth":
+                view = AnyView(view.animation(.smooth, value: value))
+              case "interactiveSpring":
+                view = AnyView(view.animation(.interactiveSpring, value: value))
+              case "default":
+                view = AnyView(view.animation(.default, value: value))
+              default:
+                break
+              }
+            }
+          }
+        }
+
           
         case "onAppear":
           view = AnyView(view.onAppear {
