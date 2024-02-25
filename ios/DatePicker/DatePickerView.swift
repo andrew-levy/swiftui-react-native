@@ -7,15 +7,15 @@ struct DatePickerView: View {
 
   var body: some View {
     if #available(iOS 14.0, *) {
-      DatePicker(props.label, selection: $date, displayedComponents: mapDisplayedComponents(props.displayedComponents))
-        .reactNativeViewModifiers(mods: props.modifiers)
+      DatePicker(props.title, selection: $date, displayedComponents: mapDisplayedComponents(props.displayedComponents))
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         .onAppear {
           date = ISO8601DateFormatter().date(from: props.selection) ?? Date()
         }
         .onChange(of: date) { newValue in
           if #available(iOS 15.0, *) {
-            props.onValueChange([
-              "value": newValue.ISO8601Format()
+            props.onEvent([
+              "onValueChange": newValue.ISO8601Format()
             ])
           }
         }

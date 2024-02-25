@@ -4,6 +4,7 @@ public class ImageModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Image")
     View(ImageExpoView.self) {
+      Events("onEvent")
       Prop("systemName") { (view: ImageExpoView, prop: String) in
         view.props.systemName = prop
       }

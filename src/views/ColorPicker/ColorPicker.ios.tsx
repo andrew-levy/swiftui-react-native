@@ -1,7 +1,12 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
+import { NativeSyntheticEvent } from 'react-native';
 import { getValueOrBinding } from '../../utils/binding';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { ColorPickerProps, NativeColorPickerProps } from './types';
 
 const NativeColorPicker: React.ComponentType<NativeColorPickerProps> =
@@ -11,26 +16,29 @@ export function ColorPicker({
   selection,
   style,
   supportsOpacity = true,
-  label,
+  title,
   onChange,
   ...modifiers
 }: ColorPickerProps) {
   return (
     <NativeColorPicker
       supportsOpacity={supportsOpacity}
-      label={label}
+      title={title}
       selection={getValueOrBinding(selection)}
       modifiers={mapToNativeModifiers(modifiers)}
-      onValueChange={(e) => {
-        if (typeof selection === 'object' && 'setValue' in selection) {
-          selection.setValue(e.nativeEvent.value);
-        }
-        onChange?.(e.nativeEvent.value);
-      }}
       style={{
-        width: '100%',
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 300, height: 30 }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers, {
+          onValueChange(e: NativeSyntheticEvent<{ value: string }>) {
+            if (typeof selection === 'object' && 'setValue' in selection) {
+              selection.setValue(e.nativeEvent.value as string);
+            }
+            onChange?.(e.nativeEvent.value as string);
+          },
+        });
       }}
     />
   );

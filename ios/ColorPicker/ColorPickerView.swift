@@ -16,8 +16,8 @@ struct ColorPickerView: View {
   
   var body: some View {
     if #available(iOS 14.0, *) {
-      ColorPicker(props.label, selection: colorBinding, supportsOpacity: props.supportsOpacity)
-        .reactNativeViewModifiers(mods: props.modifiers)
+      ColorPicker(props.title, selection: colorBinding, supportsOpacity: props.supportsOpacity)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         .onAppear {
           colorBinding.wrappedValue = Color(props.selection)
         }
@@ -27,8 +27,8 @@ struct ColorPickerView: View {
           var blue: CGFloat = 0
           var alpha: CGFloat = 0
           newValue.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-          props.onValueChange([
-            "value": convertRGBAToHexString(red: red, green: green, blue: blue, alpha: alpha)
+          props.onEvent([
+            "onValueChange": convertRGBAToHexString(red: red, green: green, blue: blue, alpha: alpha)
           ])
         }
     }

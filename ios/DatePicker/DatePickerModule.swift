@@ -5,9 +5,9 @@ public class DatePickerModule: Module {
   public func definition() -> ModuleDefinition {
     Name("DatePicker")
     View(DatePickerExpoView.self) {
-      Events("onValueChange")
-      Prop("label") { (view: DatePickerExpoView, prop: String?) in
-        view.props.label = prop ?? ""
+      Events("onEvent")
+      Prop("title") { (view: DatePickerExpoView, prop: String?) in
+        view.props.title = prop ?? ""
       }
       Prop("displayedComponents") { (view: DatePickerExpoView, prop: [String]) in
         view.props.displayedComponents = prop

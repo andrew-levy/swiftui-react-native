@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import { View } from 'react-native';
 import {
   Button,
   HStack,
@@ -11,7 +11,6 @@ import {
 
 export const SheetSection = () => {
   const isSheetPresented = useBinding(false);
-  const { width } = useWindowDimensions();
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
       <HStack

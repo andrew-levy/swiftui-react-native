@@ -3,7 +3,7 @@ import SwiftUI
 
 class ButtonExpoView: ExpoView {
   let props: ButtonProps
-  let onAction = EventDispatcher()
+  let onEvent = EventDispatcher()
   
   override func didUpdateReactSubviews() {
     let subChildren = self.reactSubviews()
@@ -11,7 +11,7 @@ class ButtonExpoView: ExpoView {
   }
   
   required init(appContext: AppContext? = nil) {
-    props = ButtonProps(onAction: onAction)
+    props = ButtonProps(onEvent: onEvent)
     let hostingController = UIHostingController(rootView: ButtonView(props: props))
     super.init(appContext: appContext)
     setupHostingController(hostingController)

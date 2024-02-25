@@ -5,14 +5,14 @@ import ExpoModulesCore
 extension View {
   func reactNativeViewModifiers(
     mods: [[String: Any]],
-    lifecycleModifier: LifecycleModifier? = nil,
-    sheetModifier: SheetModifier? = nil
+    onEvent: EventDispatcher = EventDispatcher()
+//    sheetContent: UIView = UIView()
   ) -> some View {
     modifier(
       ReactNativeViewModifiers(
         mods: mods,
-        lifecycleModifier: lifecycleModifier,
-        sheetModifier: sheetModifier
+        onEvent: onEvent
+//        sheetContent: sheetContent
       )
     )
   }
@@ -20,8 +20,8 @@ extension View {
 
 struct ReactNativeViewModifiers: ViewModifier {
   var mods: [[String: Any]]
-  var lifecycleModifier: LifecycleModifier? = nil
-  var sheetModifier: SheetModifier? = nil
+  var onEvent: EventDispatcher
+//  var sheetContent: UIView?
   
   func body(content: Content) -> some View {
     var view = AnyView(content)
@@ -34,12 +34,24 @@ struct ReactNativeViewModifiers: ViewModifier {
           } else if let padding = value as? CGFloat {
             view = AnyView(view.padding(padding))
           } else if let padding = value as? [String: CGFloat] {
-            view = AnyView(view.padding(.init(
-              top: padding["top"] ?? 0,
-              leading: padding["leading"] ?? 0,
-              bottom: padding["bottom"] ?? 0,
-              trailing: padding["trailing"] ?? 0
-            )))
+            
+            let top: CGFloat = padding["top"] ?? 0
+            let leading: CGFloat = padding["leading"] ?? 0
+            let bottom: CGFloat = padding["bottom"] ?? 0
+            let trailing: CGFloat = padding["trailing"] ?? 0
+            let horizontal: CGFloat = padding["horizontal"] ?? 0
+            let vertical: CGFloat = padding["vertical"] ?? 0
+            let all: CGFloat = padding["all"] ?? 0
+            
+            let edgeInsets = EdgeInsets(
+              top: all != 0 ? all : vertical != 0 ? vertical : top,
+              leading: all != 0 ? all : horizontal != 0 ? horizontal : leading,
+              bottom: all != 0 ? all : vertical != 0 ? vertical : bottom,
+              trailing: all != 0 ? all : horizontal != 0 ? horizontal : trailing
+            )
+            
+            view = AnyView(view.padding(edgeInsets))
+          
           }
         case "border":
           if let border = value as? [String: Any] {
@@ -47,14 +59,14 @@ struct ReactNativeViewModifiers: ViewModifier {
               view = AnyView(view.border(color, width: width))
             }
           }
-
+          
         case "tag":
           if let tag = value as? Int {
             view = AnyView(view.tag(tag))
           } else if let tag = value as? String {
             view = AnyView(view.tag(tag))
           }
-
+          
         case "foregroundStyle":
           if let color = getColor(value) as Color? {
             if #available(iOS 15.0, *) {
@@ -503,17 +515,17 @@ struct ReactNativeViewModifiers: ViewModifier {
               break
             }
           }
-      
           
-
-          case "scrollDisabled":
-            if let scrollDisabled = value as? Bool {
-              if scrollDisabled {
-                if #available(iOS 16.0, *) {
-                  view = AnyView(view.scrollDisabled(scrollDisabled))
-                }
+          
+          
+        case "scrollDisabled":
+          if let scrollDisabled = value as? Bool {
+            if scrollDisabled {
+              if #available(iOS 16.0, *) {
+                view = AnyView(view.scrollDisabled(scrollDisabled))
               }
             }
+          }
           
           
         case "textFieldStyle":
@@ -562,89 +574,96 @@ struct ReactNativeViewModifiers: ViewModifier {
               view = AnyView(view.offset(x: x, y: y))
             }
           }
-
-      case "contentTransition":
-        if let transition = value as? String {
-          switch transition {
-          // identity, interpolate, opacity, symbolEffect, numericText
-          case "identity":
-            if #available(iOS 16.0, *) {
-              view = AnyView(view.contentTransition(.identity))
+          
+        case "contentTransition":
+          if let transition = value as? String {
+            switch transition {
+              // identity, interpolate, opacity, symbolEffect, numericText
+            case "identity":
+              if #available(iOS 16.0, *) {
+                view = AnyView(view.contentTransition(.identity))
+              }
+            case "interpolate":
+              if #available(iOS 16.0, *) {
+                view = AnyView(view.contentTransition(.interpolate))
+              }
+            case "opacity":
+              if #available(iOS 16.0, *) {
+                view = AnyView(view.contentTransition(.opacity))
+              }
+            case "symbolEffect":
+              if #available(iOS 17.0, *) {
+                view = AnyView(view.contentTransition(.symbolEffect))
+              }
+            case "numericText":
+              if #available(iOS 16.0, *) {
+                view = AnyView(view.contentTransition(.numericText(countsDown: false)))
+              }
+            default:
+              break
             }
-          case "interpolate":
-            if #available(iOS 16.0, *) {
-              view = AnyView(view.contentTransition(.interpolate))
-            }
-          case "opacity":
-            if #available(iOS 16.0, *) {
-              view = AnyView(view.contentTransition(.opacity))
-            }
-          case "symbolEffect":
-            if #available(iOS 17.0, *) {
-              view = AnyView(view.contentTransition(.symbolEffect))
-            }
-          case "numericText":
-            if #available(iOS 16.0, *) {
-              view = AnyView(view.contentTransition(.numericText(countsDown: false)))
-            }
-          default:
-            break
           }
-        }
-
+          
         case "animation":
-        if let animation = value as? [String: Any] {
-          if let type = animation["type"] as? String {
-            if let value = animation["value"] as? any Equatable {
-              switch type {
-              case "bouncy":
-                view = AnyView(view.animation(.bouncy, value: value))
-              case "easeIn":
-                view = AnyView(view.animation(.easeIn, value: value))
-              case "easeOut":
-                view = AnyView(view.animation(.easeOut, value: value))
-              case "easeInOut":
-                view = AnyView(view.animation(.easeInOut, value: value))
-              case "linear":
-                view = AnyView(view.animation(.linear, value: value))
-              case "spring":
-                view = AnyView(view.animation(.spring, value: value))
-              case "smooth":
-                view = AnyView(view.animation(.smooth, value: value))
-              case "interactiveSpring":
-                view = AnyView(view.animation(.interactiveSpring, value: value))
-              case "default":
-                view = AnyView(view.animation(.default, value: value))
-              default:
-                break
+          if let animation = value as? [String: Any] {
+            if let type = animation["type"] as? String {
+              if let value = animation["value"] as? any Equatable {
+                switch type {
+                case "bouncy":
+                  view = AnyView(view.animation(.bouncy, value: value))
+                case "easeIn":
+                  view = AnyView(view.animation(.easeIn, value: value))
+                case "easeOut":
+                  view = AnyView(view.animation(.easeOut, value: value))
+                case "easeInOut":
+                  view = AnyView(view.animation(.easeInOut, value: value))
+                case "linear":
+                  view = AnyView(view.animation(.linear, value: value))
+                case "spring":
+                  view = AnyView(view.animation(.spring, value: value))
+                case "smooth":
+                  view = AnyView(view.animation(.smooth, value: value))
+                case "interactiveSpring":
+                  view = AnyView(view.animation(.interactiveSpring, value: value))
+                case "default":
+                  view = AnyView(view.animation(.default, value: value))
+                default:
+                  break
+                }
               }
             }
           }
-        }
-
+          
           
         case "onAppear":
           view = AnyView(view.onAppear {
-            lifecycleModifier?.onAppear()
+            onEvent(["onAppear": true])
           })
           
         case "onDisappear":
           view = AnyView(view.onDisappear {
-            lifecycleModifier?.onDisappear()
+            onEvent(["onDisappear": true])
           })
           
-        case "sheet":
-          view = AnyView(view.sheet(isPresented: sheetModifier?.isSheetPresented ?? .constant(false), onDismiss: {
-            sheetModifier?.onSheetDismissed()
-          }) {
-            if #available(iOS 16.0, *) {
-              RepresentableView(view: sheetModifier?.sheetContent ?? UIView())
-                .frame(width: sheetModifier?.sheetContent.frame.width, height: sheetModifier?.sheetContent.frame.height)
-            }
-          })
-          
+//        case "sheet":
+//          if let sheetModifier = value as? [String: Any] {
+//            if var isSheetPresented = sheetModifier["isPresented"] as? Bool {
+//              let isSheetPresentedBinding = Binding<Bool>(
+//                get: { isSheetPresented },
+//                set: { isSheetPresented = $0 }
+//              )
+//              view = AnyView(view.sheet(isPresented: isSheetPresentedBinding, onDismiss: {
+//                onEvent(["onSheetDismissed": true])
+//              }) {
+//                RepresentableView(view: sheetContent ?? UIView())
+//                  .frame(width: sheetContent?.frame.width, height: sheetContent?.frame.height)
+//              })
+//            }
+//          }
+                    
         default:
           break
+          
         }
       }
     }
@@ -669,24 +688,6 @@ func convertProcessedColorToUIColor(from value: Any?) -> UIColor {
   }
 }
 
-
-//func getColor(_ color: Any?) -> UIColor {
-//  if let color = color as? String {
-//    let selector: Selector
-//    if color.hasSuffix("Color") {
-//      selector = Selector(color)
-//    } else {
-//      selector = Selector("\(color)Color")
-//    }
-//    if UIColor.responds(to: selector) {
-//      return UIColor.perform(selector).takeUnretainedValue() as! UIColor
-//    } else {
-//      return convertProcessedColorToUIColor(from: color) as UIColor
-//    }
-//  }
-//  return convertProcessedColorToUIColor(from: color) as UIColor
-//}
-
 func getColor(_ color: Any?) -> Color {
   if let color = color as? String {
     switch color {
@@ -698,7 +699,7 @@ func getColor(_ color: Any?) -> Color {
       return .green
     case "yellow":
       return .yellow
-    case "orange":  
+    case "orange":
       return .orange
     case "purple":
       return .purple
@@ -734,12 +735,12 @@ func getColor(_ color: Any?) -> Color {
       if #available(iOS 15.0, *) {
         return .cyan
       }
-
+      
     case "indigo":
       if #available(iOS 15.0, *) {
         return .indigo
       }
-
+      
       
     default:
       if #available(iOS 15.0, *) {
@@ -757,13 +758,3 @@ func getColor(_ color: Any?) -> Color {
 }
 
 
-struct LifecycleModifier {
-  var onAppear: EventDispatcher
-  var onDisappear: EventDispatcher
-}
-
-struct SheetModifier {
-  var onSheetDismissed: EventDispatcher
-  var isSheetPresented: Binding<Bool>
-  var sheetContent: UIView
-}

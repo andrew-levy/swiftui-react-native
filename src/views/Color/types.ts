@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { type Color } from '../../utils/colors';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
@@ -6,10 +6,12 @@ export type NativeColorProps = {
   color: string;
   modifiers?: NativeModifiersProp;
   style: StyleProp<ViewStyle>;
+  onEvent?: (e: NativeSyntheticEvent<{ [key: string]: any }>) => void;
 };
 
 export type ColorProps = {
   color: Color;
+  style?: StyleProp<ViewStyle>;
 } & Modifiers;
 
 export type ColorSubComponentProps = {

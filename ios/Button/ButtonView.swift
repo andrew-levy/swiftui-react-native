@@ -5,9 +5,9 @@ struct ButtonView: View {
   var body: some View {
     if #available(iOS 15.0, *) {
       Button(props.title) {
-        props.onAction()
+        props.onEvent(["onAction": true])
       }
-      .modifier(ReactNativeViewModifiers(mods: props.modifiers))
+      .reactNativeViewModifiers(mods: props.modifiers)
     }
   }
 }

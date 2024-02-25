@@ -37,7 +37,7 @@ export const TextSection = () => {
         <Text>`Code`</Text>
         <Text>~~Strikethrough~~</Text>
       </List>
-      <List style={{ height: 200 }} header="Labels" scrollDisabled>
+      <List style={{ height: 150 }} header="Labels" scrollDisabled>
         <Label title="Label" systemImage="square.grid.3x1.folder.badge.plus" />
         <Label title="Moon" systemImage="moon.stars" />
       </List>
@@ -61,7 +61,6 @@ export const TextSection = () => {
           </VStack>
           <Spacer />
           <Text
-            font="body"
             contentTransition="numericText"
             animation={{
               type: 'spring',

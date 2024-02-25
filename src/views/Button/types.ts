@@ -7,6 +7,7 @@ export type NativeButtonProps = {
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
   onAction?: () => void;
+  onEvent?: (e: { nativeEvent: { [key: string]: any } }) => void;
 };
 
 export type ButtonProps = {

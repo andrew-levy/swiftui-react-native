@@ -4,7 +4,7 @@ public class ButtonModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Button")
     View(ButtonExpoView.self) {
-      Events("onAction")
+      Events("onEvent")
       Prop("title") { (view: ButtonExpoView, prop: String) in
         view.props.title = prop
       }

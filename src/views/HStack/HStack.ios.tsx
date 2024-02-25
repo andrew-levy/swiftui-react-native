@@ -1,9 +1,8 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { View } from 'react-native';
-import { useSheet } from '../../hooks/useSheet';
 import { mapToNativeModifiers } from '../../utils/modifiers';
-import { SheetContent } from '../SheetContent/SheetContent.ios';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { HStackProps, NativeHStackProps } from './types';
 
 const NativeHStack: React.ComponentType<NativeHStackProps> =
@@ -16,21 +15,22 @@ export function HStack({
   children,
   ...modifiers
 }: HStackProps) {
-  const { isSheetPresented, onSheetDismissed } = useSheet(modifiers.sheet);
   return (
     <NativeHStack
       spacing={spacing}
       alignment={alignment}
       modifiers={mapToNativeModifiers(modifiers)}
-      style={style}
-      onAppear={modifiers.onAppear}
-      onDisappear={modifiers.onDisappear}
-      onSheetDismissed={onSheetDismissed}
-      isSheetPresented={isSheetPresented}
+      style={{
+        // ...(getSizeFromModifiers(modifiers) ?? {}),
+        ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
+      }}
     >
-      {modifiers.sheet && (
+      {/* {modifiers.sheet && (
         <SheetContent>{modifiers.sheet.content}</SheetContent>
-      )}
+      )} */}
       {React.Children.map(children, (child) => {
         return <View style={{ alignSelf: 'center' }}>{child}</View>;
       })}

@@ -3,9 +3,7 @@ import SwiftUI
 
 class HStackExpoView: ExpoView {
   let props: HStackProps
-  let onAppear = EventDispatcher()
-  let onDisappear = EventDispatcher()
-  let onSheetDismissed = EventDispatcher()
+  let onEvent = EventDispatcher()
 
   override func didUpdateReactSubviews() {
     let subChildren = self.reactSubviews()
@@ -14,7 +12,7 @@ class HStackExpoView: ExpoView {
   }
   
   required init(appContext: AppContext? = nil) {
-    props = HStackProps(onAppear: onAppear, onDisappear: onDisappear, onSheetDismissed: onSheetDismissed)
+    props = HStackProps(onEvent: onEvent)
     let hostingController = UIHostingController(rootView: HStackView(props: props))
     super.init(appContext: appContext)
     setupHostingController(hostingController)

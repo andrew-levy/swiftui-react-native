@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { type BooleanBinding } from '../binding';
+import { getValueOrBinding } from '../binding';
 import { type Border } from '../border';
 import { type Color } from '../colors';
 import { type BlendMode, type ClipShape } from '../filters';
@@ -88,11 +88,11 @@ export type Modifiers = {
   textFieldStyle?: 'plain' | 'roundedBorder';
   listStyle?: 'inset' | 'grouped' | 'plain' | 'insetGrouped';
   // Sheet
-  sheet?: {
-    isPresented: boolean | BooleanBinding;
-    content: ReactNode;
-    onDismiss?: () => void;
-  };
+  // sheet?: {
+  //   isPresented: boolean | BooleanBinding;
+  //   content: ReactNode;
+  //   onDismiss?: () => void;
+  // };
   // presentationCornerRadius?: number;
   // presentationDetents?: (
   //   | 'medium'
@@ -121,7 +121,6 @@ export type Modifiers = {
   // Lifecycle - todo
   onAppear?: () => void;
   onDisappear?: () => void;
-  // Alert  - todo
   // alert?: Alert;
 };
 
@@ -142,9 +141,10 @@ export function mapToNativeModifiers(modifiers: Modifiers) {
   let result: NativeModifiersProp[] = [];
   result = Object.keys(modifiers || {}).map((key) => {
     if (key === 'sheet') {
-      const { content, ...rest } = modifiers[key];
-      console.log('rest', rest);
-      return { [key]: rest };
+      const { content, isPresented, ...rest } = modifiers[key];
+      return {
+        [key]: { ...rest, isPresented: getValueOrBinding(isPresented) },
+      };
     }
     return { [key]: modifiers[key] };
   });
@@ -154,10 +154,10 @@ export function mapToNativeModifiers(modifiers: Modifiers) {
 // TODO: this assumes {} need to assume [{}] for multiple modifiers
 export function getSizeFromModifiers(
   modifiers: Modifiers,
-  defaultSize: { width: number; height: number }
+  defaultSize?: { width: number; height: number }
 ) {
-  let width = modifiers.frame?.width || defaultSize.width;
-  let height = modifiers.frame?.height || defaultSize.height;
+  let width = modifiers.frame?.width || defaultSize?.width || 0;
+  let height = modifiers.frame?.height || defaultSize?.height || 0;
 
   if (typeof width === 'number' && typeof height === 'number') {
     if (typeof modifiers.padding === 'number') {

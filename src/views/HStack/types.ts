@@ -7,10 +7,7 @@ export type NativeHStackProps = {
   modifiers?: NativeModifiersProp;
   spacing?: number;
   alignment?: string;
-  onAppear?: () => void;
-  onDisappear?: () => void;
-  onSheetDismissed?: () => void;
-  isSheetPresented: boolean;
+  onEvent?: (e: { nativeEvent: { [key: string]: any } }) => void;
   style?: StyleProp<ViewStyle>;
 };
 

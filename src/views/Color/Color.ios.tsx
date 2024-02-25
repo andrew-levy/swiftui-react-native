@@ -4,6 +4,7 @@ import {
   getSizeFromModifiers,
   mapToNativeModifiers,
 } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import {
   ColorProps,
   ColorSubComponentProps,
@@ -18,14 +19,20 @@ const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {
   return <Color color={color} {...props} />;
 };
 
-export const Color: ColorView = ({ color, ...modifiers }: ColorProps) => {
-  const mods = mapToNativeModifiers(modifiers);
-  const frame = mods.find((mod) => 'frame' in mod);
+export const Color: ColorView = ({
+  color,
+  style,
+  ...modifiers
+}: ColorProps) => {
   return (
     <NativeColor
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
         ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
+        ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
       color={color}
     />

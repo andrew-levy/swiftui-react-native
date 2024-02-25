@@ -14,13 +14,13 @@ export function Toggle({
   isOn,
   onChange,
   style,
-  label,
+  title,
   ...modifiers
 }: ToggleProps) {
   return (
     <NativeToggle
       isOn={getValueOrBinding(isOn)}
-      label={label}
+      title={title}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
         ...getSizeFromModifiers(modifiers, { width: 51, height: 31 }),

@@ -1,6 +1,5 @@
 export * from './views/Button';
 export * from './views/Color';
-export * from './views/Group';
 export * from './views/Image';
 export * from './views/Label';
 export * from './views/List';
@@ -27,3 +26,4 @@ export * from './utils/ForEach';
 
 // export * from './views/Section';
 // export * from './views/GeometryReader';
+// export * from './views/Group';

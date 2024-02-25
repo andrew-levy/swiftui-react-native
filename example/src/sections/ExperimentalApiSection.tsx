@@ -31,7 +31,7 @@ export const ExperimentalApiSection = () => {
     }),
     Image({ systemName: 'person' }),
     Color.red.frame({ width: 100, height: 100 }),
-    Toggle({ label: 'Sound', isOn }).frame({ width: 320 }),
+    Toggle({ title: 'Sound', isOn }).frame({ width: 320 }),
     Label({ systemImage: '02.circle.fill', title: 'Sound' })
       .bold()
       .frame({ width: 100 }),

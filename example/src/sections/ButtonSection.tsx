@@ -4,15 +4,7 @@ import { Button, List, useBinding } from 'swiftui-react-native';
 export const ButtonSection = () => {
   const showAlert = useBinding(false);
   return (
-    <List
-      style={{ flex: 1 }}
-      alert={{
-        isPresented: showAlert,
-        title: 'SwiftUI is Cool',
-        message: 'So is React Native!',
-        actions: [{ title: 'Cancel' }],
-      }}
-    >
+    <List style={{ flex: 1 }}>
       <Button
         title="Bordered"
         action={showAlert.toggle}
@@ -29,6 +21,7 @@ export const ButtonSection = () => {
         buttonStyle="borderedProminent"
       />
       <Button buttonStyle="plain" title="Plain" action={showAlert.toggle} />
+      <Button title="List Row" action={showAlert.toggle} />
     </List>
   );
 };

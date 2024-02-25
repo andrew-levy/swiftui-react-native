@@ -19,10 +19,10 @@ export const PickerSection = () => {
 
   return (
     <List>
-      <ColorPicker selection={color} label="Color" />
+      <ColorPicker selection={color} title="Color" />
       <DatePicker
         selection={date}
-        label="Date"
+        title="Date"
         displayedComponents={['date', 'hourAndMinute']}
       />
       <Picker selection={segmentedPicker} pickerStyle="segmented">

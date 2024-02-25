@@ -4,7 +4,7 @@ import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeToggleProps = {
   isOn: boolean;
-  label?: string;
+  title?: string;
   modifiers?: NativeModifiersProp;
   onValueChange?: (e: {
     nativeEvent: {
@@ -15,7 +15,7 @@ export type NativeToggleProps = {
 };
 export type ToggleProps = {
   isOn: BooleanBinding | boolean;
-  label?: string;
+  title?: string;
   onChange?: (value?: boolean) => void;
   style?: StyleProp<ViewStyle>;
 } & Modifiers;

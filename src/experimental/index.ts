@@ -69,12 +69,12 @@ const HStack = (
 };
 
 const Toggle = ({
-  label,
+  title,
   isOn,
 }: {
-  label: string;
+  title: string;
   isOn: boolean | BooleanBinding;
-}) => createSwiftUIComponent(ToggleComp, { label, isOn }, undefined);
+}) => createSwiftUIComponent(ToggleComp, { title, isOn }, undefined);
 
 const Stepper = ({
   value,

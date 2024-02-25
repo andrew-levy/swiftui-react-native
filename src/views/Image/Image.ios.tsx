@@ -1,6 +1,10 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { ImageProps, NativeImageProps } from './types';
 
 const NativeImage: React.ComponentType<NativeImageProps> =
@@ -12,9 +16,11 @@ export function Image({ style, systemName, ...modifiers }: ImageProps) {
       systemName={systemName}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: 30,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );
