@@ -61,8 +61,6 @@ Not doing (yet):
 - Figure out Color vs UIColor ✅
 - support bindings + state/onchange ✅
 - ensure android fallbacks? ✅
-- HStack is adding extra padding per child added
-
 - experimental api
 - ensure tree shaking
 

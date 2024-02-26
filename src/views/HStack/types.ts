@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeHStackProps = {
@@ -7,7 +7,7 @@ export type NativeHStackProps = {
   modifiers?: NativeModifiersProp;
   spacing?: number;
   alignment?: string;
-  onEvent?: (e: { nativeEvent: { [key: string]: any } }) => void;
+  onEvent?: (e: NativeSyntheticEvent<{ [key: string]: any }>) => void;
   style?: StyleProp<ViewStyle>;
 };
 

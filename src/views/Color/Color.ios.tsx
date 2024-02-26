@@ -1,5 +1,9 @@
-import { requireNativeViewManager } from 'expo-modules-core';
+import {
+  requireNativeModule,
+  requireNativeViewManager,
+} from 'expo-modules-core';
 import React from 'react';
+import { type Color as ColorType } from '../../utils/colors';
 import {
   getSizeFromModifiers,
   mapToNativeModifiers,
@@ -14,6 +18,10 @@ import {
 
 const NativeColor: React.ComponentType<NativeColorProps> =
   requireNativeViewManager('Color');
+
+const ColorModule: {
+  getColor: (color: ColorType) => string;
+} = requireNativeModule('Color');
 
 const ColorSubComponent = ({ color, ...props }: ColorSubComponentProps) => {
   return <Color color={color} {...props} />;
@@ -60,3 +68,7 @@ Color.accentColor = (props) => (
 );
 Color.primary = (props) => <ColorSubComponent color="primary" {...props} />;
 Color.secondary = (props) => <ColorSubComponent color="secondary" {...props} />;
+
+export function getColor(color: ColorType): string | undefined {
+  return ColorModule.getColor(color);
+}

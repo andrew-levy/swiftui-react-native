@@ -1,20 +1,20 @@
 import React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import {
-  Button,
   HStack,
   Label,
   List,
   Spacer,
+  Stepper,
   Text,
-  VStack,
+  useBinding,
 } from 'swiftui-react-native';
 
 /**
  * A list of SwiftUI Fonts
  */
 export const TextSection = () => {
-  const [count, setCount] = React.useState(0);
+  const count = useBinding(0);
   return (
     <ScrollView>
       <List frame={{ height: 560 }} header="Fonts" scrollDisabled>
@@ -43,32 +43,19 @@ export const TextSection = () => {
       </List>
       <List frame={{ height: 200 }} header="Content Transition" scrollDisabled>
         <HStack>
-          <VStack alignment="leading">
-            <Button
-              buttonStyle="borderless"
-              title="Add"
-              action={() => {
-                setCount(count + 1);
-              }}
-            />
-            <Button
-              buttonStyle="borderless"
-              title="Subtract"
-              action={() => {
-                setCount(count - 1);
-              }}
-            />
-          </VStack>
-          <Spacer />
           <Text
+            frame={{ width: 100 }}
+            border={{ color: 'black', width: 1 }}
             contentTransition="numericText"
             animation={{
               type: 'spring',
-              value: count,
+              value: count.value,
             }}
           >
-            Count: {count}
+            Count: {count.value}
           </Text>
+          <Spacer />
+          <Stepper value={count} />
         </HStack>
       </List>
     </ScrollView>

@@ -55,9 +55,9 @@ struct ReactNativeViewModifiers: ViewModifier {
           }
         case "border":
           if let border = value as? [String: Any] {
-            if let color = getColor(border["color"]) as Color?, let width = border["width"] as? CGFloat {
-              view = AnyView(view.border(color, width: width))
-            }
+            let color = getColor(border["color"]) as Color? ?? Color.black
+            let width = border["width"] as? CGFloat ?? 1.0
+            view = AnyView(view.border(color, width: width))
           }
           
         case "tag":

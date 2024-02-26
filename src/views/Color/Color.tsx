@@ -1,3 +1,4 @@
+import { type Color as ColorType } from '../../utils/colors';
 import { ColorView } from './types';
 
 export const Color: ColorView = () => null;
@@ -20,3 +21,7 @@ Color.accentColor = () => null;
 Color.primary = () => null;
 Color.secondary = () => null;
 Color.white = () => null;
+
+export function getColor(color: ColorType): string | undefined {
+  return undefined;
+}

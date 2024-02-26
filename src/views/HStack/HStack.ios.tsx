@@ -21,7 +21,8 @@ export function HStack({
       alignment={alignment}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        // ...(getSizeFromModifiers(modifiers) ?? {}),
+        // ...getSizeFromModifiers(modifiers),
+        flexDirection: 'row',
         ...(style as object),
       }}
       onEvent={(e) => {

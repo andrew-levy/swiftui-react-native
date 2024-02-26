@@ -45,7 +45,6 @@ export const ShapeSection = () => {
         <Spacer />
         <UnevenRoundedRectangle
           fill="green"
-          frame={{ width: 50, height: 50 }}
           cornerRadii={{
             topLeading: 10,
             topTrailing: 20,
