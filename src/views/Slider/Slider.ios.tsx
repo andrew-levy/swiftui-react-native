@@ -10,16 +10,14 @@ import { NativeSliderProps, SliderProps } from './types';
 const NativeSlider: React.ComponentType<NativeSliderProps> =
   requireNativeViewManager('Slider');
 
-export function Slider(props: SliderProps) {
-  const {
-    value,
-    step = 1,
-    range = [-100, 100],
-    onChange,
-    style,
-    ...modifiers
-  } = props;
-
+export function Slider({
+  value,
+  step = 1,
+  range = [-100, 100],
+  onChange,
+  style,
+  ...modifiers
+}: SliderProps) {
   return (
     <NativeSlider
       value={getValueOrBinding(value)}
@@ -31,10 +29,11 @@ export function Slider(props: SliderProps) {
         ...(style as object),
       }}
       onValueChange={(e) => {
+        const newValue = e.nativeEvent.value;
         if (typeof value === 'object' && 'setValue' in value) {
-          value.setValue(e.nativeEvent.value);
+          value.setValue(newValue);
         }
-        onChange?.(e.nativeEvent.value);
+        onChange?.(newValue);
       }}
     />
   );

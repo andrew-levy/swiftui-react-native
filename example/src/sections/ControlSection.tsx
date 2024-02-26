@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   HStack,
   Slider,
   Spacer,
@@ -15,6 +14,7 @@ export const ControlSection = () => {
   const sliderValue = useBinding(0);
   const stepperValue = useBinding(0);
   const toggleValue = useBinding(true);
+
   return (
     <VStack style={{ height: '100%' }}>
       <Spacer />
@@ -26,11 +26,7 @@ export const ControlSection = () => {
             {Math.round(sliderValue.value).toString()}
           </Text>
         </HStack>
-        <Button
-          title="Random"
-          action={() => sliderValue.setValue(Math.random() * 20)}
-        />
-        <Slider value={sliderValue} onChange={console.log} range={[0, 20]} />
+        <Slider value={sliderValue} onChange={console.log} range={[0, 1000]} />
       </VStack>
       <Spacer />
       <VStack>

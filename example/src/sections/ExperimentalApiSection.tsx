@@ -1,19 +1,16 @@
 import { useBinding } from 'swiftui-react-native';
-import { SwiftUI } from 'swiftui-react-native/experimental';
-
-const {
+import {
+  Button,
+  Color,
   HStack,
   Image,
   Label,
+  List,
   Spacer,
   Text,
   Toggle,
-  List,
-  Stepper,
   VStack,
-  Button,
-  Color,
-} = SwiftUI;
+} from 'swiftui-react-native/experimental';
 
 export const ExperimentalApiSection = () => {
   const isOn = useBinding(true);

@@ -17,7 +17,7 @@ export const TextSection = () => {
   const [count, setCount] = React.useState(0);
   return (
     <ScrollView>
-      <List style={{ height: 560 }} header="Fonts" scrollDisabled>
+      <List frame={{ height: 560 }} header="Fonts" scrollDisabled>
         <Text font="body">Body</Text>
         <Text font="callout">Callout</Text>
         <Text font="caption">Caption</Text>
@@ -30,18 +30,18 @@ export const TextSection = () => {
         <Text font="title2">Title 2</Text>
         <Text font="title3">Title 3</Text>
       </List>
-      <List style={{ height: 280 }} header="Markdown" scrollDisabled>
+      <List frame={{ height: 280 }} header="Markdown" scrollDisabled>
         <Text>**Bold**</Text>
         <Text>*Italic*</Text>
         <Text>[Link](https://www.google.com)</Text>
         <Text>`Code`</Text>
         <Text>~~Strikethrough~~</Text>
       </List>
-      <List style={{ height: 150 }} header="Labels" scrollDisabled>
+      <List frame={{ height: 150 }} header="Labels" scrollDisabled>
         <Label title="Label" systemImage="square.grid.3x1.folder.badge.plus" />
         <Label title="Moon" systemImage="moon.stars" />
       </List>
-      <List style={{ height: 200 }} header="Content Transition" scrollDisabled>
+      <List frame={{ height: 200 }} header="Content Transition" scrollDisabled>
         <HStack>
           <VStack alignment="leading">
             <Button

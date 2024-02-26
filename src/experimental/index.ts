@@ -144,16 +144,16 @@ Color.purple = Color('purple');
 Color.teal = Color('teal');
 Color.yellow = Color('yellow');
 
-export const SwiftUI = {
-  Text,
-  Image,
-  VStack,
-  HStack,
-  Spacer,
-  Toggle,
-  Label,
-  List,
-  Stepper,
+export {
   Button,
   Color,
+  HStack,
+  Image,
+  Label,
+  List,
+  Spacer,
+  Stepper,
+  Text,
+  Toggle,
+  VStack,
 };

@@ -84,6 +84,7 @@ extension Shape {
           .fill(fill)
       } else {
         return self
+          .fill(fill)
       }
     }
 }

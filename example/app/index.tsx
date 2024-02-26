@@ -9,11 +9,9 @@ const sections = [
   { title: 'Stacks', path: '/stacks' },
   { title: 'Controls', path: '/controls' },
   { title: 'Images', path: '/images' },
-  { title: 'Sheet', path: '/sheet' },
   { title: 'Pickers', path: '/pickers' },
   { title: 'Progress', path: '/progress' },
   { title: 'Shapes', path: '/shapes' },
-  { title: 'Group', path: '/group' },
   { title: 'TextField', path: '/textfield' },
   { title: 'Filters', path: '/filters' },
   { title: 'Experimental API', path: '/experimental' },
@@ -40,13 +38,13 @@ function ListRow({ title, path }: { title: string; path: string }) {
   const router = useRouter();
   return (
     <HStack>
-      <Button title={title} action={() => router.push(path)} />
+      <Button title={title} action={() => router.push(path as any)} />
       <Spacer />
       <Image
         systemName="chevron.right"
         imageScale="small"
         foregroundStyle="gray"
-        style={{ width: 10, height: 10 }}
+        frame={{ width: 10, height: 10 }}
       />
     </HStack>
   );

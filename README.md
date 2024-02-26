@@ -19,7 +19,7 @@ Check out the [example project](./example/).
 - Image ✅ (copy over sfsymbol code)
 - ProgressView ✅
 - Stepper ✅
-- Shapes ✅ (Rectangle, Circle, Ellipse, Capsule) add ellipse?
+- Shapes ✅ (Rectangle, Circle, Ellipse, Capsule, Ellipse)
 - Toggle ✅
 - ColorPicker ✅
 - DatePicker ✅
@@ -41,30 +41,29 @@ Check out the [example project](./example/).
 - List ✅
 - VStack ✅
 - ZStack ✅
-- Group ✅
 - Spacer ✅
 
 Not doing (yet):
 
+- SFSymbol all custom modifiers support
 - Section
+- Group
 - NavigationStack
 - NavigationLink
 - GeometryReader (Not doing)
 - ForEach (Not doing)
 - EnvironmentProvider (Not doing)
-- Real UIColor values?
 
 ## to do:
 
-- add swiftui versions
-- props as modifiers for all components
-- Figure out Color vs UIColor
-- Add overlay, background
-- SFSymbol all custom modifiers support
-- support bindings + state/onchange
-- if js only, need to support mapping modifers to styles
+- add swiftui versions ✅
+- props as modifiers for all components ✅
+- Figure out Color vs UIColor ✅
+- support bindings + state/onchange ✅
+- ensure android fallbacks? ✅
+- HStack is adding extra padding per child added
+
 - experimental api
-- ensure android fallbacks?
 - ensure tree shaking
 
 Option 1: Modifiers as props (Basic)

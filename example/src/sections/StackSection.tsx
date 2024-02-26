@@ -29,10 +29,8 @@ export const StackSection = () => {
       <VStack
         alignment="leading"
         spacing={20}
-        style={{
-          marginTop: 100,
-          height: 200,
-        }}
+        frame={{ height: 200 }}
+        style={{ marginTop: 100 }}
         padding={10}
         border={{ width: 1, color: 'gray' }}
       >
