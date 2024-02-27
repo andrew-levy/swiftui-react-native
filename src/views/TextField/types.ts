@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
@@ -7,7 +7,11 @@ export type NativeTextFieldProps = {
   placeholder?: string;
   type: 'textfield' | 'securefield' | 'texteditor';
   modifiers?: NativeModifiersProp;
-  onValueChange?: (e: { nativeEvent: { value: string } }) => void;
+  onEvent?: (
+    e: NativeSyntheticEvent<{
+      [key: string]: any;
+    }>
+  ) => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -15,5 +19,5 @@ export type TextFieldProps = {
   style?: StyleProp<ViewStyle>;
   text: string | Binding<string>;
   placeholder?: string;
-  onValueChange?: (value: string) => void;
+  onChange?: (value: string) => void;
 } & Modifiers;

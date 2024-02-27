@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeProgressProps = {
@@ -6,6 +6,11 @@ export type NativeProgressProps = {
   total?: number;
   modifiers?: NativeModifiersProp;
   style?: StyleProp<ViewStyle>;
+  onEvent?: (
+    e: NativeSyntheticEvent<{
+      [key: string]: any;
+    }>
+  ) => void;
 };
 
 export type ProgressProps = {

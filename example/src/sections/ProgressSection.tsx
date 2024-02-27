@@ -31,13 +31,13 @@ export const ProgressSection = () => {
   return (
     <List style={{ flex: 1 }}>
       <VStack>
-        <HStack>
+        <HStack padding={{ vertical: 10 }}>
           <Text>Linear</Text>
           <Button title="Download" action={() => setDownloading(true)} />
         </HStack>
         <ProgressView value={progress} total={100} />
       </VStack>
-      <VStack spacing={20}>
+      <VStack spacing={20} padding={{ vertical: 10 }}>
         <Text>Indeterminate</Text>
         <ProgressView tint="blue" />
       </VStack>

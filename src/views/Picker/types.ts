@@ -8,9 +8,9 @@ export type NativePickerProps = {
   options: any[];
   pickerStyle?: 'menu' | 'segmented' | 'wheel';
   modifiers?: NativeModifiersProp;
-  onValueChange?: (
+  onEvent?: (
     e: NativeSyntheticEvent<{
-      value: string;
+      [key: string]: any;
     }>
   ) => void;
   style?: StyleProp<ViewStyle>;

@@ -61,6 +61,7 @@ Not doing (yet):
 - Figure out Color vs UIColor ✅
 - support bindings + state/onchange ✅
 - ensure android fallbacks? ✅
+- font size modifier
 - experimental api
 - ensure tree shaking
 

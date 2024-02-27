@@ -1,7 +1,10 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { View } from 'react-native';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { NativeVStackProps, VStackProps } from './types';
 
 const NativeVStack: React.ComponentType<NativeVStackProps> =
@@ -24,6 +27,7 @@ export function VStack({
       spacing={spacing}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
+        ...getSizeFromModifiers(modifiers),
         ...(style as object),
       }}
       children={mappedChildren}

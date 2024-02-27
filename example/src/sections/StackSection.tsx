@@ -15,6 +15,7 @@ export const StackSection = () => {
     <View style={{ flex: 1, padding: 50 }}>
       <HStack
         padding={20}
+        cornerRadius={10}
         border={{
           width: 1,
           color: 'gray',

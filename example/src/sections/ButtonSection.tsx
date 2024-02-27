@@ -9,19 +9,27 @@ export const ButtonSection = () => {
         title="Bordered"
         action={showAlert.toggle}
         buttonStyle="bordered"
+        padding={8}
       />
       <Button
         title="Borderless"
         action={showAlert.toggle}
         buttonStyle="borderless"
+        padding={8}
       />
       <Button
         title="Bordered Prominent"
         action={showAlert.toggle}
         buttonStyle="borderedProminent"
+        padding={8}
       />
-      <Button buttonStyle="plain" title="Plain" action={showAlert.toggle} />
-      <Button title="List Row" action={showAlert.toggle} />
+      <Button
+        buttonStyle="plain"
+        title="Plain"
+        action={showAlert.toggle}
+        padding={8}
+      />
+      <Button padding={8} title="List Row" action={showAlert.toggle} />
     </List>
   );
 };

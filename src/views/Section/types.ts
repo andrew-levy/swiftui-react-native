@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { StyleProp, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeSectionProps = {
@@ -8,6 +8,11 @@ export type NativeSectionProps = {
   header?: string;
   footer?: string;
   style?: StyleProp<ViewStyle>;
+  onEvent?: (
+    e: NativeSyntheticEvent<{
+      [key: string]: any;
+    }>
+  ) => void;
 };
 
 export type SectionProps = {

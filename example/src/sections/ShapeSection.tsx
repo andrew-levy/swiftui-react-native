@@ -14,17 +14,17 @@ import {
 export const ShapeSection = () => {
   return (
     <List>
-      <HStack>
+      <HStack padding={{ vertical: 10 }}>
         <Text>Rectangle</Text>
         <Spacer />
         <Rectangle fill="pink" />
       </HStack>
-      <HStack>
+      <HStack padding={{ vertical: 10 }}>
         <Text>Rounded Rectangle</Text>
         <Spacer />
         <RoundedRectangle fill="blue" cornerRadius={10} />
       </HStack>
-      <HStack>
+      <HStack padding={{ vertical: 10 }}>
         <Text>Circle</Text>
         <Spacer />
         <Circle
@@ -35,12 +35,12 @@ export const ShapeSection = () => {
           }}
         />
       </HStack>
-      <HStack>
+      <HStack padding={{ vertical: 10 }}>
         <Text>Capsule</Text>
         <Spacer />
         <Capsule fill="indigo" frame={{ width: 50, height: 30 }} />
       </HStack>
-      <HStack>
+      <HStack padding={{ vertical: 10 }}>
         <Text>Uneven Rounded Rectangle</Text>
         <Spacer />
         <UnevenRoundedRectangle

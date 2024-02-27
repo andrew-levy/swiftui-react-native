@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+import { ViewStyle } from 'react-native';
 import { getValueOrBinding } from '../binding';
 import { type Border } from '../border';
 import { type Color } from '../colors';
@@ -8,6 +9,58 @@ import { type Frame } from '../frame';
 import { type Padding } from '../padding';
 import { type Shadow } from '../shadow';
 import { type Rotation } from '../transform';
+
+export type BaseModifiers = Pick<
+  Modifiers,
+  | 'padding'
+  | 'border'
+  | 'foregroundStyle'
+  | 'rotationEffect'
+  | 'scaleEffect'
+  | 'shadow'
+  | 'background'
+  | 'hidden'
+  | 'frame'
+  | 'zIndex'
+  | 'opacity'
+  | 'tint'
+  | 'cornerRadius'
+  | 'position'
+  | 'offset'
+  | 'animation'
+  | 'contentTransition'
+  | 'blur'
+  | 'saturation'
+  | 'grayscale'
+  | 'brightness'
+  | 'contrast'
+  | 'blendMode'
+  | 'mask'
+  | 'clipShape'
+  | 'environment'
+  | 'sensoryFeedback'
+  | 'onAppear'
+  | 'onDisappear'
+>;
+
+export type TextModifiers = Pick<
+  Modifiers,
+  | 'fontSize'
+  | 'fontWeight'
+  | 'font'
+  | 'bold'
+  | 'italic'
+  | 'strikethrough'
+  | 'underline'
+>;
+
+export type ListModifiers = Pick<Modifiers, 'scrollDisabled' | 'listStyle'>;
+export type ImageModifiers = Pick<
+  Modifiers,
+  'resizable' | 'imageScale' | 'symbolRenderingMode'
+>;
+export type PickerModifiers = Pick<Modifiers, 'pickerStyle'>;
+export type ButtonModifiers = Pick<Modifiers, 'buttonStyle'>;
 
 export type Modifiers = {
   // View
@@ -67,6 +120,7 @@ export type Modifiers = {
     | 'hierarchical'
     | 'multicolor';
   // Text
+  fontSize?: number;
   fontWeight?:
     | 'ultralight'
     | 'thin'
@@ -87,19 +141,6 @@ export type Modifiers = {
   pickerStyle?: 'wheel' | 'segmented' | 'menu';
   textFieldStyle?: 'plain' | 'roundedBorder';
   listStyle?: 'inset' | 'grouped' | 'plain' | 'insetGrouped';
-  // Sheet
-  // sheet?: {
-  //   isPresented: boolean | BooleanBinding;
-  //   content: ReactNode;
-  //   onDismiss?: () => void;
-  // };
-  // presentationCornerRadius?: number;
-  // presentationDetents?: (
-  //   | 'medium'
-  //   | 'large'
-  //   | { fraction: number }
-  //   | { height: number }
-  // )[];
   // Haptics
   sensoryFeedback?: {
     feedback:
@@ -122,6 +163,19 @@ export type Modifiers = {
   onAppear?: () => void;
   onDisappear?: () => void;
   // alert?: Alert;
+  // Sheet
+  // sheet?: {
+  //   isPresented: boolean | BooleanBinding;
+  //   content: ReactNode;
+  //   onDismiss?: () => void;
+  // };
+  // presentationCornerRadius?: number;
+  // presentationDetents?: (
+  //   | 'medium'
+  //   | 'large'
+  //   | { fraction: number }
+  //   | { height: number }
+  // )[];
 };
 
 export type WithChildren<T> = T & {
@@ -156,41 +210,46 @@ export function getSizeFromModifiers(
   modifiers: Modifiers,
   defaultSize?: { width: number; height: number }
 ) {
-  let width = modifiers.frame?.width || defaultSize?.width || 0;
-  let height = modifiers.frame?.height || defaultSize?.height || 0;
+  const styles: ViewStyle = {};
 
-  if (typeof width === 'number' && typeof height === 'number') {
-    if (typeof modifiers.padding === 'number') {
-      width += modifiers.padding;
-      height += modifiers.padding;
-    } else if (typeof modifiers.padding === 'boolean') {
-      width += 8;
-      height += 8;
-    } else {
-      const { all, horizontal, vertical, top, bottom, leading, trailing } =
-        modifiers.padding || {
-          all: 0,
-          horizontal: 0,
-          vertical: 0,
-          top: 0,
-          bottom: 0,
-          leading: 0,
-          trailing: 0,
-        };
-      width += all;
-      height += all;
-      width += horizontal;
-      height += vertical;
-      height += top;
-      height += bottom;
-      width += leading;
-      width += trailing;
+  let width = modifiers.frame?.width || defaultSize?.width;
+  let height = modifiers.frame?.height || defaultSize?.height;
+
+  if (width) {
+    styles.width = width;
+  }
+  if (height) {
+    styles.height = height;
+  }
+
+  if (typeof modifiers.padding === 'number') {
+    styles.padding = modifiers.padding;
+  } else if (typeof modifiers.padding === 'boolean') {
+    styles.padding = modifiers.padding ? 8 : 0;
+  } else {
+    if (modifiers.padding?.all) {
+      styles.padding = modifiers.padding.all;
     }
 
-    if (modifiers.border) {
-      width += modifiers.border.width;
-      height += modifiers.border.width;
+    if (modifiers.padding?.horizontal) {
+      styles.paddingHorizontal = modifiers.padding.horizontal;
+    }
+    if (modifiers.padding?.vertical) {
+      styles.paddingVertical = modifiers.padding.vertical;
+    }
+    if (modifiers.padding?.top) {
+      styles.paddingTop = modifiers.padding.top;
+    }
+    if (modifiers.padding?.bottom) {
+      styles.paddingBottom = modifiers.padding.bottom;
+    }
+    if (modifiers.padding?.leading) {
+      styles.paddingLeft = modifiers.padding.leading;
+    }
+    if (modifiers.padding?.trailing) {
+      styles.paddingRight = modifiers.padding.trailing;
     }
   }
-  return { width, height };
+
+  return styles;
 }

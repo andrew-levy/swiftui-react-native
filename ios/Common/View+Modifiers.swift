@@ -302,6 +302,12 @@ struct ReactNativeViewModifiers: ViewModifier {
               break
             }
           }
+        
+        case "fontSize":
+          if let fontSize = value as? CGFloat {
+            view = AnyView(view.font(.system(size: fontSize)))
+          }
+          
         case "fontWeight":
           if let fontWeight = value as? String {
             if #available(iOS 16.0, *)  {
@@ -740,7 +746,6 @@ func getColor(_ color: Any?) -> Color {
       if #available(iOS 15.0, *) {
         return .indigo
       }
-      
       
     default:
       if #available(iOS 15.0, *) {

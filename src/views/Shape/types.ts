@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Color } from '../../utils/colors';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
@@ -19,6 +19,11 @@ export type NativeShapeProps = {
     | 'Capsule'
     | 'Ellipse'
     | 'UnevenRoundedRectangle';
+  onEvent?: (
+    e: NativeSyntheticEvent<{
+      [key: string]: any;
+    }>
+  ) => void;
 };
 
 export type ShapeProps = {

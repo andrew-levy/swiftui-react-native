@@ -32,9 +32,9 @@ HStack(alignment: .top, spacing: 10) {
 <TabItem value="react-native" label="React Native">
 
 ```tsx
-<View style={{ flexDirection: 'row', jusitfyContent: 'flex-start' }}>
+<View style={{ flexDirection: 'row', jusitfyContent: 'flex-start', gap: 10 }}>
   <Text>Hello</Text>
-  <Text style={{ marginLeft: 10 }}>World</Text>
+  <Text>World</Text>
 </View>
 ```
 

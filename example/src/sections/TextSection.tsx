@@ -44,8 +44,7 @@ export const TextSection = () => {
       <List frame={{ height: 200 }} header="Content Transition" scrollDisabled>
         <HStack>
           <Text
-            frame={{ width: 100 }}
-            border={{ color: 'black', width: 1 }}
+            frame={{ width: 80 }}
             contentTransition="numericText"
             animation={{
               type: 'spring',

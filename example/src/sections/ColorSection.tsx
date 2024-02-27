@@ -27,18 +27,20 @@ export const ColorSection = () => {
           'primary',
           'secondary',
           'brown',
-          'clear',
+          'white',
+          'black',
           'cyan',
           'mint',
+          'clear',
         ],
         (color, i) => (
-          <HStack key={i} spacing={20}>
+          <HStack key={i} spacing={20} padding={{ vertical: 10 }}>
             <Color.red
               color={color}
               frame={{ width: 25, height: 25 }}
               clipShape="circle"
               shadow={{
-                color: color === 'clear' ? 'black' : color,
+                color: color === 'white' ? 'gray' : color,
                 radius: 3,
                 x: 0,
                 y: 1,

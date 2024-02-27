@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Binding } from '../../utils/binding';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
@@ -7,11 +7,11 @@ export type NativeSliderProps = {
   range?: [number, number];
   value: number;
   modifiers?: NativeModifiersProp;
-  onValueChange?: (e: {
-    nativeEvent: {
-      value: number;
-    };
-  }) => void;
+  onEvent?: (
+    e: NativeSyntheticEvent<{
+      [key: string]: any;
+    }>
+  ) => void;
   style?: StyleProp<ViewStyle>;
 };
 export type SliderProps = {

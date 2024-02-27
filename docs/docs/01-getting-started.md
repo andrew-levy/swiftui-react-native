@@ -9,10 +9,15 @@ Bringing the best **SwiftUI** features to your **React Native** app :rocket:
 
 ## At a Glance
 
-- :white_check_mark: SwiftUI-like API
-- :white_check_mark: Dark Mode out of the box
-- :white_check_mark: Access to Apple's design system
-- :white_check_mark: Written in TypeScript
+This library provides you with a set of SwiftUI primitives that you can use in your React Native app.
+
+- Real SwiftUI native views
+- SwiftUI Modifiers as props
+- Experimental API
+
+:::note
+This is not a cross-platform library. These components will only work on iOS.
+:::
 
 ## Usage
 
@@ -32,7 +37,7 @@ import {
 } from 'swiftui-react-native';
 
 function App() {
-  const $text = useBinding('');
+  const text = useBinding('');
   return (
     <VStack
       aligment="leading"
@@ -41,10 +46,8 @@ function App() {
       cornerRadius={20}
     >
       <Text font="title">Some cool text</Text>
-      <TextField text={$text} placeholder="Name" />
-      <Button action={doSomething}>
-        <Text bold>Click the cool button</Text>
-      </Button>
+      <TextField text={text} placeholder="Name" />
+      <Button title="Click the cool button" action={doSomething} />
     </VStack>
   );
 }

@@ -1,7 +1,10 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { View } from 'react-native';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { onBaseEvent } from '../../utils/onBaseEvent';
 import { HStackProps, NativeHStackProps } from './types';
 
@@ -21,7 +24,7 @@ export function HStack({
       alignment={alignment}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        // ...getSizeFromModifiers(modifiers),
+        ...getSizeFromModifiers(modifiers),
         flexDirection: 'row',
         ...(style as object),
       }}
@@ -29,9 +32,6 @@ export function HStack({
         onBaseEvent(e, modifiers);
       }}
     >
-      {/* {modifiers.sheet && (
-        <SheetContent>{modifiers.sheet.content}</SheetContent>
-      )} */}
       {React.Children.map(children, (child) => {
         return <View style={{ alignSelf: 'center' }}>{child}</View>;
       })}
@@ -40,3 +40,8 @@ export function HStack({
 }
 
 HStack.displayName = 'SwiftUIHStack';
+
+// TODO: add sheet support
+/* {modifiers.sheet && (
+        <SheetContent>{modifiers.sheet.content}</SheetContent>
+      )} */

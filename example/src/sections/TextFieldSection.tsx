@@ -17,7 +17,11 @@ export const TextFieldSection = () => {
     <List>
       <TextField placeholder="Username" text={text} />
       <SecureField placeholder="Password" text={password} />
-      <TextEditor placeholder="Bio" text={bio} style={{ height: 100 }} />
+      <TextEditor
+        placeholder="Bio"
+        text={bio}
+        style={{ height: 100, width: 300 }}
+      />
       <Text>Username: {text.value}</Text>
       <Text>Password: {password.value}</Text>
       <Text>Bio: {bio.value}</Text>
