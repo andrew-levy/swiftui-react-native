@@ -4,7 +4,7 @@ public class StepperModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Stepper")
     View(StepperExpoView.self) {
-      Events("onValueChange")
+      Events("onEvent")
       Prop("value") { (view: StepperExpoView, prop: Double) in
         view.props.value = prop
       }

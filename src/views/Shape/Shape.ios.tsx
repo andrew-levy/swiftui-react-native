@@ -1,6 +1,7 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import { getSizeFromModifiers, mapToNativeModifiers } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeShapeProps, ShapeProps } from './types';
 
 const NativeShape: React.ComponentType<NativeShapeProps> =
@@ -12,9 +13,11 @@ export function Rectangle({ style, ...modifiers }: ShapeProps) {
       type="Rectangle"
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: 30,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );
@@ -28,9 +31,11 @@ export function RoundedRectangle(props: ShapeProps & { cornerRadius: number }) {
       modifiers={mapToNativeModifiers(modifiers)}
       cornerRadius={cornerRadius}
       style={{
-        width: 30,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );
@@ -53,9 +58,11 @@ export function UnevenRoundedRectangle(
       modifiers={mapToNativeModifiers(modifiers)}
       cornerRadii={cornerRadii}
       style={{
-        width: 30,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );
@@ -68,9 +75,11 @@ export function Circle(props: ShapeProps) {
       type="Circle"
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: 30,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );
@@ -83,9 +92,11 @@ export function Capsule(props: ShapeProps) {
       type="Capsule"
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: 30,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );
@@ -98,9 +109,11 @@ export function Ellipse(props: ShapeProps) {
       type="Ellipse"
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        width: 30,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 30, height: 30 }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );

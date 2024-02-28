@@ -9,32 +9,32 @@ struct TextFieldView: View {
         TextField(props.placeholder, text: $props.text)
           .reactNativeViewModifiers(mods: props.modifiers)
           .onChange(of: props.text) { newValue in
-            props.onValueChange([
-              "value": newValue
+            props.onEvent([
+              "onValueChange": newValue
             ])
           }
       case "securefield":
         SecureField(props.placeholder, text: $props.text)
           .reactNativeViewModifiers(mods: props.modifiers)
           .onChange(of: props.text) { newValue in
-            props.onValueChange([
-              "value": newValue
+            props.onEvent([
+              "onValueChange": newValue
             ])
           }
       case "texteditor":
         TextEditor(text: $props.text)
           .reactNativeViewModifiers(mods: props.modifiers)
           .onChange(of: props.text) { newValue in
-            props.onValueChange([
-              "value": newValue
+            props.onEvent([
+              "onValueChange": newValue
             ])
           }
       default:
         TextField(props.placeholder, text: $props.text)
           .reactNativeViewModifiers(mods: props.modifiers)
           .onChange(of: props.text) { newValue in
-            props.onValueChange([
-              "value": newValue
+            props.onEvent([
+              "onValueChange": newValue
             ])
           }
       }

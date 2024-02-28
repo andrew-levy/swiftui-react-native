@@ -1,6 +1,7 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { mapToNativeModifiers } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { HStack } from '../HStack';
 import { Image } from '../Image';
 import { Text } from '../Text';
@@ -16,6 +17,9 @@ export function Label({ style, systemImage, title, ...modifiers }: LabelProps) {
       title={title}
       modifiers={mapToNativeModifiers(modifiers)}
       style={style}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
+      }}
     >
       <HStack {...modifiers}>
         <Image systemName={systemImage} />

@@ -3,6 +3,7 @@ import SwiftUI
 
 class SheetContentExpoView: ExpoView {
   let props: SheetContentProps
+  
 
   override func didUpdateReactSubviews() {
     let subChildren = self.reactSubviews()    

@@ -12,8 +12,8 @@ struct PickerView: View {
       }
       .reactNativeViewModifiers(mods: props.modifiers)
       .onChange(of: props.selection) { newValue in
-        props.onValueChange([
-          "value": newValue
+        props.onEvent([
+          "onValueChange": newValue
         ])
       }
     }

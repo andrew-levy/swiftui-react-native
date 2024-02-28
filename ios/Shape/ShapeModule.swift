@@ -4,6 +4,7 @@ public class ShapeModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Shape")
     View(ShapeExpoView.self) {
+      Events("onEvent")
       Prop("modifiers") { (view: ShapeExpoView, prop: [[String: Any]]) in
         view.props.modifiers = prop
       }

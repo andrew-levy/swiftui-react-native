@@ -639,6 +639,84 @@ struct ReactNativeViewModifiers: ViewModifier {
               }
             }
           }
+
+        case "textContentType": 
+          if let textContentType = value as? String {
+            if #available(iOS 15.0, *) {
+              view = AnyView(view.textContentType(UITextContentType(rawValue: textContentType)))
+            }
+          }
+
+        case "keyboardType":
+          if let keyboardType = value as? String {
+            if #available(iOS 15.0, *) {
+              switch keyboardType {
+              case "numberPad":
+                view = AnyView(view.keyboardType(.numberPad))
+                
+              case "phonePad":
+                view = AnyView(view.keyboardType(.phonePad))
+                
+              case "namePhonePad":
+                view = AnyView(view.keyboardType(.namePhonePad))
+                
+              case "emailAddress":
+                view = AnyView(view.keyboardType(.emailAddress))
+                
+              case "decimalPad":
+                view = AnyView(view.keyboardType(.decimalPad))
+                
+              case "twitter":
+                view = AnyView(view.keyboardType(.twitter))
+                
+              case "webSearch":
+                view = AnyView(view.keyboardType(.webSearch))
+                
+              case "asciiCapableNumberPad":
+                view = AnyView(view.keyboardType(.asciiCapableNumberPad))
+                
+              case "asciiCapable":
+                view = AnyView(view.keyboardType(.asciiCapable))
+                
+              case "numbersAndPunctuation":
+                view = AnyView(view.keyboardType(.numbersAndPunctuation))
+                
+              case "URL":
+                view = AnyView(view.keyboardType(.URL))
+                
+              case "default":
+                view = AnyView(view.keyboardType(.default))
+                
+              default:
+                break
+              }
+            }
+          }
+          
+        case "autocorrectionDisabled":
+          if let autocorrectionDisabled = value as? Bool {
+            if #available(iOS 15.0, *) {
+              view = AnyView(view.autocorrectionDisabled(autocorrectionDisabled))
+            }
+          }
+          
+        case "textInputAutocapitalization":
+          if let autocapitalization = value as? String {
+            if #available(iOS 15.0, *) {
+              switch autocapitalization {
+              case "never":
+                view = AnyView(view.textInputAutocapitalization(.never))
+              case "words":
+                view = AnyView(view.textInputAutocapitalization(.words))
+              case "sentences":
+                view = AnyView(view.textInputAutocapitalization(.sentences))
+              case "characters":
+                view = AnyView(view.textInputAutocapitalization(.characters))
+              default:
+                break
+              }
+            }
+          }
           
           
         case "onAppear":

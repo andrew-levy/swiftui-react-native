@@ -4,7 +4,7 @@ public class SliderModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Slider")
     View(SliderExpoView.self) {
-      Events("onValueChange")
+      Events("onEvent")
       Prop("value") { (view: SliderExpoView, prop: Double) in
         view.props.value = prop
       }

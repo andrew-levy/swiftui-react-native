@@ -5,6 +5,7 @@ import {
   getSizeFromModifiers,
   mapToNativeModifiers,
 } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeVStackProps, VStackProps } from './types';
 
 const NativeVStack: React.ComponentType<NativeVStackProps> =
@@ -29,6 +30,9 @@ export function VStack({
       style={{
         ...getSizeFromModifiers(modifiers),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
       children={mappedChildren}
     />

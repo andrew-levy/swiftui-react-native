@@ -7,6 +7,7 @@ const sections = [
   { title: 'Colors', path: '/colors' },
   { title: 'Buttons', path: '/buttons' },
   { title: 'Stacks', path: '/stacks' },
+  { title: 'Lists', path: '/lists' },
   { title: 'Controls', path: '/controls' },
   { title: 'Images', path: '/images' },
   { title: 'Pickers', path: '/pickers' },

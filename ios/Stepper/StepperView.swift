@@ -7,8 +7,8 @@ struct StepperView: View {
       Stepper(props.labelText ?? "", value: $props.value, in: ClosedRange(uncheckedBounds: (props.range[0], props.range[1])), step: props.step)
         .reactNativeViewModifiers(mods: props.modifiers)
         .onChange(of: props.value) { newValue in
-          props.onValueChange([
-            "value": newValue
+          props.onEvent([
+            "onValueChange": newValue
           ])
         }
     }

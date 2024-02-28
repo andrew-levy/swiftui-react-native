@@ -13,8 +13,8 @@ struct SliderView: View {
             value = props.value
           }
           .onChange(of: value) { newValue in
-            props.onValueChange([
-              "value": newValue
+            props.onEvent([
+              "onValueChange": newValue
             ])
           }
       } else {
@@ -24,8 +24,8 @@ struct SliderView: View {
             value = props.value
           }
           .onChange(of: value) { newValue in
-            props.onValueChange([
-              "value": newValue
+            props.onEvent([
+              "onValueChange": newValue
             ])
           }
       }

@@ -5,6 +5,7 @@ public class VStackModule: Module {
   public func definition() -> ModuleDefinition {
     Name("VStack")
     View(VStackExpoView.self) {
+      Events("onEvent")
       Prop("alignment") { (view: VStackExpoView, prop: String?) in
         switch prop {
         case "leading" : view.props.alignment = .leading

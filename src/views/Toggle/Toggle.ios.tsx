@@ -5,6 +5,7 @@ import {
   getSizeFromModifiers,
   mapToNativeModifiers,
 } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeToggleProps, ToggleProps } from './types';
 
 const NativeToggle: React.ComponentType<NativeToggleProps> =
@@ -26,11 +27,15 @@ export function Toggle({
         ...getSizeFromModifiers(modifiers, { width: 51, height: 31 }),
         ...(style as object),
       }}
-      onValueChange={(e) => {
-        if (typeof isOn === 'object' && 'setValue' in isOn) {
-          isOn.setValue(e.nativeEvent.value);
-        }
-        onChange?.(e.nativeEvent.value);
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers, {
+          onValueChange: (e) => {
+            if (typeof isOn === 'object' && 'setValue' in isOn) {
+              isOn.setValue(e.nativeEvent.onValueChange);
+            }
+            onChange?.(e.nativeEvent.onValueChange);
+          },
+        });
       }}
     />
   );

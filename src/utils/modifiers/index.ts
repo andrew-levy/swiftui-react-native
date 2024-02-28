@@ -10,58 +10,6 @@ import { type Padding } from '../padding';
 import { type Shadow } from '../shadow';
 import { type Rotation } from '../transform';
 
-export type BaseModifiers = Pick<
-  Modifiers,
-  | 'padding'
-  | 'border'
-  | 'foregroundStyle'
-  | 'rotationEffect'
-  | 'scaleEffect'
-  | 'shadow'
-  | 'background'
-  | 'hidden'
-  | 'frame'
-  | 'zIndex'
-  | 'opacity'
-  | 'tint'
-  | 'cornerRadius'
-  | 'position'
-  | 'offset'
-  | 'animation'
-  | 'contentTransition'
-  | 'blur'
-  | 'saturation'
-  | 'grayscale'
-  | 'brightness'
-  | 'contrast'
-  | 'blendMode'
-  | 'mask'
-  | 'clipShape'
-  | 'environment'
-  | 'sensoryFeedback'
-  | 'onAppear'
-  | 'onDisappear'
->;
-
-export type TextModifiers = Pick<
-  Modifiers,
-  | 'fontSize'
-  | 'fontWeight'
-  | 'font'
-  | 'bold'
-  | 'italic'
-  | 'strikethrough'
-  | 'underline'
->;
-
-export type ListModifiers = Pick<Modifiers, 'scrollDisabled' | 'listStyle'>;
-export type ImageModifiers = Pick<
-  Modifiers,
-  'resizable' | 'imageScale' | 'symbolRenderingMode'
->;
-export type PickerModifiers = Pick<Modifiers, 'pickerStyle'>;
-export type ButtonModifiers = Pick<Modifiers, 'buttonStyle'>;
-
 export type Modifiers = {
   // View
   padding?: Padding;
@@ -111,6 +59,69 @@ export type Modifiers = {
   environment?: {
     colorScheme: 'light' | 'dark';
   };
+  // TextField
+  textContentType?:
+    | 'name'
+    | 'namePrefix'
+    | 'givenName'
+    | 'middleName'
+    | 'familyName'
+    | 'nameSuffix'
+    | 'nickname'
+    | 'jobTitle'
+    | 'organizationName'
+    | 'location'
+    | 'fullStreetAddress'
+    | 'streetAddressLine1'
+    | 'streetAddressLine2'
+    | 'addressCity'
+    | 'addressState'
+    | 'addressCityAndState'
+    | 'sublocality'
+    | 'countryName'
+    | 'postalCode'
+    | 'telephoneNumber'
+    | 'emailAddress'
+    | 'URL'
+    | 'creditCardNumber'
+    | 'username'
+    | 'password'
+    | 'newPassword'
+    | 'oneTimeCode'
+    | 'shipmentTrackingNumber'
+    | 'flightNumber'
+    | 'dateTime'
+    | 'birthdate'
+    | 'birthdateDay'
+    | 'birthdateMonth'
+    | 'birthdateYear'
+    | 'creditCardSecurityCode'
+    | 'creditCardName'
+    | 'creditCardGivenName'
+    | 'creditCardMiddleName'
+    | 'creditCardFamilyName'
+    | 'creditCardExpiration'
+    | 'creditCardExpirationMonth'
+    | 'creditCardExpirationYear'
+    | 'creditCardType';
+
+  keyboardType?:
+    | 'numberPad'
+    | 'phonePad'
+    | 'namePhonePad'
+    | 'emailAddress'
+    | 'decimalPad'
+    | 'twitter'
+    | 'webSearch'
+    | 'asciiCapableNumberPad'
+    | 'numbersAndPunctuation'
+    | 'URL'
+    | 'asciiCapable'
+    | 'default';
+
+  textInputAutocapitalization?: 'never' | 'words' | 'sentences' | 'characters';
+  autocorrectionDisabled?: boolean;
+
   // Image
   resizable?: boolean;
   imageScale?: 'small' | 'medium' | 'large';

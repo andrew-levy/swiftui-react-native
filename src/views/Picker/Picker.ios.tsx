@@ -6,6 +6,7 @@ import {
   getSizeFromModifiers,
   mapToNativeModifiers,
 } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativePickerProps, PickerProps } from './types';
 
 const NativeView: React.ComponentType<NativePickerProps> =
@@ -37,11 +38,15 @@ export function Picker({
         ...getSizeFromModifiers(modifiers, defaultSize[modifiers.pickerStyle]),
         ...(style as any),
       }}
-      onValueChange={(e) => {
-        if (typeof selection === 'object' && 'setValue' in selection) {
-          selection.setValue(e.nativeEvent.value);
-        }
-        onChange?.(e.nativeEvent.value);
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers, {
+          onValueChange: (e) => {
+            if (typeof selection === 'object' && 'setValue' in selection) {
+              selection.setValue(e.nativeEvent.onValueChange);
+            }
+            onChange?.(e.nativeEvent.onValueChange);
+          },
+        });
       }}
     />
   );

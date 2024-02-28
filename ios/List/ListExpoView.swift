@@ -3,6 +3,7 @@ import SwiftUI
 
 class ListExpoView: ExpoView {
   let props: ListProps
+  let onEvent = EventDispatcher()
 
   override func didUpdateReactSubviews() {
     let subChildren = self.reactSubviews()
@@ -10,7 +11,7 @@ class ListExpoView: ExpoView {
   }
   
   required init(appContext: AppContext? = nil) {
-    props = ListProps()
+    props = ListProps(onEvent: onEvent)
     let hostingController = UIHostingController(rootView: ListView(props: props))
     super.init(appContext: appContext)
     setupHostingController(hostingController)

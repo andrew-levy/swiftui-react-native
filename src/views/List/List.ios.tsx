@@ -6,6 +6,7 @@ import {
   getSizeFromModifiers,
   mapToNativeModifiers,
 } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { ListProps, NativeListProps } from './types';
 
 const NativeList: React.ComponentType<NativeListProps> =
@@ -44,6 +45,9 @@ export function List<T>({
           height: 500,
         }),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     >
       {data && typeof children === 'function'

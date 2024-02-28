@@ -4,7 +4,7 @@ public class ToggleModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Toggle")
     View(ToggleExpoView.self) {
-      Events("onValueChange")
+      Events("onEvent")
       Prop("isOn") { (view: ToggleExpoView, prop: Bool) in
         view.props.isOn = prop
       }

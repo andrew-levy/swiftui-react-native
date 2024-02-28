@@ -8,8 +8,8 @@ struct ToggleView: View {
             Toggle(props.label ?? "", isOn: $props.isOn)
               .reactNativeViewModifiers(mods: props.modifiers)
               .onChange(of: props.isOn) { newValue in
-                props.onValueChange([
-                    "value": newValue
+                props.onEvent([
+                  "onValueChange": newValue
                 ])
               }
         }

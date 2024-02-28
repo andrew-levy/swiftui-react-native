@@ -1,6 +1,10 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeProgressProps, ProgressProps } from './types';
 
 const NativeView: React.ComponentType<NativeProgressProps> =
@@ -18,9 +22,14 @@ export function ProgressView({
       value={value}
       total={total ?? 1}
       style={{
-        width: 300,
-        height: value == undefined ? 20 : 10,
+        ...getSizeFromModifiers(modifiers, {
+          width: 300,
+          height: value == undefined ? 20 : 10,
+        }),
         ...(style as any),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );

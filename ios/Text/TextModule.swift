@@ -4,6 +4,7 @@ public class TextModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Text")
     View(TextExpoView.self) {
+      Events("onEvent")
       Prop("text") { (view: TextExpoView, prop: String) in
         view.props.text = prop
       }

@@ -5,6 +5,7 @@ import {
   getSizeFromModifiers,
   mapToNativeModifiers,
 } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeSliderProps, SliderProps } from './types';
 
 const NativeSlider: React.ComponentType<NativeSliderProps> =
@@ -28,12 +29,16 @@ export function Slider({
         ...getSizeFromModifiers(modifiers, { width: 300, height: 35 }),
         ...(style as object),
       }}
-      onValueChange={(e) => {
-        const newValue = e.nativeEvent.value;
-        if (typeof value === 'object' && 'setValue' in value) {
-          value.setValue(newValue);
-        }
-        onChange?.(newValue);
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers, {
+          onValueChange: (e) => {
+            const newValue = e.nativeEvent.onValueChange;
+            if (typeof value === 'object' && 'setValue' in value) {
+              value.setValue(newValue);
+            }
+            onChange?.(newValue);
+          },
+        });
       }}
     />
   );

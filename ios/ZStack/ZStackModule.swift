@@ -5,6 +5,7 @@ public class ZStackModule: Module {
   public func definition() -> ModuleDefinition {
     Name("ZStack")
     View(ZStackExpoView.self) {
+      Events("onEvent")
       Prop("alignment") { (view: ZStackExpoView, prop: String?) in
         switch prop {
         case "topLeading": view.props.alignment = .topLeading

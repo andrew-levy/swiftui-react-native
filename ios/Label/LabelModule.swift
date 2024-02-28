@@ -4,6 +4,7 @@ public class LabelModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Label")
     View(LabelExpoView.self) {
+      Events("onEvent")
       Prop("systemImage") { (view: LabelExpoView, prop: String) in
         view.props.systemImage = prop
       }

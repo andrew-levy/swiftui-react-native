@@ -1,6 +1,5 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { NativeSyntheticEvent } from 'react-native';
 import { getValueOrBinding } from '../../utils/binding';
 import {
   getSizeFromModifiers,
@@ -32,11 +31,11 @@ export function ColorPicker({
       }}
       onEvent={(e) => {
         onBaseEvent(e, modifiers, {
-          onValueChange(e: NativeSyntheticEvent<{ value: string }>) {
+          onValueChange(e) {
             if (typeof selection === 'object' && 'setValue' in selection) {
-              selection.setValue(e.nativeEvent.value as string);
+              selection.setValue(e.nativeEvent.onValueChange);
             }
-            onChange?.(e.nativeEvent.value as string);
+            onChange?.(e.nativeEvent.onValueChange);
           },
         });
       }}

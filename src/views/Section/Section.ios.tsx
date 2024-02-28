@@ -1,7 +1,11 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { useWindowDimensions } from 'react-native';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeSectionProps, SectionProps } from './types';
 
 const NativeSection: React.ComponentType<NativeSectionProps> =
@@ -34,9 +38,11 @@ export function Section({
       header={header}
       footer={footer}
       style={{
-        width: '100%',
-        height: 500,
+        ...getSizeFromModifiers(modifiers),
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     >
       {children}

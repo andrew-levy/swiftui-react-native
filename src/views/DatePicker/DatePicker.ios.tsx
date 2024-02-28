@@ -1,6 +1,5 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { NativeSyntheticEvent } from 'react-native';
 import { getValueOrBinding } from '../../utils/binding';
 import {
   getSizeFromModifiers,
@@ -36,7 +35,7 @@ export function DatePicker({
       }}
       onEvent={(e) => {
         onBaseEvent(e, modifiers, {
-          onValueChange(e: NativeSyntheticEvent<{ onValueChange: string }>) {
+          onValueChange(e) {
             const newDate = new Date(e.nativeEvent.onValueChange);
             if (typeof selection === 'object' && 'setValue' in selection) {
               selection.setValue(newDate);

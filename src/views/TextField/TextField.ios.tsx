@@ -1,7 +1,11 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { getValueOrBinding } from '../../utils/binding';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeTextFieldProps, TextFieldProps } from './types';
 
 const NativeTextField: React.ComponentType<NativeTextFieldProps> =
@@ -10,7 +14,7 @@ const NativeTextField: React.ComponentType<NativeTextFieldProps> =
 export function TextField({
   text,
   style,
-  onValueChange,
+  onChange,
   placeholder,
   ...modifiers
 }: TextFieldProps) {
@@ -19,11 +23,15 @@ export function TextField({
       text={getValueOrBinding(text)}
       type="textfield"
       modifiers={mapToNativeModifiers(modifiers)}
-      onValueChange={(e) => {
-        if (typeof text === 'object' && 'value' in text) {
-          text.setValue(e.nativeEvent.value);
-        }
-        onValueChange?.(e.nativeEvent.value);
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers, {
+          onValueChange(e) {
+            if (typeof text === 'object' && 'value' in text) {
+              text.setValue(e.nativeEvent.onValueChange);
+            }
+            onChange?.(e.nativeEvent.onValueChange);
+          },
+        });
       }}
       style={{
         width: 100,
@@ -37,7 +45,7 @@ export function TextField({
 export function SecureField({
   text,
   style,
-  onValueChange,
+  onChange,
   placeholder,
   ...modifiers
 }: TextFieldProps) {
@@ -46,11 +54,15 @@ export function SecureField({
       text={getValueOrBinding(text)}
       type="securefield"
       modifiers={mapToNativeModifiers(modifiers)}
-      onValueChange={(e) => {
-        if (typeof text === 'object' && 'value' in text) {
-          text.setValue(e.nativeEvent.value);
-        }
-        onValueChange?.(e.nativeEvent.value);
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers, {
+          onValueChange: (e) => {
+            if (typeof text === 'object' && 'value' in text) {
+              text.setValue(e.nativeEvent.onValueChange);
+            }
+            onChange?.(e.nativeEvent.onValueChange);
+          },
+        });
       }}
       style={{
         width: 100,
@@ -64,7 +76,7 @@ export function SecureField({
 export function TextEditor({
   text,
   style,
-  onValueChange,
+  onChange,
   placeholder,
   ...modifiers
 }: TextFieldProps) {
@@ -73,15 +85,18 @@ export function TextEditor({
       text={getValueOrBinding(text)}
       type="texteditor"
       modifiers={mapToNativeModifiers(modifiers)}
-      onValueChange={(e) => {
-        if (typeof text === 'object' && 'value' in text) {
-          text.setValue(e.nativeEvent.value);
-        }
-        onValueChange?.(e.nativeEvent.value);
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers, {
+          onValueChange: (e) => {
+            if (typeof text === 'object' && 'value' in text) {
+              text.setValue(e.nativeEvent.onValueChange);
+            }
+            onChange?.(e.nativeEvent.onValueChange);
+          },
+        });
       }}
       style={{
-        width: 100,
-        height: 30,
+        ...getSizeFromModifiers(modifiers, { width: 100, height: 30 }),
         ...(style as object),
       }}
     />

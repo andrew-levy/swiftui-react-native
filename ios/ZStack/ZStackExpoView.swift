@@ -3,6 +3,7 @@ import SwiftUI
 
 class ZStackExpoView: ExpoView {
   let props: ZStackProps
+  let onEvent = EventDispatcher()
 
   override func didUpdateReactSubviews() {
     let subChildren = self.reactSubviews()
@@ -10,7 +11,7 @@ class ZStackExpoView: ExpoView {
   }
   
   required init(appContext: AppContext? = nil) {
-    props = ZStackProps()
+    props = ZStackProps(onEvent: onEvent)
     let hostingController = UIHostingController(rootView: ZStackView(props: props))
     super.init(appContext: appContext)
     setupHostingController(hostingController)

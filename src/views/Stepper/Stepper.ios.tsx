@@ -5,6 +5,7 @@ import {
   getSizeFromModifiers,
   mapToNativeModifiers,
 } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeStepperProps, StepperProps } from './types';
 
 const NativeStepper: React.ComponentType<NativeStepperProps> =
@@ -29,11 +30,16 @@ export function Stepper(props: StepperProps) {
         ...getSizeFromModifiers(modifiers, { width: 100, height: 30 }),
         ...(style as object),
       }}
-      onValueChange={(e) => {
-        if (typeof value === 'object' && 'setValue' in value) {
-          value.setValue(e.nativeEvent.value);
-        }
-        onChange?.(e.nativeEvent.value);
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers, {
+          onValueChange(e) {
+            const newValue = e.nativeEvent.onValueChange;
+            if (typeof value === 'object' && 'setValue' in value) {
+              value.setValue(newValue);
+            }
+            onChange?.(newValue);
+          },
+        });
       }}
     />
   );

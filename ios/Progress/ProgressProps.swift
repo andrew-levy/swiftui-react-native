@@ -7,9 +7,9 @@ class ProgressProps: ObservableObject {
   @Published var label: String = ""
   @Published var currentValueLabel: String = ""
   @Published var modifiers: [[String: Any]] = []
-  @Published var onSized: EventDispatcher
-  init(onSized: EventDispatcher) {
-    self.onSized = onSized
+  @Published var onEvent: EventDispatcher
+  init(onEvent: EventDispatcher) {
+    self.onEvent = onEvent
   }
 }
 

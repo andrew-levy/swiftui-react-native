@@ -4,7 +4,7 @@ public class TextFieldModule: Module {
   public func definition() -> ModuleDefinition {
     Name("TextField")
     View(TextFieldExpoView.self) {
-      Events("onSized", "onValueChange")
+      Events("onEvent")
       Prop("text") { (view: TextFieldExpoView, prop: String) in
         view.props.text = prop
       }

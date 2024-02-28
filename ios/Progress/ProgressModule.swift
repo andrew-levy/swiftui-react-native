@@ -4,7 +4,7 @@ public class ProgressModule: Module {
   public func definition() -> ModuleDefinition {
     Name("Progress")
     View(ProgressExpoView.self) {
-      Events("onSized")
+      Events("onEvent")
       Prop("value") { (view: ProgressExpoView, prop: Double?) in
         view.props.value = prop
       }

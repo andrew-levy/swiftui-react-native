@@ -1,6 +1,7 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { mapToNativeModifiers } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { ShadowText } from './ShadowText';
 import { NativeTextProps, TextProps } from './types';
 
@@ -16,6 +17,9 @@ export function Text({ style, children, ...modifiers }: TextProps) {
       style={{
         alignSelf: 'center',
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     >
       <ShadowText {...modifiers}>{text}</ShadowText>

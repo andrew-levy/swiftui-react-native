@@ -7,8 +7,8 @@ class StepperProps: ObservableObject {
   @Published var labelText: String?
   @Published var range: [Double] = [-100, 100]
   @Published var modifiers: [[String: Any]] = []
-  @Published var onValueChange: EventDispatcher
-  init(onValueChange: EventDispatcher) {
-    self.onValueChange = onValueChange
+  @Published var onEvent: EventDispatcher
+  init(onEvent: EventDispatcher) {
+    self.onEvent = onEvent
   }
 }

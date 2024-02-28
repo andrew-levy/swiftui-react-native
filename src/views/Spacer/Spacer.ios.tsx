@@ -1,6 +1,7 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { mapToNativeModifiers } from '../../utils/modifiers';
+import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeSpacerProps, SpacerProps } from './types';
 
 const NativeSpacer: React.ComponentType<NativeSpacerProps> =
@@ -14,6 +15,9 @@ export function Spacer(props: SpacerProps) {
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
         ...(style as object),
+      }}
+      onEvent={(e) => {
+        onBaseEvent(e, modifiers);
       }}
     />
   );
