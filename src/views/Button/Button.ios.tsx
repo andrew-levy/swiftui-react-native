@@ -1,6 +1,9 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { onBaseEvent } from '../../utils/onBaseEvent';
 import { Text } from '../Text';
 import { ButtonProps, NativeButtonProps } from './types';
@@ -20,7 +23,7 @@ export function Button({
       title={title}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        // ...getSizeFromModifiers(modifiers, { width: 0, height: 0 }),
+        ...getSizeFromModifiers(modifiers),
         ...(style as object),
       }}
       onEvent={(e) => {

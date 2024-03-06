@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeButtonProps = {
@@ -7,7 +7,11 @@ export type NativeButtonProps = {
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
   onAction?: () => void;
-  onEvent?: (e: { nativeEvent: { [key: string]: any } }) => void;
+  onEvent?: (
+    e: NativeSyntheticEvent<{
+      [key: string]: any;
+    }>
+  ) => void;
 };
 
 export type ButtonProps = {

@@ -24,6 +24,6 @@ export * from './hooks/useBinding';
 
 export * from './utils/ForEach';
 
-// export * from './views/Section';
+export * from './views/Section';
 // export * from './views/GeometryReader';
 // export * from './views/Group';

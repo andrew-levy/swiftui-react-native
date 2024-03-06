@@ -26,6 +26,7 @@ export default function Layout() {
       <Stack.Screen name="filters" options={{ title: 'Filters' }} />
       <Stack.Screen name="colors" options={{ title: 'Colors' }} />
       <Stack.Screen name="pickers" options={{ title: 'Pickers' }} />
+      <Stack.Screen name="lists" options={{ title: 'Lists' }} />
     </Stack>
   );
 }

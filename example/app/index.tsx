@@ -1,8 +1,16 @@
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Button, HStack, Image, List, Spacer } from 'swiftui-react-native';
+import {
+  Button,
+  ForEach,
+  HStack,
+  Image,
+  List,
+  Section,
+  Spacer,
+} from 'swiftui-react-native';
 
-const sections = [
+const examples = [
   { title: 'Text', path: '/text' },
   { title: 'Colors', path: '/colors' },
   { title: 'Buttons', path: '/buttons' },
@@ -21,16 +29,24 @@ const sections = [
 export default function Page() {
   return (
     <List
-      data={sections}
       style={{ flex: 1 }}
       environment={{
         colorScheme: 'light',
       }}
       listStyle="insetGrouped"
-      header="SwiftUI for React Native"
-      footer='This is a demo of the **"swiftui-react-native"** library. Each section demonstrates a different component or feature.'
     >
-      {(item) => <ListRow title={item.title} path={item.path} />}
+      <Section
+        header="SwiftUI React Native"
+        footer='This is a demo of the **"swiftui-react-native"** library. Each section demonstrates a different component or feature.'
+      >
+        {ForEach(examples, (example) => (
+          <ListRow
+            key={example.title}
+            title={example.title}
+            path={example.path}
+          />
+        ))}
+      </Section>
     </List>
   );
 }

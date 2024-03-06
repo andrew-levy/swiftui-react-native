@@ -1,7 +1,6 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React, { ReactElement } from 'react';
 import { View, useWindowDimensions } from 'react-native';
-import { ForEach } from '../../utils/ForEach';
 import {
   getSizeFromModifiers,
   mapToNativeModifiers,
@@ -12,14 +11,7 @@ import { ListProps, NativeListProps } from './types';
 const NativeList: React.ComponentType<NativeListProps> =
   requireNativeViewManager('List');
 
-export function List<T>({
-  style,
-  children,
-  data,
-  header,
-  footer,
-  ...modifiers
-}: ListProps<T>) {
+export function List<T>({ style, children, ...modifiers }: ListProps) {
   const { width } = useWindowDimensions();
   let rowWidth = width;
   switch (modifiers.listStyle || 'insetGrouped') {
@@ -37,8 +29,6 @@ export function List<T>({
   return (
     <NativeList
       modifiers={mapToNativeModifiers(modifiers)}
-      header={header}
-      footer={footer}
       style={{
         ...getSizeFromModifiers(modifiers, {
           width: '100%' as any,
@@ -50,30 +40,17 @@ export function List<T>({
         onBaseEvent(e, modifiers);
       }}
     >
-      {data && typeof children === 'function'
-        ? ForEach(data, (item, index) => {
-            return (
-              <View
-                key={index}
-                style={{
-                  width: rowWidth,
-                }}
-              >
-                {children(item, index)}
-              </View>
-            );
-          })
-        : React.Children.map(children, (child: ReactElement) => {
-            return (
-              <View
-                style={{
-                  width: rowWidth,
-                }}
-              >
-                {child}
-              </View>
-            );
-          })}
+      {React.Children.map(children, (child: ReactElement) => {
+        return (
+          <View
+            style={{
+              width: rowWidth,
+            }}
+          >
+            {child}
+          </View>
+        );
+      })}
     </NativeList>
   );
 }

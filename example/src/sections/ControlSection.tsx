@@ -33,7 +33,15 @@ export const ControlSection = () => {
         <HStack>
           <Text font="body">Stepper</Text>
           <Spacer />
-          <Text font="body" foregroundStyle="blue">
+          <Text
+            contentTransition="numericText"
+            animation={{
+              type: 'spring',
+              value: stepperValue.value,
+            }}
+            font="body"
+            foregroundStyle="blue"
+          >
             {stepperValue.value.toString()}
           </Text>
         </HStack>

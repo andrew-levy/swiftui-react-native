@@ -1,26 +1,64 @@
-import { type ReactNode } from 'react';
 import { ViewStyle } from 'react-native';
 import { getValueOrBinding } from '../binding';
-import { type Border } from '../border';
-import { type Color } from '../colors';
-import { type BlendMode, type ClipShape } from '../filters';
-import { type Fonts } from '../fonts';
-import { type Frame } from '../frame';
-import { type Padding } from '../padding';
-import { type Shadow } from '../shadow';
-import { type Rotation } from '../transform';
+
+type Color =   
+  | 'blue'
+  | 'red'
+  | 'green'
+  | 'yellow'
+  | 'orange'
+  | 'purple'
+  | 'pink'
+  | 'primary'
+  | 'secondary'
+  | 'accentColor'
+  | 'black'
+  | 'white'
+  | 'gray'
+  | 'clear'
+  | 'mint'
+  | 'brown'
+  | 'teal'
+  | 'cyan'
+  | 'indigo'
+  | `#${string}`
+  | `rgb${string}`
+  | (string & {});
 
 export type Modifiers = {
   // View
-  padding?: Padding;
-  border?: Border;
+  padding?: number | boolean | {
+    leading?: number;
+    top?: number;
+    bottom?: number;
+    trailing?: number;
+    horizontal?: number;
+    vertical?: number;
+    all?: number;
+};
+  border?: {
+    color?: Color;
+    width?: number;
+};
   foregroundStyle?: Color | Color[];
-  rotationEffect?: Rotation;
+  rotationEffect?: {
+    degrees?: number;
+    radians?: number;
+};
   scaleEffect?: number;
-  shadow?: Shadow;
+  shadow?: {
+    color?: Color;
+    x?: number;
+    y?: number;
+    radius: number;
+    opacity?: number;
+};
   background?: Color;
   hidden?: boolean;
-  frame?: Frame;
+  frame?: {
+    width?: number;
+    height?: number;
+};
   zIndex?: number;
   opacity?: number;
   tint?: Color;
@@ -52,10 +90,39 @@ export type Modifiers = {
   grayscale?: number;
   brightness?: number;
   contrast?: number;
-  blendMode?: BlendMode;
+  blendMode?:  
+  | 'color'
+  | 'colorBurn'
+  | 'colorDodge'
+  | 'darken'
+  | 'difference'
+  | 'exclusion'
+  | 'hardLight'
+  | 'hue'
+  | 'lighten'
+  | 'luminosity'
+  | 'multiply'
+  | 'overlay'
+  | 'saturation'
+  | 'screen'
+  | 'softLight'
+  | 'sourceAtop'
+  | 'destinationOver'
+  | 'destinationOut'
+  | 'plusDarker'
+  | 'plusLighter'
+  | 'normal';
   mask?: string;
-  clipShape?: ClipShape;
-  // Context
+  clipShape?:   | 'circle'
+  | 'roundedRectangle'
+  | 'capsule'
+  | 'rectangle'
+  | 'ellipse'
+  | {
+      shape: 'roundedRectangle';
+      cornerRadius: number;
+    };
+  // Environment
   environment?: {
     colorScheme: 'light' | 'dark';
   };
@@ -130,6 +197,7 @@ export type Modifiers = {
     | 'monochrome'
     | 'hierarchical'
     | 'multicolor';
+
   // Text
   fontSize?: number;
   fontWeight?:
@@ -142,16 +210,18 @@ export type Modifiers = {
     | 'bold'
     | 'heavy'
     | 'black';
-  font?: keyof typeof Fonts;
+  font?: "body" | "callout" | "caption" | "caption2" | "footnote" | "headline" | "largeTitle" | "subheadline" | "title" | "title2" | "title3";
   bold?: boolean;
   italic?: boolean;
-  strikethrough?: boolean;
-  underline?: boolean;
+  strikethrough?: boolean | { isActive: boolean, color?: Color; pattern?: "dot" | "dash" | "solid" | "dashDotDot" | "dashDot" };
+  underline?: boolean | { isActive: boolean, color?: Color; pattern?: "dot" | "dash" | "solid" | "dashDotDot" | "dashDot" };
+
   // Style Variants
   buttonStyle?: 'bordered' | 'borderless' | 'plain' | 'borderedProminent';
   pickerStyle?: 'wheel' | 'segmented' | 'menu';
   textFieldStyle?: 'plain' | 'roundedBorder';
   listStyle?: 'inset' | 'grouped' | 'plain' | 'insetGrouped';
+
   // Haptics
   sensoryFeedback?: {
     feedback:
@@ -187,10 +257,6 @@ export type Modifiers = {
   //   | { fraction: number }
   //   | { height: number }
   // )[];
-};
-
-export type WithChildren<T> = T & {
-  children?: ReactNode;
 };
 
 export type NativeModifiersProp = { [key: string]: any };

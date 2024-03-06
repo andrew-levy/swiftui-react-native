@@ -74,19 +74,20 @@ struct ReactNativeViewModifiers: ViewModifier {
             } else {
               
             }
-          } else if let color = value as? [UIColor] {
+          } else if let color = value as? [Any] {
+            let colors = getColors(color) as [Color]
             switch color.count {
             case 1:
               if #available(iOS 15.0, *) {
-                view = AnyView(view.foregroundStyle(Color(color[0])))
+                view = AnyView(view.foregroundStyle(colors[0]))
               }
             case 2:
               if #available(iOS 15.0, *) {
-                view = AnyView(view.foregroundStyle(Color(color[0]), Color(color[1])))
+                view = AnyView(view.foregroundStyle(colors[0], colors[1]))
               }
             case 3:
               if #available(iOS 15.0, *) {
-                view = AnyView(view.foregroundStyle(Color(color[0]), Color(color[1]), Color(color[2])))
+                view = AnyView(view.foregroundStyle(colors[0], colors[1], colors[2]))
               }
             default:
               break
@@ -111,9 +112,11 @@ struct ReactNativeViewModifiers: ViewModifier {
           }
         case "shadow":
           if let shadow = value as? [String: Any] {
-            if let color = getColor(shadow["color"]) as Color?, let radius = shadow["radius"] as? CGFloat, let x = shadow["x"] as? CGFloat, let y = shadow["y"] as? CGFloat {
-              view = AnyView(view.shadow(color: color, radius: radius, x: x, y: y))
-            }
+            let color = getColor(shadow["color"]) as Color? ?? Color.black
+            let radius = shadow["radius"] as? CGFloat ?? 1.0
+            let x = shadow["x"] as? CGFloat ?? 0.0
+            let y = shadow["y"] as? CGFloat ?? 0.0
+            view = AnyView(view.shadow(color: color, radius: radius, x: x, y: y))
           }
         case "opacity":
           if let opacity = value as? CGFloat {
@@ -335,6 +338,7 @@ struct ReactNativeViewModifiers: ViewModifier {
               }
             }
           }
+          
         case "font":
           if let font = value as? String {
             switch font {
@@ -370,30 +374,78 @@ struct ReactNativeViewModifiers: ViewModifier {
               break
             }
           }
+          
         case "bold":
           if let bold = value as? Bool {
-            if bold == true, #available(iOS 16.0, *)  {
-              view = AnyView(view.bold())
+            if #available(iOS 16.0, *) {
+              view = AnyView(view.bold(bold))
             }
           }
+          
         case "italic":
           if let italic = value as? Bool {
-            if italic == true, #available(iOS 16.0, *)  {
-              view = AnyView(view.italic())
+            if #available(iOS 16.0, *) {
+              view = AnyView(view.italic(italic))
             }
           }
+          
         case "strikethrough":
-          if let strikethrough = value as? Bool {
-            if strikethrough, #available(iOS 16.0, *) {
-              view = AnyView(view.strikethrough(true))
+          if #available(iOS 16.0, *) {
+            if let isActive = value as? Bool {
+              print(isActive)
+              view = AnyView(view.strikethrough(isActive))
+            } else if let strikethrough = value as? [String: Any] {
+              let isActive = strikethrough["isActive"] as? Bool ?? false
+              let color = getColor(strikethrough["color"]) as Color?
+              let pattern = strikethrough["pattern"] as? String
+              
+              let patternStyle: Text.LineStyle.Pattern
+              switch pattern {
+              case "solid":
+                patternStyle = .solid
+              case "dot":
+                patternStyle = .dot
+              case "dash":
+                patternStyle = .dash
+              case "dashDot":
+                patternStyle = .dashDot
+              case "dashDotDot":
+                patternStyle = .dashDotDot
+              default:
+                patternStyle = .solid
+              }
+              view = AnyView(view.strikethrough(isActive, pattern: patternStyle, color: color))
             }
           }
+          
         case "underline":
-          if let underline = value as? Bool {
-            if underline, #available(iOS 16.0, *) {
-              view = AnyView(view.underline(true))
+          if #available(iOS 16.0, *) {
+            if let isActive = value as? Bool {
+              view = AnyView(view.underline(isActive))
+            } else if let strikethrough = value as? [String: Any] {
+              let isActive = strikethrough["isActive"] as? Bool ?? false
+              let color = getColor(strikethrough["color"]) as Color?
+              let pattern = strikethrough["pattern"] as? String
+              
+              let patternStyle: Text.LineStyle.Pattern
+              switch pattern {
+              case "solid":
+                patternStyle = .solid
+              case "dot":
+                patternStyle = .dot
+              case "dash":
+                patternStyle = .dash
+              case "dashDot":
+                patternStyle = .dashDot
+              case "dashDotDot":
+                patternStyle = .dashDotDot
+              default:
+                patternStyle = .solid
+              }
+              view = AnyView(view.underline(isActive, pattern: patternStyle, color: color))
             }
           }
+          
         case "tint":
           if let color = getColor(value) as Color? {
             if #available(iOS 16.0, *) {
@@ -517,6 +569,7 @@ struct ReactNativeViewModifiers: ViewModifier {
               if #available(iOS 14.0, *) {
                 view = AnyView(view.listStyle(.plain))
               }
+            
             default:
               break
             }
@@ -841,3 +894,12 @@ func getColor(_ color: Any?) -> Color {
 }
 
 
+func getColors(_ colors: [Any]?) -> [Color] {
+  var result: [Color] = []
+  if let colors = colors {
+    for color in colors {
+      result.append(getColor(color))
+    }
+  }
+  return result
+}

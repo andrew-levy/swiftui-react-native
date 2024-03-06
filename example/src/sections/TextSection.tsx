@@ -1,9 +1,9 @@
 import React from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
 import {
   HStack,
   Label,
   List,
+  Section,
   Spacer,
   Stepper,
   Text,
@@ -16,8 +16,8 @@ import {
 export const TextSection = () => {
   const count = useBinding(0);
   return (
-    <ScrollView>
-      <List frame={{ height: 560 }} header="Fonts" scrollDisabled>
+    <List style={{ flex: 1 }}>
+      <Section header="System Fonts">
         <Text font="body">Body</Text>
         <Text font="callout">Callout</Text>
         <Text font="caption">Caption</Text>
@@ -29,19 +29,19 @@ export const TextSection = () => {
         <Text font="title">Title</Text>
         <Text font="title2">Title 2</Text>
         <Text font="title3">Title 3</Text>
-      </List>
-      <List frame={{ height: 280 }} header="Markdown" scrollDisabled>
+      </Section>
+      <Section header="Markdown">
         <Text>**Bold**</Text>
         <Text>*Italic*</Text>
         <Text>[Link](https://www.google.com)</Text>
         <Text>`Code`</Text>
         <Text>~~Strikethrough~~</Text>
-      </List>
-      <List frame={{ height: 150 }} header="Labels" scrollDisabled>
+      </Section>
+      <Section header="Labels">
         <Label title="Label" systemImage="square.grid.3x1.folder.badge.plus" />
         <Label title="Moon" systemImage="moon.stars" />
-      </List>
-      <List frame={{ height: 200 }} header="Content Transition" scrollDisabled>
+      </Section>
+      <Section header="Content Transition">
         <HStack>
           <Text
             frame={{ width: 80 }}
@@ -56,7 +56,7 @@ export const TextSection = () => {
           <Spacer />
           <Stepper value={count} />
         </HStack>
-      </List>
-    </ScrollView>
+      </Section>
+    </List>
   );
 };

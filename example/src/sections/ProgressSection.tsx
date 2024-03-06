@@ -4,6 +4,7 @@ import {
   HStack,
   List,
   ProgressView,
+  Spacer,
   Text,
   VStack,
 } from 'swiftui-react-native';
@@ -31,14 +32,23 @@ export const ProgressSection = () => {
   return (
     <List style={{ flex: 1 }}>
       <VStack>
-        <HStack padding={{ vertical: 10 }}>
+        <HStack padding={{ vertical: 20 }} frame={{ width: 300 }}>
           <Text>Linear</Text>
-          <Button title="Download" action={() => setDownloading(true)} />
+          <Spacer />
+          <Button
+            frame={{ width: 100 }}
+            buttonStyle="borderedProminent"
+            title={downloading ? 'Cancel' : 'Download'}
+            action={() => setDownloading(!downloading)}
+          />
         </HStack>
-        <ProgressView value={progress} total={100} />
+        <ProgressView value={progress} total={100} padding={{ bottom: 20 }} />
       </VStack>
       <VStack spacing={20} padding={{ vertical: 10 }}>
-        <Text>Indeterminate</Text>
+        <HStack frame={{ width: 300 }}>
+          <Text>Indeterminate</Text>
+          <Spacer />
+        </HStack>
         <ProgressView tint="blue" />
       </VStack>
     </List>

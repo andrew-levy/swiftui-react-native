@@ -11,7 +11,6 @@ export function onBaseEvent(
   const eventName = Object.keys(e.nativeEvent).filter((key) =>
     key.startsWith('on')
   )[0];
-  console.log(eventName);
   switch (eventName) {
     case 'onAppear':
       modifiers.onAppear?.();
