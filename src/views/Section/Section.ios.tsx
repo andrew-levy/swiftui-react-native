@@ -45,7 +45,7 @@ export function Section({
         onBaseEvent(e, modifiers);
       }}
     >
-      {typeof children === 'function' ? children() : children}
+      {children}
     </NativeSection>
   );
 }
