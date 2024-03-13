@@ -1,5 +1,5 @@
 import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
-import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
+import { NativeModifiersProp } from '../../utils/modifiers';
 
 export type NativeSpacerProps = {
   modifiers?: NativeModifiersProp;
@@ -12,4 +12,4 @@ export type NativeSpacerProps = {
 };
 export type SpacerProps = {
   style?: StyleProp<ViewStyle>;
-} & Modifiers;
+};

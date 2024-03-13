@@ -23,7 +23,7 @@ export const PickerSection = () => {
   return (
     <List style={{ flex: 1 }}>
       <HStack padding={{ vertical: 10 }}>
-        <ColorPicker selection={color} title="Color" />
+        <ColorPicker title="Color" selection={color} />
         <Spacer />
       </HStack>
       <HStack padding={{ vertical: 10 }}>

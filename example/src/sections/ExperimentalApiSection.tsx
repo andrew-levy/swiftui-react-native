@@ -43,13 +43,9 @@ export const ExperimentalApiSection = () => {
         { alignment: 'leading', spacing: 10 },
         Text('Hello, World!'),
         Text('Hello, World!'),
-        Text('Hello, World!'),
-        Button({
-          title: 'Hello, World!',
-          action: () => console.log('Hello, World!'),
-        })
-      ),
-      ColorPicker({ selection: color, title: 'Color' })
+        Text('Hello, World!')
+      ).frame({ height: 200 }),
+      ColorPicker({ selection: color, title: 'Color' }).style({ width: '100%' })
     )
   ).style({ flex: 1 });
 };

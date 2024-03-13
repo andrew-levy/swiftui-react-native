@@ -25,11 +25,21 @@ export const ShadowText = ({
     <RNText
       style={[
         {
-          ...getFont(font, fontSize, bold ? 'bold' : fontWeight, italic),
+          ...getFont(
+            font,
+            fontSize,
+            isBoldMarkdownText(children as string)
+              ? 'bold'
+              : bold
+              ? 'bold'
+              : fontWeight,
+            italic
+          ),
           ...getPadding(padding),
           ...getFrame(frame),
           ...getBorder(border),
           ...getTransform(scaleEffect, rotationEffect),
+          ...(isCodeMarkdownText(children as string) && { letterSpacing: 1 }),
         },
         style,
       ]}
@@ -40,6 +50,20 @@ export const ShadowText = ({
     </RNText>
   );
 };
+
+function isBoldMarkdownText(md: string) {
+  const boldRegex = /\*\*(.*?)\*\*/g;
+  const boldMatches = md.match(boldRegex);
+  if (boldMatches) return true;
+  else return false;
+}
+
+function isCodeMarkdownText(md: string) {
+  const codeRegex = /`([^`]+)`/g;
+  const codeMatches = md.match(codeRegex);
+  if (codeMatches) return true;
+  else return false;
+}
 
 function stripMarkdownFromText(md: string) {
   const options = {

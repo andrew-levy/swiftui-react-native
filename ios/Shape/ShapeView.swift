@@ -56,7 +56,6 @@ struct ShapeView: View {
         .reactNativeViewModifiers(mods: props.modifiers)
     case "UnevenRoundedRectangle":
       if #available(iOS 16.0, *) {
-        let _ = print(props.cornerRadii)
         UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(
           topLeading: props.cornerRadii["topLeading"] ?? 0,
           bottomLeading: props.cornerRadii["bottomLeading"] ?? 0,

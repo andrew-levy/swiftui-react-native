@@ -31,6 +31,7 @@ import {
 } from '../views/TextField';
 import { Toggle as ToggleComp } from '../views/Toggle';
 import { VStack as VStackComp } from '../views/VStack';
+import { ZStack as ZStackComp } from '../views/ZStack';
 
 import {
   ElementWithModifiers,
@@ -63,6 +64,16 @@ const VStack = (
       spacing: hasProps ? propsOrFirstChild.spacing : undefined,
     },
     React.Children.map(allChildren, (c) => {
+      return React.cloneElement(c, { key: children.indexOf(c) });
+    })
+  );
+};
+
+const ZStack = (...children: ElementWithModifiers[]) => {
+  return createSwiftUIComponent(
+    ZStackComp,
+    {},
+    React.Children.map(children, (c) => {
       return React.cloneElement(c, { key: children.indexOf(c) });
     })
   );
@@ -333,4 +344,5 @@ export {
   Toggle,
   UnevenRoundedRectangle,
   VStack,
+  ZStack,
 };

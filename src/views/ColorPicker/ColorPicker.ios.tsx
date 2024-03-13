@@ -26,7 +26,10 @@ export function ColorPicker({
       selection={getValueOrBinding(selection)}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        ...getSizeFromModifiers(modifiers, { width: 300, height: 30 }),
+        ...getSizeFromModifiers(modifiers, {
+          width: title ? 300 : 30,
+          height: 30,
+        }),
         ...(style as object),
       }}
       onEvent={(e) => {

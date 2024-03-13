@@ -2,56 +2,77 @@ import { ComponentType, ReactNode, createElement } from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { Modifiers } from '../utils/modifiers';
 
-
 export type ElementWithModifiers = JSX.Element & {
-  padding: (padding: Modifiers["padding"]) => ElementWithModifiers;
-  border: (border: Modifiers["border"]) => ElementWithModifiers;
-  foregroundStyle: (foregroundStyle: Modifiers["foregroundStyle"]) => ElementWithModifiers;
-  rotationEffect: (rotationEffect: Modifiers["rotationEffect"]) => ElementWithModifiers;
-  scaleEffect: (scaleEffect: Modifiers["scaleEffect"]) => ElementWithModifiers;
-  shadow: (shadow: Modifiers["shadow"]) => ElementWithModifiers;
-  background: (background: Modifiers["background"]) => ElementWithModifiers;
+  padding: (padding: Modifiers['padding']) => ElementWithModifiers;
+  border: (border: Modifiers['border']) => ElementWithModifiers;
+  foregroundStyle: (
+    foregroundStyle: Modifiers['foregroundStyle']
+  ) => ElementWithModifiers;
+  rotationEffect: (
+    rotationEffect: Modifiers['rotationEffect']
+  ) => ElementWithModifiers;
+  scaleEffect: (scaleEffect: Modifiers['scaleEffect']) => ElementWithModifiers;
+  shadow: (shadow: Modifiers['shadow']) => ElementWithModifiers;
+  background: (background: Modifiers['background']) => ElementWithModifiers;
   hidden: () => ElementWithModifiers;
-  frame: (frame: Modifiers["frame"]) => ElementWithModifiers;
-  zIndex: (zIndex: Modifiers["zIndex"]) => ElementWithModifiers;
-  opacity: (opacity: Modifiers["opacity"]) => ElementWithModifiers;
-  tint: (tint: Modifiers["tint"]) => ElementWithModifiers;
-  cornerRadius: (cornerRadius: Modifiers["cornerRadius"]) => ElementWithModifiers;
-  position: (position: Modifiers["position"]) => ElementWithModifiers;
-  offset: (offset: Modifiers["offset"]) => ElementWithModifiers;
-  animation: (animation: Modifiers["animation"]) => ElementWithModifiers;
-  contentTransition: (contentTransition: Modifiers["contentTransition"]) => ElementWithModifiers;
-  blur: (blur: Modifiers["blur"]) => ElementWithModifiers;
-  saturation: (saturation: Modifiers["saturation"]) => ElementWithModifiers;
-  grayscale: (grayscale: Modifiers["grayscale"]) => ElementWithModifiers;
-  brightness: (brightness: Modifiers["brightness"]) => ElementWithModifiers;
-  contrast: (contrast: Modifiers["contrast"]) => ElementWithModifiers;
-  blendMode: (blendMode: Modifiers["blendMode"]) => ElementWithModifiers;
-  mask: (mask: Modifiers["mask"]) => ElementWithModifiers;
-  clipShape: (clipShape: Modifiers["clipShape"]) => ElementWithModifiers;
-  environment: (environment: Modifiers["environment"]) => ElementWithModifiers;
-  textContentType: (textContentType: Modifiers["textContentType"]) => ElementWithModifiers;
-  keyboardType: (keyboardType: Modifiers["keyboardType"]) => ElementWithModifiers;
-  textInputAutocapitalization: (textInputAutocapitalization: Modifiers["textInputAutocapitalization"]) => ElementWithModifiers;
-  autocorrectionDisabled: (value: Modifiers["autocorrectionDisabled"]) => ElementWithModifiers;
+  frame: (frame: Modifiers['frame']) => ElementWithModifiers;
+  zIndex: (zIndex: Modifiers['zIndex']) => ElementWithModifiers;
+  opacity: (opacity: Modifiers['opacity']) => ElementWithModifiers;
+  tint: (tint: Modifiers['tint']) => ElementWithModifiers;
+  cornerRadius: (
+    cornerRadius: Modifiers['cornerRadius']
+  ) => ElementWithModifiers;
+  position: (position: Modifiers['position']) => ElementWithModifiers;
+  offset: (offset: Modifiers['offset']) => ElementWithModifiers;
+  animation: (animation: Modifiers['animation']) => ElementWithModifiers;
+  contentTransition: (
+    contentTransition: Modifiers['contentTransition']
+  ) => ElementWithModifiers;
+  blur: (blur: Modifiers['blur']) => ElementWithModifiers;
+  saturation: (saturation: Modifiers['saturation']) => ElementWithModifiers;
+  grayscale: (grayscale: Modifiers['grayscale']) => ElementWithModifiers;
+  brightness: (brightness: Modifiers['brightness']) => ElementWithModifiers;
+  contrast: (contrast: Modifiers['contrast']) => ElementWithModifiers;
+  blendMode: (blendMode: Modifiers['blendMode']) => ElementWithModifiers;
+  mask: (mask: Modifiers['mask']) => ElementWithModifiers;
+  clipShape: (clipShape: Modifiers['clipShape']) => ElementWithModifiers;
+  environment: (environment: Modifiers['environment']) => ElementWithModifiers;
+  textContentType: (
+    textContentType: Modifiers['textContentType']
+  ) => ElementWithModifiers;
+  keyboardType: (
+    keyboardType: Modifiers['keyboardType']
+  ) => ElementWithModifiers;
+  textInputAutocapitalization: (
+    textInputAutocapitalization: Modifiers['textInputAutocapitalization']
+  ) => ElementWithModifiers;
+  autocorrectionDisabled: (
+    value: Modifiers['autocorrectionDisabled']
+  ) => ElementWithModifiers;
   resizable: () => ElementWithModifiers;
-  imageScale: (imageScale: Modifiers["imageScale"]) => ElementWithModifiers;
-  symbolRenderingMode: (symbolRenderingMode: Modifiers["symbolRenderingMode"]) => ElementWithModifiers;
-  fontSize: (fontSize: Modifiers["fontSize"]) => ElementWithModifiers;
-  fontWeight: (fontWeight: Modifiers["fontWeight"]) => ElementWithModifiers;
-  font: (font: Modifiers["font"]) => ElementWithModifiers;
-  bold: (isActive?: Modifiers["bold"]) => ElementWithModifiers;
-  italic: (isActive: Modifiers["italic"]) => ElementWithModifiers;
-  strikethrough: (isActive: Modifiers["strikethrough"]) => ElementWithModifiers;
-  underline: (isActive: Modifiers["underline"]) => ElementWithModifiers;
-  buttonStyle: (buttonStyle: Modifiers["buttonStyle"]) => ElementWithModifiers;
-  pickerStyle: (pickerStyle: Modifiers["pickerStyle"]) => ElementWithModifiers;
-  textFieldStyle: (textFieldStyle: Modifiers["textFieldStyle"]) => ElementWithModifiers;
-  listStyle: (listStyle: Modifiers["listStyle"]) => ElementWithModifiers;
-  sensoryFeedback: (sensoryFeedback: Modifiers["sensoryFeedback"]) => ElementWithModifiers;
+  imageScale: (imageScale: Modifiers['imageScale']) => ElementWithModifiers;
+  symbolRenderingMode: (
+    symbolRenderingMode: Modifiers['symbolRenderingMode']
+  ) => ElementWithModifiers;
+  fontSize: (fontSize: Modifiers['fontSize']) => ElementWithModifiers;
+  fontWeight: (fontWeight: Modifiers['fontWeight']) => ElementWithModifiers;
+  font: (font: Modifiers['font']) => ElementWithModifiers;
+  bold: (isActive?: Modifiers['bold']) => ElementWithModifiers;
+  italic: (isActive: Modifiers['italic']) => ElementWithModifiers;
+  strikethrough: (isActive: Modifiers['strikethrough']) => ElementWithModifiers;
+  underline: (isActive: Modifiers['underline']) => ElementWithModifiers;
+  buttonStyle: (buttonStyle: Modifiers['buttonStyle']) => ElementWithModifiers;
+  pickerStyle: (pickerStyle: Modifiers['pickerStyle']) => ElementWithModifiers;
+  textFieldStyle: (
+    textFieldStyle: Modifiers['textFieldStyle']
+  ) => ElementWithModifiers;
+  listStyle: (listStyle: Modifiers['listStyle']) => ElementWithModifiers;
+  sensoryFeedback: (
+    sensoryFeedback: Modifiers['sensoryFeedback']
+  ) => ElementWithModifiers;
+  labelIsHidden: () => ElementWithModifiers;
   style: (style: StyleProp<ViewStyle | TextStyle>) => ElementWithModifiers;
 };
-
 
 export function createSwiftUIComponent(
   type: ComponentType<any>,
@@ -89,7 +110,7 @@ export function createSwiftUIComponent(
     return this;
   };
 
-    Element.foregroundStyle = function (foregroundStyle) {
+  Element.foregroundStyle = function (foregroundStyle) {
     this.props = { ...this.props, foregroundStyle };
     return this;
   };
@@ -286,6 +307,11 @@ export function createSwiftUIComponent(
 
   Element.sensoryFeedback = function (sensoryFeedback) {
     this.props = { ...this.props, sensoryFeedback };
+    return this;
+  };
+
+  Element.labelIsHidden = function () {
+    this.props = { ...this.props, labelIsHidden: true };
     return this;
   };
 

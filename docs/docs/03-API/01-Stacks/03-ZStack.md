@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-ZStack(alignment: .top, spacing: 10) {
+ZStack(alignment: .topLeading) {
     Image(systemName: "circle.fill").font(.system(size: 100))
     Image(systemName: "circle.fill").foregroundColor(.systemTeal).font(.system(size: 50))
     Text("ZStack").foregroundColor(.white).bold()

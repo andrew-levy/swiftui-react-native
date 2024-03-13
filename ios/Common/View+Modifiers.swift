@@ -207,6 +207,11 @@ struct ReactNativeViewModifiers: ViewModifier {
           if let zIndex = value as? Double {
             view = AnyView(view.zIndex(zIndex))
           }
+
+        case "labelIsHidden":
+          if let isHidden = value as? Bool, isHidden == true {
+            view = AnyView(view.labelsHidden())
+          }
           // Currently only supports text mask
         case "mask":
           if let mask = value as? String {

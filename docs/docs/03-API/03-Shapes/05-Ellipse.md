@@ -1,7 +1,7 @@
 ---
 ---
 
-A rectangular shape view.
+A Ellipse shape view.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<Rectangle fill="systemRed" frame={{ width: 100, height: 150 }} />
+<Ellipse fill="systemRed" frame={{ width: 100, height: 150 }} />
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-Rectangle()
+Ellipse()
     .fill(Color.red)
     .frame(width: 100, height: 150)
 ```
@@ -28,7 +28,9 @@ Rectangle()
 <TabItem value="react-native" label="React Native">
 
 ```tsx
-<View style={{ width: 100, height: 150, backgroundColor: 'red' }} />
+<View
+  style={{ width: 100, height: 150, backgroundColor: 'red', borderRadius: 10 }}
+/>
 ```
 
 </TabItem>
@@ -36,4 +38,8 @@ Rectangle()
 
 ## Props
 
-Rectangle inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
+Ellipse inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
+
+:::info
+The `frame` prop is required for Ellipse.
+:::

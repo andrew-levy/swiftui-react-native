@@ -15,8 +15,21 @@ export const TextFieldSection = () => {
   const bio = useBinding('My bio...');
   return (
     <List>
-      <TextField placeholder="Username" text={text} />
-      <SecureField placeholder="Password" text={password} />
+      <TextField
+        placeholder="Username"
+        text={text}
+        textContentType="username"
+      />
+      <SecureField
+        placeholder="Password"
+        text={password}
+        textContentType="newPassword"
+      />
+      <SecureField
+        placeholder="Password"
+        text={password}
+        textContentType="newPassword"
+      />
       <TextEditor
         placeholder="Bio"
         text={bio}

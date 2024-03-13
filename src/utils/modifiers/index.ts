@@ -1,7 +1,7 @@
 import { ViewStyle } from 'react-native';
 import { getValueOrBinding } from '../binding';
 
-type Color =   
+type Color =
   | 'blue'
   | 'red'
   | 'green'
@@ -27,24 +27,27 @@ type Color =
 
 export type Modifiers = {
   // View
-  padding?: number | boolean | {
-    leading?: number;
-    top?: number;
-    bottom?: number;
-    trailing?: number;
-    horizontal?: number;
-    vertical?: number;
-    all?: number;
-};
+  padding?:
+    | number
+    | boolean
+    | {
+        leading?: number;
+        top?: number;
+        bottom?: number;
+        trailing?: number;
+        horizontal?: number;
+        vertical?: number;
+        all?: number;
+      };
   border?: {
     color?: Color;
     width?: number;
-};
+  };
   foregroundStyle?: Color | Color[];
   rotationEffect?: {
     degrees?: number;
     radians?: number;
-};
+  };
   scaleEffect?: number;
   shadow?: {
     color?: Color;
@@ -52,13 +55,13 @@ export type Modifiers = {
     y?: number;
     radius: number;
     opacity?: number;
-};
+  };
   background?: Color;
   hidden?: boolean;
   frame?: {
     width?: number;
     height?: number;
-};
+  };
   zIndex?: number;
   opacity?: number;
   tint?: Color;
@@ -84,44 +87,46 @@ export type Modifiers = {
     | 'identity'
     | 'interpolate'
     | 'symbolEffect';
+  labelIsHidden?: boolean;
   // Filter
   blur?: number;
   saturation?: number;
   grayscale?: number;
   brightness?: number;
   contrast?: number;
-  blendMode?:  
-  | 'color'
-  | 'colorBurn'
-  | 'colorDodge'
-  | 'darken'
-  | 'difference'
-  | 'exclusion'
-  | 'hardLight'
-  | 'hue'
-  | 'lighten'
-  | 'luminosity'
-  | 'multiply'
-  | 'overlay'
-  | 'saturation'
-  | 'screen'
-  | 'softLight'
-  | 'sourceAtop'
-  | 'destinationOver'
-  | 'destinationOut'
-  | 'plusDarker'
-  | 'plusLighter'
-  | 'normal';
+  blendMode?:
+    | 'color'
+    | 'colorBurn'
+    | 'colorDodge'
+    | 'darken'
+    | 'difference'
+    | 'exclusion'
+    | 'hardLight'
+    | 'hue'
+    | 'lighten'
+    | 'luminosity'
+    | 'multiply'
+    | 'overlay'
+    | 'saturation'
+    | 'screen'
+    | 'softLight'
+    | 'sourceAtop'
+    | 'destinationOver'
+    | 'destinationOut'
+    | 'plusDarker'
+    | 'plusLighter'
+    | 'normal';
   mask?: string;
-  clipShape?:   | 'circle'
-  | 'roundedRectangle'
-  | 'capsule'
-  | 'rectangle'
-  | 'ellipse'
-  | {
-      shape: 'roundedRectangle';
-      cornerRadius: number;
-    };
+  clipShape?:
+    | 'circle'
+    | 'roundedRectangle'
+    | 'capsule'
+    | 'rectangle'
+    | 'ellipse'
+    | {
+        shape: 'roundedRectangle';
+        cornerRadius: number;
+      };
   // Environment
   environment?: {
     colorScheme: 'light' | 'dark';
@@ -210,11 +215,34 @@ export type Modifiers = {
     | 'bold'
     | 'heavy'
     | 'black';
-  font?: "body" | "callout" | "caption" | "caption2" | "footnote" | "headline" | "largeTitle" | "subheadline" | "title" | "title2" | "title3";
+  font?:
+    | 'body'
+    | 'callout'
+    | 'caption'
+    | 'caption2'
+    | 'footnote'
+    | 'headline'
+    | 'largeTitle'
+    | 'subheadline'
+    | 'title'
+    | 'title2'
+    | 'title3';
   bold?: boolean;
   italic?: boolean;
-  strikethrough?: boolean | { isActive: boolean, color?: Color; pattern?: "dot" | "dash" | "solid" | "dashDotDot" | "dashDot" };
-  underline?: boolean | { isActive: boolean, color?: Color; pattern?: "dot" | "dash" | "solid" | "dashDotDot" | "dashDot" };
+  strikethrough?:
+    | boolean
+    | {
+        isActive: boolean;
+        color?: Color;
+        pattern?: 'dot' | 'dash' | 'solid' | 'dashDotDot' | 'dashDot';
+      };
+  underline?:
+    | boolean
+    | {
+        isActive: boolean;
+        color?: Color;
+        pattern?: 'dot' | 'dash' | 'solid' | 'dashDotDot' | 'dashDot';
+      };
 
   // Style Variants
   buttonStyle?: 'bordered' | 'borderless' | 'plain' | 'borderedProminent';

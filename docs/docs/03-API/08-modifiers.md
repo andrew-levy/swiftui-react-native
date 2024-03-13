@@ -2,39 +2,31 @@
 title: Modifiers
 ---
 
-SwiftUI has a large selection of built-in modifiers that allow you to easily customize your views. In this library, modifiers are implemented as props.
+In SwiftUI, view modifiers allow you to easily change a view's appearance or behavior.
 
-## View Modifiers
+```swift
+Text("Hello, world!")
+    .font(.title)
+    .foregroundColor(.green)
+    .padding()
+```
 
-- alert: `Alert`
-- backgroundColor: `UIColor`
-- border: `Border`
-- cornerRadius: `number`
-- scaleEffect: `number`
-- rotationEffect: `Rotation`
-- frame: `Frame`
-- opacity: `number`
-- onAppear: `() => void`
-- onDisappear: `() => void`
-- padding: `Padding`
-- shadow: `Shadow`
-- style: `StyleProp<ViewStyle | TextStyle | ImageStyle>`
-- zIndex: `number`
-- preferredColorScheme: `ColorScheme`
+To approximate this in React Native, views are styled using props. Each prop corresponds to a modifier in SwiftUI.
 
-## Text Modifiers
+### Order Matters
 
-- customFont: `string`
-- font: `Font`
-- fontSize: `number`
-- fontWeight: `FontWeight`
-- foregroundColor: `string`
-- bold: `boolean`
-- italic: `boolean`
-- underline: `TextDecoration`
-- strikethrough: `TextDecoration`
+It's important to note that the order of modifiers matters. This is true for SwiftUI and for this library. For example,
 
-## Shape Modifiers
+```tsx
+<VStack border={{ color: 'blue' }} padding />
+```
 
-- fill: `UIColor`
-- frame: `ShapeFrame`
+produces a different result than
+
+```tsx
+<VStack padding border={{ color: 'blue' }} />
+```
+
+### Duplicate Modifiers
+
+In SwiftUI, duplicate modifiers are allowed since modifiers build on top of each other. To achieve the same effect, we need a special API that allows us to iteratively build up a view with modifiers, while still rendering a JSX element. For this, see the [experimental API](/docs/03-API/09-experimental).

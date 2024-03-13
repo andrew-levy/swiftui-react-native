@@ -130,4 +130,8 @@ const styles = StyleSheet.create({
 
 ## Acknowledgements
 
-Thanks to [Zach Grimaldi](https://github.com/zpg6) for contributing awesome ideas and for bringing a much needed iOS developer's perspective to table.
+Thanks to the following people for their contributions:
+
+- [Zach Grimaldi](https://github.com/zpg6) for contributing great ideas and being an OG contributor and user.
+- [Fernando Rojo](https://twitter.com/FernandoTheRojo) for for his valuable feedback.
+- [Mark Lawlor](https://twitter.com/mark__lawlor) for the inspiration for the experimental API.
