@@ -37,7 +37,7 @@ Label("Super Fast", systemImage: "bolt.fill")
 
 ## Props
 
-Label inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
+Label inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
 | prop          | description                                          | type                      | required | default     |
 | ------------- | ---------------------------------------------------- | ------------------------- | -------- | ----------- |

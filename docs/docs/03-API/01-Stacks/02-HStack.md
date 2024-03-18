@@ -43,7 +43,7 @@ HStack(alignment: .top, spacing: 10) {
 
 ## Props
 
-HStack inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+HStack inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
 | prop        | description                         | type                                                         | required | default    |
 | ----------- | ----------------------------------- | ------------------------------------------------------------ | -------- | ---------- |

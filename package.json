@@ -1,11 +1,11 @@
 {
   "name": "swiftui-react-native",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "A React Native component library inspired by SwiftUI",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "exports": {
-     ".": "./build/index.js",
+    ".": "./build/index.js",
     "./experimental": "./build/experimental/index.js"
   },
   "scripts": {

@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-const $sliderValue = useBinding(0);
+const sliderValue = useBinding(0);
 ```
 
 ```tsx
-<Slider value={$sliderValue} range={[0, 10]} />
+<Slider value={sliderValue} range={[0, 10]} />
 ```
 
 </TabItem>
@@ -46,12 +46,9 @@ const roundedVal = Math.round($sliderValue.value);
 
 Slider inherits all [View Modifiers](../modifiers#view-modifiers) as props.
 
-| prop        | description                                       | type                  | required | default       |
-| ----------- | ------------------------------------------------- | --------------------- | -------- | ------------- |
-| `value`     | The stepper value                                 | `Binding<number>`     | yes      | `undefined`   |
-| `step`      | The increment/decrement amount                    | `number`              | no       | `0`           |
-| `range`     | The range of values `[minNumber, maxNumber]`      | `[number, number]`    | no       | `[0, 10]`     |
-| `tint`      | The fill-color                                    | `UIColor`             | no       | `systemBlue`  |
-| `trackTint` | The track color                                   | `UIColor`             | no       | `systemGray4` |
-| `thumbTint` | The thumb color                                   | `UIColor`             | no       | `#fff`        |
-| `onChange`  | Function to execute when the slider value changes | `(v: number) => void` | no       | `undefined`   |
+| prop       | description                                       | type                        | required | default     |
+| ---------- | ------------------------------------------------- | --------------------------- | -------- | ----------- | --- |
+| `value`    | The stepper value                                 | `Binding<number> \| number` | yes      | `undefined` |
+| `step`     | The increment/decrement amount                    | `number`                    | no       | `1`         |
+| `range`    | The range of values `[minNumber, maxNumber]`      | `[number, number]`          | no       | `[0, 100]`  |     |
+| `onChange` | Function to execute when the slider value changes | `(v: number) => void`       | no       | `undefined` |

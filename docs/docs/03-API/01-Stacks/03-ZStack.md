@@ -63,7 +63,7 @@ ZStack(alignment: .topLeading) {
 
 ## Props
 
-ZStack inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+ZStack inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
 :::info
 The `frame` prop is required for ZStack.

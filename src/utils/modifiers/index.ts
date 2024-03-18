@@ -1,5 +1,4 @@
 import { ViewStyle } from 'react-native';
-import { getValueOrBinding } from '../binding';
 
 type Color =
   | 'blue'
@@ -288,7 +287,7 @@ export type Modifiers = {
 };
 
 export type NativeModifiersProp = { [key: string]: any };
-
+3;
 /**
  * Maps a modifiers object or function to an array of native modifiers, with
  * the order being preserved.
@@ -299,18 +298,17 @@ export function mapToNativeModifiers(modifiers: Modifiers) {
   }
   let result: NativeModifiersProp[] = [];
   result = Object.keys(modifiers || {}).map((key) => {
-    if (key === 'sheet') {
-      const { content, isPresented, ...rest } = modifiers[key];
-      return {
-        [key]: { ...rest, isPresented: getValueOrBinding(isPresented) },
-      };
-    }
+    // if (key === 'sheet') {
+    //   const { content, isPresented, ...rest } = modifiers[key];
+    //   return {
+    //     [key]: { ...rest, isPresented: getValueOrBinding(isPresented) },
+    //   };
+    // }
     return { [key]: modifiers[key] };
   });
   return result;
 }
 
-// TODO: this assumes {} need to assume [{}] for multiple modifiers
 export function getSizeFromModifiers(
   modifiers: Modifiers,
   defaultSize?: { width: number; height: number }
@@ -335,7 +333,6 @@ export function getSizeFromModifiers(
     if (modifiers.padding?.all) {
       styles.padding = modifiers.padding.all;
     }
-
     if (modifiers.padding?.horizontal) {
       styles.paddingHorizontal = modifiers.padding.horizontal;
     }

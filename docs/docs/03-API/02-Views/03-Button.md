@@ -66,16 +66,10 @@ Button("Click the cool button", action: doSomething)
 
 ## Props
 
-Button inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
+Button inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
-| prop          | description                                          | type          | required | default        |
-| ------------- | ---------------------------------------------------- | ------------- | -------- | -------------- |
-| `title`       | The text of the button.                              | `string`      | yes      | `undefined`    |
-| `action`      | The action to perform when the user taps the button. | `() => void`  | yes      | `undefined`    |
-| `disabled`    | Whether the button is able to be clicked.            | `boolean`     | no       | `undefined`    |
-| `buttonStyle` | The button style                                     | `ButtonStyle` | no       | `'borderless'` |
-| `children`    | The button content.                                  | `ReactNode`   | no       | `undefined`    |
-
-```ts
-type ButtonStyle = 'bordered' | 'borderedProminent' | 'plain' | 'borderless';
-```
+| prop       | description                                          | type         | required | default     |
+| ---------- | ---------------------------------------------------- | ------------ | -------- | ----------- |
+| `title`    | The text of the button.                              | `string`     | yes      | `undefined` |
+| `action`   | The action to perform when the user taps the button. | `() => void` | yes      | `undefined` |
+| `children` | The button content.                                  | `ReactNode`  | no       | `undefined` |

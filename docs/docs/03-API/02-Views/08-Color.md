@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 />
 ```
 
-### UIColor
+### Color
 
 ```tsx
 <Color
@@ -48,10 +48,10 @@ Color(red: 1.0, green: 0.5, blue: 1.0)
     .frame(width: 100, height: 100)
 ```
 
-### UIColor
+### Color
 
 ```swift
-Color(UIColor(.systemIndigo))
+Color(Color(.systemIndigo))
     .cornerRadius(10)
     .frame(width: 100, height: 100)
 ```
@@ -71,9 +71,9 @@ Color.red
 
 Color inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
 
-| prop    | description     | type                                                           | required | default     |
-| ------- | --------------- | -------------------------------------------------------------- | -------- | ----------- |
-| `color` | The color value | `UIColor` or `{ red?: number; blue?: number; green?: number;}` | no       | `undefined` |
+| prop    | description     | type                                                         | required | default     |
+| ------- | --------------- | ------------------------------------------------------------ | -------- | ----------- |
+| `color` | The color value | `Color` or `{ red?: number; blue?: number; green?: number;}` | no       | `undefined` |
 
 :::info
 The `frame` prop is required for Color.

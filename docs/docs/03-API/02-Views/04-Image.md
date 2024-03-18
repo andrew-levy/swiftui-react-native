@@ -50,10 +50,9 @@ Image("bolt")
 
 ## Props
 
-Image inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
+Image inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
-| prop         | description                             | type                  | required | default     |
-| ------------ | --------------------------------------- | --------------------- | -------- | ----------- |
-| `systemName` | The SF Symbol name.                     | `string`              | no       | `undefined` |
-| `source`     | The image resource                      | `ImageSourcePropType` | no       | `undefined` |
-| `style`      | The image styling to apply in the View. | `ImageStyle`          | no       | `undefined` |
+| prop         | description                             | type         | required | default     |
+| ------------ | --------------------------------------- | ------------ | -------- | ----------- |
+| `systemName` | The SF Symbol name.                     | `string`     | no       | `undefined` |
+| `style`      | The image styling to apply in the View. | `ImageStyle` | no       | `undefined` |

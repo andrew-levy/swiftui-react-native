@@ -45,7 +45,10 @@ export const ExperimentalApiSection = () => {
         Text('Hello, World!'),
         Text('Hello, World!')
       ).frame({ height: 200 }),
-      ColorPicker({ selection: color, title: 'Color' }).style({ width: '100%' })
+      ColorPicker({ selection: color, title: 'Color' })
+        .style({ width: '100%' })
+        .border({ width: 1, color: 'gray' })
+        .padding({ vertical: 10 })
     )
   ).style({ flex: 1 });
 };
