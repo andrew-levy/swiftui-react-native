@@ -38,6 +38,7 @@ Picker("Select an option", selection: $selection) {
 }
 ```
 
+</TabItem>
 </Tabs>
 
 ## Props

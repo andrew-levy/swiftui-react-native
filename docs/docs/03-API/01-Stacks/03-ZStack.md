@@ -65,10 +65,6 @@ ZStack(alignment: .topLeading) {
 
 ZStack inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
-:::info
-The `frame` prop is required for ZStack.
-:::
-
 | prop        | description                         | type                                                                                                                                                                              | required | default    |
 | ----------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------- |
 | `spacing`   | Amount of space between stack items | `number`                                                                                                                                                                          | no       | `0`        |

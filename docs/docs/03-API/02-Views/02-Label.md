@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<Label title="Super Fast" systemImage="bolt.fill">
+<Label title="Super Fast" systemImage="bolt.fill" />
 ```
 
 </TabItem>

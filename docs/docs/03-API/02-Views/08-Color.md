@@ -74,7 +74,3 @@ Color inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modi
 | prop    | description     | type                                                         | required | default     |
 | ------- | --------------- | ------------------------------------------------------------ | -------- | ----------- |
 | `color` | The color value | `Color` or `{ red?: number; blue?: number; green?: number;}` | no       | `undefined` |
-
-:::info
-The `frame` prop is required for Color.
-:::

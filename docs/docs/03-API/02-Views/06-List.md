@@ -28,7 +28,11 @@ const options = ['Option 1', 'Option 2', 'Option 3'];
 ```
 
 ```tsx
-<List data={options}>{(option) => <Text>{option}</Text>}</List>
+<List>
+  {ForEach(options, (option) => (
+    <Text key={option}>{option}</Text>
+  ))}
+</List>
 ```
 
 </TabItem>
@@ -51,8 +55,10 @@ var options: [String] = ["Option 1", "Option 2", "Option 3"]
 ```
 
 ```swift
-List(options) { option in
-    Text("\(option)")
+List {
+    ForEach(options, id: \.self) { option in
+        Text("\(option)")
+    }
 }
 ```
 

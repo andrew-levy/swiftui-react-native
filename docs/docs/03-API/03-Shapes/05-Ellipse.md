@@ -39,7 +39,3 @@ Ellipse()
 ## Props
 
 Ellipse inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
-
-:::info
-The `frame` prop is required for Ellipse.
-:::

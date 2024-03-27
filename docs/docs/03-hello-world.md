@@ -14,6 +14,11 @@ export default function App() {
     <VStack spacing={5}>
       <Image systemName="face.smiling" fontSize={50} />
       <Text font="title">Hello World!</Text>
+      <Button
+        title="Press me"
+        buttonStyle="bordered"
+        action={() => console.log('pressed')}
+      />
     </VStack>
   );
 }
