@@ -1,1 +1,1 @@
-export { ProgressView } from './ProgressView';
+export { ProgressView } from './ProgressView.ios';

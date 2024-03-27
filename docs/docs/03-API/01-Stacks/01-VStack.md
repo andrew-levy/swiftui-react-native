@@ -32,9 +32,9 @@ VStack(alignment: .leading, spacing: 10) {
 <TabItem value="react-native" label="React Native">
 
 ```tsx
-<View>
+<View style={{ gap: 10 }}>
   <Text>Hello</Text>
-  <Text style={{ marginTop: 10 }}>World</Text>
+  <Text>World</Text>
 </View>
 ```
 
@@ -43,7 +43,7 @@ VStack(alignment: .leading, spacing: 10) {
 
 ## Props
 
-VStack inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+VStack inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
 | prop        | description                         | type                                                         | required | default    |
 | ----------- | ----------------------------------- | ------------------------------------------------------------ | -------- | ---------- |

@@ -18,20 +18,22 @@ export const FontWeights = {
   heavy: '800',
   medium: '600',
   light: '500',
+  thin: '300',
+  ultralight: '200',
+  semibold: '700',
+  black: '900',
 };
 
 export const getFont = (
   font?: keyof typeof Fonts | string,
   fontSize?: number,
   fontWeight?: keyof typeof FontWeights,
-  customFont?: string,
   italic?: boolean
 ) => {
   return {
     ...Fonts[font],
     ...(fontSize && { fontSize }),
     ...(fontWeight && { fontWeight: FontWeights[fontWeight] }),
-    ...(customFont && { fontFamily: customFont }),
     ...(italic && { fontStyle: 'italic' }),
   };
 };

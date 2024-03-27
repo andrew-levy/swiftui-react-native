@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-const $password = useBinding('');
+const password = useBinding('');
 ```
 
 ```tsx
-<SecureField placeholder="Password" text={$password} />
+<SecureField placeholder="Password" text={password} />
 ```
 
 </TabItem>

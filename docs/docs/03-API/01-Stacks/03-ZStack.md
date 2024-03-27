@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-ZStack(alignment: .top, spacing: 10) {
+ZStack(alignment: .topLeading) {
     Image(systemName: "circle.fill").font(.system(size: 100))
     Image(systemName: "circle.fill").foregroundColor(.systemTeal).font(.system(size: 50))
     Text("ZStack").foregroundColor(.white).bold()
@@ -63,11 +63,7 @@ ZStack(alignment: .top, spacing: 10) {
 
 ## Props
 
-ZStack inherits all [View Modifiers](../modifiers#view-modifiers) as props.
-
-:::info
-The `frame` prop is required for ZStack.
-:::
+ZStack inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
 | prop        | description                         | type                                                                                                                                                                              | required | default    |
 | ----------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------- |

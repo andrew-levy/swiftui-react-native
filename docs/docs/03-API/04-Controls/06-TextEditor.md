@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-const $bio = useBinding('');
+const bio = useBinding('');
 ```
 
 ```tsx
-<TextEditor placeholder="Bio" text={$bio} />
+<TextEditor placeholder="Bio" text={bio} />
 ```
 
 </TabItem>

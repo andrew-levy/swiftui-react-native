@@ -34,4 +34,4 @@ Text("Hello").font(.largeTitle)
 
 ## Props
 
-Text inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
+Text inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
