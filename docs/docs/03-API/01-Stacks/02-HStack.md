@@ -45,8 +45,8 @@ HStack(alignment: .top, spacing: 10) {
 
 HStack inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
-| prop        | description                         | type                                                         | required | default    |
-| ----------- | ----------------------------------- | ------------------------------------------------------------ | -------- | ---------- |
-| `spacing`   | Amount of space between stack items | `number`                                                     | no       | `0`        |
-| `alignment` | The alignment guide                 | `'top'` &#124; `'bottom'` &#124; `'center'`                  | no       | `'center'` |
-| `children`  | Stack items                         | `React.ReactElement<any>` &#124; `React.ReactElement<any>[]` | no       | `null`     |
+| prop        | description                         | type                                        | required | default    |
+| ----------- | ----------------------------------- | ------------------------------------------- | -------- | ---------- |
+| `spacing`   | Amount of space between stack items | `number`                                    | no       | `0`        |
+| `alignment` | The alignment guide                 | `'top'` &#124; `'bottom'` &#124; `'center'` | no       | `'center'` |
+| `children`  | Stack items                         | `ReactNode`                                 | no       | `null`     |

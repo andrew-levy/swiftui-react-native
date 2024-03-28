@@ -4,7 +4,7 @@ title: Experimental API
 
 ## What is it?
 
-You can do a lot with the components and modifier props provided by this library, but SwiftUI has a few superpowers that cannot be easily implemented in JSX. This is where the experimental API comes in. It allows you to tap into the full power of SwiftUI modifiers. Shout out to [swiftui-react](https://github.com/tarngerine/swiftui-react/tree/main) and [Mark Lawlor] (https://x.com/mark__lawlor/status/1755721514643832854?s=20) for the inspiration for this api.
+You can do a lot with the components and modifier props provided by this library, but SwiftUI has a few superpowers that cannot be easily implemented in JSX. This is where the experimental API comes in. It allows you to tap into the full power of SwiftUI modifiers. Shout out to the awesome repo [swiftui-react](https://github.com/tarngerine/swiftui-react/tree/main) and Mark Lawlor's [post](https://x.com/mark__lawlor/status/1755721514643832854?s=20) for the inspiration for this api.
 
 ## Why might you need this?
 

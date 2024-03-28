@@ -6,6 +6,10 @@ A view that displays an image.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::info
+Images can only render SF Symbols. For uri or asset based impages, use `Image` from `react-native`.
+:::
+
 ## Example
 
 <Tabs>
@@ -36,7 +40,6 @@ Image(systemName: "bolt.fill")
 
 Image inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
-| prop         | description                            | type         | required | default     |
-| ------------ | -------------------------------------- | ------------ | -------- | ----------- |
-| `systemName` | The SF Symbol name                     | `string`     | no       | `undefined` |
-| `style`      | The image styling to apply in the View | `ImageStyle` | no       | `undefined` |
+| prop         | description        | type     | required | default     |
+| ------------ | ------------------ | -------- | -------- | ----------- |
+| `systemName` | The SF Symbol name | `string` | no       | `undefined` |
