@@ -1,8 +1,16 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { getSizeFromModifiers, mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { onBaseEvent } from '../../utils/onBaseEvent';
-import { NativeShapeProps, ShapeProps } from './types';
+import {
+  NativeShapeProps,
+  ShapeCornerRadii,
+  ShapeCornerRadius,
+  ShapeProps,
+} from './types';
 
 const NativeShape: React.ComponentType<NativeShapeProps> =
   requireNativeViewManager('Shape');
@@ -23,7 +31,7 @@ export function Rectangle({ style, ...modifiers }: ShapeProps) {
   );
 }
 
-export function RoundedRectangle(props: ShapeProps & { cornerRadius: number }) {
+export function RoundedRectangle(props: ShapeProps & ShapeCornerRadius) {
   const { style, cornerRadius, ...modifiers } = props;
   return (
     <NativeShape
@@ -41,16 +49,7 @@ export function RoundedRectangle(props: ShapeProps & { cornerRadius: number }) {
   );
 }
 
-export function UnevenRoundedRectangle(
-  props: ShapeProps & {
-    cornerRadii: {
-      topLeading: number;
-      topTrailing: number;
-      bottomLeading: number;
-      bottomTrailing: number;
-    };
-  }
-) {
+export function UnevenRoundedRectangle(props: ShapeProps & ShapeCornerRadii) {
   const { style, cornerRadii, ...modifiers } = props;
   return (
     <NativeShape

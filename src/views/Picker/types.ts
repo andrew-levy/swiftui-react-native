@@ -6,7 +6,6 @@ import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 export type NativePickerProps = {
   selection: string;
   options: any[];
-  pickerStyle?: 'menu' | 'segmented' | 'wheel';
   modifiers?: NativeModifiersProp;
   onEvent?: (
     e: NativeSyntheticEvent<{
@@ -18,7 +17,6 @@ export type NativePickerProps = {
 
 export type PickerProps = {
   selection: Binding<string> | string;
-  pickerStyle?: 'menu' | 'segmented' | 'wheel';
   onChange?: (newValue: string) => void;
   style?: StyleProp<ViewStyle>;
   children: ReactElement | ReactElement[];

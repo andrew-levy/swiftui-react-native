@@ -29,7 +29,7 @@ export const PickerSection = () => {
       <HStack padding={{ vertical: 10 }}>
         <DatePicker
           selection={date}
-          title="Date!!!!!!!!"
+          title="Date"
           displayedComponents={['date', 'hourAndMinute']}
         />
         <Spacer />

@@ -6,13 +6,11 @@ extension View {
   func reactNativeViewModifiers(
     mods: [[String: Any]],
     onEvent: EventDispatcher = EventDispatcher()
-//    sheetContent: UIView = UIView()
   ) -> some View {
     modifier(
       ReactNativeViewModifiers(
         mods: mods,
         onEvent: onEvent
-//        sheetContent: sheetContent
       )
     )
   }
@@ -21,7 +19,6 @@ extension View {
 struct ReactNativeViewModifiers: ViewModifier {
   var mods: [[String: Any]]
   var onEvent: EventDispatcher
-//  var sheetContent: UIView?
   
   func body(content: Content) -> some View {
     var view = AnyView(content)

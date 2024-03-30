@@ -43,9 +43,9 @@ Picker("Select an option", selection: $selection) {
 
 ## Props
 
-Toggle inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+Picker inherits all [View Modifiers](../modifiers#full-list) as props.
 
-| prop       | description                                       | type                        | required | default     |
-| ---------- | ------------------------------------------------- | --------------------------- | -------- | ----------- |
-| `isOn`     | The toggle value                                  | `BooleanBinding \| boolean` | yes      | `undefined` |
-| `onChange` | Function to execute when the toggle value changes | `(v: boolean) => void`      | no       | `undefined` |
+| prop        | description                                  | type                  | required | default     |
+| ----------- | -------------------------------------------- | --------------------- | -------- | ----------- |
+| `selection` | The selected value                           | `string`              | yes      | `undefined` |
+| `onChange`  | Function to execute when a selection is made | `(v: string) => void` | no       | `undefined` |

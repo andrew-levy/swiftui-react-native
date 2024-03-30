@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<Circle fill="systemRed" frame={{ width: 100, height: 100 }} />
+<Circle fill="red" frame={{ width: 100, height: 100 }} />
 ```
 
 </TabItem>
@@ -38,4 +38,4 @@ Circle()
 
 ## Props
 
-Circle inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
+Circle inherits all [View Modifiers](../modifiers#full-list) as props.

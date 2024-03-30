@@ -44,7 +44,7 @@ const roundedVal = Math.round($sliderValue.value);
 
 ## Props
 
-Slider inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+Slider inherits all [View Modifiers](../modifiers#full-list) as props.
 
 | prop       | description                                       | type                        | required | default     |
 | ---------- | ------------------------------------------------- | --------------------------- | -------- | ----------- | --- |

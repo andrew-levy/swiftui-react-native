@@ -43,7 +43,7 @@ ProgressView(value: progress).progressViewStyle(.linear)
 
 ## Props
 
-ProgressView inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+ProgressView inherits all [View Modifiers](../modifiers#full-list) as props.
 
 | prop    | description            | type     | required | default     |
 | ------- | ---------------------- | -------- | -------- | ----------- |

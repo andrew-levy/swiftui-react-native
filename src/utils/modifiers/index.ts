@@ -126,6 +126,11 @@ export type Modifiers = {
         shape: 'roundedRectangle';
         cornerRadius: number;
       };
+  fill?: Color;
+  stroke?: {
+    color: Color;
+    lineWidth: number;
+  };
   // Environment
   environment?: {
     colorScheme: 'light' | 'dark';
@@ -287,23 +292,34 @@ export type Modifiers = {
 };
 
 export type NativeModifiersProp = { [key: string]: any };
-3;
+
+export type ExperimentalPrivateModifierProp = {
+  _modifiers: NativeModifiersProp[];
+};
+
+export function getExperimentalPrivateModifiers(modifiers: Modifiers) {
+  const experimentalPrivateMods = (modifiers as ExperimentalPrivateModifierProp)
+    ._modifiers;
+  if (experimentalPrivateMods) {
+    return experimentalPrivateMods.reduce((styles, mod) => {
+      return { ...styles, ...mod };
+    }, {});
+  } else {
+    return modifiers;
+  }
+}
+
 /**
  * Maps a modifiers object or function to an array of native modifiers, with
  * the order being preserved.
  */
 export function mapToNativeModifiers(modifiers: Modifiers) {
-  if (Array.isArray(modifiers)) {
-    return modifiers;
-  }
+  const experimentalPrivateMods = (modifiers as ExperimentalPrivateModifierProp)
+    ._modifiers;
+  if (experimentalPrivateMods) return experimentalPrivateMods;
+  if (Array.isArray(modifiers)) return modifiers;
   let result: NativeModifiersProp[] = [];
   result = Object.keys(modifiers || {}).map((key) => {
-    // if (key === 'sheet') {
-    //   const { content, isPresented, ...rest } = modifiers[key];
-    //   return {
-    //     [key]: { ...rest, isPresented: getValueOrBinding(isPresented) },
-    //   };
-    // }
     return { [key]: modifiers[key] };
   });
   return result;
@@ -313,6 +329,8 @@ export function getSizeFromModifiers(
   modifiers: Modifiers,
   defaultSize?: { width: number; height: number }
 ) {
+  modifiers = getExperimentalPrivateModifiers(modifiers);
+
   const styles: ViewStyle = {};
 
   let width = modifiers.frame?.width || defaultSize?.width;

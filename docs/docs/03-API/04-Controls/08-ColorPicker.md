@@ -1,7 +1,7 @@
 ---
 ---
 
-A control that toggles between on and off states.
+A control used to select a color from the system color picker UI.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,33 +12,22 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-const isOn = useBinding(false);
+const color = useBinding('white');
 ```
 
 ```tsx
-<Toggle isOn={isOn} />
+<ColorPicker selection={color} />
 ```
 
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-@State var isOn = ""
+@State var color = Color.white
 ```
 
 ```swift
-Toggle(isOn: $isOn)
-```
-
-</TabItem>
-<TabItem value="react-native" label="React Native">
-
-```tsx
-const [isOn, setIsOn] = useState(false);
-```
-
-```tsx
-<Switch value={isOn} onChange={(v) => setIsOn(!v)}>
+ColorPicker(selection: $color)
 ```
 
 </TabItem>
@@ -46,10 +35,9 @@ const [isOn, setIsOn] = useState(false);
 
 ## Props
 
-Toggle inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+ColorPicker inherits all [View Modifiers](../modifiers#full-list) as props.
 
-| prop       | description                                       | type                   | required | default     |
-| ---------- | ------------------------------------------------- | ---------------------- | -------- | ----------- |
-| `isOn`     | The toggle value                                  | `BooleanBinding`       | yes      | `undefined` |
-| `tint`     | The "on" toggle color                             | `Color`                | no       | `undefined` |
-| `onChange` | Function to execute when the toggle value changes | `(v: boolean) => void` | no       | `undefined` |
+| prop        | description                                        | type                  | required | default     |
+| ----------- | -------------------------------------------------- | --------------------- | -------- | ----------- |
+| `selection` | The color value                                    | `Color`               | yes      | `undefined` |
+| `onChange`  | Function to execute when a color selection is made | `(v: string) => void` | no       | `undefined` |

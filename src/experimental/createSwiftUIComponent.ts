@@ -58,9 +58,11 @@ export type ElementWithModifiers = JSX.Element & {
   fontWeight: (fontWeight: Modifiers['fontWeight']) => ElementWithModifiers;
   font: (font: Modifiers['font']) => ElementWithModifiers;
   bold: (isActive?: Modifiers['bold']) => ElementWithModifiers;
-  italic: (isActive: Modifiers['italic']) => ElementWithModifiers;
-  strikethrough: (isActive: Modifiers['strikethrough']) => ElementWithModifiers;
-  underline: (isActive: Modifiers['underline']) => ElementWithModifiers;
+  italic: (isActive?: Modifiers['italic']) => ElementWithModifiers;
+  strikethrough: (
+    isActive?: Modifiers['strikethrough']
+  ) => ElementWithModifiers;
+  underline: (isActive?: Modifiers['underline']) => ElementWithModifiers;
   buttonStyle: (buttonStyle: Modifiers['buttonStyle']) => ElementWithModifiers;
   pickerStyle: (pickerStyle: Modifiers['pickerStyle']) => ElementWithModifiers;
   textFieldStyle: (
@@ -71,6 +73,8 @@ export type ElementWithModifiers = JSX.Element & {
     sensoryFeedback: Modifiers['sensoryFeedback']
   ) => ElementWithModifiers;
   labelIsHidden: () => ElementWithModifiers;
+  fill: (color: Modifiers['fill']) => ElementWithModifiers;
+  stroke: (stroke: Modifiers['stroke']) => ElementWithModifiers;
   style: (style: StyleProp<ViewStyle | TextStyle>) => ElementWithModifiers;
 };
 
@@ -86,237 +90,257 @@ export function createSwiftUIComponent(
   // @ts-ignore
   Element.ref = null;
   Element.key = type.displayName;
+  Element.props._modifiers = [];
   Element.padding = function (value) {
-    this.props = { ...this.props, padding: value };
+    this.props._modifiers = [...this.props._modifiers, { padding: value }];
     return this;
   };
   Element.bold = function (isActive = true) {
-    this.props = { ...this.props, bold: isActive };
+    this.props._modifiers = [...this.props._modifiers, { bold: isActive }];
     return this;
   };
   Element.border = function ({ color, width }) {
-    this.props = { ...this.props, border: { width, color } };
+    this.props._modifiers = [
+      ...this.props._modifiers,
+      { border: { color, width } },
+    ];
     return this;
   };
   Element.imageScale = function (scale) {
-    this.props = { ...this.props, imageScale: scale };
+    this.props._modifiers = [...this.props._modifiers, { imageScale: scale }];
     return this;
   };
   Element.frame = function ({ width, height }) {
-    this.props = {
-      ...this.props,
-      frame: { width, height },
-    };
+    this.props._modifiers = [
+      ...this.props._modifiers,
+      { frame: { width, height } },
+    ];
     return this;
   };
 
   Element.foregroundStyle = function (foregroundStyle) {
-    this.props = { ...this.props, foregroundStyle };
+    this.props._modifiers = [...this.props._modifiers, { foregroundStyle }];
     return this;
   };
 
   Element.rotationEffect = function (rotationEffect) {
-    this.props = { ...this.props, rotationEffect };
+    this.props._modifiers = [...this.props._modifiers, { rotationEffect }];
     return this;
   };
 
   Element.scaleEffect = function (scaleEffect) {
-    this.props = { ...this.props, scaleEffect };
+    this.props._modifiers = [...this.props._modifiers, { scaleEffect }];
     return this;
   };
 
   Element.shadow = function (shadow) {
-    this.props = { ...this.props, shadow };
+    this.props._modifiers = [...this.props._modifiers, { shadow }];
     return this;
   };
 
   Element.background = function (background) {
-    this.props = { ...this.props, background };
+    this.props._modifiers = [...this.props._modifiers, { background }];
     return this;
   };
 
   Element.hidden = function () {
-    this.props = { ...this.props, hidden: true };
+    this.props._modifiers = [...this.props._modifiers, { hidden: true }];
     return this;
   };
 
   Element.zIndex = function (zIndex) {
-    this.props = { ...this.props, zIndex };
+    this.props._modifiers = [...this.props._modifiers, { zIndex }];
     return this;
   };
 
   Element.opacity = function (opacity) {
-    this.props = { ...this.props, opacity };
+    this.props._modifiers = [...this.props._modifiers, { opacity }];
     return this;
   };
 
   Element.tint = function (tint) {
-    this.props = { ...this.props, tint };
+    this.props._modifiers = [...this.props._modifiers, { tint }];
     return this;
   };
 
   Element.cornerRadius = function (cornerRadius) {
-    this.props = { ...this.props, cornerRadius };
+    this.props._modifiers = [...this.props._modifiers, { cornerRadius }];
     return this;
   };
 
   Element.position = function (position) {
-    this.props = { ...this.props, position };
+    this.props._modifiers = [...this.props._modifiers, { position }];
     return this;
   };
 
   Element.offset = function (offset) {
-    this.props = { ...this.props, offset };
+    this.props._modifiers = [...this.props._modifiers, { offset }];
     return this;
   };
 
   Element.animation = function (animation) {
-    this.props = { ...this.props, animation };
+    this.props._modifiers = [...this.props._modifiers, { animation }];
     return this;
   };
 
   Element.contentTransition = function (contentTransition) {
-    this.props = { ...this.props, contentTransition };
+    this.props._modifiers = [...this.props._modifiers, { contentTransition }];
     return this;
   };
 
   Element.blur = function (blur) {
-    this.props = { ...this.props, blur };
+    this.props._modifiers = [...this.props._modifiers, { blur }];
     return this;
   };
 
   Element.saturation = function (saturation) {
-    this.props = { ...this.props, saturation };
+    this.props._modifiers = [...this.props._modifiers, { saturation }];
     return this;
   };
 
   Element.grayscale = function (grayscale) {
-    this.props = { ...this.props, grayscale };
+    this.props._modifiers = [...this.props._modifiers, { grayscale }];
     return this;
   };
 
   Element.brightness = function (brightness) {
-    this.props = { ...this.props, brightness };
+    this.props._modifiers = [...this.props._modifiers, { brightness }];
     return this;
   };
 
   Element.contrast = function (contrast) {
-    this.props = { ...this.props, contrast };
+    this.props._modifiers = [...this.props._modifiers, { contrast }];
     return this;
   };
 
   Element.blendMode = function (blendMode) {
-    this.props = { ...this.props, blendMode };
+    this.props._modifiers = [...this.props._modifiers, { blendMode }];
     return this;
   };
 
   Element.mask = function (mask) {
-    this.props = { ...this.props, mask };
+    this.props._modifiers = [...this.props._modifiers, { mask }];
     return this;
   };
 
   Element.clipShape = function (clipShape) {
-    this.props = { ...this.props, clipShape };
+    this.props._modifiers = [...this.props._modifiers, { clipShape }];
     return this;
   };
 
   Element.environment = function (environment) {
-    this.props = { ...this.props, environment };
+    this.props._modifiers = [...this.props._modifiers, { environment }];
     return this;
   };
 
   Element.textContentType = function (textContentType) {
-    this.props = { ...this.props, textContentType };
+    this.props._modifiers = [...this.props._modifiers, { textContentType }];
     return this;
   };
 
   Element.keyboardType = function (keyboardType) {
-    this.props = { ...this.props, keyboardType };
+    this.props._modifiers = [...this.props._modifiers, { keyboardType }];
     return this;
   };
 
   Element.textInputAutocapitalization = function (textInputAutocapitalization) {
-    this.props = { ...this.props, textInputAutocapitalization };
+    this.props._modifiers = [
+      ...this.props._modifiers,
+      { textInputAutocapitalization },
+    ];
     return this;
   };
 
   Element.autocorrectionDisabled = function (autocorrectionDisabled) {
-    this.props = { ...this.props, autocorrectionDisabled };
+    this.props._modifiers = [
+      ...this.props._modifiers,
+      { autocorrectionDisabled },
+    ];
     return this;
   };
 
   Element.resizable = function () {
-    this.props = { ...this.props, resizable: true };
+    this.props._modifiers = [...this.props._modifiers, { resizable: true }];
     return this;
   };
 
   Element.symbolRenderingMode = function (symbolRenderingMode) {
-    this.props = { ...this.props, symbolRenderingMode };
+    this.props._modifiers = [...this.props._modifiers, { symbolRenderingMode }];
     return this;
   };
 
   Element.fontSize = function (fontSize) {
-    this.props = { ...this.props, fontSize };
+    this.props._modifiers = [...this.props._modifiers, { fontSize }];
     return this;
   };
 
   Element.fontWeight = function (fontWeight) {
-    this.props = { ...this.props, fontWeight };
+    this.props._modifiers = [...this.props._modifiers, { fontWeight }];
     return this;
   };
 
   Element.font = function (font) {
-    this.props = { ...this.props, font };
+    this.props._modifiers = [...this.props._modifiers, { font }];
     return this;
   };
 
-  Element.italic = function (italic) {
-    this.props = { ...this.props, italic };
+  Element.italic = function (italic = true) {
+    this.props._modifiers = [...this.props._modifiers, { italic }];
     return this;
   };
 
-  Element.strikethrough = function (strikethrough) {
-    this.props = { ...this.props, strikethrough };
+  Element.strikethrough = function (strikethrough = true) {
+    this.props._modifiers = [...this.props._modifiers, { strikethrough }];
     return this;
   };
 
-  Element.underline = function (underline) {
-    this.props = { ...this.props, underline };
+  Element.underline = function (underline = true) {
+    this.props._modifiers = [...this.props._modifiers, { underline }];
     return this;
   };
 
   Element.buttonStyle = function (buttonStyle) {
-    this.props = { ...this.props, buttonStyle };
+    this.props._modifiers = [...this.props._modifiers, { buttonStyle }];
     return this;
   };
 
   Element.pickerStyle = function (pickerStyle) {
-    this.props = { ...this.props, pickerStyle };
+    this.props._modifiers = [...this.props._modifiers, { pickerStyle }];
     return this;
   };
 
   Element.textFieldStyle = function (textFieldStyle) {
-    this.props = { ...this.props, textFieldStyle };
+    this.props._modifiers = [...this.props._modifiers, { textFieldStyle }];
     return this;
   };
 
   Element.listStyle = function (listStyle) {
-    this.props = { ...this.props, listStyle };
+    this.props._modifiers = [...this.props._modifiers, { listStyle }];
     return this;
   };
 
   Element.sensoryFeedback = function (sensoryFeedback) {
-    this.props = { ...this.props, sensoryFeedback };
+    this.props._modifiers = [...this.props._modifiers, { sensoryFeedback }];
     return this;
   };
 
   Element.labelIsHidden = function () {
-    this.props = { ...this.props, labelIsHidden: true };
+    this.props._modifiers = [...this.props._modifiers, { labelIsHidden: true }];
+    return this;
+  };
+
+  Element.fill = function (color) {
+    this.props._modifiers = [...this.props._modifiers, { fill: color }];
+    return this;
+  };
+
+  Element.stroke = function (stroke) {
+    this.props._modifiers = [...this.props._modifiers, { stroke }];
     return this;
   };
 
   Element.style = function (style: StyleProp<ViewStyle | TextStyle>) {
-    this.props = { ...this.props, style };
+    this.props.style = style;
     return this;
   };
 

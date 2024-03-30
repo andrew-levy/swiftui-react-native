@@ -41,7 +41,7 @@ List {
 
 ## Props
 
-List inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+List inherits all [View Modifiers](../modifiers#full-list) as props.
 
 | prop       | description    | type        | required | default     |
 | ---------- | -------------- | ----------- | -------- | ----------- |

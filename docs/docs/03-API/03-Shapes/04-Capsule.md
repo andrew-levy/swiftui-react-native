@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<Capsule fill="systemRed" frame={{ width: 100, height: 150 }} />
+<Capsule fill="red" frame={{ width: 100, height: 150 }} />
 ```
 
 </TabItem>
@@ -38,4 +38,4 @@ Capsule()
 
 ## Props
 
-Capsule inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
+Capsule inherits all [View Modifiers](../modifiers#full-list) as props.

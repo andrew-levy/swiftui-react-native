@@ -1,6 +1,9 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getExperimentalPrivateModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { onBaseEvent } from '../../utils/onBaseEvent';
 import { ShadowText } from './ShadowText';
 import { NativeTextProps, TextProps } from './types';
@@ -10,6 +13,9 @@ const NativeText: React.ComponentType<NativeTextProps> =
 
 export function Text({ style, children, ...modifiers }: TextProps) {
   const text = Array.isArray(children) ? children.join('') : children;
+
+  modifiers = getExperimentalPrivateModifiers(modifiers);
+
   return (
     <NativeText
       text={text as string}

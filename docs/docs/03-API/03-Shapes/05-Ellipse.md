@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<Ellipse fill="systemRed" frame={{ width: 100, height: 150 }} />
+<Ellipse fill="red" frame={{ width: 100, height: 150 }} />
 ```
 
 </TabItem>
@@ -38,4 +38,4 @@ Ellipse()
 
 ## Props
 
-Ellipse inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
+Ellipse inherits all [View Modifiers](../modifiers#full-list) as props.

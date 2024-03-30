@@ -35,7 +35,7 @@ Stepper(value: $stepperVal, step: 2)
 
 ## Props
 
-Stepper inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+Stepper inherits all [View Modifiers](../modifiers#full-list) as props.
 
 | prop       | description                                        | type                        | required | default     |
 | ---------- | -------------------------------------------------- | --------------------------- | -------- | ----------- |
