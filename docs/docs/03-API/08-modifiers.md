@@ -83,4 +83,4 @@ produces a different result than
 
 ### Duplicate Modifiers
 
-In SwiftUI, duplicate modifiers are allowed since modifiers build on top of each other. To achieve the same effect, we need a special API that allows us to iteratively build up a view with modifiers, while still rendering a JSX element. For this, see the [experimental API](/docs/docs/03-API/09-experiemental.md).
+In SwiftUI, duplicate modifiers are allowed since modifiers build on top of each other. To achieve the same effect, we need a special API that allows us to iteratively build up a view with modifiers, while still rendering a JSX element. For this, see the Experimental API section.

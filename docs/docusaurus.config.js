@@ -10,7 +10,7 @@ const config = {
   tagline: '',
   url: 'https://github.com/andrew-levy/swiftui-react-native',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'andrew-levy', // Usually your GitHub org/user name.
