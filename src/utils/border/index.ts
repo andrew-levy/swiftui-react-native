@@ -1,15 +1,15 @@
-import { UIColor } from '../colors';
+import { Color } from '../colors';
 
 export type Border = {
-  color?: UIColor;
+  color?: Color;
   width?: number;
 };
 
-export const getBorder = (border: Border, colorScheme: 'light' | 'dark') => {
+export const getBorder = (border: Border) => {
   if (!border) return null;
   return {
     ...(border.color && {
-      borderColor: UIColor[colorScheme][border.color] || border.color,
+      borderColor: 'black',
     }),
     ...(border.width && { borderWidth: border.width }),
   };

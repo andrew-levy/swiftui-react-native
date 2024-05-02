@@ -6,6 +6,10 @@ A view that displays text.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::info
+Text views can render markdown text in iOS 16+.
+:::
+
 ## Example
 
 <Tabs>
@@ -34,4 +38,4 @@ Text("Hello").font(.largeTitle)
 
 ## Props
 
-Text inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
+Text inherits all [View Modifiers](../08-modifiers.md#full-list) as props.

@@ -9,10 +9,15 @@ Bringing the best **SwiftUI** features to your **React Native** app :rocket:
 
 ## At a Glance
 
-- :white_check_mark: SwiftUI-like API
-- :white_check_mark: Dark Mode out of the box
-- :white_check_mark: Access to Apple's design system
-- :white_check_mark: Written in TypeScript
+This library provides you with a set of SwiftUI primitives that you can use in your React Native app.
+
+- Real SwiftUI native views
+- SwiftUI Modifiers as props
+- Experimental API
+
+:::note
+This is not a cross-platform library. These components will only work on iOS.
+:::
 
 ## Usage
 
@@ -32,19 +37,12 @@ import {
 } from 'swiftui-react-native';
 
 function App() {
-  const $text = useBinding('');
+  const text = useBinding('');
   return (
-    <VStack
-      aligment="leading"
-      backgroundColor="systemGray6"
-      padding={{ leading: 30 }}
-      cornerRadius={20}
-    >
+    <VStack aligment="leading" backgroundColor="blue" padding={{ leading: 30 }}>
       <Text font="title">Some cool text</Text>
-      <TextField text={$text} placeholder="Name" />
-      <Button action={doSomething}>
-        <Text bold>Click the cool button</Text>
-      </Button>
+      <TextField text={text} placeholder="Name" />
+      <Button title="Click the cool button" action={doSomething} />
     </VStack>
   );
 }
@@ -69,9 +67,8 @@ struct App: View {
                 Text("Click the cool button").bold()
             }
         }
-        .background(Color(.systemGray6))
+        .background(.blue)
         .padding(.leading, 30)
-        .cornerRadius(20)
     }
 }
 ```
@@ -111,7 +108,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: '#F2F2F7FF',
     paddingLeft: 30,
-    borderRadius: 20,
   },
   title: {
     fontSize: 28,
@@ -124,7 +120,3 @@ const styles = StyleSheet.create({
 
 </TabItem>
 </Tabs>
-
-## Acknowledgements
-
-Thanks to [Zach Grimaldi](https://github.com/zpg6) for contributing awesome ideas and for bringing a much needed iOS developer's perspective to table.

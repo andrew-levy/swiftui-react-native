@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<Rectangle fill="systemRed" frame={{ width: 100, height: 150 }} />
+<Rectangle fill="red" frame={{ width: 100, height: 150 }} />
 ```
 
 </TabItem>
@@ -36,8 +36,4 @@ Rectangle()
 
 ## Props
 
-Rectangle inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
-
-:::info
-The `frame` prop is required for Rectange.
-:::
+Rectangle inherits all [View Modifiers](../modifiers#full-list) as props.

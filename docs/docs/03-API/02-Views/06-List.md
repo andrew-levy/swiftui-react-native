@@ -28,7 +28,11 @@ const options = ['Option 1', 'Option 2', 'Option 3'];
 ```
 
 ```tsx
-<List data={options}>{(option) => <Text>{option}</Text>}</List>
+<List>
+  {ForEach(options, (option) => (
+    <Text key={option}>{option}</Text>
+  ))}
+</List>
 ```
 
 </TabItem>
@@ -51,8 +55,10 @@ var options: [String] = ["Option 1", "Option 2", "Option 3"]
 ```
 
 ```swift
-List(options) { option in
-    Text("\(option)")
+List {
+    ForEach(options, id: \.self) { option in
+        Text("\(option)")
+    }
 }
 ```
 
@@ -61,12 +67,8 @@ List(options) { option in
 
 ## Props
 
-List inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+List inherits all [View Modifiers](../modifiers#full-list) as props.
 
-| prop              | description          | type                                                | required | default          |
-| ----------------- | -------------------- | --------------------------------------------------- | -------- | ---------------- |
-| `listStyle`       | List style           | `"insetGrouped"` or `"grouped"`                     | no       | `"insetGrouped"` |
-| `data`            | List data            | `T`                                                 | no       | `null`           |
-| `separatorTint`   | Separator tint color | `UIColor`                                           | no       | `undefined`      |
-| `separatorHidden` | Separator hidden     | `boolean`                                           | no       | `false`          |
-| `children`        | List content         | `ReactNode` or `(data: T, i: number ) => ReactNode` | no       | `null`           |
+| prop       | description  | type        | required | default |
+| ---------- | ------------ | ----------- | -------- | ------- |
+| `children` | List content | `ReactNode` | no       | `null`  |

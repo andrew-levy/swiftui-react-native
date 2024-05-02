@@ -1,12 +1,10 @@
 ---
 ---
 
-The `useBinding` hook creates a two-way-bindable value that can be passed into views that play a role in updating that value.
+The `useBinding` hook creates a two-way-binding value that can be passed into views that play a role in updating that value.
 
 ```typescript
-function useBinding<T>(
-  initialValue: T
-): T extends boolean ? BooleanBinding : Binding<T>;
+function useBinding<T>(initialValue: T): Binding<T>;
 ```
 
 import Tabs from '@theme/Tabs';
@@ -18,16 +16,12 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-const $text = useBinding('');
-const $showAlert = useBinding(false);
-
-$text.setValue("Hi")
-$showAlert.toggle()
+const text = useBinding('');
 ```
 
 ```tsx
-<TextField text={$text} />
-<Text>Current Value: {$text.value}</Text>
+<TextField text={text} />
+<Text>Current Value: {text.value}</Text>
 ```
 
 </TabItem>
@@ -39,6 +33,7 @@ $showAlert.toggle()
 
 ```swift
 TextField("Name", text: $text)
+Text("Current Value: \(text)")
 ```
 
 </TabItem>
@@ -49,12 +44,18 @@ const [text, setText] = useState('');
 ```
 
 ```tsx
-<TextInput value={text} onChangeText={(newText) => setText(newText)} />
+<TextInput value={text} onChangeText={(newText) => setText(newText)} />\
+<Text>Current Value: {text}</Text>
 ```
 
 </TabItem>
 </Tabs>
 
-:::tip
-The `$` is optional, but it makes it clear that this value is a binding
-:::
+## Manually setting the value
+
+Sometimes you might want to set the value of a binding manually. You can do this by using the `setValue` method on the binding, or, if your binding is a boolean, you can use the `toggle` method.
+
+```tsx
+text.setValue('Hi');
+showAlert.toggle();
+```

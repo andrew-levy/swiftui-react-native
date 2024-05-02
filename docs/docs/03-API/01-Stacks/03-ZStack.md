@@ -25,7 +25,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="swiftui" label="SwiftUI">
 
 ```swift
-ZStack(alignment: .top, spacing: 10) {
+ZStack(alignment: .topLeading) {
     Image(systemName: "circle.fill").font(.system(size: 100))
     Image(systemName: "circle.fill").foregroundColor(.systemTeal).font(.system(size: 50))
     Text("ZStack").foregroundColor(.white).bold()
@@ -63,15 +63,10 @@ ZStack(alignment: .top, spacing: 10) {
 
 ## Props
 
-ZStack inherits all [View Modifiers](../modifiers#view-modifiers) as props.
-
-:::info
-The `frame` prop is required for ZStack.
-:::
+ZStack inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
 | prop        | description                         | type                                                                                                                                                                              | required | default    |
 | ----------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------- |
 | `spacing`   | Amount of space between stack items | `number`                                                                                                                                                                          | no       | `0`        |
 | `alignment` | The alignment guide                 | `'leading'` &#124; `'trailing'`&#124; `'top'` &#124; `'bottom'` &#124; `'topLeading'` &#124; `'topTrailing'` &#124; `'bottomLeading'` &#124; `'bottomTrailing'` &#124; `'center'` | no       | `'center'` |
-| `frame`     | The view's frame                    | `Frame`                                                                                                                                                                           | yes      | `null`     |
-| `children`  | Stack items                         | `React.ReactElement<any>` &#124; `React.ReactElement<any>[]`                                                                                                                      | no       | `null`     |
+| `children`  | Stack items                         | `ReactNode`                                                                                                                                                                       | no       | `null`     |

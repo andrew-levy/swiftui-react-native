@@ -32,9 +32,9 @@ HStack(alignment: .top, spacing: 10) {
 <TabItem value="react-native" label="React Native">
 
 ```tsx
-<View style={{ flexDirection: 'row', jusitfyContent: 'flex-start' }}>
+<View style={{ flexDirection: 'row', jusitfyContent: 'flex-start', gap: 10 }}>
   <Text>Hello</Text>
-  <Text style={{ marginLeft: 10 }}>World</Text>
+  <Text>World</Text>
 </View>
 ```
 
@@ -43,10 +43,10 @@ HStack(alignment: .top, spacing: 10) {
 
 ## Props
 
-HStack inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+HStack inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
-| prop        | description                         | type                                                         | required | default    |
-| ----------- | ----------------------------------- | ------------------------------------------------------------ | -------- | ---------- |
-| `spacing`   | Amount of space between stack items | `number`                                                     | no       | `0`        |
-| `alignment` | The alignment guide                 | `'top'` &#124; `'bottom'` &#124; `'center'`                  | no       | `'center'` |
-| `children`  | Stack items                         | `React.ReactElement<any>` &#124; `React.ReactElement<any>[]` | no       | `null`     |
+| prop        | description                         | type                                        | required | default    |
+| ----------- | ----------------------------------- | ------------------------------------------- | -------- | ---------- |
+| `spacing`   | Amount of space between stack items | `number`                                    | no       | `0`        |
+| `alignment` | The alignment guide                 | `'top'` &#124; `'bottom'` &#124; `'center'` | no       | `'center'` |
+| `children`  | Stack items                         | `ReactNode`                                 | no       | `null`     |

@@ -1,51 +1,375 @@
-import { StyleProp, ViewStyle } from 'react-native';
-import type { UIColor } from '../colors';
-import { Border } from '../border';
-import { Frame, ShapeFrame } from '../frame';
-import { Padding } from '../padding';
-import { Shadow } from '../shadow';
-import { Rotation } from '../transform';
-import { Alert } from '../alert';
-import { Fonts, FontWeights } from '../fonts';
-import { ReactNode } from 'react';
+import { ViewStyle } from 'react-native';
+
+type Color =
+  | 'blue'
+  | 'red'
+  | 'green'
+  | 'yellow'
+  | 'orange'
+  | 'purple'
+  | 'pink'
+  | 'primary'
+  | 'secondary'
+  | 'accentColor'
+  | 'black'
+  | 'white'
+  | 'gray'
+  | 'clear'
+  | 'mint'
+  | 'brown'
+  | 'teal'
+  | 'cyan'
+  | 'indigo'
+  | `#${string}`
+  | `rgb${string}`
+  | (string & {});
 
 export type Modifiers = {
-  alert?: Alert;
-  backgroundColor?: UIColor;
-  padding?: Padding;
-  cornerRadius?: number;
-  rotationEffect?: Rotation;
+  // View
+  padding?:
+    | number
+    | boolean
+    | {
+        leading?: number;
+        top?: number;
+        bottom?: number;
+        trailing?: number;
+        horizontal?: number;
+        vertical?: number;
+        all?: number;
+      };
+  border?: {
+    color?: Color;
+    width?: number;
+  };
+  foregroundStyle?: Color | Color[];
+  rotationEffect?: {
+    degrees?: number;
+    radians?: number;
+  };
   scaleEffect?: number;
-  shadow?: Shadow;
-  border?: Border;
-  opacity?: number;
-  frame?: Frame;
+  shadow?: {
+    color?: Color;
+    x?: number;
+    y?: number;
+    radius: number;
+    opacity?: number;
+  };
+  background?: Color;
+  hidden?: boolean;
+  frame?: {
+    width?: number;
+    height?: number;
+  };
   zIndex?: number;
-  preferredColorScheme?: 'light' | 'dark';
-  style?: StyleProp<ViewStyle>;
-  onAppear?: () => void;
-  onDisappear?: () => void;
-};
+  opacity?: number;
+  tint?: Color;
+  cornerRadius?: number;
+  position?: { x: number; y: number };
+  offset?: { x: number; y: number };
+  animation?: {
+    type:
+      | 'spring'
+      | 'easeIn'
+      | 'easeOut'
+      | 'easeInOut'
+      | 'linear'
+      | 'interpolatingSpring'
+      | 'bouncy'
+      | 'smooth'
+      | 'default';
+    value: any;
+  };
+  contentTransition?:
+    | 'numericText'
+    | 'opacity'
+    | 'identity'
+    | 'interpolate'
+    | 'symbolEffect';
+  labelIsHidden?: boolean;
+  // Filter
+  blur?: number;
+  saturation?: number;
+  grayscale?: number;
+  brightness?: number;
+  contrast?: number;
+  blendMode?:
+    | 'color'
+    | 'colorBurn'
+    | 'colorDodge'
+    | 'darken'
+    | 'difference'
+    | 'exclusion'
+    | 'hardLight'
+    | 'hue'
+    | 'lighten'
+    | 'luminosity'
+    | 'multiply'
+    | 'overlay'
+    | 'saturation'
+    | 'screen'
+    | 'softLight'
+    | 'sourceAtop'
+    | 'destinationOver'
+    | 'destinationOut'
+    | 'plusDarker'
+    | 'plusLighter'
+    | 'normal';
+  mask?: string;
+  clipShape?:
+    | 'circle'
+    | 'roundedRectangle'
+    | 'capsule'
+    | 'rectangle'
+    | 'ellipse'
+    | {
+        shape: 'roundedRectangle';
+        cornerRadius: number;
+      };
+  fill?: Color;
+  stroke?: {
+    color: Color;
+    lineWidth: number;
+  };
+  // Environment
+  environment?: {
+    colorScheme: 'light' | 'dark';
+  };
+  // TextField
+  textContentType?:
+    | 'name'
+    | 'namePrefix'
+    | 'givenName'
+    | 'middleName'
+    | 'familyName'
+    | 'nameSuffix'
+    | 'nickname'
+    | 'jobTitle'
+    | 'organizationName'
+    | 'location'
+    | 'fullStreetAddress'
+    | 'streetAddressLine1'
+    | 'streetAddressLine2'
+    | 'addressCity'
+    | 'addressState'
+    | 'addressCityAndState'
+    | 'sublocality'
+    | 'countryName'
+    | 'postalCode'
+    | 'telephoneNumber'
+    | 'emailAddress'
+    | 'URL'
+    | 'creditCardNumber'
+    | 'username'
+    | 'password'
+    | 'newPassword'
+    | 'oneTimeCode'
+    | 'shipmentTrackingNumber'
+    | 'flightNumber'
+    | 'dateTime'
+    | 'birthdate'
+    | 'birthdateDay'
+    | 'birthdateMonth'
+    | 'birthdateYear'
+    | 'creditCardSecurityCode'
+    | 'creditCardName'
+    | 'creditCardGivenName'
+    | 'creditCardMiddleName'
+    | 'creditCardFamilyName'
+    | 'creditCardExpiration'
+    | 'creditCardExpirationMonth'
+    | 'creditCardExpirationYear'
+    | 'creditCardType';
 
-export type TextModifiers = {
-  font?: keyof typeof Fonts;
-  fontWeight?: keyof typeof FontWeights;
+  keyboardType?:
+    | 'numberPad'
+    | 'phonePad'
+    | 'namePhonePad'
+    | 'emailAddress'
+    | 'decimalPad'
+    | 'twitter'
+    | 'webSearch'
+    | 'asciiCapableNumberPad'
+    | 'numbersAndPunctuation'
+    | 'URL'
+    | 'asciiCapable'
+    | 'default';
+
+  textInputAutocapitalization?: 'never' | 'words' | 'sentences' | 'characters';
+  autocorrectionDisabled?: boolean;
+
+  // Image
+  resizable?: boolean;
+  imageScale?: 'small' | 'medium' | 'large';
+  symbolRenderingMode?:
+    | 'palette'
+    | 'monochrome'
+    | 'hierarchical'
+    | 'multicolor';
+
+  // Text
   fontSize?: number;
-  foregroundColor?: UIColor;
-  customFont?: string;
+  fontWeight?:
+    | 'ultralight'
+    | 'thin'
+    | 'light'
+    | 'regular'
+    | 'medium'
+    | 'semibold'
+    | 'bold'
+    | 'heavy'
+    | 'black';
+  font?:
+    | 'body'
+    | 'callout'
+    | 'caption'
+    | 'caption2'
+    | 'footnote'
+    | 'headline'
+    | 'largeTitle'
+    | 'subheadline'
+    | 'title'
+    | 'title2'
+    | 'title3';
   bold?: boolean;
   italic?: boolean;
   strikethrough?:
     | boolean
-    | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
-  underline?: boolean | { color?: UIColor; pattern?: 'solid' | 'dot' | 'dash' };
+    | {
+        isActive: boolean;
+        color?: Color;
+        pattern?: 'dot' | 'dash' | 'solid' | 'dashDotDot' | 'dashDot';
+      };
+  underline?:
+    | boolean
+    | {
+        isActive: boolean;
+        color?: Color;
+        pattern?: 'dot' | 'dash' | 'solid' | 'dashDotDot' | 'dashDot';
+      };
+
+  // Style Variants
+  buttonStyle?: 'bordered' | 'borderless' | 'plain' | 'borderedProminent';
+  pickerStyle?: 'wheel' | 'segmented' | 'menu';
+  textFieldStyle?: 'plain' | 'roundedBorder';
+  listStyle?: 'inset' | 'grouped' | 'plain' | 'insetGrouped';
+
+  // Haptics
+  sensoryFeedback?: {
+    feedback:
+      | 'warning'
+      | 'error'
+      | 'success'
+      | 'alignment'
+      | 'decrease'
+      | 'impact'
+      | 'increase'
+      | 'levelChange'
+      | 'selection'
+      | 'start'
+      | 'stop';
+    trigger: any;
+  };
+  // List
+  scrollDisabled?: boolean;
+  // Lifecycle - todo
+  onAppear?: () => void;
+  onDisappear?: () => void;
+  // alert?: Alert;
+  // Sheet
+  // sheet?: {
+  //   isPresented: boolean | BooleanBinding;
+  //   content: ReactNode;
+  //   onDismiss?: () => void;
+  // };
+  // presentationCornerRadius?: number;
+  // presentationDetents?: (
+  //   | 'medium'
+  //   | 'large'
+  //   | { fraction: number }
+  //   | { height: number }
+  // )[];
 };
 
-export type ShapeModifiers = Omit<Modifiers, 'backgroundColor' | 'frame'> & {
-  fill?: UIColor;
-  frame: ShapeFrame;
+export type NativeModifiersProp = { [key: string]: any };
+
+export type ExperimentalPrivateModifierProp = {
+  _modifiers: NativeModifiersProp[];
 };
 
-export type WithChildren<T> = T & {
-  children?: ReactNode;
-};
+export function getExperimentalPrivateModifiers(modifiers: Modifiers) {
+  const experimentalPrivateMods = (modifiers as ExperimentalPrivateModifierProp)
+    ._modifiers;
+  if (experimentalPrivateMods) {
+    return experimentalPrivateMods.reduce((styles, mod) => {
+      return { ...styles, ...mod };
+    }, {});
+  } else {
+    return modifiers;
+  }
+}
+
+/**
+ * Maps a modifiers object or function to an array of native modifiers, with
+ * the order being preserved.
+ */
+export function mapToNativeModifiers(modifiers: Modifiers) {
+  const experimentalPrivateMods = (modifiers as ExperimentalPrivateModifierProp)
+    ._modifiers;
+  if (experimentalPrivateMods) return experimentalPrivateMods;
+  if (Array.isArray(modifiers)) return modifiers;
+  let result: NativeModifiersProp[] = [];
+  result = Object.keys(modifiers || {}).map((key) => {
+    return { [key]: modifiers[key] };
+  });
+  return result;
+}
+
+export function getSizeFromModifiers(
+  modifiers: Modifiers,
+  defaultSize?: { width: number; height: number }
+) {
+  modifiers = getExperimentalPrivateModifiers(modifiers);
+
+  const styles: ViewStyle = {};
+
+  let width = modifiers.frame?.width || defaultSize?.width;
+  let height = modifiers.frame?.height || defaultSize?.height;
+
+  if (width) {
+    styles.width = width;
+  }
+  if (height) {
+    styles.height = height;
+  }
+
+  if (typeof modifiers.padding === 'number') {
+    styles.padding = modifiers.padding;
+  } else if (typeof modifiers.padding === 'boolean') {
+    styles.padding = modifiers.padding ? 8 : 0;
+  } else {
+    if (modifiers.padding?.all) {
+      styles.padding = modifiers.padding.all;
+    }
+    if (modifiers.padding?.horizontal) {
+      styles.paddingHorizontal = modifiers.padding.horizontal;
+    }
+    if (modifiers.padding?.vertical) {
+      styles.paddingVertical = modifiers.padding.vertical;
+    }
+    if (modifiers.padding?.top) {
+      styles.paddingTop = modifiers.padding.top;
+    }
+    if (modifiers.padding?.bottom) {
+      styles.paddingBottom = modifiers.padding.bottom;
+    }
+    if (modifiers.padding?.leading) {
+      styles.paddingLeft = modifiers.padding.leading;
+    }
+    if (modifiers.padding?.trailing) {
+      styles.paddingRight = modifiers.padding.trailing;
+    }
+  }
+
+  return styles;
+}

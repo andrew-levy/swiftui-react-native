@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<Label title="Super Fast" systemImage="bolt.fill">
+<Label title="Super Fast" systemImage="bolt.fill" />
 ```
 
 </TabItem>
@@ -37,11 +37,9 @@ Label("Super Fast", systemImage: "bolt.fill")
 
 ## Props
 
-Label inherits all [View Modifiers](../modifiers#view-modifiers) and [Text Modifiers](../modifiers#text-modifiers) as props.
+Label inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
-| prop          | description                                          | type                      | required | default     |
-| ------------- | ---------------------------------------------------- | ------------------------- | -------- | ----------- |
-| `title`       | A title for the label.                               | `string`                  | no       | `undefined` |
-| `icon`        | A React element to render as an icon.                | `React.ReactElement<any>` | yes      | `undefined` |
-| `systemImage` | The SF Symbol name to render as the icon.            | `SystemName`              | no       | `undefined` |
-| `spacing`     | The spacing to apply between the title and the icon. | `number`                  | no       | `5`         |
+| prop          | description                               | type         | required | default     |
+| ------------- | ----------------------------------------- | ------------ | -------- | ----------- |
+| `title`       | A title for the label.                    | `string`     | no       | `undefined` |
+| `systemImage` | The SF Symbol name to render as the icon. | `SystemName` | no       | `undefined` |

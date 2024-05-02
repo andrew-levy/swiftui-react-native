@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 ### Linear
 
 ```tsx
-<ProgressView progressViewStyle="linear" value={progress} />
+<ProgressView value={progress} />
 ```
 
 </TabItem>
@@ -43,11 +43,9 @@ ProgressView(value: progress).progressViewStyle(.linear)
 
 ## Props
 
-ProgressView inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+ProgressView inherits all [View Modifiers](../modifiers#full-list) as props.
 
-| prop                | description             | type                       | required | default         |
-| ------------------- | ----------------------- | -------------------------- | -------- | --------------- |
-| `value`             | The progress value      | `number`                   | no       | `undefined`     |
-| `tint`              | The progress tint color | `UIColor`                  | no       | `'undefined'`   |
-| `total`             | The max progress value  | `number`                   | no       | `100`           |
-| `progressViewStyle` | Progress style          | `indeteminate` or `linear` | no       | `indeterminate` |
+| prop    | description            | type     | required | default     |
+| ------- | ---------------------- | -------- | -------- | ----------- |
+| `value` | The progress value     | `number` | no       | `undefined` |
+| `total` | The max progress value | `number` | no       | `100`       |

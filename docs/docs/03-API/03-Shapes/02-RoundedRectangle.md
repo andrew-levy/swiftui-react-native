@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-<RoundedRectangle fill="systemRed" frame={{ width: 100, height: 150 }} />
+<RoundedRectangle fill="red" frame={{ width: 100, height: 150 }} />
 ```
 
 </TabItem>
@@ -38,8 +38,4 @@ RoundedRectangle()
 
 ## Props
 
-RoundedRectangle inherits all [View Modifiers](../modifiers#view-modifiers) and [Shape Modifiers](../modifiers#text-modifiers) as props.
-
-:::info
-The `frame` prop is required for RoundedRectangle.
-:::
+RoundedRectangle inherits all [View Modifiers](../modifiers#full-list) as props.

@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 <TabItem value="srn" label="swiftui-react-native">
 
 ```tsx
-const $isOn = useBinding(false);
+const isOn = useBinding(false);
 ```
 
 ```tsx
-<Toggle isOn={$isOn} />
+<Toggle isOn={isOn} />
 ```
 
 </TabItem>
@@ -46,10 +46,9 @@ const [isOn, setIsOn] = useState(false);
 
 ## Props
 
-Toggle inherits all [View Modifiers](../modifiers#view-modifiers) as props.
+Toggle inherits all [View Modifiers](../modifiers#full-list) as props.
 
 | prop       | description                                       | type                   | required | default     |
 | ---------- | ------------------------------------------------- | ---------------------- | -------- | ----------- |
 | `isOn`     | The toggle value                                  | `BooleanBinding`       | yes      | `undefined` |
-| `tint`     | The "on" toggle color                             | `UIColor`              | no       | `undefined` |
 | `onChange` | Function to execute when the toggle value changes | `(v: boolean) => void` | no       | `undefined` |

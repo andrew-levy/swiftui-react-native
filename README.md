@@ -6,17 +6,10 @@
 
 Bringing the best **SwiftUI** features to your **React Native** app :rocket:
 
-## At a Glance
-
-- :white_check_mark: SwiftUI-like API
-- :white_check_mark: Apple's design system
-- :white_check_mark: Dark Mode out of the box
-- :white_check_mark: Written in TypeScript
-
 ## Documentation
 
 Check out the [official documentation](https://swiftui-react-native.vercel.app).
 
 ## Example Project
 
-Check out this [example project](https://github.com/andrew-levy/swiftui-react-native-example).
+Check out the [example project](./example/).

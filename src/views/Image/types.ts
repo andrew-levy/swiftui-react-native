@@ -1,3 +1,22 @@
+import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
+import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
+
+export type NativeImageProps = {
+  systemName: SystemName;
+  modifiers?: NativeModifiersProp;
+  style?: StyleProp<ViewStyle>;
+  onEvent?: (
+    e: NativeSyntheticEvent<{
+      [key: string]: any;
+    }>
+  ) => void;
+};
+
+export type ImageProps = {
+  systemName?: SystemName;
+  style?: StyleProp<ViewStyle>;
+} & Modifiers;
+
 export type SystemName =
   | '0.circle'
   | '0.circle.fill'

@@ -1,19 +1,21 @@
 {
   "name": "swiftui-react-native",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "description": "A React Native component library inspired by SwiftUI",
-  "main": "main.js",
-  "typings": "main.d.ts",
-  "types": "main.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    ".": "./build/index.js",
+    "./experimental": "./build/experimental/index.js"
+  },
   "scripts": {
-    "build": "rollup -c",
-    "clean-build": "npm run clean && npm run build && copyfiles package.json README.md dist",
-    "watch": "rollup -c -w",
-    "dev": "nodemon dist/",
-    "clean": "rimraf ./dist/*",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "publish:custom": "npm run clean-build && cd dist && npm publish && cd -"
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
   },
   "author": "Andrew Levy <alevy97@gmail.com>",
   "license": "MIT",
@@ -21,26 +23,16 @@
     "@types/node": "^14.14.10",
     "@types/react": "^17.0.2",
     "@types/react-native": "^0.71.1",
-    "copyfiles": "^2.4.1",
-    "esbuild": "^0.8.50",
-    "nodemon": "^2.0.6",
+    "expo-module-scripts": "^3.4.0",
+    "expo-modules-core": "^1.11.8",
     "prettier": "^2.5.1",
-    "react-native-sfsymbols": "1.1.0",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.39.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-dts": "^2.0.1",
-    "rollup-plugin-esbuild": "^2.6.1",
     "tslint": "^6.1.3",
     "typescript": "^4.5.5"
   },
   "peerDependencies": {
+    "expo": "*",
     "react": "*",
-    "react-native": "*",
-    "react-native-sfsymbols": ">=1.0.0"
-  },
-  "resolutions": {
-    "react": "17.0.2"
+    "react-native": "*"
   },
   "repository": {
     "type": "git",

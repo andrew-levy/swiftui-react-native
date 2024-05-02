@@ -1,0 +1,29 @@
+{
+  "platforms": ["ios"],
+  "ios": {
+    "modules": [
+      "ColorPickerModule",
+      "StepperModule",
+      "ImageModule",
+      "ShapeModule",
+      "ProgressModule",
+      "PickerModule",
+      "ToggleModule",
+      "SliderModule",
+      "ColorModule",
+      "LabelModule",
+      "TextModule",
+      "DatePickerModule",
+      "ListModule",
+      "HStackModule",
+      "VStackModule",
+      "ZStackModule",
+      "GroupModule",
+      "SpacerModule",
+      "ButtonModule",
+      "TextFieldModule",
+      "SheetContentModule",
+      "SectionModule"
+    ]
+  }
+}
