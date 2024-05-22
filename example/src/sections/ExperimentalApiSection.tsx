@@ -60,10 +60,10 @@ export const ExperimentalApiSection = () => {
         Spacer(),
         Text('Hello, World!').bold()
       ),
-      Button({
-        title: 'Hello, World!',
-        action: () => console.log('Hello, World!'),
-      }),
+      Button(
+        { action: () => console.log('Hello, World!') },
+        Label({ systemImage: 'person', title: 'Hello, World!' })
+      ),
       Image({ systemName: 'person' }),
 
       Color.red.frame({ width: 100, height: 100 }),

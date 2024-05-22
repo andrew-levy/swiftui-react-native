@@ -13,3 +13,9 @@ Check out the [official documentation](https://swiftui-react-native.vercel.app).
 ## Example Project
 
 Check out the [example project](./example/).
+
+Changelog:
+
+- Added button role prop
+- Added fixedSize and lineLimit modifier props
+- picker height issue

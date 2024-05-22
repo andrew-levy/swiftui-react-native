@@ -31,6 +31,7 @@ import { Toggle as ToggleComp } from '../views/Toggle';
 import { VStack as VStackComp } from '../views/VStack';
 import { ZStack as ZStackComp } from '../views/ZStack';
 
+import { ButtonProps } from '../views/Button/types';
 import { ColorPickerProps } from '../views/ColorPicker/types';
 import { DatePickerProps } from '../views/DatePicker/types';
 import { HStackProps } from '../views/HStack/types';
@@ -52,8 +53,10 @@ import {
 
 const Text = (text: string) => createSwiftUIComponent(TextComp, {}, text);
 
-const Button = ({ title, action }: { title: string; action: () => void }) =>
-  createSwiftUIComponent(ButtonComp, { title, action }, title);
+const Button = (
+  props: Pick<ButtonProps, 'title' | 'action' | 'role'>,
+  ...children: ElementWithModifiers[]
+) => createSwiftUIComponent(ButtonComp, props, children);
 
 const Image = ({ systemName }: { systemName: string }) =>
   createSwiftUIComponent(ImageComp, { systemName }, undefined);

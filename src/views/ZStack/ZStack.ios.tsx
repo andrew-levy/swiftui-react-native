@@ -1,7 +1,10 @@
 import { requireNativeViewManager } from 'expo-modules-core';
 import React from 'react';
 import { View } from 'react-native';
-import { mapToNativeModifiers } from '../../utils/modifiers';
+import {
+  getSizeFromModifiers,
+  mapToNativeModifiers,
+} from '../../utils/modifiers';
 import { onBaseEvent } from '../../utils/onBaseEvent';
 import { NativeZStackProps, ZStackProps } from './types';
 
@@ -22,6 +25,7 @@ export function ZStack({
       alignment={alignment}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
+        ...getSizeFromModifiers(modifiers),
         ...(style as object),
       }}
       onEvent={(e) => {

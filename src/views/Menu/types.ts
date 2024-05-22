@@ -1,13 +1,12 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import { NativeSyntheticEvent, StyleProp, ViewStyle } from 'react-native';
 import { Modifiers, NativeModifiersProp } from '../../utils/modifiers';
 
-export type NativeButtonProps = {
+export type NativeMenuProps = {
   title: string;
   modifiers?: NativeModifiersProp;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
-  role?: string;
   onAction?: () => void;
   onEvent?: (
     e: NativeSyntheticEvent<{
@@ -16,10 +15,9 @@ export type NativeButtonProps = {
   ) => void;
 };
 
-export type ButtonProps = {
+export type MenuProps = {
   style?: StyleProp<ViewStyle>;
-  title?: string;
-  role?: 'destructive' | 'cancel';
+  title: string;
   action: () => void;
-  children?: ReactElement | ReactElement[];
+  children?: ReactNode;
 } & Modifiers;

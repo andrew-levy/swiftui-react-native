@@ -1,10 +1,13 @@
 import React from 'react';
-import { Button, List, useBinding } from 'swiftui-react-native';
+import { Button, Label, List, useBinding } from 'swiftui-react-native';
 
 export const ButtonSection = () => {
   const showAlert = useBinding(false);
   return (
     <List style={{ flex: 1 }}>
+      <Button action={showAlert.toggle} buttonStyle="bordered" padding={8}>
+        <Label title="hello world" systemImage="moon.circle" bold padding />
+      </Button>
       <Button
         title="Bordered"
         action={showAlert.toggle}

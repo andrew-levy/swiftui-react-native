@@ -14,7 +14,7 @@ import {
 
 export const ShapeSection = () => {
   return (
-    <List>
+    <List style={{ flex: 1 }}>
       <HStack padding={{ vertical: 10 }}>
         <Text>Rectangle</Text>
         <Spacer />

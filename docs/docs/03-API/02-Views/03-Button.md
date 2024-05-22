@@ -20,6 +20,12 @@ import TabItem from '@theme/TabItem';
 />
 ```
 
+```tsx
+<Button action={doSomething} buttonStyle="borderedProminent">
+  <Label title="Hello world!" systemImage="person.fill" />
+</Button>
+```
+
 </TabItem>
 <TabItem value="swiftui" label="SwiftUI">
 
@@ -47,7 +53,8 @@ Button("Click the cool button", action: doSomething)
 
 Button inherits all [View Modifiers](../08-modifiers.md#full-list) as props.
 
-| prop     | description                                          | type         | required | default     |
-| -------- | ---------------------------------------------------- | ------------ | -------- | ----------- |
-| `title`  | The text of the button.                              | `string`     | yes      | `undefined` |
-| `action` | The action to perform when the user taps the button. | `() => void` | yes      | `undefined` |
+| prop       | description                                          | type         | required | default     |
+| ---------- | ---------------------------------------------------- | ------------ | -------- | ----------- |
+| `title`    | The text of the button.                              | `string`     | yes      | `undefined` |
+| `action`   | The action to perform when the user taps the button. | `() => void` | yes      | `undefined` |
+| `children` | The content of the button.                           | `ReactNode`  | no       | `undefined` |

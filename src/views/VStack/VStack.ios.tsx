@@ -18,7 +18,6 @@ export function VStack({
   children,
   ...modifiers
 }: VStackProps) {
-  //wrap each child in a vstack
   const mappedChildren = React.Children.map(children, (child) => {
     return <View style={{ alignSelf: 'center' }}>{child}</View>;
   });

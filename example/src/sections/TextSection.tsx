@@ -18,7 +18,9 @@ export const TextSection = () => {
   return (
     <List style={{ flex: 1 }}>
       <Section header="System Fonts">
-        <Text font="body">Body</Text>
+        <Text frame={{ height: 10 }} font="body">
+          Body
+        </Text>
         <Text font="callout">Callout</Text>
         <Text font="caption">Caption</Text>
         <Text font="caption2">Caption 2</Text>

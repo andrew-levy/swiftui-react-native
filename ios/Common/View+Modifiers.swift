@@ -194,15 +194,54 @@ struct ReactNativeViewModifiers: ViewModifier {
               break
             }
           }
+        case "ignoresSafeArea": 
+          if let ignoresSafeArea = value as? Bool {
+            if ignoresSafeArea == true {
+              if #available(iOS 14.0, *) {
+                view = AnyView(view.ignoresSafeArea())
+              }
+            }
+          }
         case "frame":
           if let frame = value as? [String: Any] {
-            if let width = frame["width"] as? CGFloat, let height = frame["height"] as? CGFloat {
+            let width = (frame["width"] as? CGFloat) ?? (frame["width"] as? String == "infinity" ? .infinity : nil)
+            let height = (frame["height"] as? CGFloat) ?? (frame["height"] as? String == "infinity" ? .infinity : nil)
+            let minWidth = (frame["minWidth"] as? CGFloat) ?? (frame["minWidth"] as? String == "infinity" ? .infinity : nil)
+            let idealWidth = (frame["idealWidth"] as? CGFloat) ?? (frame["idealWidth"] as? String == "infinity" ? .infinity : nil)
+            let maxWidth = (frame["maxWidth"] as? CGFloat) ?? (frame["maxWidth"] as? String == "infinity" ? .infinity : nil)
+            let minHeight = (frame["minHeight"] as? CGFloat) ?? (frame["minHeight"] as? String == "infinity" ? .infinity : nil)
+            let idealHeight = (frame["idealHeight"] as? CGFloat) ?? (frame["idealHeight"] as? String == "infinity" ? .infinity : nil)
+            let maxHeight = (frame["maxHeight"] as? CGFloat) ?? (frame["maxHeight"] as? String == "infinity" ? .infinity : nil)
+
+            if width != nil || height != nil {
               view = AnyView(view.frame(width: width, height: height))
+            } else {
+              view = AnyView(view.frame(
+                minWidth: minWidth,
+                idealWidth: idealWidth,
+                maxWidth: maxWidth,
+                minHeight: minHeight,
+                idealHeight: idealHeight,
+                maxHeight: maxHeight
+              ))
             }
           }
         case "zIndex":
           if let zIndex = value as? Double {
             view = AnyView(view.zIndex(zIndex))
+          }
+        case "fixedSize":
+          if let fixedSize = value as? Bool {
+            view = AnyView(view.fixedSize())
+          } else if let fixedSize = value as? [String: Any] {
+            if let horizontal = fixedSize["horizontal"] as? Bool, let vertical = fixedSize["vertical"] as? Bool {
+              view = AnyView(view.fixedSize(horizontal: horizontal, vertical: vertical))
+            }
+          }
+
+        case "lineLimit":
+          if let lineLimit = value as? Int {
+            view = AnyView(view.lineLimit(lineLimit))
           }
 
         case "labelIsHidden":

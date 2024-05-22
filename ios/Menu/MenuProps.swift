@@ -1,9 +1,8 @@
 import SwiftUI
 import ExpoModulesCore
 
-class ButtonProps: ObservableObject {
-  @Published var title: String? = nil
-  @Published var role: String? = nil
+class MenuProps: ObservableObject {
+  @Published var actions: [[String: Any]] = []
   @Published var onEvent: EventDispatcher
   @Published var children: [UIView]?
   @Published var modifiers: [[String: Any]] = []
