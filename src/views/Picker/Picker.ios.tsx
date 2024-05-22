@@ -35,7 +35,10 @@ export function Picker({
       selection={getValueOrBinding(selection)}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        ...getSizeFromModifiers(modifiers, defaultSize[modifiers.pickerStyle]),
+        ...getSizeFromModifiers(
+          modifiers,
+          defaultSize[modifiers.pickerStyle || 'menu']
+        ),
         ...(style as any),
       }}
       onEvent={(e) => {

@@ -1,10 +1,7 @@
-export type Frame = {
-  width?: number;
-  height?: number;
-};
+import { Modifiers, getSizeFromModifiers } from '../modifiers';
 
-export const getFrame = (frame: Frame) => {
+export const getFrame = (frame: Modifiers['frame']) => {
   let styles = {};
   if (!frame) return styles;
-  return { ...styles, ...frame };
+  return getSizeFromModifiers({ frame });
 };

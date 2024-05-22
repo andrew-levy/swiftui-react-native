@@ -110,11 +110,8 @@ export function createSwiftUIComponent(
     this.props._modifiers = [...this.props._modifiers, { imageScale: scale }];
     return this;
   };
-  Element.frame = function ({ width, height }) {
-    this.props._modifiers = [
-      ...this.props._modifiers,
-      { frame: { width, height } },
-    ];
+  Element.frame = function (frame) {
+    this.props._modifiers = [...this.props._modifiers, { frame }];
     return this;
   };
 

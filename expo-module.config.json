@@ -23,7 +23,8 @@
       "ButtonModule",
       "TextFieldModule",
       "SheetContentModule",
-      "SectionModule"
+      "SectionModule",
+      "MenuModule"
     ]
   }
 }

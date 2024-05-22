@@ -5,8 +5,11 @@ public class ButtonModule: Module {
     Name("Button")
     View(ButtonExpoView.self) {
       Events("onEvent")
-      Prop("title") { (view: ButtonExpoView, prop: String) in
+      Prop("title") { (view: ButtonExpoView, prop: String?) in
         view.props.title = prop
+      }
+      Prop("role") { (view: ButtonExpoView, prop: String?) in
+        view.props.role = prop
       }
       Prop("modifiers") { (view: ButtonExpoView, prop: [[String: Any]]) in
         view.props.modifiers = prop

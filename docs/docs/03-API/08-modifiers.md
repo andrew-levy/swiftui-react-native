@@ -21,11 +21,14 @@ To approximate this in React Native, views are styled using props. Each prop cor
 | border                      | { color?: Color; width?: number; }                                                               |
 | foregroundStyle             | Color \| Color[]                                                                                 |
 | rotationEffect              | { degrees?: number; radians?: number; }                                                          |
+| ignoresSafeArea             | boolean                                                                                          |
+| lineLimit                   | number                                                                                           |
+| fixedSize                   | boolean \| { horizontal: boolean; vertical: boolean };                                           |
 | scaleEffect                 | number                                                                                           |
 | shadow                      | { color?: Color; x?: number; y?: number; radius: number; opacity?: number; }                     |
 | background                  | Color                                                                                            |
 | hidden                      | boolean                                                                                          |
-| frame                       | { width?: number; height?: number; }                                                             |
+| frame                       | Frame                                                                                            |
 | zIndex                      | number                                                                                           |
 | opacity                     | number                                                                                           |
 | tint                        | Color                                                                                            |

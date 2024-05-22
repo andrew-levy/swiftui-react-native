@@ -5,24 +5,21 @@ import {
   mapToNativeModifiers,
 } from '../../utils/modifiers';
 import { onBaseEvent } from '../../utils/onBaseEvent';
-import { Text } from '../Text';
-import { ButtonProps, NativeButtonProps } from './types';
+import { MenuProps, NativeMenuProps } from './types';
 
-const NativeButton: React.ComponentType<NativeButtonProps> =
-  requireNativeViewManager('Button');
+const NativeMenu: React.ComponentType<NativeMenuProps> =
+  requireNativeViewManager('Menu');
 
-export function Button({
+export function Menu({
   style,
   title,
   action,
-  role,
   children,
   ...modifiers
-}: ButtonProps) {
+}: MenuProps) {
   return (
-    <NativeButton
+    <NativeMenu
       title={title}
-      role={role}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
         ...getSizeFromModifiers(modifiers),
@@ -32,7 +29,7 @@ export function Button({
         onBaseEvent(e, modifiers, { onAction: action });
       }}
     >
-      {children ? children : <Text {...modifiers}>{title}</Text>}
-    </NativeButton>
+      {children}
+    </NativeMenu>
   );
 }

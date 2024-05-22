@@ -26,6 +26,7 @@ type Color =
 
 export type Modifiers = {
   // View
+  ignoresSafeArea?: boolean;
   padding?:
     | number
     | boolean
@@ -57,16 +58,25 @@ export type Modifiers = {
   };
   background?: Color;
   hidden?: boolean;
-  frame?: {
-    width?: number;
-    height?: number;
-  };
+  frame?:
+    | {
+        width?: number;
+        height?: number;
+      }
+    | {
+        minWidth?: number | 'infinity';
+        minHeight?: number | 'infinity';
+        maxWidth?: number | 'infinity';
+        maxHeight?: number | 'infinity';
+      };
   zIndex?: number;
   opacity?: number;
   tint?: Color;
   cornerRadius?: number;
   position?: { x: number; y: number };
   offset?: { x: number; y: number };
+  fixedSize?: boolean | { horizontal: boolean; vertical: boolean };
+  lineLimit?: number;
   animation?: {
     type:
       | 'spring'
@@ -275,6 +285,7 @@ export type Modifiers = {
   // Lifecycle - todo
   onAppear?: () => void;
   onDisappear?: () => void;
+  // contextMenu?: ContextMenu;
   // alert?: Alert;
   // Sheet
   // sheet?: {
@@ -333,14 +344,37 @@ export function getSizeFromModifiers(
 
   const styles: ViewStyle = {};
 
-  let width = modifiers.frame?.width || defaultSize?.width;
-  let height = modifiers.frame?.height || defaultSize?.height;
+  let width = (modifiers.frame as any)?.width || defaultSize?.width;
+  let height = (modifiers.frame as any)?.height || defaultSize?.height;
+  let minWidth = (modifiers.frame as any)?.minWidth;
+  let minHeight = (modifiers.frame as any)?.minHeight;
+  let maxWidth = (modifiers.frame as any)?.maxWidth;
+  let maxHeight = (modifiers.frame as any)?.maxHeight;
 
   if (width) {
     styles.width = width;
   }
+
   if (height) {
     styles.height = height;
+  }
+
+  if (minWidth) {
+    styles.minWidth = minWidth === 'infinity' ? '100%' : minWidth;
+  }
+
+  if (minHeight) {
+    styles.minHeight = minHeight === 'infinity' ? '100%' : minHeight;
+  }
+
+  if (maxWidth) {
+    styles.maxWidth = maxWidth === 'infinity' ? '100%' : maxWidth;
+    styles.width = maxWidth === 'infinity' ? '100%' : maxWidth;
+  }
+
+  if (maxHeight) {
+    styles.maxHeight = maxHeight === 'infinity' ? '100%' : maxHeight;
+    styles.height = maxHeight === 'infinity' ? '100%' : maxHeight;
   }
 
   if (typeof modifiers.padding === 'number') {
