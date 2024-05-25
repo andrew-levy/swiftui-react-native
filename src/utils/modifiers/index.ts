@@ -24,6 +24,30 @@ type Color =
   | `rgb${string}`
   | (string & {});
 
+type LinearGradient = {
+  linearGradient: {
+    colors: Color[];
+    startPoint:
+      | 'top'
+      | 'bottom'
+      | 'leading'
+      | 'trailing'
+      | 'topLeading'
+      | 'topTrailing'
+      | 'bottomLeading'
+      | 'bottomTrailing';
+    endPoint:
+      | 'top'
+      | 'bottom'
+      | 'leading'
+      | 'trailing'
+      | 'topLeading'
+      | 'topTrailing'
+      | 'bottomLeading'
+      | 'bottomTrailing';
+  };
+};
+
 export type Modifiers = {
   // View
   ignoresSafeArea?: boolean;
@@ -43,20 +67,21 @@ export type Modifiers = {
     color?: Color;
     width?: number;
   };
-  foregroundStyle?: Color | Color[];
+  foregroundStyle?: Color | Color[] | LinearGradient;
   rotationEffect?: {
     degrees?: number;
     radians?: number;
   };
+  redacted?: 'privacy' | 'placeholder' | 'invalidated';
   scaleEffect?: number;
   shadow?: {
     color?: Color;
     x?: number;
     y?: number;
-    radius: number;
+    radius?: number;
     opacity?: number;
   };
-  background?: Color;
+  background?: Color | LinearGradient;
   hidden?: boolean;
   frame?:
     | {
@@ -75,7 +100,7 @@ export type Modifiers = {
   cornerRadius?: number;
   position?: { x: number; y: number };
   offset?: { x: number; y: number };
-  fixedSize?: boolean | { horizontal: boolean; vertical: boolean };
+  fixedSize?: boolean | { horizontal?: boolean; vertical?: boolean };
   lineLimit?: number;
   animation?: {
     type:
@@ -103,6 +128,7 @@ export type Modifiers = {
   grayscale?: number;
   brightness?: number;
   contrast?: number;
+  compositingGroup?: boolean;
   blendMode?:
     | 'color'
     | 'colorBurn'
@@ -282,7 +308,7 @@ export type Modifiers = {
   };
   // List
   scrollDisabled?: boolean;
-  // Lifecycle - todo
+  // Lifecycle
   onAppear?: () => void;
   onDisappear?: () => void;
   // contextMenu?: ContextMenu;

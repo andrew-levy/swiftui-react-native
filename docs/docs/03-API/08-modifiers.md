@@ -19,14 +19,14 @@ To approximate this in React Native, views are styled using props. Each prop cor
 | --------------------------- | ------------------------------------------------------------------------------------------------ |
 | padding                     | number \| boolean \| { leading?: number; top?: number; bottom?: number; trailing?: number; ... } |
 | border                      | { color?: Color; width?: number; }                                                               |
-| foregroundStyle             | Color \| Color[]                                                                                 |
+| foregroundStyle             | Color \| Color[] \| LinearGradient                                                               |
 | rotationEffect              | { degrees?: number; radians?: number; }                                                          |
 | ignoresSafeArea             | boolean                                                                                          |
 | lineLimit                   | number                                                                                           |
 | fixedSize                   | boolean \| { horizontal: boolean; vertical: boolean };                                           |
 | scaleEffect                 | number                                                                                           |
 | shadow                      | { color?: Color; x?: number; y?: number; radius: number; opacity?: number; }                     |
-| background                  | Color                                                                                            |
+| background                  | Color \| LinearGradient                                                                          |
 | hidden                      | boolean                                                                                          |
 | frame                       | Frame                                                                                            |
 | zIndex                      | number                                                                                           |
@@ -38,12 +38,14 @@ To approximate this in React Native, views are styled using props. Each prop cor
 | animation                   | { type: 'spring' \| 'easeIn' \| 'easeOut' \| 'easeInOut' \| 'linear' \| ...; value: any; }       |
 | contentTransition           | 'numericText' \| 'opacity' \| 'identity' \| 'interpolate' \| 'symbolEffect'                      |
 | labelIsHidden               | boolean                                                                                          |
+| redacted                    | 'placeholder' \| 'invalidated' \| 'privacy'                                                      |
 | blur                        | number                                                                                           |
 | saturation                  | number                                                                                           |
 | grayscale                   | number                                                                                           |
 | brightness                  | number                                                                                           |
 | contrast                    | number                                                                                           |
 | blendMode                   | 'color' \| 'colorBurn' \| 'colorDodge' \| 'darken' \| 'difference' \| ...                        |
+| compositingGroup            | boolean                                                                                          |
 | mask                        | string                                                                                           |
 | clipShape                   | 'circle' \| 'roundedRectangle' \| 'capsule' \| 'rectangle' \| 'ellipse' \| ...                   |
 | environment                 | { colorScheme: 'light' \| 'dark'; }                                                              |

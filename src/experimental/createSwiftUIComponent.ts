@@ -75,6 +75,10 @@ export type ElementWithModifiers = JSX.Element & {
   labelIsHidden: () => ElementWithModifiers;
   fill: (color: Modifiers['fill']) => ElementWithModifiers;
   stroke: (stroke: Modifiers['stroke']) => ElementWithModifiers;
+  redacted: (reason: Modifiers['redacted']) => ElementWithModifiers;
+  ignoresSafeArea: (
+    ignoresSafeArea: Modifiers['ignoresSafeArea']
+  ) => ElementWithModifiers;
   style: (style: StyleProp<ViewStyle | TextStyle>) => ElementWithModifiers;
 };
 
@@ -333,6 +337,16 @@ export function createSwiftUIComponent(
 
   Element.stroke = function (stroke) {
     this.props._modifiers = [...this.props._modifiers, { stroke }];
+    return this;
+  };
+
+  Element.redacted = function (reason) {
+    this.props._modifiers = [...this.props._modifiers, { redacted: reason }];
+    return this;
+  };
+
+  Element.ignoresSafeArea = function (ignoresSafeArea) {
+    this.props._modifiers = [...this.props._modifiers, { ignoresSafeArea }];
     return this;
   };
 

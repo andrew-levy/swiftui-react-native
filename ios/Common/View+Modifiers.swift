@@ -48,7 +48,7 @@ struct ReactNativeViewModifiers: ViewModifier {
             )
             
             view = AnyView(view.padding(edgeInsets))
-          
+            
           }
         case "border":
           if let border = value as? [String: Any] {
@@ -65,15 +65,14 @@ struct ReactNativeViewModifiers: ViewModifier {
           }
           
         case "foregroundStyle":
-          if let color = getColor(value) as Color? {
+          if let colorVal = value as? String {
+            let color = getColor(colorVal) as Color?
             if #available(iOS 15.0, *) {
-              view = AnyView(view.foregroundStyle(color))
-            } else {
-              
+              view = AnyView(view.foregroundStyle(color ?? .black))
             }
-          } else if let color = value as? [Any] {
-            let colors = getColors(color) as [Color]
-            switch color.count {
+          } else if let colorArr = value as? [String] {
+            let colors = getColors(colorArr) as [Color]
+            switch colors.count {
             case 1:
               if #available(iOS 15.0, *) {
                 view = AnyView(view.foregroundStyle(colors[0]))
@@ -89,12 +88,25 @@ struct ReactNativeViewModifiers: ViewModifier {
             default:
               break
             }
+          } else if let colorObj = value as? [String: Any] {
+            if let linearGradient = colorObj["linearGradient"] as? [String: Any] {
+             let gradient = getLinearGradient(linearGradient)
+              if #available(iOS 15.0, *) {
+                view = AnyView(view.foregroundStyle(gradient))
+              }
+            }
           }
-          // Currently only supports color
+          
         case "background":
-          if let color = getColor(value) as Color? {
-            view = AnyView(view.background(color))
+          if let color = value as? String {
+            view = AnyView(view.background(getColor(color)))
+          } else if let color = value as? [String: Any] {
+            if let linearGradient = color["linearGradient"] as? [String: Any] {
+              let gradient = getLinearGradient(linearGradient)
+              view = AnyView(view.background(gradient))
+            } 
           }
+
         case "rotationEffect":
           if let rotation = value as? [String: CGFloat] {
             if let degrees = rotation["degrees"] {
@@ -194,7 +206,13 @@ struct ReactNativeViewModifiers: ViewModifier {
               break
             }
           }
-        case "ignoresSafeArea": 
+        case "compositingGroup":
+          if let compositingGroup = value as? Bool {
+            if compositingGroup == true {
+              view = AnyView(view.compositingGroup())
+            }
+          }
+        case "ignoresSafeArea":
           if let ignoresSafeArea = value as? Bool {
             if ignoresSafeArea == true {
               if #available(iOS 14.0, *) {
@@ -500,6 +518,24 @@ struct ReactNativeViewModifiers: ViewModifier {
           if let cornerRadius = value as? CGFloat {
             view = AnyView(view.cornerRadius(cornerRadius))
           }
+
+        case "redacted": 
+         if let reason = value as? String {
+           if #available(iOS 15.0, *) {
+             switch reason {
+             case "placeholder":
+               view = AnyView(view.redacted(reason: .placeholder))
+             case "privacy":
+              view = AnyView(view.redacted(reason: .privacy))
+            case "invalidated":
+               if #available(iOS 17.0, *) {
+                 view = AnyView(view.redacted(reason: .invalidated))
+               }
+             default:
+               break
+             }
+           }
+         }
           
         case "buttonStyle":
           if let buttonStyle = value as? String {
@@ -935,12 +971,50 @@ func getColor(_ color: Any?) -> Color {
 }
 
 
-func getColors(_ colors: [Any]?) -> [Color] {
+func getColors(_ colors: Any) -> [Color] {
   var result: [Color] = []
-  if let colors = colors {
+  if let colors = colors as? [Any] {
     for color in colors {
       result.append(getColor(color))
     }
   }
   return result
+}
+
+
+func mapToUnitPoint(_ point: String) -> UnitPoint {
+  switch point {
+  case "topLeading":
+    return .topLeading
+  case "top":
+    return .top
+  case "topTrailing":
+    return .topTrailing
+  case "leading":
+    return .leading
+  case "center":
+    return .center
+  case "trailing":
+    return .trailing
+  case "bottomLeading":
+    return .bottomLeading
+  case "bottom":
+    return .bottom
+  case "bottomTrailing":
+    return .bottomTrailing
+  default:
+    return .center
+  }
+}
+
+func getLinearGradient(_ obj: [String: Any]) -> LinearGradient {
+  let startPointString = obj["startPoint"] as? String ?? "topLeading"
+  let endPointString = obj["endPoint"] as? String ?? "bottomTrailing"
+  let startPoint = mapToUnitPoint(startPointString)
+  let endPoint = mapToUnitPoint(endPointString)
+  return LinearGradient(
+    gradient: Gradient(colors: getColors(obj["colors"] ?? [])),
+    startPoint: startPoint,
+    endPoint: endPoint
+  )
 }

@@ -6,6 +6,7 @@ import {
   Rectangle,
   Spacer,
   Text,
+  ZStack,
 } from 'swiftui-react-native';
 
 export const FilterSection = () => {
@@ -60,6 +61,34 @@ export const FilterSection = () => {
         <Image systemName="arrow.right" />
         <Rectangle fill="accentColor" blendMode="difference" />
       </HStack>
+      <ZStack
+        frame={{ height: 500 }}
+        compositingGroup
+        shadow={{
+          color: 'gray',
+          radius: 15,
+          x: -10,
+          y: 10,
+        }}
+      >
+        <Image
+          systemName={'lanyardcard.fill' as any}
+          fontSize={400}
+          foregroundStyle={{
+            linearGradient: {
+              colors: ['gray', 'white'],
+              startPoint: 'bottomLeading',
+              endPoint: 'topTrailing',
+            },
+          }}
+        />
+        <Image
+          systemName="applelogo"
+          fontSize={170}
+          padding={{ top: 100 }}
+          blendMode="destinationOut"
+        />
+      </ZStack>
     </List>
   );
 };
