@@ -72,6 +72,7 @@ export type Modifiers = {
     degrees?: number;
     radians?: number;
   };
+  redacted?: 'privacy' | 'placeholder' | 'invalidated';
   scaleEffect?: number;
   shadow?: {
     color?: Color;

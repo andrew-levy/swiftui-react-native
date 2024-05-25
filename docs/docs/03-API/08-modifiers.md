@@ -38,6 +38,7 @@ To approximate this in React Native, views are styled using props. Each prop cor
 | animation                   | { type: 'spring' \| 'easeIn' \| 'easeOut' \| 'easeInOut' \| 'linear' \| ...; value: any; }       |
 | contentTransition           | 'numericText' \| 'opacity' \| 'identity' \| 'interpolate' \| 'symbolEffect'                      |
 | labelIsHidden               | boolean                                                                                          |
+| redacted                    | 'placeholder' \| 'invalidated' \| 'privacy'                                                      |
 | blur                        | number                                                                                           |
 | saturation                  | number                                                                                           |
 | grayscale                   | number                                                                                           |

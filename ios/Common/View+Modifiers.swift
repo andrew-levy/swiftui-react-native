@@ -518,6 +518,24 @@ struct ReactNativeViewModifiers: ViewModifier {
           if let cornerRadius = value as? CGFloat {
             view = AnyView(view.cornerRadius(cornerRadius))
           }
+
+        case "redacted": 
+         if let reason = value as? String {
+           if #available(iOS 15.0, *) {
+             switch reason {
+             case "placeholder":
+               view = AnyView(view.redacted(reason: .placeholder))
+             case "privacy":
+              view = AnyView(view.redacted(reason: .privacy))
+            case "invalidated":
+               if #available(iOS 17.0, *) {
+                 view = AnyView(view.redacted(reason: .invalidated))
+               }
+             default:
+               break
+             }
+           }
+         }
           
         case "buttonStyle":
           if let buttonStyle = value as? String {
