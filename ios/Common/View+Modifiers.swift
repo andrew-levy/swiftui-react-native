@@ -90,15 +90,7 @@ struct ReactNativeViewModifiers: ViewModifier {
             }
           } else if let colorObj = value as? [String: Any] {
             if let linearGradient = colorObj["linearGradient"] as? [String: Any] {
-              let startPointString = linearGradient["startPoint"] as? String ?? "topLeading"
-              let endPointString = linearGradient["endPoint"] as? String ?? "bottomTrailing"
-              let startPoint = mapToUnitPoint(startPointString)
-              let endPoint = mapToUnitPoint(endPointString)
-              let gradient = LinearGradient(
-                gradient: Gradient(colors: getColors(linearGradient["colors"] ?? [])),
-                startPoint: startPoint,
-                endPoint: endPoint
-              )
+             let gradient = getLinearGradient(linearGradient)
               if #available(iOS 15.0, *) {
                 view = AnyView(view.foregroundStyle(gradient))
               }
@@ -110,15 +102,7 @@ struct ReactNativeViewModifiers: ViewModifier {
             view = AnyView(view.background(getColor(color)))
           } else if let color = value as? [String: Any] {
             if let linearGradient = color["linearGradient"] as? [String: Any] {
-              let startPointString = linearGradient["startPoint"] as? String ?? "topLeading"
-              let endPointString = linearGradient["endPoint"] as? String ?? "bottomTrailing"
-              let startPoint = mapToUnitPoint(startPointString)
-              let endPoint = mapToUnitPoint(endPointString)
-              let gradient = LinearGradient(
-                gradient: Gradient(colors: getColors(linearGradient["colors"] ?? [])),
-                startPoint: startPoint,
-                endPoint: endPoint
-              )
+              let gradient = getLinearGradient(linearGradient)
               view = AnyView(view.background(gradient))
             } 
           }
@@ -223,7 +207,11 @@ struct ReactNativeViewModifiers: ViewModifier {
             }
           }
         case "compositingGroup":
-          view = AnyView(view.compositingGroup())
+          if let compositingGroup = value as? Bool {
+            if compositingGroup == true {
+              view = AnyView(view.compositingGroup())
+            }
+          }
         case "ignoresSafeArea":
           if let ignoresSafeArea = value as? Bool {
             if ignoresSafeArea == true {
@@ -999,4 +987,16 @@ func mapToUnitPoint(_ point: String) -> UnitPoint {
   default:
     return .center
   }
+}
+
+func getLinearGradient(_ obj: [String: Any]) -> LinearGradient {
+  let startPointString = obj["startPoint"] as? String ?? "topLeading"
+  let endPointString = obj["endPoint"] as? String ?? "bottomTrailing"
+  let startPoint = mapToUnitPoint(startPointString)
+  let endPoint = mapToUnitPoint(endPointString)
+  return LinearGradient(
+    gradient: Gradient(colors: getColors(obj["colors"] ?? [])),
+    startPoint: startPoint,
+    endPoint: endPoint
+  )
 }
