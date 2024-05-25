@@ -44,6 +44,7 @@ To approximate this in React Native, views are styled using props. Each prop cor
 | brightness                  | number                                                                                           |
 | contrast                    | number                                                                                           |
 | blendMode                   | 'color' \| 'colorBurn' \| 'colorDodge' \| 'darken' \| 'difference' \| ...                        |
+| compositingGroup            | boolean                                                                                          |
 | mask                        | string                                                                                           |
 | clipShape                   | 'circle' \| 'roundedRectangle' \| 'capsule' \| 'rectangle' \| 'ellipse' \| ...                   |
 | environment                 | { colorScheme: 'light' \| 'dark'; }                                                              |
