@@ -82,6 +82,7 @@ export type Modifiers = {
     opacity?: number;
   };
   background?: Color | LinearGradient;
+  disabled?: boolean;
   hidden?: boolean;
   frame?:
     | {

@@ -64,6 +64,11 @@ struct ReactNativeViewModifiers: ViewModifier {
             view = AnyView(view.tag(tag))
           }
           
+        case "disabled":
+          if let disabled = value as? Bool {
+            view = AnyView(view.disabled(disabled))
+          }
+          
         case "foregroundStyle":
           if let colorVal = value as? String {
             let color = getColor(colorVal) as Color?
