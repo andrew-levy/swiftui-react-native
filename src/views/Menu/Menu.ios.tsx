@@ -13,20 +13,23 @@ const NativeMenu: React.ComponentType<NativeMenuProps> =
 export function Menu({
   style,
   title,
-  action,
+  systemImage,
+  primaryAction,
   children,
   ...modifiers
 }: MenuProps) {
   return (
     <NativeMenu
       title={title}
+      systemImage={systemImage}
+      hasPrimaryAction={!!primaryAction}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
-        ...getSizeFromModifiers(modifiers),
+        ...getSizeFromModifiers(modifiers, { height: 40, width: undefined }),
         ...(style as object),
       }}
       onEvent={(e) => {
-        onBaseEvent(e, modifiers, { onAction: action });
+        onBaseEvent(e, modifiers, { onPrimaryAction: primaryAction });
       }}
     >
       {children}

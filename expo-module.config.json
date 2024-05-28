@@ -24,7 +24,8 @@
       "TextFieldModule",
       "SheetContentModule",
       "SectionModule",
-      "MenuModule"
+      "MenuModule",
+      "DividerModule"
     ]
   }
 }

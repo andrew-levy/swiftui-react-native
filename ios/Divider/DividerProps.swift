@@ -1,9 +1,7 @@
 import SwiftUI
 import ExpoModulesCore
 
-class ToggleProps: ObservableObject {
-  @Published var isOn = false
-  @Published var title: String?
+class DividerProps: ObservableObject {
   @Published var modifiers: [[String: Any]] = []
   @Published var onEvent: EventDispatcher
   init(onEvent: EventDispatcher) {

@@ -15,6 +15,7 @@ export function Button({
   style,
   title,
   action,
+  systemImage,
   role,
   children,
   ...modifiers
@@ -23,6 +24,7 @@ export function Button({
     <NativeButton
       title={title}
       role={role}
+      systemImage={systemImage}
       modifiers={mapToNativeModifiers(modifiers)}
       style={{
         ...getSizeFromModifiers(modifiers),
