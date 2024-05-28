@@ -43,7 +43,7 @@ export const ButtonSection = () => {
         padding={8}
       />
       <Button padding={8} title="List Row" action={showAlert.toggle} />
-      <Menu systemImage="00.square" border={{}}>
+      <Menu title="Open Menu" systemImage="ellipsis.circle">
         <Text>This is some text</Text>
         <Button
           title="Button + SF Symbol"
