@@ -28,6 +28,7 @@ To approximate this in React Native, views are styled using props. Each prop cor
 | shadow                      | { color?: Color; x?: number; y?: number; radius: number; opacity?: number; }                     |
 | background                  | Color \| LinearGradient                                                                          |
 | hidden                      | boolean                                                                                          |
+| disabled                    | boolean                                                                                          |
 | frame                       | Frame                                                                                            |
 | zIndex                      | number                                                                                           |
 | opacity                     | number                                                                                           |
