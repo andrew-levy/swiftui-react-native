@@ -5,10 +5,12 @@ import {
   Color,
   ColorPicker,
   DatePicker,
+  Divider,
   HStack,
   Image,
   Label,
   List,
+  Menu,
   RoundedRectangle,
   Section,
   Slider,
@@ -53,6 +55,19 @@ export const ExperimentalApiSection = () => {
       Slider({ value: stepperValue, range: [0, 100], step: 10 }).frame({
         width: 320,
       }),
+
+      Divider(),
+      Divider(),
+      Divider(),
+
+      Menu(
+        { title: 'Hello, World!', systemImage: 'person.3' },
+        Text('Hello, World!').bold(),
+        Button({
+          action: () => console.log('Hello, World!'),
+          title: 'click me',
+        })
+      ),
 
       HStack(
         { alignment: 'center', spacing: 10 },

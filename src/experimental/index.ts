@@ -4,10 +4,12 @@ import { Button as ButtonComp } from '../views/Button';
 import { Color as ColorComp } from '../views/Color';
 import { ColorPicker as ColorPickerComp } from '../views/ColorPicker';
 import { DatePicker as DatePickerComp } from '../views/DatePicker';
+import { Divider as DividerComp } from '../views/Divider';
 import { HStack as HStackComp } from '../views/HStack';
 import { Image as ImageComp } from '../views/Image';
 import { Label as LabelComp } from '../views/Label';
 import { List as ListComp } from '../views/List';
+import { Menu as MenuComp } from '../views/Menu';
 import { Picker as PickerComp } from '../views/Picker';
 import { ProgressView as ProgressViewComp } from '../views/ProgressView';
 import { Section as SectionComp } from '../views/Section';
@@ -36,6 +38,7 @@ import { ColorPickerProps } from '../views/ColorPicker/types';
 import { DatePickerProps } from '../views/DatePicker/types';
 import { HStackProps } from '../views/HStack/types';
 import { LabelProps } from '../views/Label/types';
+import { MenuProps } from '../views/Menu/types';
 import { PickerProps } from '../views/Picker/types';
 import { ProgressProps } from '../views/ProgressView/types';
 import { SectionProps } from '../views/Section/types';
@@ -54,7 +57,7 @@ import {
 const Text = (text: string) => createSwiftUIComponent(TextComp, {}, text);
 
 const Button = (
-  props: Pick<ButtonProps, 'title' | 'action' | 'role'>,
+  props: Pick<ButtonProps, 'title' | 'action' | 'role' | 'systemImage'>,
   ...children: ElementWithModifiers[]
 ) => createSwiftUIComponent(ButtonComp, props, children);
 
@@ -248,6 +251,20 @@ const Section = (
   );
 };
 
+const Divider = () => createSwiftUIComponent(DividerComp, {}, undefined);
+
+const Menu = (
+  props: Pick<MenuProps, 'title' | 'systemImage' | 'primaryAction'>,
+  ...children: ElementWithModifiers[]
+) =>
+  createSwiftUIComponent(
+    MenuComp,
+    props,
+    React.Children.map(children, (c) => {
+      return React.cloneElement(c, { key: children.indexOf(c) });
+    })
+  );
+
 export {
   Button,
   Capsule,
@@ -255,11 +272,13 @@ export {
   Color,
   ColorPicker,
   DatePicker,
+  Divider,
   Ellipse,
   HStack,
   Image,
   Label,
   List,
+  Menu,
   Picker,
   ProgressView,
   Rectangle,

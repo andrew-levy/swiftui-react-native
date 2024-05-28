@@ -16,4 +16,5 @@ class MenuExpoView: ExpoView {
     super.init(appContext: appContext)
     setupHostingController(hostingController)
   }
+  
 }

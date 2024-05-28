@@ -8,6 +8,9 @@ public class ButtonModule: Module {
       Prop("title") { (view: ButtonExpoView, prop: String?) in
         view.props.title = prop
       }
+      Prop("systemImage") { (view: ButtonExpoView, prop: String?) in
+        view.props.systemImage = prop
+      }
       Prop("role") { (view: ButtonExpoView, prop: String?) in
         view.props.role = prop
       }

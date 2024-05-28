@@ -39,7 +39,7 @@ import {
 function App() {
   const text = useBinding('');
   return (
-    <VStack aligment="leading" backgroundColor="blue" padding={{ leading: 30 }}>
+    <VStack aligment="leading" background="blue" padding={{ leading: 30 }}>
       <Text font="title">Some cool text</Text>
       <TextField text={text} placeholder="Name" />
       <Button title="Click the cool button" action={doSomething} />
