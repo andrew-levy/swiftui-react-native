@@ -3,10 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# Unreleased
+# 6.3.0 (2024-05-28)
 
-- New Menu and Divider components
-- New Button prop `systemImage`
+- New Menu and Divider components ([#41](https://github.com/andrew-levy/swiftui-react-native/pull/41) by [andrew-levy](https://github.com/andrew-levy))
+- New Button prop `systemImage` ([#41](https://github.com/andrew-levy/swiftui-react-native/pull/41) by [andrew-levy](https://github.com/andrew-levy))
+- New modifier: `disabled` ([#42](https://github.com/andrew-levy/swiftui-react-native/pull/42) by [andrew-levy](https://github.com/andrew-levy))
 
 # 6.2.0 (2024-05-25)
 
