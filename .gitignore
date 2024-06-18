@@ -2,3 +2,6 @@ node_modules/
 .vscode/
 dist
 .DS_Store
+
+example/ios
+example/android
