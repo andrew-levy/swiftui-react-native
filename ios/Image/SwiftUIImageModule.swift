@@ -1,8 +1,8 @@
 import ExpoModulesCore
 
-public class ImageModule: Module {
+public class SwiftUIImageModule: Module {
   public func definition() -> ModuleDefinition {
-    Name("Image")
+    Name("SwiftUIImage")
     View(ImageExpoView.self) {
       Events("onEvent")
       Prop("systemName") { (view: ImageExpoView, prop: String) in

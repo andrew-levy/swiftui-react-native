@@ -4,7 +4,7 @@
     "modules": [
       "ColorPickerModule",
       "StepperModule",
-      "ImageModule",
+      "SwiftUIImageModule",
       "ShapeModule",
       "ProgressModule",
       "PickerModule",
