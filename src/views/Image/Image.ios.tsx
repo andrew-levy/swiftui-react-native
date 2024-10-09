@@ -8,7 +8,7 @@ import { onBaseEvent } from '../../utils/onBaseEvent';
 import { ImageProps, NativeImageProps } from './types';
 
 const NativeImage: React.ComponentType<NativeImageProps> =
-  requireNativeViewManager('Image');
+  requireNativeViewManager('SwiftUIImage');
 
 export function Image({ style, systemName, ...modifiers }: ImageProps) {
   return (
