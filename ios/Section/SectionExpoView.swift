@@ -1,6 +1,5 @@
 import ExpoModulesCore
 import SwiftUI
-import Combine
 
 class SectionExpoView: ExpoView {
   let props: SectionProps
