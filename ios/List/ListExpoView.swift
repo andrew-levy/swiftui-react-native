@@ -12,8 +12,8 @@ class ListExpoView: ExpoView {
   
   required init(appContext: AppContext? = nil) {
     props = ListProps(onEvent: onEvent)
-    let hostingController = UIHostingController(rootView: ListView(props: props))
     super.init(appContext: appContext)
+    let hostingController = UIHostingController(rootView: ListView(props: props, listExpoView: self))
     setupHostingController(hostingController)
   }
 }
