@@ -46,4 +46,4 @@ ColorPicker inherits all [View Modifiers](../modifiers#full-list) as props.
 | ----------- | ------------------------------------------------- | ------------------- | -------- | ----------- |
 | `selection` | The date value                                    | `Date`              | yes      | `undefined` |
 | `onChange`  | Function to execute when a date selection is made | `(v: Date) => void` | no       | `undefined` |
-| `displayedComponents`  | Function to execute when a date selection is made | `'date' \| 'hourAndMinute' \| ('date' \| 'hourAndMinute')[];` | no       | `undefined` |
+| `displayedComponents`  | The components to display | `'date' \| 'hourAndMinute' \| ('date' \| 'hourAndMinute')[];` | no       | `['date', 'hourAndMinute']` |
