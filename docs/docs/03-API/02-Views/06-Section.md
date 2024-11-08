@@ -33,6 +33,8 @@ List {
     Text("List Item")
     Text("List Item")
     Text("List Item")
+} header: {
+    Text("This is a header")
 }
 ```
 
