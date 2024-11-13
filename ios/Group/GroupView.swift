@@ -11,7 +11,7 @@ struct GroupView: View {
           .frame(width: props.children?[index].frame.width, height: props.children?[index].frame.height)
       }
     }
-    .reactNativeViewModifiers(mods: props.modifiers)
+    .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
   }
 }
 

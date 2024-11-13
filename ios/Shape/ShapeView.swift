@@ -37,23 +37,23 @@ struct ShapeView: View {
     case "Circle":
       Circle()
         .strokeAndFill(stroke: getStroke(), fill: getFill())
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
     case "Rectangle":
       Rectangle()
         .strokeAndFill(stroke: getStroke(), fill: getFill())
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
     case "Capsule":
       Capsule()
         .strokeAndFill(stroke: getStroke(), fill: getFill())
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
     case "RoundedRectangle":
       RoundedRectangle(cornerRadius: props.cornerRadius)
         .strokeAndFill(stroke: getStroke(), fill: getFill())
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
     case "Ellipse":
       Ellipse()
         .strokeAndFill(stroke: getStroke(), fill: getFill())
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
     case "UnevenRoundedRectangle":
       if #available(iOS 16.0, *) {
         UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(
@@ -63,7 +63,7 @@ struct ShapeView: View {
           topTrailing: props.cornerRadii["topTrailing"] ?? 0
         ))
           .strokeAndFill(stroke: getStroke(), fill: getFill())
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
       }
     default:
       EmptyView()

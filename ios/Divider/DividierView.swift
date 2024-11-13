@@ -6,7 +6,7 @@ struct DividerView: View {
   
   var body: some View {
     Divider()
-    .reactNativeViewModifiers(mods: props.modifiers)
+    .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
   }
 }
 

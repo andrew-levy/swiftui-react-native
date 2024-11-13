@@ -6,7 +6,7 @@ struct SectionView: View {
   
   var body: some View {
     EmptyView()
-      .reactNativeViewModifiers(mods: props.modifiers)
+      .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
   }
 }
 

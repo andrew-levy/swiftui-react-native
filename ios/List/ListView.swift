@@ -23,7 +23,7 @@ struct ListView: View {
           }
         }
       }
-      .reactNativeViewModifiers(mods: props.modifiers)
+      .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
       .onAppear {
         for child in props.children ?? [] {
           let childSubviews = child.reactSubviews().first?.reactSubviews()

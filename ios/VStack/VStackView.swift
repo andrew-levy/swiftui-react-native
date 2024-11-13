@@ -15,7 +15,7 @@ struct VStackView: View {
         }
       }
     }
-    .reactNativeViewModifiers(mods: props.modifiers)
+    .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
   }
 }
 

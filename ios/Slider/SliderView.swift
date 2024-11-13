@@ -8,7 +8,7 @@ struct SliderView: View {
     if #available(iOS 14.0, *) {
       if let step = props.step {
         Slider(value: $value, in: ClosedRange(uncheckedBounds: (props.range[0], props.range[1])), step: step)
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
           .onAppear {
             value = props.value
           }
@@ -19,7 +19,7 @@ struct SliderView: View {
           }
       } else {
         Slider(value: $value, in: ClosedRange(uncheckedBounds: (props.range[0], props.range[1])))
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
           .onAppear {
             value = props.value
           }

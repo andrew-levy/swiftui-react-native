@@ -7,7 +7,7 @@ struct TextFieldView: View {
       switch props.type {
       case "textfield":
         TextField(props.placeholder, text: $props.text)
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
           .onChange(of: props.text) { newValue in
             props.onEvent([
               "onValueChange": newValue
@@ -15,7 +15,7 @@ struct TextFieldView: View {
           }
       case "securefield":
         SecureField(props.placeholder, text: $props.text)
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
           .onChange(of: props.text) { newValue in
             props.onEvent([
               "onValueChange": newValue
@@ -23,7 +23,7 @@ struct TextFieldView: View {
           }
       case "texteditor":
         TextEditor(text: $props.text)
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
           .onChange(of: props.text) { newValue in
             props.onEvent([
               "onValueChange": newValue
@@ -31,7 +31,7 @@ struct TextFieldView: View {
           }
       default:
         TextField(props.placeholder, text: $props.text)
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
           .onChange(of: props.text) { newValue in
             props.onEvent([
               "onValueChange": newValue

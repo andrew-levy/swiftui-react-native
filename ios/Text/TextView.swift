@@ -6,10 +6,10 @@ struct TextView: View {
   var body: some View {
     if #available(iOS 16, *) {
       Text(props.text.toMarkdown())
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
     } else {
       Text(props.text)
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
     }
   }
 }
