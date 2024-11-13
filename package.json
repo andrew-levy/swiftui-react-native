@@ -1,6 +1,6 @@
 {
   "name": "swiftui-react-native",
-  "version": "6.3.2",
+  "version": "6.3.3",
   "description": "A React Native component library inspired by SwiftUI",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

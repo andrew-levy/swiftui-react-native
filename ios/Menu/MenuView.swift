@@ -12,14 +12,14 @@ struct MenuView: View {
           } primaryAction: {
             props.onEvent(["onPrimaryAction": true])
           }
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         } else {
           Menu(props.title) {
             buildMenu(props.children ?? [])
           } primaryAction: {
             props.onEvent(["onPrimaryAction": true])
           }
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         }
         
       } else {
@@ -27,12 +27,12 @@ struct MenuView: View {
           Menu(props.title, systemImage: systemImage) {
             buildMenu(props.children ?? [])
           }
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         } else {
           Menu(props.title) {
             buildMenu(props.children ?? [])
           }
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         }
       }
     }

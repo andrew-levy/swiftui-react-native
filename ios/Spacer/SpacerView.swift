@@ -6,7 +6,7 @@ struct SpacerView: View {
   
   var body: some View {
     Spacer()
-    .reactNativeViewModifiers(mods: props.modifiers)
+    .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
   }
 }
 

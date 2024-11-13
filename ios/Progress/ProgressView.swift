@@ -13,7 +13,7 @@ struct ProgressViewView: View {
         } currentValueLabel: {
           Text(props.currentValueLabel)
         }
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         .onAppear {
           withAnimation {
             progress = value
@@ -28,7 +28,7 @@ struct ProgressViewView: View {
         ProgressView() {
           Text(props.label)
         }
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
       }
     }
   }

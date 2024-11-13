@@ -12,20 +12,20 @@ struct ButtonView: View {
           Button(title, systemImage: systemImage, role: props.role.toRoleEnum()) {
             props.onEvent(["onAction": true])
           }
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         } else {
           // No systemImage
           Button(title, role: props.role.toRoleEnum()) {
             props.onEvent(["onAction": true])
           }
-          .reactNativeViewModifiers(mods: props.modifiers)
+          .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
         }
       } else {
         // Before ios 15
         Button(title) {
           props.onEvent(["onAction": true])
         }
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
       }
     } else {
       // Content as children
@@ -37,7 +37,7 @@ struct ButtonView: View {
             RepresentableView(view: props.children?[index] ?? UIView())
           }
         }
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
       } else {
         Button {
           props.onEvent(["onAction": true])
@@ -46,7 +46,7 @@ struct ButtonView: View {
             RepresentableView(view: props.children?[index] ?? UIView())
           }
         }
-        .reactNativeViewModifiers(mods: props.modifiers)
+        .reactNativeViewModifiers(mods: props.modifiers, onEvent: props.onEvent)
       }
     }
   }
