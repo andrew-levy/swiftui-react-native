@@ -59,7 +59,7 @@
   "bugs": {
     "url": "https://github.com/andrew-levy/swiftui-react-native/issues"
   },
-  "homepage": "https://swiftui-react-native.vercel.app",
+  "homepage": "https://swiftui.rit3zh.dev",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
