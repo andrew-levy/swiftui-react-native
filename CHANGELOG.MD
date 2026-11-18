@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 7.0.0-beta.0 (2026-11-19)
+
+**Note:** v7 is a rewrite and this is its first beta. It has breaking changes, and APIs may still change between betas. Install it with `npm install swiftui-react-native@next`.
+
+### Highlights
+
+- Built on the New Architecture with Fabric components, Codegen and Nitro Modules. Expo Modules is no longer required, so it works in bare React Native apps as well as Expo development builds.
+- The API is generated from the SwiftUI in Apple's SDK: 107 views and about 400 modifiers. Each one is typed and documented with the SwiftUI declaration it maps to and the iOS version it needs.
+- iOS 26 APIs such as `GlassEffectContainer`, the `glassEffect` modifier, `ConcentricRectangle`, `Tab` and `ToolbarSpacer`.
+- Modifiers chain like they do in SwiftUI: `<Text modifiers={compose().font('title').bold()}>Hello</Text>`.
+- State that SwiftUI can observe: `useBinding`, `Observable` and `ObservableObject` with `useObservable` and `useStateObject`, environment objects with `useEnvironment` and `useEnvironmentObject`, and focus with `useFocusedValue` and `useFocusedObject`.
+- Drawing with `Path`, `Canvas` and custom shapes made with `createShape`.
+- Animation views: `PhaseAnimator`, `KeyframeAnimator` and `TimelineView`.
+
+### Breaking changes
+
+- Requires the New Architecture, React Native 0.80 or newer, and `react-native-nitro-modules` 0.37 or newer.
+- Modifiers are no longer props. Move them into the `modifiers` prop:
+
+  ```tsx
+  // v6
+  <Text font="title" padding={12}>Hello</Text>
+
+  // v7
+  <Text modifiers={compose().font('title').padding(12)}>Hello</Text>
+  ```
+
+- Props follow SwiftUI's initializers. For example, `Button` takes `onPress` and its label as children, and `TextField` takes its placeholder as children:
+
+  ```tsx
+  <TextField text={name}>Name</TextField>
+  <Button onPress={save}>Save</Button>
+  ```
+
+- iOS only.
+
+### Known issues
+
+- Some of the v6 demos in the example app haven't been moved to the new components yet.
+
 # 6.3.0 (2024-05-28)
 
 - New Menu and Divider components ([#41](https://github.com/andrew-levy/swiftui-react-native/pull/41) by [andrew-levy](https://github.com/andrew-levy))
