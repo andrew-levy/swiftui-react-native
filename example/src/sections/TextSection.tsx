@@ -10,9 +10,6 @@ import {
   useBinding,
 } from 'swiftui-react-native';
 
-/**
- * A list of SwiftUI Fonts
- */
 export const TextSection = () => {
   const count = useBinding(0);
   return (

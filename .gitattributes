@@ -1,0 +1,5 @@
+*.pbxproj -text
+# specific for windows script files
+*.bat text eol=crlf
+# Nitrogen and Codegen output is generated - collapse it in diffs
+nitrogen/generated/** linguist-generated=true

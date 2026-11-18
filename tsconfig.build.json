@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig",
+  "include": [
+    "runtime/react-native"
+  ],
+  "exclude": [
+    "**/__typetests__",
+    "example",
+    "lib",
+    "nitrogen"
+  ]
+}

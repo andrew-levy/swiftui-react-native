@@ -1,0 +1,34 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": [
+    "swiftuireactnative"
+  ],
+  "ios": {
+    "iosModuleName": "SwiftUIReactNative"
+  },
+  "android": {
+    "androidNamespace": [
+      "swiftuireactnative"
+    ],
+    "androidCxxLibName": "SwiftUIReactNative"
+  },
+  "autolinking": {
+    "SwiftUIColorResolver": {
+      "ios": {
+        "language": "swift",
+        "implementationClassName": "HybridSwiftUIColorResolver"
+      }
+    },
+    "SwiftUIRuntime": {
+      "ios": {
+        "language": "swift",
+        "implementationClassName": "HybridSwiftUIRuntime"
+      }
+    }
+  },
+  "ignorePaths": [
+    "node_modules",
+    "example",
+    "lib"
+  ]
+}

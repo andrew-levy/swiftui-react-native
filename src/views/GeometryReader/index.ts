@@ -1,1 +1,0 @@
-export { GeometryReader } from './GeometryReader';

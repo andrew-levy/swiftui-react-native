@@ -1,45 +1,450 @@
 {
   "name": "swiftui-react-native",
   "version": "6.3.3",
-  "description": "A React Native component library inspired by SwiftUI",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "description": "Real SwiftUI views for React Native, built on Fabric, Codegen and Nitro Modules",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/runtime/react-native/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./experimental": "./dist/experimental/index.js"
+    ".": {
+      "swiftui-react-native-source": "./runtime/react-native/index.ts",
+      "types": "./lib/typescript/runtime/react-native/index.d.ts",
+      "default": "./lib/module/index.js"
+    },
+    "./package.json": "./package.json"
   },
+  "files": [
+    "runtime",
+    "lib",
+    "nitrogen",
+    "nitro.json",
+    "*.podspec",
+    "react-native.config.js",
+    "!runtime/apple/build",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*"
+  ],
   "scripts": {
-    "build": "expo-module build",
-    "clean": "expo-module clean",
-    "lint": "expo-module lint",
-    "test": "expo-module test",
-    "prepare": "expo-module prepare",
-    "prepublishOnly": "expo-module prepublishOnly",
-    "expo-module": "expo-module"
-  },
-  "author": "Andrew Levy <alevy97@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^14.14.10",
-    "@types/react": "^17.0.2",
-    "@types/react-native": "^0.71.1",
-    "expo-module-scripts": "^3.4.0",
-    "expo-modules-core": "^1.11.8",
-    "prettier": "^2.5.1",
-    "tslint": "^6.1.3",
-    "typescript": "^4.5.5"
-  },
-  "peerDependencies": {
-    "expo": "*",
-    "react": "*",
-    "react-native": "*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/andrew-levy/swiftui-react-native"
+    "example": "yarn workspace swiftui-react-native-example",
+    "ios": "cd example && expo run:ios",
+    "ios:device": "cd example && expo run:ios --device",
+    "ios:release": "cd example && expo run:ios --configuration Release",
+    "start": "cd example && expo start --dev-client",
+    "start:clear": "cd example && expo start --dev-client --clear",
+    "example:prebuild": "cd example && expo prebuild -p ios --clean",
+    "example:pods": "cd example/ios && pod install",
+    "example:typecheck": "cd example && tsc --noEmit",
+    "clean": "del-cli lib",
+    "prepare": "bob build",
+    "nitrogen": "nitrogen",
+    "codegen": "react-native codegen --platform ios --outputPath .codegen",
+    "typecheck": "tsc",
+    "format": "prettier --write \"runtime/react-native/**/*.{ts,tsx}\" \"example/**/*.{ts,tsx}\""
   },
   "keywords": [
     "react-native",
-    "swiftui"
-  ]
+    "ios",
+    "swiftui",
+    "fabric",
+    "new-architecture",
+    "nitro"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew-levy/swiftui-react-native.git"
+  },
+  "author": "Andrew Levy <alevy97@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrew-levy/swiftui-react-native/issues"
+  },
+  "homepage": "https://swiftui-react-native.vercel.app",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@react-native-community/cli": "20.2.0",
+    "@react-native/babel-preset": "0.88.1",
+    "@types/react": "^19.3.0",
+    "del-cli": "^7.0.0",
+    "nitrogen": "^0.37.2",
+    "prettier": "^3.9.6",
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-builder-bob": "^0.44.1",
+    "react-native-nitro-modules": "^0.37.2",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": ">=0.80.0",
+    "react-native-nitro-modules": "^0.37.0"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "packageManager": "yarn@4.18.1",
+  "react-native-builder-bob": {
+    "source": "runtime/react-native",
+    "output": "lib",
+    "targets": [
+      [
+        "custom",
+        {
+          "script": "nitrogen",
+          "clean": "nitrogen/"
+        }
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  },
+  "codegenConfig": {
+    "name": "SwiftUIReactNativeSpec",
+    "type": "components",
+    "jsSrcsDir": "runtime/react-native/specs",
+    "ios": {
+      "components": {
+        "SwiftUIGeneratedAngularGradient": {
+          "className": "SUIGeneratedAngularGradientComponentView"
+        },
+        "SwiftUIGeneratedAnyLayout": {
+          "className": "SUIGeneratedAnyLayoutComponentView"
+        },
+        "SwiftUIGeneratedAnyShape": {
+          "className": "SUIGeneratedAnyShapeComponentView"
+        },
+        "SwiftUIGeneratedAppStorage": {
+          "className": "SUIGeneratedAppStorageComponentView"
+        },
+        "SwiftUIGeneratedArrangementView": {
+          "className": "SUIGeneratedArrangementViewComponentView"
+        },
+        "SwiftUIGeneratedAsyncImage": {
+          "className": "SUIGeneratedAsyncImageComponentView"
+        },
+        "SwiftUIGeneratedButton": {
+          "className": "SUIGeneratedButtonComponentView"
+        },
+        "SwiftUIGeneratedCanvas": {
+          "className": "SUIGeneratedCanvasComponentView"
+        },
+        "SwiftUIGeneratedCapsule": {
+          "className": "SUIGeneratedCapsuleComponentView"
+        },
+        "SwiftUIGeneratedCircle": {
+          "className": "SUIGeneratedCircleComponentView"
+        },
+        "SwiftUIGeneratedColor": {
+          "className": "SUIGeneratedColorComponentView"
+        },
+        "SwiftUIGeneratedColorPicker": {
+          "className": "SUIGeneratedColorPickerComponentView"
+        },
+        "SwiftUIGeneratedConcentricRectangle": {
+          "className": "SUIGeneratedConcentricRectangleComponentView"
+        },
+        "SwiftUIGeneratedContainerRelativeShape": {
+          "className": "SUIGeneratedContainerRelativeShapeComponentView"
+        },
+        "SwiftUIGeneratedContentUnavailableView": {
+          "className": "SUIGeneratedContentUnavailableViewComponentView"
+        },
+        "SwiftUIGeneratedControlGroup": {
+          "className": "SUIGeneratedControlGroupComponentView"
+        },
+        "SwiftUIGeneratedCustomShape": {
+          "className": "SUIGeneratedCustomShapeComponentView"
+        },
+        "SwiftUIGeneratedDatePicker": {
+          "className": "SUIGeneratedDatePickerComponentView"
+        },
+        "SwiftUIGeneratedDefaultDocumentGroupLaunchActions": {
+          "className": "SUIGeneratedDefaultDocumentGroupLaunchActionsComponentView"
+        },
+        "SwiftUIGeneratedDefaultGlassEffectShape": {
+          "className": "SUIGeneratedDefaultGlassEffectShapeComponentView"
+        },
+        "SwiftUIGeneratedDefaultToolbarItem": {
+          "className": "SUIGeneratedDefaultToolbarItemComponentView"
+        },
+        "SwiftUIGeneratedDisclosureGroup": {
+          "className": "SUIGeneratedDisclosureGroupComponentView"
+        },
+        "SwiftUIGeneratedDivider": {
+          "className": "SUIGeneratedDividerComponentView"
+        },
+        "SwiftUIGeneratedDocumentLaunchView": {
+          "className": "SUIGeneratedDocumentLaunchViewComponentView"
+        },
+        "SwiftUIGeneratedEditButton": {
+          "className": "SUIGeneratedEditButtonComponentView"
+        },
+        "SwiftUIGeneratedEllipse": {
+          "className": "SUIGeneratedEllipseComponentView"
+        },
+        "SwiftUIGeneratedEllipticalGradient": {
+          "className": "SUIGeneratedEllipticalGradientComponentView"
+        },
+        "SwiftUIGeneratedEmptyView": {
+          "className": "SUIGeneratedEmptyViewComponentView"
+        },
+        "SwiftUIGeneratedEnvironment": {
+          "className": "SUIGeneratedEnvironmentComponentView"
+        },
+        "SwiftUIGeneratedForEach": {
+          "className": "SUIGeneratedForEachComponentView"
+        },
+        "SwiftUIGeneratedForm": {
+          "className": "SUIGeneratedFormComponentView"
+        },
+        "SwiftUIGeneratedGauge": {
+          "className": "SUIGeneratedGaugeComponentView"
+        },
+        "SwiftUIGeneratedGeometryReader": {
+          "className": "SUIGeneratedGeometryReaderComponentView"
+        },
+        "SwiftUIGeneratedGlassEffectContainer": {
+          "className": "SUIGeneratedGlassEffectContainerComponentView"
+        },
+        "SwiftUIGeneratedGrid": {
+          "className": "SUIGeneratedGridComponentView"
+        },
+        "SwiftUIGeneratedGridLayout": {
+          "className": "SUIGeneratedGridLayoutComponentView"
+        },
+        "SwiftUIGeneratedGridRow": {
+          "className": "SUIGeneratedGridRowComponentView"
+        },
+        "SwiftUIGeneratedGroup": {
+          "className": "SUIGeneratedGroupComponentView"
+        },
+        "SwiftUIGeneratedGroupBox": {
+          "className": "SUIGeneratedGroupBoxComponentView"
+        },
+        "SwiftUIGeneratedHStack": {
+          "className": "SUIGeneratedHStackComponentView"
+        },
+        "SwiftUIGeneratedHStackLayout": {
+          "className": "SUIGeneratedHStackLayoutComponentView"
+        },
+        "SwiftUIGeneratedImage": {
+          "className": "SUIGeneratedImageComponentView"
+        },
+        "SwiftUIGeneratedKeyframeAnimator": {
+          "className": "SUIGeneratedKeyframeAnimatorComponentView"
+        },
+        "SwiftUIGeneratedLabel": {
+          "className": "SUIGeneratedLabelComponentView"
+        },
+        "SwiftUIGeneratedLabeledContent": {
+          "className": "SUIGeneratedLabeledContentComponentView"
+        },
+        "SwiftUIGeneratedLazyHGrid": {
+          "className": "SUIGeneratedLazyHGridComponentView"
+        },
+        "SwiftUIGeneratedLazyHStack": {
+          "className": "SUIGeneratedLazyHStackComponentView"
+        },
+        "SwiftUIGeneratedLazyVGrid": {
+          "className": "SUIGeneratedLazyVGridComponentView"
+        },
+        "SwiftUIGeneratedLazyVStack": {
+          "className": "SUIGeneratedLazyVStackComponentView"
+        },
+        "SwiftUIGeneratedLinearGradient": {
+          "className": "SUIGeneratedLinearGradientComponentView"
+        },
+        "SwiftUIGeneratedLink": {
+          "className": "SUIGeneratedLinkComponentView"
+        },
+        "SwiftUIGeneratedList": {
+          "className": "SUIGeneratedListComponentView"
+        },
+        "SwiftUIGeneratedMenu": {
+          "className": "SUIGeneratedMenuComponentView"
+        },
+        "SwiftUIGeneratedMeshGradient": {
+          "className": "SUIGeneratedMeshGradientComponentView"
+        },
+        "SwiftUIGeneratedMultiDatePicker": {
+          "className": "SUIGeneratedMultiDatePickerComponentView"
+        },
+        "SwiftUIGeneratedNavigationLink": {
+          "className": "SUIGeneratedNavigationLinkComponentView"
+        },
+        "SwiftUIGeneratedNavigationSplitView": {
+          "className": "SUIGeneratedNavigationSplitViewComponentView"
+        },
+        "SwiftUIGeneratedNavigationStack": {
+          "className": "SUIGeneratedNavigationStackComponentView"
+        },
+        "SwiftUIGeneratedNewDocumentButton": {
+          "className": "SUIGeneratedNewDocumentButtonComponentView"
+        },
+        "SwiftUIGeneratedOffsetShape": {
+          "className": "SUIGeneratedOffsetShapeComponentView"
+        },
+        "SwiftUIGeneratedOutlineGroup": {
+          "className": "SUIGeneratedOutlineGroupComponentView"
+        },
+        "SwiftUIGeneratedPart": {
+          "className": "SUIGeneratedPartComponentView"
+        },
+        "SwiftUIGeneratedPasteButton": {
+          "className": "SUIGeneratedPasteButtonComponentView"
+        },
+        "SwiftUIGeneratedPath": {
+          "className": "SUIGeneratedPathComponentView"
+        },
+        "SwiftUIGeneratedPhaseAnimator": {
+          "className": "SUIGeneratedPhaseAnimatorComponentView"
+        },
+        "SwiftUIGeneratedPicker": {
+          "className": "SUIGeneratedPickerComponentView"
+        },
+        "SwiftUIGeneratedProgressView": {
+          "className": "SUIGeneratedProgressViewComponentView"
+        },
+        "SwiftUIGeneratedRadialGradient": {
+          "className": "SUIGeneratedRadialGradientComponentView"
+        },
+        "SwiftUIGeneratedRectangle": {
+          "className": "SUIGeneratedRectangleComponentView"
+        },
+        "SwiftUIGeneratedRenameButton": {
+          "className": "SUIGeneratedRenameButtonComponentView"
+        },
+        "SwiftUIGeneratedRotatedShape": {
+          "className": "SUIGeneratedRotatedShapeComponentView"
+        },
+        "SwiftUIGeneratedRoundedRectangle": {
+          "className": "SUIGeneratedRoundedRectangleComponentView"
+        },
+        "SwiftUIGeneratedScaledMetric": {
+          "className": "SUIGeneratedScaledMetricComponentView"
+        },
+        "SwiftUIGeneratedScaledShape": {
+          "className": "SUIGeneratedScaledShapeComponentView"
+        },
+        "SwiftUIGeneratedSceneStorage": {
+          "className": "SUIGeneratedSceneStorageComponentView"
+        },
+        "SwiftUIGeneratedScrollView": {
+          "className": "SUIGeneratedScrollViewComponentView"
+        },
+        "SwiftUIGeneratedScrollViewReader": {
+          "className": "SUIGeneratedScrollViewReaderComponentView"
+        },
+        "SwiftUIGeneratedSection": {
+          "className": "SUIGeneratedSectionComponentView"
+        },
+        "SwiftUIGeneratedSecureField": {
+          "className": "SUIGeneratedSecureFieldComponentView"
+        },
+        "SwiftUIGeneratedShareLink": {
+          "className": "SUIGeneratedShareLinkComponentView"
+        },
+        "SwiftUIGeneratedSlider": {
+          "className": "SUIGeneratedSliderComponentView"
+        },
+        "SwiftUIGeneratedSpacer": {
+          "className": "SUIGeneratedSpacerComponentView"
+        },
+        "SwiftUIGeneratedStepper": {
+          "className": "SUIGeneratedStepperComponentView"
+        },
+        "SwiftUIGeneratedSubscriptionView": {
+          "className": "SUIGeneratedSubscriptionViewComponentView"
+        },
+        "SwiftUIGeneratedSwipeActions": {
+          "className": "SUIGeneratedSwipeActionsComponentView"
+        },
+        "SwiftUIGeneratedTab": {
+          "className": "SUIGeneratedTabComponentView"
+        },
+        "SwiftUIGeneratedTable": {
+          "className": "SUIGeneratedTableComponentView"
+        },
+        "SwiftUIGeneratedTabs": {
+          "className": "SUIGeneratedTabsComponentView"
+        },
+        "SwiftUIGeneratedTabSection": {
+          "className": "SUIGeneratedTabSectionComponentView"
+        },
+        "SwiftUIGeneratedTabView": {
+          "className": "SUIGeneratedTabViewComponentView"
+        },
+        "SwiftUIGeneratedText": {
+          "className": "SUIGeneratedTextComponentView"
+        },
+        "SwiftUIGeneratedTextEditor": {
+          "className": "SUIGeneratedTextEditorComponentView"
+        },
+        "SwiftUIGeneratedTextField": {
+          "className": "SUIGeneratedTextFieldComponentView"
+        },
+        "SwiftUIGeneratedTimelineView": {
+          "className": "SUIGeneratedTimelineViewComponentView"
+        },
+        "SwiftUIGeneratedToggle": {
+          "className": "SUIGeneratedToggleComponentView"
+        },
+        "SwiftUIGeneratedToolbarItem": {
+          "className": "SUIGeneratedToolbarItemComponentView"
+        },
+        "SwiftUIGeneratedToolbarItemGroup": {
+          "className": "SUIGeneratedToolbarItemGroupComponentView"
+        },
+        "SwiftUIGeneratedToolbarOverflowMenu": {
+          "className": "SUIGeneratedToolbarOverflowMenuComponentView"
+        },
+        "SwiftUIGeneratedToolbarSpacer": {
+          "className": "SUIGeneratedToolbarSpacerComponentView"
+        },
+        "SwiftUIGeneratedToolbarTitleMenu": {
+          "className": "SUIGeneratedToolbarTitleMenuComponentView"
+        },
+        "SwiftUIGeneratedTransformedShape": {
+          "className": "SUIGeneratedTransformedShapeComponentView"
+        },
+        "SwiftUIGeneratedUnevenRoundedRectangle": {
+          "className": "SUIGeneratedUnevenRoundedRectangleComponentView"
+        },
+        "SwiftUIGeneratedViewThatFits": {
+          "className": "SUIGeneratedViewThatFitsComponentView"
+        },
+        "SwiftUIGeneratedVStack": {
+          "className": "SUIGeneratedVStackComponentView"
+        },
+        "SwiftUIGeneratedVStackLayout": {
+          "className": "SUIGeneratedVStackLayoutComponentView"
+        },
+        "SwiftUIGeneratedZStack": {
+          "className": "SUIGeneratedZStackComponentView"
+        },
+        "SwiftUIGeneratedZStackLayout": {
+          "className": "SUIGeneratedZStackLayoutComponentView"
+        }
+      }
+    }
+  },
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  }
 }

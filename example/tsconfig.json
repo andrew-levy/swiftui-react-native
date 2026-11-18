@@ -1,21 +1,12 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "jsx": "react",
     "strict": true,
+    "customConditions": ["swiftui-react-native-source"],
     "paths": {
-      "swiftui-react-native": [
-        "../src/index"
-      ],
-      "swiftui-react-native/*": [
-        "../src/*"
-      ]
+      "swiftui-react-native": ["../runtime/react-native/index"],
+      "swiftui-react-native/*": ["../runtime/react-native/*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
 }

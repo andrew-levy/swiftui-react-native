@@ -1,16 +1,37 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "rootDir": ".",
+    "paths": {
+      "swiftui-react-native": [
+        "./runtime/react-native/index"
+      ],
+      "swiftui-react-native/*": [
+        "./runtime/react-native/*"
+      ]
+    },
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "customConditions": [
+      "swiftui-react-native-source"
+    ],
     "esModuleInterop": true,
-    "target": "esnext",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "rootDir": "src",
-    "outDir": "dist",
-    "noUnusedLocals": false,
-    "jsx": "react",
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "lib": [
+      "ESNext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "declaration": true
+    "strict": true,
+    "target": "ESNext"
   },
-  "exclude": ["node_modules", "dist", "example"]
+  "exclude": [
+    "node_modules",
+    "lib",
+    "nitrogen"
+  ]
 }
