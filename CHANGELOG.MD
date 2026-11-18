@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 7.0.0-beta.1 (2026-11-19)
+
+- New documentation site at [swiftui.rit3zh.dev](https://swiftui.rit3zh.dev). The package homepage now points there.
+- A shorter README with a new banner, install steps and a usage example.
+
 # 7.0.0-beta.0 (2026-11-19)
 
 **Note:** v7 is a rewrite and this is its first beta. It has breaking changes, and APIs may still change between betas. Install it with `npm install swiftui-react-native@next`.
