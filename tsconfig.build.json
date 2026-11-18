@@ -5,6 +5,7 @@
   ],
   "exclude": [
     "**/__typetests__",
+    "docs",
     "example",
     "lib",
     "nitrogen"

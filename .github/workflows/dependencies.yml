@@ -1,0 +1,22 @@
+name: Dependencies
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lockfile:
+    name: Lockfile is up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Fails if package.json and yarn.lock disagree.
+      - uses: ./.github/actions/setup

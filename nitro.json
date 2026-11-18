@@ -29,6 +29,7 @@
   "ignorePaths": [
     "node_modules",
     "example",
+    "docs",
     "lib"
   ]
 }

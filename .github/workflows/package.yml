@@ -1,0 +1,43 @@
+name: Package
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  contents:
+    name: npm package contents
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: yarn prepare
+      - run: npm pack --dry-run --json --ignore-scripts > pack.json
+      - name: Check what npm would publish
+        run: |
+          node -e '
+            const [pack] = require("./pack.json");
+            const files = new Set(pack.files.map((file) => file.path));
+            const required = [
+              "package.json",
+              "SwiftUIReactNative.podspec",
+              "lib/module/index.js",
+              "lib/typescript/runtime/react-native/index.d.ts",
+              "runtime/apple/Generated/SUIComponents.generated.swift",
+              "nitrogen/generated/ios/SwiftUIReactNative+autolinking.rb",
+            ];
+            const missing = required.filter((file) => !files.has(file));
+            const unwanted = [...files].filter((file) => file.startsWith("example/"));
+            console.log(pack.entryCount + " files, " + pack.unpackedSize + " bytes unpacked");
+            if (missing.length) console.error("Missing: " + missing.join(", "));
+            if (unwanted.length) console.error("Should not be published: " + unwanted.slice(0, 10).join(", "));
+            process.exit(missing.length || unwanted.length ? 1 : 0);
+          '
