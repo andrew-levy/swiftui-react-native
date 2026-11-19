@@ -1,6 +1,6 @@
 {
   "name": "swiftui-react-native",
-  "version": "7.0.0-beta.1",
+  "version": "7.0.0-beta.2",
   "description": "Real SwiftUI views for React Native, built on Fabric, Codegen and Nitro Modules",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/runtime/react-native/index.d.ts",
