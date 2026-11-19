@@ -772,6 +772,7 @@ enum SUIValues {
     throw SUIDecodeError.noMatchingOverload("AnyTransition." + name, reasons)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_ArrangementViewStyle(_ raw: Any?, _ context: SUIContext) throws -> any SwiftUI.ArrangementViewStyle {
     let value = raw
@@ -794,13 +795,16 @@ enum SUIValues {
       } catch is SUIDecodeError {}
     throw SUI.mismatch("ArrangementViewStyle", value)
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_AutomaticArrangementViewStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.AutomaticArrangementViewStyle {
     let value = raw
     if SUI.object(value)?.isEmpty == true { return SwiftUI.AutomaticArrangementViewStyle() }
     throw SUI.mismatch("AutomaticArrangementViewStyle", value)
   }
+  #endif
 
   static func decode_AutomaticControlGroupStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.AutomaticControlGroupStyle {
     let value = raw
@@ -1034,12 +1038,14 @@ enum SUIValues {
     throw SUI.mismatch("BorderedProminentButtonStyle", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_BorderedTextFieldStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.BorderedTextFieldStyle {
     let value = raw
     if SUI.object(value)?.isEmpty == true { return SwiftUI.BorderedTextFieldStyle() }
     throw SUI.mismatch("BorderedTextFieldStyle", value)
   }
+  #endif
 
   static func decode_BorderlessButtonStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.BorderlessButtonStyle {
     let value = raw
@@ -1414,6 +1420,7 @@ enum SUIValues {
     throw SUI.mismatch("ContainerRelativeShape", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_ContentMarginGuide(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ContentMarginGuide {
     let value = raw
@@ -1425,6 +1432,7 @@ enum SUIValues {
     }
     throw SUI.mismatch("ContentMarginGuide", value)
   }
+  #endif
 
   @available(iOS 17.0, *)
   static func decode_ContentMarginPlacement(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ContentMarginPlacement {
@@ -1599,6 +1607,7 @@ enum SUIValues {
     throw SUI.mismatch("CoordinateSpaceProtocol", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_CrossFadeNavigationTransition(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.CrossFadeNavigationTransition {
     let value = raw
@@ -1610,6 +1619,7 @@ enum SUIValues {
     }
     throw SUI.mismatch("CrossFadeNavigationTransition", value)
   }
+  #endif
 
   @available(iOS 18.0, *)
   static func decode_CustomHoverEffect(_ raw: Any?, _ context: SUIContext) throws -> any SwiftUI.CustomHoverEffect {
@@ -1813,6 +1823,7 @@ enum SUIValues {
     throw SUI.mismatch("DismissBehavior", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_DocumentCreationSource(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.DocumentCreationSource {
     let value = raw
@@ -1823,6 +1834,7 @@ enum SUIValues {
       } catch is SUIDecodeError {}
     throw SUI.mismatch("DocumentCreationSource", value)
   }
+  #endif
 
   @available(iOS 26.0, *)
   static func decode_DragConfiguration(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.DragConfiguration {
@@ -1880,6 +1892,7 @@ enum SUIValues {
         return SwiftUI.DragGesture(minimumDistance: p0, coordinateSpace: p1)
       } catch is SUIDecodeError {}
     }
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         let fields = try SUI.fields(value, allowed: ["minimumDistance", "inputKinds"], required: [])
@@ -1888,6 +1901,8 @@ enum SUIValues {
         return SwiftUI.DragGesture(minimumDistance: p0, inputKinds: p1)
       } catch is SUIDecodeError {}
     }
+    #endif
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         let fields = try SUI.fields(value, allowed: ["minimumDistance", "coordinateSpace", "inputKinds"], required: ["coordinateSpace"])
@@ -1897,6 +1912,7 @@ enum SUIValues {
         return SwiftUI.DragGesture(minimumDistance: p0, coordinateSpace: p1, inputKinds: p2)
       } catch is SUIDecodeError {}
     }
+    #endif
     throw SUI.mismatch("DragGesture", value)
   }
 
@@ -2694,6 +2710,7 @@ enum SUIValues {
     throw SUI.mismatch("Gesture", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_GestureInputKinds(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.GestureInputKinds {
     let value = raw
@@ -2715,6 +2732,7 @@ enum SUIValues {
       } catch is SUIDecodeError {}
     throw SUI.mismatch("GestureInputKinds", value)
   }
+  #endif
 
   static func decode_GestureMask(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.GestureMask {
     let value = raw
@@ -2781,12 +2799,14 @@ enum SUIValues {
   @available(iOS 26.0, *)
   static func decode_GlassButtonStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.GlassButtonStyle {
     let value = raw
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 26.1, *) {
       do {
         let p0: SwiftUI.Glass = try SUI.decode(value as Any) { try SUIValues.decode_Glass($0, context) }
         return SwiftUI.GlassButtonStyle(p0)
       } catch is SUIDecodeError {}
     }
+    #endif
     if SUI.object(value)?.isEmpty == true { return SwiftUI.GlassButtonStyle() }
     throw SUI.mismatch("GlassButtonStyle", value)
   }
@@ -2951,6 +2971,7 @@ enum SUIValues {
       default: break
       }
     }
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 18.0, *) {
       do {
         let payload = try SUI.payload(value, "alphaMultiply")
@@ -2958,6 +2979,7 @@ enum SUIValues {
         return SwiftUI.GraphicsContext.Filter.alphaMultiply(p0)
       } catch is SUIDecodeError {}
     }
+    #endif
       do {
         let payload = try SUI.payload(value, "alphaThreshold")
         let fields = try SUI.fields(payload, allowed: ["min", "max", "color"], required: ["min"])
@@ -2988,6 +3010,7 @@ enum SUIValues {
         let p0: SwiftUI.ColorMatrix = try SUI.decode(payload) { try SUIValues.decode_ColorMatrix($0, context) }
         return SwiftUI.GraphicsContext.Filter.colorMatrix(p0)
       } catch is SUIDecodeError {}
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 18.2, *) {
       do {
         let payload = try SUI.payload(value, "colorMatrix")
@@ -2997,6 +3020,7 @@ enum SUIValues {
         return SwiftUI.GraphicsContext.Filter.colorMatrix(p0, isPremultiplied: p1)
       } catch is SUIDecodeError {}
     }
+    #endif
       do {
         let payload = try SUI.payload(value, "colorMultiply")
         let p0: SwiftUI.Color = try SUI.decode(payload) { try SUIValues.decode_Color($0, context) }
@@ -3175,6 +3199,7 @@ enum SUIValues {
         let p4: SwiftUI.GraphicsContext.GradientOptions = try fields.value("options", default: { SwiftUI.GraphicsContext.GradientOptions() }) { try SUIValues.decode_GraphicsContext_GradientOptions($0, context) }
         return SwiftUI.GraphicsContext.Shading.radialGradient(p0, center: p1, startRadius: p2, endRadius: p3, options: p4)
       } catch is SUIDecodeError {}
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 18.2, *) {
       do {
         let payload = try SUI.payload(value, "radialGradient")
@@ -3188,6 +3213,7 @@ enum SUIValues {
         return SwiftUI.GraphicsContext.Shading.radialGradient(p0, startCenter: p1, startRadius: p2, endCenter: p3, endRadius: p4, options: p5)
       } catch is SUIDecodeError {}
     }
+    #endif
     if #available(iOS 17.0, *) {
       do {
         let payload = try SUI.payload(value, "shader")
@@ -3614,9 +3640,11 @@ enum SUIValues {
   static func decode_InsettableShape(_ raw: Any?, _ context: SUIContext) throws -> any SwiftUI.InsettableShape {
     let value = raw
     if let shape = try SUIProgramShape(value, decode: { try SUIValues.decode_Path($0, context) }) { return shape }
+    if #available(iOS 17.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_ButtonBorderShape($0, context) }
       } catch is SUIDecodeError {}
+    }
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_Capsule($0, context) }
       } catch is SUIDecodeError {}
@@ -3640,11 +3668,13 @@ enum SUIValues {
         return try SUI.decode(value as Any) { try SUIValues.decode_RoundedRectangularShape($0, context) }
       } catch is SUIDecodeError {}
     }
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_TextInputBorderShape($0, context) }
       } catch is SUIDecodeError {}
     }
+    #endif
     if #available(iOS 16.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_UnevenRoundedRectangle($0, context) }
@@ -4000,6 +4030,7 @@ enum SUIValues {
         let p1: CGFloat = try fields.value("maximumDistance", default: { 10 }) { try SUI.cgFloat($0) }
         return SwiftUI.LongPressGesture(minimumDuration: p0, maximumDistance: p1)
       } catch is SUIDecodeError {}
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         let fields = try SUI.fields(value, allowed: ["minimumDuration", "maximumDistance", "inputKinds"], required: [])
@@ -4009,6 +4040,7 @@ enum SUIValues {
         return SwiftUI.LongPressGesture(minimumDuration: p0, maximumDistance: p1, inputKinds: p2)
       } catch is SUIDecodeError {}
     }
+    #endif
     throw SUI.mismatch("LongPressGesture", value)
   }
 
@@ -4020,6 +4052,7 @@ enum SUIValues {
         let p0: CGFloat = try fields.value("minimumScaleDelta", default: { 0.01 }) { try SUI.cgFloat($0) }
         return SwiftUI.MagnifyGesture(minimumScaleDelta: p0)
       } catch is SUIDecodeError {}
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         let fields = try SUI.fields(value, allowed: ["minimumScaleDelta", "inputKinds"], required: [])
@@ -4028,6 +4061,7 @@ enum SUIValues {
         return SwiftUI.MagnifyGesture(minimumScaleDelta: p0, inputKinds: p1)
       } catch is SUIDecodeError {}
     }
+    #endif
     throw SUI.mismatch("MagnifyGesture", value)
   }
 
@@ -4413,7 +4447,9 @@ enum SUIValues {
     if let string = value as? String {
       switch string {
       case "automatic": return SwiftUI.AutomaticNavigationTransition.automatic
+      #if canImport(SwiftUI, _version: 8.0.84)
       case "crossFade": if #available(iOS 27.0, *) { return SwiftUI.CrossFadeNavigationTransition.crossFade }
+      #endif
       default: break
       }
     }
@@ -4427,11 +4463,13 @@ enum SUIValues {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_AutomaticNavigationTransition($0, context) }
       } catch is SUIDecodeError {}
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_CrossFadeNavigationTransition($0, context) }
       } catch is SUIDecodeError {}
     }
+    #endif
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_ZoomNavigationTransition($0, context) }
       } catch is SUIDecodeError {}
@@ -4492,6 +4530,7 @@ enum SUIValues {
     throw SUI.mismatch("OpenURLAction.Result", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_OverlayArrangementViewStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.OverlayArrangementViewStyle {
     let value = raw
@@ -4503,7 +4542,9 @@ enum SUIValues {
     if SUI.object(value)?.isEmpty == true { return SwiftUI.OverlayArrangementViewStyle() }
     throw SUI.mismatch("OverlayArrangementViewStyle", value)
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   @discardableResult static func transform_OverlayArrangementViewStyle(_ value: inout SwiftUI.OverlayArrangementViewStyle, _ name: String, _ raw: [Any], _ context: SUIContext) throws -> Any? {
     var reasons: [String] = []
@@ -4519,6 +4560,7 @@ enum SUIValues {
     }
     throw SUIDecodeError.noMatchingOverload("OverlayArrangementViewStyle." + name, reasons)
   }
+  #endif
 
   static func decode_PageIndexViewStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.PageIndexViewStyle {
     let value = raw
@@ -4930,7 +4972,9 @@ enum SUIValues {
       case "navigationLink": if #available(iOS 16.0, *) { return SwiftUI.NavigationLinkPickerStyle.navigationLink }
       case "palette": if #available(iOS 17.0, *) { return SwiftUI.PalettePickerStyle.palette }
       case "segmented": return SwiftUI.SegmentedPickerStyle.segmented
+      #if canImport(SwiftUI, _version: 8.0.84)
       case "tabs": if #available(iOS 27.0, *) { return SwiftUI.TabsPickerStyle.tabs }
+      #endif
       case "wheel": return SwiftUI.WheelPickerStyle.wheel
       default: break
       }
@@ -4957,11 +5001,13 @@ enum SUIValues {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_SegmentedPickerStyle($0, context) }
       } catch is SUIDecodeError {}
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_TabsPickerStyle($0, context) }
       } catch is SUIDecodeError {}
     }
+    #endif
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_WheelPickerStyle($0, context) }
       } catch is SUIDecodeError {}
@@ -5101,6 +5147,7 @@ enum SUIValues {
     throw SUI.mismatch("PresentationDetent", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_PresentationPlacement(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.PresentationPlacement {
     let value = raw
@@ -5115,6 +5162,7 @@ enum SUIValues {
     }
     throw SUI.mismatch("PresentationPlacement", value)
   }
+  #endif
 
   @available(iOS 18.0, *)
   static func decode_PresentationSizing(_ raw: Any?, _ context: SUIContext) throws -> any SwiftUI.PresentationSizing {
@@ -5396,6 +5444,7 @@ enum SUIValues {
     throw SUI.mismatch("RedactionReasons", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_ReservedRegion_Kind(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ReservedRegion.Kind {
     let value = raw
@@ -5408,7 +5457,9 @@ enum SUIValues {
     }
     throw SUI.mismatch("ReservedRegion.Kind", value)
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_ReservedRegion_QueryOptions(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ReservedRegion.QueryOptions {
     let value = raw
@@ -5426,6 +5477,7 @@ enum SUIValues {
       } catch is SUIDecodeError {}
     throw SUI.mismatch("ReservedRegion.QueryOptions", value)
   }
+  #endif
 
   @available(iOS 17.0, *)
   static func decode_RotateGesture(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.RotateGesture {
@@ -5435,6 +5487,7 @@ enum SUIValues {
         let p0: SwiftUI.Angle = try fields.value("minimumAngleDelta", default: { .degrees(1) }) { try SUIValues.decode_Angle($0, context) }
         return SwiftUI.RotateGesture(minimumAngleDelta: p0)
       } catch is SUIDecodeError {}
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         let fields = try SUI.fields(value, allowed: ["minimumAngleDelta", "inputKinds"], required: [])
@@ -5443,6 +5496,7 @@ enum SUIValues {
         return SwiftUI.RotateGesture(minimumAngleDelta: p0, inputKinds: p1)
       } catch is SUIDecodeError {}
     }
+    #endif
     throw SUI.mismatch("RotateGesture", value)
   }
 
@@ -6286,7 +6340,9 @@ enum SUIValues {
       case "containerRelative": return SwiftUI.ContainerRelativeShape.containerRelative
       case "ellipse": return SwiftUI.Ellipse.ellipse
       case "rect": return SwiftUI.Rectangle.rect
+      #if canImport(SwiftUI, _version: 8.0.84)
       case "textInputBorder": if #available(iOS 27.0, *) { return SwiftUI.TextInputBorderShape.textInputBorder }
+      #endif
       default: break
       }
     }
@@ -6409,9 +6465,11 @@ enum SUIValues {
         return SwiftUI.ConcentricRectangle.rect(uniformTrailingCorners: p0, topLeadingCorner: p1, bottomLeadingCorner: p2)
       } catch is SUIDecodeError {}
     }
+    if #available(iOS 17.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_ButtonBorderShape($0, context) }
       } catch is SUIDecodeError {}
+    }
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_Capsule($0, context) }
       } catch is SUIDecodeError {}
@@ -6451,11 +6509,13 @@ enum SUIValues {
         return try SUI.decode(value as Any) { try SUIValues.decode_RoundedRectangularShape($0, context) }
       } catch is SUIDecodeError {}
     }
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_TextInputBorderShape($0, context) }
       } catch is SUIDecodeError {}
     }
+    #endif
     if #available(iOS 16.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_UnevenRoundedRectangle($0, context) }
@@ -6767,9 +6827,11 @@ enum SUIValues {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_ForegroundStyle($0, context) }
       } catch is SUIDecodeError {}
+    if #available(iOS 16.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_Gradient($0, context) }
       } catch is SUIDecodeError {}
+    }
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_HierarchicalShapeStyle($0, context) }
       } catch is SUIDecodeError {}
@@ -6959,6 +7021,7 @@ enum SUIValues {
         return SwiftUI.SpatialTapGesture(count: p0, coordinateSpace: p1)
       } catch is SUIDecodeError {}
     }
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         let fields = try SUI.fields(value, allowed: ["count", "inputKinds"], required: [])
@@ -6967,6 +7030,8 @@ enum SUIValues {
         return SwiftUI.SpatialTapGesture(count: p0, inputKinds: p1)
       } catch is SUIDecodeError {}
     }
+    #endif
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         let fields = try SUI.fields(value, allowed: ["count", "coordinateSpace", "inputKinds"], required: ["coordinateSpace"])
@@ -6976,9 +7041,11 @@ enum SUIValues {
         return SwiftUI.SpatialTapGesture(count: p0, coordinateSpace: p1, inputKinds: p2)
       } catch is SUIDecodeError {}
     }
+    #endif
     throw SUI.mismatch("SpatialTapGesture", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_SplitArrangementViewStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.SplitArrangementViewStyle {
     let value = raw
@@ -6990,7 +7057,9 @@ enum SUIValues {
     if SUI.object(value)?.isEmpty == true { return SwiftUI.SplitArrangementViewStyle() }
     throw SUI.mismatch("SplitArrangementViewStyle", value)
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   @discardableResult static func transform_SplitArrangementViewStyle(_ value: inout SwiftUI.SplitArrangementViewStyle, _ name: String, _ raw: [Any], _ context: SUIContext) throws -> Any? {
     var reasons: [String] = []
@@ -7006,6 +7075,7 @@ enum SUIValues {
     }
     throw SUIDecodeError.noMatchingOverload("SplitArrangementViewStyle." + name, reasons)
   }
+  #endif
 
   @available(iOS 17.0, *)
   static func decode_Spring(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.Spring {
@@ -7243,7 +7313,9 @@ enum SUIValues {
     let value = raw
     if let string = value as? String {
       switch string {
+      #if canImport(SwiftUI, _version: 8.0.84)
       case "prominent": if #available(iOS 27.0, *) { return SwiftUI.TabRole.prominent }
+      #endif
       case "search": return SwiftUI.TabRole.search
       default: break
       }
@@ -7264,12 +7336,14 @@ enum SUIValues {
     throw SUI.mismatch("TabSearchActivation", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_TabsPickerStyle(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.TabsPickerStyle {
     let value = raw
     if SUI.object(value)?.isEmpty == true { return SwiftUI.TabsPickerStyle() }
     throw SUI.mismatch("TabsPickerStyle", value)
   }
+  #endif
 
   @available(iOS 18.0, *)
   static func decode_TabViewCustomization(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.TabViewCustomization {
@@ -7347,6 +7421,7 @@ enum SUIValues {
         let p0: Int = try fields.value("count", default: { 1 }) { try SUI.int($0, as: Int.self) }
         return SwiftUI.TapGesture(count: p0)
       } catch is SUIDecodeError {}
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         let fields = try SUI.fields(value, allowed: ["count", "inputKinds"], required: [])
@@ -7355,6 +7430,7 @@ enum SUIValues {
         return SwiftUI.TapGesture(count: p0, inputKinds: p1)
       } catch is SUIDecodeError {}
     }
+    #endif
     throw SUI.mismatch("TapGesture", value)
   }
 
@@ -7509,16 +7585,20 @@ enum SUIValues {
     if let string = value as? String {
       switch string {
       case "automatic": return SwiftUI.DefaultTextFieldStyle.automatic
+      #if canImport(SwiftUI, _version: 8.0.84)
       case "bordered": if #available(iOS 27.0, *) { return SwiftUI.BorderedTextFieldStyle.bordered }
+      #endif
       case "plain": return SwiftUI.PlainTextFieldStyle.plain
       default: break
       }
     }
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *) {
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_BorderedTextFieldStyle($0, context) }
       } catch is SUIDecodeError {}
     }
+    #endif
       do {
         return try SUI.decode(value as Any) { try SUIValues.decode_DefaultTextFieldStyle($0, context) }
       } catch is SUIDecodeError {}
@@ -7547,6 +7627,7 @@ enum SUIValues {
     throw SUI.mismatch("TextInputAutocapitalization", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_TextInputBorderShape(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.TextInputBorderShape {
     let value = raw
@@ -7561,6 +7642,7 @@ enum SUIValues {
     }
     throw SUI.mismatch("TextInputBorderShape", value)
   }
+  #endif
 
   @available(iOS 17.0, *)
   static func decode_TextInputDictationActivation(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.TextInputDictationActivation {
@@ -7753,7 +7835,9 @@ enum SUIValues {
       case "subtitle": if #available(iOS 26.0, *) { return SwiftUI.ToolbarItemPlacement.subtitle }
       case "title": return SwiftUI.ToolbarItemPlacement.title
       case "topBarLeading": return SwiftUI.ToolbarItemPlacement.topBarLeading
+      #if canImport(SwiftUI, _version: 8.0.84)
       case "topBarPinnedTrailing": if #available(iOS 27.0, *) { return SwiftUI.ToolbarItemPlacement.topBarPinnedTrailing }
+      #endif
       case "topBarTrailing": return SwiftUI.ToolbarItemPlacement.topBarTrailing
       default: break
       }
@@ -7773,6 +7857,7 @@ enum SUIValues {
     throw SUI.mismatch("ToolbarLabelStyle", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_ToolbarMinimizationBehavior(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ToolbarMinimizationBehavior {
     let value = raw
@@ -7787,7 +7872,9 @@ enum SUIValues {
     }
     throw SUI.mismatch("ToolbarMinimizationBehavior", value)
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_ToolbarMinimizationRestoration(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ToolbarMinimizationRestoration {
     let value = raw
@@ -7800,7 +7887,9 @@ enum SUIValues {
     }
     throw SUI.mismatch("ToolbarMinimizationRestoration", value)
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func decode_ToolbarMinimizationSafeAreaAdjustment(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ToolbarMinimizationSafeAreaAdjustment {
     let value = raw
@@ -7814,6 +7903,7 @@ enum SUIValues {
     }
     throw SUI.mismatch("ToolbarMinimizationSafeAreaAdjustment", value)
   }
+  #endif
 
   @available(iOS 16.0, *)
   static func decode_ToolbarPlacement(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ToolbarPlacement {
@@ -7823,7 +7913,9 @@ enum SUIValues {
       case "automatic": return SwiftUI.ToolbarPlacement.automatic
       case "bottomBar": return SwiftUI.ToolbarPlacement.bottomBar
       case "navigationBar": return SwiftUI.ToolbarPlacement.navigationBar
+      #if canImport(SwiftUI, _version: 8.0.84)
       case "statusBar": if #available(iOS 27.0, *) { return SwiftUI.ToolbarPlacement.statusBar }
+      #endif
       case "tabBar": return SwiftUI.ToolbarPlacement.tabBar
       default: break
       }
@@ -7846,6 +7938,7 @@ enum SUIValues {
     throw SUI.mismatch("ToolbarRole", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   @available(iOS 27.2, *)
   static func decode_ToolbarTitleAlignment(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ToolbarTitleAlignment {
     let value = raw
@@ -7859,6 +7952,7 @@ enum SUIValues {
     }
     throw SUI.mismatch("ToolbarTitleAlignment", value)
   }
+  #endif
 
   @available(iOS 17.0, *)
   static func decode_ToolbarTitleDisplayMode(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ToolbarTitleDisplayMode {
@@ -7875,6 +7969,7 @@ enum SUIValues {
     throw SUI.mismatch("ToolbarTitleDisplayMode", value)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_ToolbarVerticalBehavior(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ToolbarVerticalBehavior {
     let value = raw
@@ -7887,7 +7982,9 @@ enum SUIValues {
     }
     throw SUI.mismatch("ToolbarVerticalBehavior", value)
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func decode_ToolbarVerticalCompressionBehavior(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.ToolbarVerticalCompressionBehavior {
     let value = raw
@@ -7901,6 +7998,7 @@ enum SUIValues {
     }
     throw SUI.mismatch("ToolbarVerticalCompressionBehavior", value)
   }
+  #endif
 
   static func decode_Transaction(_ raw: Any?, _ context: SUIContext) throws -> SwiftUI.Transaction {
     let value = raw
@@ -9189,7 +9287,9 @@ enum SUIValues {
     let name = try SUI.string(key)
     switch name {
     case "accessibilityEnabled": return try visitor.visit(\.accessibilityEnabled, try SUI.decode(value as Any) { try SUI.bool($0) })
+    #if canImport(SwiftUI, _version: 8.0.84)
     case "accessibilityPrefersCrossFadeTransitions": if #available(iOS 26.4, *) { return try visitor.visit(\.accessibilityPrefersCrossFadeTransitions, try SUI.decode(value as Any) { try SUI.bool($0) }) }
+    #endif
     case "allowedDynamicRange": if #available(iOS 17.0, *) { return try visitor.visit(\.allowedDynamicRange, try SUI.decode(value as Any) { try SUI.optional($0, { try SUIValues.decode_Image_DynamicRange($0, context) }) }) }
     case "allowsTightening": return try visitor.visit(\.allowsTightening, try SUI.decode(value as Any) { try SUI.bool($0) })
     case "appearsActive": if #available(iOS 18.0, *) { return try visitor.visit(\.appearsActive, try SUI.decode(value as Any) { try SUI.bool($0) }) }
@@ -9230,20 +9330,28 @@ enum SUIValues {
     case "minimumScaleFactor": return try visitor.visit(\.minimumScaleFactor, try SUI.decode(value as Any) { try SUI.cgFloat($0) })
     case "multilineTextAlignment": return try visitor.visit(\.multilineTextAlignment, try SUI.decode(value as Any) { try SUIValues.decode_TextAlignment($0, context) })
     case "openURL": return try visitor.visit(\.openURL, try SUI.decode(value as Any) { try SUIValues.decode_OpenURLAction($0, context) })
+    #if canImport(SwiftUI, _version: 8.0.85)
     case "overlayArrangementZIndex": if #available(iOS 27.1, *) { return try visitor.visit(\.overlayArrangementZIndex, try SUI.decode(value as Any) { try SUI.int($0, as: Int.self) }) }
+    #endif
     case "redactionReasons": return try visitor.visit(\.redactionReasons, try SUI.decode(value as Any) { try SUIValues.decode_RedactionReasons($0, context) })
     case "scenePhase": return try visitor.visit(\.scenePhase, try SUI.decode(value as Any) { try SUIValues.decode_ScenePhase($0, context) })
     case "scrollDismissesKeyboardMode": if #available(iOS 16.0, *) { return try visitor.visit(\.scrollDismissesKeyboardMode, try SUI.decode(value as Any) { try SUIValues.decode_ScrollDismissesKeyboardMode($0, context) }) }
     case "sidebarRowSize": if #available(iOS 16.0, *) { return try visitor.visit(\.sidebarRowSize, try SUI.decode(value as Any) { try SUIValues.decode_SidebarRowSize($0, context) }) }
+    #if canImport(SwiftUI, _version: 8.0.85)
     case "splitArrangementAxis": if #available(iOS 27.1, *) { return try visitor.visit(\.splitArrangementAxis, try SUI.decode(value as Any) { try SUI.optional($0, { try SUIValues.decode_Axis($0, context) }) }) }
+    #endif
     case "symbolColorRenderingMode": if #available(iOS 26.0, *) { return try visitor.visit(\.symbolColorRenderingMode, try SUI.decode(value as Any) { try SUI.optional($0, { try SUIValues.decode_SymbolColorRenderingMode($0, context) }) }) }
     case "symbolRenderingMode": return try visitor.visit(\.symbolRenderingMode, try SUI.decode(value as Any) { try SUI.optional($0, { try SUIValues.decode_SymbolRenderingMode($0, context) }) })
     case "symbolVariableValueMode": if #available(iOS 26.0, *) { return try visitor.visit(\.symbolVariableValueMode, try SUI.decode(value as Any) { try SUI.optional($0, { try SUIValues.decode_SymbolVariableValueMode($0, context) }) }) }
     case "symbolVariants": return try visitor.visit(\.symbolVariants, try SUI.decode(value as Any) { try SUIValues.decode_SymbolVariants($0, context) })
+    #if canImport(SwiftUI, _version: 8.0.84)
     case "systemPrefersReducedResourceUsage": if #available(iOS 27.0, *) { return try visitor.visit(\.systemPrefersReducedResourceUsage, try SUI.decode(value as Any) { try SUI.bool($0) }) }
+    #endif
     case "textCase": return try visitor.visit(\.textCase, try SUI.decode(value as Any) { try SUI.optional($0, { try SUIValues.decode_Text_Case($0, context) }) })
     case "textSelectionAffinity": if #available(iOS 18.0, *) { return try visitor.visit(\.textSelectionAffinity, try SUI.decode(value as Any) { try SUIValues.decode_TextSelectionAffinity($0, context) }) }
+    #if canImport(SwiftUI, _version: 8.1.13)
     case "toolbarTitleAlignment": if #available(iOS 27.2, *) { return try visitor.visit(\.toolbarTitleAlignment, try SUI.decode(value as Any) { try SUIValues.decode_ToolbarTitleAlignment($0, context) }) }
+    #endif
     case "truncationMode": return try visitor.visit(\.truncationMode, try SUI.decode(value as Any) { try SUIValues.decode_Text_TruncationMode($0, context) })
     case "verticalScrollBounceBehavior": if #available(iOS 16.4, *) { return try visitor.visit(\.verticalScrollBounceBehavior, try SUI.decode(value as Any) { try SUIValues.decode_ScrollBounceBehavior($0, context) }) }
     case "verticalScrollIndicatorVisibility": if #available(iOS 16.0, *) { return try visitor.visit(\.verticalScrollIndicatorVisibility, try SUI.decode(value as Any) { try SUIValues.decode_ScrollIndicatorVisibility($0, context) }) }
@@ -9262,12 +9370,18 @@ enum SUIValues {
     case "accessibilityInvertColors": return SUI.encode(store.accessibilityInvertColors)
     case "accessibilityLargeContentViewerEnabled": return SUI.encode(store.accessibilityLargeContentViewerEnabled)
     case "accessibilityPlayAnimatedImages": if #available(iOS 17.0, *) { return SUI.encode(store.accessibilityPlayAnimatedImages) }
+    #if canImport(SwiftUI, _version: 8.0.84)
     case "accessibilityPrefersCrossFadeTransitions": if #available(iOS 26.4, *) { return SUI.encode(store.accessibilityPrefersCrossFadeTransitions) }
+    #endif
     case "accessibilityQuickActionsEnabled": if #available(iOS 16.0, *) { return SUI.encode(store.accessibilityQuickActionsEnabled) }
+    #if canImport(SwiftUI, _version: 8.0.84)
     case "accessibilityReduceHighlightingEffects": if #available(iOS 26.4, *) { return SUI.encode(store.accessibilityReduceHighlightingEffects) }
+    #endif
     case "accessibilityReduceMotion": return SUI.encode(store.accessibilityReduceMotion)
     case "accessibilityReduceTransparency": return SUI.encode(store.accessibilityReduceTransparency)
-    case "accessibilityShowBorders": return SUI.encode(store.accessibilityShowBorders)
+    #if canImport(SwiftUI, _version: 8.0.84)
+    case "accessibilityShowBorders": if #available(iOS 26.1, *) { return SUI.encode(store.accessibilityShowBorders) }
+    #endif
     case "accessibilitySwitchControlEnabled": return SUI.encode(store.accessibilitySwitchControlEnabled)
     case "accessibilityVoiceOverEnabled": return SUI.encode(store.accessibilityVoiceOverEnabled)
     case "allowedDynamicRange": if #available(iOS 17.0, *) { return SUI.encodeOptional(store.allowedDynamicRange) { SUIValues.encode_Image_DynamicRange($0) } }
@@ -9310,7 +9424,9 @@ enum SUIValues {
     case "isScrollEnabled": if #available(iOS 16.0, *) { return SUI.encode(store.isScrollEnabled) }
     case "isSearching": return SUI.encode(store.isSearching)
     case "isTabBarShowingSections": if #available(iOS 18.0, *) { return SUI.encode(store.isTabBarShowingSections) }
+    #if canImport(SwiftUI, _version: 8.0.84)
     case "isTabViewSidebarAvailable": if #available(iOS 27.0, *) { return SUI.encode(store.isTabViewSidebarAvailable) }
+    #endif
     case "isUserAuthenticationEnabled": if #available(iOS 18.0, *) { return SUI.encode(store.isUserAuthenticationEnabled) }
     case "keyboardShortcut": return SUI.encodeOptional(store.keyboardShortcut) { SUIValues.encode_KeyboardShortcut($0) }
     case "labelIconToTitleSpacing": if #available(iOS 26.0, *) { return SUI.encodeOptional(store.labelIconToTitleSpacing) { SUI.encode($0) } }
@@ -9328,7 +9444,9 @@ enum SUIValues {
     case "navigationLinkIndicatorVisibility": if #available(iOS 17.0, *) { return SUI.encode(store.navigationLinkIndicatorVisibility) }
     case "openURL": return SUIValues.encode_OpenURLAction(store.openURL)
     case "openWindow": if #available(iOS 16.0, *) { return SUIValues.encode_OpenWindowAction(store.openWindow) }
+    #if canImport(SwiftUI, _version: 8.0.85)
     case "overlayArrangementZIndex": if #available(iOS 27.1, *) { return SUI.encode(store.overlayArrangementZIndex) }
+    #endif
     case "pixelLength": return SUI.encode(store.pixelLength)
     case "preferredPencilDoubleTapAction": if #available(iOS 17.5, *) { return SUIValues.encode_PencilPreferredAction(store.preferredPencilDoubleTapAction) }
     case "preferredPencilSqueezeAction": if #available(iOS 17.5, *) { return SUIValues.encode_PencilPreferredAction(store.preferredPencilSqueezeAction) }
@@ -9339,21 +9457,29 @@ enum SUIValues {
     case "scrollDismissesKeyboardMode": if #available(iOS 16.0, *) { return SUIValues.encode_ScrollDismissesKeyboardMode(store.scrollDismissesKeyboardMode) }
     case "searchSuggestionsPlacement": if #available(iOS 16.0, *) { return SUIValues.encode_SearchSuggestionsPlacement(store.searchSuggestionsPlacement) }
     case "sidebarRowSize": if #available(iOS 16.0, *) { return SUI.encode(store.sidebarRowSize) }
+    #if canImport(SwiftUI, _version: 8.0.85)
     case "splitArrangementAxis": if #available(iOS 27.1, *) { return SUI.encodeOptional(store.splitArrangementAxis) { SUI.encode($0) } }
+    #endif
     case "springLoadingBehavior": if #available(iOS 17.0, *) { return SUIValues.encode_SpringLoadingBehavior(store.springLoadingBehavior) }
     case "supportsMultipleWindows": if #available(iOS 16.0, *) { return SUI.encode(store.supportsMultipleWindows) }
     case "supportsRemoteScenes": if #available(iOS 26.0, *) { return SUI.encode(store.supportsRemoteScenes) }
     case "symbolColorRenderingMode": if #available(iOS 26.0, *) { return SUI.encodeOptional(store.symbolColorRenderingMode) { SUIValues.encode_SymbolColorRenderingMode($0) } }
     case "symbolVariableValueMode": if #available(iOS 26.0, *) { return SUI.encodeOptional(store.symbolVariableValueMode) { SUIValues.encode_SymbolVariableValueMode($0) } }
     case "symbolVariants": return SUIValues.encode_SymbolVariants(store.symbolVariants)
+    #if canImport(SwiftUI, _version: 8.0.84)
     case "systemPrefersReducedResourceUsage": if #available(iOS 27.0, *) { return SUI.encode(store.systemPrefersReducedResourceUsage) }
+    #endif
     case "tabBarPlacement": if #available(iOS 18.0, *) { return SUI.encodeOptional(store.tabBarPlacement) { SUIValues.encode_TabBarPlacement($0) } }
     case "tabViewBottomAccessoryPlacement": if #available(iOS 26.0, *) { return SUI.encodeOptional(store.tabViewBottomAccessoryPlacement) { SUI.encode($0) } }
     case "textCase": return SUI.encodeOptional(store.textCase) { SUI.encode($0) }
     case "textSelectionAffinity": if #available(iOS 18.0, *) { return SUI.encode(store.textSelectionAffinity) }
     case "toolbarLabelStyle": if #available(iOS 18.0, *) { return SUI.encodeOptional(store.toolbarLabelStyle) { SUIValues.encode_ToolbarLabelStyle($0) } }
+    #if canImport(SwiftUI, _version: 8.1.13)
     case "toolbarTitleAlignment": if #available(iOS 27.2, *) { return SUIValues.encode_ToolbarTitleAlignment(store.toolbarTitleAlignment) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.0.85)
     case "toolbarVerticalEdge": if #available(iOS 27.1, *) { return SUI.encodeOptional(store.toolbarVerticalEdge) { SUI.encode($0) } }
+    #endif
     case "truncationMode": return SUI.encode(store.truncationMode)
     case "verticalScrollIndicatorVisibility": if #available(iOS 16.0, *) { return SUIValues.encode_ScrollIndicatorVisibility(store.verticalScrollIndicatorVisibility) }
     case "verticalSizeClass": return SUI.encodeOptional(store.verticalSizeClass) { SUI.encode($0) }
@@ -9417,9 +9543,15 @@ enum SUIValues {
     if #available(iOS 26.0, *), let value = value as? SwiftUI.ButtonSizing { return encode_ButtonSizing(value) }
     if #available(iOS 18.0, *), let value = value as? SwiftUI.ContainerValues { return encode_ContainerValues(value) }
     if #available(iOS 16.0, *), let value = value as? SwiftUI.ContentTransition { return encode_ContentTransition(value) }
+    #if canImport(SwiftUI, _version: 8.0.85)
     if #available(iOS 27.1, *), let value = value as? SwiftUI.DeviceHinge { return encode_DeviceHinge(value) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.0.85)
     if #available(iOS 27.1, *), let value = value as? SwiftUI.DeviceHinge.Status { return encode_DeviceHinge_Status(value) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.0.85)
     if #available(iOS 27.1, *), let value = value as? SwiftUI.DeviceHingeContext { return encode_DeviceHingeContext(value) }
+    #endif
     if let value = value as? SwiftUI.DismissAction { return encode_DismissAction(value) }
     if let value = value as? SwiftUI.DismissSearchAction { return encode_DismissSearchAction(value) }
     if #available(iOS 17.0, *), let value = value as? SwiftUI.DismissWindowAction { return encode_DismissWindowAction(value) }
@@ -9466,10 +9598,18 @@ enum SUIValues {
     if let value = value as? SwiftUI.RedactionReasons { return encode_RedactionReasons(value) }
     if let value = value as? SwiftUI.RefreshAction { return encode_RefreshAction(value) }
     if #available(iOS 16.0, *), let value = value as? SwiftUI.RenameAction { return encode_RenameAction(value) }
+    #if canImport(SwiftUI, _version: 8.0.84)
     if #available(iOS 27.0, *), let value = value as? SwiftUI.ReorderableSingleCollectionIdentifier { return encode_ReorderableSingleCollectionIdentifier(value) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.0.85)
     if #available(iOS 27.1, *), let value = value as? SwiftUI.ReservedRegion { return encode_ReservedRegion(value) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.0.85)
     if #available(iOS 27.1, *), let value = value as? SwiftUI.ReservedRegion.ID { return encode_ReservedRegion_ID(value) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.0.85)
     if #available(iOS 27.1, *), let value = value as? SwiftUI.ReservedRegion.Kind { return encode_ReservedRegion_Kind(value) }
+    #endif
     if #available(iOS 17.0, *), let value = value as? SwiftUI.RotateGesture.Value { return encode_RotateGesture_Value(value) }
     if #available(iOS 16.0, *), let value = value as? SwiftUI.ScrollDismissesKeyboardMode { return encode_ScrollDismissesKeyboardMode(value) }
     if #available(iOS 18.0, *), let value = value as? SwiftUI.ScrollGeometry { return encode_ScrollGeometry(value) }
@@ -9490,7 +9630,9 @@ enum SUIValues {
     if #available(iOS 18.0, *), let value = value as? SwiftUI.TextSelection.Indices { return encode_TextSelection_Indices(value) }
     if let value = value as? SwiftUI.TimelineViewDefaultContext { return encode_TimelineViewDefaultContext(value) }
     if #available(iOS 18.0, *), let value = value as? SwiftUI.ToolbarLabelStyle { return encode_ToolbarLabelStyle(value) }
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 27.2, *), let value = value as? SwiftUI.ToolbarTitleAlignment { return encode_ToolbarTitleAlignment(value) }
+    #endif
     if let value = value as? SwiftUI.UnitPoint { return encode_UnitPoint(value) }
     if let value = value as? SwiftUI.UnitPoint.AnimatableData { return encode_UnitPoint_AnimatableData(value) }
     if let value = value as? SwiftUI.ViewDimensions { return encode_ViewDimensions(value) }
@@ -9621,6 +9763,7 @@ enum SUIValues {
     return result
   }
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func encode_DeviceHinge(_ value: SwiftUI.DeviceHinge) -> Any {
     var result: [String: Any] = [:]
@@ -9629,7 +9772,9 @@ enum SUIValues {
     result["status"] = SUIValues.encode_DeviceHinge_Status(value.status)
     return result
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func encode_DeviceHinge_Status(_ value: SwiftUI.DeviceHinge.Status) -> Any {
     if value == .closed { return "closed" }
@@ -9639,13 +9784,16 @@ enum SUIValues {
     result["hashValue"] = SUI.encode(value.hashValue)
     return result
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func encode_DeviceHingeContext(_ value: SwiftUI.DeviceHingeContext) -> Any {
     var result: [String: Any] = [:]
     result["hinge"] = SUI.encodeOptional(value.hinge) { SUIValues.encode_DeviceHinge($0) }
     return result
   }
+  #endif
 
   static func encode_DismissAction(_ value: SwiftUI.DismissAction) -> Any {
     var result: [String: Any] = [:]
@@ -9966,13 +10114,19 @@ enum SUIValues {
     case "bounds":
       if #available(iOS 17.0, *) { do { return try call_GeometryProxy_bounds_0(view, raw, context) } catch let error as SUIDecodeError { reasons.append("bounds(of:): " + error.description) } }
     case "concentricCornerRadii":
+      #if canImport(SwiftUI, _version: 8.0.84)
       if #available(iOS 27.0, *) { do { return try call_GeometryProxy_concentricCornerRadii_0(view, raw, context) } catch let error as SUIDecodeError { reasons.append("concentricCornerRadii(in:): " + error.description) } }
+      #endif
     case "contentMargins":
+      #if canImport(SwiftUI, _version: 8.0.85)
       if #available(iOS 27.1, *) { do { return try call_GeometryProxy_contentMargins_0(view, raw, context) } catch let error as SUIDecodeError { reasons.append("contentMargins(for:edges:): " + error.description) } }
+      #endif
     case "frame":
       if #available(iOS 17.0, *) { do { return try call_GeometryProxy_frame_0(view, raw, context) } catch let error as SUIDecodeError { reasons.append("frame(in:): " + error.description) } }
     case "reservedRegions":
+      #if canImport(SwiftUI, _version: 8.0.85)
       if #available(iOS 27.1, *) { do { return try call_GeometryProxy_reservedRegions_0(view, raw, context) } catch let error as SUIDecodeError { reasons.append("reservedRegions(kind:options:layoutDirectionBehavior:): " + error.description) } }
+      #endif
     default: break
     }
     throw SUIDecodeError.noMatchingOverload("GeometryProxy." + method, reasons)
@@ -9986,6 +10140,7 @@ enum SUIValues {
     return SUI.encodeOptional(view.bounds(of: p0)) { SUI.encode($0) }
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func call_GeometryProxy_concentricCornerRadii_0(_ view: SwiftUI.GeometryProxy, _ raw: [Any], _ context: SUIContext) throws -> Any {
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("concentricCornerRadii(in:)") }
@@ -9993,7 +10148,9 @@ enum SUIValues {
     let p0: CGRect = try a.option("in") { try SUI.cgRect($0) }
     return SUI.encodeOptional(view.concentricCornerRadii(in: p0)) { SUIValues.encode_RectangleCornerRadii($0) }
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func call_GeometryProxy_contentMargins_0(_ view: SwiftUI.GeometryProxy, _ raw: [Any], _ context: SUIContext) throws -> Any {
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("contentMargins(for:edges:)") }
@@ -10002,6 +10159,7 @@ enum SUIValues {
     let p1: SwiftUI.Edge.Set = try a.option("edges", default: { .all }) { try SUIValues.decode_Edge_Set($0, context) }
     return SUIValues.encode_EdgeInsets(view.contentMargins(for: p0, edges: p1))
   }
+  #endif
 
   @available(iOS 17.0, *)
   static func call_GeometryProxy_frame_0(_ view: SwiftUI.GeometryProxy, _ raw: [Any], _ context: SUIContext) throws -> Any {
@@ -10012,6 +10170,7 @@ enum SUIValues {
     return open(p0)
   }
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func call_GeometryProxy_reservedRegions_0(_ view: SwiftUI.GeometryProxy, _ raw: [Any], _ context: SUIContext) throws -> Any {
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("reservedRegions(kind:options:layoutDirectionBehavior:)") }
@@ -10021,6 +10180,7 @@ enum SUIValues {
     let p2: SwiftUI.LayoutDirectionBehavior = try a.option("layoutDirectionBehavior", default: { .mirrors }) { try SUIValues.decode_LayoutDirectionBehavior($0, context) }
     return SUI.encodeArray(view.reservedRegions(kind: p0, options: p1, layoutDirectionBehavior: p2)) { SUIValues.encode_ReservedRegion($0) }
   }
+  #endif
 
   @available(iOS 16.0, *)
   static func encode_HoverPhase(_ value: SwiftUI.HoverPhase) -> Any {
@@ -10052,21 +10212,21 @@ enum SUIValues {
   }
 
   static func encode_KeyEquivalent(_ value: SwiftUI.KeyEquivalent) -> Any {
-    if value == .clear { return "clear" }
-    if value == .delete { return "delete" }
-    if value == .deleteForward { return "deleteForward" }
-    if value == .downArrow { return "downArrow" }
-    if value == .end { return "end" }
-    if value == .escape { return "escape" }
-    if value == .home { return "home" }
-    if value == .leftArrow { return "leftArrow" }
-    if value == .pageDown { return "pageDown" }
-    if value == .pageUp { return "pageUp" }
-    if value == .`return` { return "return" }
-    if value == .rightArrow { return "rightArrow" }
-    if value == .space { return "space" }
-    if value == .tab { return "tab" }
-    if value == .upArrow { return "upArrow" }
+    if #available(iOS 17.0, *), value == .clear { return "clear" }
+    if #available(iOS 17.0, *), value == .delete { return "delete" }
+    if #available(iOS 17.0, *), value == .deleteForward { return "deleteForward" }
+    if #available(iOS 17.0, *), value == .downArrow { return "downArrow" }
+    if #available(iOS 17.0, *), value == .end { return "end" }
+    if #available(iOS 17.0, *), value == .escape { return "escape" }
+    if #available(iOS 17.0, *), value == .home { return "home" }
+    if #available(iOS 17.0, *), value == .leftArrow { return "leftArrow" }
+    if #available(iOS 17.0, *), value == .pageDown { return "pageDown" }
+    if #available(iOS 17.0, *), value == .pageUp { return "pageUp" }
+    if #available(iOS 17.0, *), value == .`return` { return "return" }
+    if #available(iOS 17.0, *), value == .rightArrow { return "rightArrow" }
+    if #available(iOS 17.0, *), value == .space { return "space" }
+    if #available(iOS 17.0, *), value == .tab { return "tab" }
+    if #available(iOS 17.0, *), value == .upArrow { return "upArrow" }
     var result: [String: Any] = [:]
     if #available(iOS 17.0, *) { result["hashValue"] = SUI.encode(value.hashValue) }
     return result
@@ -10375,18 +10535,25 @@ enum SUIValues {
     return SUI.void(view.callAsFunction())
   }
 
+  #if canImport(SwiftUI, _version: 8.0.84)
   @available(iOS 27.0, *)
   static func encode_ReorderableSingleCollectionIdentifier(_ value: SwiftUI.ReorderableSingleCollectionIdentifier) -> Any {
     var result: [String: Any] = [:]
     result["hashValue"] = SUI.encode(value.hashValue)
     return result
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func encode_ReservedRegion(_ value: SwiftUI.ReservedRegion) -> Any {
     var result: [String: Any] = [:]
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 27.2, *) { result["debugDescription"] = SUI.encode(value.debugDescription) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 27.2, *) { result["description"] = SUI.encode(value.description) }
+    #endif
     result["frame"] = SUI.encode(value.frame)
     result["hashValue"] = SUI.encode(value.hashValue)
     result["id"] = SUIValues.encode_ReservedRegion_ID(value.id)
@@ -10395,26 +10562,39 @@ enum SUIValues {
     result["margins"] = SUIValues.encode_EdgeInsets(value.margins)
     return result
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func encode_ReservedRegion_ID(_ value: SwiftUI.ReservedRegion.ID) -> Any {
     var result: [String: Any] = [:]
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 27.2, *) { result["debugDescription"] = SUI.encode(value.debugDescription) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 27.2, *) { result["description"] = SUI.encode(value.description) }
+    #endif
     result["hashValue"] = SUI.encode(value.hashValue)
     return result
   }
+  #endif
 
+  #if canImport(SwiftUI, _version: 8.0.85)
   @available(iOS 27.1, *)
   static func encode_ReservedRegion_Kind(_ value: SwiftUI.ReservedRegion.Kind) -> Any {
     if value == .division { return "division" }
     if value == .occlusion { return "occlusion" }
     var result: [String: Any] = [:]
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 27.2, *) { result["debugDescription"] = SUI.encode(value.debugDescription) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     if #available(iOS 27.2, *) { result["description"] = SUI.encode(value.description) }
+    #endif
     result["hashValue"] = SUI.encode(value.hashValue)
     return result
   }
+  #endif
 
   @available(iOS 17.0, *)
   static func encode_RotateGesture_Value(_ value: SwiftUI.RotateGesture.Value) -> Any {
@@ -10429,10 +10609,10 @@ enum SUIValues {
 
   @available(iOS 16.0, *)
   static func encode_ScrollDismissesKeyboardMode(_ value: SwiftUI.ScrollDismissesKeyboardMode) -> Any {
-    if value == .automatic { return "automatic" }
-    if value == .immediately { return "immediately" }
-    if value == .interactively { return "interactively" }
-    if value == .never { return "never" }
+    if #available(iOS 18.2, *), value == .automatic { return "automatic" }
+    if #available(iOS 18.2, *), value == .immediately { return "immediately" }
+    if #available(iOS 18.2, *), value == .interactively { return "interactively" }
+    if #available(iOS 18.2, *), value == .never { return "never" }
     var result: [String: Any] = [:]
     if #available(iOS 18.2, *) { result["hashValue"] = SUI.encode(value.hashValue) }
     return result
@@ -10453,10 +10633,10 @@ enum SUIValues {
 
   @available(iOS 16.0, *)
   static func encode_ScrollIndicatorVisibility(_ value: SwiftUI.ScrollIndicatorVisibility) -> Any {
-    if value == .automatic { return "automatic" }
-    if value == .hidden { return "hidden" }
-    if value == .never { return "never" }
-    if value == .visible { return "visible" }
+    if #available(iOS 16.4, *), value == .automatic { return "automatic" }
+    if #available(iOS 16.4, *), value == .hidden { return "hidden" }
+    if #available(iOS 16.4, *), value == .never { return "never" }
+    if #available(iOS 16.4, *), value == .visible { return "visible" }
     var result: [String: Any] = [:]
     return result
   }
@@ -10657,6 +10837,7 @@ enum SUIValues {
     return result
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   @available(iOS 27.2, *)
   static func encode_ToolbarTitleAlignment(_ value: SwiftUI.ToolbarTitleAlignment) -> Any {
     if value == .automatic { return "automatic" }
@@ -10666,6 +10847,7 @@ enum SUIValues {
     result["hashValue"] = SUI.encode(value.hashValue)
     return result
   }
+  #endif
 
   static func encode_UnitPoint(_ value: SwiftUI.UnitPoint) -> Any {
     if value == .bottom { return "bottom" }

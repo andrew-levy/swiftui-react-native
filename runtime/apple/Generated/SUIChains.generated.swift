@@ -127,20 +127,28 @@ enum SUIChain {
   }
 
   static func chain_DynamicViewContent_reorderable_0<V: SwiftUI.DynamicViewContent>(_ view: V, _ raw: [Any], _ node: SUINode, _ index: Int) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("reorderable()") }
     let context = node.context
     _ = context
     let a = try SUIArguments(raw, positional: 0, options: nil)
     return next(view.reorderable(), node, index + 1)
+    #else
+    throw SUIDecodeError.unavailable("reorderable()")
+    #endif
   }
 
   static func chain_DynamicViewContent_reorderable_1<V: SwiftUI.DynamicViewContent>(_ view: V, _ raw: [Any], _ node: SUINode, _ index: Int) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("reorderable(collectionID:)") }
     let context = node.context
     _ = context
     let a = try SUIArguments(raw, positional: 0, options: ["collectionID"], required: ["collectionID"])
     let p0: SUIJSONValue = try a.option("collectionID") { try SUI.json($0) }
     return next(view.reorderable(collectionID: p0), node, index + 1)
+    #else
+    throw SUIDecodeError.unavailable("reorderable(collectionID:)")
+    #endif
   }
 
   static func next(_ value: SwiftUI.Image, _ node: SUINode, _ index: Int) -> AnyView { chain_Image(value, node, index) }

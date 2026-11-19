@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 7.0.0-beta.2 (2026-11-20)
+
+- Builds with Xcode 26.0 and newer, not only the latest Xcode. APIs newer than your Xcode are left out at compile time and report "unavailable".
+- Xcode older than 26 now gets one clear error instead of hundreds.
+- Fixed missing iOS version checks that could misbehave on older iPhones.
+
 # 7.0.0-beta.1 (2026-11-19)
 
 - New documentation site at [swiftui.rit3zh.dev](https://swiftui.rit3zh.dev). The package homepage now points there.

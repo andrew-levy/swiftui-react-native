@@ -2076,16 +2076,34 @@ enum SUIGeneratedModifiers {
     do { return try modifier_alert_13(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:isPresented:presenting:actions:message:): " + error.description) }
     do { return try modifier_alert_14(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:isPresented:presenting:actions:message:): " + error.description) }
     do { return try modifier_alert_15(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:isPresented:presenting:actions:message:): " + error.description) }
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_16(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:item:actions:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_17(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:item:actions:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_18(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:item:actions:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_19(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:item:actions:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_20(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:item:actions:message:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_21(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:item:actions:message:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_22(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(_:item:actions:message:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_23(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(error:actions:): " + error.description) }
+    #endif
     do { return try modifier_alert_24(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(error:actions:): " + error.description) }
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_alert_25(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(error:actions:message:): " + error.description) }
+    #endif
     do { return try modifier_alert_26(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(error:actions:message:): " + error.description) }
     do { return try modifier_alert_27(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(isPresented:error:actions:): " + error.description) }
     do { return try modifier_alert_28(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("alert(isPresented:error:actions:message:): " + error.description) }
@@ -2240,6 +2258,7 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(p0, isPresented: p1, presenting: p2, actions: { a0 in p3([SUI.encode(a0)]) }, message: { a0 in p4([SUI.encode(a0)]) }))
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_16(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     guard #available(iOS 16.0, *) else { throw SUIDecodeError.unavailable("alert(_:item:actions:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["item", "actions"], required: ["item", "actions"])
@@ -2249,6 +2268,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(p0, item: p1, actions: { a0 in p2([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_17(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "actions"], required: ["item", "actions"])
     let p0: SwiftUI.LocalizedStringKey = try a.positional(0) { try SUI.localizedStringKey($0) }
@@ -2257,6 +2278,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(p0, item: p1, actions: { a0 in p2([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_18(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "actions"], required: ["item", "actions"])
     let p0: SwiftUI.Text = try a.positional(0) { try SUI.text($0) }
@@ -2265,6 +2288,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(p0, item: p1, actions: { a0 in p2([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_19(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "actions"], required: ["item", "actions"])
     let p0: String = try a.positional(0) { try SUI.string($0) }
@@ -2273,6 +2298,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(p0, item: p1, actions: { a0 in p2([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_20(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     guard #available(iOS 16.0, *) else { throw SUIDecodeError.unavailable("alert(_:item:actions:message:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["item", "actions", "message"], required: ["item", "actions", "message"])
@@ -2283,6 +2310,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(p0, item: p1, actions: { a0 in p2([SUI.encode(a0)]) }, message: { a0 in p3([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_21(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "actions", "message"], required: ["item", "actions", "message"])
     let p0: SwiftUI.LocalizedStringKey = try a.positional(0) { try SUI.localizedStringKey($0) }
@@ -2292,6 +2321,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(p0, item: p1, actions: { a0 in p2([SUI.encode(a0)]) }, message: { a0 in p3([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_22(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "actions", "message"], required: ["item", "actions", "message"])
     let p0: String = try a.positional(0) { try SUI.string($0) }
@@ -2301,6 +2332,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(p0, item: p1, actions: { a0 in p2([SUI.encode(a0)]) }, message: { a0 in p3([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_23(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 0, options: ["error", "actions"], required: ["error", "actions"])
     let p0: SwiftUI.Binding<SUIError?> = try a.option("error") { try context.binding($0, { try SUI.optional($0, { try SUIError($0) }) }, encode: { SUI.encodeOptional($0) { $0.encoded } }) }
@@ -2308,14 +2341,20 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(error: p0, actions: { p1 }))
   }
 
+  #endif
   static func modifier_alert_24(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("alert(error:actions:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["error", "actions"], required: ["error", "actions"])
     let p0: SwiftUI.Binding<SUIError?> = try a.option("error") { try context.binding($0, { try SUI.optional($0, { try SUIError($0) }) }, encode: { SUI.encodeOptional($0) { $0.encoded } }) }
     let p1: AnyView = try a.option("actions") { try context.slot($0) }
     return AnyView(view.alert(error: p0, actions: { p1 }))
+    #else
+    throw SUIDecodeError.unavailable("alert(error:actions:)")
+    #endif
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_alert_25(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 0, options: ["error", "actions", "message"], required: ["error", "actions", "message"])
     let p0: SwiftUI.Binding<SUIError?> = try a.option("error") { try context.binding($0, { try SUI.optional($0, { try SUIError($0) }) }, encode: { SUI.encodeOptional($0) { $0.encoded } }) }
@@ -2324,13 +2363,18 @@ enum SUIGeneratedModifiers {
     return AnyView(view.alert(error: p0, actions: { a0 in p1([a0.encoded]) }, message: { a0 in p2([a0.encoded]) }))
   }
 
+  #endif
   static func modifier_alert_26(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("alert(error:actions:message:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["error", "actions", "message"], required: ["error", "actions", "message"])
     let p0: SwiftUI.Binding<SUIError?> = try a.option("error") { try context.binding($0, { try SUI.optional($0, { try SUIError($0) }) }, encode: { SUI.encodeOptional($0) { $0.encoded } }) }
     let p1: ([Any]) -> AnyView = try a.option("actions") { try context.renderClosure($0) }
     let p2: ([Any]) -> AnyView = try a.option("message") { try context.renderClosure($0) }
     return AnyView(view.alert(error: p0, actions: { a0 in p1([a0.encoded]) }, message: { a0 in p2([a0.encoded]) }))
+    #else
+    throw SUIDecodeError.unavailable("alert(error:actions:message:)")
+    #endif
   }
 
   static func modifier_alert_27(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
@@ -2457,11 +2501,15 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_arrangementViewStyle_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("arrangementViewStyle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: any SwiftUI.ArrangementViewStyle = try a.positional(0) { try SUIValues.decode_ArrangementViewStyle($0, context) }
     func open<O0: SwiftUI.ArrangementViewStyle>(_ p0: O0) -> AnyView { AnyView(view.arrangementViewStyle(p0)) }
     return open(p0)
+    #else
+    throw SUIDecodeError.unavailable("arrangementViewStyle(_:)")
+    #endif
   }
 
   static func modifier_aspectRatio(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -2513,10 +2561,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_asyncImageURLSession_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("asyncImageURLSession(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: URLSession = try a.positional(0) { try SUI.urlSession($0) }
     return AnyView(view.asyncImageURLSession(p0))
+    #else
+    throw SUIDecodeError.unavailable("asyncImageURLSession(_:)")
+    #endif
   }
 
   static func modifier_autocorrectionDisabled(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -2929,14 +2981,30 @@ enum SUIGeneratedModifiers {
     do { return try modifier_confirmationDialog_13(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:isPresented:titleVisibility:presenting:actions:message:): " + error.description) }
     do { return try modifier_confirmationDialog_14(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:isPresented:titleVisibility:presenting:actions:message:): " + error.description) }
     do { return try modifier_confirmationDialog_15(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:isPresented:titleVisibility:presenting:actions:message:): " + error.description) }
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_confirmationDialog_16(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:item:titleVisibility:actions:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_confirmationDialog_17(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:item:titleVisibility:actions:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_confirmationDialog_18(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:item:titleVisibility:actions:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_confirmationDialog_19(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:item:titleVisibility:actions:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_confirmationDialog_20(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:item:titleVisibility:actions:message:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_confirmationDialog_21(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:item:titleVisibility:actions:message:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_confirmationDialog_22(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:item:titleVisibility:actions:message:): " + error.description) }
+    #endif
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_confirmationDialog_23(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("confirmationDialog(_:item:titleVisibility:actions:message:): " + error.description) }
+    #endif
     throw SUIDecodeError.noMatchingOverload("confirmationDialog", reasons)
   }
 
@@ -3104,6 +3172,7 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, isPresented: p1, titleVisibility: p2, presenting: p3, actions: { a0 in p4([SUI.encode(a0)]) }, message: { a0 in p5([SUI.encode(a0)]) }))
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_confirmationDialog_16(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     guard #available(iOS 16.0, *) else { throw SUIDecodeError.unavailable("confirmationDialog(_:item:titleVisibility:actions:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["item", "titleVisibility", "actions"], required: ["item", "actions"])
@@ -3114,6 +3183,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, item: p1, titleVisibility: p2, actions: { a0 in p3([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_confirmationDialog_17(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "titleVisibility", "actions"], required: ["item", "actions"])
     let p0: SwiftUI.LocalizedStringKey = try a.positional(0) { try SUI.localizedStringKey($0) }
@@ -3123,6 +3194,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, item: p1, titleVisibility: p2, actions: { a0 in p3([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_confirmationDialog_18(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "titleVisibility", "actions"], required: ["item", "actions"])
     let p0: SwiftUI.Text = try a.positional(0) { try SUI.text($0) }
@@ -3132,6 +3205,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, item: p1, titleVisibility: p2, actions: { a0 in p3([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_confirmationDialog_19(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "titleVisibility", "actions"], required: ["item", "actions"])
     let p0: String = try a.positional(0) { try SUI.string($0) }
@@ -3141,6 +3216,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, item: p1, titleVisibility: p2, actions: { a0 in p3([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_confirmationDialog_20(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     guard #available(iOS 16.0, *) else { throw SUIDecodeError.unavailable("confirmationDialog(_:item:titleVisibility:actions:message:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["item", "titleVisibility", "actions", "message"], required: ["item", "actions", "message"])
@@ -3152,6 +3229,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, item: p1, titleVisibility: p2, actions: { a0 in p3([SUI.encode(a0)]) }, message: { a0 in p4([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_confirmationDialog_21(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "titleVisibility", "actions", "message"], required: ["item", "actions", "message"])
     let p0: SwiftUI.LocalizedStringKey = try a.positional(0) { try SUI.localizedStringKey($0) }
@@ -3162,6 +3241,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, item: p1, titleVisibility: p2, actions: { a0 in p3([SUI.encode(a0)]) }, message: { a0 in p4([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_confirmationDialog_22(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "titleVisibility", "actions", "message"], required: ["item", "actions", "message"])
     let p0: SwiftUI.Text = try a.positional(0) { try SUI.text($0) }
@@ -3172,6 +3253,8 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, item: p1, titleVisibility: p2, actions: { a0 in p3([SUI.encode(a0)]) }, message: { a0 in p4([SUI.encode(a0)]) }))
   }
 
+  #endif
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_confirmationDialog_23(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 1, options: ["item", "titleVisibility", "actions", "message"], required: ["item", "actions", "message"])
     let p0: String = try a.positional(0) { try SUI.string($0) }
@@ -3182,6 +3265,7 @@ enum SUIGeneratedModifiers {
     return AnyView(view.confirmationDialog(p0, item: p1, titleVisibility: p2, actions: { a0 in p3([SUI.encode(a0)]) }, message: { a0 in p4([SUI.encode(a0)]) }))
   }
 
+  #endif
   static func modifier_containerBackground(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
     var reasons: [String] = []
     do { return try modifier_containerBackground_0(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("containerBackground(_:for:): " + error.description) }
@@ -3315,12 +3399,16 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_contentMargins_3(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("contentMargins(for:edges:alignment:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["for", "edges", "alignment"], required: ["for"])
     let p0: SwiftUI.ContentMarginGuide = try a.option("for") { try SUIValues.decode_ContentMarginGuide($0, context) }
     let p1: SwiftUI.Edge.Set = try a.option("edges", default: { .all }) { try SUIValues.decode_Edge_Set($0, context) }
     let p2: SwiftUI.Alignment? = try a.option("alignment", default: { nil }) { try SUI.optional($0, { try SUIValues.decode_Alignment($0, context) }) }
     return AnyView(view.contentMargins(for: p0, edges: p1, alignment: p2))
+    #else
+    throw SUIDecodeError.unavailable("contentMargins(for:edges:alignment:)")
+    #endif
   }
 
   static func modifier_contentShape(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3349,11 +3437,14 @@ enum SUIGeneratedModifiers {
 
   static func modifier_contentToolbar(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
     var reasons: [String] = []
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_contentToolbar_0(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("contentToolbar(for:content:): " + error.description) }
+    #endif
     do { return try modifier_contentToolbar_1(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("contentToolbar(for:content:): " + error.description) }
     throw SUIDecodeError.noMatchingOverload("contentToolbar", reasons)
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_contentToolbar_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     guard #available(iOS 18.4, *) else { throw SUIDecodeError.unavailable("contentToolbar(for:content:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["for", "content"], required: ["for", "content"])
@@ -3362,6 +3453,7 @@ enum SUIGeneratedModifiers {
     return AnyView(view.contentToolbar(for: p0, content: { SwiftUI.ForEach(p1, id: \.serial) { SUIFamily_ToolbarContent(node: $0) } }))
   }
 
+  #endif
   static func modifier_contentToolbar_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     guard #available(iOS 18.4, *) else { throw SUIDecodeError.unavailable("contentToolbar(for:content:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["for", "content"], required: ["for", "content"])
@@ -3478,10 +3570,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_copyable_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("copyable(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: [SUIJSONValue] = try a.positional(0) { try SUI.array($0, { try SUI.json($0) }) }
     return AnyView(view.copyable(p0))
+    #else
+    throw SUIDecodeError.unavailable("copyable(_:)")
+    #endif
   }
 
   static func modifier_cuttable(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3491,10 +3587,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_cuttable_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("cuttable(for:action:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["action"], required: ["action"])
     let p1: [SUIJSONValue] = try a.option("action") { try SUI.array($0, { try SUI.json($0) }) }
     return AnyView(view.cuttable(for: SUIJSONValue.self, action: { p1 }))
+    #else
+    throw SUIDecodeError.unavailable("cuttable(for:action:)")
+    #endif
   }
 
   static func modifier_datePickerStyle(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3601,10 +3701,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_defaultTabBarPlacement_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("defaultTabBarPlacement(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.AdaptableTabBarPlacement = try a.positional(0) { try SUIValues.decode_AdaptableTabBarPlacement($0, context) }
     return AnyView(view.defaultTabBarPlacement(p0))
+    #else
+    throw SUIDecodeError.unavailable("defaultTabBarPlacement(_:)")
+    #endif
   }
 
   static func modifier_defersSystemGestures(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3734,42 +3838,59 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_dismissalConfirmationDialog_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["shouldPresent", "actions"], required: ["shouldPresent", "actions"])
     let p0: LocalizedStringResource = try a.positional(0) { LocalizedStringResource(stringLiteral: try SUI.string($0)) }
     let p1: Bool = try a.option("shouldPresent") { try SUI.bool($0) }
     let p2: AnyView = try a.option("actions") { try context.slot($0) }
     return AnyView(view.dismissalConfirmationDialog(p0, shouldPresent: p1, actions: { p2 }))
+    #else
+    throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:)")
+    #endif
   }
 
   static func modifier_dismissalConfirmationDialog_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["shouldPresent", "actions"], required: ["shouldPresent", "actions"])
     let p0: SwiftUI.LocalizedStringKey = try a.positional(0) { try SUI.localizedStringKey($0) }
     let p1: Bool = try a.option("shouldPresent") { try SUI.bool($0) }
     let p2: AnyView = try a.option("actions") { try context.slot($0) }
     return AnyView(view.dismissalConfirmationDialog(p0, shouldPresent: p1, actions: { p2 }))
+    #else
+    throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:)")
+    #endif
   }
 
   static func modifier_dismissalConfirmationDialog_2(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["shouldPresent", "actions"], required: ["shouldPresent", "actions"])
     let p0: SwiftUI.Text = try a.positional(0) { try SUI.text($0) }
     let p1: Bool = try a.option("shouldPresent") { try SUI.bool($0) }
     let p2: AnyView = try a.option("actions") { try context.slot($0) }
     return AnyView(view.dismissalConfirmationDialog(p0, shouldPresent: p1, actions: { p2 }))
+    #else
+    throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:)")
+    #endif
   }
 
   static func modifier_dismissalConfirmationDialog_3(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["shouldPresent", "actions"], required: ["shouldPresent", "actions"])
     let p0: String = try a.positional(0) { try SUI.string($0) }
     let p1: Bool = try a.option("shouldPresent") { try SUI.bool($0) }
     let p2: AnyView = try a.option("actions") { try context.slot($0) }
     return AnyView(view.dismissalConfirmationDialog(p0, shouldPresent: p1, actions: { p2 }))
+    #else
+    throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:)")
+    #endif
   }
 
   static func modifier_dismissalConfirmationDialog_4(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:message:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["shouldPresent", "actions", "message"], required: ["shouldPresent", "actions", "message"])
     let p0: LocalizedStringResource = try a.positional(0) { LocalizedStringResource(stringLiteral: try SUI.string($0)) }
@@ -3777,9 +3898,13 @@ enum SUIGeneratedModifiers {
     let p2: AnyView = try a.option("actions") { try context.slot($0) }
     let p3: AnyView = try a.option("message") { try context.slot($0) }
     return AnyView(view.dismissalConfirmationDialog(p0, shouldPresent: p1, actions: { p2 }, message: { p3 }))
+    #else
+    throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:message:)")
+    #endif
   }
 
   static func modifier_dismissalConfirmationDialog_5(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:message:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["shouldPresent", "actions", "message"], required: ["shouldPresent", "actions", "message"])
     let p0: SwiftUI.LocalizedStringKey = try a.positional(0) { try SUI.localizedStringKey($0) }
@@ -3787,9 +3912,13 @@ enum SUIGeneratedModifiers {
     let p2: AnyView = try a.option("actions") { try context.slot($0) }
     let p3: AnyView = try a.option("message") { try context.slot($0) }
     return AnyView(view.dismissalConfirmationDialog(p0, shouldPresent: p1, actions: { p2 }, message: { p3 }))
+    #else
+    throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:message:)")
+    #endif
   }
 
   static func modifier_dismissalConfirmationDialog_6(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:message:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["shouldPresent", "actions", "message"], required: ["shouldPresent", "actions", "message"])
     let p0: SwiftUI.Text = try a.positional(0) { try SUI.text($0) }
@@ -3797,9 +3926,13 @@ enum SUIGeneratedModifiers {
     let p2: AnyView = try a.option("actions") { try context.slot($0) }
     let p3: AnyView = try a.option("message") { try context.slot($0) }
     return AnyView(view.dismissalConfirmationDialog(p0, shouldPresent: p1, actions: { p2 }, message: { p3 }))
+    #else
+    throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:message:)")
+    #endif
   }
 
   static func modifier_dismissalConfirmationDialog_7(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:message:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["shouldPresent", "actions", "message"], required: ["shouldPresent", "actions", "message"])
     let p0: String = try a.positional(0) { try SUI.string($0) }
@@ -3807,6 +3940,9 @@ enum SUIGeneratedModifiers {
     let p2: AnyView = try a.option("actions") { try context.slot($0) }
     let p3: AnyView = try a.option("message") { try context.slot($0) }
     return AnyView(view.dismissalConfirmationDialog(p0, shouldPresent: p1, actions: { p2 }, message: { p3 }))
+    #else
+    throw SUIDecodeError.unavailable("dismissalConfirmationDialog(_:shouldPresent:actions:message:)")
+    #endif
   }
 
   static func modifier_distortionEffect(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3847,31 +3983,47 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_documentLaunchSubtitle_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("documentLaunchSubtitle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: LocalizedStringResource = try a.positional(0) { LocalizedStringResource(stringLiteral: try SUI.string($0)) }
     return AnyView(view.documentLaunchSubtitle(p0))
+    #else
+    throw SUIDecodeError.unavailable("documentLaunchSubtitle(_:)")
+    #endif
   }
 
   static func modifier_documentLaunchSubtitle_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("documentLaunchSubtitle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.LocalizedStringKey = try a.positional(0) { try SUI.localizedStringKey($0) }
     return AnyView(view.documentLaunchSubtitle(p0))
+    #else
+    throw SUIDecodeError.unavailable("documentLaunchSubtitle(_:)")
+    #endif
   }
 
   static func modifier_documentLaunchSubtitle_2(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("documentLaunchSubtitle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.Text = try a.positional(0) { try SUI.text($0) }
     return AnyView(view.documentLaunchSubtitle(p0))
+    #else
+    throw SUIDecodeError.unavailable("documentLaunchSubtitle(_:)")
+    #endif
   }
 
   static func modifier_documentLaunchSubtitle_3(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("documentLaunchSubtitle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: String = try a.positional(0) { try SUI.string($0) }
     return AnyView(view.documentLaunchSubtitle(p0))
+    #else
+    throw SUIDecodeError.unavailable("documentLaunchSubtitle(_:)")
+    #endif
   }
 
   static func modifier_documentLaunchTitle(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3884,31 +4036,47 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_documentLaunchTitle_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("documentLaunchTitle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: LocalizedStringResource = try a.positional(0) { LocalizedStringResource(stringLiteral: try SUI.string($0)) }
     return AnyView(view.documentLaunchTitle(p0))
+    #else
+    throw SUIDecodeError.unavailable("documentLaunchTitle(_:)")
+    #endif
   }
 
   static func modifier_documentLaunchTitle_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("documentLaunchTitle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.LocalizedStringKey = try a.positional(0) { try SUI.localizedStringKey($0) }
     return AnyView(view.documentLaunchTitle(p0))
+    #else
+    throw SUIDecodeError.unavailable("documentLaunchTitle(_:)")
+    #endif
   }
 
   static func modifier_documentLaunchTitle_2(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("documentLaunchTitle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.Text = try a.positional(0) { try SUI.text($0) }
     return AnyView(view.documentLaunchTitle(p0))
+    #else
+    throw SUIDecodeError.unavailable("documentLaunchTitle(_:)")
+    #endif
   }
 
   static func modifier_documentLaunchTitle_3(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("documentLaunchTitle(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: String = try a.positional(0) { try SUI.string($0) }
     return AnyView(view.documentLaunchTitle(p0))
+    #else
+    throw SUIDecodeError.unavailable("documentLaunchTitle(_:)")
+    #endif
   }
 
   static func modifier_dragConfiguration(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3918,10 +4086,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_dragConfiguration_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dragConfiguration(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.DragConfiguration = try a.positional(0) { try SUIValues.decode_DragConfiguration($0, context) }
     return AnyView(view.dragConfiguration(p0))
+    #else
+    throw SUIDecodeError.unavailable("dragConfiguration(_:)")
+    #endif
   }
 
   static func modifier_dragContainer(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3934,37 +4106,53 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_dragContainer_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dragContainer(for:in:_:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["in", "payload"], required: ["payload"])
     let p1: SwiftUI.Namespace.ID? = try a.option("in", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     let p2: SUIValueClosure<[SUIJSONValue]> = try a.option("payload") { try SUIValueClosure($0, context, { try SUI.array($0) { try SUI.json($0) } }) }
     return AnyView(view.dragContainer(for: SUIJSONValue.self, in: p1, { a0 in p2.call([SUI.encode(a0)]) }))
+    #else
+    throw SUIDecodeError.unavailable("dragContainer(for:in:_:)")
+    #endif
   }
 
   static func modifier_dragContainer_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dragContainer(for:in:_:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["in", "payload"], required: ["payload"])
     let p1: SwiftUI.Namespace.ID? = try a.option("in", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     let p2: SUIValueClosure<[SUIJSONValue]> = try a.option("payload") { try SUIValueClosure($0, context, { try SUI.array($0) { try SUI.json($0) } }) }
     return AnyView(view.dragContainer(for: SUIJSONValue.self, in: p1, { a0 in p2.call([SUI.encodeArray(a0) { SUI.encode($0) }]) }))
+    #else
+    throw SUIDecodeError.unavailable("dragContainer(for:in:_:)")
+    #endif
   }
 
   static func modifier_dragContainer_2(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dragContainer(for:itemID:in:_:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["itemID", "in", "payload"], required: ["itemID", "payload"])
     let p1: KeyPath<SUIJSONValue, SUIJSONValue> = try a.option("itemID") { try SUI.memberPath($0) }
     let p2: SwiftUI.Namespace.ID? = try a.option("in", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     let p3: SUIValueClosure<[SUIJSONValue]> = try a.option("payload") { try SUIValueClosure($0, context, { try SUI.array($0) { try SUI.json($0) } }) }
     return AnyView(view.dragContainer(for: SUIJSONValue.self, itemID: p1, in: p2, { a0 in p3.call([SUI.encode(a0)]) }))
+    #else
+    throw SUIDecodeError.unavailable("dragContainer(for:itemID:in:_:)")
+    #endif
   }
 
   static func modifier_dragContainer_3(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dragContainer(for:itemID:in:_:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["itemID", "in", "payload"], required: ["itemID", "payload"])
     let p1: KeyPath<SUIJSONValue, SUIJSONValue> = try a.option("itemID") { try SUI.memberPath($0) }
     let p2: SwiftUI.Namespace.ID? = try a.option("in", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     let p3: SUIValueClosure<[SUIJSONValue]> = try a.option("payload") { try SUIValueClosure($0, context, { try SUI.array($0) { try SUI.json($0) } }) }
     return AnyView(view.dragContainer(for: SUIJSONValue.self, itemID: p1, in: p2, { a0 in p3.call([SUI.encodeArray(a0) { SUI.encode($0) }]) }))
+    #else
+    throw SUIDecodeError.unavailable("dragContainer(for:itemID:in:_:)")
+    #endif
   }
 
   static func modifier_dragContainerSelection(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -3974,11 +4162,15 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_dragContainerSelection_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dragContainerSelection(_:containerNamespace:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["containerNamespace"])
     let p0: [SUIJSONValue] = try a.positional(0) { try SUI.array($0, { try SUI.json($0) }) }
     let p1: SwiftUI.Namespace.ID? = try a.option("containerNamespace", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     return AnyView(view.dragContainerSelection(p0, containerNamespace: p1))
+    #else
+    throw SUIDecodeError.unavailable("dragContainerSelection(_:containerNamespace:)")
+    #endif
   }
 
   static func modifier_draggable(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -4001,37 +4193,53 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_draggable_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("draggable(_:containerNamespace:_:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["containerNamespace", "item"], required: ["item"])
     let p1: SwiftUI.Namespace.ID? = try a.option("containerNamespace", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     let p2: SUIJSONValue? = try a.option("item") { try SUI.optional($0, { try SUI.json($0) }) }
     return AnyView(view.draggable(SUIJSONValue.self, containerNamespace: p1, { p2 }))
+    #else
+    throw SUIDecodeError.unavailable("draggable(_:containerNamespace:_:)")
+    #endif
   }
 
   static func modifier_draggable_2(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("draggable(_:id:containerNamespace:_:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["id", "containerNamespace", "payload"], required: ["id", "payload"])
     let p1: KeyPath<SUIJSONValue, SUIJSONValue> = try a.option("id") { try SUI.memberPath($0) }
     let p2: SwiftUI.Namespace.ID? = try a.option("containerNamespace", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     let p3: SUIJSONValue? = try a.option("payload") { try SUI.optional($0, { try SUI.json($0) }) }
     return AnyView(view.draggable(SUIJSONValue.self, id: p1, containerNamespace: p2, { p3 }))
+    #else
+    throw SUIDecodeError.unavailable("draggable(_:id:containerNamespace:_:)")
+    #endif
   }
 
   static func modifier_draggable_3(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("draggable(_:id:item:containerNamespace:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["id", "item", "containerNamespace"], required: ["id", "item"])
     let p1: KeyPath<SUIJSONValue, SUIJSONValue> = try a.option("id") { try SUI.memberPath($0) }
     let p2: SUIJSONValue? = try a.option("item") { try SUI.optional($0, { try SUI.json($0) }) }
     let p3: SwiftUI.Namespace.ID? = try a.option("containerNamespace", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     return AnyView(view.draggable(SUIJSONValue.self, id: p1, item: p2, containerNamespace: p3))
+    #else
+    throw SUIDecodeError.unavailable("draggable(_:id:item:containerNamespace:)")
+    #endif
   }
 
   static func modifier_draggable_4(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("draggable(_:item:containerNamespace:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["item", "containerNamespace"], required: ["item"])
     let p1: SUIJSONValue? = try a.option("item") { try SUI.optional($0, { try SUI.json($0) }) }
     let p2: SwiftUI.Namespace.ID? = try a.option("containerNamespace", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     return AnyView(view.draggable(SUIJSONValue.self, item: p1, containerNamespace: p2))
+    #else
+    throw SUIDecodeError.unavailable("draggable(_:item:containerNamespace:)")
+    #endif
   }
 
   static func modifier_draggable_5(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
@@ -4043,11 +4251,15 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_draggable_6(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("draggable(containerItemID:containerNamespace:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["containerItemID", "containerNamespace"], required: ["containerItemID"])
     let p0: SUIJSONValue = try a.option("containerItemID") { try SUI.json($0) }
     let p1: SwiftUI.Namespace.ID? = try a.option("containerNamespace", default: { nil }) { try SUI.optional($0, { try context.namespaceID($0) }) }
     return AnyView(view.draggable(containerItemID: p0, containerNamespace: p1))
+    #else
+    throw SUIDecodeError.unavailable("draggable(containerItemID:containerNamespace:)")
+    #endif
   }
 
   static func modifier_drawingGroup(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -4070,10 +4282,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_dropConfiguration_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("dropConfiguration(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SUIValueClosure<SwiftUI.DropConfiguration> = try a.positional(0) { try SUIValueClosure($0, context, { try SUIValues.decode_DropConfiguration($0, context) }) }
     return AnyView(view.dropConfiguration({ a0 in p0.call([SUIValues.encode_DropSession(a0)]) }))
+    #else
+    throw SUIDecodeError.unavailable("dropConfiguration(_:)")
+    #endif
   }
 
   static func modifier_dropDestination(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -5075,12 +5291,16 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_ignoresSafeArea_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("ignoresSafeArea(_:edges:alignment:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["edges", "alignment"], required: ["alignment"])
     let p0: SwiftUI.SafeAreaRegions = try a.positional(0, default: { .all }) { try SUIValues.decode_SafeAreaRegions($0, context) }
     let p1: SwiftUI.Edge.Set = try a.option("edges", default: { .all }) { try SUIValues.decode_Edge_Set($0, context) }
     let p2: SwiftUI.Alignment? = try a.option("alignment") { try SUI.optional($0, { try SUIValues.decode_Alignment($0, context) }) }
     return AnyView(view.ignoresSafeArea(p0, edges: p1, alignment: p2))
+    #else
+    throw SUIDecodeError.unavailable("ignoresSafeArea(_:edges:alignment:)")
+    #endif
   }
 
   static func modifier_imageScale(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -6220,10 +6440,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_onDragSessionUpdated_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("onDragSessionUpdated(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: ([Any]) -> Void = try a.positional(0) { try context.callback($0) }
     return AnyView(view.onDragSessionUpdated({ a0 in p0([SUIValues.encode_DragSession(a0)]) }))
+    #else
+    throw SUIDecodeError.unavailable("onDragSessionUpdated(_:)")
+    #endif
   }
 
   static func modifier_onDrop(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -6256,10 +6480,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_onDropSessionUpdated_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("onDropSessionUpdated(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: ([Any]) -> Void = try a.positional(0) { try context.callback($0) }
     return AnyView(view.onDropSessionUpdated({ a0 in p0([SUIValues.encode_DropSession(a0)]) }))
+    #else
+    throw SUIDecodeError.unavailable("onDropSessionUpdated(_:)")
+    #endif
   }
 
   static func modifier_onGeometryChange(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -6292,11 +6520,15 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_onHingeChange_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("onHingeChange(isEnabled:_:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["isEnabled", "action"], required: ["action"])
     let p0: Bool = try a.option("isEnabled", default: { true }) { try SUI.bool($0) }
     let p1: ([Any]) -> Void = try a.option("action") { try context.callback($0) }
     return AnyView(view.onHingeChange(isEnabled: p0, { a0, a1 in p1([SUIValues.encode_DeviceHingeContext(a0), SUIValues.encode_DeviceHingeContext(a1)]) }))
+    #else
+    throw SUIDecodeError.unavailable("onHingeChange(isEnabled:_:)")
+    #endif
   }
 
   static func modifier_onHover(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -6385,6 +6617,7 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_onLongPressGesture_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("onLongPressGesture(minimumDuration:maximumDistance:inputKinds:perform:onPressingChanged:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["minimumDuration", "maximumDistance", "inputKinds", "perform", "onPressingChanged"], required: ["perform"])
     let p0: Double = try a.option("minimumDuration", default: { 0.5 }) { try SUI.double($0) }
@@ -6393,6 +6626,9 @@ enum SUIGeneratedModifiers {
     let p3: ([Any]) -> Void = try a.option("perform") { try context.callback($0) }
     let p4: (([Any]) -> Void)? = try a.option("onPressingChanged", default: { nil }) { try SUI.optional($0) { try context.callback($0) } }
     return AnyView(view.onLongPressGesture(minimumDuration: p0, maximumDistance: p1, inputKinds: p2, perform: { p3([]) }, onPressingChanged: p4 == nil ? nil : { a0 in p4!([SUI.encode(a0)]) }))
+    #else
+    throw SUIDecodeError.unavailable("onLongPressGesture(minimumDuration:maximumDistance:inputKinds:perform:onPressingChanged:)")
+    #endif
   }
 
   static func modifier_onLongPressGesture_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
@@ -6561,6 +6797,7 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_onTapGesture_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("onTapGesture(count:coordinateSpace:inputKinds:perform:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["count", "coordinateSpace", "inputKinds", "perform"], required: ["perform"])
     let p0: Int = try a.option("count", default: { 1 }) { try SUI.int($0, as: Int.self) }
@@ -6573,6 +6810,9 @@ enum SUIGeneratedModifiers {
     } else {
       return AnyView(view.onTapGesture(count: p0, inputKinds: p2, perform: { a0 in p3([SUI.encode(a0)]) }))
     }
+    #else
+    throw SUIDecodeError.unavailable("onTapGesture(count:coordinateSpace:inputKinds:perform:)")
+    #endif
   }
 
   static func modifier_onTapGesture_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
@@ -6648,17 +6888,25 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_overlayArrangementEdge_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("overlayArrangementEdge(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.HorizontalEdge? = try a.positional(0) { try SUI.optional($0, { try SUIValues.decode_HorizontalEdge($0, context) }) }
     return AnyView(view.overlayArrangementEdge(p0))
+    #else
+    throw SUIDecodeError.unavailable("overlayArrangementEdge(_:)")
+    #endif
   }
 
   static func modifier_overlayArrangementEdge_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("overlayArrangementEdge(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.VerticalEdge? = try a.positional(0) { try SUI.optional($0, { try SUIValues.decode_VerticalEdge($0, context) }) }
     return AnyView(view.overlayArrangementEdge(p0))
+    #else
+    throw SUIDecodeError.unavailable("overlayArrangementEdge(_:)")
+    #endif
   }
 
   static func modifier_overlayPreferenceValue(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -6731,6 +6979,7 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_pasteDestination_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("pasteDestination(for:action:validator:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["action", "validator"], required: ["action"])
     let p1: ([Any]) -> Void = try a.option("action") { try context.callback($0) }
@@ -6740,6 +6989,9 @@ enum SUIGeneratedModifiers {
     } else {
       return AnyView(view.pasteDestination(for: SUIJSONValue.self, action: { a0 in p1([SUI.encodeArray(a0) { SUI.encode($0) }]) }))
     }
+    #else
+    throw SUIDecodeError.unavailable("pasteDestination(for:action:validator:)")
+    #endif
   }
 
   static func modifier_persistentSystemOverlays(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -6998,10 +7250,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_presentationPlacement_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("presentationPlacement(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.PresentationPlacement = try a.positional(0) { try SUIValues.decode_PresentationPlacement($0, context) }
     return AnyView(view.presentationPlacement(p0))
+    #else
+    throw SUIDecodeError.unavailable("presentationPlacement(_:)")
+    #endif
   }
 
   static func modifier_presentationSizing(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -7110,37 +7366,53 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_reorderContainer_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("reorderContainer(for:in:isEnabled:move:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["isEnabled", "move"], required: ["move"])
     let p2: Bool = try a.option("isEnabled", default: { true }) { try SUI.bool($0) }
     let p3: ([Any]) -> Void = try a.option("move") { try context.callback($0) }
     return AnyView(view.reorderContainer(for: SUIJSONValue.self, in: SUIJSONValue.self, isEnabled: p2, move: { a0 in p3([(["destination": (["collectionID": SUI.encode(a0.destination.collectionID), "position": { () -> Any in switch a0.destination.position { case .before(let value): return ["before": SUI.encode(value)] as [String: Any]; case .end: return "end" as Any } }()] as [String: Any]), "sources": SUI.encodeArray(a0.sources) { SUI.encode($0) }] as [String: Any])]) }))
+    #else
+    throw SUIDecodeError.unavailable("reorderContainer(for:in:isEnabled:move:)")
+    #endif
   }
 
   static func modifier_reorderContainer_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("reorderContainer(for:isEnabled:move:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["isEnabled", "move"], required: ["move"])
     let p1: Bool = try a.option("isEnabled", default: { true }) { try SUI.bool($0) }
     let p2: ([Any]) -> Void = try a.option("move") { try context.callback($0) }
     return AnyView(view.reorderContainer(for: SUIJSONValue.self, isEnabled: p1, move: { a0 in p2([(["destination": (["collectionID": SUIValues.encode_ReorderableSingleCollectionIdentifier(a0.destination.collectionID), "position": { () -> Any in switch a0.destination.position { case .before(let value): return ["before": SUI.encode(value)] as [String: Any]; case .end: return "end" as Any } }()] as [String: Any]), "sources": SUI.encodeArray(a0.sources) { SUI.encode($0) }] as [String: Any])]) }))
+    #else
+    throw SUIDecodeError.unavailable("reorderContainer(for:isEnabled:move:)")
+    #endif
   }
 
   static func modifier_reorderContainer_2(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("reorderContainer(for:itemID:in:isEnabled:move:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["itemID", "isEnabled", "move"], required: ["itemID", "move"])
     let p1: KeyPath<SUIJSONValue, SUIJSONValue> = try a.option("itemID") { try SUI.memberPath($0) }
     let p3: Bool = try a.option("isEnabled", default: { true }) { try SUI.bool($0) }
     let p4: ([Any]) -> Void = try a.option("move") { try context.callback($0) }
     return AnyView(view.reorderContainer(for: SUIJSONValue.self, itemID: p1, in: SUIJSONValue.self, isEnabled: p3, move: { a0 in p4([(["destination": (["collectionID": SUI.encode(a0.destination.collectionID), "position": { () -> Any in switch a0.destination.position { case .before(let value): return ["before": SUI.encode(value)] as [String: Any]; case .end: return "end" as Any } }()] as [String: Any]), "sources": SUI.encodeArray(a0.sources) { SUI.encode($0) }] as [String: Any])]) }))
+    #else
+    throw SUIDecodeError.unavailable("reorderContainer(for:itemID:in:isEnabled:move:)")
+    #endif
   }
 
   static func modifier_reorderContainer_3(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("reorderContainer(for:itemID:isEnabled:move:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["itemID", "isEnabled", "move"], required: ["itemID", "move"])
     let p1: KeyPath<SUIJSONValue, SUIJSONValue> = try a.option("itemID") { try SUI.memberPath($0) }
     let p2: Bool = try a.option("isEnabled", default: { true }) { try SUI.bool($0) }
     let p3: ([Any]) -> Void = try a.option("move") { try context.callback($0) }
     return AnyView(view.reorderContainer(for: SUIJSONValue.self, itemID: p1, isEnabled: p2, move: { a0 in p3([(["destination": (["collectionID": SUIValues.encode_ReorderableSingleCollectionIdentifier(a0.destination.collectionID), "position": { () -> Any in switch a0.destination.position { case .before(let value): return ["before": SUI.encode(value)] as [String: Any]; case .end: return "end" as Any } }()] as [String: Any]), "sources": SUI.encodeArray(a0.sources) { SUI.encode($0) }] as [String: Any])]) }))
+    #else
+    throw SUIDecodeError.unavailable("reorderContainer(for:itemID:isEnabled:move:)")
+    #endif
   }
 
   static func modifier_replaceDisabled(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -8338,11 +8610,15 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_splitArrangementFixedLayoutSize_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("splitArrangementFixedLayoutSize(horizontal:vertical:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["horizontal", "vertical"])
     let p0: Bool = try a.option("horizontal", default: { true }) { try SUI.bool($0) }
     let p1: Bool = try a.option("vertical", default: { true }) { try SUI.bool($0) }
     return AnyView(view.splitArrangementFixedLayoutSize(horizontal: p0, vertical: p1))
+    #else
+    throw SUIDecodeError.unavailable("splitArrangementFixedLayoutSize(horizontal:vertical:)")
+    #endif
   }
 
   static func modifier_splitArrangementLayoutRatio(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -8353,13 +8629,18 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_splitArrangementLayoutRatio_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("splitArrangementLayoutRatio(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: CGFloat? = try a.positional(0) { try SUI.optional($0, { try SUI.cgFloat($0) }) }
     return AnyView(view.splitArrangementLayoutRatio(p0))
+    #else
+    throw SUIDecodeError.unavailable("splitArrangementLayoutRatio(_:)")
+    #endif
   }
 
   static func modifier_splitArrangementLayoutRatio_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("splitArrangementLayoutRatio(minHorizontal:idealHorizontal:maxHorizontal:minVertical:idealVertical:maxVertical:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["minHorizontal", "idealHorizontal", "maxHorizontal", "minVertical", "idealVertical", "maxVertical"])
     let p0: CGFloat? = try a.option("minHorizontal", default: { nil }) { try SUI.optional($0, { try SUI.cgFloat($0) }) }
@@ -8369,6 +8650,9 @@ enum SUIGeneratedModifiers {
     let p4: CGFloat? = try a.option("idealVertical", default: { nil }) { try SUI.optional($0, { try SUI.cgFloat($0) }) }
     let p5: CGFloat? = try a.option("maxVertical", default: { nil }) { try SUI.optional($0, { try SUI.cgFloat($0) }) }
     return AnyView(view.splitArrangementLayoutRatio(minHorizontal: p0, idealHorizontal: p1, maxHorizontal: p2, minVertical: p3, idealVertical: p4, maxVertical: p5))
+    #else
+    throw SUIDecodeError.unavailable("splitArrangementLayoutRatio(minHorizontal:idealHorizontal:maxHorizontal:minVertical:idealVertical:maxVertical:)")
+    #endif
   }
 
   static func modifier_splitArrangementLayoutSize(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -8378,6 +8662,7 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_splitArrangementLayoutSize_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("splitArrangementLayoutSize(minWidth:idealWidth:maxWidth:minHeight:idealHeight:maxHeight:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["minWidth", "idealWidth", "maxWidth", "minHeight", "idealHeight", "maxHeight"])
     let p0: CGFloat? = try a.option("minWidth", default: { nil }) { try SUI.optional($0, { try SUI.cgFloat($0) }) }
@@ -8387,6 +8672,9 @@ enum SUIGeneratedModifiers {
     let p4: CGFloat? = try a.option("idealHeight", default: { nil }) { try SUI.optional($0, { try SUI.cgFloat($0) }) }
     let p5: CGFloat? = try a.option("maxHeight", default: { nil }) { try SUI.optional($0, { try SUI.cgFloat($0) }) }
     return AnyView(view.splitArrangementLayoutSize(minWidth: p0, idealWidth: p1, maxWidth: p2, minHeight: p3, idealHeight: p4, maxHeight: p5))
+    #else
+    throw SUIDecodeError.unavailable("splitArrangementLayoutSize(minWidth:idealWidth:maxWidth:minHeight:idealHeight:maxHeight:)")
+    #endif
   }
 
   static func modifier_springLoadingBehavior(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -8457,6 +8745,7 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_swipeActions_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("swipeActions(edge:allowsFullSwipe:content:onPresentationChanged:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["edge", "allowsFullSwipe", "content", "onPresentationChanged"], required: ["content", "onPresentationChanged"])
     let p0: SwiftUI.HorizontalEdge = try a.option("edge", default: { .trailing }) { try SUIValues.decode_HorizontalEdge($0, context) }
@@ -8464,6 +8753,9 @@ enum SUIGeneratedModifiers {
     let p2: AnyView = try a.option("content") { try context.slot($0) }
     let p3: ([Any]) -> Void = try a.option("onPresentationChanged") { try context.callback($0) }
     return AnyView(view.swipeActions(edge: p0, allowsFullSwipe: p1, content: { p2 }, onPresentationChanged: { a0 in p3([SUI.encode(a0)]) }))
+    #else
+    throw SUIDecodeError.unavailable("swipeActions(edge:allowsFullSwipe:content:onPresentationChanged:)")
+    #endif
   }
 
   static func modifier_swipeActionsContainer(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -8473,9 +8765,13 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_swipeActionsContainer_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("swipeActionsContainer()") }
     let a = try SUIArguments(raw, positional: 0, options: nil)
     return AnyView(view.swipeActionsContainer())
+    #else
+    throw SUIDecodeError.unavailable("swipeActionsContainer()")
+    #endif
   }
 
   static func modifier_symbolColorRenderingMode(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -8596,11 +8892,15 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_tabViewBottomAccessory_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 26.1, *) else { throw SUIDecodeError.unavailable("tabViewBottomAccessory(isEnabled:content:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["isEnabled", "content"], required: ["isEnabled", "content"])
     let p0: Bool = try a.option("isEnabled") { try SUI.bool($0) }
     let p1: AnyView = try a.option("content") { try context.slot($0) }
     return AnyView(view.tabViewBottomAccessory(isEnabled: p0, content: { p1 }))
+    #else
+    throw SUIDecodeError.unavailable("tabViewBottomAccessory(isEnabled:content:)")
+    #endif
   }
 
   static func modifier_tabViewCustomization(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -8697,13 +8997,18 @@ enum SUIGeneratedModifiers {
   static func modifier_task(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
     var reasons: [String] = []
     do { return try modifier_task_0(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("task(id:name:executorPreference:priority:file:line:_:): " + error.description) }
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_task_1(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("task(id:name:priority:file:line:_:): " + error.description) }
+    #endif
     do { return try modifier_task_2(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("task(name:executorPreference:priority:file:line:action:): " + error.description) }
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_task_3(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("task(name:priority:file:line:_:): " + error.description) }
+    #endif
     throw SUIDecodeError.noMatchingOverload("task", reasons)
   }
 
   static func modifier_task_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 26.4, *) else { throw SUIDecodeError.unavailable("task(id:name:executorPreference:priority:file:line:_:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["id", "name", "executorPreference", "priority", "file", "line", "action"], required: ["id", "executorPreference", "action"])
     let p0: SUIJSONValue = try a.option("id") { try SUI.json($0) }
@@ -8726,8 +9031,12 @@ enum SUIGeneratedModifiers {
         return AnyView(view.task(id: p0, name: p1, executorPreference: p2, priority: p3, { p6([]) }))
       }
     }
+    #else
+    throw SUIDecodeError.unavailable("task(id:name:executorPreference:priority:file:line:_:)")
+    #endif
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_task_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 0, options: ["id", "name", "priority", "file", "line", "action"], required: ["id", "action"])
     let p0: SUIJSONValue = try a.option("id") { try SUI.json($0) }
@@ -8751,7 +9060,9 @@ enum SUIGeneratedModifiers {
     }
   }
 
+  #endif
   static func modifier_task_2(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 26.4, *) else { throw SUIDecodeError.unavailable("task(name:executorPreference:priority:file:line:action:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["name", "executorPreference", "priority", "file", "line", "action"], required: ["executorPreference", "action"])
     let p0: String? = try a.option("name", default: { nil }) { try SUI.optional($0, { try SUI.string($0) }) }
@@ -8773,8 +9084,12 @@ enum SUIGeneratedModifiers {
         return AnyView(view.task(name: p0, executorPreference: p1, priority: p2, action: { p5([]) }))
       }
     }
+    #else
+    throw SUIDecodeError.unavailable("task(name:executorPreference:priority:file:line:action:)")
+    #endif
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_task_3(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 0, options: ["name", "priority", "file", "line", "action"], required: ["action"])
     let p0: String? = try a.option("name", default: { nil }) { try SUI.optional($0, { try SUI.string($0) }) }
@@ -8797,6 +9112,7 @@ enum SUIGeneratedModifiers {
     }
   }
 
+  #endif
   static func modifier_textCase(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
     var reasons: [String] = []
     do { return try modifier_textCase_0(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("textCase(_:): " + error.description) }
@@ -8867,10 +9183,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_textInputBorderShape_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("textInputBorderShape(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.TextInputBorderShape = try a.positional(0) { try SUIValues.decode_TextInputBorderShape($0, context) }
     return AnyView(view.textInputBorderShape(p0))
+    #else
+    throw SUIDecodeError.unavailable("textInputBorderShape(_:)")
+    #endif
   }
 
   static func modifier_textInputFormattingControlVisibility(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -8962,12 +9282,15 @@ enum SUIGeneratedModifiers {
 
   static func modifier_toolbar(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
     var reasons: [String] = []
+    #if canImport(SwiftUI, _version: 8.1.13)
     do { return try modifier_toolbar_0(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("toolbar(content:): " + error.description) }
+    #endif
     do { return try modifier_toolbar_1(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("toolbar(content:): " + error.description) }
     do { return try modifier_toolbar_2(view, arguments, context) } catch let error as SUIDecodeError { reasons.append("toolbar(removing:): " + error.description) }
     throw SUIDecodeError.noMatchingOverload("toolbar", reasons)
   }
 
+  #if canImport(SwiftUI, _version: 8.1.13)
   static func modifier_toolbar_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     guard #available(iOS 16.0, *) else { throw SUIDecodeError.unavailable("toolbar(content:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["content"], required: ["content"])
@@ -8975,6 +9298,7 @@ enum SUIGeneratedModifiers {
     return AnyView(view.toolbar(content: { SwiftUI.ForEach(p0, id: \.serial) { SUIFamily_ToolbarContent(node: $0) } }))
   }
 
+  #endif
   static func modifier_toolbar_1(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
     let a = try SUIArguments(raw, positional: 0, options: ["content"], required: ["content"])
     let p0: AnyView = try a.option("content") { try context.slot($0) }
@@ -9078,6 +9402,7 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_toolbarMinimizationBehavior_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("toolbarMinimizationBehavior(_:for:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["for"])
     let p0: SwiftUI.ToolbarMinimizationBehavior = try a.positional(0) { try SUIValues.decode_ToolbarMinimizationBehavior($0, context) }
@@ -9095,6 +9420,9 @@ enum SUIGeneratedModifiers {
       return AnyView(view.toolbarMinimizationBehavior(p0, for: p1[0], p1[1], p1[2], p1[3]))
     default: throw SUIDecodeError.mismatch("at most 4 values for 'for'")
     }
+    #else
+    throw SUIDecodeError.unavailable("toolbarMinimizationBehavior(_:for:)")
+    #endif
   }
 
   static func modifier_toolbarMinimizationRestoration(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -9104,6 +9432,7 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_toolbarMinimizationRestoration_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("toolbarMinimizationRestoration(_:for:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["for"])
     let p0: SwiftUI.ToolbarMinimizationRestoration = try a.positional(0) { try SUIValues.decode_ToolbarMinimizationRestoration($0, context) }
@@ -9121,6 +9450,9 @@ enum SUIGeneratedModifiers {
       return AnyView(view.toolbarMinimizationRestoration(p0, for: p1[0], p1[1], p1[2], p1[3]))
     default: throw SUIDecodeError.mismatch("at most 4 values for 'for'")
     }
+    #else
+    throw SUIDecodeError.unavailable("toolbarMinimizationRestoration(_:for:)")
+    #endif
   }
 
   static func modifier_toolbarMinimizationSafeAreaAdjustment(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -9130,6 +9462,7 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_toolbarMinimizationSafeAreaAdjustment_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("toolbarMinimizationSafeAreaAdjustment(_:for:)") }
     let a = try SUIArguments(raw, positional: 1, options: ["for"])
     let p0: SwiftUI.ToolbarMinimizationSafeAreaAdjustment = try a.positional(0) { try SUIValues.decode_ToolbarMinimizationSafeAreaAdjustment($0, context) }
@@ -9147,6 +9480,9 @@ enum SUIGeneratedModifiers {
       return AnyView(view.toolbarMinimizationSafeAreaAdjustment(p0, for: p1[0], p1[1], p1[2], p1[3]))
     default: throw SUIDecodeError.mismatch("at most 4 values for 'for'")
     }
+    #else
+    throw SUIDecodeError.unavailable("toolbarMinimizationSafeAreaAdjustment(_:for:)")
+    #endif
   }
 
   static func modifier_toolbarOverflowMenu(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -9156,10 +9492,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_toolbarOverflowMenu_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("toolbarOverflowMenu(content:)") }
     let a = try SUIArguments(raw, positional: 0, options: ["content"], required: ["content"])
     let p0: AnyView = try a.option("content") { try context.slot($0) }
     return AnyView(view.toolbarOverflowMenu(content: { p0 }))
+    #else
+    throw SUIDecodeError.unavailable("toolbarOverflowMenu(content:)")
+    #endif
   }
 
   static func modifier_toolbarRole(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -9182,10 +9522,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_toolbarTitleAlignment_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.1.13)
     guard #available(iOS 27.2, *) else { throw SUIDecodeError.unavailable("toolbarTitleAlignment(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.ToolbarTitleAlignment = try a.positional(0) { try SUIValues.decode_ToolbarTitleAlignment($0, context) }
     return AnyView(view.toolbarTitleAlignment(p0))
+    #else
+    throw SUIDecodeError.unavailable("toolbarTitleAlignment(_:)")
+    #endif
   }
 
   static func modifier_toolbarTitleDisplayMode(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -9221,10 +9565,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_toolbarVerticalBehavior_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("toolbarVerticalBehavior(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.ToolbarVerticalBehavior = try a.positional(0) { try SUIValues.decode_ToolbarVerticalBehavior($0, context) }
     return AnyView(view.toolbarVerticalBehavior(p0))
+    #else
+    throw SUIDecodeError.unavailable("toolbarVerticalBehavior(_:)")
+    #endif
   }
 
   static func modifier_toolbarVerticalCompressionBehavior(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {
@@ -9234,10 +9582,14 @@ enum SUIGeneratedModifiers {
   }
 
   static func modifier_toolbarVerticalCompressionBehavior_0(_ view: AnyView, _ raw: [Any], _ context: SUIContext) throws -> AnyView {
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("toolbarVerticalCompressionBehavior(_:)") }
     let a = try SUIArguments(raw, positional: 1, options: nil)
     let p0: SwiftUI.ToolbarVerticalCompressionBehavior = try a.positional(0) { try SUIValues.decode_ToolbarVerticalCompressionBehavior($0, context) }
     return AnyView(view.toolbarVerticalCompressionBehavior(p0))
+    #else
+    throw SUIDecodeError.unavailable("toolbarVerticalCompressionBehavior(_:)")
+    #endif
   }
 
   static func modifier_toolbarVisibility(_ view: AnyView, _ arguments: [Any], _ context: SUIContext) throws -> AnyView {

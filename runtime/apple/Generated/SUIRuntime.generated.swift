@@ -8,6 +8,10 @@ import Symbols
 import UIKit
 import UniformTypeIdentifiers
 
+#if !compiler(>=6.2)
+#error("swiftui-react-native needs Xcode 26.0 or newer")
+#endif
+
 // swiftlint:disable all
 struct SUIWrapper_AppStorage<Value>: View {
   private let wrapper: SwiftUI.AppStorage<Value>

@@ -361,6 +361,7 @@ enum SUIFamily_TabContent_Never {
   }
 }
 
+#if canImport(SwiftUI, _version: 8.0.84)
 @available(iOS 16.0, *)
 enum SUIFamily_ToolbarContent_Members {
   @available(iOS 26.0, *)
@@ -580,3 +581,201 @@ struct SUIFamily_ToolbarContent_Step8: SwiftUI.ToolbarContent {
   }
 }
 
+#else
+@available(iOS 16.0, *)
+enum SUIFamily_ToolbarContent_Members {
+  @available(iOS 26.0, *)
+  static func make_DefaultToolbarItem_0(_ node: SUINode) throws -> some SwiftUI.ToolbarContent {
+    try node.expect(allowed: ["kind", "placement"], required: ["kind"], nodes: false)
+    let context = node.context
+    _ = context
+    let p0: SwiftUI.ToolbarDefaultItemKind = try node.prop("kind") { try SUIValues.decode_ToolbarDefaultItemKind($0, context) }
+    let p1: SwiftUI.ToolbarItemPlacement = try node.prop("placement", default: { .automatic }) { try SUIValues.decode_ToolbarItemPlacement($0, context) }
+    return SwiftUI.DefaultToolbarItem(kind: p0, placement: p1)
+  }
+
+  static func make_ToolbarItem_0(_ node: SUINode) throws -> some SwiftUI.ToolbarContent {
+    try node.expect(allowed: ["placement"], required: [], nodes: true)
+    let context = node.context
+    _ = context
+    let p0: SwiftUI.ToolbarItemPlacement = try node.prop("placement", default: { .automatic }) { try SUIValues.decode_ToolbarItemPlacement($0, context) }
+    return SwiftUI.ToolbarItem(placement: p0, content: { SUISlotContentView(node: node) })
+  }
+
+  static func make_ToolbarItem_1(_ node: SUINode) throws -> some SwiftUI.ToolbarContent {
+    try node.expect(allowed: ["id", "placement"], required: ["id"], nodes: true)
+    let context = node.context
+    _ = context
+    let p0: String = try node.prop("id") { try SUI.string($0) }
+    let p1: SwiftUI.ToolbarItemPlacement = try node.prop("placement", default: { .automatic }) { try SUIValues.decode_ToolbarItemPlacement($0, context) }
+    return SwiftUI.ToolbarItem(id: p0, placement: p1, content: { SUISlotContentView(node: node) })
+  }
+
+  static func make_ToolbarItemGroup_0(_ node: SUINode) throws -> some SwiftUI.ToolbarContent {
+    try node.expect(allowed: ["placement"], required: [], nodes: true)
+    let context = node.context
+    _ = context
+    let p0: SwiftUI.ToolbarItemPlacement = try node.prop("placement", default: { .automatic }) { try SUIValues.decode_ToolbarItemPlacement($0, context) }
+    return SwiftUI.ToolbarItemGroup(placement: p0, content: { SUISlotContentView(node: node) })
+  }
+
+  @available(iOS 16.0, *)
+  static func make_ToolbarItemGroup_1(_ node: SUINode) throws -> some SwiftUI.ToolbarContent {
+    try node.expect(allowed: ["placement", "label"], required: ["label"], nodes: true)
+    let context = node.context
+    _ = context
+    let p0: SwiftUI.ToolbarItemPlacement = try node.prop("placement", default: { .automatic }) { try SUIValues.decode_ToolbarItemPlacement($0, context) }
+    let p2: AnyView = try node.prop("label") { try context.slot($0) }
+    return SwiftUI.ToolbarItemGroup(placement: p0, content: { SUISlotContentView(node: node) }, label: { p2 })
+  }
+
+  @available(iOS 26.0, *)
+  static func make_ToolbarSpacer_0(_ node: SUINode) throws -> some SwiftUI.ToolbarContent {
+    try node.expect(allowed: ["sizing", "placement"], required: [], nodes: false)
+    let context = node.context
+    _ = context
+    let p0: SwiftUI.SpacerSizing = try node.prop("sizing", default: { .flexible }) { try SUIValues.decode_SpacerSizing($0, context) }
+    let p1: SwiftUI.ToolbarItemPlacement = try node.prop("placement", default: { .automatic }) { try SUIValues.decode_ToolbarItemPlacement($0, context) }
+    return SwiftUI.ToolbarSpacer(p0, placement: p1)
+  }
+
+  @available(iOS 16.0, *)
+  static func make_ToolbarTitleMenu_0(_ node: SUINode) throws -> some SwiftUI.ToolbarContent {
+    try node.expect(allowed: [], required: [], nodes: false)
+    let context = node.context
+    _ = context
+    return SwiftUI.ToolbarTitleMenu()
+  }
+
+  @available(iOS 16.0, *)
+  static func make_ToolbarTitleMenu_1(_ node: SUINode) throws -> some SwiftUI.ToolbarContent {
+    try node.expect(allowed: [], required: [], nodes: true)
+    let context = node.context
+    _ = context
+    return SwiftUI.ToolbarTitleMenu(content: { SUISlotContentView(node: node) })
+  }
+
+  static func select(_ node: SUINode) -> Int {
+    if node.component == "DefaultToolbarItem", #available(iOS 26.0, *), (try? make_DefaultToolbarItem_0(node)) != nil { node.didRender("init(kind:placement:)"); return 0 }
+    if node.component == "ToolbarItem", (try? make_ToolbarItem_0(node)) != nil { node.didRender("init(placement:content:)"); return 1 }
+    if node.component == "ToolbarItem", (try? make_ToolbarItem_1(node)) != nil { node.didRender("init(id:placement:content:)"); return 2 }
+    if node.component == "ToolbarItemGroup", (try? make_ToolbarItemGroup_0(node)) != nil { node.didRender("init(placement:content:)"); return 3 }
+    if node.component == "ToolbarItemGroup", (try? make_ToolbarItemGroup_1(node)) != nil { node.didRender("init(placement:content:label:)"); return 4 }
+    if node.component == "ToolbarSpacer", #available(iOS 26.0, *), (try? make_ToolbarSpacer_0(node)) != nil { node.didRender("init(_:placement:)"); return 5 }
+    if node.component == "ToolbarTitleMenu", (try? make_ToolbarTitleMenu_0(node)) != nil { node.didRender("init()"); return 6 }
+    if node.component == "ToolbarTitleMenu", (try? make_ToolbarTitleMenu_1(node)) != nil { node.didRender("init(content:)"); return 7 }
+    return -1
+  }
+}
+
+@available(iOS 16.0, *)
+struct SUIFamily_ToolbarContent: SwiftUI.ToolbarContent {
+  let node: SUINode
+
+  @SwiftUI.ToolbarContentBuilder var body: some SwiftUI.ToolbarContent {
+    let selected = SUIFamily_ToolbarContent_Members.select(node)
+    if selected == 0 {
+      if #available(iOS 26.0, *) { try! SUIFamily_ToolbarContent_Members.make_DefaultToolbarItem_0(node) }
+    } else {
+      SUIFamily_ToolbarContent_Step1(node: node, selected: selected)
+    }
+  }
+}
+
+@available(iOS 16.0, *)
+struct SUIFamily_ToolbarContent_Step1: SwiftUI.ToolbarContent {
+  let node: SUINode
+  let selected: Int
+
+  @SwiftUI.ToolbarContentBuilder var body: some SwiftUI.ToolbarContent {
+    if selected == 1 {
+      try! SUIFamily_ToolbarContent_Members.make_ToolbarItem_0(node)
+    } else {
+      SUIFamily_ToolbarContent_Step2(node: node, selected: selected)
+    }
+  }
+}
+
+@available(iOS 16.0, *)
+struct SUIFamily_ToolbarContent_Step2: SwiftUI.ToolbarContent {
+  let node: SUINode
+  let selected: Int
+
+  @SwiftUI.ToolbarContentBuilder var body: some SwiftUI.ToolbarContent {
+    if selected == 2 {
+      try! SUIFamily_ToolbarContent_Members.make_ToolbarItem_1(node)
+    } else {
+      SUIFamily_ToolbarContent_Step3(node: node, selected: selected)
+    }
+  }
+}
+
+@available(iOS 16.0, *)
+struct SUIFamily_ToolbarContent_Step3: SwiftUI.ToolbarContent {
+  let node: SUINode
+  let selected: Int
+
+  @SwiftUI.ToolbarContentBuilder var body: some SwiftUI.ToolbarContent {
+    if selected == 3 {
+      try! SUIFamily_ToolbarContent_Members.make_ToolbarItemGroup_0(node)
+    } else {
+      SUIFamily_ToolbarContent_Step4(node: node, selected: selected)
+    }
+  }
+}
+
+@available(iOS 16.0, *)
+struct SUIFamily_ToolbarContent_Step4: SwiftUI.ToolbarContent {
+  let node: SUINode
+  let selected: Int
+
+  @SwiftUI.ToolbarContentBuilder var body: some SwiftUI.ToolbarContent {
+    if selected == 4 {
+      try! SUIFamily_ToolbarContent_Members.make_ToolbarItemGroup_1(node)
+    } else {
+      SUIFamily_ToolbarContent_Step5(node: node, selected: selected)
+    }
+  }
+}
+
+@available(iOS 16.0, *)
+struct SUIFamily_ToolbarContent_Step5: SwiftUI.ToolbarContent {
+  let node: SUINode
+  let selected: Int
+
+  @SwiftUI.ToolbarContentBuilder var body: some SwiftUI.ToolbarContent {
+    if selected == 5 {
+      if #available(iOS 26.0, *) { try! SUIFamily_ToolbarContent_Members.make_ToolbarSpacer_0(node) }
+    } else {
+      SUIFamily_ToolbarContent_Step6(node: node, selected: selected)
+    }
+  }
+}
+
+@available(iOS 16.0, *)
+struct SUIFamily_ToolbarContent_Step6: SwiftUI.ToolbarContent {
+  let node: SUINode
+  let selected: Int
+
+  @SwiftUI.ToolbarContentBuilder var body: some SwiftUI.ToolbarContent {
+    if selected == 6 {
+      try! SUIFamily_ToolbarContent_Members.make_ToolbarTitleMenu_0(node)
+    } else {
+      SUIFamily_ToolbarContent_Step7(node: node, selected: selected)
+    }
+  }
+}
+
+@available(iOS 16.0, *)
+struct SUIFamily_ToolbarContent_Step7: SwiftUI.ToolbarContent {
+  let node: SUINode
+  let selected: Int
+
+  @SwiftUI.ToolbarContentBuilder var body: some SwiftUI.ToolbarContent {
+    if selected == 7 {
+      try! SUIFamily_ToolbarContent_Members.make_ToolbarTitleMenu_1(node)
+    }
+  }
+}
+
+#endif

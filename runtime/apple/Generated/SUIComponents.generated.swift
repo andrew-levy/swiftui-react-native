@@ -156,12 +156,16 @@ final class SUIGeneratedArrangementViewHostView: SUINodeHostView {
 
   private class func overload_0(_ node: SUINode) throws -> AnyView {
     try node.expect(allowed: ["primary", "secondary"], required: ["primary", "secondary"], nodes: false)
+    #if canImport(SwiftUI, _version: 8.0.85)
     guard #available(iOS 27.1, *) else { throw SUIDecodeError.unavailable("ArrangementView.init(primary:secondary:)") }
     let context = node.context
     _ = context
     let p0: AnyView = try node.prop("primary") { try context.slot($0) }
     let p1: AnyView = try node.prop("secondary") { try context.slot($0) }
     return AnyView(SwiftUI.ArrangementView(primary: { p0 }, secondary: { p1 }))
+    #else
+    throw SUIDecodeError.unavailable("ArrangementView.init(primary:secondary:)")
+    #endif
   }
 
 }
@@ -3666,6 +3670,7 @@ final class SUIGeneratedNewDocumentButtonHostView: SUINodeHostView {
 
   private class func overload_3(_ node: SUINode) throws -> AnyView {
     try node.expect(allowed: ["children", "contentType", "source"], required: ["children", "source"], nodes: false)
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("NewDocumentButton.init(_:contentType:source:)") }
     let context = node.context
     _ = context
@@ -3673,6 +3678,9 @@ final class SUIGeneratedNewDocumentButtonHostView: SUINodeHostView {
     let p1: UTType? = try node.prop("contentType", default: { nil }) { try SUI.optional($0, { try SUI.utType($0) }) }
     let p2: SwiftUI.DocumentCreationSource = try node.prop("source") { try SUIValues.decode_DocumentCreationSource($0, context) }
     return AnyView(SwiftUI.NewDocumentButton(p0, contentType: p1, source: p2))
+    #else
+    throw SUIDecodeError.unavailable("NewDocumentButton.init(_:contentType:source:)")
+    #endif
   }
 
   private class func overload_4(_ node: SUINode) throws -> AnyView {
@@ -3692,6 +3700,7 @@ final class SUIGeneratedNewDocumentButtonHostView: SUINodeHostView {
 
   private class func overload_5(_ node: SUINode) throws -> AnyView {
     try node.expect(allowed: ["label", "contentType", "source"], required: ["source"], nodes: false)
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("NewDocumentButton.init(_:contentType:source:)") }
     let context = node.context
     _ = context
@@ -3699,10 +3708,14 @@ final class SUIGeneratedNewDocumentButtonHostView: SUINodeHostView {
     let p1: UTType? = try node.prop("contentType", default: { nil }) { try SUI.optional($0, { try SUI.utType($0) }) }
     let p2: SwiftUI.DocumentCreationSource = try node.prop("source") { try SUIValues.decode_DocumentCreationSource($0, context) }
     return AnyView(SwiftUI.NewDocumentButton(p0, contentType: p1, source: p2))
+    #else
+    throw SUIDecodeError.unavailable("NewDocumentButton.init(_:contentType:source:)")
+    #endif
   }
 
   private class func overload_6(_ node: SUINode) throws -> AnyView {
     try node.expect(allowed: ["children", "contentType", "source", "onPrepareDocumentURL"], required: ["children", "contentType", "source"], nodes: false)
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("NewDocumentButton.init(_:contentType:source:prepareDocumentURL:)") }
     let context = node.context
     _ = context
@@ -3715,10 +3728,14 @@ final class SUIGeneratedNewDocumentButtonHostView: SUINodeHostView {
     } else {
       return AnyView(SwiftUI.NewDocumentButton(p0, contentType: p1, source: p2))
     }
+    #else
+    throw SUIDecodeError.unavailable("NewDocumentButton.init(_:contentType:source:prepareDocumentURL:)")
+    #endif
   }
 
   private class func overload_7(_ node: SUINode) throws -> AnyView {
     try node.expect(allowed: ["label", "contentType", "source", "onPrepareDocumentURL"], required: ["contentType", "source"], nodes: false)
+    #if canImport(SwiftUI, _version: 8.0.84)
     guard #available(iOS 27.0, *) else { throw SUIDecodeError.unavailable("NewDocumentButton.init(_:contentType:source:_:)") }
     let context = node.context
     _ = context
@@ -3731,6 +3748,9 @@ final class SUIGeneratedNewDocumentButtonHostView: SUINodeHostView {
     } else {
       return AnyView(SwiftUI.NewDocumentButton(p0, contentType: p1, source: p2))
     }
+    #else
+    throw SUIDecodeError.unavailable("NewDocumentButton.init(_:contentType:source:_:)")
+    #endif
   }
 
 }

@@ -105,7 +105,7 @@ typealias SUIExpression = (SUIProgramFrame) -> Double
 
 enum SUIExpressions {
   private static let unary: [String: (Double) -> Double] = [
-    "neg": { -$0 }, "abs": { abs($0) }, "sqrt": { $0.squareRoot() }, "floor": { $0.rounded(.down) },
+    "neg": { -$0 }, "abs": { $0.magnitude }, "sqrt": { $0.squareRoot() }, "floor": { $0.rounded(.down) },
     "ceil": { $0.rounded(.up) }, "round": { $0.rounded() }, "sin": { sin($0) }, "cos": { cos($0) },
     "tan": { tan($0) }, "asin": { asin($0) }, "acos": { acos($0) }, "atan": { atan($0) },
     "exp": { exp($0) }, "log": { log($0) }, "not": { $0 == 0 ? 1 : 0 },
@@ -344,8 +344,10 @@ struct SUIAnimatableVector: VectorArithmetic, @unchecked Sendable {
 
   static func == (a: Self, b: Self) -> Bool {
     let count = max(a.values.count, b.values.count)
-    return (0..<count).allSatisfy { index in
-      (index < a.values.count ? a.values[index] : 0) == (index < b.values.count ? b.values[index] : 0)
+    return (0..<count).allSatisfy { index -> Bool in
+      let left: Double = index < a.values.count ? a.values[index] : 0
+      let right: Double = index < b.values.count ? b.values[index] : 0
+      return left == right
     }
   }
 }
