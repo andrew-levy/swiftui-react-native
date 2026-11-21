@@ -15,6 +15,7 @@ const examples: Example[] = [
   { title: 'Habits', path: '/habits', ready: true },
   { title: 'Library', path: '/library', ready: true },
   { title: 'Recipes', path: '/recipes', ready: true },
+  { title: 'Launch clips', path: '/clips', ready: true },
   { title: 'SwiftUI catalog', path: '/catalog', ready: true },
   { title: 'New modifiers', path: '/new-modifiers', ready: true },
   { title: 'Shapes and graphics', path: '/graphics', ready: true },

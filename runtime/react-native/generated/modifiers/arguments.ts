@@ -222,7 +222,7 @@ export interface ViewModifierArguments {
       ];
   accessibilityRotorEntry: [
     options: {
-      /** An arbitrary hashable identifier. Pass this same value */ id: unknown;
+      /** An arbitrary hashable identifier. Pass this same value when initializing an AccessibilityRotorEntry. */ id: unknown;
       in: string;
     },
   ];
@@ -746,7 +746,7 @@ export interface ViewModifierArguments {
     | [
         options: {
           in?: string | null;
-          /** A closure which is called when */ payload: {
+          /** A closure which is called when a drag operation begins. As an argument, the closure receives the identifier of the dragged view under the finger or cursor. Using the passed identifier, put together the payload to drag, and return from the closure. Return an empty `Collection` to disable the drag. */ payload: {
             returns: unknown[];
             perform?: (draggedItemID: SwiftUnsupported<'Item.ID'>) => void;
           };
@@ -755,7 +755,7 @@ export interface ViewModifierArguments {
     | [
         options: {
           in?: string | null;
-          /** A closure which is called when */ payload: {
+          /** A closure which is called when a drag operation begins. As an argument, the closure receives either the identifiers of all the selected items, if the dragged item is a part of selection or only the identifier of the dragged item, if it is not part of the selection. With the passed identifiers, put together the payload to drag, and return from the closure. Return an empty `Collection` to disable the drag. */ payload: {
             returns: unknown[];
             perform?: (draggedItemIDs: SwiftUnsupported<'Item.ID'>[]) => void;
           };
@@ -765,7 +765,7 @@ export interface ViewModifierArguments {
         options: {
           /** A closure that provides the item's identifier. */ itemID: string;
           in?: string | null;
-          /** A closure which is called when */ payload: {
+          /** A closure which is called when a drag operation begins. As an argument, the closure receives the identifier of the dragged view under the finger or cursor. Using the passed identifier, put together the payload to drag, and return from the closure. Return an empty `Collection` to disable the drag. */ payload: {
             returns: unknown[];
             perform?: (draggedItemID: unknown) => void;
           };
@@ -775,7 +775,7 @@ export interface ViewModifierArguments {
         options: {
           /** A closure that provides an item's identifier. */ itemID: string;
           in?: string | null;
-          /** A closure which is called when */ payload: {
+          /** A closure which is called when a drag operation begins. As an argument, the closure receives either the identifiers of all the selected items, if the dragged item is a part of selection or only the identifier of the dragged item, if it is not part of the selection. Using the passed identifiers, put together the payload to drag, and return from the closure. Return an empty `Collection` to disable the drag. */ payload: {
             returns: unknown[];
             perform?: (draggedItemIDs: unknown[]) => void;
           };
@@ -794,7 +794,8 @@ export interface ViewModifierArguments {
         options: {
           /** A namespace of the associated drag container. */ containerNamespace?:
             string | null;
-          /** A closure that returns a single */ item: unknown | null;
+          /** A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view. */ item:
+            unknown | null;
         },
       ]
     | [
@@ -802,20 +803,23 @@ export interface ViewModifierArguments {
           /** An key path of the identifier of an item. */ id: string;
           /** A namespace of the associated drag container. */ containerNamespace?:
             string | null;
-          /** A closure that returns a single */ payload: unknown | null;
+          /** A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view. */ payload:
+            unknown | null;
         },
       ]
     | [
         options: {
           /** An identifier of an item. */ id: string;
-          /** A closure that returns a single */ item: unknown | null;
+          /** A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view. */ item:
+            unknown | null;
           /** A namespace of the associated drag container. */ containerNamespace?:
             string | null;
         },
       ]
     | [
         options: {
-          /** A closure that returns a single */ item: unknown | null;
+          /** A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view. */ item:
+            unknown | null;
           /** A namespace of the associated drag container. */ containerNamespace?:
             string | null;
         },
@@ -823,7 +827,7 @@ export interface ViewModifierArguments {
     | [
         payload: unknown,
         options: {
-          /** A `View` to use as the source for the dragging */ preview: ReactNode;
+          /** A `View` to use as the source for the dragging preview, once the drag operation has begun. The preview is centered over the source view. */ preview: ReactNode;
         },
       ]
     | [
@@ -1549,7 +1553,7 @@ export interface ViewModifierArguments {
     | [options: { perform: (arg0: string) => void }]
     | [
         options: {
-          /** A boolean value that specifies whether to prefer to open the URL */ prefersInApp: boolean;
+          /** A boolean value that specifies whether to prefer to open the URL with an in-app browser or not. */ prefersInApp: boolean;
         },
       ];
   onPencilDoubleTap: [

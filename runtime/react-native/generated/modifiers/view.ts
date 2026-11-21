@@ -1270,14 +1270,11 @@ export interface ViewModifiers {
    * or when the Rotor entry should be associated with a sub-element of
    * a complex view generated in a ForEach, for example.
    *
-   * when initializing an AccessibilityRotorEntry.
-   * same namespace when initializing an `AccessibilityRotorEntry`.
-   *
    * @platform iOS 15.0+, macOS 12.0+, tvOS 15.0+, watchOS 8.0+
    * @swift `nonisolated func accessibilityRotorEntry<ID>(id: ID, in namespace: Namespace.ID) -> some View where ID : Hashable`
    */
   accessibilityRotorEntry<ID>(options: {
-    /** An arbitrary hashable identifier. Pass this same value */ id: ID;
+    /** An arbitrary hashable identifier. Pass this same value when initializing an AccessibilityRotorEntry. */ id: ID;
     in: string;
   }): ViewModifierChain;
 
@@ -1446,9 +1443,7 @@ export interface ViewModifiers {
    *
    * The default content type `AccessibilityTextContentType.plain`.
    *
-   * `AccessibilityTextContentType` options.
-   *
-   * @param value The accessibility content type from the available
+   * @param value The accessibility content type from the available `AccessibilityTextContentType` options.
    * @platform iOS 15.0+, macOS 12.0+, tvOS 15.0+, watchOS 8.0+
    * @swift `nonisolated func accessibilityTextContentType(_ value: AccessibilityTextContentType) -> ModifiedContent<Self, AccessibilityAttachmentModifier>`
    */
@@ -6264,27 +6259,25 @@ export interface ViewModifiers {
    * struct ComposeMessage: View {
    *     @State private var message = Message()
    *
-   * ```swift
-   * var body: some View {
-   *     MessageEditor(message: $message)
-   *         .dismissalConfirmationDialog(
-   *             "Save This Message As Draft?",
-   *             shouldPresent: message.hasUnsavedChanges
-   *         ) {
-   *             Button("Save") {
-   *                 message.save()
+   *     var body: some View {
+   *         MessageEditor(message: $message)
+   *             .dismissalConfirmationDialog(
+   *                 "Save This Message As Draft?",
+   *                 shouldPresent: message.hasUnsavedChanges
+   *             ) {
+   *                 Button("Save") {
+   *                     message.save()
+   *                 }
+   *                 Button("Don't Save", role: .destructive) {
+   *                     message.discard()
+   *                 }
+   *             } message: {
+   *                 Text(
+   *                     """
+   *                     This message has not been sent and contains\
+   *                     unsaved changes.
+   *                     """)
    *             }
-   *             Button("Don't Save", role: .destructive) {
-   *                 message.discard()
-   *             }
-   *         } message: {
-   *             Text(
-   *                 """
-   *                 This message has not been sent and contains\
-   *                 unsaved changes.
-   *                 """)
-   *         }
-   * ```
    * }
    * ```
    *
@@ -6339,27 +6332,25 @@ export interface ViewModifiers {
    * struct ComposeMessage: View {
    *     @State private var message = Message()
    *
-   * ```swift
-   * var body: some View {
-   *     MessageEditor(message: $message)
-   *         .dismissalConfirmationDialog(
-   *             "Save This Message As Draft?",
-   *             shouldPresent: message.hasUnsavedChanges
-   *         ) {
-   *             Button("Save") {
-   *                 message.save()
+   *     var body: some View {
+   *         MessageEditor(message: $message)
+   *             .dismissalConfirmationDialog(
+   *                 "Save This Message As Draft?",
+   *                 shouldPresent: message.hasUnsavedChanges
+   *             ) {
+   *                 Button("Save") {
+   *                     message.save()
+   *                 }
+   *                 Button("Don't Save", role: .destructive) {
+   *                     message.discard()
+   *                 }
+   *             } message: {
+   *                 Text(
+   *                     """
+   *                     This message has not been sent and contains\
+   *                     unsaved changes.
+   *                     """)
    *             }
-   *             Button("Don't Save", role: .destructive) {
-   *                 message.discard()
-   *             }
-   *         } message: {
-   *             Text(
-   *                 """
-   *                 This message has not been sent and contains\
-   *                 unsaved changes.
-   *                 """)
-   *         }
-   * ```
    * }
    * ```
    *
@@ -6584,11 +6575,8 @@ export interface ViewModifiers {
    *   In the snippet above, the view supports both copy and delete
    *   operations.
    *
-   * of a drag session.
-   * by the `configuration` parameter.
-   *
-   * @param configuration A value that describes the configuration
-   * @returns A view that configures a drag session in a way, described
+   * @param configuration A value that describes the configuration of a drag session.
+   * @returns A view that configures a drag session in a way, described by the `configuration` parameter.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func dragConfiguration(_ configuration: DragConfiguration) -> some View`
    */
@@ -6677,19 +6665,13 @@ export interface ViewModifiers {
    * view and mark each draggable child with `View.draggable(_:)`
    * or `View.draggable(containerItemID:containerNamespace:)`.
    *
-   * a drag operation begins. As an argument, the closure receives the identifier
-   * of the dragged view under the finger or cursor. Using
-   * the passed identifier, put together the payload to drag,
-   * and return from the closure.
-   * Return an empty `Collection` to disable the drag.
-   *
    * @returns A view that can be activated as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func dragContainer<Item, Data>(for itemType: Item.Type = Item.self, in namespace: Namespace.ID? = nil, _ payload: @escaping (Item.ID) -> Data) -> some View where Item : Transferable, Item : Identifiable, Item == Data.Element, Data : Collection, Item.ID : Sendable`
    */
   dragContainer(options: {
     in?: string | null;
-    /** A closure which is called when */ payload: {
+    /** A closure which is called when a drag operation begins. As an argument, the closure receives the identifier of the dragged view under the finger or cursor. Using the passed identifier, put together the payload to drag, and return from the closure. Return an empty `Collection` to disable the drag. */ payload: {
       returns: unknown[];
       perform?: (draggedItemID: SwiftUnsupported<'Item.ID'>) => void;
     };
@@ -6734,20 +6716,13 @@ export interface ViewModifiers {
    * view and mark each draggable child with `View.draggable(_:)`
    * or `View.draggable(containerItemID:containerNamespace:)`.
    *
-   * a drag operation begins. As an argument, the closure receives either the identifiers
-   * of all the selected items, if the dragged item is a part of selection
-   * or only the identifier of the dragged item, if it is
-   * not part of the selection. With the passed identifiers, put together the payload to drag,
-   * and return from the closure.
-   * Return an empty `Collection` to disable the drag.
-   *
    * @returns A view that can be activated as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func dragContainer<Item, Data>(for itemType: Item.Type = Item.self, in namespace: Namespace.ID? = nil, _ payload: @escaping (Array<Item.ID>) -> Data) -> some View where Item : Transferable, Item : Identifiable, Item == Data.Element, Data : Collection, Item.ID : Sendable`
    */
   dragContainer(options: {
     in?: string | null;
-    /** A closure which is called when */ payload: {
+    /** A closure which is called when a drag operation begins. As an argument, the closure receives either the identifiers of all the selected items, if the dragged item is a part of selection or only the identifier of the dragged item, if it is not part of the selection. With the passed identifiers, put together the payload to drag, and return from the closure. Return an empty `Collection` to disable the drag. */ payload: {
       returns: unknown[];
       perform?: (draggedItemIDs: SwiftUnsupported<'Item.ID'>[]) => void;
     };
@@ -6834,12 +6809,6 @@ export interface ViewModifiers {
    * view and mark each draggable child with `View.draggable(_:)`
    * or `View.draggable(containerItemID:containerNamespace:)`.
    *
-   * a drag operation begins. As an argument, the closure receives the identifier
-   * of the dragged view under the finger or cursor. Using
-   * the passed identifier, put together the payload to drag,
-   * and return from the closure.
-   * Return an empty `Collection` to disable the drag.
-   *
    * @returns A view that can be activated as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func dragContainer<ItemID, Item, Data>(for itemType: Item.Type = Item.self, itemID: KeyPath<Item, ItemID>, in namespace: Namespace.ID? = nil, _ payload: @escaping (ItemID) -> Data) -> some View where ItemID : Hashable, ItemID : Sendable, Item : Transferable, Item == Data.Element, Data : Collection`
@@ -6847,7 +6816,7 @@ export interface ViewModifiers {
   dragContainer<ItemID>(options: {
     /** A closure that provides the item's identifier. */ itemID: string;
     in?: string | null;
-    /** A closure which is called when */ payload: {
+    /** A closure which is called when a drag operation begins. As an argument, the closure receives the identifier of the dragged view under the finger or cursor. Using the passed identifier, put together the payload to drag, and return from the closure. Return an empty `Collection` to disable the drag. */ payload: {
       returns: unknown[];
       perform?: (draggedItemID: ItemID) => void;
     };
@@ -6888,13 +6857,6 @@ export interface ViewModifiers {
    * view and mark each draggable child with `View.draggable(_:)`
    * or `View.draggable(containerItemID:containerNamespace:)`.
    *
-   * a drag operation begins. As an argument, the closure receives either the identifiers
-   * of all the selected items, if the dragged item is a part of selection
-   * or only the identifier of the dragged item, if it is
-   * not part of the selection. Using the passed identifiers, put together the payload to drag,
-   * and return from the closure.
-   * Return an empty `Collection` to disable the drag.
-   *
    * @returns A view that can be activated as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func dragContainer<ItemID, Item, Data>(for itemType: Item.Type = Item.self, itemID: KeyPath<Item, ItemID>, in namespace: Namespace.ID? = nil, _ payload: @escaping (Array<ItemID>) -> Data) -> some View where ItemID : Hashable, ItemID : Sendable, Item : Transferable, Item == Data.Element, Data : Collection`
@@ -6902,7 +6864,7 @@ export interface ViewModifiers {
   dragContainer<ItemID>(options: {
     /** A closure that provides an item's identifier. */ itemID: string;
     in?: string | null;
-    /** A closure which is called when */ payload: {
+    /** A closure which is called when a drag operation begins. As an argument, the closure receives either the identifiers of all the selected items, if the dragged item is a part of selection or only the identifier of the dragged item, if it is not part of the selection. Using the passed identifiers, put together the payload to drag, and return from the closure. Return an empty `Collection` to disable the drag. */ payload: {
       returns: unknown[];
       perform?: (draggedItemIDs: ItemID[]) => void;
     };
@@ -6978,14 +6940,11 @@ export interface ViewModifiers {
    * `ContentShapeKinds.dragPreview` kind. For example, you can change the
    * preview's corner radius or use a nested view as the preview.
    *
-   * instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that
-   * represents the draggable data from this view.
-   *
    * - Important: Don't perform work on the main actor while exporting the
    *   item. Doing so isn't supported and might cause a hang. Make sure
    *   `T`'s exporting closure doesn't dispatch to the main actor.
    *
-   * @param payload A closure that returns a single
+   * @param payload A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view.
    * @returns A view that activates this view as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 16.0+, macOS 13.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func draggable<T>(_ payload: @autoclosure @escaping () -> T) -> some View where T : Transferable`
@@ -7047,9 +7006,6 @@ export interface ViewModifiers {
    * When a drag operation begins, a rendering of this view is
    * generated and used as the preview image.
    *
-   * instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that
-   * represents the draggable data from this view.
-   *
    * @returns A view that activates this view as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func draggable<Item>(_ itemType: Item.Type = Item.self, containerNamespace: Namespace.ID? = nil, _ item: @escaping () -> Item?) -> some View where Item : Transferable, Item : Identifiable, Item.ID : Sendable`
@@ -7057,7 +7013,7 @@ export interface ViewModifiers {
   draggable<Item>(options: {
     /** A namespace of the associated drag container. */ containerNamespace?:
       string | null;
-    /** A closure that returns a single */ item: Item | null;
+    /** A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view. */ item: Item | null;
   }): ViewModifierChain;
 
   /**
@@ -7119,8 +7075,6 @@ export interface ViewModifiers {
    * func fruits(with: [UUID]) -> [Fruit] { ... }
    *
    * ```
-   * instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that
-   * represents the draggable data from this view.
    *
    * @returns A view that activates this view as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
@@ -7130,7 +7084,7 @@ export interface ViewModifiers {
     /** An key path of the identifier of an item. */ id: string;
     /** A namespace of the associated drag container. */ containerNamespace?:
       string | null;
-    /** A closure that returns a single */ payload: Item | null;
+    /** A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view. */ payload: Item | null;
   }): ViewModifierChain;
 
   /**
@@ -7148,17 +7102,13 @@ export interface ViewModifiers {
    * `ContentShapeKinds.dragPreview` kind. For example, you can change the
    * preview's corner radius or use a nested view as the preview.
    *
-   * instance or a value conforming to
-   *  <doc://com.apple.documentation/documentation/coretransferable/transferable>
-   * that represents the draggable data from this view.
-   *
    * @returns A view that activates this view as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func draggable<Item, ItemID>(_ itemType: Item.Type = Item.self, id: KeyPath<Item, ItemID>, item: @autoclosure @escaping () -> Item?, containerNamespace: Namespace.ID? = nil) -> some View where Item : Transferable, ItemID : Hashable, ItemID : Sendable`
    */
   draggable<Item>(options: {
     /** An identifier of an item. */ id: string;
-    /** A closure that returns a single */ item: Item | null;
+    /** A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view. */ item: Item | null;
     /** A namespace of the associated drag container. */ containerNamespace?:
       string | null;
   }): ViewModifierChain;
@@ -7199,15 +7149,13 @@ export interface ViewModifiers {
    * struct Fruit: Identifiable, Transferable { ... }
    *
    * ```
-   * instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that
-   * represents the draggable data from this view.
    *
    * @returns A view that activates this view as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func draggable<Item>(_ itemType: Item.Type = Item.self, item: @autoclosure @escaping () -> Item?, containerNamespace: Namespace.ID? = nil) -> some View where Item : Transferable, Item : Identifiable, Item.ID : Sendable`
    */
   draggable<Item>(options: {
-    /** A closure that returns a single */ item: Item | null;
+    /** A closure that returns a single instance or a value conforming to <doc://com.apple.documentation/documentation/coretransferable/transferable> that represents the draggable data from this view. */ item: Item | null;
     /** A namespace of the associated drag container. */ containerNamespace?:
       string | null;
   }): ViewModifierChain;
@@ -7235,16 +7183,11 @@ export interface ViewModifiers {
    * with a `ContentShapeKinds.dragPreview` kind. For example, you can
    * change the preview's corner radius or use a nested view as the preview.
    *
-   * class instance or a value conforming to `Transferable` that
-   * represents the draggable data from this view.
-   * preview, once the drag operation has begun. The preview is centered over
-   * the source view.
-   *
    * - Important: Don't perform work on the main actor while exporting the
    *   item. Doing so isn't supported and might cause a hang. Make sure
    *   `T`'s exporting closure doesn't dispatch to the main actor.
    *
-   * @param payload A closure that returns a single
+   * @param payload A closure that returns a single class instance or a value conforming to `Transferable` that represents the draggable data from this view.
    * @returns A view that activates this view as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 16.0+, macOS 13.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func draggable<V, T>(_ payload: @autoclosure @escaping () -> T, @ContentBuilder preview: () -> V) -> some View where V : View, T : Transferable`
@@ -7252,7 +7195,7 @@ export interface ViewModifiers {
   draggable<T>(
     payload: T,
     options: {
-      /** A `View` to use as the source for the dragging */ preview: ReactNode;
+      /** A `View` to use as the source for the dragging preview, once the drag operation has begun. The preview is centered over the source view. */ preview: ReactNode;
     }
   ): ViewModifierChain;
 
@@ -7390,11 +7333,8 @@ export interface ViewModifiers {
    * frequently to allow specifying different operations for different drop
    * locations in a view. Do not perform any expensive calculations in it.
    *
-   * of a drop session.
-   * by the return value of the `configuration` parameter.
-   *
-   * @param configuration A value that describes the configuration
-   * @returns A view that configures a drop session in a way, described
+   * @param configuration A value that describes the configuration of a drop session.
+   * @returns A view that configures a drop session in a way, described by the return value of the `configuration` parameter.
    * @platform iOS 27.0+, macOS 26.0+, visionOS 27.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func dropConfiguration(_ configuration: @escaping (DropSession) -> DropConfiguration) -> some View`
    */
@@ -10440,11 +10380,10 @@ export interface ViewModifiers {
    *     }
    *
    * ```
-   * presented as a trailing column.
    * - Note: A fixed width does not prevent the user collapsing the
    * inspector on macOS. See `View.interactiveDismissDisabled(_:)`.
    *
-   * @param width The preferred fixed width for the inspector if
+   * @param width The preferred fixed width for the inspector if presented as a trailing column.
    * @platform iOS 17.0+, macOS 14.0+; unavailable on tvOS, visionOS, watchOS
    * @swift `nonisolated func inspectorColumnWidth(_ width: CGFloat) -> some View`
    */
@@ -10824,9 +10763,7 @@ export interface ViewModifiers {
    * <doc://com.apple.documentation/documentation/UIKit/UIKeyboardType> enumeration. To
    * specify the default system keyboard type, use `.default`.
    *
-   * <doc://com.apple.documentation/documentation/UIKit/UIKeyboardType> enumeration.
-   *
-   * @param type One of the keyboard types defined in the
+   * @param type One of the keyboard types defined in the <doc://com.apple.documentation/documentation/UIKit/UIKeyboardType> enumeration.
    * @platform iOS 13.0+, tvOS 13.0+; unavailable on macOS, watchOS
    * @swift `nonisolated func keyboardType(_ type: UIKeyboardType) -> some View`
    */
@@ -12356,9 +12293,7 @@ export interface ViewModifiers {
    * If a child view's base font doesn't support fixed-width, the font
    * remains unchanged.
    *
-   * while leaving other characters proportionally spaced.
-   *
-   * @returns A view whose child views' fonts use fixed-width characters,
+   * @returns A view whose child views' fonts use fixed-width characters, while leaving other characters proportionally spaced.
    * @platform iOS 16.0+, macOS 13.0+, tvOS 16.0+, watchOS 9.0+
    * @swift `nonisolated func monospaced(_ isActive: Bool = true) -> some View`
    */
@@ -12403,9 +12338,7 @@ export interface ViewModifiers {
    * If a child view's base font doesn't support fixed-width digits, the font
    * remains unchanged.
    *
-   * characters, while leaving other characters proportionally spaced.
-   *
-   * @returns A view whose child views' fonts use fixed-width numeric
+   * @returns A view whose child views' fonts use fixed-width numeric characters, while leaving other characters proportionally spaced.
    * @platform iOS 15.0+, macOS 12.0+, tvOS 15.0+, watchOS 8.0+
    * @swift `nonisolated func monospacedDigit() -> some View`
    */
@@ -13185,15 +13118,12 @@ export interface ViewModifiers {
    * `View.dragContainer(for:in:_:)` — use `View.draggable(_:)`
    * instead.
    *
-   * <doc://com.apple.documentation/documentation/Foundation/NSItemProvider> that
-   * represents the draggable data from this view.
-   *
    * - Important: Don't dispatch work to the main actor while exporting the
    *   item. Doing so isn't supported and might cause a hang. If you register
    *   data representations on the item provider yourself, make sure
    *   their completion handlers don't dispatch to the main thread.
    *
-   * @param data A closure that returns a single
+   * @param data A closure that returns a single <doc://com.apple.documentation/documentation/Foundation/NSItemProvider> that represents the draggable data from this view.
    * @returns A view that activates this view as the source of a drag and drop operation, beginning with user gesture input.
    * @platform iOS 13.4+, macOS 10.15+; unavailable on tvOS, watchOS
    * @swift `nonisolated func onDrag(_ data: @escaping () -> NSItemProvider) -> some View`
@@ -13217,15 +13147,12 @@ export interface ViewModifiers {
    * `View.dragContainer(for:in:_:)` — use `View.draggable(_:)`
    * instead.
    *
-   * <doc://com.apple.documentation/documentation/Foundation/NSItemProvider>
-   * that represents the draggable data from this view.
-   *
    * - Important: Don't dispatch work to the main actor while exporting the
    *   item. Doing so isn't supported and might cause a hang. If you register
    *   data representations on the item provider yourself, make sure
    *   their completion handlers don't dispatch to the main thread.
    *
-   * @param data A closure that returns a single
+   * @param data A closure that returns a single <doc://com.apple.documentation/documentation/Foundation/NSItemProvider> that represents the draggable data from this view.
    * @returns A view that activates this view as the source of a drag-and- drop operation, beginning with user gesture input.
    * @platform iOS 15.0+, macOS 12.0+; unavailable on tvOS, watchOS
    * @swift `nonisolated func onDrag<V>(_ data: @escaping () -> NSItemProvider, @ContentBuilder preview: () -> V) -> some View where V : View`
@@ -13756,13 +13683,12 @@ export interface ViewModifiers {
    * }
    *
    * ```
-   * with an in-app browser or not.
    *
    * @platform iOS 26.0+, macOS 26.0+, tvOS 26.0+, watchOS 26.0+, visionOS 26.0+
    * @swift `@MainActor @preconcurrency func onOpenURL(prefersInApp: Bool) -> some View`
    */
   onOpenURL(options: {
-    /** A boolean value that specifies whether to prefer to open the URL */ prefersInApp: boolean;
+    /** A boolean value that specifies whether to prefer to open the URL with an in-app browser or not. */ prefersInApp: boolean;
   }): ViewModifierChain;
 
   /**
@@ -15008,9 +14934,7 @@ export interface ViewModifiers {
    * - The SharePlay indicator.
    * - The Multitasking Controls button and Picture in Picture on iPad.
    *
-   * non-transient system views overlaying the app.
-   *
-   * @param visibility A value that indicates the visibility of the
+   * @param visibility A value that indicates the visibility of the non-transient system views overlaying the app.
    * @platform iOS 16.0+, macOS 13.0+, tvOS 16.0+, watchOS 9.0+
    * @swift `nonisolated func persistentSystemOverlays(_ visibility: Visibility) -> some View`
    */
@@ -15106,17 +15030,15 @@ export interface ViewModifiers {
    * struct PopoverExample: View {
    *     @State private var isShowingPopover = false
    *
-   * ```swift
-   * var body: some View {
-   *     Button("Show Popover") {
-   *         self.isShowingPopover = true
+   *     var body: some View {
+   *         Button("Show Popover") {
+   *             self.isShowingPopover = true
+   *         }
+   *         .popover(isPresented: $isShowingPopover) {
+   *             Text("Popover Content")
+   *                 .padding()
+   *         }
    *     }
-   *     .popover(isPresented: $isShowingPopover) {
-   *         Text("Popover Content")
-   *             .padding()
-   *     }
-   * }
-   * ```
    * }
    * ```
    *
@@ -18643,11 +18565,9 @@ export interface ViewModifiers {
    * Sets the label that is used in a section index to point to this
    * section, typically only a single character long.
    *
-   * to display no label for this section.
-   *
    * - See also `listSectionIndexVisibility(_:)`
    *
-   * @param label The label to display in the section index, or `nil`
+   * @param label The label to display in the section index, or `nil` to display no label for this section.
    * @platform iOS 26.0+, macOS 26.0+, tvOS 26.0+, watchOS 26.0+, visionOS 26.0+
    * @swift `@export(implementation) nonisolated func sectionIndexLabel(_ label: Text?) -> some View`
    * @swift `@export(implementation) nonisolated func sectionIndexLabel<S>(_ label: S?) -> some View where S : StringProtocol`
@@ -20778,9 +20698,7 @@ export interface ViewModifiers {
    * not change the autocapitalization behavior. The default is
    * `TextInputAutocapitalization.sentences`.
    *
-   * defined in the `TextInputAutocapitalization` struct or nil.
-   *
-   * @param autocapitalization One of the capitalizing behaviors
+   * @param autocapitalization One of the capitalizing behaviors defined in the `TextInputAutocapitalization` struct or nil.
    * @platform iOS 15.0+, tvOS 15.0+, watchOS 8.0+; unavailable on macOS
    * @swift `nonisolated func textInputAutocapitalization(_ autocapitalization: TextInputAutocapitalization?) -> some View`
    */
@@ -22103,10 +22021,8 @@ export interface ViewModifiers {
    *     .border(Color.gray)
    *
    * ```
-   * <doc://com.apple.documentation/documentation/CoreFoundation/CGAffineTransform> to
-   * apply to the view.
    *
-   * @param transform A
+   * @param transform A <doc://com.apple.documentation/documentation/CoreFoundation/CGAffineTransform> to apply to the view.
    * @platform iOS 13.0+, macOS 10.15+, tvOS 13.0+, watchOS 6.0+
    * @swift `nonisolated func transformEffect(_ transform: CGAffineTransform) -> some View`
    */
@@ -22248,9 +22164,7 @@ export interface ViewModifiers {
    * Setting an empty string value disables text selection for the view,
    * and a value of `nil` results in the view using its default value.
    *
-   * type select equivalent for a view in a collection.
-   *
-   * @param stringResource The localized string resource to use as a
+   * @param stringResource The localized string resource to use as a type select equivalent for a view in a collection.
    * @platform iOS 16.0+, macOS 13.0+, tvOS 16.0+, watchOS 9.0+
    * @swift `@export(implementation) nonisolated func typeSelectEquivalent(_ stringResource: LocalizedStringResource) -> some View`
    * @swift `@export(implementation) nonisolated func typeSelectEquivalent(_ stringKey: LocalizedStringKey) -> some View`
@@ -22294,9 +22208,7 @@ export interface ViewModifiers {
    * Setting an empty string value disables text selection for the view,
    * and a value of `nil` results in the view using its default value.
    *
-   * equivalent for a view in a collection.
-   *
-   * @param text The explicit text value to use as a type select
+   * @param text The explicit text value to use as a type select equivalent for a view in a collection.
    * @platform iOS 16.0+, macOS 13.0+, tvOS 16.0+, watchOS 9.0+
    * @swift `nonisolated func typeSelectEquivalent(_ text: Text?) -> some View`
    */
@@ -22515,9 +22427,7 @@ export interface ViewModifiers {
    * Use this view modifier to disable the Writing Tools affordance
    * for `TextField` views when running on macOS or Mac Catalyst.
    *
-   * input views.
-   *
-   * @param visibility Whether the affordance may be shown for text
+   * @param visibility Whether the affordance may be shown for text input views.
    * @returns A view with the specified Writing Tools affordance visibility.
    * @platform iOS 18.4+, macOS 15.4+, tvOS 18.4+, watchOS 11.4+, visionOS 2.4+
    * @swift `nonisolated func writingToolsAffordanceVisibility(_ visibility: Visibility) -> some View`
@@ -22861,9 +22771,8 @@ export interface ImageModifiers {
   /**
    * Specifies whether SwiftUI applies antialiasing when rendering
    * the image.
-   * allow antialiasing. Pass `true` to allow antialising, `false` otherwise.
    *
-   * @param isAntialiased A Boolean value that specifies whether to
+   * @param isAntialiased A Boolean value that specifies whether to allow antialiasing. Pass `true` to allow antialising, `false` otherwise.
    * @returns An image with the antialiasing behavior set.
    * @platform iOS 13.0+, macOS 10.15+, tvOS 13.0+, watchOS 6.0+
    * @swift `func antialiased(_ isAntialiased: Bool) -> Image`
@@ -22876,10 +22785,8 @@ export interface ImageModifiers {
    *
    * See the article <doc:Fitting-Images-into-Available-Space> for examples
    * of using `interpolation(_:)` when scaling an `Image`.
-   * the `Interpolation` type, that SwiftUI applies when interpolating
-   * an image.
    *
-   * @param interpolation The quality level, expressed as a value of
+   * @param interpolation The quality level, expressed as a value of the `Interpolation` type, that SwiftUI applies when interpolating an image.
    * @returns An image with the given interpolation value set.
    * @platform iOS 13.0+, macOS 10.15+, tvOS 13.0+, watchOS 6.0+
    * @swift `func interpolation(_ interpolation: Image.Interpolation) -> Image`
@@ -23856,9 +23763,7 @@ export interface TextModifiers {
    * If you don't set a value with this method, the default content type
    * is `AccessibilityTextContentType.plain`.
    *
-   * `AccessibilityTextContentType` options.
-   *
-   * @param value The accessibility content type from the available
+   * @param value The accessibility content type from the available `AccessibilityTextContentType` options.
    * @platform iOS 15.0+, macOS 12.0+, tvOS 15.0+, watchOS 8.0+
    * @swift `nonisolated func accessibilityTextContentType(_ value: AccessibilityTextContentType) -> Text`
    */
@@ -24141,10 +24046,7 @@ export interface TextModifiers {
    * If the base font of the text view doesn't support fixed-width digits,
    * the font remains unchanged.
    *
-   * numeric characters, while leaving other characters proportionally
-   * spaced.
-   *
-   * @returns A text view with a modified font that uses fixed-width
+   * @returns A text view with a modified font that uses fixed-width numeric characters, while leaving other characters proportionally spaced.
    * @platform iOS 15.0+, macOS 12.0+, tvOS 15.0+, watchOS 8.0+
    * @swift `nonisolated func monospacedDigit() -> Text`
    */

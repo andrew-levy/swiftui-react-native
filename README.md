@@ -11,7 +11,7 @@
 ## Install
 
 ```sh
-npm install swiftui-react-native@next react-native-nitro-modules
+npm install swiftui-react-native react-native-nitro-modules
 cd ios && pod install
 ```
 

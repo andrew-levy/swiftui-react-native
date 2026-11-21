@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 7.0.0 (2026-11-22)
+
+v7 is a rewrite of swiftui-react-native. Every view and modifier now comes from the SwiftUI in Apple's SDK, so the library follows SwiftUI itself instead of a hand-picked subset of it. Your JSX renders real SwiftUI, typed end to end.
+
+This release has breaking changes. See [Upgrading from v6](#upgrading-from-v6) below.
+
+```sh
+npm install swiftui-react-native react-native-nitro-modules
+cd ios && pod install
+```
+
+Documentation: [swiftui.rit3zh.dev](https://swiftui.rit3zh.dev)
+
+### Highlights
+
+- **All of SwiftUI, typed.** 108 views and 438 modifiers, generated from Apple's SDK. Each one comes with Apple's documentation, the SwiftUI declaration it maps to and the iOS version it needs.
+- **Built on the New Architecture.** Fabric components, Codegen and Nitro Modules. Expo Modules is no longer required, so it works in bare React Native apps as well as in Expo development builds.
+- **Modifiers chain the way they do in SwiftUI.**
+
+  ```tsx
+  <Text modifiers={compose().font('title').bold().foregroundStyle('secondary')}>Hello</Text>
+  ```
+
+- **iOS 26 and Liquid Glass.** `GlassEffectContainer`, the `glassEffect` modifier, `ConcentricRectangle`, `Tab` and `ToolbarSpacer`.
+- **State that SwiftUI can observe.** `useBinding`, `Observable` and `ObservableObject` with `useObservable` and `useStateObject`, environment objects with `useEnvironment` and `useEnvironmentObject`, and focus with `useFocusedValue` and `useFocusedObject`.
+- **Drawing.** `Path`, `Canvas` and custom shapes made with `createShape`.
+- **Animation.** `PhaseAnimator`, `KeyframeAnimator` and `TimelineView`.
+- **Works with more than the newest Xcode.** It builds with Xcode 26.0 and newer. APIs that are newer than your Xcode are left out at compile time and report "unavailable" instead of breaking the build.
+
+### Requirements
+
+- iOS
+- React Native 0.80 or newer with the New Architecture
+- `react-native-nitro-modules` 0.37 or newer
+- Xcode 26.0 or newer
+- With Expo, a development build (Expo Go isn't supported)
+
+### Upgrading from v6
+
+- Turn on the New Architecture and install `react-native-nitro-modules`.
+- Modifiers are no longer props. Move them into the `modifiers` prop:
+
+  ```tsx
+  // v6
+  <Text font="title" padding={12}>Hello</Text>
+
+  // v7
+  <Text modifiers={compose().font('title').padding(12)}>Hello</Text>
+  ```
+
+- Props follow SwiftUI's initializers. For example, `Button` takes `onPress` and its label as children, and `TextField` takes its placeholder as children:
+
+  ```tsx
+  <TextField text={name}>Name</TextField>
+  <Button onPress={save}>Save</Button>
+  ```
+
+### Since 7.0.0-beta.2
+
+- Documentation in the types is no longer cut off mid-sentence, so editor hovers show Apple's full text.
+
+### Thank you
+
+Thanks to [@andrew-levy](https://github.com/andrew-levy) for creating swiftui-react-native, and to everyone who tried the betas and reported issues.
+
+**Full changelog:** [v6.3.0...v7.0.0](https://github.com/andrew-levy/swiftui-react-native/compare/v6.3.0...v7.0.0)
+
 # 7.0.0-beta.2 (2026-11-20)
 
 - Builds with Xcode 26.0 and newer, not only the latest Xcode. APIs newer than your Xcode are left out at compile time and report "unavailable".

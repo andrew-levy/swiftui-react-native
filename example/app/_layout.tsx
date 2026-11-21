@@ -44,6 +44,10 @@ export default function Layout() {
       />
       <Stack.Screen name="coverage" options={{ title: 'Coverage' }} />
       <Stack.Screen
+        name="clips"
+        options={{ title: 'Clips', headerShown: false }}
+      />
+      <Stack.Screen
         name="banner"
         options={{ title: 'Banner', headerShown: false }}
       />
